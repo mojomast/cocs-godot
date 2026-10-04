@@ -1,5 +1,30 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AI delivered/released — native receipt-policy gate localized
+
+AI **`cc2b72fd` / `0a644c92`** reports negative controls PASS (34 pairs/68
+profiles), then inclined invocation FAIL (engine 2/supervisor 1) with one bounded
+`ADMISSION_FAILURE` record at **`predecessor.native_policy`**. That driver branch
+calls `Policy.successful` on the fresh AI negative receipt. The internal rejecting
+subpredicate remains unproved; this does not retrospectively trace AH.
+
+Fresh negative evidence/checkpoint records 1,284 settling, 72 input and 678
+candidate ordinary responses, zero assists and paired agreement. No inclined
+native result exists; internal case/call counts remain unknown. Positive admission
+was not authorized and remains unrun (four pairs/eight profiles). Exactly two
+engine invocations occurred, without retry or source correction.
+
+Parent verified **40 files**, the 8,526-byte manifest's supplied SHA, three measured
+empty audits/two groups, no survivors and free lock at 06:21:39.452472Z. Release
+is 06:14:39.405496Z. Independent archive review is active; no heavy grant remains.
+Raw log whitespace is preserved as evidence, not normalized.
+
+A source-only follow-up targets native receipt-policy predicates and bounded
+diagnostics against frozen AI data. A receipt-only probe may be proposed to avoid
+unnecessary movement reruns, but needs separate review/grant and cannot authorize
+campaign advancement. Acceptance predicates and historical failure classifications
+remain intact; all sixty map journeys remain unrun.
+
 ## Labeled diagnostics approved/integrated; AI authorized
 
 Independent review approved `f1b4c0b6`, integrated as **`8478cd8c`**. Parent

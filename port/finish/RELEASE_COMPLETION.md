@@ -10,10 +10,12 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**Current heavy owner: labeled admission diagnostic AI**, Astra
-`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Source review passed;
-parent passed 160 checks. Fresh negatives and reviewed passing evidence may permit
-one inclined invocation, then stop/release even if passing. No retry/positive/maps.
+**No active heavy grant. AI passed negatives, localized a native policy failure and released.**
+Delivery `cc2b72fd` / `0a644c92` is under review. Inclined admission emitted
+`predecessor.native_policy`; its internal failing predicate and case/call progress
+remain unknown. Positive admission was not authorized and remains unrun. Parent
+verified 40 files/manifest hash and three measured empty audits/two groups.
+Further predicate diagnosis is source-only; no retry/positive/map permission.
 
 **AH passed negatives, failed its inclined invocation and released.**
 Delivery `560fff1e` / `c3c922f9` / `22841f8c` passed independent archive review
@@ -321,7 +323,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG and AH have released; AI owns labeled admission diagnostics.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG, AH and AI have released; no heavy grant is active.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -363,10 +365,12 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261004-AI`**, Astra
+**Released: `MOTH-BLENDER-20261004-AI`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Fresh negative controls,
 recorded passing checkpoint, then at most one inclined invocation. Stop/release
 even if passing; no retry/positive/maps. Three measured final audits required.
+AI released at 06:14:39.405496Z; parent verified 40 files plus manifest hash and
+three measured empty audits/two groups. Localized-failure evidence is under review.
 
 **Released: `MOTH-BLENDER-20261004-AH`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `f860e426`. One invocation each

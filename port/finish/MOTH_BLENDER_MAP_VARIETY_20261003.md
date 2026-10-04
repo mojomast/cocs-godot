@@ -1,5 +1,15 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AI released; native policy gate identified
+
+**No heavy grant is active.** AI `cc2b72fd` / `0a644c92` passed negatives and
+failed inclined admission at `predecessor.native_policy`; its internal rejecting
+predicate remains unknown. Positive four pairs/eight profiles remain unrun.
+Parent verified 40 files plus manifest hash and three measured empty audits/two
+groups; release is 06:14:39.405496Z, lock available at 06:21:39.452472Z.
+Independent review and source-only predicate diagnosis are active. No retry,
+positive admission, map execution or retrospective AH branch claim follows.
+
 ## Current owner — labeled admission diagnostic AI
 
 **MOTH-BLENDER-20261004-AI is the sole heavy grant**, Astra
