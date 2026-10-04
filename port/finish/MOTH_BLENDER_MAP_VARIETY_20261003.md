@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Parallax AC gallery live:** <http://100.125.104.79:8796/parallax-ac/> — twelve
+matched pairs / all 24 original 1280×720 PNGs, with failed-AA-before labels and
+obstructed/mirrored/dark/striping views retained. All 54 HTTP/hash checks passed,
+including 25 original source reports/receipts. Independent artifact/appearance
+review remains active; faithful mesh-local import is not final visual acceptance.
+
 ## Current owner — inclined controls AD; Parallax AC delivered/released
 
 **MOTH-BLENDER-20261004-AD is the sole heavy grant**, Astra
