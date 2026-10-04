@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Radius diagnosis/design approved and integrated as `5d8c2b94`.** Parent passed
+eighteen offline/package checks and seven hashes. Independent review qualifies
+mixed-contact interpretation and accepts the fixed eight-profile design only.
+Dedicated baseline-only fixture/validator/supervisor implementation is assigned;
+no native readiness or grant. See `WALKER_BASELINE_DESIGN_REVIEW.md`.
+
 ## Radius diagnosis and fixed characterization design delivered
 
 **`cdc81f7a`** is under independent review. Source/trace analysis reports .35

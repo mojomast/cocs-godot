@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Baseline characterization design approved/integrated as `5d8c2b94`.** Parent
+passed eighteen checks and seven hashes. The fixed eight-profile package is now
+being implemented source-only, with geometry and support derived per rise. New
+heights remain untested; selection requires later evidence review. No heavy grant.
+Review: `map-variety/WALKER_BASELINE_DESIGN_REVIEW.md`.
+
 **Radius diagnosis/design `cdc81f7a` is under review.** Godot's internal .01 rad
 floor allowance is consistent with the recorded .42 classification, while .35
 remains wall-like. Backend normal-generation causality is unproved. The proposed

@@ -16,10 +16,11 @@ integrated through `241833ef`. Parent passed 156 checks and 51 hashes/manifest.
 Both .35 candidates reached the single synthetic tread goal; .42/−45° baseline
 arrival violated the blocked-baseline requirement before its candidate ran.
 Radius analysis is source-only; no retry/maps or waiver. See `map-variety/WALKER_AK_REVIEW.md`.
-Design `cdc81f7a` is under review: eight baseline-only profiles compare .35/.15
-references and .42 at .15/.18/.20 across both yaws. Source analysis identifies
-Godot's internal +.01 rad floor-classification allowance; explicit candidate/support
-limits remain unchanged. New heights are untested; no native wrapper or grant exists.
+Design `cdc81f7a` passed review and is integrated as `5d8c2b94`, with eighteen
+parent checks and seven file hashes verified. Eight baseline-only profiles compare
+.35/.15 references and .42 at .15/.18/.20 across both yaws. The dedicated package
+is being implemented source-only; new heights remain untested and no grant exists.
+See `map-variety/WALKER_BASELINE_DESIGN_REVIEW.md`.
 
 **AJ confirmed the receipt-only hypothesis and released.**
 Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through
