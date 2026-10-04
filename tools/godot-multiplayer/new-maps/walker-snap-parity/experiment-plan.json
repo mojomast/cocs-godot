@@ -1,0 +1,22 @@
+{
+  "status": "SOURCE PROPOSAL ONLY; new GDScript unparsed and unrun",
+  "grant": null,
+  "autoStart": false,
+  "queued": false,
+  "phase": "snap-query-parity-only-v1",
+  "groups": ["original-query-observation", "snap-parity-candidate"],
+  "fixture": {"radius": 0.35, "yawDegrees": -45, "rise": 0.15, "startLocalZ": -1, "geometry": "unchanged walker_admission/fixtures_v4.gd flat synthetic case"},
+  "bounds": {"settlingFrames": 20, "totalMaximumFrames": 60, "internalSeconds": 170, "requiredExternalSeconds": 180},
+  "sequence": [
+    "Independent source review, including actual source hash manifest/preparation and bounded ownership supervisor, before any native grant",
+    "Future separate manual original-query-observation invocation: compare short32/full4/parent-forward6 on same body/physics frame before original movement; retain expected failed guard as failed",
+    "Parent reviews all raw requests, query side-effect checks and observed response; no automatic candidate continuation",
+    "Only if separately authorized, manual snap-parity-candidate invocation; stop at first eligible response, not target arrival",
+    "Any mismatch or rejected parity proof is failure, not permission to widen epsilon or retry",
+    "Even if one response agrees, fresh negative controls, inclined rejection, mirrored/radius positive admission and independent review are prerequisites for any later map-walk request"
+  ],
+  "nativeStepAdmission": false,
+  "candidateMapWalksAllowed": false,
+  "productionPromotion": false,
+  "preparationStatus": "prepare.py supplied but not invoked; no attempt/source receipt/grant created. External bounded ownership supervisor wiring remains a future review item; driver has explicit source/grant gates but is not declared execution-ready."
+}
