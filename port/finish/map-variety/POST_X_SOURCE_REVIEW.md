@@ -1,5 +1,23 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Campaign numeric correction delivered for review
+
+**`25766619`** applies only `not up in [0,1]` → `(up != 0 and up != 1)` with
+the preceding finite-integer guard retained. The entire Evidence file matches
+AJ's exercised clone, SHA `19b7c024e3f15a365cd0289bef45fc069f3908fd9325359dccffc556a3242be8`.
+Current campaign pins change only that entry; other runtime behavior stays frozen.
+
+Independent review is active. Producer reports 143 tests in the corrected checkout
+(138 prior plus five correction checks), and forty historical tests in a preserved
+original-source checkout. Historical probe/diagnosis tooling remains unchanged and
+intentionally fails closed on the corrected source. Its pins were not widened.
+The correction receipt's pending-AJ-review wording records delivery context;
+parent subsequently approved/integrated AJ as documented in `WALKER_AJ_REVIEW.md`.
+
+No new engine run or grant exists. Fresh campaign source/grant and fresh ordered
+prerequisites remain required; neither AJ's clone result nor AI's old negatives
+can authorize advancement. Positive admission and sixty map journeys remain unrun.
+
 **AJ receipt-only confirmation approved and integrated through `0b420dc1`.**
 Parent passed 93 checks and all 23 hashes/manifest identity. The actual original/
 clone difference, fifteen controls and seven rejected mutants are independently

@@ -16,6 +16,11 @@ Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated thr
 policy rejects and the isolated clone accepts, with fifteen controls passing and
 seven mutants rejected. Campaign correction is being prepared source-only; no
 movement grant. See `map-variety/WALKER_AJ_REVIEW.md`.
+Actual correction `25766619` is under independent source review. Only the numeric
+membership clause and its current stage pin change; the entire Evidence file
+matches AJ's exercised clone. Producer reports 143 corrected-checkout tests and
+40 original-checkout historical tests. Historical tooling intentionally remains
+pinned to old source and fails closed here. No fresh campaign grant exists.
 
 **AI passed negatives, localized a native policy failure and released.**
 Delivery `cc2b72fd` / `0a644c92` passed independent archive review and is integrated

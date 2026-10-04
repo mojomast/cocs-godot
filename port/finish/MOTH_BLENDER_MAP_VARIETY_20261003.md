@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Campaign correction `25766619` is under source review.** The one-clause change
+retains finite-integer validation and matches AJ's exercised clone exactly.
+Producer reports 143 corrected-source tests plus forty historical tests in the
+preserved original checkout; old tooling/pins remain deliberately version-bound.
+No fresh campaign grant is active, and positive admission remains unrun.
+
 **AJ independently approved and integrated as `d8e03668` / `0b420dc1`.** Parent
 passed 93 checks and all 23 hashes plus manifest identity. Receipt-only native
 confirmation justifies preparing the one-clause validator correction for review;
