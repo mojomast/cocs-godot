@@ -1,5 +1,10 @@
 # New Moth resources and Blender-authored map variety
 
+**Calibrated admission `3b03b390` is under source review.** The distinct phase
+fixes .35/.15 and .42/.18 paired positives with fresh negative/inclined prerequisites.
+Rise-derived checks and target-witnessed baseline stalls retain unchanged candidate/
+guard behavior. Producer reports 212 Python checks; no native grant is active.
+
 **AL independently approved/integrated through `0d8822ee`.** Parent passed 52
 checks and all 33 hashes/manifest. Review selects .18 for the .42 fixture in a
 new source proposal; the native report remains unmodified. Fresh paired admission

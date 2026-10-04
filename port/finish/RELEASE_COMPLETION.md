@@ -16,6 +16,10 @@ Delivery `75271920` / `068705de` passed independent review and is integrated thr
 six blocked, two ordinary arrivals, 960 responses/support observations. Review selects
 .18 for the next .42 source fixture only; candidate feasibility remains unproved.
 Versioned admission source preparation is active. See `map-variety/WALKER_AL_REVIEW.md`.
+Calibrated package `3b03b390` is now under independent source review. The new phase
+fixes .35/.15 and .42/.18 positive cases, fresh 34/4/4 prerequisites, rise-derived
+checks and target-witnessed baseline stalls. Producer reports 212 Python checks;
+candidate/planners/physical guard stay unchanged. No native grant exists.
 
 **AK passed negatives/inclined, failed positive admission and released.**
 Delivery `4b83de0b` / `c2e83163` / `50271f7c` passed independent review and is

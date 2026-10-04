@@ -1,5 +1,24 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Calibrated admission package delivered for review
+
+**`3b03b390`** implements distinct `parity-admission-calibrated-v1` /
+`calibrated-controls` with fresh 34 negative, four inclined and four positive
+pairs. Positive cases are .35/.15 and .42/.18 at both yaws. External selection
+is recorded separately; AL's null selection remains immutable and .20 is no fallback.
+
+Rise-derived geometry, landing/support checks and exact census accompany stronger
+baseline evidence: each counted stall requires grounding and actual target contact.
+Candidate/planner/guard methods remain byte-identical to reviewed AK sources.
+Isolated imports, write-once group consumption, fresh hash-bound predecessors and
+170/180-second supervision are proposed without automatic continuation.
+
+Producer reports **212 Python checks** (30 new, 143 corrected-campaign, 39 baseline/
+design), 22 file bindings and unchanged historical/production dependencies. Source
+receipt SHA is `8820d5c3268a448c0d3af6581b62964c2d82fd6d7bb9e5c90d3c625388d5940e`.
+Independent review is active; new GDScript is unparsed/unrun and no grant exists.
+Candidate feasibility, sixty map journeys, 184 static failures and accounting remain open.
+
 **AL characterization approved and integrated through `0d8822ee`.** Parent
 passed 52 checks and all 33 hashes/manifest. Independent review verifies all 960
 support observations and selects .18 for the next .42 source fixture, leaving
