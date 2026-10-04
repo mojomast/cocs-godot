@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Support-query diagnosis integrated as `d008a28b`.** Parent passed 21 checks
+and delivery/reference hashes. Review accepted finite-motion observations; exact-
+zero requests are excluded pending defined semantics. A bounded two-case package
+is being implemented source-only with guard outcomes preserved. No heavy grant.
+Review: `map-variety/WALKER_SUPPORT_QUERY_DESIGN_REVIEW.md`.
+
 **Support-query diagnosis `7c1f196b` is under review.** Planner/parent and fresh
 support queries report different normals; pinned recovery/contact-pose semantics
 offer a conditional explanation without tracing the active backend. A fixed

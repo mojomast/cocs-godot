@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Support-query diagnosis/design approved and integrated as `d008a28b`.** Parent
+passed 21 checks and nine delivery/seven reference hashes. Conditional recovery/
+sampling interpretation is retained. Exact-zero requests lack established semantics
+and are omitted from the new executable proposal without epsilon substitution.
+Two finite-motion transition comparisons are being implemented source-only; original
+guard outcomes remain intact. See `WALKER_SUPPORT_QUERY_DESIGN_REVIEW.md`.
+
 ## Final-support query diagnosis/design delivered for review
 
 **`7c1f196b`** reports .42/.18/−45 normals of45.776894° (original DOWN32),
