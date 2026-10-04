@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {polishSupportingHash} from './polish_dependencies.mjs';
+import {racingSupportingHash,racingSupportingHookHash} from './racing_dependencies.mjs';
 export const STORMGLASS_GLB='godot/multiplayer_worlds/art/worlds/stormglass-causeway.glb';
 export const STORMGLASS_INVENTORY='tools/godot-package/stormglass_j_inventory.json';
 export const J_BASE='port/expansion-four/stormglass/evidence/production-j/';
@@ -69,12 +70,12 @@ export function verifyStormglassAdvance(receipt){
  assert.equal(r.review.nativeFeatureChecks,'pending');
  assert.deepEqual(r.raceSourceAdvance,{from:'9746a9e2',to:'4cc0292d',changed:RACE_RUNTIME_ADVANCES},'Exact reviewed race source history');
  assert.deepEqual(r.meleeSourceAdvance,{from:'4cc0292d',to:'38dfb3bd',changed:MELEE_RUNTIME_ADVANCES,added:MELEE_ADDED},'Exact reviewed melee source history');
- for(const [p,c]of Object.entries({...RACE_RUNTIME_ADVANCES,...MELEE_RUNTIME_ADVANCES}))assert.equal(receipt.packageInputs[p],polishSupportingHash(p,c.after,receipt),'Current supporting feature identity: '+p);
- for(const [p,sha]of Object.entries(MELEE_ADDED))assert.equal(receipt.packageInputs[p],polishSupportingHash(p,sha,receipt),'New melee preload identity: '+p);
+ for(const [p,c]of Object.entries({...RACE_RUNTIME_ADVANCES,...MELEE_RUNTIME_ADVANCES}))assert.equal(receipt.packageInputs[p],racingSupportingHash(p,polishSupportingHash(p,c.after,receipt),receipt),'Current supporting feature identity: '+p);
+ for(const [p,sha]of Object.entries(MELEE_ADDED))assert.equal(receipt.packageInputs[p],racingSupportingHash(p,polishSupportingHash(p,sha,receipt),receipt),'New melee preload identity: '+p);
  assert.deepEqual(r.nativeToFeatureAdvance,receipt.unit==='stormglass-causeway'?{to:'a5c26f25',changed:J_RUNTIME_ADVANCES}:null,'J native-to-feature history');
  const policy=stormglassRuntimePolicy(receipt.unit);
  assert.deepEqual(r.runtimeChanged,policy,'Unreviewed Stormglass runtime advance');
- for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],polishSupportingHash(p,c.after,receipt),'Stormglass current hook identity');
+ for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],racingSupportingHookHash(p,polishSupportingHash(p,c.after,receipt),receipt),'Stormglass current hook identity');
 }
 export function verifyStormglassImports(read,receipt){
  assert.equal(hash(read(STORMGLASS_INVENTORY)),'edb811fd503d343314f6fad4bb469a0e73195f643d7d3af34684598712190fb4','Exact received J inventory identity');
@@ -103,7 +104,7 @@ export function verifyStormglassImports(read,receipt){
  const summary=JSON.parse(read(J_BASE+'summary.json'));
  assert.deepEqual(receipt.nativeRuntimeHooks,Object.fromEntries(Object.entries(summary.runtimeAndFixtureHashes).filter(([p])=>p.startsWith('godot/')&&!p.startsWith('godot/tests/')&&p.endsWith('.gd'))),'Original J native runtime hooks');
  assert.deepEqual(Object.keys(receipt.runtimeHooks).sort(),Object.keys(receipt.nativeRuntimeHooks).sort(),'Exact J activation hooks');
- for(const [p,sha]of Object.entries(receipt.nativeRuntimeHooks))assert.equal(receipt.runtimeHooks[p],polishSupportingHash(p,stormglassRuntimePolicy(receipt.unit)[p]?.after??sha,receipt),'J runtime chain');
+ for(const [p,sha]of Object.entries(receipt.nativeRuntimeHooks))assert.equal(receipt.runtimeHooks[p],racingSupportingHookHash(p,polishSupportingHash(p,stormglassRuntimePolicy(receipt.unit)[p]?.after??sha,receipt),receipt),'J runtime chain');
  for(const [p,c]of Object.entries(J_RUNTIME_ADVANCES))assert.equal(c.before,summary.runtimeAndFixtureHashes[p],'J original runtime identity');
  assert.equal(hash(read('tools/godot-multiplayer/new-maps/stormglass-causeway/architecture.py')),summary.runtimeAndFixtureHashes['tools/godot-multiplayer/new-maps/stormglass-causeway/architecture.py']);
  for(const [dir,name]of J_STAGES)assert.equal(JSON.parse(read(J_BASE+'stages/'+dir+'/'+name+'-process.json')).exitCode,0);

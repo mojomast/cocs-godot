@@ -4,6 +4,7 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {productionResources} from './production_resources.mjs';
+import {reverseRacing} from './racing_dependencies.mjs';
 import {verifySourceState} from './manifest_validation.mjs';
 import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 const cwd=fileURLToPath(new URL('../../',import.meta.url));
@@ -25,7 +26,7 @@ test('committed seven-unit promotion and import bytes validate independently of 
   assert.deepEqual(result.pending,[]);
   assert.throws(()=>productionResources({...options,worldIds:options.worldIds.slice(0,-1)}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors','stormglass-causeway']) {
-    const receipt=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));
+    const receipt=reverseRacing(JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`)),read);
     const advance=receipt.movementAdvance,previous=advance.previousReceipt;
     const bytes=git(['show',`${previous.commit}:${previous.path}`]);
     assert.equal(createHash('sha256').update(bytes).digest('hex'),previous.sha256);

@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {movementPaths,movementSupportingHash,verifyMovementAdvance} from './movement_dependencies.mjs';
+import {racingSupportingHash,racingSupportingHookHash} from './racing_dependencies.mjs';
 export const POLISH_INVENTORY='tools/godot-package/polish_8921_inventory.json';
 export const POLISH_INVENTORY_SHA='81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015';
 const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -65,8 +66,8 @@ export function verifyPolishAdvance(receipt,read){
  const hook='godot/multiplayer_worlds/sports_demo.gd',c=s.changed[hook];
  const policy=receipt.unit==='stormglass-causeway'?{[hook]:{before:c.before,after:c.after}}:{};
  assert.deepEqual(r.runtimeChanged,policy,'Exact polish activation hook advance');
- for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],c.after,'Polish current runtime identity');
- for(const [p,c]of Object.entries(s.changed))assert.equal(receipt.packageInputs[p],movementSupportingHash(p,lSupportingHash(p,c.after),read),'Reviewed polish dependency identity: '+p);
+ for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],racingSupportingHookHash(p,c.after,receipt),'Polish current runtime identity');
+ for(const [p,c]of Object.entries(s.changed))assert.equal(receipt.packageInputs[p],racingSupportingHash(p,movementSupportingHash(p,lSupportingHash(p,c.after),read),receipt),'Reviewed polish dependency identity: '+p);
  for(const [p,sha]of Object.entries({...s.added,...s.evidence,...s.operatorFinish.data}))assert.equal(receipt.packageInputs[p],sha,'Exact polish addition: '+p);
 }
 export function verifyOperatorFinishImports(read){

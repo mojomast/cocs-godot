@@ -73,7 +73,7 @@
     "game/payload.mjs": "13e357516af38fdfe6596dfa7a43cbeaae2445f492ad41df934deb8840bc92bb",
     "game/progression.mjs": "5b70fa168d8edb5192052ad9bed3243370db7ba8f13952a9401596a9d4bc1ce5",
     "game/race-maps.mjs": "d14c6d5cf31728cb5bac4363b142d16a79705b727f7e015774d80a68d5abf4b3",
-    "game/race.mjs": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+    "game/race.mjs": "a50215f34f70e40fd4d20452d66aef221c32882cb8de131068c58c85f6524082",
     "game/ragdoll.mjs": "10bd8cb43405d45a42d5034261ce89119a8bf05c24c3ca1f47f1b4b4202efa3d",
     "game/reticle.mjs": "1d6d8df4cc8db0e4dcf0a0cd5ab2e2b7db1c273d5f1897e61c97ea5f7d80aa7b",
     "game/sampler.mjs": "1e420e4c6e6a170c58ac4bd6274edc9161650d5a343875e1007c014cbe8ef254",
@@ -111,7 +111,7 @@
     "godot/audio/playback_cleanup.gd": "3cb19102f9d039e6dfb4e4d91330458abb142946a6b0dc0e2020917c0504237b",
     "godot/audio/threat_policy.gd": "dea27352d1b3e17d9fe89bdbe4031be4319716e16d128b92834a9780f3e7c104",
     "godot/audio/threat_service.gd": "0eaeceee1acefa12cf36a9e6692f513b04ae3e292e3198e4cebb21fd52182d01",
-    "godot/audio/vehicle_service.gd": "ed477d0a8d0a25572ce71ab43b99c2b6dc4190783fe4a3a5f2a058ee0826003f",
+    "godot/audio/vehicle_service.gd": "6e203b535fb5d5e8d1a35a18fb75da2e5281214ac4c24661acb2de9019b27260",
     "godot/benchmark/benchmark.tscn": "93e899937a554dab92ce07f8b9c8ae5727044d88e0bea40932525921d7f80c92",
     "godot/benchmark/driver.gd": "5a0db15c5cb9c103c1da7dfea94dbe57bf4dbbcc81ad5d4046fc8653a756bc0d",
     "godot/benchmark/frame_stats.gd": "f7cbd56664c9692ff7c6b80e6d5c04736cae20a58057eb55fa7f491ddf4b2ff4",
@@ -250,7 +250,7 @@
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
     "godot/multiplayer_worlds/generated/parallax-observatory.json": "13c0b91156aaa2fd713dea7dfafe8f9f48d92b2b414ff9c4b583efb047bdabc4",
     "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
-    "godot/multiplayer_worlds/sports_demo.gd": "7f6b0792d54f0a95823d038937d6bed801ef2ef8f4b0d51ae41a28c3a616161b",
+    "godot/multiplayer_worlds/sports_demo.gd": "691049e03c4aa2c39b0bf42eb24f614c1c3598aa805821a69a938dbd5ed855e6",
     "godot/multiplayer_worlds/urban_lighting.gd": "aa02961ccd39d1655df7ba9619d6270b6751f1e6dd3742ec4daa7a60bba83674",
     "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
     "godot/native_arenas/client.gd": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c",
@@ -544,11 +544,11 @@
     "godot/source_operators/textures/service_board.svg": "e6fea316444112711d4e1bb5c1d9237fab0ad9043aa4a05f41f0bd39aecdd02c",
     "godot/source_operators/textures/vent_panel.svg": "11f25d7299f5932f65d46a239ed91488e550d9c03238df17aff6436464cb3b4f",
     "godot/sports/av_lifecycle.gd": "9811ae6751579d3ce80a54f15a1889c2eccba3e7f724610b89a66c2f5fdbbbb5",
-    "godot/sports/chase.gd": "c589874c000503647a79fc435b3715fffe6027ab0fc89744975f68900e69ef17",
+    "godot/sports/chase.gd": "d2a9b2ea9006c203ed35d8f83a79b344dd9ffd44c7b81b1771d88d7cb3dc9911",
     "godot/sports/controls.gd": "3401604703866777ad2875260b4c918ed5faa15881593bcf9849b797c315c7c2",
-    "godot/sports/demo.gd": "c9f6ab3962ca0dcf184b5c1801c938065a5339e64cf87a1ff4c0dc2031abb01b",
+    "godot/sports/demo.gd": "3c55a5a57b6020388f3c64bf62529e0f55091f8a949309325da2daa820599d24",
     "godot/sports/guidance.gd": "4ea35cfb933403619979420aa9a9b9d507a0f59b8f0329813c34a8f35b049308",
-    "godot/sports/hud.gd": "eaa003b9b5cc473a424cf6338523593d1d082ef58a6b6947264a6b126eff1e0e",
+    "godot/sports/hud.gd": "9b36a5bcf92980b6de3c82e757f5339e58f26506c10e1193ef971d8ab4ef6eff",
     "godot/sports/practice.gd": "01596d8ccb9c4f75f17f74344ccc5ca7d500ea86f21aa4a39901f5fb6f902e9f",
     "godot/sports/progression.gd": "d47cf9d8d64033a1e8ef3debad90fa63ee82c1dfbffd6428e54e57e7343ce02a",
     "godot/sports/soccer_guidance.gd": "ee5b25a010f8095dcad4cb297651daf89599e7100f614ef11f424725670bc4ef",
@@ -646,15 +646,16 @@
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
-    "tools/godot-package/movement_dependencies.mjs": "6605c7507c8fe3fe1a5b306c17dc8da51eca746599f458ff169468a49ce0f078",
+    "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "5870f37d789cab29673de62a358c5cd61d247c21f1d3825ceafd5f059bba67b2",
+    "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
     "tools/godot-package/production_resources.mjs": "63e04fd04d05d9ff9080e273ebb732e960ef41ad1d9071d3e7465b3b545b084d",
+    "tools/godot-package/racing_dependencies.mjs": "6ea663d9b58d255ae595ff9264b9a2f4ae1261ef4dfe2e736b00103e0274500f",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
-    "tools/godot-package/stormglass_imports.mjs": "4a3c9ee6cae7aae48b40258178ae7ea6cacff96c209533ab0681ae2606d87510",
+    "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
   },
@@ -1984,6 +1985,63 @@
       "nativeChecks": "pending",
       "assetProduction": "reuse unchanged original production bytes",
       "document": "port/finish/movement-research/PACKAGE_RECONCILIATION.md"
+    }
+  },
+  "racingAdvance": {
+    "previousReceipt": {
+      "commit": "4cd806fa0783b1731505f8003e840bdc2f7d4786",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "878e2d50b925c8c244123b0daecb2633e108408a7ef680763757bdc03c79cffd"
+    },
+    "changed": {
+      "game/race.mjs": {
+        "before": "1c448a0f00e3354dd6fa32190f85dcc6c31883f428b07193773fcd02bf2effba",
+        "after": "a50215f34f70e40fd4d20452d66aef221c32882cb8de131068c58c85f6524082"
+      },
+      "godot/sports/chase.gd": {
+        "before": "c589874c000503647a79fc435b3715fffe6027ab0fc89744975f68900e69ef17",
+        "after": "d2a9b2ea9006c203ed35d8f83a79b344dd9ffd44c7b81b1771d88d7cb3dc9911"
+      },
+      "godot/sports/hud.gd": {
+        "before": "eaa003b9b5cc473a424cf6338523593d1d082ef58a6b6947264a6b126eff1e0e",
+        "after": "9b36a5bcf92980b6de3c82e757f5339e58f26506c10e1193ef971d8ab4ef6eff"
+      },
+      "godot/audio/vehicle_service.gd": {
+        "before": "ed477d0a8d0a25572ce71ab43b99c2b6dc4190783fe4a3a5f2a058ee0826003f",
+        "after": "6e203b535fb5d5e8d1a35a18fb75da2e5281214ac4c24661acb2de9019b27260"
+      },
+      "godot/sports/demo.gd": {
+        "before": "c9f6ab3962ca0dcf184b5c1801c938065a5339e64cf87a1ff4c0dc2031abb01b",
+        "after": "3c55a5a57b6020388f3c64bf62529e0f55091f8a949309325da2daa820599d24"
+      },
+      "godot/multiplayer_worlds/sports_demo.gd": {
+        "before": "7f6b0792d54f0a95823d038937d6bed801ef2ef8f4b0d51ae41a28c3a616161b",
+        "after": "691049e03c4aa2c39b0bf42eb24f614c1c3598aa805821a69a938dbd5ed855e6"
+      },
+      "tools/godot-package/movement_dependencies.mjs": {
+        "before": "6605c7507c8fe3fe1a5b306c17dc8da51eca746599f458ff169468a49ce0f078",
+        "after": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58"
+      },
+      "tools/godot-package/polish_dependencies.mjs": {
+        "before": "5870f37d789cab29673de62a358c5cd61d247c21f1d3825ceafd5f059bba67b2",
+        "after": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386"
+      },
+      "tools/godot-package/stormglass_imports.mjs": {
+        "before": "4a3c9ee6cae7aae48b40258178ae7ea6cacff96c209533ab0681ae2606d87510",
+        "after": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02"
+      }
+    },
+    "added": {
+      "tools/godot-package/racing_dependencies.mjs": "6ea663d9b58d255ae595ff9264b9a2f4ae1261ef4dfe2e736b00103e0274500f"
+    },
+    "runtimeChanged": {},
+    "previousPackageFingerprint": "da43b7f477cf850719a6914f45603240e448dd914fbb445c977a059e6ebf6925",
+    "packageFingerprint": "6b0a6248d2f957090a8f90861f034f817b8b4b7abe168b9465440f6588396baf",
+    "review": {
+      "foundation": "9812edfaa3e90a3ca4204d1ec2168587d8d657fb",
+      "scope": "racing gameplay and presentation reconciliation; native race acceptance pending",
+      "nativeChecks": "pending",
+      "document": "port/finish/RACING_RECONCILIATION.md"
     }
   }
 }

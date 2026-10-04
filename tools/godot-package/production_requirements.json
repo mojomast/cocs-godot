@@ -7,28 +7,28 @@
       "map": "parallax-observatory",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/parallax-interiors.json",
-        "sha256": "878e2d50b925c8c244123b0daecb2633e108408a7ef680763757bdc03c79cffd"
+        "sha256": "01ee3a7bcbef4934ebf6ec50b4f1a98347df9c284e2e5693139cbb739ff7ae2e"
       }
     },
     "robots": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/robots.json",
-        "sha256": "916447aae9bdad991eca23d2a49af5efa8fa41f362c1b78105a7f47c7085014e"
+        "sha256": "2fbfa678a762fca5c7fc5033daa4d845d31038fe382bcdd17b249f4b0b12366c"
       }
     },
     "vehicles": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/vehicles.json",
-        "sha256": "61186601f9122bd8d4574f3c6eb208d60f5a28fa6d5ace7b5c9a9a170171d3c6"
+        "sha256": "a000191cf40f07e93394e66e14c366bbbf08205acfd5d4b472fde1c7c2dae756"
       }
     },
     "scenery": {
       "required": true,
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/scenery.json",
-        "sha256": "7e562ee52f8e113ebfd1e76313ba851b473bdf709722739703a7ec39b9313277"
+        "sha256": "1a2e4960c0137b44edb73d691172ae4c156ed6487fb395d4977b5c76e886c288"
       }
     },
     "vesper-viaduct": {
@@ -36,7 +36,7 @@
       "map": "vesper-viaduct",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/vesper-viaduct.json",
-        "sha256": "f9397479fba266a0ae072501c2ec4e18942dd4a89a9c493146c62f7c2c6e9f6b"
+        "sha256": "b2531cd02f9fdbe36ae347571d66615dc8d880529ab463e804892c5afd0647f5"
       }
     },
     "abyssal-pressureworks": {
@@ -44,7 +44,7 @@
       "map": "abyssal-pressureworks",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
-        "sha256": "79b84e312ffbc7fd8bf697d0f1bed42c83d077b66265a1919c66cc502297ac72"
+        "sha256": "b17bae6e6cae9202c981ba97e936db830d83ee6246881f017f019de52abdfcfe"
       }
     },
     "stormglass-causeway": {
@@ -52,7 +52,7 @@
       "map": "stormglass-causeway",
       "promotion": {
         "receipt": "tools/godot-package/production_receipts/stormglass-causeway.json",
-        "sha256": "639bdee2adab5ffda5a3c33ab3b69675433f19bc8aade42681224e9793ecce85"
+        "sha256": "f62ce14a8fbb2087d5a5c2599214b84e07406b9e8fadcf99e0673ef2c701859a"
       }
     }
   }

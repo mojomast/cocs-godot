@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {reverseRacing} from './racing_dependencies.mjs';
 export const MOVEMENT_INVENTORY='tools/godot-package/movement_f61_inventory.json';
 export const MOVEMENT_INVENTORY_SHA='532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d';
 const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -16,6 +17,8 @@ const PREVIOUS={
 // This binds unknown producer fields and every earlier review, not only a list
 // of familiar keys. Current receipt hashes still bind the reviewed new bytes.
 export function verifyMovementPredecessor(receipt,read){
+ assert.ok(receipt.movementAdvance,'Explicit movement reconciliation required');
+ receipt=reverseRacing(receipt,read);
  const r=receipt.movementAdvance,s=movementInventory(read),old=structuredClone(receipt);
  delete old.movementAdvance;
  assert.deepEqual(r.previousReceipt,{commit:s.foundation,path:`tools/godot-package/production_receipts/${receipt.unit}.json`,sha256:PREVIOUS[receipt.unit]},'Exact movement predecessor receipt');
