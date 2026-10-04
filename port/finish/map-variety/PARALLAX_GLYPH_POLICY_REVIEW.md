@@ -2,6 +2,14 @@
 
 ## Convention-report correction — integration withheld
 
+**Corrective delivery `8c43b112` is under focused re-review.** The revised report
+describes raw exported-UV derivative disagreement, adds Blender image-row/basis
+semantics, and retains AA's authored-appearance uncertainty. Its source-only
+asymmetric image regression reports passing; new source hashes and the command
+are recorded in `provenance-sources.json`. Original `4fe3df4e` remains historical.
+No engine execution or artifact change occurred, and neither provenance commit
+is integrated yet.
+
 Independent review of `4fe3df4e` rejects its inference that the UV-V flip with
 retained handedness establishes a high-confidence shading-convention defect.
 The exporter/pixel facts and sampled derivative arithmetic are supported, but

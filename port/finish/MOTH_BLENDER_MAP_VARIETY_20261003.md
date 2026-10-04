@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Corrected provenance delivered:** `8c43b112` is under focused independent review.
+It withdraws the unsupported shading-error inference, explains image-row/UV-origin
+conversion with retained supplied binormal, and adds a passing source-only
+asymmetric regression. AA appearance preservation remains open. No artifact work
+or heavy grant is authorized; the report remains unmerged pending review.
+
 **Convention-report P1:** independent review withheld `4fe3df4e` integration.
 Blender's UV-origin/image-row conversion and retained supplied binormal can preserve
 the authored perturbation, so raw derivative sign disagreement does not prove a
