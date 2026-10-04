@@ -11,10 +11,11 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AG delivered one guarded response and released.**
-Delivery `c30c0e13` / `139f5618` / `362803a8` reports zero endpoint error and
-fresh certified support under the unchanged guard. Parent verified 29 hashes and
-three measured empty audits/one group. Independent evidence review is active;
-edge-supported response is not landing/admission. Motion accounting remains open.
+Delivery `c30c0e13` / `139f5618` / `362803a8` passed independent one-response
+review and is integrated through `5ac4dcb3`. Parent passed 102 checks and 29 hashes.
+Every guard/postcondition and fresh actual support pass; this is edge support,
+not landing/admission. A new synthetic-control source task is active; no engine
+grant. Motion accounting remains open. See `map-variety/WALKER_AG_REVIEW.md`.
 
 **AF completed baseline-only collection and released.**
 Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only

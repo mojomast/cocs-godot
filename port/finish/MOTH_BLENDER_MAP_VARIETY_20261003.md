@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**AG independently approved and integrated through `5ac4dcb3`:** one completed
+guarded response with qualified actual support. Parent passed 102 checks and all
+29 hashes. This does not establish landing or positive admission. Source-only
+parity synthetic-control preparation is assigned before any broader execution;
+production accounting remains open and all sixty map journeys remain unrun.
+Review: `map-variety/WALKER_AG_REVIEW.md`. No heavy grant is active.
+
 ## Current checkpoint — AG guarded response delivered and released
 
 **No heavy grant is active.** AG `c30c0e13` / `139f5618` / `362803a8` reports

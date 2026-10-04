@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AG guarded-response evidence approved and integrated through `5ac4dcb3`.**
+Parent passed 102 source/package checks and all 29 hashes. Independent replay
+confirms every guard/postcondition and actual final support for this edge-supported
+response. See `WALKER_AG_REVIEW.md`. A new source-only task prepares bounded full
+synthetic controls using parity planning; repeated-response and landing acceptance
+need separate review/grant. No heavy grant is active; motion accounting remains open.
+
 ## AG delivered/released — single guarded response review pending
 
 AG delivered **`c30c0e13` / `139f5618` / `362803a8`**, reporting one engine
