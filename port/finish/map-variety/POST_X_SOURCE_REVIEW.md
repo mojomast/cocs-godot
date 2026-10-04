@@ -1,5 +1,28 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Parity synthetic-admission suite delivered for review
+
+**`8de9d63a`**, based on `5ac4dcb3`, prepares phase
+`parity-admission-synthetic-v1` / `synthetic-controls`: 34 negative pairs, four
+inclined pairs and four positive pairs, each group separately invoked. Independent
+source review is active; the delivery remains unmerged and no grant exists.
+Later groups require complete passing native/supervisor predecessors under the
+same grant/source/engine, including three measured empty release audits.
+
+One continuous body runs each profile. Original rejection uses ordinary Walker;
+original eligibility followed by parity rejection is terminal. The producer reports
+exact AG application-method preservation with unchanged planner/guard/postconditions,
+one UP/parent maximum per frame and profile lift limits of nine/eleven by radius.
+Positive acceptance requires blocked baseline, verified lifts, full-footprint
+arrival at the frozen localZ1.0 goal, three ordinary grounded responses there and
+fresh support exclusively on the tread. Unexpected .42 baseline arrival stays failed.
+
+Producer reports 115 Python tests passing (26 new plus 89 prior), with all frozen
+evidence and production dependencies preserved. New GDScript is unparsed/unrun;
+repeated behavior may genuinely fail. Synthetic admission is distinct from global
+native/map acceptance. Production accounting and all sixty unrun map journeys
+remain unchanged; no heavy grant is active.
+
 **AG guarded-response evidence approved and integrated through `5ac4dcb3`.**
 Parent passed 102 source/package checks and all 29 hashes. Independent replay
 confirms every guard/postcondition and actual final support for this edge-supported

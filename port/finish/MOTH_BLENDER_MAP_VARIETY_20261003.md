@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Parity synthetic suite delivered:** `8de9d63a` is under independent source
+review. It prepares separately invoked 34-pair negatives, four-pair inclined
+rejection and four-pair positive admission with same-grant predecessor proofs.
+Repeated-response limits and full-footprint/ordinary-grounded landing criteria
+require review. Producer reports 115 Python tests; no native grant or execution.
+Production motion accounting remains open and all sixty map journeys remain unrun.
+
 **AG independently approved and integrated through `5ac4dcb3`:** one completed
 guarded response with qualified actual support. Parent passed 102 checks and all
 29 hashes. This does not establish landing or positive admission. Source-only

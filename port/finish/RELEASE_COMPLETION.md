@@ -16,6 +16,10 @@ review and is integrated through `5ac4dcb3`. Parent passed 102 checks and 29 has
 Every guard/postcondition and fresh actual support pass; this is edge support,
 not landing/admission. A new synthetic-control source task is active; no engine
 grant. Motion accounting remains open. See `map-variety/WALKER_AG_REVIEW.md`.
+Synthetic-admission source `8de9d63a` is now under independent review, with 115
+producer tests reported passing. It prepares bounded negative/inclined/positive
+groups with strict predecessor receipts and full-footprint landing criteria.
+No new engine grant or map permission is issued.
 
 **AF completed baseline-only collection and released.**
 Delivery `ad5d02b6` / `d3c17632` / `b80273a7` passed independent collection-only
