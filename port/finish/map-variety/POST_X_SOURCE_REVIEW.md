@@ -1,5 +1,27 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## AK delivered/released — partial traversal success, positive group failed
+
+**`4b83de0b` / `c2e83163` / `50271f7c`** report negatives PASS34/68 and inclined
+PASS4/8, with both prerequisite checkpoints recorded. Positive admission fails at
+case2, radius .42 / yaw −45°, baseline frame418: `unexpected_baseline_arrival`.
+It reaches goal without assistance, with six ordinary landing responses and fresh
+full-footprint/target support; along coordinate is 1.0081223549 beyond goal1.0.
+This is not a candidate guard failure; that radius's candidate was not invoked.
+
+Both .35 yaw profiles report one verified guarded lift, zero endpoint error at
+1 µm and seven ordinary landing responses with exclusive support. These are
+individual synthetic results, not whole-group admission. Positive accounting is
+three terminal pairs (two pass/one fail), five completed profiles (one fails),
+one pair/three profiles unrun and no interruptions. No inference covers unrun
+.42/+45° behavior. Independent archive review is active.
+
+Parent verified **51 files**, the 10,917-byte manifest identity, three measured
+empty audits across all three groups, no survivors and free lock at 07:39:16.915892Z.
+Release is 07:30:40.505018Z. No heavy grant remains. Source-only radius comparison
+and a fixed baseline-characterization design are assigned; historical criteria
+and failure stay intact. All sixty map journeys and production accounting remain open.
+
 ## Numeric correction approved/integrated; AK authorized
 
 Independent review approved `25766619`, integrated as **`8a355e98`**. Parent

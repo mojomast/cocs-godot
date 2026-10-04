@@ -10,11 +10,12 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**Current heavy owner: corrected synthetic campaign AK**, Astra
-`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8a355e98`. The exact numeric clause
-passed review and 156 parent checks. Fresh negative34 → inclined4 → positive4
-pairs require separate invocations and passing-evidence checkpoints. Stop on any
-failure; no retry/maps. Physical guard, movement and production accounting unchanged.
+**No active heavy grant. AK passed negatives/inclined, failed positive admission and released.**
+Delivery `4b83de0b` / `c2e83163` / `50271f7c` is under independent review.
+Both .35 candidate profiles traversed the synthetic tread; .42/−45° baseline
+arrival violated the blocked-baseline requirement before its candidate ran.
+Parent verified 51 files/manifest identity and three empty audits/three groups.
+Radius-dependent baseline analysis is source-only; no retry/maps or admission waiver.
 
 **AJ confirmed the receipt-only hypothesis and released.**
 Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through
@@ -350,7 +351,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P through AJ have released; AK owns the corrected synthetic campaign.**
+**P through AK have released; no heavy grant is active.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -392,11 +393,14 @@ directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
 
-**Active: `MOTH-BLENDER-20261004-AK`**, Astra
+**Released: `MOTH-BLENDER-20261004-AK`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8a355e98`. Three ordered groups,
 one invocation each, passing native/supervisor checkpoints under fresh same-source/
 grant/engine bindings. Stop on failure; no retry/maps. Final three measured audits
 across all owned groups and explicit lock release required.
+AK released at 07:30:40.505018Z after `unexpected_baseline_arrival`. Parent
+verified 51 files/manifest, three empty audits/three groups and free lock at
+07:39:16.915892Z. Positive admission remains false; evidence review is active.
 
 **Released: `MOTH-BLENDER-20261004-AJ`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Phase

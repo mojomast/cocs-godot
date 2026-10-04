@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current checkpoint — AK stopped on ordinary baseline arrival
+
+**No heavy grant is active.** AK passed negative34 and inclined4 pairs; two .35
+positive pairs passed individually before the .42/−45° baseline reached the goal
+without assistance. Overall positive admission is false; its candidate and the
+remaining pair are unrun. Parent verified 51 files/manifest and three empty audits
+across three groups. Release is 07:30:40.505018Z, lock verified at 07:39:16.915892Z.
+Independent review and source-only radius analysis are active; no retry/maps.
+
 ## Current owner — corrected synthetic campaign AK
 
 **MOTH-BLENDER-20261004-AK is the sole heavy grant**, Astra
