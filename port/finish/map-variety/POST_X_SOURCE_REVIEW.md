@@ -1,5 +1,26 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Receipt-only wrapper approved/integrated; AJ authorized
+
+Independent review approved `4a53f727`, integrated as **`b424af67`**. Parent
+passed **93 checks**: 80 Python and thirteen package checks. The six-script
+closure contains original predicates, exact one-clause clones, the unchanged
+diagnostic helper and driver, with no campaign body/world or physics-query API.
+Clone reversal, frozen AI bindings and bounded lifecycle passed review.
+
+**MOTH-BLENDER-20261004-AJ** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Parent verified free
+lock and only the preserved viewer at 07:02:52.023021Z. One fresh sealed
+`policy-receipt-probe-v1` / `frozen-receipt` / `numeric-membership` invocation
+is authorized, then stop, inspect, three measured audits and release.
+
+Original and cloned policies consume the same parsed frozen AI receipt; mutants
+are deep copies. Immutability assurance is source-based, with no separate native
+pre/post serialization snapshot. Fifteen controls and seven mutants distinguish
+collection, variant agreement and hypothesis confirmation. An unconfirmed result
+may be valid collection. No retry, campaign predicate integration, historical
+prerequisite reuse, positive admission or map execution follows, even if confirmed.
+
 **Numeric-membership diagnosis approved and integrated as `609e0ca8`.** Parent
 passed 67 targeted/admission/package checks. Independent review confirms the
 Godot FLOAT/INT membership chain and approves the one-clause numeric-equality

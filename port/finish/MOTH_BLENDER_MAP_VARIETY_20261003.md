@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — receipt-only probe AJ
+
+**MOTH-BLENDER-20261004-AJ is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`b424af67`**. The wrapper passed
+independent review and 93 parent checks. One native invocation compares original
+and isolated one-clause policies on frozen AI data, with fifteen type controls
+and seven mutants, then stops/audits/releases. No bodies, movement campaign,
+retry or map work. Collection and hypothesis confirmation remain separate.
+
 **Numeric-membership diagnosis integrated as `609e0ca8`.** Independent review
 confirmed the source-semantic mismatch; parent passed 67 checks. The narrow
 numeric-equality correction is approved as intent, not applied campaign behavior.

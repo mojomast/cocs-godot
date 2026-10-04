@@ -10,7 +10,12 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AI passed negatives, localized a native policy failure and released.**
+**Current heavy owner: receipt-only probe AJ**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Independent wrapper review
+passed; parent passed 80 Python and thirteen package checks. One frozen-AI receipt
+probe is authorized, then stop/audit/release. No retry, campaign or map execution.
+
+**AI passed negatives, localized a native policy failure and released.**
 Delivery `cc2b72fd` / `0a644c92` passed independent archive review and is integrated
 through `b72c2b32`. Parent passed 160 checks and all 40 hashes/manifest identity.
 Inclined admission emitted `predecessor.native_policy`; the internal predicate and
@@ -20,8 +25,12 @@ Further diagnosis is source-only; no retry/positive/map permission. See
 Source diagnosis `707e2fe6` passed independent review and is integrated as
 `609e0ca8`, with 67 parent checks passing. The Godot FLOAT/INT membership discrepancy
 is source-confirmed; numeric equality is approved as narrow intent with the existing
-finite-integer guard. Campaign predicates remain unchanged. A receipt-only probe
-is being prepared; native internal rejection remains untraced and no grant exists.
+finite-integer guard. Campaign predicates remain unchanged. Receipt-probe wrapper
+`4a53f727` is approved/integrated as `b424af67`; AJ tests original versus isolated
+clone without bodies or physics queries. Collection and confirmation are separate;
+neither authorizes campaign advancement or reuse of historical prerequisites.
+
+### Historical movement checkpoints (superseded ownership below)
 
 **AH passed negatives, failed its inclined invocation and released.**
 Delivery `560fff1e` / `c3c922f9` / `22841f8c` passed independent archive review
@@ -329,7 +338,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG, AH and AI have released; no heavy grant is active.**
+**P through AI have released; AJ owns one receipt-only native probe.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -370,6 +379,12 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AJ`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `b424af67`. Phase
+`policy-receipt-probe-v1`, mode `frozen-receipt`, only `numeric-membership`.
+One invocation, 170/180-second bounds, three measured release audits; no retry,
+movement or campaign acceptance. Original campaign predicates remain unchanged.
 
 **Released: `MOTH-BLENDER-20261004-AI`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Fresh negative controls,
