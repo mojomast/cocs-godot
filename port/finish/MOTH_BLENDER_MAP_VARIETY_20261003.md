@@ -1,5 +1,12 @@
 # New Moth resources and Blender-authored map variety
 
+**Numeric-membership source diagnosis `707e2fe6` delivered:** Godot JSON FLOAT
+counts may fail type-sensitive membership in the INT literal `[0,1]`, a distinction
+not modeled by prior Python-double replay. Independent review is active; the first
+executed native internal rejection remains unproved. A bounded receipt-only probe
+is being prepared source-only with isolated comparison code, not a production fix.
+No engine grant, positive admission or map execution is authorized.
+
 **AI independently approved and integrated as `67450767` / `b72c2b32`.** Parent
 passed 160 checks and all 40 hashes plus the inventory's exact identity. The native
 policy gate is localized, its internal rejection remains unproved, and positive

@@ -1,5 +1,26 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Numeric-membership discrepancy proposed; independent review pending
+
+**`707e2fe6`** reports a concrete source-model difference at `evidence.gd:139`:
+`not up in [0,1]`. Pinned Godot JSON parsing produces FLOAT numbers, while array
+membership uses type-sensitive comparison. Parsed FLOAT zero can therefore miss
+INT zero in the literal array, unlike Python numeric membership. The first AI
+witness is `/records/0/profiles/1/settle/0/appliedUpCount`; the model predicts the
+same discrepancy across 678 candidate ordinary records.
+
+Independent review is checking the complete operator/source chain and proposed
+numeric-equality clause. This is not a measured first internal native rejection.
+Negative `driver.finish()` writes its receipt without calling `Policy.successful`,
+so negative completion did not prove in-memory native policy acceptance. No
+acceptance predicate has been changed by this source delivery.
+
+Producer reports five targeted plus 49 admission tests passing, preserved original
+driver/policy/evidence and historical inventories. The diagnostic helper is bounded
+but unwired/unparsed. A separate source-only receipt-probe package is being prepared:
+original predicates versus an isolated one-clause clone on frozen AI data, without
+movement. It requires independent review and a fresh grant; no heavy grant exists.
+
 **AI localized-failure archive approved and integrated through `b72c2b32`.**
 Parent passed 160 source/package checks and all 40 hashes plus manifest identity.
 Independent review confirms negatives PASS, inclined rejection at native policy
