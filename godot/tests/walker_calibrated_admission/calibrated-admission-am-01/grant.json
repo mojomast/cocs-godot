@@ -1,0 +1,14 @@
+{
+  "phase": "parity-admission-calibrated-v1",
+  "mode": "calibrated-controls",
+  "allowedGroups": [
+    "negative-controls",
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "grantId": "MOTH-BLENDER-20261004-AM",
+  "authorized": true,
+  "expiresUnix": 1791108203.789316,
+  "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae"
+}

@@ -1,0 +1,2581 @@
+{
+  "utc": "2026-10-04T09:38:11.836947+00:00",
+  "group": "inclined-landing-rejections",
+  "nativeReceiptPresent": true,
+  "nativeSha256": "9422f8da5e622d70dcebc763b97351ef46c8c111d1953b0a5bb577eb7801ada2",
+  "nativeOutcome": "synthetic_group_pass",
+  "counts": {
+    "attemptedPairs": 4,
+    "attemptedProfiles": 8,
+    "completedPairs": 4,
+    "completedProfiles": 8,
+    "failedPairs": 0,
+    "failedProfiles": 0,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 4,
+    "unrunPairs": 0,
+    "unrunProfiles": 0
+  },
+  "profiles": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "experimental": false,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 127,
+      "lastFrame": 148,
+      "end": [
+        0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 124554051587,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 133143986178,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ]
+        ],
+        "normal": [
+          0.517145216464996,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "path": "/root/@Node3D@2/InclinedLanding",
+        "rid": 115964116994,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@2/AdmissionBaseFloor",
+                "colliderId": 31994152318,
+                "colliderShape": 0,
+                "depth": 0.0206172652542591,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.212131947278976,
+                  0.0,
+                  -0.212131947278976
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@2/InclinedLanding",
+                "colliderId": 32061261186,
+                "colliderShape": 0,
+                "depth": 0.00978699978441,
+                "localShape": 0,
+                "normal": [
+                  0.58890700340271,
+                  0.553513407707214,
+                  -0.58890700340271
+                ],
+                "point": [
+                  -1.19209289550781e-07,
+                  0.150000005960464,
+                  -1.19209289550781e-07
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.000844042748212814,
+              0.0
+            ],
+            "safeFraction": 0.9580078125,
+            "travel": [
+              0.0,
+              -0.0172250252217054,
+              0.0
+            ],
+            "unsafeFraction": 0.9609375,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@2/InclinedLanding",
+                "colliderId": 32061261186,
+                "colliderShape": 0,
+                "depth": 0.0201669298112392,
+                "localShape": 0,
+                "normal": [
+                  0.551900863647461,
+                  0.625148773193359,
+                  -0.551900863647461
+                ],
+                "point": [
+                  0.0,
+                  0.150000005960464,
+                  0.0
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@2/AdmissionBaseFloor",
+                "colliderId": 31994152318,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.193073213100433,
+                  0.0,
+                  -0.193073213100433
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              -0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              -0.0519281551241875,
+              0.0,
+              0.0519281551241875
+            ],
+            "safeFraction": 0.265625,
+            "travel": [
+              -0.0187825243920088,
+              0.00203093141317368,
+              0.0187825243920088
+            ],
+            "unsafeFraction": 0.26953125,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.2999998768545422,
+      "returnedRows": 147,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "allBaselineQueriesReadOnly": true,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 29
+    },
+    {
+      "caseIndex": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "experimental": true,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 127,
+      "lastFrame": 295,
+      "end": [
+        0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 154618822659,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 163208757249,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ]
+        ],
+        "normal": [
+          0.517145216464996,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "path": "/root/@Node3D@6/InclinedLanding",
+        "rid": 146028888066,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@6/AdmissionBaseFloor",
+                "colliderId": 45415925118,
+                "colliderShape": 0,
+                "depth": 0.0206172652542591,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.212131947278976,
+                  0.0,
+                  -0.212131947278976
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@6/InclinedLanding",
+                "colliderId": 45466256768,
+                "colliderShape": 0,
+                "depth": 0.00978699978441,
+                "localShape": 0,
+                "normal": [
+                  0.58890700340271,
+                  0.553513407707214,
+                  -0.58890700340271
+                ],
+                "point": [
+                  -1.19209289550781e-07,
+                  0.150000005960464,
+                  -1.19209289550781e-07
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.000844042748212814,
+              0.0
+            ],
+            "safeFraction": 0.9580078125,
+            "travel": [
+              0.0,
+              -0.0172250252217054,
+              0.0
+            ],
+            "unsafeFraction": 0.9609375,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@6/InclinedLanding",
+                "colliderId": 45466256768,
+                "colliderShape": 0,
+                "depth": 0.0201669298112392,
+                "localShape": 0,
+                "normal": [
+                  0.551900863647461,
+                  0.625148773193359,
+                  -0.551900863647461
+                ],
+                "point": [
+                  0.0,
+                  0.150000005960464,
+                  0.0
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@6/AdmissionBaseFloor",
+                "colliderId": 45415925118,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.193073213100433,
+                  0.0,
+                  -0.193073213100433
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              -0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              -0.0519281551241875,
+              0.0,
+              0.0519281551241875
+            ],
+            "safeFraction": 0.265625,
+            "travel": [
+              -0.0187825243920088,
+              0.00203093141317368,
+              0.0187825243920088
+            ],
+            "unsafeFraction": 0.26953125,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.2999998768545422,
+      "returnedRows": 147,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "ordinaryCandidateResponses": 147,
+      "parentCallsRecorded": 147,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 176
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "experimental": false,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 127,
+      "lastFrame": 442,
+      "end": [
+        -0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 184683593731,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 193273528321,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ]
+        ],
+        "normal": [
+          -0.517145156860352,
+          0.681998372077942,
+          -0.517145216464996
+        ],
+        "path": "/root/@Node3D@10/InclinedLanding",
+        "rid": 176093659138,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@10/AdmissionBaseFloor",
+                "colliderId": 58804143479,
+                "colliderShape": 0,
+                "depth": 0.0206172652542591,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.212131947278976,
+                  0.0,
+                  -0.212131947278976
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@10/InclinedLanding",
+                "colliderId": 58854475149,
+                "colliderShape": 0,
+                "depth": 0.00978699978441,
+                "localShape": 0,
+                "normal": [
+                  -0.58890700340271,
+                  0.553513407707214,
+                  -0.58890700340271
+                ],
+                "point": [
+                  -1.19209289550781e-07,
+                  0.150000005960464,
+                  1.19209289550781e-07
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.000844042748212814,
+              0.0
+            ],
+            "safeFraction": 0.9580078125,
+            "travel": [
+              0.0,
+              -0.0172250252217054,
+              0.0
+            ],
+            "unsafeFraction": 0.9609375,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@10/InclinedLanding",
+                "colliderId": 58854475149,
+                "colliderShape": 0,
+                "depth": 0.0201669298112392,
+                "localShape": 0,
+                "normal": [
+                  -0.551900863647461,
+                  0.625148773193359,
+                  -0.551900863647461
+                ],
+                "point": [
+                  0.0,
+                  0.150000005960464,
+                  0.0
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@10/AdmissionBaseFloor",
+                "colliderId": 58804143479,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.193073213100433,
+                  0.0,
+                  -0.193073213100433
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              0.0519281551241875,
+              0.0,
+              0.0519281551241875
+            ],
+            "safeFraction": 0.265625,
+            "travel": [
+              0.0187825243920088,
+              0.00203093141317368,
+              0.0187825243920088
+            ],
+            "unsafeFraction": 0.26953125,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.2999998768545422,
+      "returnedRows": 147,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "allBaselineQueriesReadOnly": true,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 323
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "experimental": true,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 127,
+      "lastFrame": 589,
+      "end": [
+        -0.212131947278976,
+        0.0166666638106108,
+        -0.212131947278976
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 214748364803,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.349999994039536
+        },
+        "shapeRid": 223338299392,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ]
+        ],
+        "normal": [
+          -0.517145156860352,
+          0.681998372077942,
+          -0.517145216464996
+        ],
+        "path": "/root/@Node3D@14/InclinedLanding",
+        "rid": 206158430210,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@14/AdmissionBaseFloor",
+                "colliderId": 72192361847,
+                "colliderShape": 0,
+                "depth": 0.0206172652542591,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.212131947278976,
+                  0.0,
+                  -0.212131947278976
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@14/InclinedLanding",
+                "colliderId": 72242693512,
+                "colliderShape": 0,
+                "depth": 0.00978699978441,
+                "localShape": 0,
+                "normal": [
+                  -0.58890700340271,
+                  0.553513407707214,
+                  -0.58890700340271
+                ],
+                "point": [
+                  -1.19209289550781e-07,
+                  0.150000005960464,
+                  1.19209289550781e-07
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.000844042748212814,
+              0.0
+            ],
+            "safeFraction": 0.9580078125,
+            "travel": [
+              0.0,
+              -0.0172250252217054,
+              0.0
+            ],
+            "unsafeFraction": 0.9609375,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@14/InclinedLanding",
+                "colliderId": 72242693512,
+                "colliderShape": 0,
+                "depth": 0.0201669298112392,
+                "localShape": 0,
+                "normal": [
+                  -0.551900863647461,
+                  0.625148773193359,
+                  -0.551900863647461
+                ],
+                "point": [
+                  0.0,
+                  0.150000005960464,
+                  0.0
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@14/AdmissionBaseFloor",
+                "colliderId": 72192361847,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.193073213100433,
+                  0.0,
+                  -0.193073213100433
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.212131947278976,
+                0.0166666638106108,
+                -0.212131947278976
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              0.0519281551241875,
+              0.0,
+              0.0519281551241875
+            ],
+            "safeFraction": 0.265625,
+            "travel": [
+              0.0187825243920088,
+              0.00203093141317368,
+              0.0187825243920088
+            ],
+            "unsafeFraction": 0.26953125,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.2999998768545422,
+      "returnedRows": 147,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "ordinaryCandidateResponses": 147,
+      "parentCallsRecorded": 147,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 470
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "experimental": false,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "lastFrame": 735,
+      "end": [
+        0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 244813135875,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.419999986886978
+        },
+        "shapeRid": 253403070464,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ]
+        ],
+        "normal": [
+          0.517145216464996,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "path": "/root/@Node3D@18/InclinedLanding",
+        "rid": 236223201282,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@18/AdmissionBaseFloor",
+                "colliderId": 85580580241,
+                "colliderShape": 0,
+                "depth": 0.0199105925858021,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.282842636108398,
+                  0.0,
+                  -0.282842636108398
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.0016095694154501,
+              0.0
+            ],
+            "safeFraction": 0.919921875,
+            "travel": [
+              0.0,
+              -0.0164594985544682,
+              0.0
+            ],
+            "unsafeFraction": 0.92578125,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@18/InclinedLanding",
+                "colliderId": 85630911886,
+                "colliderShape": 0,
+                "depth": 0.0202030297368765,
+                "localShape": 0,
+                "normal": [
+                  0.517145156860352,
+                  0.681998372077942,
+                  -0.517145156860352
+                ],
+                "point": [
+                  -0.0015803836286068,
+                  0.152396738529205,
+                  0.0015803836286068
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@18/AdmissionBaseFloor",
+                "colliderId": 85580580241,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.215515568852425,
+                  0.0,
+                  -0.215515568852425
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              -0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              -0.00359077751636505,
+              0.0,
+              0.00359077751636505
+            ],
+            "safeFraction": 0.94921875,
+            "travel": [
+              -0.0671199038624763,
+              0.00203093141317368,
+              0.0671199038624763
+            ],
+            "unsafeFraction": 0.9521484375,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.39999989200185454,
+      "returnedRows": 146,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "allBaselineQueriesReadOnly": true,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 616
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "experimental": true,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "lastFrame": 881,
+      "end": [
+        0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 274877906947,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.419999986886978
+        },
+        "shapeRid": 283467841538,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          -0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ],
+          [
+            -0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ]
+        ],
+        "normal": [
+          0.517145216464996,
+          0.681998372077942,
+          -0.517145156860352
+        ],
+        "path": "/root/@Node3D@22/InclinedLanding",
+        "rid": 266287972354,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@22/AdmissionBaseFloor",
+                "colliderId": 98868135313,
+                "colliderShape": 0,
+                "depth": 0.0199105925858021,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.282842636108398,
+                  0.0,
+                  -0.282842636108398
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.0016095694154501,
+              0.0
+            ],
+            "safeFraction": 0.919921875,
+            "travel": [
+              0.0,
+              -0.0164594985544682,
+              0.0
+            ],
+            "unsafeFraction": 0.92578125,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@22/InclinedLanding",
+                "colliderId": 98918466950,
+                "colliderShape": 0,
+                "depth": 0.0202030297368765,
+                "localShape": 0,
+                "normal": [
+                  0.517145156860352,
+                  0.681998372077942,
+                  -0.517145156860352
+                ],
+                "point": [
+                  -0.0015803836286068,
+                  0.152396738529205,
+                  0.0015803836286068
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@22/AdmissionBaseFloor",
+                "colliderId": 98868135313,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  0.215515568852425,
+                  0.0,
+                  -0.215515568852425
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  -0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              -0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              -0.00359077751636505,
+              0.0,
+              0.00359077751636505
+            ],
+            "safeFraction": 0.94921875,
+            "travel": [
+              -0.0671199038624763,
+              0.00203093141317368,
+              0.0671199038624763
+            ],
+            "unsafeFraction": 0.9521484375,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.39999989200185454,
+      "returnedRows": 146,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "ordinaryCandidateResponses": 146,
+      "parentCallsRecorded": 146,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 762
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "experimental": false,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "lastFrame": 1027,
+      "end": [
+        -0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 304942678019,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.419999986886978
+        },
+        "shapeRid": 313532612610,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ]
+        ],
+        "normal": [
+          -0.517145156860352,
+          0.681998372077942,
+          -0.517145216464996
+        ],
+        "path": "/root/@Node3D@26/InclinedLanding",
+        "rid": 296352743426,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@26/AdmissionBaseFloor",
+                "colliderId": 112155690383,
+                "colliderShape": 0,
+                "depth": 0.0200283713638783,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.282842636108398,
+                  0.0,
+                  -0.282842636108398
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.00149179622530937,
+              0.0
+            ],
+            "safeFraction": 0.92578125,
+            "travel": [
+              0.0,
+              -0.0165772717446089,
+              0.0
+            ],
+            "unsafeFraction": 0.931640625,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@26/InclinedLanding",
+                "colliderId": 112206022019,
+                "colliderShape": 0,
+                "depth": 0.0202030297368765,
+                "localShape": 0,
+                "normal": [
+                  -0.517145156860352,
+                  0.681998372077942,
+                  -0.517145156860352
+                ],
+                "point": [
+                  0.0015803836286068,
+                  0.152396738529205,
+                  0.0015803836286068
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@26/AdmissionBaseFloor",
+                "colliderId": 112155690383,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.215515568852425,
+                  0.0,
+                  -0.215515568852425
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              0.00359077751636505,
+              0.0,
+              0.00359077751636505
+            ],
+            "safeFraction": 0.94921875,
+            "travel": [
+              0.0671199038624763,
+              0.00203093141317368,
+              0.0671199038624763
+            ],
+            "unsafeFraction": 0.9521484375,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.39999989200185454,
+      "returnedRows": 146,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "allBaselineQueriesReadOnly": true,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 908
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "experimental": true,
+      "status": "completed",
+      "outcome": "expected_inclined_rejection_and_block",
+      "settleRecords": 20,
+      "inputRecords": 126,
+      "lastFrame": 1173,
+      "end": [
+        -0.282842636108398,
+        0.0166666638106108,
+        -0.282842636108398
+      ],
+      "reached": false,
+      "stallCount": 120,
+      "inclinedWitnesses": 120,
+      "ordinaryLandingStreak": 0,
+      "appliedUpCount": 0,
+      "verifiedLifts": 0,
+      "parameters": {
+        "bodyRid": 335007449091,
+        "floorAngle": 0.802851438522339,
+        "gravity": 20.0,
+        "jump": 6.5,
+        "layer": 1,
+        "margin": 0.0199999995529652,
+        "mask": 1,
+        "offset": {
+          "basis": [
+            [
+              1.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "origin": [
+            0.0,
+            0.899999976158142,
+            0.0
+          ]
+        },
+        "shape": {
+          "height": 1.79999995231628,
+          "radius": 0.419999986886978
+        },
+        "shapeRid": 343597383681,
+        "snap": 0.300000011920929,
+        "sprint": 10.0,
+        "walk": 6.0
+      },
+      "target": {
+        "direction": [
+          0.70710676908493,
+          0.0,
+          0.70710676908493
+        ],
+        "faces": [
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            0.70710676908493,
+            3.36710619926453,
+            3.5355339050293
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            -1.41421353816986,
+            0.150000005960464,
+            1.41421353816986
+          ],
+          [
+            3.5355339050293,
+            3.36710619926453,
+            0.70710676908493
+          ],
+          [
+            1.41421353816986,
+            0.150000005960464,
+            -1.41421353816986
+          ]
+        ],
+        "normal": [
+          -0.517145156860352,
+          0.681998372077942,
+          -0.517145216464996
+        ],
+        "path": "/root/@Node3D@30/InclinedLanding",
+        "rid": 326417514498,
+        "shape": 0
+      },
+      "candidateFaults": [],
+      "terminalProposal": {
+        "accepted": false,
+        "reason": "no_continuous_flat_landing",
+        "stages": [
+          {
+            "collideSeparationRay": true,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@30/AdmissionBaseFloor",
+                "colliderId": 125443245455,
+                "colliderShape": 0,
+                "depth": 0.0200283713638783,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.282842636108398,
+                  0.0,
+                  -0.282842636108398
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0,
+              -0.0200999993830919,
+              0.0
+            ],
+            "name": "current-support",
+            "recoveryAsCollision": true,
+            "remainder": [
+              0.0,
+              -0.00149179622530937,
+              0.0
+            ],
+            "safeFraction": 0.92578125,
+            "travel": [
+              0.0,
+              -0.0165772717446089,
+              0.0
+            ],
+            "unsafeFraction": 0.931640625,
+            "validResult": true
+          },
+          {
+            "collideSeparationRay": false,
+            "contacts": [
+              {
+                "collider": "/root/@Node3D@30/InclinedLanding",
+                "colliderId": 125493577090,
+                "colliderShape": 0,
+                "depth": 0.0202030297368765,
+                "localShape": 0,
+                "normal": [
+                  -0.517145156860352,
+                  0.681998372077942,
+                  -0.517145156860352
+                ],
+                "point": [
+                  0.0015803836286068,
+                  0.152396738529205,
+                  0.0015803836286068
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              },
+              {
+                "collider": "/root/@Node3D@30/AdmissionBaseFloor",
+                "colliderId": 125443245455,
+                "colliderShape": 0,
+                "depth": 0.00130238011479378,
+                "localShape": 0,
+                "normal": [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                "point": [
+                  -0.215515568852425,
+                  0.0,
+                  -0.215515568852425
+                ],
+                "velocity": [
+                  0.0,
+                  0.0,
+                  0.0
+                ]
+              }
+            ],
+            "from": {
+              "basis": [
+                [
+                  0.70710676908493,
+                  0.0,
+                  -0.70710676908493
+                ],
+                [
+                  0.0,
+                  1.0,
+                  0.0
+                ],
+                [
+                  0.70710676908493,
+                  0.0,
+                  0.70710676908493
+                ]
+              ],
+              "origin": [
+                -0.282842636108398,
+                0.0166666638106108,
+                -0.282842636108398
+              ]
+            },
+            "hit": true,
+            "margin": 0.0199999995529652,
+            "maxCollisions": 32,
+            "motion": [
+              0.0707106813788414,
+              0.0,
+              0.0707106813788414
+            ],
+            "name": "intent",
+            "recoveryAsCollision": false,
+            "remainder": [
+              0.00359077751636505,
+              0.0,
+              0.00359077751636505
+            ],
+            "safeFraction": 0.94921875,
+            "travel": [
+              0.0671199038624763,
+              0.00203093141317368,
+              0.0671199038624763
+            ],
+            "unsafeFraction": 0.9521484375,
+            "validResult": true
+          }
+        ]
+      },
+      "applications": [],
+      "strictIndividualProfileReplay": true,
+      "along": -0.39999989200185454,
+      "returnedRows": 146,
+      "consecutiveFrames": true,
+      "strictlyIncreasingUsec": true,
+      "allClocks60HzUnitScale": true,
+      "ordinaryCandidateResponses": 146,
+      "parentCallsRecorded": 146,
+      "rawWitnessResponses": 120,
+      "firstWitnessFrame": 1054
+    }
+  ],
+  "pairedComparisons": [
+    {
+      "caseIndex": 0,
+      "responseRowsPerProfile": 147,
+      "maxPositionDifference": 0.0,
+      "maxVelocityDifference": 0.0,
+      "allGroundedStatesEqual": true
+    },
+    {
+      "caseIndex": 1,
+      "responseRowsPerProfile": 147,
+      "maxPositionDifference": 0.0,
+      "maxVelocityDifference": 0.0,
+      "allGroundedStatesEqual": true
+    },
+    {
+      "caseIndex": 2,
+      "responseRowsPerProfile": 146,
+      "maxPositionDifference": 0.0,
+      "maxVelocityDifference": 0.0,
+      "allGroundedStatesEqual": true
+    },
+    {
+      "caseIndex": 3,
+      "responseRowsPerProfile": 146,
+      "maxPositionDifference": 0.0,
+      "maxVelocityDifference": 0.0,
+      "allGroundedStatesEqual": true
+    }
+  ],
+  "settleRecords": 160,
+  "inputRecords": 1012,
+  "qualification": "Read-only individual operand inspection; no unique engine-internal branch causation or production promotion. Whole-frame and parent-only accounting remain distinct.",
+  "physicalCallCounts": null,
+  "candidateMapJourneysRun": 0
+}

@@ -1,0 +1,257 @@
+{
+  "utc": "2026-10-04T09:38:06.750246+00:00",
+  "group": "inclined-landing-rejections",
+  "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+  "grantSha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "dependenciesSha256": "0abaa9b747468b15996aafdfd4a250ff5be978a81584dca1c1f91a080f1471bb",
+  "nativeSha256": "9422f8da5e622d70dcebc763b97351ef46c8c111d1953b0a5bb577eb7801ada2",
+  "supervisorSha256": "6cbc73600e21d1bada00a90c77c78e1caec79de77a98850e184da1586e21d413",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "nativeReceiptPresent": true,
+  "nativeStrictReplay": true,
+  "supervisorStrictReplay": true,
+  "dependencyChainVerified": true,
+  "errors": [],
+  "nativeOutcome": "synthetic_group_pass",
+  "nativeReturnCode": 0,
+  "supervisorFailed": false,
+  "releasedCleanly": true,
+  "owned": {
+    "pid": 3718248,
+    "pgid": 3718248,
+    "startTicks": 628980585
+  },
+  "ownedGroupMembers": [],
+  "lock": {
+    "available": true,
+    "measuredUtc": "2026-10-04T09:38:06.750220+00:00"
+  },
+  "passed": true,
+  "physicalCallCounts": null,
+  "partialCountersMayBeUnknown": false,
+  "counts": {
+    "attemptedPairs": 4,
+    "attemptedProfiles": 8,
+    "completedPairs": 4,
+    "completedProfiles": 8,
+    "failedPairs": 0,
+    "failedProfiles": 0,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 4,
+    "unrunPairs": 0,
+    "unrunProfiles": 0
+  },
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 127,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 148,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 127,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 295,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 127,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 442,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 127,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 589,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 126,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 735,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 126,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 881,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:45.0",
+        "incline": 47.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 126,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1027,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_inclined_rejection_and_block",
+          "settles": 20,
+          "inputResponses": 126,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 120,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1173,
+          "lastFault": ""
+        }
+      ]
+    }
+  ],
+  "freshPreservation": {
+    "archives": {
+      "AF": 24,
+      "AE": 46,
+      "AD": 45,
+      "AB": 140,
+      "Z": 253,
+      "AA": 141,
+      "AC": 265,
+      "AG": 29,
+      "AH": 42,
+      "AI": 40,
+      "AJ": 23,
+      "AL": 33,
+      "AK": 51,
+      "X": 600,
+      "U": 264
+    },
+    "productionDependencies": 15,
+    "approvedDesignAndPriorSourcesUnchanged": true,
+    "historicalProvenanceUnchanged": true
+  },
+  "explicitExternalLineage": {
+    "ALManifestSha256": "bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5",
+    "AKManifestSha256": "827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1",
+    "selectionSha256": "bd236a0c7daced2beef950fe56361f5ffb1c20a521b2a8d65b9c5b586415c403",
+    "role": "selection-lineage-not-admission"
+  },
+  "ownerInspection": "Strict full native operand replay and supervisor audit/hash replay completed; raw profile/contact review is recorded separately before any next command."
+}

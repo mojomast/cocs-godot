@@ -1,0 +1,1437 @@
+{
+  "utc": "2026-10-04T09:36:55.843229+00:00",
+  "group": "negative-controls",
+  "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+  "grantSha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "dependenciesSha256": "a7f633d2e825383847de2c6886b1a3325e124a659c188564a9dfc967c9e6bb75",
+  "nativeSha256": "2659b23197126f9447af8a367a751c299fedf9531a7ae5ea301000706b51c689",
+  "supervisorSha256": "a2df336cf4cd7cf64a59278655794a3f028f323fcc1cba7fed43fbe58caeec58",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "nativeReceiptPresent": true,
+  "nativeStrictReplay": true,
+  "supervisorStrictReplay": true,
+  "dependencyChainVerified": true,
+  "errors": [],
+  "nativeOutcome": "negative_control_group_pass",
+  "nativeReturnCode": 0,
+  "supervisorFailed": false,
+  "releasedCleanly": true,
+  "owned": {
+    "pid": 3705781,
+    "pgid": 3705781,
+    "startTicks": 628955878
+  },
+  "ownedGroupMembers": [],
+  "lock": {
+    "available": true,
+    "measuredUtc": "2026-10-04T09:36:55.843204+00:00"
+  },
+  "passed": true,
+  "physicalCallCounts": null,
+  "partialCountersMayBeUnknown": false,
+  "counts": {
+    "attemptedPairs": 34,
+    "attemptedProfiles": 68,
+    "completedPairs": 34,
+    "completedProfiles": 68,
+    "failedPairs": 0,
+    "failedProfiles": 0,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 34,
+    "unrunPairs": 0,
+    "unrunProfiles": 0
+  },
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "id": "ceiling-up",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 22,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 43,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "id": "ceiling-up",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 64,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 85,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "id": "overhang-forward",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 106,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 127,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 3,
+      "spec": {
+        "id": "overhang-forward",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 148,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 169,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 4,
+      "spec": {
+        "id": "height-025",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 190,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 211,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 5,
+      "spec": {
+        "id": "height-025",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 232,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 253,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 6,
+      "spec": {
+        "id": "height-030",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 274,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 295,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 7,
+      "spec": {
+        "id": "height-030",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 316,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 337,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 8,
+      "spec": {
+        "id": "height-031",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 358,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 379,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 9,
+      "spec": {
+        "id": "height-031",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 400,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 421,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 10,
+      "spec": {
+        "id": "height-guard",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 442,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 463,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 11,
+      "spec": {
+        "id": "height-guard",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 484,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 505,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 12,
+      "spec": {
+        "id": "narrow-width",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 526,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 547,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 13,
+      "spec": {
+        "id": "narrow-width",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 568,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 589,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 14,
+      "spec": {
+        "id": "narrow-depth",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 610,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 631,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 15,
+      "spec": {
+        "id": "narrow-depth",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 652,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 673,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 16,
+      "spec": {
+        "id": "hole",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 694,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 715,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 17,
+      "spec": {
+        "id": "hole",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 736,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 757,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 18,
+      "spec": {
+        "id": "pit",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 778,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 799,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 19,
+      "spec": {
+        "id": "pit",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 820,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 841,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 20,
+      "spec": {
+        "id": "lateral",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 862,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 883,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 21,
+      "spec": {
+        "id": "lateral",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 904,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 925,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 22,
+      "spec": {
+        "id": "no-input",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 946,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 967,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 23,
+      "spec": {
+        "id": "no-input",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 988,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1009,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 24,
+      "spec": {
+        "id": "airborne",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1011,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1013,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 25,
+      "spec": {
+        "id": "airborne",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1015,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 1,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1017,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 26,
+      "spec": {
+        "id": "jumping",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 2,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1039,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 2,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1061,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 27,
+      "spec": {
+        "id": "jumping",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 2,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1083,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 2,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1105,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 28,
+      "spec": {
+        "id": "tilted-body",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1126,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1147,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 29,
+      "spec": {
+        "id": "tilted-body",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1168,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1189,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 30,
+      "spec": {
+        "id": "transformed-parent",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1210,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1231,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 31,
+      "spec": {
+        "id": "transformed-parent",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1252,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1273,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 32,
+      "spec": {
+        "id": "moving-floor",
+        "radius": 0.35
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1294,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1315,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 33,
+      "spec": {
+        "id": "moving-floor",
+        "radius": 0.42
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1336,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "expected_original_rejection_and_ordinary_response",
+          "settles": 20,
+          "inputResponses": 1,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 1357,
+          "lastFault": ""
+        }
+      ]
+    }
+  ],
+  "freshPreservation": {
+    "archives": {
+      "AF": 24,
+      "AE": 46,
+      "AD": 45,
+      "AB": 140,
+      "Z": 253,
+      "AA": 141,
+      "AC": 265,
+      "AG": 29,
+      "AH": 42,
+      "AI": 40,
+      "AJ": 23,
+      "AL": 33,
+      "AK": 51,
+      "X": 600,
+      "U": 264
+    },
+    "productionDependencies": 15,
+    "approvedDesignAndPriorSourcesUnchanged": true,
+    "historicalProvenanceUnchanged": true
+  },
+  "explicitExternalLineage": {
+    "ALManifestSha256": "bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5",
+    "AKManifestSha256": "827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1",
+    "selectionSha256": "bd236a0c7daced2beef950fe56361f5ffb1c20a521b2a8d65b9c5b586415c403",
+    "role": "selection-lineage-not-admission"
+  },
+  "ownerInspection": "Strict full native operand replay and supervisor audit/hash replay completed; raw profile/contact review is recorded separately before any next command."
+}

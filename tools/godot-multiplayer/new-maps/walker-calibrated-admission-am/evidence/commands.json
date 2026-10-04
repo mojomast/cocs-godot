@@ -1,0 +1,87 @@
+{
+  "preparationCommand": "python3 -B tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py prepare calibrated-admission-am-01 --al-root /home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al --ak-root /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak",
+  "invocations": [
+    {
+      "group": "negative-controls",
+      "argv": [
+        "python3",
+        "-B",
+        "tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py",
+        "supervisor",
+        "--fixture",
+        "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+        "--al-root",
+        "/home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al",
+        "--ak-root",
+        "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak",
+        "--engine",
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--group",
+        "negative-controls",
+        "--mode",
+        "calibrated-controls",
+        "--grant-id",
+        "MOTH-BLENDER-20261004-AM",
+        "--grant-sha256",
+        "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43"
+      ],
+      "shellCommand": "python3 -B tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py supervisor --fixture /home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01 --al-root /home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al --ak-root /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak --engine /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --group negative-controls --mode calibrated-controls --grant-id MOTH-BLENDER-20261004-AM --grant-sha256 3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43 > tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/negative-supervisor-command.log 2>&1",
+      "workingDirectory": "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am"
+    },
+    {
+      "group": "inclined-landing-rejections",
+      "argv": [
+        "python3",
+        "-B",
+        "tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py",
+        "supervisor",
+        "--fixture",
+        "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+        "--al-root",
+        "/home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al",
+        "--ak-root",
+        "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak",
+        "--engine",
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--group",
+        "inclined-landing-rejections",
+        "--mode",
+        "calibrated-controls",
+        "--grant-id",
+        "MOTH-BLENDER-20261004-AM",
+        "--grant-sha256",
+        "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43"
+      ],
+      "shellCommand": "python3 -B tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py supervisor --fixture /home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01 --al-root /home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al --ak-root /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak --engine /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --group inclined-landing-rejections --mode calibrated-controls --grant-id MOTH-BLENDER-20261004-AM --grant-sha256 3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43 > tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/inclined-supervisor-command.log 2>&1",
+      "workingDirectory": "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am"
+    },
+    {
+      "group": "positive-step-admission",
+      "argv": [
+        "python3",
+        "-B",
+        "tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py",
+        "supervisor",
+        "--fixture",
+        "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+        "--al-root",
+        "/home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al",
+        "--ak-root",
+        "/home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak",
+        "--engine",
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--group",
+        "positive-step-admission",
+        "--mode",
+        "calibrated-controls",
+        "--grant-id",
+        "MOTH-BLENDER-20261004-AM",
+        "--grant-sha256",
+        "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43"
+      ],
+      "shellCommand": "python3 -B tools/godot-multiplayer/new-maps/walker-calibrated-admission/cli.py supervisor --fixture /home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01 --al-root /home/mojo/.tmp-on-disk/cocs-walker-baseline-characterization-al --ak-root /home/mojo/.tmp-on-disk/cocs-walker-parity-admission-ak --engine /tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64 --group positive-step-admission --mode calibrated-controls --grant-id MOTH-BLENDER-20261004-AM --grant-sha256 3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43 > tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/positive-supervisor-command.log 2>&1",
+      "workingDirectory": "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am"
+    }
+  ],
+  "grantPreparation": "Exact eight-field grant sealed once with expiry issueUnix+1800; source and verified binary hash; no grant writer in reviewed package."
+}

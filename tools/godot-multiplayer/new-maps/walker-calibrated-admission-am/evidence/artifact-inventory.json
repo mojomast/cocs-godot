@@ -1,0 +1,245 @@
+{
+  "scope": "AM delivery; inventory self-excluded",
+  "files": {
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/exploration/walker.gd": {
+      "sha256": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+      "bytes": 4222
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/grant.json": {
+      "sha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+      "bytes": 468
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/inclined-landing-rejections-dependencies.json": {
+      "sha256": "0abaa9b747468b15996aafdfd4a250ff5be978a81584dca1c1f91a080f1471bb",
+      "bytes": 588
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/inclined-landing-rejections-result.json": {
+      "sha256": "9422f8da5e622d70dcebc763b97351ef46c8c111d1953b0a5bb577eb7801ada2",
+      "bytes": 15013568
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/inclined-landing-rejections-start.json": {
+      "sha256": "dbdd317857482bc1e4bb5d26eecc77d7344f9360bc821303af8b462ebfc55533",
+      "bytes": 1443
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/inclined-landing-rejections-supervisor.json": {
+      "sha256": "6cbc73600e21d1bada00a90c77c78e1caec79de77a98850e184da1586e21d413",
+      "bytes": 58842
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/inclined-landing-rejections.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/negative-controls-dependencies.json": {
+      "sha256": "a7f633d2e825383847de2c6886b1a3325e124a659c188564a9dfc967c9e6bb75",
+      "bytes": 359
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/negative-controls-result.json": {
+      "sha256": "2659b23197126f9447af8a367a751c299fedf9531a7ae5ea301000706b51c689",
+      "bytes": 9645596
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/negative-controls-start.json": {
+      "sha256": "acea6b690b4932596bbd332f36f8d88aeaa4c93497559a3e4657f0dbfcef09b5",
+      "bytes": 1423
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/negative-controls-supervisor.json": {
+      "sha256": "a2df336cf4cd7cf64a59278655794a3f028f323fcc1cba7fed43fbe58caeec58",
+      "bytes": 61931
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/negative-controls.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/positive-step-admission-dependencies.json": {
+      "sha256": "3273828cbd68eadfcb763719dec26f2a9ea1ca109289e01442ad39dc7f498610",
+      "bytes": 811
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/positive-step-admission-result.json": {
+      "sha256": "779b00c88f53d6b4fcb9b171844769ffc2133e2d11c0bf3300419861b3a81a57",
+      "bytes": 8268978
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/positive-step-admission-start.json": {
+      "sha256": "cee60b3939c6eb235ae47ceeb141de75f59627b03a81c10f28888a159ef9f8cc",
+      "bytes": 1433
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/positive-step-admission-supervisor.json": {
+      "sha256": "10e19c0891a13f60efe60fb3c42ad368357d37a8af44694328976f8d7e4223ee",
+      "bytes": 30297
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/positive-step-admission.log": {
+      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "bytes": 73
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/project.godot": {
+      "sha256": "688ef4dca6643773530311e88a491ecf7199afae771e391afb6723f0848185c3",
+      "bytes": 216
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/source.json": {
+      "sha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+      "bytes": 18085
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_admission/fixtures_v4.gd": {
+      "sha256": "c4c175420aaca975acfa8ee277b2088796c2f0f8279751bbc8f2939154070e04",
+      "bytes": 2020
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_admission/slide_telemetry.gd": {
+      "sha256": "b7c04249dd44574c5c14627766983cb571542879b17c39afc458c115178b2df0",
+      "bytes": 884
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_calibrated_admission/driver.gd": {
+      "sha256": "13499f0982e5651ea0a65f720e96c5bb777ef0a6a2d2b04b4a48749558ba99c8",
+      "bytes": 20890
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_calibrated_admission/evidence.gd": {
+      "sha256": "2721251624d18bb702b2fbaf7e2153caa879fd7ddc08cc7f38546ef6a4cffe45",
+      "bytes": 28321
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_calibrated_admission/fixtures.gd": {
+      "sha256": "9cbf82cceff0a18c5cf3e60ebd661af9b2b8583aa3eb9279bedf7089d26eae63",
+      "bytes": 1731
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_calibrated_admission/observe.gd": {
+      "sha256": "b45e122622523d2b38b22d774303810e0c3d6bfd98ea1833184cba41c55db944",
+      "bytes": 3613
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_calibrated_admission/policy.gd": {
+      "sha256": "68e6d1e4a7ab6e8d4893b43c7127fa2a443fd911da35e7b5356f52fdaeebc127",
+      "bytes": 4488
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_parity_admission/candidate.gd": {
+      "sha256": "0aae2ac30347e21286e09fc1b8f1a6b8937f37aef447d99af083a12700261314",
+      "bytes": 9468
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_parity_response/planner.gd": {
+      "sha256": "7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31",
+      "bytes": 992
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_snap_parity/planner.gd": {
+      "sha256": "9d61d505822208aaacc03bbb8017d4458d068e5430389aa5849eae7b6fdf01e6",
+      "bytes": 3386
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_snap_parity/query_pair.gd": {
+      "sha256": "91f427d0ea0d47e9397a7331dd49f798d8041d5d93e31e11331da6ad31a475f7",
+      "bytes": 3619
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_step_up/controls_v2.gd": {
+      "sha256": "90e69221eecf657c6cd158e4db5cbbe89ebfce0440be1f7f00ec230ce9e88965",
+      "bytes": 3228
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_step_up/response_guard.gd": {
+      "sha256": "ff242f1c352755e3655666440731115911b59dc431f0ec7c37807e8c8ec281b0",
+      "bytes": 4299
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/tests/walker_step_up/sweep_proposal.gd": {
+      "sha256": "b253464820a84d8de7e1cfc5abf7d3852f392e055ac6e71d42ce6a678d538d41",
+      "bytes": 17360
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/ui/mouse_motion.gd": {
+      "sha256": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
+      "bytes": 333
+    },
+    "godot/tests/walker_calibrated_admission/calibrated-admission-am-01/ui/settings_access.gd": {
+      "sha256": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
+      "bytes": 1385
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/README.md": {
+      "sha256": "7322ad54c75dfb8e6937823239a4ced411ab63fc9848e9f768e18bcb03455c0e",
+      "bytes": 8179
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/audit_am.py": {
+      "sha256": "62868c5d16ef4e04402e0a7b7de70a41e0a58296b3f33f47a523e00f24452789",
+      "bytes": 7415
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/AM-release.json": {
+      "sha256": "1821fb944ef981ff1301b2a826c3b97a05318df126c7323b656bee020d2045fd",
+      "bytes": 2478
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/after.json": {
+      "sha256": "d91c629127c9fe78692183f0b86e39ee0806cf5a3602e890a0a6872a26e07fbc",
+      "bytes": 7863375
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/authorization.json": {
+      "sha256": "3ee65648445b277629fcae935c133e691e57ab9f39c80259ccf5824a5d0381ea",
+      "bytes": 1327
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/before.json": {
+      "sha256": "d1f219700107516e6f2a39148e73adc6c4ed2ed0de5dac9fad633ffeefeeb660",
+      "bytes": 7902901
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/commands.json": {
+      "sha256": "bc6eec81a49a8b01d4b1f17b106d7241d5c12344db29421db183ef594dfa8047",
+      "bytes": 5855
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/execution-record.json": {
+      "sha256": "dc2bdbd48e915f6e3020f9925eb12b54148cb0529055f0b0fa9119ba49e98efc",
+      "bytes": 11244
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/failure-analysis.json": {
+      "sha256": "d8dd72a1a65a36bbbc3fecc001c7375bf9ea98a428e53a28bdcc7becab4479de",
+      "bytes": 57286
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/inclined-landing-rejections-checkpoint.json": {
+      "sha256": "149566eab2e96f83af32a5ff55b8f4c37c4317a23e74c3f1eacddfdb701f2ead",
+      "bytes": 7344
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/inclined-landing-rejections-detail.json": {
+      "sha256": "3490b786872e18229192878cb23907f2e7f7007c43117fb2de0a45b26c3b8bef",
+      "bytes": 67042
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/inclined-landing-rejections-owner-inspection.json": {
+      "sha256": "399ddd678ef5daf998aaf6a022ebf056f7537b1cdb8fb4879786d74e085f0f20",
+      "bytes": 518
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/inclined-supervisor-command.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/negative-controls-checkpoint.json": {
+      "sha256": "80177cf903c649ef8d9ad803eb5bc2aa2522e151d5c988de74bc7e99e9142a70",
+      "bytes": 39331
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/negative-controls-detail.json": {
+      "sha256": "9f06b94c8b3403009abebdb33f3adfdb1d285d4a1a84b963746f03917f8582d4",
+      "bytes": 563440
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/negative-controls-owner-inspection.json": {
+      "sha256": "877700dc8a6f13ccdb86227c7d902bad8e1b8894320aa604de4149999fadb513",
+      "bytes": 685
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/negative-supervisor-command.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/positive-step-admission-checkpoint.json": {
+      "sha256": "058d0bfb5b0deef80534f7471f2da3647f2948c841a55395b9ed91426d464a99",
+      "bytes": 6126
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/positive-step-admission-detail.json": {
+      "sha256": "b4554e91a74f72e3f54fe25396ff5e1277cfa9afcff2ce2e1cc07d10d4fec1a7",
+      "bytes": 210056
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/positive-step-admission-owner-inspection.json": {
+      "sha256": "088f19420d3fc8dcbf84b8f77889cfba1bee014bbfcd2db5f707c67df824b006",
+      "bytes": 736
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/positive-supervisor-command.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/post-release-tests.log": {
+      "sha256": "90260ca0c1bcd1beeea6f1da3ac028be39fb21f80c660b69ce5cd79a121787c6",
+      "bytes": 129
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/evidence/preservation.json": {
+      "sha256": "e0edd62d95f00e5be11a2b2315242b31c16955c410176322db2c6c8b46e129c6",
+      "bytes": 841
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/finalize_am.py": {
+      "sha256": "df00fcc076b6929495488426ba379dce23a4e61c604e82422e100a8cd4cd8d29",
+      "bytes": 6016
+    },
+    "tools/godot-multiplayer/new-maps/walker-calibrated-admission-am/inspect_am.py": {
+      "sha256": "2297af05cd1b34e8ad4effe5ca88ab0491d12f31baf2c8f3258b6df1e359cc92",
+      "bytes": 7105
+    }
+  }
+}

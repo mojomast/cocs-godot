@@ -1,0 +1,323 @@
+{
+  "utc": "2026-10-04T09:40:35.738467+00:00",
+  "grant": "MOTH-BLENDER-20261004-AM",
+  "base": "3dcdbb27",
+  "branch": "astra/walker-calibrated-admission-am",
+  "authorization": {
+    "grantId": "MOTH-BLENDER-20261004-AM",
+    "issuedUtc": "2026-10-04T09:33:23.789710+00:00",
+    "expiresUnix": 1791108203.789316,
+    "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+    "grantSha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+    "engine": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+    "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+    "engineBytes": 137322608,
+    "phase": "parity-admission-calibrated-v1",
+    "mode": "calibrated-controls",
+    "scope": "calibrated-admission",
+    "allowedGroups": [
+      "negative-controls",
+      "inclined-landing-rejections",
+      "positive-step-admission"
+    ],
+    "approvedSourceCommit": "3b03b390",
+    "parentIntegration": "3dcdbb27",
+    "stage": "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+    "maxInvocationsPerGroup": 1,
+    "maxTotalInvocations": 3,
+    "firstParseInsideFirstInvocation": true,
+    "stopOnFirstFailure": true,
+    "ownerCheckpointBeforeAdvancement": true,
+    "retryAuthorized": false,
+    "sourceCorrectionRerunAuthorized": false,
+    "alternateHeightAuthorized": false,
+    "mapOrOutsideCandidateAuthorized": false,
+    "childDelegationAuthorized": false
+  },
+  "groups": [
+    {
+      "group": "negative-controls",
+      "invocations": 1,
+      "supervisorCommandExit": 0,
+      "nativeExit": 0,
+      "argv": [
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--single-threaded-scene",
+        "--path",
+        "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+        "--script",
+        "res://tests/walker_calibrated_admission/driver.gd",
+        "--",
+        "--group=negative-controls",
+        "--mode=calibrated-controls",
+        "--grant-id=MOTH-BLENDER-20261004-AM",
+        "--grant-sha256=3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+        "--dependencies-sha256=a7f633d2e825383847de2c6886b1a3325e124a659c188564a9dfc967c9e6bb75"
+      ],
+      "owned": {
+        "pid": 3705781,
+        "pgid": 3705781,
+        "startTicks": 628955878
+      },
+      "nativeSha256": "2659b23197126f9447af8a367a751c299fedf9531a7ae5ea301000706b51c689",
+      "supervisorSha256": "a2df336cf4cd7cf64a59278655794a3f028f323fcc1cba7fed43fbe58caeec58",
+      "dependenciesSha256": "a7f633d2e825383847de2c6886b1a3325e124a659c188564a9dfc967c9e6bb75",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "checkpointSha256": "80177cf903c649ef8d9ad803eb5bc2aa2522e151d5c988de74bc7e99e9142a70",
+      "ownerInspectionSha256": "877700dc8a6f13ccdb86227c7d902bad8e1b8894320aa604de4149999fadb513",
+      "lockAcquiredUnix": 1791106414.8207767,
+      "lockReleasePendingUnix": 1791106438.788919,
+      "passed": true,
+      "counts": {
+        "attemptedPairs": 34,
+        "attemptedProfiles": 68,
+        "completedPairs": 34,
+        "completedProfiles": 68,
+        "failedPairs": 0,
+        "failedProfiles": 0,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 34,
+        "unrunPairs": 0,
+        "unrunProfiles": 0
+      }
+    },
+    {
+      "group": "inclined-landing-rejections",
+      "invocations": 1,
+      "supervisorCommandExit": 0,
+      "nativeExit": 0,
+      "argv": [
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--single-threaded-scene",
+        "--path",
+        "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+        "--script",
+        "res://tests/walker_calibrated_admission/driver.gd",
+        "--",
+        "--group=inclined-landing-rejections",
+        "--mode=calibrated-controls",
+        "--grant-id=MOTH-BLENDER-20261004-AM",
+        "--grant-sha256=3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+        "--dependencies-sha256=0abaa9b747468b15996aafdfd4a250ff5be978a81584dca1c1f91a080f1471bb"
+      ],
+      "owned": {
+        "pid": 3718248,
+        "pgid": 3718248,
+        "startTicks": 628980585
+      },
+      "nativeSha256": "9422f8da5e622d70dcebc763b97351ef46c8c111d1953b0a5bb577eb7801ada2",
+      "supervisorSha256": "6cbc73600e21d1bada00a90c77c78e1caec79de77a98850e184da1586e21d413",
+      "dependenciesSha256": "0abaa9b747468b15996aafdfd4a250ff5be978a81584dca1c1f91a080f1471bb",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "checkpointSha256": "149566eab2e96f83af32a5ff55b8f4c37c4317a23e74c3f1eacddfdb701f2ead",
+      "ownerInspectionSha256": "399ddd678ef5daf998aaf6a022ebf056f7537b1cdb8fb4879786d74e085f0f20",
+      "lockAcquiredUnix": 1791106661.8837664,
+      "lockReleasePendingUnix": 1791106683.2451315,
+      "passed": true,
+      "counts": {
+        "attemptedPairs": 4,
+        "attemptedProfiles": 8,
+        "completedPairs": 4,
+        "completedProfiles": 8,
+        "failedPairs": 0,
+        "failedProfiles": 0,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 4,
+        "unrunPairs": 0,
+        "unrunProfiles": 0
+      }
+    },
+    {
+      "group": "positive-step-admission",
+      "invocations": 1,
+      "supervisorCommandExit": 1,
+      "nativeExit": 1,
+      "argv": [
+        "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+        "--headless",
+        "--single-threaded-scene",
+        "--path",
+        "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+        "--script",
+        "res://tests/walker_calibrated_admission/driver.gd",
+        "--",
+        "--group=positive-step-admission",
+        "--mode=calibrated-controls",
+        "--grant-id=MOTH-BLENDER-20261004-AM",
+        "--grant-sha256=3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+        "--dependencies-sha256=3273828cbd68eadfcb763719dec26f2a9ea1ca109289e01442ad39dc7f498610"
+      ],
+      "owned": {
+        "pid": 3721523,
+        "pgid": 3721523,
+        "startTicks": 628985977
+      },
+      "nativeSha256": "779b00c88f53d6b4fcb9b171844769ffc2133e2d11c0bf3300419861b3a81a57",
+      "supervisorSha256": "10e19c0891a13f60efe60fb3c42ad368357d37a8af44694328976f8d7e4223ee",
+      "dependenciesSha256": "3273828cbd68eadfcb763719dec26f2a9ea1ca109289e01442ad39dc7f498610",
+      "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+      "checkpointSha256": "058d0bfb5b0deef80534f7471f2da3647f2948c841a55395b9ed91426d464a99",
+      "ownerInspectionSha256": "088f19420d3fc8dcbf84b8f77889cfba1bee014bbfcd2db5f707c67df824b006",
+      "lockAcquiredUnix": 1791106715.80882,
+      "lockReleasePendingUnix": 1791106726.7257314,
+      "passed": false,
+      "counts": {
+        "attemptedPairs": 3,
+        "attemptedProfiles": 6,
+        "completedPairs": 3,
+        "completedProfiles": 6,
+        "failedPairs": 1,
+        "failedProfiles": 1,
+        "interruptedPairs": 0,
+        "interruptedProfiles": 0,
+        "passedPairs": 2,
+        "unrunPairs": 1,
+        "unrunProfiles": 2
+      }
+    }
+  ],
+  "nativeInvocations": 3,
+  "standaloneParserInvocations": 0,
+  "retries": 0,
+  "sourceEdits": 0,
+  "delegatedChildren": 0,
+  "queuedWork": false,
+  "release": {
+    "grant": "MOTH-BLENDER-20261004-AM",
+    "ownedGroups": [
+      {
+        "pid": 3718248,
+        "pgid": 3718248,
+        "startTicks": 628980585
+      },
+      {
+        "pid": 3705781,
+        "pgid": 3705781,
+        "startTicks": 628955878
+      },
+      {
+        "pid": 3721523,
+        "pgid": 3721523,
+        "startTicks": 628985977
+      }
+    ],
+    "releaseAudits": [
+      {
+        "utc": "2026-10-04T09:38:59.968363+00:00",
+        "measured": true,
+        "groups": [
+          {
+            "owned": {
+              "pid": 3718248,
+              "pgid": 3718248,
+              "startTicks": 628980585
+            },
+            "members": []
+          },
+          {
+            "owned": {
+              "pid": 3705781,
+              "pgid": 3705781,
+              "startTicks": 628955878
+            },
+            "members": []
+          },
+          {
+            "owned": {
+              "pid": 3721523,
+              "pgid": 3721523,
+              "startTicks": 628985977
+            },
+            "members": []
+          }
+        ]
+      },
+      {
+        "utc": "2026-10-04T09:39:00.214938+00:00",
+        "measured": true,
+        "groups": [
+          {
+            "owned": {
+              "pid": 3718248,
+              "pgid": 3718248,
+              "startTicks": 628980585
+            },
+            "members": []
+          },
+          {
+            "owned": {
+              "pid": 3705781,
+              "pgid": 3705781,
+              "startTicks": 628955878
+            },
+            "members": []
+          },
+          {
+            "owned": {
+              "pid": 3721523,
+              "pgid": 3721523,
+              "startTicks": 628985977
+            },
+            "members": []
+          }
+        ]
+      },
+      {
+        "utc": "2026-10-04T09:39:00.456930+00:00",
+        "measured": true,
+        "groups": [
+          {
+            "owned": {
+              "pid": 3718248,
+              "pgid": 3718248,
+              "startTicks": 628980585
+            },
+            "members": []
+          },
+          {
+            "owned": {
+              "pid": 3705781,
+              "pgid": 3705781,
+              "startTicks": 628955878
+            },
+            "members": []
+          },
+          {
+            "owned": {
+              "pid": 3721523,
+              "pgid": 3721523,
+              "startTicks": 628985977
+            },
+            "members": []
+          }
+        ]
+      }
+    ],
+    "lock": {
+      "available": true,
+      "measuredUtc": "2026-10-04T09:39:00.705883+00:00"
+    },
+    "releasedUtc": "2026-10-04T09:39:00.705920+00:00",
+    "remainingAuthorization": false,
+    "queuedWork": false,
+    "noFurtherEngineInvocations": true
+  },
+  "postReleaseTests": {
+    "command": "python3 -B -m unittest discover -s tools/godot-multiplayer/new-maps/walker-calibrated-admission -p 'test_*.py'",
+    "passed": 30,
+    "logSha256": "90260ca0c1bcd1beeea6f1da3ac028be39fb21f80c660b69ce5cd79a121787c6",
+    "qualification": "Offline Python only; does not waive native failure"
+  },
+  "nativeStepAdmission": false,
+  "candidateAdmission": false,
+  "productionPromotion": false,
+  "productionMotionAccountingOpen": true,
+  "candidateMapJourneysUnrun": 60,
+  "staticVesperFailuresUnresolved": 184,
+  "physicalCallCounts": null,
+  "helperIncident": "inspect_am wrote negative detail successfully then summary printing raised missing json import; helper import fixed only, no native rerun."
+}

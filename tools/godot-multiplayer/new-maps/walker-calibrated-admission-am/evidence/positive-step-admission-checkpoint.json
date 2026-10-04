@@ -1,0 +1,215 @@
+{
+  "utc": "2026-10-04T09:38:52.590499+00:00",
+  "group": "positive-step-admission",
+  "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+  "grantSha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "dependenciesSha256": "3273828cbd68eadfcb763719dec26f2a9ea1ca109289e01442ad39dc7f498610",
+  "nativeSha256": "779b00c88f53d6b4fcb9b171844769ffc2133e2d11c0bf3300419861b3a81a57",
+  "supervisorSha256": "10e19c0891a13f60efe60fb3c42ad368357d37a8af44694328976f8d7e4223ee",
+  "logSha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3",
+  "nativeReceiptPresent": true,
+  "nativeStrictReplay": false,
+  "supervisorStrictReplay": false,
+  "dependencyChainVerified": true,
+  "errors": [],
+  "nativeOutcome": "candidate_or_reset_fault",
+  "nativeReturnCode": 1,
+  "supervisorFailed": true,
+  "releasedCleanly": true,
+  "owned": {
+    "pid": 3721523,
+    "pgid": 3721523,
+    "startTicks": 628985977
+  },
+  "ownedGroupMembers": [],
+  "lock": {
+    "available": true,
+    "measuredUtc": "2026-10-04T09:38:52.590470+00:00"
+  },
+  "passed": false,
+  "physicalCallCounts": null,
+  "partialCountersMayBeUnknown": true,
+  "counts": {
+    "attemptedPairs": 3,
+    "attemptedProfiles": 6,
+    "completedPairs": 3,
+    "completedProfiles": 6,
+    "failedPairs": 1,
+    "failedProfiles": 1,
+    "interruptedPairs": 0,
+    "interruptedProfiles": 0,
+    "passedPairs": 2,
+    "unrunPairs": 1,
+    "unrunProfiles": 2
+  },
+  "records": [
+    {
+      "caseIndex": 0,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "rise": 0.15,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_baseline_blocked",
+          "settles": 20,
+          "inputResponses": 127,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 148,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "full_tread_guarded_arrival",
+          "settles": 20,
+          "inputResponses": 21,
+          "appliedUpCount": 1,
+          "verifiedLifts": 1,
+          "reached": true,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 7,
+          "lastFrame": 189,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 1,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.35:45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.35,
+        "rise": 0.15,
+        "start": -1.0,
+        "yaw": 0.785398163397448
+      },
+      "status": "passed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_baseline_blocked",
+          "settles": 20,
+          "inputResponses": 127,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 336,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "completed",
+          "outcome": "full_tread_guarded_arrival",
+          "settles": 20,
+          "inputResponses": 21,
+          "appliedUpCount": 1,
+          "verifiedLifts": 1,
+          "reached": true,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 7,
+          "lastFrame": 377,
+          "lastFault": ""
+        }
+      ]
+    },
+    {
+      "caseIndex": 2,
+      "spec": {
+        "goal": 1.0,
+        "id": "0.42:-45.0",
+        "incline": 0.0,
+        "maxResponses": 240,
+        "radius": 0.42,
+        "rise": 0.18,
+        "start": -1.0,
+        "yaw": -0.785398163397448
+      },
+      "status": "failed",
+      "profiles": [
+        {
+          "experimental": false,
+          "status": "completed",
+          "outcome": "expected_baseline_blocked",
+          "settles": 20,
+          "inputResponses": 126,
+          "appliedUpCount": 0,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 120,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 523,
+          "lastFault": ""
+        },
+        {
+          "experimental": true,
+          "status": "failed",
+          "outcome": null,
+          "settles": 20,
+          "inputResponses": 7,
+          "appliedUpCount": 1,
+          "verifiedLifts": 0,
+          "reached": false,
+          "stallCount": 0,
+          "inclinedWitnesses": 0,
+          "ordinaryLandingStreak": 0,
+          "lastFrame": 550,
+          "lastFault": "invalid_final_support_normal_or_velocity"
+        }
+      ]
+    }
+  ],
+  "freshPreservation": {
+    "archives": {
+      "AF": 24,
+      "AE": 46,
+      "AD": 45,
+      "AB": 140,
+      "Z": 253,
+      "AA": 141,
+      "AC": 265,
+      "AG": 29,
+      "AH": 42,
+      "AI": 40,
+      "AJ": 23,
+      "AL": 33,
+      "AK": 51,
+      "X": 600,
+      "U": 264
+    },
+    "productionDependencies": 15,
+    "approvedDesignAndPriorSourcesUnchanged": true,
+    "historicalProvenanceUnchanged": true
+  },
+  "explicitExternalLineage": {
+    "ALManifestSha256": "bef580de4e1605446425927bf9ee3f07dfb61992bfd6bb50af48369db7f738b5",
+    "AKManifestSha256": "827dd68b00c400b7ec17f9ab0e5a2067929277c3bb22e1681d38a1d5143a5ee1",
+    "selectionSha256": "bd236a0c7daced2beef950fe56361f5ffb1c20a521b2a8d65b9c5b586415c403",
+    "role": "selection-lineage-not-admission"
+  },
+  "ownerInspection": "Strict full native operand replay and supervisor audit/hash replay completed; raw profile/contact review is recorded separately before any next command."
+}

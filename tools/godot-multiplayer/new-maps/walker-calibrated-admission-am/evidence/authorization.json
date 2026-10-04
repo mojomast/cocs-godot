@@ -1,0 +1,31 @@
+{
+  "grantId": "MOTH-BLENDER-20261004-AM",
+  "issuedUtc": "2026-10-04T09:33:23.789710+00:00",
+  "expiresUnix": 1791108203.789316,
+  "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+  "grantSha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+  "engine": "/tmp/opencode/cocs-horde-e353522a-package/toolchain/Godot_v4.5.2-stable_linux.x86_64",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "engineBytes": 137322608,
+  "phase": "parity-admission-calibrated-v1",
+  "mode": "calibrated-controls",
+  "scope": "calibrated-admission",
+  "allowedGroups": [
+    "negative-controls",
+    "inclined-landing-rejections",
+    "positive-step-admission"
+  ],
+  "approvedSourceCommit": "3b03b390",
+  "parentIntegration": "3dcdbb27",
+  "stage": "/home/mojo/.tmp-on-disk/cocs-walker-calibrated-admission-am/godot/tests/walker_calibrated_admission/calibrated-admission-am-01",
+  "maxInvocationsPerGroup": 1,
+  "maxTotalInvocations": 3,
+  "firstParseInsideFirstInvocation": true,
+  "stopOnFirstFailure": true,
+  "ownerCheckpointBeforeAdvancement": true,
+  "retryAuthorized": false,
+  "sourceCorrectionRerunAuthorized": false,
+  "alternateHeightAuthorized": false,
+  "mapOrOutsideCandidateAuthorized": false,
+  "childDelegationAuthorized": false
+}

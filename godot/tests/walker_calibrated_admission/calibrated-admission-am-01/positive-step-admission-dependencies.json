@@ -1,0 +1,17 @@
+{
+  "phase": "parity-admission-calibrated-v1",
+  "group": "positive-step-admission",
+  "sourceSha256": "a1e20584c910390788a089aac66af92bd010eb957f7fe4d55a2a054089f40e78",
+  "grantSha256": "3efeadab7f25dcb0cda5b74252dfba5778a3acbf2188b42a35b4d144c2b65c43",
+  "engineSha256": "5803746bbe055bee0f07a3c5b0dd347719bd45599f3d34519a8a0beaf83014ae",
+  "predecessors": {
+    "negative-controls": {
+      "resultSha256": "2659b23197126f9447af8a367a751c299fedf9531a7ae5ea301000706b51c689",
+      "supervisorSha256": "a2df336cf4cd7cf64a59278655794a3f028f323fcc1cba7fed43fbe58caeec58"
+    },
+    "inclined-landing-rejections": {
+      "resultSha256": "9422f8da5e622d70dcebc763b97351ef46c8c111d1953b0a5bb577eb7801ada2",
+      "supervisorSha256": "6cbc73600e21d1bada00a90c77c78e1caec79de77a98850e184da1586e21d413"
+    }
+  }
+}

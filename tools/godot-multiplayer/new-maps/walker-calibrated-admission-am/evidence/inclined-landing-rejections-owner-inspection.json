@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-04T09:38:24.113132+00:00",
+  "checkpointSha256": "149566eab2e96f83af32a5ff55b8f4c37c4317a23e74c3f1eacddfdb701f2ead",
+  "detailSha256": "3490b786872e18229192878cb23907f2e7f7007c43117fb2de0a45b26c3b8bef",
+  "passed": true,
+  "review": "4 canonical 47-degree pairs/8 full profiles, actual inclined rejection witnesses, zero assist, paired ordinary motion equal, raw banner-only log. Full native/supervisor/hash/audit replay passed after release.",
+  "nextAuthorizedGroup": "positive-step-admission"
+}

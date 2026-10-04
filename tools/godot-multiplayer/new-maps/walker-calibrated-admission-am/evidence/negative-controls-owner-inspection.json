@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-04T09:37:30.012426+00:00",
+  "checkpointSha256": "80177cf903c649ef8d9ad803eb5bc2aa2522e151d5c988de74bc7e99e9142a70",
+  "detailSha256": "9f06b94c8b3403009abebdb33f3adfdb1d285d4a1a84b963746f03917f8582d4",
+  "passed": true,
+  "review": "34 canonical pairs/68 profiles, expected original reasons, zero assists; all paired positions/velocities/grounded states agree; raw log banner only. Strict native/supervisor/hash/audit replay passed after release.",
+  "nextAuthorizedGroup": "inclined-landing-rejections",
+  "helperIncident": "Detail file completed; printing summary raised missing-json NameError. Only read-only helper import corrected; no native/source rerun."
+}

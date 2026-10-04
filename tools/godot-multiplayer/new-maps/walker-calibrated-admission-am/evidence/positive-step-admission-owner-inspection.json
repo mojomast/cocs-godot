@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-04T09:40:35.737050+00:00",
+  "checkpointSha256": "058d0bfb5b0deef80534f7471f2da3647f2948c841a55395b9ed91426d464a99",
+  "detailSha256": "b4554e91a74f72e3f54fe25396ff5e1277cfa9afcff2ce2e1cc07d10d4fec1a7",
+  "failureAnalysisSha256": "d8dd72a1a65a36bbbc3fecc001c7375bf9ea98a428e53a28bdcc7becab4479de",
+  "passed": false,
+  "nextAuthorizedGroup": null,
+  "review": "Whole group FAIL. First .42/.18 candidate normal fails explicit46-degree support test despite exact endpoint and zero collider velocity. One lift applied but not verified; no arrival. Remaining +45 pair unrun. No retry, correction, fallback or further execution.",
+  "AMReleaseSha256": "1821fb944ef981ff1301b2a826c3b97a05318df126c7323b656bee020d2045fd"
+}
