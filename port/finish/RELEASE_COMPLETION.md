@@ -11,10 +11,11 @@ Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
 **No active heavy grant. AJ confirmed the receipt-only hypothesis and released.**
-Delivery `bb403edf` / `bfb32d4e` is under independent evidence review. Original
-policy rejects and the isolated clone accepts, with 15 controls passing and seven
-mutants rejected. Parent verified 23 files and manifest identity, three empty audits
-and free lock. Campaign correction is being prepared source-only; no movement grant.
+Delivery `bb403edf` / `bfb32d4e` passed independent review and is integrated through
+`0b420dc1`. Parent passed 93 checks and all 23 hashes/manifest identity. Original
+policy rejects and the isolated clone accepts, with fifteen controls passing and
+seven mutants rejected. Campaign correction is being prepared source-only; no
+movement grant. See `map-variety/WALKER_AJ_REVIEW.md`.
 
 **AI passed negatives, localized a native policy failure and released.**
 Delivery `cc2b72fd` / `0a644c92` passed independent archive review and is integrated

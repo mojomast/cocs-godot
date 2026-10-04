@@ -1,5 +1,11 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**AJ receipt-only confirmation approved and integrated through `0b420dc1`.**
+Parent passed 93 checks and all 23 hashes/manifest identity. The actual original/
+clone difference, fifteen controls and seven rejected mutants are independently
+verified. See `WALKER_AJ_REVIEW.md`. Exact campaign correction is justified as
+source work; its review and fresh campaign authorization remain separate.
+
 ## AJ delivered/released — receipt-only confirmation under review
 
 **`bb403edf` / `bfb32d4e`** report one engine invocation with engine/supervisor

@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**AJ independently approved and integrated as `d8e03668` / `0b420dc1`.** Parent
+passed 93 checks and all 23 hashes plus manifest identity. Receipt-only native
+confirmation justifies preparing the one-clause validator correction for review;
+it does not grant campaign acceptance. See `map-variety/WALKER_AJ_REVIEW.md`.
+No heavy grant is active; positive admission and all sixty map journeys are unrun.
+
 ## Current checkpoint — AJ confirms receipt hypothesis and releases
 
 **No heavy grant is active.** AJ `bb403edf` / `bfb32d4e` reports original-policy
