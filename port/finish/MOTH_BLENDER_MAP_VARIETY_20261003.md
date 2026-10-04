@@ -1,5 +1,11 @@
 # New Moth resources and Blender-authored map variety
 
+**Numeric-membership diagnosis integrated as `609e0ca8`.** Independent review
+confirmed the source-semantic mismatch; parent passed 67 checks. The narrow
+numeric-equality correction is approved as intent, not applied campaign behavior.
+A separately reviewed receipt-only probe is still being prepared. Review:
+`map-variety/WALKER_POLICY_NUMERIC_REVIEW.md`. No heavy grant is active.
+
 **Numeric-membership source diagnosis `707e2fe6` delivered:** Godot JSON FLOAT
 counts may fail type-sensitive membership in the INT literal `[0,1]`, a distinction
 not modeled by prior Python-double replay. Independent review is active; the first

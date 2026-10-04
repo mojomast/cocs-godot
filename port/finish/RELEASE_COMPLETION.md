@@ -17,10 +17,11 @@ Inclined admission emitted `predecessor.native_policy`; the internal predicate a
 case/call progress remain unknown. Positive admission remains unauthorized/unrun.
 Further diagnosis is source-only; no retry/positive/map permission. See
 `map-variety/WALKER_AI_REVIEW.md`.
-Source diagnosis `707e2fe6` identifies a proposed Godot FLOAT/INT membership
-discrepancy in `not up in [0,1]`; independent source review is active. A receipt-only
-probe contract is being prepared without changing accepted predicates. The native
-internal rejection remains untraced; no heavy grant or movement authorization exists.
+Source diagnosis `707e2fe6` passed independent review and is integrated as
+`609e0ca8`, with 67 parent checks passing. The Godot FLOAT/INT membership discrepancy
+is source-confirmed; numeric equality is approved as narrow intent with the existing
+finite-integer guard. Campaign predicates remain unchanged. A receipt-only probe
+is being prepared; native internal rejection remains untraced and no grant exists.
 
 **AH passed negatives, failed its inclined invocation and released.**
 Delivery `560fff1e` / `c3c922f9` / `22841f8c` passed independent archive review

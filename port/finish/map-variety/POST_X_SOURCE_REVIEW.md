@@ -1,5 +1,12 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+**Numeric-membership diagnosis approved and integrated as `609e0ca8`.** Parent
+passed 67 targeted/admission/package checks. Independent review confirms the
+Godot FLOAT/INT membership chain and approves the one-clause numeric-equality
+correction as source intent with the existing finite-integer guard retained.
+Campaign predicates remain unchanged. Full review: `WALKER_POLICY_NUMERIC_REVIEW.md`.
+Receipt-only probe preparation continues source-only; no native readiness/grant.
+
 ## Numeric-membership discrepancy proposed; independent review pending
 
 **`707e2fe6`** reports a concrete source-model difference at `evidence.gd:139`:
