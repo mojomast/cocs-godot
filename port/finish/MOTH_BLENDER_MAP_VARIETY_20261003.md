@@ -1,5 +1,14 @@
 # New Moth resources and Blender-authored map variety
 
+## Current owner — labeled admission diagnostic AI
+
+**MOTH-BLENDER-20261004-AI is the sole heavy grant**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation **`8478cd8c`**. Labeled diagnostics
+passed review and 160 parent checks. Authorization is fresh negatives → recorded
+passing-evidence checkpoint → at most one inclined invocation, then stop/release
+even on success. No retries, positive admission or map groups. Labels localize a
+driver gate without proving its internal subpredicate or changing acceptance.
+
 **Admission diagnostics `f1b4c0b6` delivered for review.** The rejecting native
 predicate remains unknown; offline checks do not support timestamp collapse.
 Twenty labeled stderr gates are proposed without changing acceptance predicates,

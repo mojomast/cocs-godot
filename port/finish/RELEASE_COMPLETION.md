@@ -10,7 +10,12 @@ finishing and verifying the new candidate.
 Parallax AC is integrated with qualified staged-artifact approval through
 `388812d7`; authored-X appearance and broader release acceptance remain pending.
 
-**No active heavy grant. AH passed negatives, failed its inclined invocation and released.**
+**Current heavy owner: labeled admission diagnostic AI**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Source review passed;
+parent passed 160 checks. Fresh negatives and reviewed passing evidence may permit
+one inclined invocation, then stop/release even if passing. No retry/positive/maps.
+
+**AH passed negatives, failed its inclined invocation and released.**
 Delivery `560fff1e` / `c3c922f9` / `22841f8c` passed independent archive review
 and is fully integrated through `58138256`. All 34 negative pairs passed; inclined
 exit 2 produced no native receipt, so internal progress/counters remain unknown.
@@ -316,7 +321,7 @@ verified its downloaded artifact and integrated the report at `08f3b1f9`.
 Helix graph construction measured 10.345 s → 0.369 s, not total startup time.
 New-package native verification is still required. Published
 preview bytes still contain the original runtime.
-**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG and AH have released; no heavy grant is active.**
+**P, Q, R, S, T, U, V, W, X, Y, Z, AA, AB, AC, AD, AE, AF, AG and AH have released; AI owns labeled admission diagnostics.**
 F/G/G2/G3/G4/H/I/J/K/L/M/N/O/P/Q have released. P diagnosis source fixes are integrated;
 Parent independently confirmed Windows source-only preflight `37125999742`
 completed successfully at `2026-10-03T13:29:07Z`, on historical source `c1aa94ef`.
@@ -357,6 +362,11 @@ are introduced without the user's renewed scope. The subsequent overnight
 directive above explicitly authorizes four additional bounded feature lanes.
 
 ## Exclusive heavy ownership
+
+**Active: `MOTH-BLENDER-20261004-AI`**, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Fresh negative controls,
+recorded passing checkpoint, then at most one inclined invocation. Stop/release
+even if passing; no retry/positive/maps. Three measured final audits required.
 
 **Released: `MOTH-BLENDER-20261004-AH`**, Astra
 `ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `f860e426`. One invocation each

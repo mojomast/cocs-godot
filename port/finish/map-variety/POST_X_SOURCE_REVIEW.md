@@ -1,5 +1,25 @@
 # Post-X source review — diagnosis and exact-art fixture approved
 
+## Labeled diagnostics approved/integrated; AI authorized
+
+Independent review approved `f1b4c0b6`, integrated as **`8478cd8c`**. Parent
+passed **160 checks**: 147 Python and thirteen package tests. The timestamp/source
+diagnosis replays exactly; twenty labels preserve terminal exit 2 and acceptance
+semantics, with bounded stderr only. Marker detection correctly fails a contradictory
+exit-0/pass-summary run. Native rejecting subpredicate remains unproved.
+
+**MOTH-BLENDER-20261004-AI** is the sole heavy grant, Astra
+`ses_efd55fd04ffedSQ6q14ztgmqaa`, foundation `8478cd8c`. Parent verified free
+lock and only the preserved viewer at 06:07:43.815056Z. New sealed source/grant
+permits **negative-controls and inclined-landing-rejections only**. One fresh
+negative invocation must pass strict replay and recorded owner inspection before
+one separate inclined invocation. Stop/release after its outcome, even if it passes.
+
+No retries, separate parser/import launches, positive group or maps are authorized.
+Any emitted label identifies a driver gate, not necessarily its internal failing
+predicate. AH remains immutable with unknown inclined progress. Final three measured
+audits and lock release are mandatory; production accounting remains unresolved.
+
 ## Admission gate diagnosis delivered — no cause established
 
 **`f1b4c0b6`** is under independent source review. Actual AH receipts pass strict
