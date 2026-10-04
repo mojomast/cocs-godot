@@ -6,14 +6,16 @@ import {resolve, dirname, join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {Room} from '../../server/room.mjs';
 import {verifySource} from '../godot-export/semantic.mjs';
+import {resolveReviewedDerivative} from './racing_dependencies.mjs';
 const root = resolve(import.meta.dirname, '../..');
 const discover = path => JSON.parse(execFileSync(process.execPath, ['--no-warnings','--experimental-vm-modules',join(root,'tools/godot-package/discover.mjs'),path], {encoding:'utf8',stdio:['ignore','pipe','pipe']}));
 
 test('actual Horde transitive closure is classified separately and source-byte locked', () => {
   const closure = discover(root);
   const lock = JSON.parse(readFileSync(join(root,'port/contracts/source-lock.json')));
-  const derivative = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
-  verifySource(lock, derivative);
+  const source = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
+  const derivative = source ? resolveReviewedDerivative(source, path => readFileSync(join(root,path)), (revision,path) => execFileSync('git',['show',`${revision}:${path}`],{cwd:root,maxBuffer:64*1024*1024}), (a,b) => execFileSync('git',['merge-base',a,b],{cwd:root}).toString().trim() === a) : null;
+  verifySource(lock, source);
   assert.deepEqual(Object.keys(closure.adapterModules).filter(path=>path.startsWith('port/native-horde/')), ['authority','blackwater-director','blackwater-schema','cinderwake-schema','input-buffer','robot-roles'].map(name=>`port/native-horde/${name}.mjs`));
   assert.deepEqual(closure.hordeDataFiles,['godot/horde_maps/generated/cinderwake-drydock.json','godot/horde_maps/generated/blackwater-reclamation.json']);
   assert.deepEqual(closure.dataReads['port/native-horde/cinderwake-schema.mjs'],[closure.hordeDataFiles[0]]);
