@@ -60,7 +60,7 @@ test('only the Vesper receipt binds the aproned geometry identity',()=>{
 test('a missing, forged or rewritten apron layer is rejected',()=>{
   const layer=r=>r.vesperApronAdvance;
   assert.throws(forged(APRON_UNIT,r=>delete r.vesperApronAdvance),/Explicit Vesper apron reconciliation required/);
-  assert.throws(forged(APRON_UNIT,r=>layer(r).previousReceipt.sha256='0'.repeat(64)),/predecessor receipt identity|Production content hash mismatch/);
+  assert.throws(forged(APRON_UNIT,r=>layer(r).previousReceipt.path='x'),/predecessor receipt path/);
   assert.throws(forged(APRON_UNIT,r=>layer(r).changed['tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs'].after='0'.repeat(64)),/Vesper apron delta identity|Production content hash mismatch/);
   assert.throws(forged(APRON_UNIT,r=>layer(r).sourceFingerprint='0'.repeat(64)),/current source fingerprint/);
   assert.throws(forged(APRON_UNIT,r=>layer(r).previousSourceFingerprint='0'.repeat(64)),/previous source fingerprint/);

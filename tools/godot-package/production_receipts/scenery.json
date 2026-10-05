@@ -1925,7 +1925,7 @@
     "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
-    "tools/godot-package/vesper_apron_dependencies.mjs": "ba51e974e3fb7920ee2d10fb92466ce00fb6814db814707e3ebfa6b0c875d411"
+    "tools/godot-package/vesper_apron_dependencies.mjs": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e"
   },
   "runtimeHooks": {
     "godot/biomes/expansion/scenery_pack.gd": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
@@ -3470,12 +3470,12 @@
       }
     },
     "added": {
-      "tools/godot-package/vesper_apron_dependencies.mjs": "ba51e974e3fb7920ee2d10fb92466ce00fb6814db814707e3ebfa6b0c875d411"
+      "tools/godot-package/vesper_apron_dependencies.mjs": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e"
     },
     "runtimeChanged": {},
     "sourceChanged": {},
     "sourceFingerprint": "376c5c392bf54a94e16ec93cb39a973e1311a7d1bb4b75be20e411aeaf0f41b1",
-    "packageFingerprint": "ed1e3c118b3bb74f76ab171294ce57b5fde973b574d7cc5cee9f22cbe972cbad",
+    "packageFingerprint": "12f01b4dbbe74e13da4444cfd9940f3ccfa3b8e8b81061b77ce1234ed001a468",
     "review": {
       "foundation": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
       "scope": "Vesper support-visible stair apron: 80 walkable -apron surfaces carry the ascent face at 40.030259 deg, inside terrain.maxSlope (40.107 deg). Vesper rebinds its runtime dressing identity to the aproned world; the shared Profile.IDENTITIES table and its verifier change therefore rebind in all seven receipts. Native acceptance pending.",

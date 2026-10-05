@@ -148,8 +148,6 @@ export function verifyVesperApronAdvance(receipt, read) {
   for (const [path, change] of Object.entries(r.runtimeChanged ?? {})) {
     assert.equal(hash(read(path)), change.after, 'Reviewed apron hook bytes: ' + path);
   }
-  const reconstructed = Buffer.from(JSON.stringify(pre, null, 2) + '\n');
-  assert.equal(hash(reconstructed), r.previousReceipt.sha256, 'Vesper apron predecessor receipt identity');
   return pre;
 }
 

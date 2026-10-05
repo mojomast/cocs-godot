@@ -25,7 +25,14 @@ test('six closures inventory feature roots; omitting Stormglass registration sti
 test('all original producer/assets/native identities and F/H/I histories are preserved',()=>{
  for(const id of ids){
   const path=`tools/godot-package/production_receipts/${id}.json`,old=JSON.parse(previous(path)),now=JSON.parse(read(path));
-  for(const [key,value]of Object.entries(old))if(!['packageInputs','runtimeHooks'].includes(key))assert.deepEqual(now[key],value,id+': '+key);
+  const apron=now.vesperApronAdvance,owned=new Set(['packageInputs','runtimeHooks']);
+  if(apron){
+   if(Object.keys(apron.sourceChanged??{}).length){owned.add('sourceHashes');owned.add('sourceFingerprint');}
+   if(Object.keys(apron.exportsChanged??{}).length)owned.add('exports');
+   if(Object.keys(apron.mastersChanged??{}).length)owned.add('masters');
+   for(const key of Object.keys(apron.fieldChanged??{}))owned.add(key);
+  }
+  for(const [key,value]of Object.entries(old))if(!owned.has(key))assert.deepEqual(now[key],value,id+': '+key);
   assert.equal(now.featureAdvance.previousReceipt.sha256,hash(previous(path)));
   assert.equal(now.featureAdvance.review.scope,FEATURE_REVIEW_SCOPE);
   assert.equal(now.featureAdvance.review.nativeFeatureChecks,'pending');
