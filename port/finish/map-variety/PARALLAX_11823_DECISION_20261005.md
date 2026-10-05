@@ -5,6 +5,13 @@ Source-only. Branch `spacebunny/parallax-11823-20261005` from
 `/home/mojo/.tmp-on-disk/cocs-walker-snap-compare-af`. The main checkout at
 `/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930` was not touched.
 
+**Owner decision (2026-10-05): accepted with qualification.** The owner
+reviewed the recommendation and signed the bounded acceptance in §6 ("What the
+acceptance must state, verbatim"). AC `0903dc4f…` stays unchanged, the R1
+revert remains fully specified but unbuilt, and no grant, revision, Blender
+build, render or native re-proof is queued. This is a decision, not a deferral:
+the measured defect and its quantification are on the record.
+
 Deliverables:
 
 - `tools/godot-multiplayer/new-maps/parallax-11823-revert/revert_proposal.py`
