@@ -25,13 +25,17 @@ const STORMGLASS_PALETTE = {asphalt: '849095', concrete: 'c4cbcb', salt: 'e2e7e2
 
 // Family response floors shared by every entry, matching the three accepted
 // profiles: no accent gain, no phase pulse, private macro/wear/variation only.
-const base = (family, variant, tint, response, seed) => ({
+// The last argument overrides the private variation defaults, which is how the
+// seven accepted Foundry materials keep their authored manufactured/organic split
+// while the three maps this lane authored keep the shared floor.
+const base = (family, variant, tint, response, seed, variation = {}) => ({
   variant, tint,
   lut_gain: 0, pulse_speed: 0, pulse_depth: 0,
   detail_strength: 0.06, ao_strength: 0.14,
   roughness_variation: 0.1,
   ...response,
   variation_mode: 'organic', variation_strength: 0.3, variation_scale: 0.07, variation_seed: seed,
+  ...variation,
 });
 
 const material = (source, family, options) => ({source, family, options});
@@ -106,12 +110,16 @@ function vesperPanels() {
   const panels = [];
   let seed = 610400;
   // Parcel-bay label plates on the four non-ticket halls (both elevations).
+  // Orientation fix (R7 follow-up): each plate sits 0.18 m off the elevation it
+  // dresses, so it must face away from that wall. side -1 is the -Z elevation
+  // (faces -Z, yaw 180) and side +1 the +Z elevation (faces +Z, yaw 0). The first
+  // pass emitted the inverted pair, which cull_back made invisible.
   for (const hall of VESPER_PARCEL) {
     for (const side of [-1, 1]) {
       panels.push(panel({
         id: `parcel-plate-${hall.id}-${side < 0 ? 'n' : 's'}`,
         position: [hall.x, hall.y + 0.7, hall.z + side * (hall.d / 2 + 0.18)],
-        rotation_degrees: [0, side < 0 ? 0 : 180, 0],
+        rotation_degrees: [0, side < 0 ? 180 : 0, 0],
         size: [3, 0.3], texture: 'brushed_metal', normal: 'baked:metal', tint: '8d8a80',
       }));
     }
@@ -596,6 +604,16 @@ const STORMGLASS_GATES = [
   {id: 'gate-14', x: -200, z: 55},
   {id: 'gate-18', x: -77.5, z: -42.5},
 ];
+// Each gate's raised storm leaf, in STORMGLASS_GATES order. A raised leaf lies
+// across the road, so the two elevations a driver actually reads are the pair of
+// leaf faces perpendicular to the direction of travel, and the axis differs per
+// gate: gate-1's road runs mostly along X, gate-14's and gate-18's mostly along Z.
+// Numbers are the span of the terrain's "gate-N-raised-leaf-*" walls; `axis` is
+// the normal of the two readable faces, `low`/`high` their plane coordinates.
+const STORMGLASS_LEAF_FACES = [
+  {axis: 'x', low: -14.423, high: -5.577}, {axis: 'z', low: 50.391, high: 59.609},
+  {axis: 'z', low: -50.486, high: -34.514},
+];
 // Observatory terminals: district id, x, z, height, south face z.
 const STORMGLASS_TERMINALS = [
   ['district-0-1', -90, -105, 22], ['district-0-2', -63, -105, 16], ['district-1-0', -41, -103, 16],
@@ -701,16 +719,29 @@ const STORMGLASS_GANTRY_TOPS = [
 function stormglassPanels() {
   const panels = [];
   let seed = 610600;
-  // Gate status boards on the raised storm leaves (teal, y 9..15).
-  for (const gate of STORMGLASS_GATES) {
-    for (const side of [-1, 1]) {
+  // Gate status boards on the raised storm leaves.
+  // Orientation fix (R7 follow-up): the first pass offset the boards by
+  // gate.z +- 0.6 and yawed them 0/180, which put them inside the raised leaf's
+  // own volume facing each other, so cull_back hid them from every approach. A
+  // raised leaf lies across the road, so the two elevations a driver reads are
+  // the leaf faces perpendicular to travel, and that axis is per gate (see
+  // STORMGLASS_LEAF_FACES). Each board goes 0.18 m off its face, facing away
+  // from it: yaw 0 is +Z, so -Z is 180, -X is -90 and +X is 90.
+  STORMGLASS_GATES.forEach((gate, i) => {
+    const leaf = STORMGLASS_LEAF_FACES[i];
+    // The face normal and the yaw that turns a plate to look down the road.
+    const outward = plane => (plane === leaf.low ? -1 : 1);
+    for (const end of ['low', 'high']) {
+      const dir = outward(leaf[end]);
+      const yaw = leaf.axis === 'x' ? (dir < 0 ? -90 : 90) : (dir < 0 ? 180 : 0);
       panels.push(panel({
-        id: `gate-readout-${gate.id}-${side < 0 ? 'n' : 's'}`,
-        position: [gate.x, 12, gate.z + side * 0.6], rotation_degrees: [0, side < 0 ? 0 : 180, 0],
-        size: [2.4, 1.6], texture: 'circuit_board-etch', tint: '7fa3a8',
+        id: `gate-readout-${gate.id}-${end}`,
+        position: leaf.axis === 'x' ? [leaf[end] + dir * 0.18, 12, gate.z] : [gate.x, 12, leaf[end] + dir * 0.18],
+        rotation_degrees: [0, yaw, 0], size: [2.4, 1.6],
+        texture: 'circuit_board-etch', tint: '7fa3a8',
       }));
     }
-  }
+  });
   // Counterweight warning plates (amber, y 12.5..21.5) on each gate buttress pair.
   for (const gate of STORMGLASS_GATES) {
     for (const side of [-1, 1]) {
@@ -883,10 +914,334 @@ const stormglass = {
   budgets: {material_variants: 7, panels: 96, signs: 24, motes: 96},
 };
 
+// ----------------------------------------------------------- gravemill ------
+// --- Foundry anchors, all read off the promoted R7 GLB ------------------------
+// The tap catwalk (G4 / grating) is one continuous deck, y+ 7.07..7.33, spanning
+// x -100..101 and z -110..-8: a single plate per crossing would repeat the same
+// surface, so the crossings below are where the five bunker rows and the three
+// gates actually meet the catwalk, x from the G5.bunker.* and gate bboxes.
+const GRAVEMILL_CATWALK = [
+  [-94, -107.16], [-50, -101], [22, -90.92], [96, -80.56], [134, -75.24],
+  [-10, -122.5], [-200, 55], [-77.5, -42.5],
+];
+// Grain decks (G4 / timber, y 8.8..9.2, x 46.2..88, z -30..-26) on the kiln side.
+const GRAVEMILL_GRAIN_DECKS = [[52, 9.2], [64, 9.2], [76, 9.2], [88, 9.2], [46.2, 9.2]];
+// Kiln refractory fronts (R6 / refractory, z -29.45, x 45..57, y 0..11): three
+// real kiln faces, one per buttress, plus the arch crown at y+ 5.
+const GRAVEMILL_KILN_FRONTS = [44, 80, 104];
+const GRAVEMILL_KILN_ARCH = [[50.5, 5.02, -29.98], [56.79, 5.02, -29.98]];
+// Cooling nave plinth (R6 / plinth, y+ 12, x -90.3..-39.4, z 12.8..40.7) and the
+// four pier caps that stand on it (y+ 20, x -92.8/-75.5/-58.1/-40.8 and +33..+41 z).
+const GRAVEMILL_NAVE_PIER_CAPS = [
+  [-92, 20, 13], [-74.7, 20, 15.4], [-57.3, 20, 17.9], [-40, 20, 20.4],
+  [-92, 20, 33], [-74.7, 20, 35.4], [-57.3, 20, 37.9], [-40, 20, 40.4],
+];
+// Ore-bin surge shells (R6 / ore-shell): the five bunker rows, drum centre and
+// the height the shell tops out at.
+const GRAVEMILL_ORE_SHELLS = [[-50, 6.05], [22, 8.6], [96, 8.6], [134, 6.05], [-100, 8.6]];
+// Crusher / furnace machine faces (R6 / machine): the four crusher drum flanks at
+// x -88.9..-87.6 (west headframe) and the assay platform edge at x 60.5.
+const GRAVEMILL_MACHINE_FACES = [[-88.9, 21.8, -72.5], [-87.6, 24.1, -72.5], [60.5, 9.4, -6.7]];
+// Headframe crossrails (G4 / ribbed): the four z faces at -36.98 and -34.98 carry
+// the maintenance-walk markings along x.
+const GRAVEMILL_CROSSRAIL_MARKS = [[-72, -36.8, 25], [-48, -36.8, 25], [22, -36.8, 25], [64, -34.8, 25]];
+// Ground decks (R6 / ground, y+ 8 and y+ 5.33): the two wide terraces that carry
+// the approach to the crusher and the transfer cut.
+const GRAVEMILL_GROUND_DECKS = [[-110, 8.1, -60], [-40, 8.1, -60], [30, 8.1, -60], [-140, 5.4, -100], [-40, 5.4, -100]];
+
+// The 37 / 20 / 3 placements author.py already accepted, carried over row for
+// row so this pass is additive: every number below is the one the shipped profile
+// has emitted since the first dressing pass. Row shape:
+//   panel  [id, position, rotation, size, texture, tint, essential, ?wear_mask, ?opacity, ?feather, ?seed]
+//   sign   [id, position, rotation, size, text, foreground, background, essential]
+//   pocket [id, kind, position, size, color, count]
+const GRAVEMILL_PANEL_ROWS = [
+  ['crusher--72-abrasion--5', [-76.993761, 4.4, -25.824565], [0, 172.03038960567864, 0], [3.5, 2.6], 'metal', '9b9588', false],
+  ['crusher--72-abrasion-0', [-71.993761, 4.4, -25.124565], [0, 172.03038960567864, 0], [3.5, 2.6], 'metal', '9b9588', false],
+  ['crusher--72-abrasion-5', [-66.993761, 4.4, -24.424565], [0, 172.03038960567864, 0], [3.5, 2.6], 'metal', '9b9588', false],
+  ['crusher--72-grease', [-72.006239, 3.6, -9.035435], [0, -7.96961039432136, 0], [8, 0.8], 'weathered_concrete-worn', '686158', false, 'weathered_concrete', 0.154, 0.4, 610027],
+  ['crusher--72-hazard', [-71.993761, 5.4, -25.124565], [0, 172.03038960567864, 0], [7, 0.45], 'hazard_stripes', 'c6ae72', false],
+  ['crusher--48-abrasion--5', [-52.993761, 6.08, -15.464565], [0, 172.03038960567864, 0], [3.5, 2.6], 'metal', '9b9588', false],
+  ['crusher--48-abrasion-0', [-47.993761, 6.08, -14.764565], [0, 172.03038960567864, 0], [3.5, 2.6], 'metal', '9b9588', false],
+  ['crusher--48-abrasion-5', [-42.993761, 6.08, -14.064565], [0, 172.03038960567864, 0], [3.5, 2.6], 'metal', '9b9588', false],
+  ['crusher--48-grease', [-48.006239, 5.28, 1.324565], [0, -7.96961039432136, 0], [8, 0.8], 'weathered_concrete-worn', '686158', false, 'weathered_concrete', 0.154, 0.4, 610032],
+  ['crusher--48-hazard', [-47.993761, 7.08, -14.764565], [0, 172.03038960567864, 0], [7, 0.45], 'hazard_stripes', 'c6ae72', false],
+  ['crusher-back-soot--94', [-93.993761, 3.0, 9.795435], [0, 172.03038960567864, 0], [5, 4], 'weathered_concrete-worn', '8b8173', false, 'weathered_concrete', 0.132, 0.4, 610034],
+  ['crusher-back-soot--81', [-80.993761, 3.0, 11.615435], [0, 172.03038960567864, 0], [5, 4], 'weathered_concrete-worn', '8b8173', false, 'weathered_concrete', 0.132, 0.4, 610035],
+  ['crusher-back-soot--61', [-60.993761, 3.0, 14.415435], [0, 172.03038960567864, 0], [5, 4], 'weathered_concrete-worn', '8b8173', false, 'weathered_concrete', 0.132, 0.4, 610036],
+  ['crusher-back-soot--44', [-43.993761, 3.0, 16.795435], [0, 172.03038960567864, 0], [5, 4], 'weathered_concrete-worn', '8b8173', false, 'weathered_concrete', 0.132, 0.4, 610037],
+  ['cooling--84--1-waterline', [-83.993761, 12.8, 17.595435], [0, 172.03038960567864, 0], [5.2, 1.2], 'weathered_concrete-worn', 'aba798', false, 'weathered_concrete', 0.121, 0.4, 610038],
+  ['cooling--84--1-vent-grate', [-83.993761, 14.6, 17.595435], [0, 172.03038960567864, 0], [3, 1.3], 'metal_grating', '9b9c95', false],
+  ['cooling--84-1-waterline', [-84.006239, 12.8, 30.884565], [0, -7.96961039432136, 0], [5.2, 1.2], 'weathered_concrete-worn', 'aba798', false, 'weathered_concrete', 0.121, 0.4, 610040],
+  ['cooling--84-1-vent-grate', [-84.006239, 14.6, 30.884565], [0, -7.96961039432136, 0], [3, 1.3], 'metal_grating', '9b9c95', false],
+  ['cooling--48--1-waterline', [-47.993761, 12.8, 22.635435], [0, 172.03038960567864, 0], [5.2, 1.2], 'weathered_concrete-worn', 'aba798', false, 'weathered_concrete', 0.121, 0.4, 610042],
+  ['cooling--48--1-vent-grate', [-47.993761, 14.6, 22.635435], [0, 172.03038960567864, 0], [3, 1.3], 'metal_grating', '9b9c95', false],
+  ['cooling--48-1-waterline', [-48.006239, 12.8, 35.924565], [0, -7.96961039432136, 0], [5.2, 1.2], 'weathered_concrete-worn', 'aba798', false, 'weathered_concrete', 0.121, 0.4, 610044],
+  ['cooling--48-1-vent-grate', [-48.006239, 14.6, 35.924565], [0, -7.96961039432136, 0], [3, 1.3], 'metal_grating', '9b9c95', false],
+  ['assay-0-32-enamel', [48.493761, 19.0, 38.834565], [0, -7.96961039432136, 0], [12, 2], 'weathered_concrete', 'c5bdab', false],
+  ['assay-0-40-enamel', [48.506239, 19.0, 46.745435], [0, 172.03038960567864, 0], [12, 2], 'weathered_concrete', 'c5bdab', false],
+  ['assay-1-32-enamel', [66.993761, 19.0, 41.424565], [0, -7.96961039432136, 0], [15, 2], 'weathered_concrete', 'c5bdab', false],
+  ['assay-1-40-enamel', [67.006239, 19.0, 49.335435], [0, 172.03038960567864, 0], [15, 2], 'weathered_concrete', 'c5bdab', false],
+  ['assay-2-32-enamel', [84.493761, 19.0, 43.874565], [0, -7.96961039432136, 0], [10, 2], 'weathered_concrete', 'c5bdab', false],
+  ['assay-2-40-enamel', [84.506239, 19.0, 51.785435], [0, 172.03038960567864, 0], [10, 2], 'weathered_concrete', 'c5bdab', false],
+  ['kiln-44-heat', [44.006239, 6.0, -15.384565], [0, 172.03038960567864, 0], [2.5, 9], 'weathered_concrete-worn', '998473', false, 'weathered_concrete', 0.143, 0.4, 610052],
+  ['kiln-44-hazard', [44.006239, 1.5, -15.384565], [0, 172.03038960567864, 0], [2.5, 0.65], 'hazard_stripes', 'd4b578', false],
+  ['kiln-80-heat', [80.006239, 6.0, -10.344565], [0, 172.03038960567864, 0], [2.5, 9], 'weathered_concrete-worn', '998473', false, 'weathered_concrete', 0.143, 0.4, 610054],
+  ['kiln-80-hazard', [80.006239, 1.5, -10.344565], [0, 172.03038960567864, 0], [2.5, 0.65], 'hazard_stripes', 'd4b578', false],
+  ['kiln-104-heat', [104.006239, 6.0, -6.984565], [0, 172.03038960567864, 0], [2.5, 9], 'weathered_concrete-worn', '998473', false, 'weathered_concrete', 0.143, 0.4, 610056],
+  ['kiln-104-hazard', [104.006239, 1.5, -6.984565], [0, 172.03038960567864, 0], [2.5, 0.65], 'hazard_stripes', 'd4b578', false],
+  ['kiln-rear-52-soot', [52.006239, 4.0, 29.235435], [0, 172.03038960567864, 0], [9, 6], 'weathered_concrete-worn', '8b8277', false, 'weathered_concrete', 0.132, 0.4, 610058],
+  ['kiln-rear-72-soot', [72.006239, 4.0, 32.035435], [0, 172.03038960567864, 0], [9, 6], 'weathered_concrete-worn', '8b8277', false, 'weathered_concrete', 0.132, 0.4, 610059],
+  ['kiln-rear-94-soot', [94.006239, 4.0, 35.115435], [0, 172.03038960567864, 0], [9, 6], 'weathered_concrete-worn', '8b8277', false, 'weathered_concrete', 0.132, 0.4, 610060],
+];
+
+const GRAVEMILL_SIGN_ROWS = [
+  ['crusher--72-isolate', [-71.990988, 6.4, -25.144372], [0, 172.03038960567864, 0], [6, 0.9], 'ISOLATE / PINCH', 'e8e3cf', '554532', true],
+  ['crusher--48-isolate', [-47.990988, 8.08, -14.784372], [0, 172.03038960567864, 0], [6, 0.9], 'ISOLATE / PINCH', 'e8e3cf', '554532', true],
+  ['crusher-sector', [-93.990988, 7.0, -65.224372], [0, 172.03038960567864, 0], [9, 1.3], 'CRUSHER / C1', 'e8e3cf', '253239', true],
+  ['cooling--84--1-circuit', [-83.990988, 15.65, 17.575628], [0, 172.03038960567864, 0], [4.8, 0.5], 'C2 / RETURN', 'e8e3cf', '253239', true],
+  ['cooling--84-1-circuit', [-84.009012, 15.65, 30.904372], [0, -7.96961039432136, 0], [4.8, 0.5], 'C2 / RETURN', 'e8e3cf', '253239', true],
+  ['cooling--48--1-circuit', [-47.990988, 15.65, 22.615628], [0, 172.03038960567864, 0], [4.8, 0.5], 'C2 / RETURN', 'e8e3cf', '253239', true],
+  ['cooling--48-1-circuit', [-48.009012, 15.65, 35.944372], [0, -7.96961039432136, 0], [4.8, 0.5], 'C2 / RETURN', 'e8e3cf', '253239', true],
+  ['cooling-sector', [-72.990988, 18.4, 15.715628], [0, 172.03038960567864, 0], [5, 1.0], 'COOLING / C2', 'e8e3cf', '253239', true],
+  ['assay-0-32-station', [48.490988, 19.0, 38.854372], [0, -7.96961039432136, 0], [7.5, 0.85], 'A3 / SAMPLE 01', 'e8e3cf', '365358', true],
+  ['assay-0-40-station', [48.509012, 19.0, 46.725628], [0, 172.03038960567864, 0], [7.5, 0.85], 'A3 / SAMPLE 01', 'e8e3cf', '365358', true],
+  ['assay-1-32-station', [66.990988, 19.0, 41.444372], [0, -7.96961039432136, 0], [7.5, 0.85], 'A3 / SAMPLE 02', 'e8e3cf', '365358', true],
+  ['assay-1-40-station', [67.009012, 19.0, 49.315628], [0, 172.03038960567864, 0], [7.5, 0.85], 'A3 / SAMPLE 02', 'e8e3cf', '365358', true],
+  ['assay-2-32-station', [84.490988, 19.0, 43.894372], [0, -7.96961039432136, 0], [7.5, 0.85], 'A3 / SAMPLE 03', 'e8e3cf', '365358', true],
+  ['assay-2-40-station', [84.509012, 19.0, 51.765628], [0, 172.03038960567864, 0], [7.5, 0.85], 'A3 / SAMPLE 03', 'e8e3cf', '365358', true],
+  ['assay-sector', [73.009012, 18.5, 36.155628], [0, 172.03038960567864, 0], [5, 1.0], 'ASSAY / A3', 'e8e3cf', '253239', true],
+  ['kiln-sector', [74.009012, 11.0, 32.295628], [0, 172.03038960567864, 0], [10, 1.3], 'FURNACE / F4', 'e8e3cf', '253239', true],
+  ['kiln-danger', [56.009012, 6.9, 29.775628], [0, 172.03038960567864, 0], [11, 1.0], 'HOT STOCK / KEEP CLEAR', 'e8e3cf', '554532', true],
+  ['transfer-sector', [0.021339, 6.0, -77.872718], [0, 160.835249245064, 0], [12, 1.0], 'TRANSFER / T0', 'e8e3cf', '253239', true],
+  ['service--132', [-131.990988, 2.0, -116.544372], [0, 172.03038960567864, 0], [7.5, 0.8], 'SERVICE / LOOP', 'e8e3cf', '253239', true],
+  ['service-134', [134.009012, 2.0, -79.304372], [0, 172.03038960567864, 0], [7.5, 0.8], 'SERVICE / LOOP', 'e8e3cf', '253239', true],
+];
+
+const GRAVEMILL_POCKET_ROWS = [
+  ['crusher-ore-dust', 'dust', [-72, 25.3, -17.08], [3, 1, 2], 'b1a58e', 12],
+  ['kiln-hot-ash', 'ash', [64, 33, 0.96], [4, 2, 4], 'bdb1a2', 12],
+  ['cooling-return-vent', 'vent', [-84, 18, 18.74], [3, 2, 2], 'bdcfcb', 8],
+];
+
+function gravemillPanels() {
+  const panels = [];
+  let seed = 610300;
+  // The 37 accepted first-pass panels, byte-identical.
+  for (const [id, position, rotation, size, texture, tint, essential, wear, opacity, feather, panelSeed] of GRAVEMILL_PANEL_ROWS) {
+    panels.push(panel({
+      id, position, rotation_degrees: rotation, size, texture, tint, essential,
+      ...(wear ? {wear_mask: wear, opacity, feather, seed: panelSeed} : {}),
+    }));
+  }
+  // --- R7 pass: the ten promoted roles finally get dressed, not just covered ---
+  // Tap catwalk walking plates (G4 / grating, flat on the deck).
+  for (const [x, z] of GRAVEMILL_CATWALK) {
+    panels.push(panel({
+      id: `tap-catwalk-plate-${x}-${z}`, position: [x, 7.35, z], rotation_degrees: FACE_UP,
+      size: [4, 3], texture: 'metal_grating', normal: 'baked:metal_grating', tint: '8d9298',
+    }));
+  }
+  // Grain deck boards (G4 / timber, flat on the 9.2 m deck).
+  for (const [x, y] of GRAVEMILL_GRAIN_DECKS) {
+    panels.push(panel({
+      id: `grain-deck-board-${x}`, position: [x, y + 0.02, -28], rotation_degrees: FACE_UP,
+      size: [6, 3.4], texture: 'rough_stucco-weathered', tint: '7a6042',
+      wear_mask: 'rough_stucco', opacity: 0.18, feather: 0.4, seed: seed++,
+    }));
+  }
+  // Kiln refractory fronts: a heat-shadow band and a hazard band on each of the
+  // three kiln faces, plus the arch crown.
+  for (const x of GRAVEMILL_KILN_FRONTS) {
+    panels.push(panel({
+      id: `kiln-refractory-heat-${x}`, position: [x, 6, -29.63], rotation_degrees: [0, 0, 0],
+      size: [2.5, 9], texture: 'weathered_concrete-worn', tint: '998473',
+      wear_mask: 'weathered_concrete', opacity: 0.16, feather: 0.4, seed: seed++,
+    }));
+    panels.push(panel({
+      id: `kiln-refractory-hazard-${x}`, position: [x, 1.5, -29.63], rotation_degrees: [0, 0, 0],
+      size: [2.5, 0.65], texture: 'hazard_stripes', tint: 'd4b578',
+    }));
+  }
+  for (const [x, y, z] of GRAVEMILL_KILN_ARCH) {
+    panels.push(panel({
+      id: `kiln-arch-crown-${x}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [4, 1], texture: 'weathered_concrete-worn', tint: '8f7f6c',
+      wear_mask: 'weathered_concrete', opacity: 0.14, feather: 0.4, seed: seed++,
+    }));
+  }
+  // Cooling nave pier caps: soot on all eight caps the nave roof stands on.
+  for (const [x, y, z] of GRAVEMILL_NAVE_PIER_CAPS) {
+    panels.push(panel({
+      id: `nave-pier-soot-${x}-${z}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [1.4, 1.5], texture: 'weathered_concrete-worn', tint: '8b8173',
+      wear_mask: 'weathered_concrete', opacity: 0.16, feather: 0.4, seed: seed++,
+    }));
+  }
+  // Ore-bin shell collars: verdigris plates around each surge shell mouth.
+  for (const [x, y] of GRAVEMILL_ORE_SHELLS) {
+    panels.push(panel({
+      id: `ore-shell-collar-${x}`, position: [x, y + 0.05, -90.92], rotation_degrees: FACE_UP,
+      size: [5, 5], texture: 'metal-oxide', tint: '7f8a7c',
+    }));
+  }
+  // Machine faces: brushed access plates on the crusher drum flanks and the assay
+  // platform edge, offset off the face along the direction each one faces.
+  for (const [x, y, z] of GRAVEMILL_MACHINE_FACES) {
+    panels.push(panel({
+      id: `machine-access-${x}`, position: [x, y, z], rotation_degrees: [0, x < 0 ? -90 : 90, 0],
+      size: [3.5, 2.4], texture: 'brushed_metal', normal: 'baked:metal', tint: '9b9588',
+    }));
+  }
+  // Headframe crossrail marks: hazard bands on the four maintenance-walk faces.
+  for (const [x, z, y] of GRAVEMILL_CROSSRAIL_MARKS) {
+    panels.push(panel({
+      id: `crossrail-mark-${x}-${z}`, position: [x, y, z], rotation_degrees: [0, 0, 0],
+      size: [8, 0.45], texture: 'hazard_stripes', tint: 'c6ae72',
+    }));
+  }
+  // Ground decks: grit scars where the approach runs onto each terrace.
+  for (const [x, y, z] of GRAVEMILL_GROUND_DECKS) {
+    panels.push(panel({
+      id: `ground-scuff-${x}-${z}`, position: [x, y, z], rotation_degrees: FACE_UP,
+      size: [9, 6], texture: 'weathered_concrete-worn', tint: '86827a',
+      wear_mask: 'weathered_concrete', opacity: 0.15, feather: 0.4, seed: seed++,
+    }));
+  }
+  return panels;
+}
+
+function gravemillSigns() {
+  const signs = [];
+  const fg = 'e8e3cf', bg = '253239';
+  // The 20 accepted first-pass signs, byte-identical.
+  for (const [id, position, rotation, size, text, foreground, background, essential] of GRAVEMILL_SIGN_ROWS) {
+    signs.push(sign(id, position, rotation, size, text, foreground, background, essential));
+  }
+  // --- R7 pass: four wayfinding boards, the exact room the sign cap leaves ----
+  // 20 accepted + 4 = the profile.gd hard cap of 24, so these four are chosen to
+  // name the newly dressed roles rather than repeat a district already labelled:
+  // the tap catwalk at its north and south ends, and the two hottest kiln faces.
+  // Ids are prefixed by role so they cannot collide with the panel families.
+  signs.push(sign('tap-caution-north', [-94, 8.6, -108.86], [0, 0, 0], [5.4, 0.8],
+    'TAP WALKWAY\nMIND THE GRATE', fg, bg, true));
+  signs.push(sign('tap-caution-south', [134, 8.6, -76.94], [0, 0, 0], [5.4, 0.8],
+    'TAP WALKWAY\nMIND THE GRATE', fg, bg, true));
+  for (const x of GRAVEMILL_KILN_FRONTS.slice(0, 2)) {
+    signs.push(sign(`kiln-heat-board-${x}`, [x, 9.6, -29.75], [0, 0, 0], [2.5, 0.8],
+      'HOT / KEEP OFF', fg, '554532', true));
+  }
+  return signs;
+}
+
+function gravemillPockets() {
+  const pockets = [
+    // The 3 accepted first-pass pockets, byte-identical.
+    ...GRAVEMILL_POCKET_ROWS.map(([id, kind, position, size, color, count]) =>
+      pocket(id, kind, position, size, color, count)),
+    // R7 pass: mote volumes over the newly dressed decks and faces, all above
+    // machinery so they stay outside eye-height projectile lines as the first
+    // three were.
+    pocket('catwalk-dust-north', 'dust', [-94, 9.4, -107.16], [6, 2, 6], 'b1a58e', 8),
+    pocket('catwalk-dust-south', 'dust', [134, 9.4, -75.24], [6, 2, 6], 'b1a58e', 8),
+    pocket('ore-shell-dust-22', 'dust', [22, 10.6, -90.92], [6, 2, 6], 'b6ab97', 7),
+    pocket('ore-shell-dust-134', 'dust', [134, 8.1, -75.24], [6, 2, 6], 'b6ab97', 7),
+    pocket('nave-plinth-vent', 'vent', [-65, 14.4, 26], [8, 2.6, 8], 'bdcfcb', 8),
+    pocket('kiln-arch-vent', 'vent', [50.5, 6.6, -29.98], [5, 2, 4], 'bdb1a2', 7),
+  ];
+  return pockets;
+}
+// Foundry R7 promoted ten finish-role materials that the pre-R7 profile had
+// never seen, so the binder reported incomplete_coverage with ten unmatched
+// selectors. Every entry below is read out of the promoted GLB: the selector
+// names come from its glTF materials array, and the R6/G4 role bindings
+// (resource, metallic, tile density) come from revision6/bindings.json and
+// revision5/material-lineage.json.
+const GRAVEMILL_R7_PALETTE = {
+  machine: '6e737a', roof: '7b8288', wall: '8b857a', plinth: '6f6a62',
+  refractory: '8d5238', oreShell: '6f6350', ground: '7a766c',
+  ribbed: '767c82', grating: '71787d', timber: '8a6b48',
+};
+// The seven GM / roles author.py already accepted, re-emitted unchanged so the
+// existing 37 panels, 20 signs and 3 pockets keep their exact numbers.
+const GRAVEMILL_LEGACY_MATERIALS = [
+  ['GM / soot', 'pearl-ceramic', 'cast', '777872', 1.35, 0.79, 1.25, 0.24, 'organic', 0.3, 610240],
+  ['GM / mineral', 'pearl-ceramic', 'worn', 'b5ab97', 1.15, 0.91, 1.35, 0.35, 'organic', 0.3, 610241],
+  ['GM / copper', 'oxidised-copper', 'default', '8b9682', 1.2, 0.67, 1.35, 0.22, 'organic', 0.3, 610242],
+  ['GM / brass', 'brushed-alloy', 'default', 'a78a58', 1.4, 0.55, 1.3, 0.18, 'manufactured', 0.12, 610243],
+  ['GM / ore', 'pearl-ceramic', 'worn', 'a7856c', 1.25, 0.89, 1.35, 0.32, 'organic', 0.3, 610244],
+  ['GM / chalk', 'pearl-ceramic', 'cast', 'c4bcaa', 1.4, 0.82, 1.2, 0.22, 'organic', 0.3, 610246],
+  ['GM / cooling-floor', 'pearl-ceramic', 'cast', '93948b', 1.2, 0.78, 1.3, 0.3, 'organic', 0.3, 610247],
+];
+// The ten promoted R7 roles. Family/variant is chosen from each role's own
+// authored resource: forge-steel and ribbed-steel are machined/alloy stock
+// (brushed-alloy), aggregate and cast-seams are cast mineral (pearl-ceramic),
+// terracotta is fired brick (pearl-ceramic worn), oxidized-iron is ore
+// (oxidised-copper), iron-grate is grating (brushed-alloy grating), and
+// timber-weather is the one organic built surface (regolith verdant is the
+// only wood-adjacent read in the library, at low texture strength).
+const GRAVEMILL_R7_ROLES = [
+  ['R6 / machine', 'brushed-alloy', 'plate', GRAVEMILL_R7_PALETTE.machine, 1.1, 0.46, 1.9, 0.3, 0.42, 0.36],
+  ['R6 / roof', 'hazard-industrial', 'corrugated', GRAVEMILL_R7_PALETTE.roof, 1.0, 0.42, 1.4, 0.34, 0.3, 0.34],
+  ['R6 / wall', 'pearl-ceramic', 'cast', GRAVEMILL_R7_PALETTE.wall, 0.35, 0.85, 1.25, 0.26, 0.02, 0.22],
+  ['R6 / plinth', 'pearl-ceramic', 'cast', GRAVEMILL_R7_PALETTE.plinth, 0.35, 0.9, 1.2, 0.24, 0.02, 0.2],
+  ['R6 / refractory', 'pearl-ceramic', 'worn', GRAVEMILL_R7_PALETTE.refractory, 0.5, 0.88, 1.35, 0.32, 0.02, 0.22],
+  ['R6 / ore-shell', 'oxidised-copper', 'pitted', GRAVEMILL_R7_PALETTE.oreShell, 0.7, 0.7, 1.6, 0.3, 0.25, 0.3],
+  ['R6 / ground', 'regolith', 'scoured', GRAVEMILL_R7_PALETTE.ground, 0.3, 0.93, 1.6, 0.3, 0.0, 0.2],
+  ['G4 / ribbed', 'brushed-alloy', 'plate', GRAVEMILL_R7_PALETTE.ribbed, 1.0, 0.44, 1.8, 0.3, 0.38, 0.34],
+  ['G4 / grating', 'brushed-alloy', 'grating', GRAVEMILL_R7_PALETTE.grating, 1.0, 0.46, 1.7, 0.28, 0.4, 0.36],
+  ['G4 / timber', 'regolith', 'verdant', GRAVEMILL_R7_PALETTE.timber, 0.9, 0.9, 1.2, 0.18, 0.0, 0.2],
+];
+
+const gravemill = {
+  version: 1,
+  map_id: 'gravemill-foundry',
+  geometry_hash: '8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f',
+  materials: [
+    ...GRAVEMILL_LEGACY_MATERIALS.map(([source, family, variant, tint, density, roughness,
+      gain, strength, mode, variation, seed]) => material(source, family, base(family, variant, tint, {
+        tiles_per_metre: density, roughness, albedo_gain: gain, texture_strength: strength,
+        texture_saturation: source === 'GM / copper' ? 0.08 : 0,
+        normal_strength: source === 'GM / brass' ? 0.06 : 0.1,
+        metallic: source === 'GM / copper' ? 0.38 : (source === 'GM / brass' ? 0.46 : 0.02),
+        specular_strength: 0.22, detail_strength: 0.08, ao_strength: 0.16,
+        roughness_variation: 0.1, glow: false, lut_gain: 0, pulse_speed: 0, pulse_depth: 0,
+      }, seed, {variation_mode: mode, variation_strength: variation}))),
+    // The ten promoted R7 roles: response floors match the seven above (no
+    // accent gain, no phase pulse), so no R6/G4 surface invents an emission the
+    // authored art does not carry.
+    ...GRAVEMILL_R7_ROLES.map(([source, family, variant, tint, density, roughness, gain,
+      strength, metallic, specular], i) => material(source, family, base(family, variant, tint, {
+        tiles_per_metre: density, roughness, albedo_gain: gain, texture_strength: strength,
+        texture_saturation: 0, normal_strength: 0.1, metallic, specular_strength: specular,
+        detail_strength: 0.08, ao_strength: 0.16, roughness_variation: 0.1,
+        glow: false, lut_gain: 0, pulse_speed: 0, pulse_depth: 0,
+      }, 610280 + i,
+      // Manufactured roles (alloy stock, roof, grate) get the private variation
+      // off; the mineral and timber roles keep it on, matching the convention the
+      // other three maps already use. This has to go through base()'s last
+      // argument rather than the response object: response is spread *before* the
+      // private-variation defaults, so keys set there are silently overwritten.
+      (metallic > 0.1 || source === 'R6 / roof')
+        ? {variation_mode: 'manufactured', variation_strength: 0.12}
+        : {variation_mode: 'organic', variation_strength: 0.3}))),
+  ],
+  panels: gravemillPanels(),
+  signs: gravemillSigns(),
+  pockets: gravemillPockets(),
+  // GM / orange is the authored luminaire batch (emissiveFactor [1, .2375, .03125],
+  // emissiveStrength 1.6, 328 triangles in one primitive). A triplanar finish would
+  // disable culling and expose the mirrored backs of those lamp housings, so the
+  // imported material stays.
+  preserve_materials: ['GM / orange'],
+  budgets: {material_variants: 17, panels: 96, signs: 24, motes: 96},
+};
+
 const PROFILES = {
   'vesper-viaduct': vesper,
   'abyssal-pressureworks': abyssal,
   'stormglass-causeway': stormglass,
+  'gravemill-foundry': gravemill,
 };
 
 export function build(mapId) {

@@ -31,7 +31,12 @@ const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
 const PROFILE_DIR = resolve(process.env.DRESSING_PROFILE_DIR
   ?? resolve(ROOT, 'godot/multiplayer_worlds/dressing/profiles'));
 const ART_DIR = resolve(ROOT, 'godot/multiplayer_worlds/art');
-const NEW_MAPS = ['vesper-viaduct', 'abyssal-pressureworks', 'stormglass-causeway'];
+// gravemill-foundry joined this list when the reviewed R7 art was promoted into
+// the runtime world path (commit e7e330ae): its ten finish-role materials made
+// the profile the byte-drift check exists to protect. The other two shipped maps
+// were emitted by Python, whose float formatting differs, so the byte check stays
+// scoped to the maps author.mjs emits.
+const NEW_MAPS = ['vesper-viaduct', 'abyssal-pressureworks', 'stormglass-causeway', 'gravemill-foundry'];
 
 // Placement containment: profile.gd only bounds a position to +-512 m, which is
 // far wider than any map, so a plate authored at the wrong coordinate would pass
