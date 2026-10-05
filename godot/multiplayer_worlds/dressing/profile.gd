@@ -6,7 +6,7 @@ const IDENTITIES := {
 	"helix-conservatory": "f068d1abe262907659f1f02205e2bf56b7c5dbe298191f66d008b420965fa9b2",
 	"gravemill-foundry": "8ebb148f209aca14c54246517f7332a18e5fbb5c68f7b607d980f5664fcde25f",
 	"parallax-observatory": "906be2ae3df33f54f779df3963a5985376ac96bb75bda94578ca4d3deb6d4554",
-	"vesper-viaduct": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+	"vesper-viaduct": "db20ce1fec59678ac3b7086be40b1dbac25fdaf9b576d284a1db448dcd9ebd22",
 	"abyssal-pressureworks": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
 	"stormglass-causeway": "6afb8a36ee954ff9457a5522a7412c809191fb070eb7fe9eda4d379753acce48",
 }

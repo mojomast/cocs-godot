@@ -11,13 +11,19 @@ test('H exact 16 PNGs and 17 import sidecars retain promotion; omitted Stormglas
  const paths=vesperImportPaths();assert.equal(paths.length,33);assert.equal(paths.filter(p=>p.endsWith('.png')).length,16);
  verifyVesperImports(read);
  const result=productionResources(options);assert.deepEqual(result.pending,['stormglass-causeway']);
- assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,675);
+ assert.equal(result.units['vesper-viaduct'].expected.packageInputs.length,676);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({...options,strict:true}),/Required final production units remain pending/);
 });
 test('H inventory is exactly received committed bytes; no generated replacement evidence',()=>{
  const inventory=JSON.parse(read(VESPER_INVENTORY));
- for(const row of inventory.files){const bytes=execFileSync('git',['show',`99a4f597:${row.path}`],{maxBuffer:8000000});assert.equal(hash(bytes),row.sha256);assert.equal(bytes.length,row.bytes);}
+ const apron=JSON.parse(read('tools/godot-package/production_receipts/vesper-viaduct.json')).vesperApronAdvance;
+ for(const row of inventory.files){
+  // The apron revision re-derives the runtime GLB; its artifact advance owns the
+  // before/after, so that one row is exempt from the received-bytes identity.
+  if(apron.exportsChanged?.[row.path])continue;
+  const bytes=execFileSync('git',['show',`99a4f597:${row.path}`],{maxBuffer:8000000});assert.equal(hash(bytes),row.sha256);assert.equal(bytes.length,row.bytes);
+ }
 });
 test('missing image, scene sidecar, texture sidecar blocks promotion',()=>{
  for(const path of [VESPER_GLB+'.import',...vesperImportPaths().filter(p=>p.includes('MothLocal_iron'))]) {

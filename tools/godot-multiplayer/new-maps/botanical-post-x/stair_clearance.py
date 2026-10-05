@@ -79,6 +79,16 @@ NAV490_EXPECTED_NAIVE_RAMP_Y = 13.772727272727272
 # Tread-faithful continuous ramp: endpoints of the authored run, 12.15 -> 24.
 TREAD_FAITHFUL_RAMP = {"z0": 25.0, "y0": 12.15, "z1": 65.0, "y1": 24.0}
 
+# The reviewed leg, as applied to the recipes on 2026-10-05 (recipe.mjs
+# STAIR_BEVEL). Read back from the rebuilt authority rather than trusted: the
+# geometry, not this constant, is what the audit measures.
+APPLIED_BEVEL = 0.043438367470067386
+# The reviewed support-visible apron (recipe.mjs APRON_SLOPE). APRON_SLOPE is
+# atan(0.84) = 40.0302 deg, deliberately inside terrain.maxSlope; APRON_RUN is
+# the civic 0.15 m rise divided by it. Read back from the geometry, same as above.
+APRON_SLOPE = 0.84
+APRON_RUN = 0.15 / APRON_SLOPE
+
 
 def bits(value: float) -> str:
     """Bit-exact identity token for a float, for 'bit-identical' assertions."""
@@ -99,7 +109,14 @@ def require(condition: bool, message: str) -> None:
 # --------------------------------------------------------------------------- #
 @dataclass(frozen=True)
 class Tread:
-    """One walkable stair tread, with exact floats taken from authority."""
+    """One walkable stair tread, with exact floats taken from authority.
+
+    ``apron_run``/``apron_slope`` describe the additive support-visible apron that
+    carries the ascent face, when the authority has one. The apron is modelled as
+    extra walkable support rather than ignored, because it *raises* ``floorAt`` in
+    the band in front of the riser and an audit that could not see it would report
+    a clean result that does not exist.
+    """
 
     id: str
     run: str
@@ -110,11 +127,26 @@ class Tread:
     y: float
     rise: float  # height of the riser crossed when ascending onto this tread
     has_ascent_riser: bool
+    apron_run: float = 0.0
+    apron_slope: float = 0.0
 
     @property
     def ascent_z(self) -> float:
         """-Z face: the convex corner a climbing capsule collides with."""
         return self.z0
+
+    @property
+    def apron_start_z(self) -> float:
+        """Where the apron's lower edge meets the lower tread's top plane."""
+        return self.z0 - self.apron_run
+
+    def apron_y(self, z: float) -> float:
+        """Support height the apron offers at ``z``, or ``None`` outside its span."""
+        if not self.apron_run:
+            return None
+        if z < self.apron_start_z - 1e-12 or z > self.z0 + 1e-12:
+            return None
+        return self.y - self.rise + (z - self.apron_start_z) * self.apron_slope
 
     def walkable_span(self, leg: float) -> tuple[float, float]:
         """Walkable top-face extent in Z after an ascent-edge bevel of ``leg``.
@@ -137,18 +169,173 @@ def _flat_quad(surface: dict) -> tuple[float, float, float, float, float, float]
     return xs[0], xs[1], ys[0], zs[0], zs[1]
 
 
+def _within_ulps(a: float, b: float, ulps: int, scale: float) -> bool:
+    """True when two differences agree to ``ulps`` ulp of ``scale``.
+
+    ``scale`` is the magnitude of the world coordinate the differences were taken
+    from, because that is what bounds their rounding: two 43 mm legs recovered
+    from z=64 m and from y=23.85 m cannot agree to the last bit.
+    """
+    require(math.isfinite(a) and math.isfinite(b), "non-finite value in a ulp comparison")
+    return abs(a - b) <= ulps * 2.0**-52 * max(abs(scale), 1.0)
+
+
+def _applied_leg(top: dict, chamfer: dict | None) -> float:
+    """Bevel leg actually present in the authority, recovered from the geometry.
+
+    The audit model keeps the authored tread edge in ``Tread.z0`` and applies the
+    leg analytically through ``walkable_span``. The rebuilt world stores the
+    result: the walkable top face starts ``leg`` later, and a non-walkable
+    ``<id>-bevel`` chamfer quad spans the removed wedge. Both are read back here
+    so the audited treads describe the *authored* run, not the post-bevel faces,
+    and so a drift between the two is a hard failure rather than a silent change.
+    """
+    if chamfer is None:
+        return 0.0
+    require(chamfer.get("walkable") is False, f"{top['id']} chamfer must be non-walkable")
+    _, _, y, z_top0, z_top1 = _flat_quad(top)
+    # The chamfer is sloped, not flat, so read its extents from the vertices.
+    pts = [chamfer["vertices"][i] for tri in chamfer["triangles"] for i in tri]
+    cy = min(p[1] for p in pts)
+    cz0 = min(p[2] for p in pts)
+    cz_hi = max(p[2] for p in pts)
+    require(cy < y, f"{top['id']} chamfer must sit below the tread top plane")
+    # The chamfer's Z depth is the leg that was removed from the authored edge.
+    leg = cz_hi - cz0
+    require(leg > 0.0, f"{top['id']} bevel leg must be positive")
+    # 45 degree chamfer: the drop in Y equals the pullback in Z. Compared with a
+    # few ulp rather than bit-exact identity, because both legs are recovered by
+    # subtracting from world coordinates (z up to 65 m, y up to 24 m), so the
+    # recovered values carry the rounding of their origins. The applied leg
+    # itself is still pinned exactly, by tests/builder-leg-literal.test.mjs.
+    require(
+        _within_ulps(y - cy, leg, 4, max(abs(y), abs(cy))),
+        f"{top['id']} chamfer is not a 45 degree bevel: dy {y - cy!r} vs dz {leg!r}",
+    )
+    # Its upper edge is where the walkable top now begins, and its lower edge is
+    # the authored ascent edge, so the two faces stay contiguous and no wedge of
+    # tread is consumed.
+    require(cz_hi == z_top0, f"{top['id']} chamfer does not meet the walkable top")
+    require(cz_hi < z_top1, f"{top['id']} bevel must not consume the tread going")
+    return leg
+
+
+def _applied_apron(top: dict, apron: dict | None) -> tuple[float, float]:
+    """Recover (run, slope) of an additive apron from the emitted geometry.
+
+    The apron is the support-visible replacement for a 90 degree riser: a walkable
+    face that starts on the lower tread's top plane and meets the top tread's top
+    plane exactly at the riser. Its two invariants are the ones the whole design
+    rests on, so both are asserted here rather than trusted:
+
+    * it is **walkable** and its face angle is at most ``terrain.maxSlope``, so
+      ``terrainSupportAt``/``floorHeightAtLattice`` accept it as floor; and
+    * it **reaches the authored top plane exactly**, so the tread's own top is
+      never shortened and the profile is continuous.
+
+    Returns ``(0.0, 0.0)`` when the authority carries no apron, so the same reader
+    runs against the authored world.
+    """
+    if apron is None:
+        return 0.0, 0.0
+    require(apron.get("walkable") is not False, f"{top['id']}-apron must be walkable to be floor")
+    pts = [apron["vertices"][i] for tri in apron["triangles"] for i in tri]
+    apex_y = max(p[1] for p in pts)
+    base_y = min(p[1] for p in pts)
+    apex_z = max(p[2] for p in pts)
+    base_z = min(p[2] for p in pts)
+    run, rise = apex_z - base_z, apex_y - base_y
+    require(run > 0.0 and rise > 0.0, f"{top['id']}-apron must rise over a positive run")
+    slope = rise / run
+    angle = math.degrees(math.atan(slope))
+    require(
+        face_is_support_visible(angle),
+        f"{top['id']}-apron at {angle:.4f} deg is steeper than terrain.maxSlope "
+        f"({TERRAIN_MAX_SLOPE_DEG:.4f} deg) and would be invisible to floorAt",
+    )
+    require(contact_normal_deg(angle) <= FLOOR_MAX_ANGLE_DEG, f"{top['id']}-apron exceeds the guard")
+    # The apex must coincide with the tread's own -Z top corner, and the base with
+    # the lower tread's top plane, so nothing is cut and nothing floats.
+    _, _, top_y, _, _ = _flat_quad(top)
+    require(bits(apex_y) == bits(top_y), f"{top['id']}-apron apex must sit exactly on the tread top plane")
+    require(bits(apex_z) == bits(top["vertices"][0][2]), f"{top['id']}-apron apex must sit at the tread's -Z edge")
+    require(
+        bits(base_y + rise) == bits(top_y),
+        f"{top['id']}-apron must start one authored riser below the tread top",
+    )
+    return run, slope
+
+
 def civic_treads_from_authority(path: Path = AUTHORITY) -> list[Tread]:
-    """The 80 civic treads, straight from the accepted runtime authority JSON."""
+    """The 80 civic treads, straight from the accepted runtime authority JSON.
+
+    Reads whatever edge treatment the authority actually carries, so the same
+    reader runs against the authored world (no companion surface), the 45 deg
+    chamfer world (``-bevel`` companion, top pulled back) and the support-visible
+    apron world (``-apron`` companion, top untouched), and every one of those
+    audits reports the heights that world really has.
+    """
     arena = json.loads(path.read_text())["arena"]
     surfaces = {s["id"]: s for s in arena["terrain"]["surfaces"] if s["id"].startswith("civic-stair-")}
-    require(len(surfaces) == 80, f"expected 80 civic treads in authority, found {len(surfaces)}")
     treads = []
+    legs: dict[int, float] = {}
+    aprons: dict[int, tuple[float, float]] = {}
     for index in range(80):
         s = surfaces[f"civic-stair-{index}"]
         x0, x1, y, z0, z1 = _flat_quad(s)
-        # civic-stair-0 crosses the 12 m city grade at z=25 as its first riser.
+        leg = _applied_leg(s, surfaces.get(f"civic-stair-{index}-bevel"))
+        # The walkable top starts leg later than the authored edge; recover the
+        # authored edge so Tread.z0 keeps meaning "the ascent (-Z) face".
+        z0 = z0 - leg
+        legs[index] = leg
+        run, slope = _applied_apron(s, surfaces.get(f"civic-stair-{index}-apron"))
+        aprons[index] = (run, slope)
         treads.append(
-            Tread(s["id"], "civic", x0, x1, z0, z1, y, 0.15, has_ascent_riser=True)
+            Tread(s["id"], "civic", x0, x1, z0, z1, y, 0.15, has_ascent_riser=True, apron_run=run, apron_slope=slope)
+        )
+    require(len(surfaces) in (80, 160), f"expected 80 treads plus their companions, found {len(surfaces)}")
+    require(
+        not any(legs.values()) or not any(run for run, _ in aprons.values()),
+        "a tread must not carry both a subtractive chamfer and an additive apron",
+    )
+    if any(run for run, _ in aprons.values()):
+        require(
+            len([i for i, (run, _) in aprons.items() if run]) == 80,
+            "every civic tread must carry the same support-visible apron",
+        )
+        # One literal run and slope in the recipe, but recovered here by
+        # subtracting world coordinates up to 65 m, so they can differ by a couple
+        # of ulp between treads. They must still agree at the ulp of the extent.
+        extent = max(abs(t.z1) for t in treads)
+        for i, (run, slope) in aprons.items():
+            require(
+                _within_ulps(run, APRON_RUN, 4, extent) and _within_ulps(slope, APRON_SLOPE, 4, extent),
+                f"civic-stair-{i} apron run {run!r} slope {slope!r} is not the reviewed pair",
+            )
+        # The apron must also stay inside the going it consumes.
+        going = min(t.z1 - t.z0 for t in treads)
+        for i, (run, _) in aprons.items():
+            require(run < going, f"civic-stair-{i} apron run {run!r} consumes the whole going")
+    beveled = [i for i, leg in legs.items() if leg]
+    if beveled:
+        require(
+            len(beveled) == 80,
+            f"the bevel must be applied to all 80 civic treads, found {len(beveled)}",
+        )
+        # The recipe emits one literal leg, but it is *recovered* here by
+        # subtracting world coordinates up to 65 m, so the recovered values can
+        # differ from each other and from the literal by a couple of ulp. They
+        # must still agree to the reviewed leg, at the ulp of the world extent.
+        extent = max(abs(t.z1) for t in treads)
+        for i in beveled:
+            require(
+                _within_ulps(legs[i], APPLIED_BEVEL, 4, extent),
+                f"civic-stair-{i} leg {legs[i]!r} is not the reviewed {APPLIED_BEVEL!r}",
+            )
+        spread = max(legs[i] for i in beveled) - min(legs[i] for i in beveled)
+        require(
+            _within_ulps(spread, 0.0, 4, extent),
+            f"recovered civic legs disagree with each other by {spread!r}",
         )
     # recipe.mjs:15 authored the run at 150 mm rise over 0.5 m going.
     for index, t in enumerate(treads):
@@ -376,18 +563,25 @@ class Audit:
 
 
 def support_height(treads: list[Tread], x: float, z: float, ref_y: float, leg: float = 0.0) -> float | None:
-    """Highest walkable tread top at or below ``ref_y`` under the exact column.
+    """Highest walkable support at or below ``ref_y`` under the exact column.
 
-    Strict metric: a zero-radius vertical ray at ``(x, z)``. A beveled tread's
-    walkable top face starts ``leg`` later in Z; its top plane height is
-    untouched, so this value can only move if the column leaves the supporting
-    tread. Points lying exactly on a tread boundary are a measure-zero case for
-    this metric, so it is reported alongside ``capsule_support_height``.
+    Strict metric: a zero-radius vertical ray at ``(x, z)``. Candidates are each
+    tread's walkable top face plus, when the authority carries one, the additive
+    apron in front of its riser -- the apron is walkable, so it is floor. A
+    beveled tread's walkable top face starts ``leg`` later in Z; its top plane
+    height is untouched, so that value can only move if the column leaves the
+    supporting tread. Points lying exactly on a tread boundary are a
+    measure-zero case for this metric, so it is reported alongside
+    ``capsule_support_height``.
     """
     best: float | None = None
     for t in treads:
         if not (t.x0 - 1e-12 <= x <= t.x1 + 1e-12):
             continue
+        apron = t.apron_y(z) if not leg else None
+        if apron is not None and apron <= ref_y + 1e-9:
+            if best is None or apron > best:
+                best = apron
         z_lo, z_hi = t.walkable_span(leg if t.has_ascent_riser else 0.0)
         if not (z_lo - 1e-12 <= z <= z_hi + 1e-12):
             continue
@@ -413,6 +607,10 @@ def capsule_support_height(
     for t in treads:
         if not (t.x0 - radius - 1e-12 <= x <= t.x1 + radius + 1e-12):
             continue
+        apron = t.apron_y(z) if not leg else None
+        if apron is not None and apron <= ref_y + 1e-9:
+            if best is None or apron > best:
+                best = apron
         z_lo, z_hi = t.walkable_span(leg if t.has_ascent_riser else 0.0)
         if not (z - radius - 1e-12 <= z_hi and z + radius + 1e-12 >= z_lo):
             continue
@@ -460,19 +658,67 @@ def column_ref(treads: list[Tread], point: Audit) -> float | None:
     return max(tops) if tops else None
 
 
-def height_preservation(treads: list[Tread], points: list[Audit], leg: float, edge: str = "ascent") -> dict:
+def floor_column_height(treads: list[Tread], x: float, z: float) -> float | None:
+    """``terrainSupportAt`` for these treads, mirrored exactly.
+
+    The engine's support query takes the **highest** admissible walkable surface in
+    the (x, z) column, with no reference-height filter and no downward fallback:
+    ``terrain.mjs:103-106`` returns ``null`` when nothing qualifies. Modelling it
+    with a "at or below ref_y" filter -- which is right for asking what plane a
+    *resting capsule* stands on, and wrong for asking what the level's support
+    query actually returns -- would hide exactly the raises an additive apron
+    causes, so the applied-treatment audit uses this instead.
+
+    Every surface modelled here is walkable and, for the apron, shallower than
+    ``terrain.maxSlope``, so all of them satisfy P4 and P5 of
+    ``support_query_rules``.
+    """
+    best: float | None = None
+    for t in treads:
+        if not (t.x0 - 1e-12 <= x <= t.x1 + 1e-12):
+            continue
+        apron = t.apron_y(z)
+        if apron is not None and (best is None or apron > best):
+            best = apron
+        if t.z0 - 1e-12 <= z <= t.z1 + 1e-12:
+            if best is None or t.y > best:
+                best = t.y
+    return best
+
+
+def strip_aprons(treads: list[Tread]) -> list[Tread]:
+    """The same treads with every additive apron removed.
+
+    This is the authored baseline: identical tread tops, no edge treatment. An
+    audit that compares a built world against itself would report no change at
+    all, which is exactly the mistake this makes impossible.
+    """
+    return [
+        Tread(t.id, t.run, t.x0, t.x1, t.z0, t.z1, t.y, t.rise, t.has_ascent_riser, 0.0, 0.0)
+        for t in treads
+    ]
+
+
+def height_preservation(
+    treads: list[Tread],
+    points: list[Audit],
+    leg: float,
+    edge: str = "ascent",
+    baseline: list[Tread] | None = None,
+) -> dict:
     """Bit-exact before/after support comparison for a proposed bevel.
 
     ``edge='ascent'`` bevels only the -Z ascent face. ``edge='both'`` also
     bevels the descent (+Z) face, which is not needed for contact normals but
     does shorten each tread's walkable extent at its far end.
     """
+    before_treads = baseline if baseline is not None else treads
     for point in points:
         ref = column_ref(treads, point)
         if ref is None:
             continue
-        point.before = support_height(treads, point.x, point.z, ref, 0.0)
-        point.cap_before = capsule_support_height(treads, point.x, point.z, ref, 0.0)
+        point.before = support_height(before_treads, point.x, point.z, ref, 0.0)
+        point.cap_before = capsule_support_height(before_treads, point.x, point.z, ref, 0.0)
         if edge == "ascent":
             point.after = support_height(treads, point.x, point.z, ref, leg)
             point.cap_after = capsule_support_height(treads, point.x, point.z, ref, leg)
@@ -485,21 +731,28 @@ def height_preservation(treads: list[Tread], points: list[Audit], leg: float, ed
         return None if a is None or b is None else b - a
 
     def classify(p: Audit) -> str:
-        """Why a point's strict ray support moved, if it moved.
+        """Why a point's strict ray support moved, and in which direction.
 
         ``on_boundary``   the point sits exactly on a tread-to-tread seam, so
-                         *any* positive bevel shifts which tread the zero-radius
-                         ray resolves to. Pre-existing ambiguity, not new.
-        ``bevel_shallow`` the point is genuinely inside the leg-deep bevel band,
-                         i.e. within ``leg`` of a tread's ascent edge.
+                         *any* treatment that perturbs which tread the
+                         zero-radius ray resolves to moves it. Pre-existing
+                         ambiguity, not new.
+        ``bevel_shallow`` support went DOWN and the point is genuinely inside a
+                         treatment's band: a real loss.
+        ``apron_raise``   support went UP because the point lies inside an
+                         additive apron's span. Not a loss, but still a moved
+                         height, so it is listed and never folded away.
         """
         clearance = min(
             (min(abs(p.z - t.z0), abs(p.z - t.z1)) for t in treads if t.contains(p.x, p.z)),
             default=float("inf"),
         )
+        down = p.after is None or p.before is None or p.after < p.before
         if clearance <= 1e-9:
             return "on_boundary"
-        return "bevel_shallow" if clearance < leg else "bevel_shallow"
+        if not down:
+            return "apron_raise"
+        return "bevel_shallow"
 
     changed = []
     for p in points:
@@ -520,7 +773,10 @@ def height_preservation(treads: list[Tread], points: list[Audit], leg: float, ed
             "classification": classify(p),
         }
         changed.append(entry)
-    genuine = [c for c in changed if c["classification"] == "bevel_shallow"]
+    # A LOSS is a point whose support went down. A raise is reported separately
+    # and never counted as preservation: both numbers are always published.
+    losses = [c for c in changed if c["classification"] == "bevel_shallow"]
+    raises = [c for c in changed if c["classification"] == "apron_raise"]
     boundary = [c for c in changed if c["classification"] == "on_boundary"]
     return {
         "edge": edge,
@@ -528,12 +784,16 @@ def height_preservation(treads: list[Tread], points: list[Audit], leg: float, ed
         "audited": len(points),
         "resolved": sum(1 for p in points if p.before is not None or p.cap_before is not None),
         "support_changed": changed,
-        "genuine_support_changes": genuine,
+        "genuine_support_changes": losses,
+        "genuine_support_losses": len(losses),
+        "support_raises": raises,
+        "support_raise_count": len(raises),
+        "max_raise": max((c["delta"] for c in raises), default=0.0),
         "seam_ambiguity_only": boundary,
-        # A bevel is admissible when no audited point genuinely loses support and
-        # every affected point is still physically supported under a capsule.
-        # Points sitting exactly on a tread seam are reported, never hidden.
-        "preserved": not genuine and all(p.capsule_preserved for p in points),
+        # Admissible when no audited point LOSES support and every affected point
+        # is still physically supported under a capsule. Raises are reported, not
+        # waived; seam points are reported, not hidden.
+        "preserved": not losses and all(p.capsule_preserved for p in points),
         "strict_preserved": not changed,
         "capsule_preserved": all(p.capsule_preserved for p in points),
         "capsule_radius": EXPLORATION["radius"],
@@ -557,11 +817,20 @@ def _both_support(
 
 
 def nav490_regression(treads: list[Tread]) -> dict:
-    """The documented Y13.8 -> Y13.772727 nav490 regression, plus the bevel."""
+    """The documented Y13.8 -> Y13.772727 nav490 regression, plus the treatment.
+
+    Reports the tread's own plane and the *resolved* support at the foot
+    separately. They agree when the treatment is subtractive or absent; with an
+    additive apron the foot lands on the apron instead, and the difference is the
+    cost of a support-visible face, published rather than averaged away.
+    """
     nav = next(t for t in treads if t.contains(NAV490_FOOT[0], NAV490_FOOT[2]))
     naive = ramp_support_y(NAV490_FOOT[2], NAIVE_RAMP)
     faithful = ramp_support_y(NAV490_FOOT[2], TREAD_FAITHFUL_RAMP)
     span_lo, span_hi = nav.walkable_span(0.06)
+    resolved = floor_column_height(treads, NAV490_FOOT[0], NAV490_FOOT[2])
+    authored = floor_column_height(strip_aprons(treads), NAV490_FOOT[0], NAV490_FOOT[2])
+    apron = nav.apron_y(NAV490_FOOT[2])
     return {
         "id": "nav490",
         "foot": list(NAV490_FOOT),
@@ -569,6 +838,15 @@ def nav490_regression(treads: list[Tread]) -> dict:
         "bevel_support_y": nav.y,
         "bevel_support_bits": bits(nav.y),
         "bevel_preserves_fixed_y": nav.y == NAV490_FIXED_Y and bits(nav.y) == bits(NAV490_FIXED_Y),
+        "authored_support_y": authored,
+        "authored_support_bits": None if authored is None else bits(authored),
+        "resolved_support_y": resolved,
+        "resolved_support_bits": None if resolved is None else bits(resolved),
+        "resolved_delta_from_13_8": None if resolved is None else resolved - NAV490_FIXED_Y,
+        "foot_on_apron": apron is not None,
+        "foot_apron_height": apron,
+        "foot_clearance_to_apron_start_m": nav.apron_start_z and NAV490_FOOT[2] - nav.apron_start_z,
+        "nav490_bit_identical": resolved is not None and bits(resolved) == bits(NAV490_FIXED_Y),
         "bevel_walkable_span_z": [span_lo, span_hi],
         "foot_clearance_to_bevel_m": span_hi and NAV490_FOOT[2] - span_lo,
         "naive_ramp_support_y": naive,
@@ -1004,6 +1282,317 @@ def synthetic_fixture_report() -> dict:
 # --------------------------------------------------------------------------- #
 # Report
 # --------------------------------------------------------------------------- #
+# --------------------------------------------------------------------------- #
+# Support-query rules, read from source (2026-10-05 support-visible investigation)
+#
+# Everything below is a statement about code that must stay byte-identical:
+# game/terrain.mjs, game/floor-lattice.mjs, game/core.mjs. Each rule cites the
+# line it comes from, so a reviewer can check it without re-deriving it.
+# --------------------------------------------------------------------------- #
+# The slope budget the recipe declares. Both Vesper runs inherit it from the
+# accepted recipe's terrain block (recipe.mjs terrain.maxSlope = 0.7 rad).
+TERRAIN_MAX_SLOPE_RAD = 0.7
+TERRAIN_MAX_SLOPE_DEG = 40.107001667277394
+COS_TERRAIN_MAX_SLOPE = math.cos(TERRAIN_MAX_SLOPE_RAD)  # 0.7648421872844885
+# terrain.mjs:3 -- the shared epsilon of every predicate below.
+SUPPORT_EPSILON = 1e-9
+
+
+def support_query_rules() -> dict:
+    """Exactly what the production support query accepts, and what it does next.
+
+    ``terrainSupportAt(x, z, terrain, maxSlope)`` -- terrain.mjs:92-107 -- and
+    ``scanLattice(lattice, x, z, maxSlope, wantRecord)`` -- floor-lattice.mjs:
+    226-257 -- are documented as sharing "identical arithmetic and filter order",
+    so both paths enforce the same five predicates. A triangle is a candidate
+    only when *all* of the following hold:
+
+    ``P1 bounding`` terrain.mjs:93,227-228 -- ``x``/``z`` must be finite, and on
+    the lattice path must also fall inside the baked ``bounds``; outside the
+    grid the lookup returns ``null`` immediately. There is no search radius and
+    no neighbourhood: the query is a point-in-triangle test, never a search.
+
+    ``P2 non-degenerate`` terrain.mjs:97,241 -- the barycentric denominator
+    ``(bz-cz)(ax-cx) + (cx-bx)(az-cz)`` must exceed 1e-9 in magnitude, i.e. the
+    triangle must have a non-zero XZ footprint. A vertical face has no XZ
+    extent and is skipped here, before any slope test.
+
+    ``P3 containment`` terrain.mjs:98-101,243-246 -- the barycentric weights
+    ``u, v, w`` must each be at least ``-1e-9``. Coverage is therefore exact
+    per triangle, with no dilation.
+
+    ``P4 positive-up and walkable`` terrain.mjs:101,247-248 -- the triangle's
+    ``normal[1]`` must exceed 1e-9, and ``surface.walkable !== false``
+    (terrain.mjs:39 defaults a missing flag to walkable). Walls are never
+    consulted: they live in ``terrainWallTriangles``, a separate collection.
+
+    ``P5 slope budget`` terrain.mjs:102,249 -- ``normal[1] >= cos(maxSlope) -
+    1e-9``. This is the binding one for any sloped treatment, and it is applied
+    at *lookup* time on the lattice path, so one bake serves any budget.
+
+    Selection, then: ``y = u*a[1] + v*b[1] + w*c[1]`` (terrain.mjs:103,250) and
+    the highest admissible ``y`` wins, but only if it beats the incumbent by
+    more than 1e-9 (terrain.mjs:104,251). So:
+
+    * **There is no fallback.** If no triangle satisfies P1-P5 the query returns
+      ``null``. ``floorAt`` propagates that as ``null``
+      (``floorAt(...)?.y ?? null``, core.mjs:108). There is no "next best
+      surface", no downward relaxation of the slope budget, and no snap to a
+      neighbouring cell. A gap in admissible coverage *is* a null.
+    * ``maxSlope`` reaches the query from the map, not from the caller:
+      ``makeFloorQuery`` uses ``options.maxSlope ?? (terrain?.maxSlope ?? 0.9)``
+      (floor-lattice.mjs:285), so Vesper is governed by its authored
+      ``terrain.maxSlope``.
+    * The mover's ground truth is this same query: ``moveActor`` snaps up only
+      when ``floorAt`` is non-null and within 0.25 m of the actor
+      (core.mjs:334), and ``movement.mjs`` additionally asserts the actor is
+      grounded with ``|y - floorAt| < 1e-7`` on every frame.
+
+    Consequence for edge treatments: a surface is *invisible* to the whole
+    movement/nav stack unless it is walkable and its face angle from horizontal
+    is at most ``terrain.maxSlope``. Subtracting such a band out of a tread
+    top does not merely soften the riser, it deletes the floor there.
+    """
+    return {
+        "sources": [
+            "game/terrain.mjs:92-107 terrainSupportAt",
+            "game/floor-lattice.mjs:226-257 scanLattice (same predicates, same order)",
+            "game/floor-lattice.mjs:283-317 makeFloorQuery (maxSlope from terrain.maxSlope)",
+            "game/terrain.mjs:29-41 surfaceTriangles (walkable defaults true)",
+            "game/core.mjs:108 floorAt (null propagates)",
+            "game/core.mjs:334 moveActor ground snap (<= 0.25 m, floorAt must be non-null)",
+        ],
+        "predicates": {
+            "P1_bounds": "x,z finite; lattice path also requires the point inside baked bounds",
+            "P2_nonDegenerate": "|barycentric denominator| > 1e-9; vertical faces are skipped here",
+            "P3_containment": "barycentric u,v,w >= -1e-9; exact per-triangle coverage, no dilation",
+            "P4_positiveUpWalkable": "normal[1] > 1e-9 and walkable !== false; walls are a separate collection",
+            "P5_slopeBudget": "normal[1] >= cos(terrain.maxSlope) - 1e-9, applied at lookup time",
+        },
+        "selection": "highest admissible y, replacing the incumbent only by more than 1e-9",
+        "searchRadius": None,
+        "fallback": None,
+        "fallbackNote": "no fallback of any kind: no admissible triangle in the (x,z) column means null",
+        "epsilon": SUPPORT_EPSILON,
+        "maxSlopeRad": TERRAIN_MAX_SLOPE_RAD,
+        "maxSlopeDeg": TERRAIN_MAX_SLOPE_DEG,
+        "cosMaxSlope": COS_TERRAIN_MAX_SLOPE,
+        "steepestAdmissibleFaceDeg": TERRAIN_MAX_SLOPE_DEG,
+        "admissibleSurfaceRule": "walkable and face angle from horizontal <= terrain.maxSlope",
+    }
+
+
+def max_admissible_gradient() -> float:
+    """Steepest Z gradient a walkable, support-visible planar face may have.
+
+    A plane ``y = a*z + b*x + c`` has unit normal proportional to
+    ``(-b, 1, -a)``, so ``normal[1] = 1/sqrt(1 + a^2 + b^2)``. P5 requires that
+    to be at least ``cos(maxSlope)``, hence ``a^2 + b^2 <= tan(maxSlope)^2``
+    and, for the ascent direction specifically, ``|a| <= tan(maxSlope)``.
+
+    The bound is on the *total* gradient, so tilting a face in X cannot buy
+    extra rise in Z: setting ``b`` non-zero only spends budget. It is also a
+    bound on any monotone staircase of admissible facets, whose piecewise slope
+    never exceeds the facet slope, so no amount of tiering beats it.
+    """
+    return math.tan(TERRAIN_MAX_SLOPE_RAD)
+
+
+def face_is_support_visible(angle_deg: float) -> bool:
+    """Whether P5 accepts a planar walkable face at this angle from horizontal."""
+    return math.cos(math.radians(angle_deg)) >= COS_TERRAIN_MAX_SLOPE - SUPPORT_EPSILON
+
+
+def contact_normal_deg(angle_deg: float) -> float:
+    """The angle from UP that a capsule resting on a planar face presents.
+
+    A face at ``angle_deg`` from horizontal has a normal at the same angle from
+    ``Vector3.UP``, so the contact normal a climbing capsule takes against it is
+    ``angle_deg``. This is exactly the quantity ``response_guard.gd`` compares
+    against ``cos(floor_max_angle)``.
+    """
+    return angle_deg
+
+
+def capsule_rests_on_face(rise: float, radius: float, separation: float, angle_deg: float) -> bool:
+    """Generalised form of the proposal's face-engagement inequality.
+
+    The proposal stated it for a 45 degree chamfer as
+    ``separation + radius - rise + leg >= radius*cos(45)``. For a general face
+    at ``angle_deg`` from horizontal the same perpendicular-foot argument gives
+    ``separation + radius - rise + drop >= radius*cos(angle_deg)``, where
+    ``drop`` is the face's vertical drop. Rearranged for the drop:
+
+        drop >= rise - radius*(1 - cos(angle_deg)) + separation
+
+    Note the drop needed shrinks as the face gets shallower: at 40.107 deg a
+    0.15 m rise needs only 0.0677 m of drop from a 0.35 capsule, versus
+    0.0455 m at 45 deg.
+    """
+    return minimum_drop_for_face(rise, radius, separation, angle_deg) <= rise
+
+
+def minimum_drop_for_face(rise: float, radius: float, separation: float, angle_deg: float) -> float:
+    """Smallest vertical drop that puts the capsule's foot on the face itself."""
+    return rise - radius * (1.0 - math.cos(math.radians(angle_deg))) + separation
+
+
+def riser_clearance_budget(treads: list[Tread], points: list[Audit]) -> dict:
+    """How much horizontal room an edge treatment may occupy, per run.
+
+    Any treatment that replaces a riser with geometry reaching away from the
+    tread changes ``floorAt`` for every audited point between the treatment's
+    outer edge and the riser. To leave all 765 audited support heights
+    bit-identical the treatment's horizontal reach must stay below the smallest
+    non-zero distance from an audited point to a riser, because a point sitting
+    exactly *on* a riser is classified ``on_boundary`` (its change is reported,
+    not counted) while any point strictly inside the band is classified
+    ``bevel_shallow`` and counted as a genuine support change.
+
+    Two directions matter and they are different treatments:
+
+    * *subtractive* -- the tread top is pulled back, so the band is
+      ``(z0, z0 + W)`` and the budget is measured from the riser forwards.
+    * *additive apron* -- the face is added in front of the riser, so the band
+      is ``(z0 - W, z0)`` and the budget is measured from the next riser
+      backwards.
+    """
+    per_run: dict[str, dict] = {}
+    for run in ("civic", "roof"):
+        run_treads = [t for t in treads if t.run == run]
+        # Two distinct budgets, one per treatment direction, measured only against
+        # the risers of the tread a point actually stands on.
+        subtractive: list[tuple[float, str]] = []
+        additive: list[tuple[float, str]] = []
+        on_treads, on_riser = set(), set()
+        for point in points:
+            for t in run_treads:
+                if not t.contains(point.x, point.z):
+                    continue
+                on_treads.add(point.name)
+                after, before = point.z - t.z0, t.z1 - point.z
+                for gap, bucket in ((after, subtractive), (before, additive)):
+                    if abs(gap) <= 1e-9:
+                        on_riser.add(point.name)
+                    else:
+                        bucket.append((gap, point.name))
+        subtractive.sort()
+        additive.sort()
+        rise = 0.15 if run == "civic" else 2 / 14
+        tightest = min(
+            ({"budget": subtractive[0][0], "direction": "subtractive", "point": subtractive[0][1]},
+             {"budget": additive[0][0], "direction": "additive", "point": additive[0][1]}),
+            key=lambda row: row["budget"],
+        )
+        budget = tightest["budget"]
+        per_run[run] = {
+            "rise": rise,
+            "auditedPointsOnTreads": len(on_treads),
+            "auditedPointsExactlyOnRiser": len(on_riser),
+            "clearanceBudget": budget,
+            "clearanceBudgetDirection": tightest["direction"],
+            "clearanceBudgetPoint": tightest["point"],
+            "subtractiveBudget": subtractive[0][0] if subtractive else float("inf"),
+            "subtractiveBudgetPoint": subtractive[0][1] if subtractive else None,
+            "additiveBudget": additive[0][0] if additive else float("inf"),
+            "additiveBudgetPoint": additive[0][1] if additive else None,
+            "tightestFive": [
+                {"clearance": g, "point": n, "direction": d}
+                for d, bucket in (("subtractive", subtractive), ("additive", additive))
+                for g, n in bucket[:5]
+            ],
+            "maxRiseWithinBudget": budget * max_admissible_gradient(),
+            "maxRiseWithinBudgetAtGuard": budget * math.tan(math.radians(FLOOR_MAX_ANGLE_DEG)),
+            "riseDeficiencyFactor": rise / (budget * max_admissible_gradient()),
+            "minFaceAngleForFullRiseDeg": math.degrees(math.atan2(rise, budget)),
+            "minRunForSupportVisibleDeg": rise / max_admissible_gradient(),
+            "minRunForGuardDeg": rise / math.tan(math.radians(FLOOR_MAX_ANGLE_DEG)),
+        }
+    return per_run
+
+
+def edge_design_space(
+    treads: list[Tread], points: list[Audit], angles: Sequence[float] | None = None
+) -> dict:
+    """The admissible design space for a stair edge treatment, per run and angle.
+
+    A treatment is admissible at angle ``theta`` only if **all** of the
+    following hold. Each is checked independently so the report can name the
+    binding one:
+
+    ``C1 support visible``  ``theta <= terrain.maxSlope`` (40.107 deg). A face
+        steeper than this is invisible to ``floorAt``/``terrainSupportAt``
+        (P5) and deletes the floor under the band it covers.
+    ``C2 guard``            ``theta <= 46`` deg, so the capsule's contact normal
+        on the face clears ``floor_max_angle``. A planar face's contact normal
+        equals its face angle.
+    ``C3 capsule on face``  the face's vertical drop must satisfy
+        ``drop >= rise - radius*(1 - cos theta) + separation`` for the largest
+        audited capsule. Below that the capsule catches the face's lower edge
+        instead and the normal stays edge-steep.
+    ``C4 going``            ``W = rise/tan(theta) <= going``, so the treatment
+            cannot consume the tread it belongs to.
+    ``C5 audited heights``  ``W <= clearanceBudget`` for the run, so no audited
+            point's resolved support height moves. This is the constraint the
+            2026-10-05 rebuild violated in the other direction: it kept the
+            budget but spent it on a 45 deg face, which breaks C1.
+
+    C1 and C2 bound ``theta`` from above; C5 bounds it from *below* via
+    ``W = rise/tan(theta)``. The space is non-empty only if
+    ``atan(rise / budget) <= min(maxSlope, guard)``.
+    """
+    if angles is None:
+        angles = [
+            16.699244, 20.0, 25.0, 30.0, 35.0, 39.0, 40.107001667277394,
+            41.0, 42.0, 43.0, 44.0, 45.0, 46.0, 50.0, 60.0, 73.142,
+        ]
+    budgets = riser_clearance_budget(treads, points)
+    rows = []
+    for run, budget_row in budgets.items():
+        rise, budget, going = budget_row["rise"], budget_row["clearanceBudget"], None
+        run_treads = [t for t in treads if t.run == run]
+        going = min(t.z1 - t.z0 for t in run_treads)
+        for theta in angles:
+            width = rise / math.tan(math.radians(theta))
+            checks = {
+                "C1_support_visible": face_is_support_visible(theta),
+                "C2_guard": theta <= FLOOR_MAX_ANGLE_DEG + 1e-12,
+                "C3_capsule_on_face": all(
+                    capsule_rests_on_face(rise, p["radius"], p["separation"], theta)
+                    for p in PROFILES
+                ),
+                "C4_going": width <= going + 1e-12,
+                "C5_audited_heights": width <= budget + 1e-12,
+            }
+            rows.append(
+                {
+                    "run": run,
+                    "faceAngleDeg": theta,
+                    "contactNormalDeg": contact_normal_deg(theta),
+                    "horizontalRun": width,
+                    "verticalDrop": minimum_drop_for_face(
+                        rise, max(p["radius"] for p in PROFILES), 0.0, theta
+                    ),
+                    "checks": checks,
+                    "admissible": all(checks.values()),
+                    "bindingFailure": next((k for k, ok in checks.items() if not ok), None),
+                }
+            )
+    return {
+        "supportQueryRules": support_query_rules(),
+        "maxAdmissibleGradient": max_admissible_gradient(),
+        "budgets": budgets,
+        "going": {
+            run: min(t.z1 - t.z0 for t in treads if t.run == run) for run in ("civic", "roof")
+        },
+        "rows": rows,
+        "nonEmpty": any(r["admissible"] for r in rows),
+        "emptyReason": None
+        if any(r["admissible"] for r in rows)
+        else "minFaceAngleForFullRiseDeg exceeds min(terrain.maxSlope, floor_max_angle) in every run",
+    }
+
+
 def js_double_literal(value: float) -> str:
     """Render a float as a JavaScript ``Number`` literal.
 
@@ -1015,6 +1604,83 @@ def js_double_literal(value: float) -> str:
     JS runtime.
     """
     return repr(value)
+
+
+def applied_treatment(treads: list[Tread], points: list[Audit]) -> dict:
+    """Audit of the treatment the *authority actually carries*, at leg 0.
+
+    ``build_report`` still evaluates the 2026-10-05 45 deg chamfer proposal,
+    which is kept because the proposal's own tests pin its numbers. This section
+    audits what is really built: the additive support-visible apron, read back out
+    of the world by ``civic_treads_from_authority`` and modelled in
+    ``support_height``, with no hypothetical leg applied.
+    """
+    run, slope = (treads[0].apron_run, treads[0].apron_slope) if treads else (0.0, 0.0)
+    aproned = [t for t in treads if t.apron_run]
+    baseline = strip_aprons(treads)
+    hp = height_preservation(treads, points, 0.0, baseline=baseline)
+    nav = nav490_regression(treads)
+    # The engine-faithful column comparison: what terrainSupportAt returns at each
+    # audited point, authored versus built. This is where an additive apron's cost
+    # shows up, so it is reported in full rather than filtered away.
+    column_rows = []
+    for p in points:
+        before = floor_column_height(baseline, p.x, p.z)
+        after = floor_column_height(treads, p.x, p.z)
+        if before == after:
+            continue
+        column_rows.append(
+            {
+                "point": p.name,
+                "x": p.x,
+                "z": p.z,
+                "authored": before,
+                "built": after,
+                "delta": None if before is None or after is None else after - before,
+                "direction": "loss"
+                if (after is None or (before is not None and after < before))
+                else "raise",
+            }
+        )
+    losses = [r for r in column_rows if r["direction"] == "loss"]
+    raises = [r for r in column_rows if r["direction"] == "raise"]
+    angle = math.degrees(math.atan(slope)) if slope else None
+    return {
+        "treatment": "additive support-visible apron" if aproned else "none (authored geometry)",
+        "apronedTreads": len(aproned),
+        "treadTreads": len(treads) - len(aproned),
+        "apronRun": run,
+        "apronSlope": slope,
+        "apronFaceAngleDeg": angle,
+        "apronAngleDeg": angle,
+        "terrainMaxSlopeDeg": TERRAIN_MAX_SLOPE_DEG,
+        "supportVisible": face_is_support_visible(angle) if angle is not None else None,
+        "supportVisibleCosMargin": None if angle is None else math.cos(math.radians(angle)) - COS_TERRAIN_MAX_SLOPE,
+        "contactNormalDeg": contact_normal_deg(angle) if angle is not None else None,
+        "guardMarginDeg": None if angle is None else FLOOR_MAX_ANGLE_DEG - contact_normal_deg(angle),
+        "runWithinGoing": None if not run else run < min(t.z1 - t.z0 for t in treads),
+        "capsuleRestsOnFace": all(
+            capsule_rests_on_face(t.rise, p["radius"], p["separation"], angle)
+            for t in (aproned[:1] or treads[:1])
+            for p in PROFILES
+        )
+        if angle is not None
+        else None,
+        "heightPreservation": hp,
+        "nav490": nav,
+        "columnAudit": {
+            "method": "floor_column_height: terrainSupportAt mirrored exactly (highest admissible walkable surface in the column, no reference filter, no fallback)",
+            "audited": len(points),
+            "changed": len(column_rows),
+            "losses": len(losses),
+            "raises": len(raises),
+            "maxLoss": min((r["delta"] for r in losses), default=0.0),
+            "maxRaise": max((r["delta"] for r in raises), default=0.0),
+            "lossRows": losses,
+            "raiseRows": raises,
+        },
+        "designSpace": edge_design_space(treads, points),
+    }
 
 
 def build_report(authority: Path = AUTHORITY, contacts: Path = CONTACTS) -> dict:
@@ -1039,7 +1705,7 @@ def build_report(authority: Path = AUTHORITY, contacts: Path = CONTACTS) -> dict
         all(c["capsule_preserved"] for c in hp["support_changed"]),
         "a beveled point loses capsule-resolved support",
     )
-    require(nav["bevel_preserves_fixed_y"], "nav490 support height is not bit-identical under the recommended bevel")
+    require(nav["bevel_preserves_fixed_y"], "the nav490 tread plane is no longer the authored 13.8")
     require(nav["naive_ramp_matches_readme"], "naive-ramp model does not reproduce the documented nav490 regression")
     return {
         "scope": "source-only height-preserving stair collision proposal; no engine run, no runtime/artifact/recipe/builder change",
@@ -1125,6 +1791,7 @@ def build_report(authority: Path = AUTHORITY, contacts: Path = CONTACTS) -> dict
         },
         "geometryDiff": geometry_diff(treads, leg),
         "overheadClearance": overhead_clearance(civic, authority, leg),
+        "appliedTreatment": applied_treatment(treads, points),
         "contactEffect": contact_effect(treads, contacts, leg),
         "syntheticFixtures": synthetic_fixture_report(),
     }

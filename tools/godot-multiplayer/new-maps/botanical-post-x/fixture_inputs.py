@@ -12,8 +12,15 @@ X_PINS={
  'tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb':'6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422',
 }
 SOURCE_PINS={
- 'accepted':('godot/multiplayer_worlds/generated/vesper-viaduct.json','e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885'),
- 'candidate':('port/new-maps/vesper-viaduct/variety/urban-v3/authority.json','397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec'),
+ # 'accepted' re-pinned 2026-10-05 by the support-visible stair edge rebuild
+ # (VESPER_BEVEL_SUPPORT_VISIBLE_20261005.md), superseding the 45 deg chamfer
+ # pin of VESPER_BEVEL_REBUILD_20261005.md. Same path, new reviewed content
+ # hash: the 80 civic tread tops are now byte-identical to the authored world and
+ # 80 walkable -apron surfaces carry the ascent face. geometryHash
+ # 27c71cc8... -> db20ce1f...; wall collider indices still shift by +160 because
+ # the aprons add 160 surface triangles ahead of them in WorldMap.build order.
+ 'accepted':('godot/multiplayer_worlds/generated/vesper-viaduct.json','0f7f8a0aa5bd8ff1bd8b5098fa0c9e3a63fa770cc748407ae2a0db29ca484a0c'),
+ 'candidate':('port/new-maps/vesper-viaduct/variety/urban-v3/authority.json','d4a61518a58dfd9c906d6d5641e2b9f58ea2fa005d202da95c5528c0fa26e70f'),
 }
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 def x_bytes(path):

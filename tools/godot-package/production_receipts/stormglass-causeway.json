@@ -367,7 +367,7 @@
     "godot/multiplayer_worlds/art/worlds/stormglass-causeway_MothLocal_teal.png.import": "4eb564bca9ccd57b3a0dc54b7df681db446f0b42441141da3d23f7613df6695b",
     "godot/multiplayer_worlds/catalog.gd": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
-    "godot/multiplayer_worlds/dressing/profile.gd": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
+    "godot/multiplayer_worlds/dressing/profile.gd": "39266460066c05238564245f01ad85ec1f97f474e1bdb23ada75aff7e004f3f6",
     "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
@@ -770,13 +770,13 @@
     "tools/godot-multiplayer/new-maps/stormglass-causeway/export-report.json": "ddfdb490789601f033c5caa39ee78ed5036d25c3e2c7cb669ffc1650cf20e300",
     "tools/godot-multiplayer/new-maps/stormglass-causeway/recipe.mjs": "427d7d4b9ade4d19bfecc7f061b6bc87146a44b56f79aa5c6de2b95a1daa162a",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
-    "tools/godot-package/dressing_dependencies.mjs": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
+    "tools/godot-package/dressing_dependencies.mjs": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-    "tools/godot-package/production_resources.mjs": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+    "tools/godot-package/production_resources.mjs": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
     "tools/godot-package/racing_dependencies.mjs": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
@@ -784,7 +784,8 @@
     "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/stormglass_j_inventory.json": "edb811fd503d343314f6fad4bb469a0e73195f643d7d3af34684598712190fb4",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
-    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
+    "tools/godot-package/vesper_apron_dependencies.mjs": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e"
   },
   "nativeRuntimeHooks": {
     "godot/multiplayer_worlds/sports_demo.gd": "78b86c3874bbc7e91069ac6c8d65fb9468fecbfcf7cbe34f63fcbdd8c13232b9",
@@ -2096,5 +2097,41 @@
       "nativeChecks": "pending",
       "document": "port/finish/map-variety/RUNTIME_DRESSING_THREE_MAPS_20261005.md"
     }
+  },
+  "vesperApronAdvance": {
+    "previousReceipt": {
+      "commit": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
+      "path": "tools/godot-package/production_receipts/stormglass-causeway.json",
+      "sha256": "c9ac81c847981e166eaf2b4b0d1afe039a1bba2456314bc02026ab5a22b9c7c9"
+    },
+    "changed": {
+      "godot/multiplayer_worlds/dressing/profile.gd": {
+        "before": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
+        "after": "39266460066c05238564245f01ad85ec1f97f474e1bdb23ada75aff7e004f3f6"
+      },
+      "tools/godot-package/dressing_dependencies.mjs": {
+        "before": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
+        "after": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+        "after": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18"
+      }
+    },
+    "added": {
+      "tools/godot-package/vesper_apron_dependencies.mjs": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e"
+    },
+    "runtimeChanged": {},
+    "sourceChanged": {},
+    "sourceFingerprint": "dd0f4fbea323ba8fa8ad4b7bf578c980c737495188f941fc8aa0b983dfd39d1c",
+    "packageFingerprint": "f4d8407843fdd0d87a9350791409e3bf75a3ae8ea84bdb00c031f612a13ef8f4",
+    "review": {
+      "foundation": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
+      "scope": "Vesper support-visible stair apron: 80 walkable -apron surfaces carry the ascent face at 40.030259 deg, inside terrain.maxSlope (40.107 deg). Vesper rebinds its runtime dressing identity to the aproned world; the shared Profile.IDENTITIES table and its verifier change therefore rebind in all seven receipts. Native acceptance pending.",
+      "nativeChecks": "pending",
+      "document": "port/finish/map-variety/VESPER_APRON_PROMOTION_READY_20261005.md"
+    },
+    "previousPackageFingerprint": "103ffc9d5e5a79a6aef701b60e9c80415ae6c5ed0bb5a0dd0568c5bef2d7ff9e",
+    "previousSourceFingerprint": "dd0f4fbea323ba8fa8ad4b7bf578c980c737495188f941fc8aa0b983dfd39d1c"
   }
 }

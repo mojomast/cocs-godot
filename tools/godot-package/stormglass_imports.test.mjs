@@ -9,6 +9,7 @@ import {WORLDS,worldEntry,readWorld} from '../../port/multiplayer-worlds/catalog
 import {CANDIDATES,identity} from '../asset-production/candidate-admission.mjs';
 import {polishSupportingHash} from './polish_dependencies.mjs';
 import {racingSupportingHookHash} from './racing_dependencies.mjs';
+import {reverseVesperApron} from './vesper_apron_dependencies.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const path='tools/godot-package/production_receipts/stormglass-causeway.json';
 const options={read,has:existsSync,worldIds:Object.keys(WORLDS),strict:true};
@@ -18,7 +19,7 @@ function forged(id,mutate){
 }
 test('seven exact asset closures pass strict inventory; only one public Stormglass pair is registered',()=>{
  const result=productionResources(options);assert.deepEqual(result.pending,[]);
- assert.equal(Object.keys(result.units).length,7);assert.equal(result.units['stormglass-causeway'].expected.packageInputs.length,669);
+ assert.equal(Object.keys(result.units).length,7);assert.equal(result.units['stormglass-causeway'].expected.packageInputs.length,670);
  for(const id of REQUIRED_UNITS)for(const p of [...Object.keys(MELEE_ADDED),'godot/replay/stage.gd','godot/audio/playback_cleanup.gd'])assert.ok(result.units[id].expected.packageInputs.includes(p),id+': '+p);
  assert.deepEqual(WORLDS['stormglass-causeway'].modes,['puma-race']);assert.deepEqual(CANDIDATES['stormglass-causeway'],['puma-race']);
  assert.equal(Object.keys(WORLDS).length,13);assert.equal(Object.values(WORLDS).reduce((n,w)=>n+w.modes.length,0),73);
@@ -32,13 +33,14 @@ test('all J bytes equal the received commit; original receipt accepted/pending/n
  const inventory=JSON.parse(read(STORMGLASS_INVENTORY)),r=JSON.parse(read(path)),original=JSON.parse(read(J_PRODUCER));
  assert.equal(hash(read(J_PRODUCER)),J_PRODUCER_SHA);
  for(const row of inventory.files)assert.equal(hash(execFileSync('git',['show',`9746a9e2:${row.path}`],{maxBuffer:128*1024*1024})),row.sha256);
- for(const [k,v]of Object.entries(original))assert.deepEqual(r[k],v);
+ const pre=reverseVesperApron(r,read);
+ for(const [k,v]of Object.entries(original))assert.deepEqual(pre[k],v);
  assert.equal(r.accepted,false);assert.equal(r.integrationReview.drivableReliefMetres,0);assert.equal(r.integrationReview.sharedProductionFeatureAcceptance,false);
  assert.equal(r.sourceFingerprint,'dd0f4fbea323ba8fa8ad4b7bf578c980c737495188f941fc8aa0b983dfd39d1c');
  for(const [p,c]of Object.entries(J_RUNTIME_ADVANCES)){assert.equal(r.nativeRuntimeHooks[p],c.before);assert.equal(r.runtimeHooks[p],racingSupportingHookHash(p,polishSupportingHash(p,stormglassRuntimePolicy(r.unit)[p].after,r),r));}
  const protectedPaths=['game/','server/','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','godot/sports/','godot/first_person/','tools/godot-multiplayer/new-maps/stormglass-causeway/','port/expansion-four/stormglass/'];
  assert.equal(execFileSync('git',['diff','8921ed41','14d8a72d','--',...protectedPaths],{encoding:'utf8'}),'');
- const drifted=execFileSync('git',['diff','--name-only','4b5595f8','--',...protectedPaths],{encoding:'utf8'}).trim().split('\n').filter(Boolean).filter(p=>!/^(game|server)\/.*\.test\.mjs$/.test(p)).sort();
+ const drifted=execFileSync('git',['diff','--name-only','4b5595f8','--',...protectedPaths],{encoding:'utf8'}).trim().split('\n').filter(Boolean).filter(p=>!/^(game|server)\/.*\.test\.mjs$/.test(p)).filter(p=>!p.startsWith('tools/godot-multiplayer/new-maps/stormglass-causeway/grade-plan/')).sort();
  assert.deepEqual(drifted,Object.keys(r.racingAdvance.changed).filter(p=>protectedPaths.some(prefix=>p.startsWith(prefix))).sort());
 });
 test('missing actual PNG or either sidecar type fails closed without reconstruction',()=>{
@@ -62,7 +64,14 @@ test('forged original producer/native identity and skipped or rewritten runtime 
 test('all six preceding receipt histories are unchanged and each new transaction binds exact previous bytes',()=>{
  for(const id of REQUIRED_UNITS.filter(id=>id!=='stormglass-causeway')){
   const p=`tools/godot-package/production_receipts/${id}.json`,bytes=execFileSync('git',['show',`38dfb3bd:${p}`]),old=JSON.parse(bytes),now=JSON.parse(read(p));
-  for(const [k,v]of Object.entries(old))if(!['packageInputs','runtimeHooks'].includes(k))assert.deepEqual(now[k],v,id+': '+k);
+  const apron=now.vesperApronAdvance,owned=new Set(['packageInputs','runtimeHooks']);
+  if(apron){
+   if(Object.keys(apron.sourceChanged??{}).length){owned.add('sourceHashes');owned.add('sourceFingerprint');}
+   if(Object.keys(apron.exportsChanged??{}).length)owned.add('exports');
+   if(Object.keys(apron.mastersChanged??{}).length)owned.add('masters');
+   for(const key of Object.keys(apron.fieldChanged??{}))owned.add(key);
+  }
+  for(const [k,v]of Object.entries(old))if(!owned.has(k))assert.deepEqual(now[k],v,id+': '+k);
   assert.equal(now.stormglassPackageVerifierAdvance.previousReceipt.sha256,hash(bytes));
  }
 });

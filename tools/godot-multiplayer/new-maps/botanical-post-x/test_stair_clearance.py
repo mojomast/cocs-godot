@@ -8,6 +8,7 @@ Run from this directory:  python3 -m unittest test_stair_clearance -v
 """
 import json
 import math
+import re
 import unittest
 
 import stair_clearance as sc
@@ -205,6 +206,143 @@ class AuthorityIntegrity(unittest.TestCase):
             for triangle in proposal["chamfer_triangles"]:
                 for vertex in triangle:
                     self.assertLessEqual(vertex[1], tread.y + 1e-12)
+
+
+class AppliedApron(unittest.TestCase):
+    """The support-visible apron is present in the built world, exactly as analysed.
+
+    These are the load-bearing checks for the 2026-10-05 support-visible redesign:
+    the analysis proves a *design*, and these prove the built authority carries
+    that geometry, that the tread tops are still the authored ones, and that the
+    face is inside the map's support-query slope budget.
+    """
+
+    def setUp(self):
+        self.report = sc.build_report()
+        self.applied = self.report["appliedTreatment"]
+        self.treads = sc.civic_treads_from_authority()
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        self.arena = arena
+        self.surfaces = {s["id"]: s for s in arena["terrain"]["surfaces"]}
+
+    def test_all_eighty_civic_treads_carry_a_walkable_apron(self):
+        self.assertEqual(len(self.treads), 80)
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                apron = self.surfaces[f"{tread.id}-apron"]
+                self.assertTrue(apron["walkable"], "a non-walkable apron is not floor")
+                self.assertEqual(apron["material"], "sandstone")
+                self.assertEqual(apron["triangles"], [[0, 1, 2], [0, 2, 3]])
+                self.assertGreater(tread.apron_run, 0.0)
+                self.assertGreater(tread.apron_slope, 0.0)
+
+    def test_the_apron_face_is_inside_the_support_query_slope_budget(self):
+        """The whole point: a 45 deg face is invisible here, 40.03 deg is not."""
+        self.assertTrue(self.applied["supportVisible"])
+        angle = self.applied["apronFaceAngleDeg"]
+        self.assertLessEqual(angle, sc.TERRAIN_MAX_SLOPE_DEG)
+        self.assertGreaterEqual(angle, 39.0, "no point being shallower than the budget allows")
+        # And the 45 deg chamfer that preceded it really is inadmissible.
+        self.assertTrue(
+            math.cos(math.radians(45.0)) < sc.COS_TERRAIN_MAX_SLOPE - sc.SUPPORT_EPSILON,
+            "the chamfer this replaced was inside the budget; the redesign is moot",
+        )
+
+    def test_the_apron_clears_the_controller_guard_with_margin(self):
+        self.assertLessEqual(self.applied["contactNormalDeg"], sc.FLOOR_MAX_ANGLE_DEG)
+        self.assertGreater(self.applied["guardMarginDeg"], 1.0)
+        self.assertTrue(self.applied["capsuleRestsOnFace"])
+        self.assertTrue(self.applied["runWithinGoing"])
+
+    def test_the_apron_meets_both_authored_planes_exactly(self):
+        """Continuous profile: the base sits on the lower tread, the apex on this one."""
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                self.assertEqual(sc.bits(tread.apron_y(tread.z0)), sc.bits(tread.y))
+                self.assertEqual(sc.bits(tread.apron_y(tread.apron_start_z)), sc.bits(tread.y - tread.rise))
+                self.assertIsNone(tread.apron_y(tread.z0 + 1e-6), "apron must not spill onto the tread")
+                self.assertIsNone(tread.apron_y(tread.apron_start_z - 1e-6))
+
+    def test_the_tread_tops_are_still_exactly_the_authored_geometry(self):
+        """The whole safety argument: an additive apron cannot shorten a tread."""
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                self.assertEqual(tread.z0, 25 + int(tread.id.split("-")[-1]) * 0.5)
+                self.assertEqual(tread.y, 12 + (int(tread.id.split("-")[-1]) + 1) * 0.15)
+                top = self.surfaces[tread.id]
+                self.assertTrue(top["walkable"])
+                zs = [v[2] for face in top["triangles"] for v in (top["vertices"][i] for i in face)]
+                self.assertEqual(min(zs), tread.z0)
+                self.assertEqual(max(zs), tread.z1)
+
+    def test_the_apron_adds_exactly_two_faces_per_tread_and_changes_nothing_else(self):
+        surfaces = self.arena["terrain"]["surfaces"]
+        tops = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+", s["id"])]
+        aprons = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+-apron", s["id"])]
+        self.assertEqual(len(tops), 80)
+        self.assertEqual(len(aprons), 80)
+        self.assertTrue(all(len(s["triangles"]) == 2 for s in tops))
+        self.assertTrue(all(len(s["triangles"]) == 2 for s in aprons))
+        self.assertEqual(sum(len(s["triangles"]) for s in aprons), 2 * 80)
+
+    def test_no_audited_point_loses_support_and_nav490_is_quantified(self):
+        column = self.applied["columnAudit"]
+        self.assertEqual(column["audited"], 765)
+        self.assertEqual(column["losses"], 0)
+        self.assertEqual(column["maxLoss"], 0.0)
+        self.assertEqual(self.applied["heightPreservation"]["genuine_support_losses"], 0)
+        self.assertTrue(self.applied["heightPreservation"]["capsule_preserved"])
+        # nav490 is a documented pin: it is not silently preserved, it is reported.
+        nav = self.applied["nav490"]
+        self.assertEqual(sc.bits(nav["authored_support_y"]), sc.bits(13.8))
+        self.assertTrue(sc._within_ulps(nav["resolved_support_y"], 13.873636363636364, 64, 65.0))
+        self.assertFalse(nav["nav490_bit_identical"])
+        self.assertGreater(nav["resolved_delta_from_13_8"], 0.0)
+
+    def test_the_applied_leg_is_the_proven_minimum_nav490_cost(self):
+        """No admissible face can do better than +73.4 mm at nav490.
+
+        Any support-visible face covering the civic rise needs a run of
+        ``rise/tan(theta)``, and nav490 sits 0.090909 m before the riser at
+        z=31.0, so its height becomes ``13.8 + 0.15 - 0.090909*tan(theta)``.
+        The largest admissible ``tan(theta)`` is ``tan(terrain.maxSlope)``, which
+        minimises the raise. Verified here at the true optimum and at the shipped
+        slope, which is 0.2 mm worse.
+        """
+        gap = 31.0 - 30.90909090909091
+        best = 13.8 + 0.15 - gap * math.tan(sc.TERRAIN_MAX_SLOPE_RAD)
+        shipped = 13.8 + 0.15 - gap * sc.APRON_SLOPE
+        self.assertGreaterEqual(best, 13.8)
+        self.assertLessEqual(shipped, best + 1e-3)
+        self.assertGreater(shipped, best)
+        self.assertLess(shipped - 13.8, 0.075)
+
+    def test_the_design_space_is_empty_for_the_hypothetical_and_that_is_why(self):
+        """A subtractive or shallower-than-visible treatment cannot work at all."""
+        space = self.applied["designSpace"]
+        self.assertFalse(space["nonEmpty"])
+        civic = space["budgets"]["civic"]
+        self.assertGreater(civic["minFaceAngleForFullRiseDeg"], sc.FLOOR_MAX_ANGLE_DEG)
+        self.assertLess(civic["maxRiseWithinBudget"], civic["rise"])
+
+
+class SupportQueryRules(unittest.TestCase):
+    """The rules this redesign exists to satisfy, read from source and pinned."""
+
+    def test_the_rules_are_documented_with_their_source_lines(self):
+        rules = sc.support_query_rules()
+        self.assertIn("game/terrain.mjs:92-107 terrainSupportAt", rules["sources"])
+        self.assertEqual(rules["predicates"]["P5_slopeBudget"].count("cos(terrain.maxSlope)"), 1)
+        self.assertIsNone(rules["fallback"])
+        self.assertIsNone(rules["searchRadius"])
+
+    def test_the_authored_slope_budget_is_the_one_that_binds(self):
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        self.assertEqual(arena["terrain"]["maxSlope"], sc.TERRAIN_MAX_SLOPE_RAD)
+
+    def test_the_gradient_bound_is_tan_max_slope(self):
+        self.assertAlmostEqual(sc.max_admissible_gradient(), math.tan(0.7), places=15)
+        self.assertLess(sc.max_admissible_gradient(), math.tan(math.radians(sc.FLOOR_MAX_ANGLE_DEG)))
 
 
 class HeightPreservation(unittest.TestCase):

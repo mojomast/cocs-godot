@@ -14,6 +14,7 @@ import {FEATURE_ROOTS,verifyFeatureAdvance,robotSupportingHash} from './feature_
 import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,STORMGLASS_EVIDENCE,STORMGLASS_SUPPORTING_RUNTIME} from './stormglass_imports.mjs';
 import {polishPaths,verifyPolishAdvance,verifyOperatorFinishImports} from './polish_dependencies.mjs';
 import {movementSupportingHash,verifyMovementPredecessor} from './movement_dependencies.mjs';
+import {verifyVesperApronAdvance} from './vesper_apron_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -180,7 +181,13 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
           assert.equal(dressing.before,expected,'Broken Parallax dressing history');
           expected=dressing.after;
         }
-        assert.equal(receipt.runtimeHooks[path],expected);add(path,expected);
+        // The apron lane is newer than dressing, and it moved profile.gd too.
+        const apron=receipt.vesperApronAdvance?.runtimeChanged?.[path];
+        if(apron){
+          assert.equal(apron.before,expected,'Broken Parallax apron history');
+          expected=apron.after;
+        }
+        assert.equal(receipt.runtimeHooks[path],expected,'Production content hash mismatch: '+path);add(path,expected);
       }
       assert.deepEqual(receipt.masters,evidence.masters,'Parallax production master identity');
       assert.deepEqual(receipt.exports,evidence.exports,'Parallax production export identity');
@@ -235,6 +242,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='vesper-viaduct')verifyVesperImports(read);
     if(unit.id==='abyssal-pressureworks')verifyAbyssalImports(read);
     if(unit.id==='stormglass-causeway')verifyStormglassImports(read,receipt);
+    verifyVesperApronAdvance(receipt,read);
     verifyMovementPredecessor(receipt,read);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {
       const stem=`${kind}-lod${lod}`,report=JSON.parse(read(`tools/godot-vehicle-assets/masters/${stem}-report.json`));

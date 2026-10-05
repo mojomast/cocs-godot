@@ -1,18 +1,55 @@
 // Vesper: a single-valued city hillside, never stacked playable decks.
+//
+// Support-visible stair edge (2026-10-05), replacing the 45 deg chamfer of
+// STAIR_BEVEL. terrain.maxSlope below is 0.7 rad = 40.107 deg, and
+// terrainSupportAt/floorHeightAtLattice drop any triangle whose normal is
+// shallower than cos(maxSlope) -- with no fallback of any kind, so a 45 deg
+// chamfer is invisible to the floor query and deletes the floor under the band
+// it covers. Each civic riser therefore gets an ADDITIVE, walkable apron that
+// starts on the lower tread's own top plane and reaches this tread's top plane
+// at the riser, at a slope the floor query can see. The tread tops themselves
+// are not touched, so no authored support height is ever lowered.
+// See VESPER_BEVEL_SUPPORT_VISIBLE_20261005.md.
+export const STAIR_BEVEL = 0.043438367470067386; // superseded; retained for the audit's provenance
+// atan(0.84) = 40.0302 deg, i.e. 0.0767 deg inside terrain.maxSlope (0.7 rad =
+// 40.1070 deg), so the emitted face's normal[1] clears cos(maxSlope) by 8.2e-4
+// rather than by the 1e-9 epsilon the support query actually tests against.
+export const APRON_SLOPE = 0.84;
 export const ID='vesper-viaduct';
 export const height=z=>z<=-65?0:z<-25?(z+65)*.3:z<=25?12:z<65?12+(z-25)*.3:24;
+// The additive apron for one riser, as a corner quad ordered (x0 base, x0 apex,
+// x1 apex, x1 base). `rise` is the authored riser and `zRiser` the top tread's
+// -Z edge; the apron runs back from that edge to where it meets the lower tread's
+// top plane, so the profile is flat-then-ramp-then-flat with no 90 deg face left
+// anywhere on the ascent.
+export const edgeApron=(x0,x1,zRiser,yTop,rise,slope=APRON_SLOPE)=>{
+  const run=rise/slope;
+  return [[x0,yTop-rise,zRiser-run],[x0,yTop,zRiser],[x1,yTop,zRiser],[x1,yTop-rise,zRiser-run]];
+};
 export function recipe(){
  const m={id:ID,name:'Vesper Viaduct',tag:'CANAL CITY / STATION INTERCHANGE',description:'Warm brick station galleries above a cobalt canal cut; civic courtyards connect three urban street levels.',bounds:{minX:-140,maxX:140,minZ:-120,maxZ:120},sky:'dusk',floorColor:'#66515a',background:'#182239',color:'#e7aa69',nextGen:true,raised:false,scatter:false,blocks:[],props:[],structures:[],spawns:[],pickups:[],navNodes:[],routes:[],objectiveZones:[],modeBindings:{combat:['deathmatch','teamdeathmatch'],objectives:['ctf'],zones:['domination','koth','uplink']},terrain:{maxSlope:.7,base:0,amplitude:24,surfaces:[],walls:[]},art:{ground:[],pieces:[],palette:'warm-brick-charcoal-cobalt',labels:[]}};
  const face=(id,p,material='brick')=>{for(let i=1;i<p.length-1;i++)m.terrain.walls.push({id:`${id}-${m.terrain.walls.length}`,material,vertices:[p[0],p[i],p[i+1]]});};
  const roof=(id,p,material='slate',walkable=false)=>m.terrain.surfaces.push({id,material,walkable,vertices:p,triangles:Array.from({length:p.length-2},(_,i)=>[0,i+1,i+2])});
+  // The additive apron for one riser. Walkable, and shallow enough that
+  // terrainSupportAt's cos(maxSlope) filter accepts it, so the band stays
+  // floor rather than becoming a hole. Purely additive: it never edits the
+  // tread it belongs to.
+  const aproned=(id,mat,zRiser,yTop,rise,slope=APRON_SLOPE)=>
+    m.terrain.surfaces.push({id,material:mat,walkable:true,
+      vertices:edgeApron(30,34,zRiser,yTop,rise,slope),triangles:[[0,1,2],[0,2,3]]});
  const box=(id,x,z,w,d,b,t,material='brick')=>{const p=[[x-w/2,b,z-d/2],[x+w/2,b,z-d/2],[x+w/2,b,z+d/2],[x-w/2,b,z+d/2]];for(let i=0;i<4;i++){const a=p[i],c=p[(i+1)%4];face(id,[a,c,[c[0],t,c[2]],[a[0],t,a[2]]],material);}roof(id+'-cap',p.map(v=>[v[0],t,v[2]]),material);};
  const wall=(id,a,b,y,t,mat='brick')=>face(id,[[a[0],y,a[1]],[b[0],y,b[1]],[b[0],t,b[1]],[a[0],t,a[1]]],mat);
  const route=(id,points,width=5)=>{m.routes.push({id,width,points});for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/4);for(let j=0;j<=n;j++)m.navNodes.push({x:a[0]+(b[0]-a[0])*j/n,z:a[1]+(b[1]-a[1])*j/n});}};
  // Exclusive X/Z strips: no invisible base plane under the water or upper street.
  for(const [a,b,mat] of [[-104,-65,'quay'],[-65,-25,'cobbles'],[-25,25,'cobbles'],[25,65,'asphalt'],[65,120,'asphalt']])for(const [left,right] of a===25?[[-140,30],[34,140]]:[[-140,140]])roof('city-grade-'+a+'-'+left,[[left,height(a),a],[left,height(b),b],[right,height(b),b],[right,height(a),a]],mat,true);
  // Hand-authored 150 mm civic stair: its 4 m footprint replaces the sloping
- // support, rather than layering decorative treads over a hidden ramp.
- for(let i=0;i<80;i++){const z=25+i*.5,y=12+(i+1)*.15;roof('civic-stair-'+i,[[30,y,z],[30,y,z+.5],[34,y,z+.5],[34,y,z]],'sandstone',true);}
+ // support, rather than layering decorative treads over a hidden ramp. Each
+ // riser also carries a walkable apron rising at APRON_SLOPE from the lower
+ // tread's top plane to this tread's top plane, so the ascent presents no 90 deg
+ // face and leaves no gap in support coverage.
+ for(let i=0;i<80;i++){const z=25+i*.5,y=12+(i+1)*.15;
+  roof('civic-stair-'+i,[[30,y,z],[30,y,z+.5],[34,y,z+.5],[34,y,z]],'sandstone',true);
+  aproned('civic-stair-'+i+'-apron','sandstone',z,y,.15);}
  roof('far-quay',[[-140,0,-120],[-140,0,-116],[140,0,-116],[140,0,-120]],'quay',true);
  for(const x of [-100,100]){
   roof('canal-bridge-'+x,[[x-6,0,-116],[x-6,0,-104],[x+6,0,-104],[x+6,0,-116]],'brick',true);
