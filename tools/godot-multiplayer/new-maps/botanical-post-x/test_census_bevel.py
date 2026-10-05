@@ -46,31 +46,36 @@ class Census(unittest.TestCase):
         for label in ("exploration r.35", "x native r.41", "game envelope r.42"):
             with self.subTest(profile=label):
                 self.assertEqual(accepted["profiles"][label]["civic"]["overlapping_over_floor_max_angle"], 0)
-        # The peak is the 45 deg chamfer, not the old 47-51 deg corner.
+        # The peak is the apron's own face, not the old 47-51 deg corner.
         peak = accepted["profiles"]["exploration r.35"]["civic"]["max_angle_deg"]
         self.assertLessEqual(peak, 46.0)
-        self.assertGreater(peak, 44.0)
+        self.assertGreater(peak, 39.0)
 
-    def test_the_candidate_variant_is_still_unbeveled(self):
-        """Recorded, not hidden.
+    def test_the_candidate_run_clears_the_guard_too(self):
+        """Both runs are rebuilt, so the roof's 14 contacts clear as well.
 
-        The candidate chain (``urban-v2`` -> ``urban-v3``) is **not** rebuilt:
-        its own source gate rejects the bevel. ``terrain.maxSlope`` is 0.7 rad =
-        40.107 deg and ``terrainSupportAt`` drops any shallower triangle, so a 45
-        degree chamfer is invisible to the support query; the leg-deep band at
-        each roof step then reads as unsupported, ``navConnectivity`` drops from
-        857/857 to 810/857, and ``variety-source-check.mjs`` exits 1. The
-        candidate authority therefore still carries the pre-bevel geometry, and
-        its contacts still measure above the guard at the exploration radius.
-        This test exists so the next reader cannot mistake that for the bevel
-        failing, and cannot skip noticing the candidate chain is stale.
+        The 45 degree chamfer could not be rebuilt here: its band is shallower
+        than ``terrain.maxSlope``, so the roof steps -- which have nothing
+        underneath to fall back on -- lost their support and the candidate source
+        gate failed. The support-visible apron restores them.
         """
         candidate = self.report["byVariant"]["candidate"]
         self.assertEqual(candidate["contacts"], 184)
         self.assertEqual(candidate["runs"]["civic"], 170)
         self.assertEqual(candidate["runs"]["roof"], 14)
-        self.assertGreater(candidate["profiles"]["exploration r.35"]["civic"]["overlapping_over_floor_max_angle"], 0)
-        self.assertGreater(candidate["profiles"]["exploration r.35"]["roof"]["max_angle_deg"], 46.0)
+        for label in ("exploration r.35", "x native r.41", "game envelope r.42"):
+            with self.subTest(profile=label):
+                self.assertEqual(candidate["profiles"][label]["civic"]["overlapping_over_floor_max_angle"], 0)
+                self.assertEqual(candidate["profiles"][label]["roof"]["overlapping_over_floor_max_angle"], 0)
+
+    def test_no_tread_contact_in_either_build_exceeds_the_guard(self):
+        """The headline: 354/354 tread contacts under 46 degrees."""
+        for variant in ("accepted", "candidate"):
+            for label in ("exploration r.35", "x native r.41", "game envelope r.42"):
+                with self.subTest(variant=variant, profile=label):
+                    row = self.report["byVariant"][variant]["profiles"][label]["tread"]
+                    self.assertEqual(row["overlapping_over_floor_max_angle"], 0)
+                    self.assertLessEqual(row["max_angle_deg"], 46.0)
 
     def test_the_census_makes_no_native_claim(self):
         self.assertFalse(self.report["isNativeClaim"])

@@ -122,15 +122,16 @@ def deepest_contact(bottom, triangles):
 
 
 def bevel_companion(arena, collider_id):
-    """The ``<id>-bevel`` chamfer surface paired with a tread, if present.
+    """Edge-treatment surfaces paired with a tread, if present.
 
-    The rebuild emits the 45 degree chamfer as a separate non-walkable surface so
-    the walkable top keeps its id and triangle count. Physically the capsule meets
-    both, so a census of "does this tread still present a >46 deg normal" has to
-    consider them as one solid.
+    Two treatments have shipped source geometry next to a tread: the 45 degree
+    chamfer of the 2026-10-05 rebuild (``<id>-bevel``, non-walkable) and the
+    support-visible apron of 2026-10-05 (``<id>-apron``, walkable). Either way
+    the capsule meets the top face and its companion as one physical solid, so a
+    census of "does this tread still present a >46 deg normal" has to union them.
     """
     for surface in arena["terrain"]["surfaces"]:
-        if surface["id"] == f"{collider_id}-bevel":
+        if surface["id"] in (f"{collider_id}-bevel", f"{collider_id}-apron"):
             return surface
     return None
 

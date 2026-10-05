@@ -548,6 +548,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -788,6 +792,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -1028,6 +1036,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -1268,6 +1280,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -1508,6 +1524,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -1748,6 +1768,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -1988,6 +2012,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -2228,6 +2256,10 @@
           }
         ],
         "genuine_support_changes": [],
+        "genuine_support_losses": 0,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -2501,6 +2533,10 @@
             "classification": "bevel_shallow"
           }
         ],
+        "genuine_support_losses": 1,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -2774,6 +2810,10 @@
             "classification": "bevel_shallow"
           }
         ],
+        "genuine_support_losses": 1,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -3047,6 +3087,10 @@
             "classification": "bevel_shallow"
           }
         ],
+        "genuine_support_losses": 1,
+        "support_raises": [],
+        "support_raise_count": 0,
+        "max_raise": 0.0,
         "seam_ambiguity_only": [
           {
             "point": "navNode[493]",
@@ -3314,6 +3358,10 @@
         }
       ],
       "genuine_support_changes": [],
+      "genuine_support_losses": 0,
+      "support_raises": [],
+      "support_raise_count": 0,
+      "max_raise": 0.0,
       "seam_ambiguity_only": [
         {
           "point": "navNode[493]",
@@ -3432,6 +3480,10 @@
           "classification": "bevel_shallow"
         }
       ],
+      "genuine_support_losses": 2,
+      "support_raises": [],
+      "support_raise_count": 0,
+      "max_raise": 0.0,
       "seam_ambiguity_only": [
         {
           "point": "navNode[493]",
@@ -3471,6 +3523,15 @@
       "bevel_support_y": 13.8,
       "bevel_support_bits": "402b99999999999a",
       "bevel_preserves_fixed_y": true,
+      "authored_support_y": 13.8,
+      "authored_support_bits": "402b99999999999a",
+      "resolved_support_y": 13.873636363636354,
+      "resolved_support_bits": "402bbf4d43f4d43a",
+      "resolved_delta_from_13_8": 0.07363636363635351,
+      "foot_on_apron": false,
+      "foot_apron_height": null,
+      "foot_clearance_to_apron_start_m": 0.5876623376623265,
+      "nav490_bit_identical": false,
       "bevel_walkable_span_z": [
         30.56,
         31
@@ -7022,6 +7083,828 @@
     "wedge_clashes": [],
     "subtractive_only": true,
     "overhead_clearance_affected": false
+  },
+  "appliedTreatment": {
+    "treatment": "additive support-visible apron",
+    "apronedTreads": 80,
+    "treadTreads": 14,
+    "apronRun": 0.17857142857142705,
+    "apronSlope": 0.8400000000000092,
+    "apronFaceAngleDeg": 40.03025927189001,
+    "apronAngleDeg": 40.03025927189001,
+    "terrainMaxSlopeDeg": 40.107001667277395,
+    "supportVisible": true,
+    "supportVisibleCosMargin": 0.0008626775051190361,
+    "contactNormalDeg": 40.03025927189001,
+    "guardMarginDeg": 5.96974072810999,
+    "runWithinGoing": true,
+    "capsuleRestsOnFace": true,
+    "heightPreservation": {
+      "edge": "ascent",
+      "leg": 0.0,
+      "audited": 765,
+      "resolved": 107,
+      "support_changed": [],
+      "genuine_support_changes": [],
+      "genuine_support_losses": 0,
+      "support_raises": [],
+      "support_raise_count": 0,
+      "max_raise": 0.0,
+      "seam_ambiguity_only": [],
+      "preserved": true,
+      "strict_preserved": true,
+      "capsule_preserved": true,
+      "capsule_radius": 0.35
+    },
+    "nav490": {
+      "id": "nav490",
+      "foot": [
+        32.0,
+        13.8,
+        30.9090909090909
+      ],
+      "supporting_tread": "civic-stair-11",
+      "bevel_support_y": 13.8,
+      "bevel_support_bits": "402b99999999999a",
+      "bevel_preserves_fixed_y": true,
+      "authored_support_y": 13.8,
+      "authored_support_bits": "402b99999999999a",
+      "resolved_support_y": 13.873636363636354,
+      "resolved_support_bits": "402bbf4d43f4d43a",
+      "resolved_delta_from_13_8": 0.07363636363635351,
+      "foot_on_apron": false,
+      "foot_apron_height": null,
+      "foot_clearance_to_apron_start_m": 0.5876623376623265,
+      "nav490_bit_identical": false,
+      "bevel_walkable_span_z": [
+        30.56,
+        31
+      ],
+      "foot_clearance_to_bevel_m": 0.3490909090909007,
+      "naive_ramp_support_y": 13.77272727272727,
+      "naive_ramp_delta": -0.02727272727273089,
+      "naive_ramp_matches_readme": true,
+      "tread_faithful_ramp_support_y": 13.90056818181818,
+      "tread_faithful_ramp_delta": 0.10056818181817917
+    },
+    "columnAudit": {
+      "method": "floor_column_height: terrainSupportAt mirrored exactly (highest admissible walkable surface in the column, no reference filter, no fallback)",
+      "audited": 765,
+      "changed": 6,
+      "losses": 0,
+      "raises": 6,
+      "maxLoss": 0.0,
+      "maxRaise": 0.11181818181822223,
+      "lossRows": [],
+      "raiseRows": [
+        {
+          "point": "navNode[490]",
+          "x": 32,
+          "z": 30.90909090909091,
+          "authored": 13.8,
+          "built": 13.873636363636363,
+          "delta": 0.07363636363636239,
+          "direction": "raise"
+        },
+        {
+          "point": "navNode[494]",
+          "x": 32,
+          "z": 46.36363636363637,
+          "authored": 18.45,
+          "built": 18.48545454545455,
+          "delta": 0.03545454545455229,
+          "direction": "raise"
+        },
+        {
+          "point": "navNode[497]",
+          "x": 32,
+          "z": 57.95454545454545,
+          "authored": 21.9,
+          "built": 22.011818181818178,
+          "delta": 0.1118181818181796,
+          "direction": "raise"
+        },
+        {
+          "point": "contact:accepted-nav-490",
+          "x": 32.0,
+          "z": 30.9090909090909,
+          "authored": 13.8,
+          "built": 13.873636363636354,
+          "delta": 0.07363636363635351,
+          "direction": "raise"
+        },
+        {
+          "point": "contact:accepted-nav-494",
+          "x": 32.0,
+          "z": 46.3636363636364,
+          "authored": 18.45,
+          "built": 18.485454545454584,
+          "delta": 0.03545454545458426,
+          "direction": "raise"
+        },
+        {
+          "point": "contact:accepted-nav-497",
+          "x": 32.0,
+          "z": 57.9545454545455,
+          "authored": 21.9,
+          "built": 22.01181818181822,
+          "delta": 0.11181818181822223,
+          "direction": "raise"
+        }
+      ]
+    },
+    "designSpace": {
+      "supportQueryRules": {
+        "sources": [
+          "game/terrain.mjs:92-107 terrainSupportAt",
+          "game/floor-lattice.mjs:226-257 scanLattice (same predicates, same order)",
+          "game/floor-lattice.mjs:283-317 makeFloorQuery (maxSlope from terrain.maxSlope)",
+          "game/terrain.mjs:29-41 surfaceTriangles (walkable defaults true)",
+          "game/core.mjs:108 floorAt (null propagates)",
+          "game/core.mjs:334 moveActor ground snap (<= 0.25 m, floorAt must be non-null)"
+        ],
+        "predicates": {
+          "P1_bounds": "x,z finite; lattice path also requires the point inside baked bounds",
+          "P2_nonDegenerate": "|barycentric denominator| > 1e-9; vertical faces are skipped here",
+          "P3_containment": "barycentric u,v,w >= -1e-9; exact per-triangle coverage, no dilation",
+          "P4_positiveUpWalkable": "normal[1] > 1e-9 and walkable !== false; walls are a separate collection",
+          "P5_slopeBudget": "normal[1] >= cos(terrain.maxSlope) - 1e-9, applied at lookup time"
+        },
+        "selection": "highest admissible y, replacing the incumbent only by more than 1e-9",
+        "searchRadius": null,
+        "fallback": null,
+        "fallbackNote": "no fallback of any kind: no admissible triangle in the (x,z) column means null",
+        "epsilon": 1e-09,
+        "maxSlopeRad": 0.7,
+        "maxSlopeDeg": 40.107001667277395,
+        "cosMaxSlope": 0.7648421872844885,
+        "steepestAdmissibleFaceDeg": 40.107001667277395,
+        "admissibleSurfaceRule": "walkable and face angle from horizontal <= terrain.maxSlope"
+      },
+      "maxAdmissibleGradient": 0.8422883804630794,
+      "budgets": {
+        "civic": {
+          "rise": 0.15,
+          "auditedPointsOnTreads": 16,
+          "auditedPointsExactlyOnRiser": 1,
+          "clearanceBudget": 0.04545454545449701,
+          "clearanceBudgetDirection": "additive",
+          "clearanceBudgetPoint": "contact:accepted-nav-497",
+          "subtractiveBudget": 0.045454545454546746,
+          "subtractiveBudgetPoint": "navNode[489]",
+          "additiveBudget": 0.04545454545449701,
+          "additiveBudgetPoint": "contact:accepted-nav-497",
+          "tightestFive": [
+            {
+              "clearance": 0.045454545454546746,
+              "point": "navNode[489]",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.09090909090909349,
+              "point": "navNode[496]",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.13636363636363313,
+              "point": "navNode[492]",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.22727272727272663,
+              "point": "navNode[495]",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.25,
+              "point": "contact:accepted-route",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.04545454545449701,
+              "point": "contact:accepted-nav-497",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.045454545454546746,
+              "point": "navNode[497]",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.09090909090908994,
+              "point": "navNode[490]",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.0909090909091006,
+              "point": "contact:accepted-nav-490",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.1363636363635976,
+              "point": "contact:accepted-nav-494",
+              "direction": "additive"
+            }
+          ],
+          "maxRiseWithinBudget": 0.03828583547555371,
+          "maxRiseWithinBudgetAtGuard": 0.047069559717703,
+          "riseDeficiencyFactor": 3.9178980460222177,
+          "minFaceAngleForFullRiseDeg": 73.14160123227867,
+          "minRunForSupportVisibleDeg": 0.1780862748190019,
+          "minRunForGuardDeg": 0.1448533162210611
+        },
+        "roof": {
+          "rise": 0.14285714285714285,
+          "auditedPointsOnTreads": 1,
+          "auditedPointsExactlyOnRiser": 0,
+          "clearanceBudget": 0.0357142857142847,
+          "clearanceBudgetDirection": "additive",
+          "clearanceBudgetPoint": "contact:candidate-route",
+          "subtractiveBudget": 0.6071428571428541,
+          "subtractiveBudgetPoint": "contact:candidate-route",
+          "additiveBudget": 0.0357142857142847,
+          "additiveBudgetPoint": "contact:candidate-route",
+          "tightestFive": [
+            {
+              "clearance": 0.6071428571428541,
+              "point": "contact:candidate-route",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.6428571428571459,
+              "point": "contact:candidate-route",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.6428571428571459,
+              "point": "contact:candidate-route",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.6785714285714306,
+              "point": "contact:candidate-route",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.6785714285714306,
+              "point": "contact:candidate-route",
+              "direction": "subtractive"
+            },
+            {
+              "clearance": 0.0357142857142847,
+              "point": "contact:candidate-route",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.0357142857142847,
+              "point": "contact:candidate-route",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.0714285714285694,
+              "point": "contact:candidate-route",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.0714285714285694,
+              "point": "contact:candidate-route",
+              "direction": "additive"
+            },
+            {
+              "clearance": 0.1071428571428541,
+              "point": "contact:candidate-route",
+              "direction": "additive"
+            }
+          ],
+          "maxRiseWithinBudget": 0.030081727873680554,
+          "maxRiseWithinBudgetAtGuard": 0.03698322549251929,
+          "riseDeficiencyFactor": 4.748967328506852,
+          "minFaceAngleForFullRiseDeg": 75.96375653207392,
+          "minRunForSupportVisibleDeg": 0.16960597601809704,
+          "minRunForGuardDeg": 0.1379555392581534
+        }
+      },
+      "going": {
+        "civic": 0.5,
+        "roof": 0.8571428571428541
+      },
+      "rows": [
+        {
+          "run": "civic",
+          "faceAngleDeg": 16.699244,
+          "contactNormalDeg": 16.699244,
+          "horizontalRun": 0.5000000074191925,
+          "verticalDrop": 0.13228704028576072,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": false,
+            "C4_going": false,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C3_capsule_on_face"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 20.0,
+          "contactNormalDeg": 20.0,
+          "horizontalRun": 0.4121216129181933,
+          "verticalDrop": 0.12467090073008154,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": false,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C3_capsule_on_face"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 25.0,
+          "contactNormalDeg": 25.0,
+          "horizontalRun": 0.3216760380764338,
+          "verticalDrop": 0.11064927055539298,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": false,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C3_capsule_on_face"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 30.0,
+          "contactNormalDeg": 30.0,
+          "horizontalRun": 0.2598076211353316,
+          "verticalDrop": 0.09373066958946424,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 35.0,
+          "contactNormalDeg": 35.0,
+          "horizontalRun": 0.2142222010113172,
+          "verticalDrop": 0.07404385860137655,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 39.0,
+          "contactNormalDeg": 39.0,
+          "horizontalRun": 0.18523457348025774,
+          "verticalDrop": 0.056401303811927775,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 40.107001667277395,
+          "contactNormalDeg": 40.107001667277395,
+          "horizontalRun": 0.17808655232748155,
+          "verticalDrop": 0.05123392640498682,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 41.0,
+          "contactNormalDeg": 41.0,
+          "horizontalRun": 0.17255526108315142,
+          "verticalDrop": 0.04697802369356424,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 42.0,
+          "contactNormalDeg": 42.0,
+          "horizontalRun": 0.16659187722437893,
+          "verticalDrop": 0.042120826700505584,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 43.0,
+          "contactNormalDeg": 43.0,
+          "horizontalRun": 0.16085530650370236,
+          "verticalDrop": 0.03716855468005159,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 44.0,
+          "contactNormalDeg": 44.0,
+          "horizontalRun": 0.15532954706858543,
+          "verticalDrop": 0.0321227161422335,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 45.0,
+          "contactNormalDeg": 45.0,
+          "horizontalRun": 0.15000000000000002,
+          "verticalDrop": 0.026984848098349973,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 46.0,
+          "contactNormalDeg": 46.0,
+          "horizontalRun": 0.1448533162210611,
+          "verticalDrop": 0.021756515592778858,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 50.0,
+          "contactNormalDeg": 50.0,
+          "horizontalRun": 0.12586494467659198,
+          "verticalDrop": -2.920393165345425e-05,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": false,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 60.0,
+          "contactNormalDeg": 60.0,
+          "horizontalRun": 0.08660254037844389,
+          "verticalDrop": -0.05999999999999994,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": false,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "civic",
+          "faceAngleDeg": 73.142,
+          "contactNormalDeg": 73.142,
+          "horizontalRun": 0.04545340562030054,
+          "verticalDrop": -0.14819969148150622,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": false,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": true
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 16.699244,
+          "contactNormalDeg": 16.699244,
+          "horizontalRun": 0.4761904832563738,
+          "verticalDrop": 0.12514418314290357,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": false,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C3_capsule_on_face"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 20.0,
+          "contactNormalDeg": 20.0,
+          "horizontalRun": 0.39249677420780316,
+          "verticalDrop": 0.11752804358722439,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": false,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C3_capsule_on_face"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 25.0,
+          "contactNormalDeg": 25.0,
+          "horizontalRun": 0.3063581315013655,
+          "verticalDrop": 0.10350641341253583,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": false,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C3_capsule_on_face"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 30.0,
+          "contactNormalDeg": 30.0,
+          "horizontalRun": 0.24743582965269675,
+          "verticalDrop": 0.0865878124466071,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 35.0,
+          "contactNormalDeg": 35.0,
+          "horizontalRun": 0.2040211438203021,
+          "verticalDrop": 0.0669010014585194,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 39.0,
+          "contactNormalDeg": 39.0,
+          "horizontalRun": 0.17641387950500736,
+          "verticalDrop": 0.04925844666907063,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 40.107001667277395,
+          "contactNormalDeg": 40.107001667277395,
+          "horizontalRun": 0.1696062403118872,
+          "verticalDrop": 0.044091069262129676,
+          "checks": {
+            "C1_support_visible": true,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C5_audited_heights"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 41.0,
+          "contactNormalDeg": 41.0,
+          "horizontalRun": 0.16433834388871563,
+          "verticalDrop": 0.039835166550707096,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 42.0,
+          "contactNormalDeg": 42.0,
+          "horizontalRun": 0.15865893068988468,
+          "verticalDrop": 0.03497796955764844,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 43.0,
+          "contactNormalDeg": 43.0,
+          "horizontalRun": 0.15319553000352606,
+          "verticalDrop": 0.030025697537194446,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 44.0,
+          "contactNormalDeg": 44.0,
+          "horizontalRun": 0.14793290197008135,
+          "verticalDrop": 0.024979858999376353,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 45.0,
+          "contactNormalDeg": 45.0,
+          "horizontalRun": 0.14285714285714288,
+          "verticalDrop": 0.019841990955492828,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 46.0,
+          "contactNormalDeg": 46.0,
+          "horizontalRun": 0.1379555392581534,
+          "verticalDrop": 0.014613658449921713,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": true,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 50.0,
+          "contactNormalDeg": 50.0,
+          "horizontalRun": 0.11987137588246856,
+          "verticalDrop": -0.0071720610745105995,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": false,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 60.0,
+          "contactNormalDeg": 60.0,
+          "horizontalRun": 0.08247860988423228,
+          "verticalDrop": -0.06714285714285709,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": false,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        },
+        {
+          "run": "roof",
+          "faceAngleDeg": 73.142,
+          "contactNormalDeg": 73.142,
+          "horizontalRun": 0.043288957733619564,
+          "verticalDrop": -0.15534254862436336,
+          "checks": {
+            "C1_support_visible": false,
+            "C2_guard": false,
+            "C3_capsule_on_face": true,
+            "C4_going": true,
+            "C5_audited_heights": false
+          },
+          "admissible": false,
+          "bindingFailure": "C1_support_visible"
+        }
+      ],
+      "nonEmpty": false,
+      "emptyReason": "minFaceAngleForFullRiseDeg exceeds min(terrain.maxSlope, floor_max_angle) in every run"
+    }
   },
   "contactEffect": {
     "records": 368,

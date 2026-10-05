@@ -5,11 +5,12 @@
 // bridges with quay coping, terraced retaining banks, rooftop access and new
 // walkable crosslinks. Collision is triangle walls; walkable pads carry real
 // terrain support. No accepted master, generated JSON or runtime GLB is touched.
-import {recipe as baseRecipe, height} from '../../recipe.mjs';
+import {recipe as baseRecipe, height, edgeApron, APRON_SLOPE} from '../../recipe.mjs';
 import {stampTerrainFloor} from '../../../../../../game/terrain.mjs';
 import {composeKitAuthority} from '../../../map_variety/kit_authority.mjs';
 export const ID = 'vesper-viaduct';
 export const REVISION = 'urban-v2';
+// Superseded by the base recipe's support-visible apron; retained for provenance.
 export const STAIR_BEVEL = 0.043438367470067386;
 
 export function makeRecipe() {
@@ -45,21 +46,16 @@ export function makeRecipe() {
     surf(`${id}-cap`, material, x - w / 2, x + w / 2, z - d / 2, z + d / 2, t);
     return {id, type: 'era-block', x, z, w, d, baseY: b, top: t};
   };
-  // Pull a stamped flat tread's walkable top back at its -Z edge and add a 45 deg
-  // chamfer quad. Preserves the top plane Y verbatim. The chamfer is appended to
-  // the same surface in place, so the run keeps its id and its walkable flag.
-  function bevelSurfaced(terrain,id,leg){
+  // Add the walkable support-visible apron for one stamped roof step. Purely
+  // additive: the stamped step keeps its id, its extent, its top plane and its
+  // walkable flag, and the apron supplies the face the floor query can see.
+  function apronSurfaced(terrain,id,y,rise,slope=APRON_SLOPE){
     const s=terrain.surfaces.find(s=>s.id===id); if(!s) return;
-    const pts=s.triangles.flatMap(t=>t.map(i=>s.vertices[i]));
-    const ys=new Set(pts.map(p=>p[1])); if(ys.size!==1) return; // not flat
-    const y=pts[0][1],zs=pts.map(p=>p[2]),z0=Math.min(...zs),z1=Math.max(...zs);
-    const xs=pts.map(p=>p[0]),x0=Math.min(...xs),x1=Math.max(...xs),zl=z0+leg;
-    const top=[[x0,y,zl],[x0,y,z1],[x1,y,z1],[x1,y,zl]];
-    const cham=[[x0,y-leg,z0],[x0,y,zl],[x1,y,zl],[x1,y-leg,z0]];
-    const emit=(quad,walkable,id2)=>{const base=s.vertices.length;
-      quad.forEach(v=>s.vertices.push(v));s.triangles.push([base,base+1,base+2],[base,base+2,base+3]);};
-    s.vertices=[];s.triangles=[];
-    emit(top,true);emit(cham,false);
+    const zs=s.triangles.flatMap(t=>t.map(i=>s.vertices[i])).map(p=>p[2]);
+    const xs=s.triangles.flatMap(t=>t.map(i=>s.vertices[i])).map(p=>p[0]);
+    terrain.surfaces.push({id:id+'-apron',material:s.material,walkable:true,
+      vertices:edgeApron(Math.min(...xs),Math.max(...xs),Math.min(...zs),y,rise,slope),
+      triangles:[[0,1,2],[0,2,3]]});
   }
   const route = (id, points, width = 5) => {
     a.routes.push({id, width, points});
@@ -142,11 +138,12 @@ export function makeRecipe() {
   // these small treads, not a hidden higher ground plane.
   for (let i = 0; i < 14; i++) {
     const z0=53+i*12/14,z1=53+(i+1)*12/14,y=22+(i+1)*2/14,id=`roof-ramp-step-${i}`;
-    // Stamp the full un-beveled step first, then bevel its ascent (-Z) edge so
-    // the run's authored extents and heights are unchanged.
+    // Stamp the full step first, untouched, then add the walkable apron that
+    // carries the ascent face. The run's authored extents and heights are
+    // unchanged; nothing is cut back.
     stampTerrainFloor(a.terrain,[[16,z0],[20,z0],[20,z1],[16,z1]],()=>y,id);
-    bevelSurfaced(a.terrain,id,STAIR_BEVEL);
     for(const s of a.terrain.surfaces)if(s.id===id)s.material='sandstone';
+    apronSurfaced(a.terrain,id,y,2/14);
   }
   route('roof-access-ramp', [[18,70],[18,65],[18,53],[18,51]], 3);
   a.routes.at(-1).points=a.routes.at(-1).points.map(([x,z],i)=>({x,z,y:[24,24,22+1/7,22][i]}));

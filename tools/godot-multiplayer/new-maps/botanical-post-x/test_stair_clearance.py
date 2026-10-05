@@ -208,128 +208,141 @@ class AuthorityIntegrity(unittest.TestCase):
                     self.assertLessEqual(vertex[1], tread.y + 1e-12)
 
 
-class AppliedBevel(unittest.TestCase):
-    """The reviewed bevel is present in the rebuilt world, exactly as analysed.
+class AppliedApron(unittest.TestCase):
+    """The support-visible apron is present in the built world, exactly as analysed.
 
-    These are the load-bearing checks for the 2026-10-05 rebuild: the analysis
-    above proves a *proposal*, and these prove the built authority carries that
-    same geometry rather than something that merely looks similar.
+    These are the load-bearing checks for the 2026-10-05 support-visible redesign:
+    the analysis proves a *design*, and these prove the built authority carries
+    that geometry, that the tread tops are still the authored ones, and that the
+    face is inside the map's support-query slope budget.
     """
 
     def setUp(self):
-        self.leg = sc.build_report()["recommended"]["leg"]
+        self.report = sc.build_report()
+        self.applied = self.report["appliedTreatment"]
         self.treads = sc.civic_treads_from_authority()
         arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        self.arena = arena
         self.surfaces = {s["id"]: s for s in arena["terrain"]["surfaces"]}
 
-    def test_every_civic_tread_carries_a_bevel_companion(self):
+    def test_all_eighty_civic_treads_carry_a_walkable_apron(self):
         self.assertEqual(len(self.treads), 80)
         for tread in self.treads:
             with self.subTest(tread=tread.id):
-                self.assertIn(f"{tread.id}-bevel", self.surfaces)
-                self.assertFalse(self.surfaces[f"{tread.id}-bevel"]["walkable"])
+                apron = self.surfaces[f"{tread.id}-apron"]
+                self.assertTrue(apron["walkable"], "a non-walkable apron is not floor")
+                self.assertEqual(apron["material"], "sandstone")
+                self.assertEqual(apron["triangles"], [[0, 1, 2], [0, 2, 3]])
+                self.assertGreater(tread.apron_run, 0.0)
+                self.assertGreater(tread.apron_slope, 0.0)
 
-    def test_the_applied_leg_is_the_recommended_window_midpoint(self):
-        """The leg read back out of the world is the proven midpoint."""
-        for tread in self.treads:
-            span = tread.walkable_span(self.leg)
-            actual = span[0] - tread.z0
-            self.assertTrue(
-                sc._within_ulps(actual, self.leg, 4, 65.0),
-                f"{tread.id} applied leg {actual!r} is not the reviewed {self.leg!r}",
-            )
-
-    def test_built_top_faces_are_the_proven_beveled_tops(self):
-        for tread in self.treads:
-            with self.subTest(tread=tread.id):
-                proposal = sc.bevel_triangles(tread, self.leg)
-                built = self.surfaces[tread.id]
-                actual = [[built["vertices"][i] for i in face] for face in built["triangles"]]
-                self.assertEqual(actual, proposal["top_triangles"])
-
-    def test_built_chamfers_are_the_proven_chamfer_faces(self):
-        for tread in self.treads:
-            with self.subTest(tread=tread.id):
-                proposal = sc.bevel_triangles(tread, self.leg)
-                built = self.surfaces[f"{tread.id}-bevel"]
-                actual = [[built["vertices"][i] for i in face] for face in built["triangles"]]
-                self.assertEqual(actual, proposal["chamfer_triangles"])
-
-    def test_the_bevel_adds_exactly_two_faces_per_tread_and_nothing_else(self):
-        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
-        surfaces = arena["terrain"]["surfaces"]
-        treads = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+", s["id"])]
-        chamfers = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+-bevel", s["id"])]
-        others = [
-            s
-            for s in surfaces
-            if not re.fullmatch(r"civic-stair-\d+(-bevel)?", s["id"])
-        ]
-        self.assertEqual(len(treads), 80)
-        self.assertEqual(len(chamfers), 80)
-        self.assertTrue(all(len(s["triangles"]) == 2 for s in treads))
-        self.assertTrue(all(len(s["triangles"]) == 2 for s in chamfers))
-        self.assertEqual(len(others), len(surfaces) - 160)
-        # The 80 tops are pulled back; nothing else in the run is touched.
-        self.assertEqual(sum(len(s["triangles"]) for s in chamfers), 2 * 80)
-
-    def test_the_applied_bevel_preserves_every_audited_height(self):
-        """The rebuild reproduces the audit's own preservation verdict."""
-        report = sc.build_report()
-        self.assertTrue(report["heightPreservation"]["preserved"])
-        self.assertTrue(report["heightPreservation"]["capsulePreserved"])
-        self.assertEqual(report["heightPreservation"]["genuineSupportChanges"], [])
-        self.assertEqual(report["heightPreservation"]["auditedPoints"], 765)
-
-    def test_nav490_and_the_seam_case_are_unchanged_by_the_rebuild(self):
-        nav = sc.nav490_regression(sc.civic_treads_from_authority())
-        self.assertEqual(nav["supporting_tread"], "civic-stair-11")
-        self.assertTrue(nav["bevel_preserves_fixed_y"])
-        self.assertEqual(sc.bits(nav["bevel_support_y"]), sc.bits(13.8))
-        seam = sc.build_report()["heightPreservation"]["seamAmbiguityOnly"]
-        self.assertEqual([(c["point"], c["classification"]) for c in seam], [("navNode[493]", "on_boundary")])
-
-
-class SeamSupportSlots(unittest.TestCase):
-    """A recorded, bounded consequence of the applied bevel.
-
-    ``recipe.mjs`` declares ``terrain.maxSlope = 0.7`` rad = 40.107 deg, and
-    ``terrainSupportAt`` drops any triangle whose normal is shallower than that.
-    A 45 degree chamfer is shallower, so the leg-deep band at each tread seam
-    resolves to no support, and ``navConnectivity`` treats the nine civic-stair
-    navNodes above the run as unreachable. This is stated here rather than left
-    for a reviewer to discover: the physical claim (a 45 deg face, under the 46
-    deg guard) and this query-layer claim (no support in the band) are different
-    questions, and only the native run settles the first.
-    """
-
-    def test_the_chamfer_is_too_shallow_for_this_maps_support_query(self):
-        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
-        max_slope = arena["terrain"]["maxSlope"]
+    def test_the_apron_face_is_inside_the_support_query_slope_budget(self):
+        """The whole point: a 45 deg face is invisible here, 40.03 deg is not."""
+        self.assertTrue(self.applied["supportVisible"])
+        angle = self.applied["apronFaceAngleDeg"]
+        self.assertLessEqual(angle, sc.TERRAIN_MAX_SLOPE_DEG)
+        self.assertGreaterEqual(angle, 39.0, "no point being shallower than the budget allows")
+        # And the 45 deg chamfer that preceded it really is inadmissible.
         self.assertTrue(
-            math.cos(math.radians(45.0)) < math.cos(max_slope) - 1e-9,
-            "this test documents the slot only while the chamfer is steeper than maxSlope",
+            math.cos(math.radians(45.0)) < sc.COS_TERRAIN_MAX_SLOPE - sc.SUPPORT_EPSILON,
+            "the chamfer this replaced was inside the budget; the redesign is moot",
         )
 
-    def test_the_slot_is_exactly_the_applied_leg_at_every_seam(self):
-        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
-        leg = sc.APPLIED_BEVEL
-        for index in range(80):
-            tread = self.tread(index)
-            top = next(
-                s
-                for s in arena["terrain"]["surfaces"]
-                if s["id"] == f"civic-stair-{index}"
-            )
-            zs = [v[2] for face in top["triangles"] for v in (top["vertices"][i] for i in face)]
-            self.assertTrue(
-                sc._within_ulps(min(zs) - tread.z0, leg, 4, 65.0),
-                f"civic-stair-{index} does not start leg past its authored edge",
-            )
+    def test_the_apron_clears_the_controller_guard_with_margin(self):
+        self.assertLessEqual(self.applied["contactNormalDeg"], sc.FLOOR_MAX_ANGLE_DEG)
+        self.assertGreater(self.applied["guardMarginDeg"], 1.0)
+        self.assertTrue(self.applied["capsuleRestsOnFace"])
+        self.assertTrue(self.applied["runWithinGoing"])
 
-    @staticmethod
-    def tread(index):
-        return sc.civic_treads_from_authority()[index]
+    def test_the_apron_meets_both_authored_planes_exactly(self):
+        """Continuous profile: the base sits on the lower tread, the apex on this one."""
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                self.assertEqual(sc.bits(tread.apron_y(tread.z0)), sc.bits(tread.y))
+                self.assertEqual(sc.bits(tread.apron_y(tread.apron_start_z)), sc.bits(tread.y - tread.rise))
+                self.assertIsNone(tread.apron_y(tread.z0 + 1e-6), "apron must not spill onto the tread")
+                self.assertIsNone(tread.apron_y(tread.apron_start_z - 1e-6))
+
+    def test_the_tread_tops_are_still_exactly_the_authored_geometry(self):
+        """The whole safety argument: an additive apron cannot shorten a tread."""
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                self.assertEqual(tread.z0, 25 + int(tread.id.split("-")[-1]) * 0.5)
+                self.assertEqual(tread.y, 12 + (int(tread.id.split("-")[-1]) + 1) * 0.15)
+                top = self.surfaces[tread.id]
+                self.assertTrue(top["walkable"])
+                zs = [v[2] for face in top["triangles"] for v in (top["vertices"][i] for i in face)]
+                self.assertEqual(min(zs), tread.z0)
+                self.assertEqual(max(zs), tread.z1)
+
+    def test_the_apron_adds_exactly_two_faces_per_tread_and_changes_nothing_else(self):
+        surfaces = self.arena["terrain"]["surfaces"]
+        tops = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+", s["id"])]
+        aprons = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+-apron", s["id"])]
+        self.assertEqual(len(tops), 80)
+        self.assertEqual(len(aprons), 80)
+        self.assertTrue(all(len(s["triangles"]) == 2 for s in tops))
+        self.assertTrue(all(len(s["triangles"]) == 2 for s in aprons))
+        self.assertEqual(sum(len(s["triangles"]) for s in aprons), 2 * 80)
+
+    def test_no_audited_point_loses_support_and_nav490_is_quantified(self):
+        column = self.applied["columnAudit"]
+        self.assertEqual(column["audited"], 765)
+        self.assertEqual(column["losses"], 0)
+        self.assertEqual(column["maxLoss"], 0.0)
+        self.assertEqual(self.applied["heightPreservation"]["genuine_support_losses"], 0)
+        self.assertTrue(self.applied["heightPreservation"]["capsule_preserved"])
+        # nav490 is a documented pin: it is not silently preserved, it is reported.
+        nav = self.applied["nav490"]
+        self.assertEqual(sc.bits(nav["authored_support_y"]), sc.bits(13.8))
+        self.assertTrue(sc._within_ulps(nav["resolved_support_y"], 13.873636363636364, 64, 65.0))
+        self.assertFalse(nav["nav490_bit_identical"])
+        self.assertGreater(nav["resolved_delta_from_13_8"], 0.0)
+
+    def test_the_applied_leg_is_the_proven_minimum_nav490_cost(self):
+        """No admissible face can do better than +73.4 mm at nav490.
+
+        Any support-visible face covering the civic rise needs a run of
+        ``rise/tan(theta)``, and nav490 sits 0.090909 m before the riser at
+        z=31.0, so its height becomes ``13.8 + 0.15 - 0.090909*tan(theta)``.
+        The largest admissible ``tan(theta)`` is ``tan(terrain.maxSlope)``, which
+        minimises the raise. Verified here at the true optimum and at the shipped
+        slope, which is 0.2 mm worse.
+        """
+        gap = 31.0 - 30.90909090909091
+        best = 13.8 + 0.15 - gap * math.tan(sc.TERRAIN_MAX_SLOPE_RAD)
+        shipped = 13.8 + 0.15 - gap * sc.APRON_SLOPE
+        self.assertGreaterEqual(best, 13.8)
+        self.assertLessEqual(shipped, best + 1e-3)
+        self.assertGreater(shipped, best)
+        self.assertLess(shipped - 13.8, 0.075)
+
+    def test_the_design_space_is_empty_for_the_hypothetical_and_that_is_why(self):
+        """A subtractive or shallower-than-visible treatment cannot work at all."""
+        space = self.applied["designSpace"]
+        self.assertFalse(space["nonEmpty"])
+        civic = space["budgets"]["civic"]
+        self.assertGreater(civic["minFaceAngleForFullRiseDeg"], sc.FLOOR_MAX_ANGLE_DEG)
+        self.assertLess(civic["maxRiseWithinBudget"], civic["rise"])
+
+
+class SupportQueryRules(unittest.TestCase):
+    """The rules this redesign exists to satisfy, read from source and pinned."""
+
+    def test_the_rules_are_documented_with_their_source_lines(self):
+        rules = sc.support_query_rules()
+        self.assertIn("game/terrain.mjs:92-107 terrainSupportAt", rules["sources"])
+        self.assertEqual(rules["predicates"]["P5_slopeBudget"].count("cos(terrain.maxSlope)"), 1)
+        self.assertIsNone(rules["fallback"])
+        self.assertIsNone(rules["searchRadius"])
+
+    def test_the_authored_slope_budget_is_the_one_that_binds(self):
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        self.assertEqual(arena["terrain"]["maxSlope"], sc.TERRAIN_MAX_SLOPE_RAD)
+
+    def test_the_gradient_bound_is_tan_max_slope(self):
+        self.assertAlmostEqual(sc.max_admissible_gradient(), math.tan(0.7), places=15)
+        self.assertLess(sc.max_admissible_gradient(), math.tan(math.radians(sc.FLOOR_MAX_ANGLE_DEG)))
 
 
 class HeightPreservation(unittest.TestCase):

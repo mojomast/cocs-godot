@@ -9,11 +9,12 @@ import {ensureTerrainBvh,terrainRayHitFast} from '../../../../game/terrain-bvh.m
 const root=new URL('../../../../',import.meta.url);
 export const PINS={
  // 'godot/multiplayer_worlds/generated/vesper-viaduct.json' re-pinned
- // 2026-10-05 by the reviewed Vesper stair bevel rebuild
- // (VESPER_BEVEL_REBUILD_20261005.md): 80 civic treads pulled back by
- // STAIR_BEVEL at their ascent edge plus 80 non-walkable -bevel chamfers.
- 'godot/multiplayer_worlds/generated/vesper-viaduct.json':'cafb93e54b61c223e62279abdb36e606a1d157682071264dd3753143dc56c172',
- 'port/new-maps/vesper-viaduct/variety/urban-v3/authority.json':'397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec',
+ // 2026-10-05 by the support-visible stair edge rebuild
+ // (VESPER_BEVEL_SUPPORT_VISIBLE_20261005.md): the 80 civic tread tops are
+ // byte-identical to the authored world and 80 walkable -apron surfaces carry
+ // the ascent face at 40.03 deg, inside terrain.maxSlope (40.107 deg).
+ 'godot/multiplayer_worlds/generated/vesper-viaduct.json':'0f7f8a0aa5bd8ff1bd8b5098fa0c9e3a63fa770cc748407ae2a0db29ca484a0c',
+ 'port/new-maps/vesper-viaduct/variety/urban-v3/authority.json':'d4a61518a58dfd9c906d6d5641e2b9f58ea2fa005d202da95c5528c0fa26e70f',
  'game/core.mjs':'655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3',
  'game/data.mjs':'2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44',
 };
