@@ -653,15 +653,20 @@ def sliver_metrics_standalone(facts):
 # 5. Render feasibility against the committed harness.
 # --------------------------------------------------------------------------
 
-def render_feasibility(visibility):
-    """Audit the committed parity-glyph capture harness against a close-up render."""
+def render_feasibility(visibility, *, import_cache=None, blender=None):
+    """Audit the committed parity-glyph capture harness against a close-up render.
+
+    The environment probes default to this checkout, but callers can pin them so
+    the committed decision (authored in a fresh worktree with no editor import
+    cache and no Blender 4.5.14) stays deterministic across machines.
+    """
     captures_dir = AC_STAGE / 'captures'
     existing = sorted(p.name for p in captures_dir.glob('*.png')) if captures_dir.is_dir() else []
     return render_feasibility_from_text(
         CAPTURE_GD.read_text(), STAGED_GD.read_text(), STAGE_PY.read_text(),
         captures=existing,
-        import_cache=(ROOT / 'godot/.godot').is_dir(),
-        blender=blender_path(),
+        import_cache=(ROOT / 'godot/.godot').is_dir() if import_cache is None else import_cache,
+        blender=blender_path() if blender is None else blender,
         resolving=visibility['camerasResolvingTheFace'])
 
 
@@ -797,7 +802,7 @@ def baseline_classification(ac_raw):
             'cornerDisagreements': result['cornerDisagreements']}
 
 
-def run():
+def run(render_environment=None):
     roles, conventions = ap.material_table()
     arts = artifacts()
     if arts['AC']['raw'] is None:
@@ -811,7 +816,7 @@ def run():
     patch_text, patch_files = revert_diff()
     revert_bytes, revert_proof = psc.revert(arts['AC']['raw'], arts['X']['raw'])
     significance = visual_significance(arts, roles, facts)
-    feasibility = render_feasibility(significance['cameraVisibility'])
+    feasibility = render_feasibility(significance['cameraVisibility'], **(render_environment or {}))
     report = {
         'schema': 'parallax-11823-revert-decision/v1',
         'scope': ('Source-only decision package for the reviewed Parallax saltstone face 11823. '

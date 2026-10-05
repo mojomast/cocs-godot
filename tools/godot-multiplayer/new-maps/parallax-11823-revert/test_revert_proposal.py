@@ -362,7 +362,10 @@ class CommittedSourceTests(unittest.TestCase):
     def setUpClass(cls):
         cls.roles, _conventions = rp.ap.material_table()
         cls.arts = rp.artifacts()
-        cls.report = rp.run()
+        # Pin the decision's authoring environment (fresh worktree: no godot/.godot
+        # import cache, no Blender 4.5.14) so a reviewer's local caches or toolchain
+        # cannot change the committed render-feasibility verdict.
+        cls.report = rp.run(render_environment={'import_cache': False, 'blender': None})
 
     def test_reviewed_corner_set_and_bases(self):
         corners = self.report['corners']
