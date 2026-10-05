@@ -36,6 +36,16 @@ const base = (family, variant, tint, response, seed) => ({
 
 const material = (source, family, options) => ({source, family, options});
 
+// Placement convention, read off binder.gd: every panel and sign is a QuadMesh
+// whose front face is its local +Z, and both panel.gdshader and wear_panel.gdshader
+// declare cull_back. So a yaw of 0 faces +Z, 90 faces +X, 180 faces -Z and -90
+// faces -X, and the plate is mounted a short way off the solid it dresses, offset
+// along the direction it faces (panel.gdshader: "mounted 32 mm off an existing
+// solid"). Horizontal dressing uses pitch instead: -90 faces up, +90 faces down.
+const FACE_UP = [-90, 0, 0];
+const FACE_DOWN = [90, 0, 0];
+const faceYaw = (fx, fz) => [0, Math.round(Math.atan2(fx, fz) * 180 / Math.PI), 0];
+
 const panel = ({id, position, rotation_degrees, size, texture, tint, essential = false,
   normal, wear_mask, opacity, feather, seed}) => {
   const entry = {id, position, rotation_degrees, size, texture, tint, essential};
@@ -68,6 +78,29 @@ const VESPER_HALLS = [
 // parcel-bay-label plates: 3 x 0.7 x 0.3 sandstone on both hall faces.
 const VESPER_PARCEL = VESPER_HALLS.filter(h => !h.counters);
 const VESPER_TICKET = VESPER_HALLS.filter(h => h.counters);
+// The twelve iron street-cover-cap plates, three per terrace level (y 1.6 quay,
+// 13.6 cobble, 25.6 upper deck), read off terrain.surfaces.
+const VESPER_STREET_COVERS = [[-112, 1.6, -78], [-36, 1.6, -78], [36, 1.6, -78], [112, 1.6, -78],
+  [-112, 13.6, 7], [-36, 13.6, 7], [36, 13.6, 7], [112, 13.6, 7],
+  [-112, 25.6, 92], [-36, 25.6, 92], [36, 25.6, 92], [112, 25.6, 92]];
+// The six quay-rail-cap runs on both quay lips (z -104 and z -116). The 188 m
+// centre run carries two inspection plates, the 34 m end runs one each.
+const VESPER_QUAY_RAILS = [[-123, 1.5, -104], [-47, 1.5, -104], [47, 1.5, -104], [123, 1.5, -104],
+  [-123, 1.5, -116], [-47, 1.5, -116], [47, 1.5, -116], [123, 1.5, -116]];
+// The four canal-bridge parapet caps (x +-94/+-106, 12 m long at y 1.4).
+const VESPER_BRIDGE_PARAPETS = [[-106, 1.4, -110], [-94, 1.4, -110], [94, 1.4, -110], [106, 1.4, -110]];
+// The ten chimney caps on the mid terrace block, the row band that flanks the
+// civic arcade and therefore the block the player walks most.
+const VESPER_CHIMNEY_CAPS = [[-82, 35.1, 45], [-74, 38.1, 45], [-66, 41.1, 45], [-58, 35.1, 45],
+  [-50, 38.1, 45], [54, 35.1, 45], [62, 38.1, 45], [70, 41.1, 45], [78, 35.1, 45], [86, 38.1, 45]];
+// The ten terrace row caps on the same band (8 x 22 m plaster/brick roofs).
+const VESPER_ROW_CAPS = [[-84, 33.1, 45], [-76, 36.1, 45], [-68, 39.1, 45], [-60, 33.1, 45],
+  [-52, 36.1, 45], [52, 33.1, 45], [60, 36.1, 45], [68, 39.1, 45], [76, 33.1, 45], [84, 36.1, 45]];
+// The ten arcade pier caps either side of the clock square.
+const VESPER_ARCADE_PIERS = [[-90, 34, 66], [-78, 34, 66], [-66, 34, 66], [-54, 34, 66], [-42, 34, 66],
+  [42, 34, 66], [54, 34, 66], [66, 34, 66], [78, 34, 66], [90, 34, 66]];
+// The three public hall roof ridges (slate), one maintenance hatch each.
+const VESPER_HALL_RIDGES = [[-66, 39, 78], [0, 44, 78], [66, 41, 78]];
 
 function vesperPanels() {
   const panels = [];
@@ -143,6 +176,58 @@ function vesperPanels() {
       size: [4, 10], texture: 'metal_grating', tint: '6d6a62',
     }));
   }
+  // --- second pass: every remaining named solid on the terraces gets dressed ---
+  // Street service covers: diamond-plate inspection hatches on the twelve iron
+  // street-cover-cap plates, lying flat on the cover.
+  for (const [x, y, z] of VESPER_STREET_COVERS) {
+    panels.push(panel({
+      id: `street-cover-hatch-${x}-${z}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [2.6, 2.6], texture: 'diamond_plate', normal: 'baked:diamond_plate', tint: '6d6a62',
+    }));
+  }
+  // Quay edge rail walks: grating plates along the iron quay rail caps.
+  VESPER_QUAY_RAILS.forEach(([x, y, z], i) => {
+    panels.push(panel({
+      id: `quay-rail-walk-${i}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [6, 0.5], texture: 'metal_grating', tint: '6d6a62',
+    }));
+  });
+  // Canal bridge parapets: no-standing bands on the four parapet caps.
+  for (const [x, y, z] of VESPER_BRIDGE_PARAPETS) {
+    panels.push(panel({
+      id: `bridge-parapet-band-${x}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [0.5, 8], texture: 'hazard_stripes', tint: 'b08a52',
+    }));
+  }
+  // Chimney caps: soot bloom around the flue on the mid-block flues.
+  for (const [x, y, z] of VESPER_CHIMNEY_CAPS) {
+    panels.push(panel({
+      id: `chimney-cap-soot-${x}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [1.1, 1.4], texture: 'riveted_armor-scorched', tint: '6f6157',
+    }));
+  }
+  // Terrace row roofs: weathered membrane patches over the mid-block row caps.
+  for (const [x, y, z] of VESPER_ROW_CAPS) {
+    panels.push(panel({
+      id: `terrace-cap-membrane-${x}-${z}`, position: [x, y + 0.03, z], rotation_degrees: FACE_UP,
+      size: [6, 14], texture: 'rough_stucco-weathered', tint: '8a8076',
+      wear_mask: 'rough_stucco', opacity: 0.2, feather: 0.4, seed: seed++,
+    }));
+  }
+  // Arcade piers: hazard bands on all ten pier caps.
+  for (const [x, y, z] of VESPER_ARCADE_PIERS) {
+    panels.push(panel({
+      id: `arcade-pier-band-${x}`, position: [x, y + 0.02, z], rotation_degrees: FACE_UP,
+      size: [1.6, 2.8], texture: 'hazard_stripes', tint: 'b08a52',
+    }));
+  }
+  // Public hall roofs: maintenance hatches on the three ticket-hall ridges.
+  for (const [x, y, z] of VESPER_HALL_RIDGES) {
+    panels.push(panel({
+      id: `hall-roof-hatch-${x}`, position: [x, y + 0.06, z], rotation_degrees: FACE_UP,
+      size: [5, 5], texture: 'brushed_metal', normal: 'baked:metal', tint: '8d8a80',
+    }));
+  }
   return panels;
 }
 
@@ -172,17 +257,35 @@ function vesperSigns() {
   // Canal crossings at the far quay.
   signs.push(sign('canal-crossing-west', [-100, 1.6, -116], [0, 180, 0], [4.4, 0.66], 'CANAL CROSSING', fg, bg));
   signs.push(sign('canal-crossing-east', [100, 1.6, -116], [0, 180, 0], [4.4, 0.66], 'CANAL CROSSING', fg, bg));
+  // --- second pass: the two steps objectives and the four terrace districts ---
+  // Steps objectives, mounted on the terrace retaining walls above the
+  // cobble-level street covers, facing in along each boulevard.
+  signs.push(sign('objective-west-steps', [-112, 15.4, 7], [0, 90, 0], [3.5, 0.66], 'WEST STEPS\nGRAB', fg, bg));
+  signs.push(sign('objective-east-steps', [112, 15.4, 7], [0, -90, 0], [3.5, 0.66], 'EAST STEPS\nGRAB', fg, bg));
+  // Arcade fascias, read on approach up the civic stair.
+  signs.push(sign('arcade-west', [-66, 33.4, 70.08], [0, 180, 0], [3.8, 0.66], 'CLOCK ARCADE\nMARKET ROW', fg, bg));
+  signs.push(sign('arcade-east', [66, 33.4, 70.08], [0, 180, 0], [3.8, 0.66], 'CLOCK ARCADE\nCIVIC ARCADE', fg, bg));
+  // Terrace block fascias, on the row caps that enclose the two housing bands.
+  signs.push(sign('terrace-north', [-84, 35.4, 119.08], [0, 180, 0], [3.8, 0.66], 'NORTH TERRACE\nHOUSING', fg, bg));
+  signs.push(sign('terrace-south', [-84, 18.9, -58.08], [0, 0, 0], [3.8, 0.66], 'SOUTH TERRACE\nDEPOTS', fg, bg));
   return signs;
 }
 
 function vesperPockets() {
   return [
-    pocket('canal-mist-west', 'mist', [-100, 0.9, -108], [8, 2, 3], '9fb3c4', 10),
-    pocket('canal-mist-east', 'mist', [100, 0.9, -108], [8, 2, 3], '9fb3c4', 10),
-    pocket('cobble-ramp-dust', 'dust', [-60, 13.2, -25], [4, 1.6, 4], 'b3a894', 6),
-    pocket('clock-square-dust', 'dust', [0, 13.2, 0], [4, 1.6, 4], 'b3a894', 6),
-    pocket('ticket-hall-vent', 'vent', [-66, 28, 70], [3, 2, 2], 'a9b6bd', 6),
-    pocket('platform-gallery-vent', 'vent', [0, 28, 70], [3, 2, 2], 'a9b6bd', 6),
+    pocket('canal-mist-west', 'mist', [-100, 1.4, -108], [8, 3, 4], '9fb3c4', 12),
+    pocket('canal-mist-east', 'mist', [100, 1.4, -108], [8, 3, 4], '9fb3c4', 12),
+    pocket('cobble-ramp-dust', 'dust', [-60, 13.2, -25], [4, 1.6, 4], 'b3a894', 7),
+    pocket('clock-square-dust', 'dust', [0, 13.2, 0], [4, 1.6, 4], 'b3a894', 7),
+    pocket('ticket-hall-vent', 'vent', [-66, 28, 70], [4, 3, 4], 'a9b6bd', 8),
+    pocket('platform-gallery-vent', 'vent', [0, 28, 70], [4, 3, 4], 'a9b6bd', 8),
+    // --- second pass: the far quay, both hall roofs, the stair and the arcade ---
+    pocket('far-quay-mist', 'mist', [0, 1.4, -118], [8, 2.6, 4], '9fb3c4', 8),
+    pocket('roof-vent-ticket-concourse', 'vent', [-66, 42, 85], [8, 3, 8], 'a9b6bd', 8),
+    pocket('roof-vent-east-station', 'vent', [66, 44, 85], [8, 3, 8], 'a9b6bd', 8),
+    pocket('civic-stair-dust', 'dust', [32, 18.2, 45], [4, 2, 4], 'b3a894', 6),
+    pocket('chimney-ash-west', 'ash', [-66, 42.3, 45], [2.4, 2.4, 2.4], 'a49a8c', 6),
+    pocket('arcade-dust', 'dust', [-66, 34.4, 67.25], [8, 2, 5], 'b3a894', 5),
   ];
 }
 
@@ -217,7 +320,8 @@ const vesper = {
   // their one-sided/transmissive materials: a triplanar finish would expose
   // mirrored glyph backs and turn the glass opaque.
   preserve_materials: ['glass', 'letter', 'water'],
-  budgets: {material_variants: 8, panels: 48, signs: 20, motes: 64},
+  // Raised toward the profile.gd hard caps (32/96/24/96) by the second pass.
+  budgets: {material_variants: 8, panels: 96, signs: 24, motes: 96},
 };
 
 // --------------------------------------------------------------- abyssal -----
@@ -259,6 +363,45 @@ const ABYSSAL_REEFS = [[-110, -110, 7, -12, 42], [-83, -116, 8, -15, 46], [-56, 
   [79, -116, 8, -15, 54], [106, -110, 9, -18, 42]];
 // Ivory bay canopies over the south (observation) elevations of the lab vessels.
 const ABYSSAL_CANOPIES = [[-94, -48], [-34, -58], [31, -48], [91, -38], [-98, 50], [-39, 60]];
+// Every vessel carries two ivory bay canopies, centred at (x +- 11, z + 10) and
+// 5.8 m above the deck, whichever way its port faces.
+const ABYSSAL_CANOPY_OFFSET = 11;
+const ABYSSAL_CANOPY_RISE = 5.8;
+// Vessel crowns: the walkable octagon that caps every vessel roof, read off
+// terrain.surfaces "*-crown". Lab and pump crowns are 25-32 m across, the
+// residential ones only 13 m, so the hatch plate is sized to suit.
+const ABYSSAL_CROWNS = [
+  {id: 'vessel-0-0', x: -94, y: 19, z: -68, plate: 3},
+  {id: 'vessel-0-1', x: -34, y: 17, z: -78, plate: 3},
+  {id: 'vessel-0-2', x: 31, y: 15, z: -68, plate: 3},
+  {id: 'vessel-0-3', x: 91, y: 13, z: -58, plate: 3},
+  {id: 'vessel-1-0', x: -91, y: 30, z: 0, plate: 3},
+  {id: 'vessel-1-1', x: -32, y: 30, z: 0, plate: 3},
+  {id: 'vessel-1-2', x: 34, y: 39, z: 0, plate: 3},
+  {id: 'vessel-1-3', x: 94, y: 30, z: 0, plate: 3},
+  {id: 'vessel-2-0', x: -98, y: 30.5, z: 68, plate: 2},
+  {id: 'vessel-2-1', x: -39, y: 30.5, z: 78, plate: 2},
+  {id: 'vessel-2-2', x: 26, y: 30.5, z: 64, plate: 2},
+  {id: 'vessel-2-3', x: 87, y: 30.5, z: 72, plate: 2},
+];
+// Deck inspection plates, read off the "*-deck" octagons, are deliberately not
+// emitted: see the note at the end of abyssalPanels().
+// Coral observation sills: the four laboratory vessels are the only ones with
+// glazing, and each carries one 26 m sill on its seaward elevation.
+const ABYSSAL_SILLS = [[-94, 6.6, -88], [-34, 4.6, -98], [31, 2.6, -88], [91, 0.6, -78]];
+// Link galleries: the three low-maintenance bypasses, three pump-spine decks and
+// three operations galleries, each with its ramp centre, deck level and deck depth.
+const ABYSSAL_GALLERY_DECKS = [
+  {id: 'low-maintenance-bypass-0', x: -64, y: 5, z: -73, d: 20, name: 'MAINTENANCE BYPASS\nQUARANTINE LINK'},
+  {id: 'low-maintenance-bypass-1', x: -1.5, y: 3, z: -73, d: 20, name: 'MAINTENANCE BYPASS\nSPECTROMETRY LINK'},
+  {id: 'low-maintenance-bypass-2', x: 61, y: 1, z: -63, d: 20, name: 'MAINTENANCE BYPASS\nARCHIVE LINK'},
+  {id: 'broad-pump-spine-0', x: -61.5, y: 10, z: 0, d: 14, name: 'BROAD PUMP SPINE\nFREIGHT LOCK'},
+  {id: 'broad-pump-spine-1', x: 1, y: 10, z: 0, d: 14, name: 'BROAD PUMP SPINE\nPUMP CATHEDRAL'},
+  {id: 'broad-pump-spine-2', x: 64, y: 10, z: 0, d: 14, name: 'BROAD PUMP SPINE\nEQUALIZER ATRIUM'},
+  {id: 'operations-gallery-0', x: -68.5, y: 20, z: 73, d: 20, name: 'OPERATIONS GALLERY\nCOMMONS LINK'},
+  {id: 'operations-gallery-1', x: -6.5, y: 20, z: 71, d: 24, name: 'OPERATIONS GALLERY\nMEDICAL LINK'},
+  {id: 'operations-gallery-2', x: 56.5, y: 20, z: 68, d: 18, name: 'OPERATIONS GALLERY\nCONTROL LINK'},
+];
 
 function abyssalPanels() {
   const panels = [];
@@ -306,8 +449,7 @@ function abyssalPanels() {
     size: [8, 2.4], texture: 'hazard_stripes', tint: 'dca45e',
   }));
   // Damp silt collecting on the coral reef skirts.
-  for (const [x, z, r, base, h] of [ABYSSAL_REEFS[0], ABYSSAL_REEFS[2], ABYSSAL_REEFS[4],
-    ABYSSAL_REEFS[6], ABYSSAL_REEFS[8]]) {
+  for (const [x, z, r, base, h] of ABYSSAL_REEFS) {
     panels.push(panel({
       id: `reef-silt-${x}`, position: [x, base + h * 0.32, z + r + 0.2], rotation_degrees: [0, 0, 0],
       size: [r * 1.2, 0.4], texture: 'weathered_concrete-damp', tint: '7f8a86',
@@ -321,6 +463,51 @@ function abyssalPanels() {
       size: [3, 14], texture: 'metal_grating', tint: '6f7a80',
     }));
   }
+  // --- second pass: every crown, canopy, port mouth and glazed sill ------------
+  // Crown service hatches on the twelve vessel crowns.
+  for (const crown of ABYSSAL_CROWNS) {
+    panels.push(panel({
+      id: `crown-hatch-${crown.id}`, position: [crown.x, crown.y + 0.03, crown.z],
+      rotation_degrees: FACE_UP, size: [crown.plate, crown.plate],
+      texture: 'brushed_metal', normal: 'baked:metal', tint: '8fa0a4',
+    }));
+  }
+  // Bay canopy light troughs: one under each of the twenty-four ivory canopies,
+  // facing down out of the 0.4 m fascia gap.
+  for (const vessel of ABYSSAL_VESSELS) {
+    for (const side of [-1, 1]) {
+      panels.push(panel({
+        id: `canopy-trough-${vessel.id}-${side < 0 ? 'w' : 'e'}`,
+        position: [vessel.x + side * ABYSSAL_CANOPY_OFFSET, vessel.y + ABYSSAL_CANOPY_RISE - 0.45, vessel.z + 10],
+        rotation_degrees: FACE_DOWN, size: [5, 2.4], texture: 'holographic_grid', tint: '8fc4cc',
+      }));
+    }
+  }
+  // Port threshold plates: the deck plate every player crosses at a port mouth,
+  // laid flat and turned to run with the opening.
+  for (const vessel of ABYSSAL_VESSELS) {
+    const face = PORT_FACE[vessel.port];
+    // PORT_FACE.offset is a half-width step along the outward normal of the port.
+    const yaw = faceYaw(face.offset[0] * 2, face.offset[1] * 2)[1];
+    panels.push(panel({
+      id: `port-threshold-${vessel.id}`,
+      position: [vessel.pc[0] + face.offset[0] * 1.2, vessel.y + 0.03, vessel.pc[1] + face.offset[1] * 1.2],
+      rotation_degrees: [-90, yaw, 0],
+      size: [vessel.w >= 44 ? 8 : 6, 3],
+      texture: 'diamond_plate', normal: 'baked:diamond_plate', tint: '8d9aa0',
+    }));
+  }
+  // Coral observation sills: cyan instrument bays along the four glazed labs.
+  for (const [x, y, z] of ABYSSAL_SILLS) {
+    panels.push(panel({
+      id: `observation-bay-${x}`, position: [x, y, z - 0.16], rotation_degrees: [0, 180, 0],
+      size: [8, 0.9], texture: 'holographic_grid', tint: '8fc4cc',
+    }));
+  }
+  // Deliberately not dressed: the twelve vessel deck plates and the six gallery
+  // deck grates. Both would fit the geometry, but the panel group is already at
+  // 93 of its 96 cap with the four families above, and a crown hatch reads from
+  // further away than a plate in a deck corner.
   return panels;
 }
 
@@ -335,6 +522,12 @@ function abyssalSigns() {
   signs.push(sign('objective-reef', [-34, 6.2, -70], [0, 0, 0], [4.2, 0.66], 'REEF LAB\nSECTOR 1', fg, bg));
   signs.push(sign('objective-equalizer', [34, 12.2, 8], [0, 0, 0], [4.2, 0.66], 'EQUALIZER\nSECTOR 2', fg, bg));
   signs.push(sign('objective-operations', [26, 22.2, 56], [0, 0, 0], [4.2, 0.66], 'OPERATIONS\nSECTOR 3', fg, bg));
+  // --- second pass: every one of the nine link galleries gets a wayfinding ---
+  // board, hung under its deck ceiling so it is read on approach along the spine.
+  for (const gallery of ABYSSAL_GALLERY_DECKS) {
+    signs.push(sign(`gallery-${gallery.id}`, [gallery.x, gallery.y + 2.8, gallery.z - gallery.d / 2 + 1],
+      [0, 0, 0], [4.6, 0.66], gallery.name, fg, bg));
+  }
   return signs;
 }
 
@@ -344,13 +537,17 @@ function abyssalPockets() {
   // bounded mote volume, so the 26 m glazing takes one volume rather than one
   // oversized one.
   for (const [x, z, y] of [[-94, -88, 7.2], [-34, -98, 5.2], [31, -88, 3.2], [91, -78, 1.2]]) {
-    pockets.push(pocket(`observation-mist-${x}`, 'mist', [x, y + 2.6, z + 0.4], [8, 5.3, 0.6], '9fc2c6', 6));
+    pockets.push(pocket(`observation-mist-${x}`, 'mist', [x, y + 2.6, z + 0.4], [8, 5.3, 0.6], '9fc2c6', 8));
   }
-  pockets.push(pocket('equalizer-core-vent', 'vent', [44, 32.4, 8], [7, 2, 7], 'b7cfd0', 8));
+  pockets.push(pocket('equalizer-core-vent', 'vent', [44, 32.4, 8], [7, 2, 7], 'b7cfd0', 12));
   for (const [x, z, r, b, h] of [ABYSSAL_REEFS[1], ABYSSAL_REEFS[4], ABYSSAL_REEFS[7]]) {
-    pockets.push(pocket(`reef-silt-dust-${x}`, 'dust', [x, b + h + 1.2, z], [7, 2, 7], 'b6ab97', 4));
+    pockets.push(pocket(`reef-silt-dust-${x}`, 'dust', [x, b + h + 1.2, z], [7, 2, 7], 'b6ab97', 6));
   }
-  pockets.push(pocket('pump-cathedral-dust', 'dust', [-32, 12.2, 0], [8, 2, 8], 'b6ab97', 6));
+  pockets.push(pocket('pump-cathedral-dust', 'dust', [-32, 12.2, 0], [8, 2, 8], 'b6ab97', 8));
+  // --- second pass: three more mote volumes, filling the twelve-pocket cap ---
+  pockets.push(pocket('reef-silt-dust--29', 'dust', [-29, 43.2, -116], [6, 2, 6], 'b6ab97', 6));
+  pockets.push(pocket('reef-silt-dust-52', 'dust', [52, 39.2, -110], [6, 2, 6], 'b6ab97', 6));
+  pockets.push(pocket('operations-gallery-dust', 'dust', [-6.5, 21.4, 71], [8, 2, 8], 'b6ab97', 8));
   return pockets;
 }
 
@@ -383,7 +580,8 @@ const abyssal = {
   pockets: abyssalPockets(),
   // Observation glazing is a transparent, shot-through surface; keep it.
   preserve_materials: ['glass'],
-  budgets: {material_variants: 6, panels: 48, signs: 20, motes: 56},
+  // Raised toward the profile.gd hard caps (32/96/24/96) by the second pass.
+  budgets: {material_variants: 6, panels: 96, signs: 24, motes: 96},
 };
 
 // ------------------------------------------------------------ stormglass -----
@@ -411,6 +609,90 @@ const STORMGLASS_WORKSHOPS = [
 const STORMGLASS_SEAWALL = [[-94, -144], [-7, -136], [72, -110], [134, -61], [164, 6], [155, 69],
   [114, 106], [70, 138], [24, 161], [-21, 151], [-54, 147], [-95, 139], [-138, 125], [-183, 109],
   [-214, 55], [-194, 7], [-140, -5], [-98, -10], [-91, -39], [-131, -67]];
+// --- second pass tables, all read off the map's own terrain ---------------
+// The twenty-one inner "barrier-city" walls, one per circuit straight. Each entry
+// is the wall midpoint, the yaw that turns a plate to face the road (derived from
+// the wall's own outward perpendicular, signed towards its sea-wall twin) and the
+// plate length the straight can carry.
+const STORMGLASS_CITY_WALLS = [
+  {id: 'barrier-city-0', x: -85.605, z: -116, yaw: 180, plate: 12},
+  {id: 'barrier-city-1', x: -12.904, z: -108.801, yaw: 169.38, plate: 12},
+  {id: 'barrier-city-2', x: 58.277, z: -85.209, yaw: 153.435, plate: 12},
+  {id: 'barrier-city-3', x: 111.402, z: -43.955, yaw: 129.289, plate: 12},
+  {id: 'barrier-city-4', x: 136.089, z: 9.149, yaw: 98.746, plate: 12},
+  {id: 'barrier-city-5', x: 130.306, z: 55.621, yaw: 60.945, plate: 12},
+  {id: 'barrier-city-6', x: 95.929, z: 83.55, yaw: 21.801, plate: 12},
+  {id: 'barrier-city-7', x: 54.862, z: 112.468, yaw: 48.814, plate: 12},
+  {id: 'barrier-city-8', x: 21.271, z: 133.55, yaw: 6.34, plate: 12},
+  {id: 'barrier-city-9', x: -14.442, z: 119.182, yaw: -40.601, plate: 12},
+  {id: 'barrier-city-10', x: -51.093, z: 113.071, yaw: 29.745, plate: 12},
+  {id: 'barrier-city-11', x: -90.295, z: 106.479, yaw: -37.875, plate: 12},
+  {id: 'barrier-city-12', x: -131.538, z: 94.704, yaw: 14.036, plate: 12},
+  {id: 'barrier-city-13', x: -166.748, z: 86.118, yaw: -41.186, plate: 12},
+  {id: 'barrier-city-14', x: -185.789, z: 54.669, yaw: -78.69, plate: 12},
+  {id: 'barrier-city-15', x: -175.774, z: 28.243, yaw: -147.995, plate: 12},
+  {id: 'barrier-city-16', x: -134.557, z: 24.765, yaw: 169.695, plate: 12},
+  {id: 'barrier-city-17', x: -77.134, z: 9.915, yaw: -146.31, plate: 12},
+  {id: 'barrier-city-18', x: -63.652, z: -45.866, yaw: -65.556, plate: 12},
+  {id: 'barrier-city-19', x: -103.507, z: -88.195, yaw: -15.255, plate: 12},
+  {id: 'barrier-city-20', x: -123.474, z: -105.306, yaw: -108.435, plate: 9.02},
+];
+// The twenty-one asphalt road segments: centre, the yaw that runs a plate along
+// the segment, and the dash length the segment can carry.
+const STORMGLASS_ROADS = [
+  {id: 'road-0', x: -90, z: -130, yaw: -180, plate: 12},
+  {id: 'road-1', x: -10, z: -122.5, yaw: 169.38, plate: 12},
+  {id: 'road-2', x: 65, z: -97.5, yaw: 153.435, plate: 12},
+  {id: 'road-3', x: 122.5, z: -52.5, yaw: 129.289, plate: 12},
+  {id: 'road-4', x: 150, z: 7.5, yaw: 98.746, plate: 12},
+  {id: 'road-5', x: 142.5, z: 62.5, yaw: 60.945, plate: 12},
+  {id: 'road-6', x: 105, z: 95, yaw: 21.801, plate: 12},
+  {id: 'road-7', x: 62.5, z: 125, yaw: 48.814, plate: 12},
+  {id: 'road-8', x: 22.5, z: 147.5, yaw: 6.34, plate: 12},
+  {id: 'road-9', x: -17.5, z: 135, yaw: 139.399, plate: 12},
+  {id: 'road-10', x: -52.5, z: 130, yaw: -150.255, plate: 12},
+  {id: 'road-11', x: -92.5, z: 122.5, yaw: -37.875, plate: 12},
+  {id: 'road-12', x: -135, z: 110, yaw: 14.036, plate: 12},
+  {id: 'road-13', x: -175, z: 97.5, yaw: -41.186, plate: 12},
+  {id: 'road-14', x: -200, z: 55, yaw: -78.69, plate: 12},
+  {id: 'road-15', x: -185, z: 17.5, yaw: -147.995, plate: 12},
+  {id: 'road-16', x: -137.5, z: 10, yaw: -10.305, plate: 12},
+  {id: 'road-17', x: -87.5, z: 0, yaw: 33.69, plate: 12},
+  {id: 'road-18', x: -77.5, z: -42.5, yaw: 114.444, plate: 12},
+  {id: 'road-19', x: -117.5, z: -77.5, yaw: -15.255, plate: 12},
+  {id: 'road-20', x: -137.5, z: -107.5, yaw: -108.435, plate: 12},
+];
+// The ten observatory-terminal elevations that face the circuit. The terminals
+// are rotated off axis, so each entry carries the face the racing line actually
+// sees, the yaw that turns a plate onto it and the terminal's own height (the
+// tenth terminal, district-1-2, has no other dressing entry yet).
+const STORMGLASS_TERMINAL_FRONTS = [
+  {id: 'district-0-1', x: -90, z: -112.18, yaw: 180, plate: 8, height: 22},
+  {id: 'district-0-2', x: -63.333, z: -112.18, yaw: 180, plate: 8, height: 16},
+  {id: 'district-1-0', x: -39.951, z: -109.985, yaw: 169.38, plate: 8, height: 16},
+  {id: 'district-1-1', x: -13.284, z: -104.985, yaw: 169.38, plate: 8, height: 22},
+  {id: 'district-1-2', x: 13.383, z: -99.985, yaw: 169.38, plate: 8, height: 16},
+  {id: 'district-2-0', x: 33.697, z: -93.228, yaw: 153.435, plate: 8, height: 16},
+  {id: 'district-2-1', x: 57.031, z: -81.561, yaw: 153.435, plate: 8, height: 22},
+  {id: 'district-3-1', x: 108.708, z: -41.216, yaw: 129.289, plate: 8, height: 22},
+  {id: 'district-19-0', x: -94.478, z: -89.692, yaw: -15.255, plate: 6.4, height: 16},
+  {id: 'district-19-1', x: -112.811, z: -94.692, yaw: -15.255, plate: 6.4, height: 22},
+];
+// The six gate buttress elevations that look down the racing line, two per gate.
+const STORMGLASS_BUTTRESS_FACES = [
+  {id: 'gate-1-buttress-1', x: -8.506, z: -102.815, yaw: 89.694, plate: 5.6},
+  {id: 'gate-1-buttress--1', x: -7.808, z: -138.253, yaw: -20.933, plate: 7},
+  {id: 'gate-14-buttress-1', x: -182.297, z: 46.262, yaw: -158.377, plate: 5.6},
+  {id: 'gate-14-buttress--1', x: -215.432, z: 58.85, yaw: 90.997, plate: 7},
+  {id: 'gate-18-buttress-1', x: -62.246, z: -55.032, yaw: -145.243, plate: 5.6},
+  {id: 'gate-18-buttress--1', x: -91.654, z: -35.244, yaw: 104.131, plate: 7},
+];
+// The three steel gate gantries (y 22..24) that span the road.
+const STORMGLASS_GANTRY_TOPS = [
+  {id: 'gate-1', x: -12.457, z: -122.961, yaw: 79.38, plate: 12},
+  {id: 'gate-14', x: -199.51, z: 57.451, yaw: -168.69, plate: 12},
+  {id: 'gate-18', x: -76.465, z: -40.224, yaw: -155.56, plate: 12},
+];
 
 function stormglassPanels() {
   const panels = [];
@@ -463,6 +745,50 @@ function stormglassPanels() {
       }));
     }
   }
+  // --- second pass: the whole circuit gets marked, lit and warned ----------
+  // Inner-wall salt bloom on all twenty-one barrier-city walls, the circuit-side
+  // twin of the sea-wall bloom above.
+  for (const wall of STORMGLASS_CITY_WALLS) {
+    const fx = Math.sin(wall.yaw * Math.PI / 180), fz = Math.cos(wall.yaw * Math.PI / 180);
+    panels.push(panel({
+      id: `city-wall-salt-bloom-${wall.id}`, position: [wall.x + fx * 0.18, 1.35, wall.z + fz * 0.18],
+      rotation_degrees: [0, wall.yaw, 0], size: [wall.plate, 2.2],
+      texture: 'weathered_concrete-worn', tint: 'c9cfc9',
+      wear_mask: 'weathered_concrete', opacity: 0.18, feather: 0.4, seed: seed++,
+    }));
+  }
+  // Circuit centre-line dashes, one per asphalt segment.
+  for (const road of STORMGLASS_ROADS) {
+    panels.push(panel({
+      id: `centre-line-${road.id}`, position: [road.x, 0.06, road.z],
+      rotation_degrees: [-90, road.yaw, 0], size: [road.plate, 0.45],
+      texture: 'hazard_stripes', tint: 'd8d4c2',
+    }));
+  }
+  // Circuit-facing glazing bands on all ten observatory terminals.
+  for (const front of STORMGLASS_TERMINAL_FRONTS) {
+    panels.push(panel({
+      id: `terminal-glazing-${front.id}`, position: [front.x, front.height - 6, front.z],
+      rotation_degrees: [0, front.yaw, 0], size: [front.plate, 1.8],
+      texture: 'holographic_grid', tint: '9fd2d8',
+    }));
+  }
+  // Counterweight hazard bands on the six buttress faces the driver sees.
+  for (const face of STORMGLASS_BUTTRESS_FACES) {
+    panels.push(panel({
+      id: `buttress-hazard-${face.id}`, position: [face.x, 4.2, face.z],
+      rotation_degrees: [0, face.yaw, 0], size: [face.plate, 0.9],
+      texture: 'hazard_stripes', tint: 'f0c070',
+    }));
+  }
+  // Gantry walkway plates along the top of the three steel gantries.
+  for (const gantry of STORMGLASS_GANTRY_TOPS) {
+    panels.push(panel({
+      id: `gantry-walk-${gantry.id}`, position: [gantry.x, 24.02, gantry.z],
+      rotation_degrees: [-90, gantry.yaw, 0], size: [gantry.plate, 3],
+      texture: 'metal_grating', tint: '79868a',
+    }));
+  }
   return panels;
 }
 
@@ -486,6 +812,14 @@ function stormglassSigns() {
       `QUAY WORKSHOP\n${id.toUpperCase().replace('DISTRICT-', 'D')}`, fg, bg));
   }
   signs.push(sign('start-finish-line', [-66, 5.2, -141], [0, 0, 0], [6.4, 0.72], 'START / FINISH\nGRAND PRIX', fg, bg));
+  // --- second pass: the three named districts the circuit runs through -------
+  // (worlds/stormglass-causeway.json districts[]), each read on approach.
+  signs.push(sign('district-weather-terminal', [-90, 6.5, -112.18], [0, 180, 0], [8, 0.72],
+    'GLAZED WEATHER TERMINAL\nSECTORS 0-3, 19-20', fg, bg));
+  signs.push(sign('district-freight-bore', [152, 8, 5], [0, -90, 0], [7, 0.72],
+    'ARCHED FREIGHT BORE\nSECTORS 4-6', fg, bg));
+  signs.push(sign('district-stepped-quay', [39.49, 9, 163.4], [0, 180, 0], [7, 0.72],
+    'STEPPED QUAY\nSURGEWORKS', fg, bg));
   return signs;
 }
 
@@ -493,15 +827,15 @@ function stormglassPockets() {
   const pockets = [];
   // Sea spray blowing over the seawall on the exposed western straight.
   for (const [x, z] of [[-94, -144], [-7, -136], [-91, -39], [-131, -67]]) {
-    pockets.push(pocket(`seawall-spray-${x}`, 'mist', [x, 3.4, z + 3], [8, 2.4, 4], 'b6ccd2', 8));
+    pockets.push(pocket(`seawall-spray-${x}`, 'mist', [x, 4.2, z + 3], [8, 4, 6], 'b6ccd2', 10));
   }
   // Storm vents at the barrier gate machinery.
   for (const gate of STORMGLASS_GATES) {
-    pockets.push(pocket(`gate-vent-${gate.id}`, 'vent', [gate.x, 24.6, gate.z], [6, 2, 6], 'a9c0c6', 6));
+    pockets.push(pocket(`gate-vent-${gate.id}`, 'vent', [gate.x, 25.4, gate.z], [8, 3, 7], 'a9c0c6', 9));
   }
   // Road grit and salt dust along the circuit shoulders.
   for (const [x, z] of [[-90, -130], [-10, -123], [-200, 55], [-77.5, -42.5], [114, 106]]) {
-    pockets.push(pocket(`road-grit-${x}-${z}`, 'dust', [x, 0.6, z], [8, 1.2, 8], 'b3ab97', 5));
+    pockets.push(pocket(`road-grit-${x}-${z}`, 'dust', [x, 0.9, z], [8, 2.4, 8], 'b3ab97', 5));
   }
   return pockets;
 }
@@ -538,7 +872,11 @@ const stormglass = {
   pockets: stormglassPockets(),
   // Window glazing and the sea plane stay transmissive.
   preserve_materials: ['glass', 'ocean'],
-  budgets: {material_variants: 7, panels: 48, signs: 24, motes: 80},
+  // Raised toward the profile.gd hard caps (32/96/24/96) by the second pass.
+  // Pockets stay at twelve: profile.gd caps that group at twelve outright, with
+  // no per-profile budget to raise, so the extra density went into mote counts
+  // and volumes instead.
+  budgets: {material_variants: 7, panels: 96, signs: 24, motes: 96},
 };
 
 const PROFILES = {

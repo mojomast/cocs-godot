@@ -6,6 +6,14 @@
 **Claim:** source-only. No native capture, no Blender export, no rendered frame.
 Visual and native acceptance are **not** claimed anywhere in this document.
 
+> **Superseded in part.** A second pass on
+> `spacebunny/dressing-richer-20261005` raised all three profiles toward the
+> `profile.gd` caps (panels 94/93/95, signs 24, motes 95/90/92, pockets 12/12/12)
+> and extended the tooling with a negative suite. The counts and verification
+> blocks below describe the first pass and are kept as the baseline; see
+> `RUNTIME_DRESSING_RICHER_20261005.md` for current numbers and for the plate
+> orientation finding it raised.
+
 ---
 
 ## 1. Problem

@@ -26,9 +26,19 @@ const contrast = (a, b) => {
 };
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
-const PROFILE_DIR = resolve(ROOT, 'godot/multiplayer_worlds/dressing/profiles');
+// negative.mjs points this at a directory of deliberately broken copies, so the
+// rules below can be shown to fail rather than only to pass.
+const PROFILE_DIR = resolve(process.env.DRESSING_PROFILE_DIR
+  ?? resolve(ROOT, 'godot/multiplayer_worlds/dressing/profiles'));
 const ART_DIR = resolve(ROOT, 'godot/multiplayer_worlds/art');
 const NEW_MAPS = ['vesper-viaduct', 'abyssal-pressureworks', 'stormglass-causeway'];
+
+// Placement containment: profile.gd only bounds a position to +-512 m, which is
+// far wider than any map, so a plate authored at the wrong coordinate would pass
+// every other check and still float in the void. Compare against the map's own
+// declared world bounds instead, grown by this margin: the abyssal coral reef
+// shelf sits 6 m past its declared minZ.
+const BOUNDS_MARGIN = 12;
 
 // profile.gd is the authority: identities, wear/variation bounds, modes and caps.
 const profileSource = read('godot/multiplayer_worlds/dressing/profile.gd');
@@ -99,6 +109,10 @@ function check(mapId) {
   if (p.geometry_hash !== identities[mapId]) fail('geometry_hash does not match Profile.IDENTITIES');
   if (p.version !== 1) fail('version must be 1');
   const geometry = glbMaterialNames(artPath(mapId));
+  const worldBounds = JSON.parse(readMaybe(`port/native-multiplayer-worlds/worlds/${mapId}.json`)).bounds;
+  if (!worldBounds || ![worldBounds.minX, worldBounds.maxX, worldBounds.minZ, worldBounds.maxZ].every(Number.isFinite)) {
+    throw Error(`${mapId} world bounds did not parse`);
+  }
   if (p.geometry_hash !== generatedHash(mapId)) fail('geometry_hash differs from generated/<map>.json');
 
   // ---- budgets -------------------------------------------------------------
@@ -117,6 +131,7 @@ function check(mapId) {
   // ---- selectors and placements -------------------------------------------
   const selectors = new Set();
   const ids = new Set();
+  const occupied = new Map();
   const limits = {materials: 32, panels: 96, signs: 24, pockets: 12, preserve_materials: 32};
   let motes = 0;
   for (const group of ['materials', 'panels', 'signs', 'pockets', 'preserve_materials']) {
@@ -168,6 +183,17 @@ function check(mapId) {
       if (!text_(e.id, 80) || ids.has(e.id)) fail('invalid/duplicate placement id');
       ids.add(e.id);
       if (!vector(e.position, 3, -512, 512)) fail(`invalid position on ${e.id}`);
+      else {
+        // Two plates on one point is always an authoring slip, never intent.
+        const here = e.position.join(',');
+        if (occupied.has(here)) fail(`placement ${e.id} coincides with ${occupied.get(here)}`);
+        else occupied.set(here, e.id);
+        const [x, , z] = e.position;
+        if (x < worldBounds.minX - BOUNDS_MARGIN || x > worldBounds.maxX + BOUNDS_MARGIN
+          || z < worldBounds.minZ - BOUNDS_MARGIN || z > worldBounds.maxZ + BOUNDS_MARGIN) {
+          fail(`placement ${e.id} at [${x}, ${z}] is outside the map's world bounds`);
+        }
+      }
       if (group !== 'pockets' && !vector(e.rotation_degrees, 3, -360, 360)) fail(`invalid rotation on ${e.id}`);
       if (!vector(e.size, group === 'pockets' ? 3 : 2, 0.05, group === 'pockets' ? 8 : 16)) fail(`invalid size on ${e.id}`);
       if (group !== 'pockets' && typeof (e.essential ?? false) !== 'boolean') fail(`essential must be boolean on ${e.id}`);
