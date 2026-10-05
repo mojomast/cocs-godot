@@ -1,0 +1,1451 @@
+{
+  "version": 1,
+  "map_id": "abyssal-pressureworks",
+  "geometry_hash": "32366a6c3df7f95f8d89281c5f83b24d9583cefeb4c0099790303d15349b53be",
+  "materials": [
+    {
+      "source": "navy",
+      "family": "brushed-alloy",
+      "options": {
+        "variant": "default",
+        "tint": "6d8b9c",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.3,
+        "roughness": 0.62,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.22,
+        "texture_saturation": 0.1,
+        "normal_strength": 0.08,
+        "metallic": 0.35,
+        "specular_strength": 0.24,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610520
+      }
+    },
+    {
+      "source": "ivory",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "cdd6c8",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.35,
+        "roughness": 0.8,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.26,
+        "texture_saturation": 0.04,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.22,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610521
+      }
+    },
+    {
+      "source": "copper",
+      "family": "oxidised-copper",
+      "options": {
+        "variant": "default",
+        "tint": "9d7051",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.2,
+        "roughness": 0.66,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.24,
+        "texture_saturation": 0.12,
+        "normal_strength": 0.1,
+        "metallic": 0.4,
+        "specular_strength": 0.24,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610522
+      }
+    },
+    {
+      "source": "coral",
+      "family": "bioluminescent-membrane",
+      "options": {
+        "variant": "veined",
+        "tint": "ac655c",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.1,
+        "roughness": 0.72,
+        "albedo_gain": 1.15,
+        "texture_strength": 0.28,
+        "texture_saturation": 0.16,
+        "normal_strength": 0.16,
+        "metallic": 0,
+        "specular_strength": 0.18,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610523
+      }
+    },
+    {
+      "source": "cyan",
+      "family": "polar-ice",
+      "options": {
+        "variant": "glazed",
+        "tint": "57c4cf",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.2,
+        "albedo_gain": 1.6,
+        "texture_strength": 0.2,
+        "texture_saturation": 0.2,
+        "normal_strength": 0.12,
+        "metallic": 0,
+        "specular_strength": 0.36,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610524
+      }
+    },
+    {
+      "source": "amber",
+      "family": "hazard-industrial",
+      "options": {
+        "variant": "default",
+        "tint": "dca45e",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.1,
+        "roughness": 0.6,
+        "albedo_gain": 1.25,
+        "texture_strength": 0.3,
+        "texture_saturation": 0.1,
+        "normal_strength": 0.14,
+        "metallic": 0.2,
+        "specular_strength": 0.26,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610525
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "port-seal-vessel-0-0-e",
+      "position": [
+        -73.5,
+        9.5,
+        -68
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610500
+    },
+    {
+      "id": "port-seal-vessel-0-1-s",
+      "position": [
+        -34,
+        7.5,
+        -57.5
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610501
+    },
+    {
+      "id": "port-seal-vessel-0-2-e",
+      "position": [
+        51.5,
+        5.5,
+        -68
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610502
+    },
+    {
+      "id": "port-seal-vessel-0-3-w",
+      "position": [
+        70.5,
+        3.5,
+        -58
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610503
+    },
+    {
+      "id": "port-seal-vessel-1-0-n",
+      "position": [
+        -91,
+        13.5,
+        -22.5
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610504
+    },
+    {
+      "id": "port-seal-vessel-1-1-w",
+      "position": [
+        -54.5,
+        13.5,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610505
+    },
+    {
+      "id": "port-seal-vessel-1-2-n",
+      "position": [
+        34,
+        13.5,
+        -22.5
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610506
+    },
+    {
+      "id": "port-seal-vessel-1-3-s",
+      "position": [
+        94,
+        13.5,
+        22.5
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610507
+    },
+    {
+      "id": "port-seal-vessel-2-0-e",
+      "position": [
+        -78.5,
+        23.5,
+        68
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610508
+    },
+    {
+      "id": "port-seal-vessel-2-1-e",
+      "position": [
+        -19.5,
+        23.5,
+        78
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610509
+    },
+    {
+      "id": "port-seal-vessel-2-2-w",
+      "position": [
+        6.5,
+        23.5,
+        64
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610510
+    },
+    {
+      "id": "port-seal-vessel-2-3-w",
+      "position": [
+        67.5,
+        23.5,
+        72
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        0.9,
+        5
+      ],
+      "texture": "metal-oxide",
+      "tint": "8a8f84",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.14,
+      "feather": 0.4,
+      "seed": 610511
+    },
+    {
+      "id": "instrument-readout--104--78",
+      "position": [
+        -104,
+        7.61,
+        -79.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout--84--78",
+      "position": [
+        -84,
+        7.61,
+        -79.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout--44--88",
+      "position": [
+        -44,
+        5.61,
+        -89.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout--24--88",
+      "position": [
+        -24,
+        5.61,
+        -89.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout-21--78",
+      "position": [
+        21,
+        3.61,
+        -79.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout-41--78",
+      "position": [
+        41,
+        3.61,
+        -79.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout-81--68",
+      "position": [
+        81,
+        1.6099999999999999,
+        -69.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "instrument-readout-101--68",
+      "position": [
+        101,
+        1.6099999999999999,
+        -69.2
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        2.6,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-lamp--94--48",
+      "position": [
+        -94,
+        12.2,
+        -47.7
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2.4,
+        0.5
+      ],
+      "texture": "hex_paneling",
+      "tint": "d8e2dc",
+      "essential": false,
+      "normal": "baked:hex_paneling"
+    },
+    {
+      "id": "canopy-lamp--34--58",
+      "position": [
+        -34,
+        12.2,
+        -57.7
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2.4,
+        0.5
+      ],
+      "texture": "hex_paneling",
+      "tint": "d8e2dc",
+      "essential": false,
+      "normal": "baked:hex_paneling"
+    },
+    {
+      "id": "canopy-lamp-31--48",
+      "position": [
+        31,
+        12.2,
+        -47.7
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2.4,
+        0.5
+      ],
+      "texture": "hex_paneling",
+      "tint": "d8e2dc",
+      "essential": false,
+      "normal": "baked:hex_paneling"
+    },
+    {
+      "id": "canopy-lamp-91--38",
+      "position": [
+        91,
+        12.2,
+        -37.7
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2.4,
+        0.5
+      ],
+      "texture": "hex_paneling",
+      "tint": "d8e2dc",
+      "essential": false,
+      "normal": "baked:hex_paneling"
+    },
+    {
+      "id": "canopy-lamp--98-50",
+      "position": [
+        -98,
+        12.2,
+        50.3
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2.4,
+        0.5
+      ],
+      "texture": "hex_paneling",
+      "tint": "d8e2dc",
+      "essential": false,
+      "normal": "baked:hex_paneling"
+    },
+    {
+      "id": "canopy-lamp--39-60",
+      "position": [
+        -39,
+        12.2,
+        60.3
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2.4,
+        0.5
+      ],
+      "texture": "hex_paneling",
+      "tint": "d8e2dc",
+      "essential": false,
+      "normal": "baked:hex_paneling"
+    },
+    {
+      "id": "core-cap-warning",
+      "position": [
+        44,
+        31,
+        3.85
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        2.4
+      ],
+      "texture": "hazard_stripes",
+      "tint": "dca45e",
+      "essential": false
+    },
+    {
+      "id": "core-cap-warning-east",
+      "position": [
+        48.15,
+        31,
+        8
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        8,
+        2.4
+      ],
+      "texture": "hazard_stripes",
+      "tint": "dca45e",
+      "essential": false
+    },
+    {
+      "id": "reef-silt--110",
+      "position": [
+        -110,
+        1.4399999999999995,
+        -102.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        8.4,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610512
+    },
+    {
+      "id": "reef-silt--56",
+      "position": [
+        -56,
+        -2,
+        -100.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        10.799999999999999,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610513
+    },
+    {
+      "id": "reef-silt--2",
+      "position": [
+        -2,
+        -1.5600000000000005,
+        -101.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        9.6,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610514
+    },
+    {
+      "id": "reef-silt-52",
+      "position": [
+        52,
+        4,
+        -102.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        8.4,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610515
+    },
+    {
+      "id": "reef-silt-106",
+      "position": [
+        106,
+        -4.5600000000000005,
+        -100.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        10.799999999999999,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610516
+    },
+    {
+      "id": "pump-spine-grate--61.5",
+      "position": [
+        -61.5,
+        10.12,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        14
+      ],
+      "texture": "metal_grating",
+      "tint": "6f7a80",
+      "essential": false
+    },
+    {
+      "id": "pump-spine-grate--8.5",
+      "position": [
+        -8.5,
+        10.12,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        14
+      ],
+      "texture": "metal_grating",
+      "tint": "6f7a80",
+      "essential": false
+    },
+    {
+      "id": "pump-spine-grate-45",
+      "position": [
+        45,
+        10.12,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        14
+      ],
+      "texture": "metal_grating",
+      "tint": "6f7a80",
+      "essential": false
+    },
+    {
+      "id": "pump-spine-grate-83",
+      "position": [
+        83,
+        10.12,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        14
+      ],
+      "texture": "metal_grating",
+      "tint": "6f7a80",
+      "essential": false
+    }
+  ],
+  "signs": [
+    {
+      "id": "vessel-vessel-0-0",
+      "position": [
+        -94,
+        14.2,
+        -47.3
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "INTAKE QUARANTINE\nLABORATORIES",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-0-1",
+      "position": [
+        -34,
+        12.2,
+        -57.3
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "SPECTROMETRY\nLABORATORIES",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-0-2",
+      "position": [
+        31,
+        10.2,
+        -47.3
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "REEF OBSERVATION\nLABORATORIES",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-0-3",
+      "position": [
+        91,
+        8.2,
+        -37.3
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "SAMPLE ARCHIVE\nLABORATORIES",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-1-0",
+      "position": [
+        -68.3,
+        18.2,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "FREIGHT LOCK\nPUMP ENERGY",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-1-1",
+      "position": [
+        -9.3,
+        18.2,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "PUMP CATHEDRAL\nPUMP ENERGY",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-1-2",
+      "position": [
+        56.7,
+        18.2,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "EQUALIZER ATRIUM\nPUMP ENERGY",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-1-3",
+      "position": [
+        71.3,
+        18.2,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "DISTRIBUTION HALL\nPUMP ENERGY",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-2-0",
+      "position": [
+        -98,
+        28.2,
+        49.3
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "RESIDENTIAL COMMONS\nOPERATIONS",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-2-1",
+      "position": [
+        -39,
+        28.2,
+        59.3
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "MEDICAL OPERATIONS\nOPERATIONS",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-2-2",
+      "position": [
+        26,
+        28.2,
+        45.3
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "MISSION CONTROL\nOPERATIONS",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "vessel-vessel-2-3",
+      "position": [
+        87,
+        28.2,
+        53.3
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "EMERGENCY REFUGE\nOPERATIONS",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "objective-reef",
+      "position": [
+        -34,
+        6.2,
+        -70
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.2,
+        0.66
+      ],
+      "text": "REEF LAB\nSECTOR 1",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "objective-equalizer",
+      "position": [
+        34,
+        12.2,
+        8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.2,
+        0.66
+      ],
+      "text": "EQUALIZER\nSECTOR 2",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "objective-operations",
+      "position": [
+        26,
+        22.2,
+        56
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.2,
+        0.66
+      ],
+      "text": "OPERATIONS\nSECTOR 3",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    }
+  ],
+  "pockets": [
+    {
+      "id": "observation-mist--94",
+      "kind": "mist",
+      "position": [
+        -94,
+        9.8,
+        -87.6
+      ],
+      "size": [
+        8,
+        5.3,
+        0.6
+      ],
+      "color": "9fc2c6",
+      "count": 6
+    },
+    {
+      "id": "observation-mist--34",
+      "kind": "mist",
+      "position": [
+        -34,
+        7.800000000000001,
+        -97.6
+      ],
+      "size": [
+        8,
+        5.3,
+        0.6
+      ],
+      "color": "9fc2c6",
+      "count": 6
+    },
+    {
+      "id": "observation-mist-31",
+      "kind": "mist",
+      "position": [
+        31,
+        5.800000000000001,
+        -87.6
+      ],
+      "size": [
+        8,
+        5.3,
+        0.6
+      ],
+      "color": "9fc2c6",
+      "count": 6
+    },
+    {
+      "id": "observation-mist-91",
+      "kind": "mist",
+      "position": [
+        91,
+        3.8,
+        -77.6
+      ],
+      "size": [
+        8,
+        5.3,
+        0.6
+      ],
+      "color": "9fc2c6",
+      "count": 6
+    },
+    {
+      "id": "equalizer-core-vent",
+      "kind": "vent",
+      "position": [
+        44,
+        32.4,
+        8
+      ],
+      "size": [
+        7,
+        2,
+        7
+      ],
+      "color": "b7cfd0",
+      "count": 8
+    },
+    {
+      "id": "reef-silt-dust--83",
+      "kind": "dust",
+      "position": [
+        -83,
+        32.2,
+        -116
+      ],
+      "size": [
+        7,
+        2,
+        7
+      ],
+      "color": "b6ab97",
+      "count": 4
+    },
+    {
+      "id": "reef-silt-dust--2",
+      "kind": "dust",
+      "position": [
+        -2,
+        28.2,
+        -110
+      ],
+      "size": [
+        7,
+        2,
+        7
+      ],
+      "color": "b6ab97",
+      "count": 4
+    },
+    {
+      "id": "reef-silt-dust-79",
+      "kind": "dust",
+      "position": [
+        79,
+        40.2,
+        -116
+      ],
+      "size": [
+        7,
+        2,
+        7
+      ],
+      "color": "b6ab97",
+      "count": 4
+    },
+    {
+      "id": "pump-cathedral-dust",
+      "kind": "dust",
+      "position": [
+        -32,
+        12.2,
+        0
+      ],
+      "size": [
+        8,
+        2,
+        8
+      ],
+      "color": "b6ab97",
+      "count": 6
+    }
+  ],
+  "preserve_materials": [
+    "glass"
+  ],
+  "budgets": {
+    "material_variants": 6,
+    "panels": 48,
+    "signs": 20,
+    "motes": 56
+  }
+}
