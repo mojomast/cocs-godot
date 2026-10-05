@@ -912,6 +912,1310 @@
       "texture": "metal_grating",
       "tint": "79868a",
       "essential": false
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-0",
+      "position": [
+        -85.605,
+        1.35,
+        -116.18
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610610
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-1",
+      "position": [
+        -12.87082699925878,
+        1.35,
+        -108.97791679406383
+      ],
+      "rotation_degrees": [
+        0,
+        169.38,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610611
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-2",
+      "position": [
+        58.357498303386166,
+        1.35,
+        -85.36999696628182
+      ],
+      "rotation_degrees": [
+        0,
+        153.435,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610612
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-3",
+      "position": [
+        111.54131312325525,
+        1.35,
+        -44.06898181297412
+      ],
+      "rotation_degrees": [
+        0,
+        129.289,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610613
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-4",
+      "position": [
+        136.2669069830895,
+        1.35,
+        9.121630210669574
+      ],
+      "rotation_degrees": [
+        0,
+        98.746,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610614
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-5",
+      "position": [
+        130.46334770567515,
+        1.35,
+        55.708416814851425
+      ],
+      "rotation_degrees": [
+        0,
+        60.945,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610615
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-6",
+      "position": [
+        95.99584912731312,
+        1.35,
+        83.71712628212664
+      ],
+      "rotation_degrees": [
+        0,
+        21.801,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610616
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-7",
+      "position": [
+        54.99746365023344,
+        1.35,
+        112.58653100634615
+      ],
+      "rotation_degrees": [
+        0,
+        48.814,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610617
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-8",
+      "position": [
+        21.29087707599018,
+        1.35,
+        133.72889913876284
+      ],
+      "rotation_degrees": [
+        0,
+        6.34,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610618
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-9",
+      "position": [
+        -14.559141744411173,
+        1.35,
+        119.31866679083197
+      ],
+      "rotation_degrees": [
+        0,
+        -40.601,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610619
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-10",
+      "position": [
+        -51.00369466731364,
+        1.35,
+        113.2272835805636
+      ],
+      "rotation_degrees": [
+        0,
+        29.745,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610620
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-11",
+      "position": [
+        -90.40550935097507,
+        1.35,
+        106.62108336759476
+      ],
+      "rotation_degrees": [
+        0,
+        -37.875,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610621
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-12",
+      "position": [
+        -131.4943443295336,
+        1.35,
+        94.8786258355345
+      ],
+      "rotation_degrees": [
+        0,
+        14.036,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610622
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-13",
+      "position": [
+        -166.86653100634615,
+        1.35,
+        86.25346365023344
+      ],
+      "rotation_degrees": [
+        0,
+        -41.186,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610623
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-14",
+      "position": [
+        -185.96550448002031,
+        1.35,
+        54.70430111234437
+      ],
+      "rotation_degrees": [
+        0,
+        -78.69,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610624
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-15",
+      "position": [
+        -175.8693987883071,
+        1.35,
+        28.09035966722541
+      ],
+      "rotation_degrees": [
+        0,
+        -147.995,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610625
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-16",
+      "position": [
+        -134.52480014657158,
+        1.35,
+        24.587903502464933
+      ],
+      "rotation_degrees": [
+        0,
+        169.695,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610626
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-17",
+      "position": [
+        -77.23384585881006,
+        1.35,
+        9.765230829345679
+      ],
+      "rotation_degrees": [
+        0,
+        -146.31,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610627
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-18",
+      "position": [
+        -63.81586590715775,
+        1.35,
+        -45.79151534069777
+      ],
+      "rotation_degrees": [
+        0,
+        -65.556,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610628
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-19",
+      "position": [
+        -103.55436077326598,
+        1.35,
+        -88.02134241405672
+      ],
+      "rotation_degrees": [
+        0,
+        -15.255,
+        0
+      ],
+      "size": [
+        12,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610629
+    },
+    {
+      "id": "city-wall-salt-bloom-barrier-city-20",
+      "position": [
+        -123.64476294280671,
+        1.35,
+        -105.36292115040996
+      ],
+      "rotation_degrees": [
+        0,
+        -108.435,
+        0
+      ],
+      "size": [
+        9.02,
+        2.2
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "c9cfc9",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610630
+    },
+    {
+      "id": "centre-line-road-0",
+      "position": [
+        -90,
+        0.06,
+        -130
+      ],
+      "rotation_degrees": [
+        -90,
+        -180,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-1",
+      "position": [
+        -10,
+        0.06,
+        -122.5
+      ],
+      "rotation_degrees": [
+        -90,
+        169.38,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-2",
+      "position": [
+        65,
+        0.06,
+        -97.5
+      ],
+      "rotation_degrees": [
+        -90,
+        153.435,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-3",
+      "position": [
+        122.5,
+        0.06,
+        -52.5
+      ],
+      "rotation_degrees": [
+        -90,
+        129.289,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-4",
+      "position": [
+        150,
+        0.06,
+        7.5
+      ],
+      "rotation_degrees": [
+        -90,
+        98.746,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-5",
+      "position": [
+        142.5,
+        0.06,
+        62.5
+      ],
+      "rotation_degrees": [
+        -90,
+        60.945,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-6",
+      "position": [
+        105,
+        0.06,
+        95
+      ],
+      "rotation_degrees": [
+        -90,
+        21.801,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-7",
+      "position": [
+        62.5,
+        0.06,
+        125
+      ],
+      "rotation_degrees": [
+        -90,
+        48.814,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-8",
+      "position": [
+        22.5,
+        0.06,
+        147.5
+      ],
+      "rotation_degrees": [
+        -90,
+        6.34,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-9",
+      "position": [
+        -17.5,
+        0.06,
+        135
+      ],
+      "rotation_degrees": [
+        -90,
+        139.399,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-10",
+      "position": [
+        -52.5,
+        0.06,
+        130
+      ],
+      "rotation_degrees": [
+        -90,
+        -150.255,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-11",
+      "position": [
+        -92.5,
+        0.06,
+        122.5
+      ],
+      "rotation_degrees": [
+        -90,
+        -37.875,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-12",
+      "position": [
+        -135,
+        0.06,
+        110
+      ],
+      "rotation_degrees": [
+        -90,
+        14.036,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-13",
+      "position": [
+        -175,
+        0.06,
+        97.5
+      ],
+      "rotation_degrees": [
+        -90,
+        -41.186,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-14",
+      "position": [
+        -200,
+        0.06,
+        55
+      ],
+      "rotation_degrees": [
+        -90,
+        -78.69,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-15",
+      "position": [
+        -185,
+        0.06,
+        17.5
+      ],
+      "rotation_degrees": [
+        -90,
+        -147.995,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-16",
+      "position": [
+        -137.5,
+        0.06,
+        10
+      ],
+      "rotation_degrees": [
+        -90,
+        -10.305,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-17",
+      "position": [
+        -87.5,
+        0.06,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        33.69,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-18",
+      "position": [
+        -77.5,
+        0.06,
+        -42.5
+      ],
+      "rotation_degrees": [
+        -90,
+        114.444,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-19",
+      "position": [
+        -117.5,
+        0.06,
+        -77.5
+      ],
+      "rotation_degrees": [
+        -90,
+        -15.255,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "centre-line-road-20",
+      "position": [
+        -137.5,
+        0.06,
+        -107.5
+      ],
+      "rotation_degrees": [
+        -90,
+        -108.435,
+        0
+      ],
+      "size": [
+        12,
+        0.45
+      ],
+      "texture": "hazard_stripes",
+      "tint": "d8d4c2",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-0-1",
+      "position": [
+        -90,
+        16,
+        -112.18
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-0-2",
+      "position": [
+        -63.333,
+        10,
+        -112.18
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-1-0",
+      "position": [
+        -39.951,
+        10,
+        -109.985
+      ],
+      "rotation_degrees": [
+        0,
+        169.38,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-1-1",
+      "position": [
+        -13.284,
+        16,
+        -104.985
+      ],
+      "rotation_degrees": [
+        0,
+        169.38,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-1-2",
+      "position": [
+        13.383,
+        10,
+        -99.985
+      ],
+      "rotation_degrees": [
+        0,
+        169.38,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-2-0",
+      "position": [
+        33.697,
+        10,
+        -93.228
+      ],
+      "rotation_degrees": [
+        0,
+        153.435,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-2-1",
+      "position": [
+        57.031,
+        16,
+        -81.561
+      ],
+      "rotation_degrees": [
+        0,
+        153.435,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-3-1",
+      "position": [
+        108.708,
+        16,
+        -41.216
+      ],
+      "rotation_degrees": [
+        0,
+        129.289,
+        0
+      ],
+      "size": [
+        8,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-19-0",
+      "position": [
+        -94.478,
+        10,
+        -89.692
+      ],
+      "rotation_degrees": [
+        0,
+        -15.255,
+        0
+      ],
+      "size": [
+        6.4,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "terminal-glazing-district-19-1",
+      "position": [
+        -112.811,
+        16,
+        -94.692
+      ],
+      "rotation_degrees": [
+        0,
+        -15.255,
+        0
+      ],
+      "size": [
+        6.4,
+        1.8
+      ],
+      "texture": "holographic_grid",
+      "tint": "9fd2d8",
+      "essential": false
+    },
+    {
+      "id": "buttress-hazard-gate-1-buttress-1",
+      "position": [
+        -8.506,
+        4.2,
+        -102.815
+      ],
+      "rotation_degrees": [
+        0,
+        89.694,
+        0
+      ],
+      "size": [
+        5.6,
+        0.9
+      ],
+      "texture": "hazard_stripes",
+      "tint": "f0c070",
+      "essential": false
+    },
+    {
+      "id": "buttress-hazard-gate-1-buttress--1",
+      "position": [
+        -7.808,
+        4.2,
+        -138.253
+      ],
+      "rotation_degrees": [
+        0,
+        -20.933,
+        0
+      ],
+      "size": [
+        7,
+        0.9
+      ],
+      "texture": "hazard_stripes",
+      "tint": "f0c070",
+      "essential": false
+    },
+    {
+      "id": "buttress-hazard-gate-14-buttress-1",
+      "position": [
+        -182.297,
+        4.2,
+        46.262
+      ],
+      "rotation_degrees": [
+        0,
+        -158.377,
+        0
+      ],
+      "size": [
+        5.6,
+        0.9
+      ],
+      "texture": "hazard_stripes",
+      "tint": "f0c070",
+      "essential": false
+    },
+    {
+      "id": "buttress-hazard-gate-14-buttress--1",
+      "position": [
+        -215.432,
+        4.2,
+        58.85
+      ],
+      "rotation_degrees": [
+        0,
+        90.997,
+        0
+      ],
+      "size": [
+        7,
+        0.9
+      ],
+      "texture": "hazard_stripes",
+      "tint": "f0c070",
+      "essential": false
+    },
+    {
+      "id": "buttress-hazard-gate-18-buttress-1",
+      "position": [
+        -62.246,
+        4.2,
+        -55.032
+      ],
+      "rotation_degrees": [
+        0,
+        -145.243,
+        0
+      ],
+      "size": [
+        5.6,
+        0.9
+      ],
+      "texture": "hazard_stripes",
+      "tint": "f0c070",
+      "essential": false
+    },
+    {
+      "id": "buttress-hazard-gate-18-buttress--1",
+      "position": [
+        -91.654,
+        4.2,
+        -35.244
+      ],
+      "rotation_degrees": [
+        0,
+        104.131,
+        0
+      ],
+      "size": [
+        7,
+        0.9
+      ],
+      "texture": "hazard_stripes",
+      "tint": "f0c070",
+      "essential": false
+    },
+    {
+      "id": "gantry-walk-gate-1",
+      "position": [
+        -12.457,
+        24.02,
+        -122.961
+      ],
+      "rotation_degrees": [
+        -90,
+        79.38,
+        0
+      ],
+      "size": [
+        12,
+        3
+      ],
+      "texture": "metal_grating",
+      "tint": "79868a",
+      "essential": false
+    },
+    {
+      "id": "gantry-walk-gate-14",
+      "position": [
+        -199.51,
+        24.02,
+        57.451
+      ],
+      "rotation_degrees": [
+        -90,
+        -168.69,
+        0
+      ],
+      "size": [
+        12,
+        3
+      ],
+      "texture": "metal_grating",
+      "tint": "79868a",
+      "essential": false
+    },
+    {
+      "id": "gantry-walk-gate-18",
+      "position": [
+        -76.465,
+        24.02,
+        -40.224
+      ],
+      "rotation_degrees": [
+        -90,
+        -155.56,
+        0
+      ],
+      "size": [
+        12,
+        3
+      ],
+      "texture": "metal_grating",
+      "tint": "79868a",
+      "essential": false
     }
   ],
   "signs": [
@@ -1355,6 +2659,69 @@
       "foreground": "e2ecea",
       "background": "20363a",
       "essential": true
+    },
+    {
+      "id": "district-weather-terminal",
+      "position": [
+        -90,
+        6.5,
+        -112.18
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        0.72
+      ],
+      "text": "GLAZED WEATHER TERMINAL\nSECTORS 0-3, 19-20",
+      "foreground": "e2ecea",
+      "background": "20363a",
+      "essential": true
+    },
+    {
+      "id": "district-freight-bore",
+      "position": [
+        152,
+        8,
+        5
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        7,
+        0.72
+      ],
+      "text": "ARCHED FREIGHT BORE\nSECTORS 4-6",
+      "foreground": "e2ecea",
+      "background": "20363a",
+      "essential": true
+    },
+    {
+      "id": "district-stepped-quay",
+      "position": [
+        39.49,
+        9,
+        163.4
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        7,
+        0.72
+      ],
+      "text": "STEPPED QUAY\nSURGEWORKS",
+      "foreground": "e2ecea",
+      "background": "20363a",
+      "essential": true
     }
   ],
   "pockets": [
@@ -1363,124 +2730,124 @@
       "kind": "mist",
       "position": [
         -94,
-        3.4,
+        4.2,
         -141
       ],
       "size": [
         8,
-        2.4,
-        4
+        4,
+        6
       ],
       "color": "b6ccd2",
-      "count": 8
+      "count": 10
     },
     {
       "id": "seawall-spray--7",
       "kind": "mist",
       "position": [
         -7,
-        3.4,
+        4.2,
         -133
       ],
       "size": [
         8,
-        2.4,
-        4
+        4,
+        6
       ],
       "color": "b6ccd2",
-      "count": 8
+      "count": 10
     },
     {
       "id": "seawall-spray--91",
       "kind": "mist",
       "position": [
         -91,
-        3.4,
+        4.2,
         -36
       ],
       "size": [
         8,
-        2.4,
-        4
+        4,
+        6
       ],
       "color": "b6ccd2",
-      "count": 8
+      "count": 10
     },
     {
       "id": "seawall-spray--131",
       "kind": "mist",
       "position": [
         -131,
-        3.4,
+        4.2,
         -64
       ],
       "size": [
         8,
-        2.4,
-        4
+        4,
+        6
       ],
       "color": "b6ccd2",
-      "count": 8
+      "count": 10
     },
     {
       "id": "gate-vent-gate-1",
       "kind": "vent",
       "position": [
         -10,
-        24.6,
+        25.4,
         -122.5
       ],
       "size": [
-        6,
-        2,
-        6
+        8,
+        3,
+        7
       ],
       "color": "a9c0c6",
-      "count": 6
+      "count": 9
     },
     {
       "id": "gate-vent-gate-14",
       "kind": "vent",
       "position": [
         -200,
-        24.6,
+        25.4,
         55
       ],
       "size": [
-        6,
-        2,
-        6
+        8,
+        3,
+        7
       ],
       "color": "a9c0c6",
-      "count": 6
+      "count": 9
     },
     {
       "id": "gate-vent-gate-18",
       "kind": "vent",
       "position": [
         -77.5,
-        24.6,
+        25.4,
         -42.5
       ],
       "size": [
-        6,
-        2,
-        6
+        8,
+        3,
+        7
       ],
       "color": "a9c0c6",
-      "count": 6
+      "count": 9
     },
     {
       "id": "road-grit--90--130",
       "kind": "dust",
       "position": [
         -90,
-        0.6,
+        0.9,
         -130
       ],
       "size": [
         8,
-        1.2,
+        2.4,
         8
       ],
       "color": "b3ab97",
@@ -1491,12 +2858,12 @@
       "kind": "dust",
       "position": [
         -10,
-        0.6,
+        0.9,
         -123
       ],
       "size": [
         8,
-        1.2,
+        2.4,
         8
       ],
       "color": "b3ab97",
@@ -1507,12 +2874,12 @@
       "kind": "dust",
       "position": [
         -200,
-        0.6,
+        0.9,
         55
       ],
       "size": [
         8,
-        1.2,
+        2.4,
         8
       ],
       "color": "b3ab97",
@@ -1523,12 +2890,12 @@
       "kind": "dust",
       "position": [
         -77.5,
-        0.6,
+        0.9,
         -42.5
       ],
       "size": [
         8,
-        1.2,
+        2.4,
         8
       ],
       "color": "b3ab97",
@@ -1539,12 +2906,12 @@
       "kind": "dust",
       "position": [
         114,
-        0.6,
+        0.9,
         106
       ],
       "size": [
         8,
-        1.2,
+        2.4,
         8
       ],
       "color": "b3ab97",
@@ -1557,8 +2924,8 @@
   ],
   "budgets": {
     "material_variants": 7,
-    "panels": 48,
+    "panels": 96,
     "signs": 24,
-    "motes": 80
+    "motes": 96
   }
 }

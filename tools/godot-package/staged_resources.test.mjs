@@ -94,7 +94,9 @@ test('R7 is promoted: runtime Foundry bytes match Y, revision namespace removed,
    const text=bytes.toString();
    assert.ok(text.includes('source_file="res://multiplayer_worlds/art/worlds/gravemill-foundry_'),'Promoted sidecar path: '+target);
    assert.ok(!text.includes('art/revisions/'),'Promoted sidecar has no revision path: '+target);
-   assert.equal(bytes.length,r.bytes-6,'Promoted sidecar path rewrite length: '+target);
+   assert.ok(text.includes('path="res://.godot/imported/gravemill-foundry_'),'Promoted sidecar import cache: '+target);
+   assert.ok(text.includes('dest_files=["res://.godot/imported/gravemill-foundry_'),'Promoted sidecar dest cache: '+target);
+   assert.ok(!text.includes('gravemill-foundry-r7_'),'Promoted sidecar has no revision basename: '+target);
   } else {
    assert.equal(bytes.length,r.bytes,'Promoted R7 byte length: '+target);
    assert.equal(hash(bytes),r.sha256,'Promoted R7 asset: '+target);

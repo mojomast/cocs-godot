@@ -137,6 +137,13 @@ research/synthesis, not a native claim and not a replacement for any review.
    qualified by appearance contract; 0 spec-invalid remain") and move Parallax
    to promotion readiness.
 
+**Status 2026-10-05.** Item 1 is integrated (`fd0d8175`: 0 spec-invalid, 4,729
+classified). Item 2 is dispositioned: face 11823 was measured, not blessed, and
+the owner accepted the bounded qualification (AC `0903dc4f…` unchanged; revert
+R1 specified but unbuilt; the controlled render was proven infeasible against
+the committed harness). See `PARALLAX_11823_DECISION_20261005.md`. Item 3 can
+proceed on this basis.
+
 ### Why this is more efficient
 
 - Converts an open-ended "fix 4,729 records" blocker into a bounded

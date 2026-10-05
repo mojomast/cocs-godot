@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dk5j43i22vvwc"
-path="res://.godot/imported/gravemill-foundry-r7_aggregate-albedo-srgb.png-98a69a74176dda6f84650e0202b9f5fa.ctex"
+path="res://.godot/imported/gravemill-foundry_aggregate-albedo-srgb.png-9f50335a25d768ca5e4319ed7b85e5af.ctex"
 metadata={
 "vram_texture": false
 }
@@ -14,7 +14,7 @@ generator_parameters={
 [deps]
 
 source_file="res://multiplayer_worlds/art/worlds/gravemill-foundry_aggregate-albedo-srgb.png"
-dest_files=["res://.godot/imported/gravemill-foundry-r7_aggregate-albedo-srgb.png-98a69a74176dda6f84650e0202b9f5fa.ctex"]
+dest_files=["res://.godot/imported/gravemill-foundry_aggregate-albedo-srgb.png-9f50335a25d768ca5e4319ed7b85e5af.ctex"]
 
 [params]
 
