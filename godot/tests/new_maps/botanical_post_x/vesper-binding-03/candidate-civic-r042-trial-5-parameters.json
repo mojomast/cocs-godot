@@ -1,0 +1,32 @@
+{
+	"clock": {
+		"inPhysicsFrame": false,
+		"monotonicUsec": 39076195,
+		"physicsFrame": 2315,
+		"physicsTicksPerSecond": 60,
+		"timeScale": 1.0
+	},
+	"colliderOffset": [
+		0.0,
+		0.899999976158142,
+		0.0
+	],
+	"collisionLayer": 1,
+	"collisionMask": 1,
+	"floorMaxAngle": 0.802851438522339,
+	"floorSnap": 0.300000011920929,
+	"gravity": 20.0,
+	"height": 1.79999995231628,
+	"jump": false,
+	"maxSlides": 6,
+	"physicsShape": {
+		"height": 1.79999995231628,
+		"radius": 0.419999986886978
+	},
+	"radius": 0.419999986886978,
+	"safeMargin": 0.0199999995529652,
+	"spawnSeparation": 0.05,
+	"sprint": false,
+	"sprintSpeed": 10.0,
+	"walkSpeed": 6.0
+}

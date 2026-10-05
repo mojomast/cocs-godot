@@ -1,0 +1,17 @@
+{
+  "status": "actual import UID retained; reimport and native readback pending",
+  "variants": {
+    "accepted": {
+      "uid": "uid://0yx12kau1quo",
+      "sourcePath": "res://tests/new_maps/botanical_post_x/vesper-binding-03/accepted.glb",
+      "beforeSha256": "93716217dc8c09022f46563924c2c96acca214ec10a013a318d5add012a28e83",
+      "afterSha256": "ce29efd5e8fc6d6f9bf93b9fc3a83c4d2b2a2bda4b2cc1df506e08ce245a0cfd"
+    },
+    "candidate": {
+      "uid": "uid://r0bx08834kw8",
+      "sourcePath": "res://tests/new_maps/botanical_post_x/vesper-binding-03/candidate.glb",
+      "beforeSha256": "30ad32400e6bc42a621e5644b61ecb1bf1f9be260feede9aaf18ba2ca26d1a48",
+      "afterSha256": "04d03cfb09b69c9275b979d1a36afc1be1356a27639c2b88dd52f7d3ad995deb"
+    }
+  }
+}
