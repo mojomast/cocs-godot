@@ -1,0 +1,1827 @@
+{
+  "schema": "parallax-11823-revert-decision/v1",
+  "scope": "Source-only decision package for the reviewed Parallax saltstone face 11823. Re-derives the corner set from committed bytes, measures an exact source-level revert in memory, quantifies the appearance deviation at the reviewed normal strength, and audits render feasibility against the committed parity-glyph capture harness. No engine, no import, no render, and no artifact, master, receipt, sidecar, registry or promotion state is written; the revert diff is emitted as a file this tool never applies.",
+  "inputs": {
+    "X": {
+      "path": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb",
+      "sha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "available": true
+    },
+    "AA": {
+      "derivation": "districts-v4-tangent.contract.repair(committed X)",
+      "sha256": "95e9da98a45565ca2aae90858a9e5027d9123e4ffd1347da98d5de8573141cd5",
+      "changedBytesVsX": 5,
+      "available": true
+    },
+    "AC": {
+      "path": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/native/AC01/parallax-glyph-tangents.glb",
+      "expectedSha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+      "available": true,
+      "sha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b"
+    }
+  },
+  "reviewedFace": {
+    "mesh": 9,
+    "face": 11823,
+    "vertices": [
+      24049,
+      24050,
+      24051
+    ],
+    "meshName": "art.accepted-craft.saltstone.001",
+    "node": "kit.authority.saltstone.00",
+    "faceState": "fullRank",
+    "uvJacobian": -0.04529086293041473,
+    "area": 0.09058172586082947,
+    "dPdu": [
+      2.0,
+      -0.0,
+      -0.0
+    ],
+    "dPdv": [
+      -0.0,
+      -0.0,
+      2.0
+    ]
+  },
+  "role": "saltstone",
+  "normalScale": 0.4,
+  "tilesPerMeter": 0.5,
+  "normalConvention": "OpenGL +Y; image rows down, UV v up",
+  "normalImage": {
+    "available": true,
+    "source": "embedded GLB image bytes",
+    "imageName": "salt-limestone-normal",
+    "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+    "width": 512,
+    "height": 512,
+    "channels": 4,
+    "mothSource": {
+      "path": "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-normal.png",
+      "available": true,
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "expectedSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "normalConvention": "OpenGL +Y",
+      "bytesIdenticalToEmbedded": true
+    }
+  },
+  "tangentAccessor": 48,
+  "binLayout": {
+    "start": 16073596,
+    "stride": 16,
+    "format": "<ffff"
+  },
+  "corners": [
+    {
+      "corner": 0,
+      "vertex": 24049,
+      "position": [
+        68.77897644042969,
+        24.0,
+        -66.25537872314453
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "uv": [
+        35.36811447143555,
+        -32.56804275512695
+      ],
+      "incidentFaces": [
+        11823
+      ],
+      "binOffset": 16458380,
+      "bytes": {
+        "X": "0000000000000000000000000000803f",
+        "AA": "0000803f0000000000000000000080bf",
+        "AC": "0000803f0000000000000000000080bf"
+      },
+      "basis": {
+        "X": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "AA": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "AC": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "specVerdict": {
+        "X": [
+          "zeroTangent",
+          "nonUnitTangent",
+          "degenerateFrame"
+        ],
+        "AA": [],
+        "AC": []
+      },
+      "derivedSignFromUV": -1,
+      "addressing": {
+        "exportedUV": [
+          35.36811447143555,
+          -32.56804275512695
+        ],
+        "authoredUV": [
+          35.36811447143555,
+          33.56804275512695
+        ],
+        "gltf": {
+          "column": 188,
+          "row": 221,
+          "rgb": [
+            143,
+            132,
+            254
+          ]
+        },
+        "blender": {
+          "column": 188,
+          "row": 221,
+          "rgb": [
+            143,
+            132,
+            254
+          ]
+        },
+        "sameTexel": true,
+        "texelBoundaryAligned": false
+      },
+      "xVsAc": {
+        "blenderNormalMapNode": {
+          "comparable": false,
+          "status": "degenerateFrame",
+          "preserved": false
+        },
+        "godotForwardMixDepth": {
+          "comparable": false,
+          "status": "degenerateFrame",
+          "preserved": false
+        }
+      },
+      "xVsAa": {
+        "blenderNormalMapNode": {
+          "comparable": false,
+          "status": "degenerateFrame",
+          "preserved": false
+        },
+        "godotForwardMixDepth": {
+          "comparable": false,
+          "status": "degenerateFrame",
+          "preserved": false
+        }
+      }
+    },
+    {
+      "corner": 1,
+      "vertex": 24050,
+      "position": [
+        35.5203971862793,
+        24.0,
+        -84.05670928955078
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "uv": [
+        18.73882484436035,
+        -41.46870803833008
+      ],
+      "incidentFaces": [
+        11823
+      ],
+      "binOffset": 16458396,
+      "bytes": {
+        "X": "0000803f00000000000000000000803f",
+        "AA": "0000803f0000000000000000000080bf",
+        "AC": "0000803f0000000000000000000080bf"
+      },
+      "basis": {
+        "X": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "AA": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "AC": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "specVerdict": {
+        "X": [],
+        "AA": [],
+        "AC": []
+      },
+      "derivedSignFromUV": -1,
+      "addressing": {
+        "exportedUV": [
+          18.73882484436035,
+          -41.46870803833008
+        ],
+        "authoredUV": [
+          18.73882484436035,
+          42.46870803833008
+        ],
+        "gltf": {
+          "column": 378,
+          "row": 272,
+          "rgb": [
+            93,
+            141,
+            250
+          ]
+        },
+        "blender": {
+          "column": 378,
+          "row": 272,
+          "rgb": [
+            93,
+            141,
+            250
+          ]
+        },
+        "sameTexel": true,
+        "texelBoundaryAligned": false
+      },
+      "xVsAc": {
+        "blenderNormalMapNode": {
+          "comparable": true,
+          "worldAngleDegrees": 4.8981065021778525,
+          "maxComponentError": 0.08546205607435829,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        },
+        "godotForwardMixDepth": {
+          "comparable": true,
+          "worldAngleDegrees": 4.905837492371824,
+          "maxComponentError": 0.08559686386858346,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        }
+      },
+      "xVsAa": {
+        "blenderNormalMapNode": {
+          "comparable": true,
+          "worldAngleDegrees": 4.8981065021778525,
+          "maxComponentError": 0.08546205607435829,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        },
+        "godotForwardMixDepth": {
+          "comparable": true,
+          "worldAngleDegrees": 4.905837492371824,
+          "maxComponentError": 0.08559686386858346,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        }
+      }
+    },
+    {
+      "corner": 2,
+      "vertex": 24051,
+      "position": [
+        35.5,
+        24.0,
+        -84.06217956542969
+      ],
+      "normal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "uv": [
+        18.728626251220703,
+        -41.47144317626953
+      ],
+      "incidentFaces": [
+        11823
+      ],
+      "binOffset": 16458412,
+      "bytes": {
+        "X": "0000803f00000000000000000000803f",
+        "AA": "0000803f0000000000000000000080bf",
+        "AC": "0000803f0000000000000000000080bf"
+      },
+      "basis": {
+        "X": [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "AA": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0
+        ],
+        "AC": [
+          1.0,
+          0.0,
+          0.0,
+          -1.0
+        ]
+      },
+      "specVerdict": {
+        "X": [],
+        "AA": [],
+        "AC": []
+      },
+      "derivedSignFromUV": -1,
+      "addressing": {
+        "exportedUV": [
+          18.728626251220703,
+          -41.47144317626953
+        ],
+        "authoredUV": [
+          18.728626251220703,
+          42.47144317626953
+        ],
+        "gltf": {
+          "column": 373,
+          "row": 270,
+          "rgb": [
+            125,
+            143,
+            254
+          ]
+        },
+        "blender": {
+          "column": 373,
+          "row": 270,
+          "rgb": [
+            125,
+            143,
+            254
+          ]
+        },
+        "sameTexel": true,
+        "texelBoundaryAligned": false
+      },
+      "xVsAc": {
+        "blenderNormalMapNode": {
+          "comparable": true,
+          "worldAngleDegrees": 5.5852321375639695,
+          "maxComponentError": 0.09744209867313101,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        },
+        "godotForwardMixDepth": {
+          "comparable": true,
+          "worldAngleDegrees": 5.584712033546011,
+          "maxComponentError": 0.09743303192480884,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        }
+      },
+      "xVsAa": {
+        "blenderNormalMapNode": {
+          "comparable": true,
+          "worldAngleDegrees": 5.5852321375639695,
+          "maxComponentError": 0.09744209867313101,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        },
+        "godotForwardMixDepth": {
+          "comparable": true,
+          "worldAngleDegrees": 5.584712033546011,
+          "maxComponentError": 0.09743303192480884,
+          "preserved": false,
+          "binormalAngleDegrees": 180.0,
+          "greenComponentAngleDegrees": 180.0
+        }
+      }
+    }
+  ],
+  "appearanceSummary": {
+    "sameTexelEveryCorner": true,
+    "XAAPreserved": 0,
+    "XACPreserved": 0,
+    "XvsAAcomparable": 2,
+    "XvsAAgreenReversed": 2,
+    "corners": 3
+  },
+  "acBaseline": {
+    "categories": {
+      "specInvalid": 0,
+      "specValidDerivativeDisagreeing": 314178,
+      "unaffectedOther": 4887
+    },
+    "cornerDisagreements": {
+      "wSignDisagrees": 452050,
+      "storedTangentOpposesDU": 5,
+      "storedBinormalOpposesDV": 452048
+    }
+  },
+  "revertCandidates": [
+    {
+      "candidate": "R1_uniform_w_plus1",
+      "intent": "restore X's w=+1 on all three corners; corners 1-2 become byte-identical to X, corner 0 keeps X's w and takes the usable unit T.xyz its two face-mates carry, because X stored a zero tangent there",
+      "admissible": true,
+      "rejection": null,
+      "perCorner": [
+        {
+          "corner": 0,
+          "vertex": 24049,
+          "xStored": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": false,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": false,
+          "specVerdict": []
+        },
+        {
+          "corner": 1,
+          "vertex": 24050,
+          "xStored": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": true,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": []
+        },
+        {
+          "corner": 2,
+          "vertex": 24051,
+          "xStored": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": true,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": []
+        }
+      ],
+      "bytes": {
+        "artifactSha256": "47fa6d06ab0b27a7c516cb5332fbc237223957e3d982622e9c1e33b40bfc37ec",
+        "binSha256": "d34fa070e85fa20555534e4f70a0153c98170117b959f11528b695208d65b2a9",
+        "artifactWritten": false,
+        "changedVsAC": 3,
+        "changedVsACPositions": [
+          16458395,
+          16458411,
+          16458427
+        ],
+        "changedVsX": 66,
+        "permittedSaltstoneWindow": 48,
+        "permittedGlyphWindow": 256,
+        "permittedCombinedWindow": 304,
+        "changedWithinPermittedWindow": true,
+        "aliasedAccessors": [],
+        "aliasedImages": []
+      },
+      "container": {
+        "geometryReParsed": {
+          "primitives": 39,
+          "triangles": 155553
+        },
+        "error": null
+      },
+      "containerJsonLeftAtAc": true,
+      "note": "the candidate is built with the AC container JSON untouched, so the measured sha256 isolates the basis change; the proposed successor in proposed_successor_contract.revert() additionally stamps its own revision metadata, which is why its BIN hash matches this candidate while its whole-file hash does not",
+      "classification": {
+        "label": "R1_uniform_w_plus1",
+        "categories": {
+          "specInvalid": 0,
+          "specValidDerivativeDisagreeing": 314181,
+          "unaffectedOther": 4884
+        },
+        "cornerDisagreements": {
+          "wSignDisagrees": 452053,
+          "storedTangentOpposesDU": 5,
+          "storedBinormalOpposesDV": 452051
+        },
+        "saltstone": {
+          "specValidDerivativeDisagreeing": 35266
+        },
+        "nonorthogonalNTAdvisory": 4729,
+        "faceStates": {
+          "fullRank": 150686,
+          "uvRankFailure": 4811,
+          "zeroAreaFace": 56
+        },
+        "deltaVsAc": {
+          "specInvalid": 0,
+          "specValidDerivativeDisagreeing": 3,
+          "unaffectedOther": -3,
+          "wSignDisagrees": 3,
+          "storedBinormalOpposesDV": 3
+        }
+      }
+    },
+    {
+      "candidate": "R2_mixed_w",
+      "intent": "restore X's w=+1 only on the two corners where X stored a usable basis and keep AC on corner 0: smallest delta, but it mixes handedness inside one triangle, so an interpolated handedness crosses zero across the face",
+      "admissible": true,
+      "rejection": null,
+      "perCorner": [
+        {
+          "corner": 0,
+          "vertex": 24049,
+          "xStored": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": false,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "targetBytes": "0000803f0000000000000000000080bf",
+          "byteIdenticalToX": false,
+          "specVerdict": []
+        },
+        {
+          "corner": 1,
+          "vertex": 24050,
+          "xStored": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": true,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": []
+        },
+        {
+          "corner": 2,
+          "vertex": 24051,
+          "xStored": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": true,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": []
+        }
+      ],
+      "bytes": {
+        "artifactSha256": "d3fc9e64139a4c8a344a69792a771cabc0c7377f97e69f9b5b1a12cf28dccf8b",
+        "binSha256": "547b39f2d6737ab588d0b5e7481d22b92a4eec4b79c7702fb5a447bd267396aa",
+        "artifactWritten": false,
+        "changedVsAC": 2,
+        "changedVsACPositions": [
+          16458411,
+          16458427
+        ],
+        "changedVsX": 67,
+        "permittedSaltstoneWindow": 48,
+        "permittedGlyphWindow": 256,
+        "permittedCombinedWindow": 304,
+        "changedWithinPermittedWindow": true,
+        "aliasedAccessors": [],
+        "aliasedImages": []
+      },
+      "container": {
+        "geometryReParsed": {
+          "primitives": 39,
+          "triangles": 155553
+        },
+        "error": null
+      },
+      "containerJsonLeftAtAc": true,
+      "note": "the candidate is built with the AC container JSON untouched, so the measured sha256 isolates the basis change; the proposed successor in proposed_successor_contract.revert() additionally stamps its own revision metadata, which is why its BIN hash matches this candidate while its whole-file hash does not",
+      "classification": {
+        "label": "R2_mixed_w",
+        "categories": {
+          "specInvalid": 0,
+          "specValidDerivativeDisagreeing": 314180,
+          "unaffectedOther": 4885
+        },
+        "cornerDisagreements": {
+          "wSignDisagrees": 452052,
+          "storedTangentOpposesDU": 5,
+          "storedBinormalOpposesDV": 452050
+        },
+        "saltstone": {
+          "specValidDerivativeDisagreeing": 35265,
+          "unaffectedOther": 1
+        },
+        "nonorthogonalNTAdvisory": 4729,
+        "faceStates": {
+          "fullRank": 150686,
+          "uvRankFailure": 4811,
+          "zeroAreaFace": 56
+        },
+        "deltaVsAc": {
+          "specInvalid": 0,
+          "specValidDerivativeDisagreeing": 2,
+          "unaffectedOther": -2,
+          "wSignDisagrees": 2,
+          "storedBinormalOpposesDV": 2
+        }
+      }
+    },
+    {
+      "candidate": "LITERAL_X_bytes",
+      "intent": "byte-exact X restore on all three corners",
+      "admissible": false,
+      "rejection": "reinstates one spec-invalid record (zero tangent, degenerate frame) at vertex 24049, which is exactly what AC exists to close",
+      "perCorner": [
+        {
+          "corner": 0,
+          "vertex": 24049,
+          "xStored": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": false,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000000000000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": [
+            "zeroTangent",
+            "nonUnitTangent",
+            "degenerateFrame"
+          ]
+        },
+        {
+          "corner": 1,
+          "vertex": 24050,
+          "xStored": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": true,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": []
+        },
+        {
+          "corner": 2,
+          "vertex": 24051,
+          "xStored": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "xUsableBasisExists": true,
+          "acStored": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "proposed": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "targetBytes": "0000803f00000000000000000000803f",
+          "byteIdenticalToX": true,
+          "specVerdict": []
+        }
+      ],
+      "bytes": {
+        "artifactSha256": "67a8ef21f9c8acc9fcece9d6f1603236be4ae5f92bdc38529118b045d8d5df5d",
+        "binSha256": "31ee40acad3818690269ac46eb2217ce64951817550ecc9ecd6c142aee7f1e1e",
+        "artifactWritten": false,
+        "changedVsAC": 5,
+        "changedVsACPositions": [
+          16458382,
+          16458383,
+          16458395,
+          16458411,
+          16458427
+        ],
+        "changedVsX": 64,
+        "permittedSaltstoneWindow": 48,
+        "permittedGlyphWindow": 256,
+        "permittedCombinedWindow": 304,
+        "changedWithinPermittedWindow": true,
+        "aliasedAccessors": [],
+        "aliasedImages": []
+      },
+      "container": {
+        "geometryReParsed": {
+          "primitives": 39,
+          "triangles": 155553
+        },
+        "error": null
+      },
+      "containerJsonLeftAtAc": true,
+      "note": "the candidate is built with the AC container JSON untouched, so the measured sha256 isolates the basis change; the proposed successor in proposed_successor_contract.revert() additionally stamps its own revision metadata, which is why its BIN hash matches this candidate while its whole-file hash does not",
+      "classification": {
+        "label": "LITERAL_X_bytes",
+        "categories": {
+          "specInvalid": 1,
+          "specValidDerivativeDisagreeing": 314180,
+          "unaffectedOther": 4884
+        },
+        "cornerDisagreements": {
+          "wSignDisagrees": 452053,
+          "storedTangentOpposesDU": 5,
+          "storedBinormalOpposesDV": 452050
+        },
+        "saltstone": {
+          "specValidDerivativeDisagreeing": 35265,
+          "specInvalid": 1
+        },
+        "nonorthogonalNTAdvisory": 4729,
+        "faceStates": {
+          "fullRank": 150686,
+          "uvRankFailure": 4811,
+          "zeroAreaFace": 56
+        },
+        "deltaVsAc": {
+          "specInvalid": 1,
+          "specValidDerivativeDisagreeing": 2,
+          "unaffectedOther": -3,
+          "wSignDisagrees": 3,
+          "storedBinormalOpposesDV": 2
+        }
+      }
+    }
+  ],
+  "proposedRevert": {
+    "report": {
+      "status": "PROPOSAL ONLY, not applied",
+      "revision": "parallax-districts-v5-saltstone-green-revert-v1",
+      "predecessorRevision": "parallax-districts-v4-glyph-tangents-v1",
+      "predecessorSha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+      "basis": [
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "xBasis": [
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "corner0Decision": "X stored a zero tangent here, which is spec-invalid and defines no tangent space. The revert refuses to restore it and instead keeps X w=+1 with the usable unit T.xyz=(1,0,0) its face-mates carry, so one triangle keeps one handedness.",
+      "byteScope": "three 16-byte TANGENT records in accessor 48, inside the 48 BIN positions the AA compiler already declared; exactly three BIN bytes change relative to AC (each record w float 0xbf -> 0x3f)",
+      "artifactWritten": false,
+      "patch": "revert-11823-successor.patch (emitted, never applied)",
+      "whatARealRevertStillNeeds": [
+        "a new exclusive successor grant and revision string",
+        "Blender 4.5.14 editable-master build and a separate fresh-process reopen",
+        "fresh native mesh-local all-face proof: 155,553 strict equivalent faces, 19 repaired entries, 51 incident occurrences re-mapped, 0 parallel native corners",
+        "the frozen R7 native material field (14 sets) and decoded image channel (39) gate",
+        "matched before/after captures and manual material appearance acceptance"
+      ]
+    },
+    "inMemoryProof": {
+      "visualRevision": "parallax-districts-v5-saltstone-green-revert-v1",
+      "predecessorRevision": "parallax-districts-v4-glyph-tangents-v1",
+      "predecessorSha256": "0903dc4f8487ff9011204a63421a398b3f647bd8b5baca4d1552aa67d00a660b",
+      "sourceXSha256": "6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422",
+      "artifactSha256": null,
+      "masterSha256": null,
+      "face": 11823,
+      "vertices": [
+        24049,
+        24050,
+        24051
+      ],
+      "accessor": 48,
+      "permittedBINBytes": 48,
+      "changedBINBytes": 3,
+      "changedBINPositions": [
+        16458395,
+        16458411,
+        16458427
+      ],
+      "records": [
+        {
+          "corner": 0,
+          "vertex": 24049,
+          "binOffset": 16458380,
+          "xTangent": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "acTangent": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "revertTangent": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "byteIdenticalToX": false,
+          "xSpecVerdict": [
+            "zeroTangent",
+            "nonUnitTangent",
+            "degenerateFrame"
+          ],
+          "xUsableBasisExists": false
+        },
+        {
+          "corner": 1,
+          "vertex": 24050,
+          "binOffset": 16458396,
+          "xTangent": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "acTangent": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "revertTangent": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "byteIdenticalToX": true,
+          "xSpecVerdict": [],
+          "xUsableBasisExists": true
+        },
+        {
+          "corner": 2,
+          "vertex": 24051,
+          "binOffset": 16458412,
+          "xTangent": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "acTangent": [
+            1.0,
+            0.0,
+            0.0,
+            -1.0
+          ],
+          "revertTangent": [
+            1.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "byteIdenticalToX": true,
+          "xSpecVerdict": [],
+          "xUsableBasisExists": true
+        }
+      ],
+      "allOtherBINBytesIdenticalToAC": true,
+      "normalUVIndexMaterialJSONUnchanged": true,
+      "artifactWritten": false,
+      "nativeAcceptance": "pending",
+      "scope": "Deterministic source/in-memory byte arithmetic over committed AC bytes. Not an artifact, not a native proof, not a render, not appearance acceptance."
+    },
+    "inMemorySha256": "7ef65aa9ef2335b0cfb33a0dfcda90ac9072af5143fb1d6c0ebe3d6a90e0e2c7",
+    "artifactWritten": false
+  },
+  "visualSignificance": {
+    "reviewedStrength": 0.4,
+    "normalImage": {
+      "available": true,
+      "source": "embedded GLB image bytes",
+      "imageName": "salt-limestone-normal",
+      "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+      "width": 512,
+      "height": 512,
+      "channels": 4,
+      "mothSource": {
+        "path": "assets/moth/map-variety-20261003/candidate-v2/textures/salt-limestone-normal.png",
+        "available": true,
+        "sha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "expectedSha256": "203df36b390f61ce7e7a7801c1677637da1ce44ddd61ed4246572a7acf9593b6",
+        "normalConvention": "OpenGL +Y",
+        "bytesIdenticalToEmbedded": true
+      }
+    },
+    "stagedPresentation": {
+      "source": "godot/tests/new_maps/parallax_glyph/AC01/staged.gd:151-157 sun.rotation_degrees = Vector3(-44,-30,0), light_energy = .6, ambient_light_energy = .45; staged.gd:104-109 overhead omnis at energy 1.2, range 20",
+      "sunRotationDegrees": [
+        -44.0,
+        -30.0,
+        0.0
+      ],
+      "sunEnergy": 0.6,
+      "ambientEnergy": 0.45,
+      "sunEmittedDirection": [
+        0.35966990016932554,
+        -0.6946583704589973,
+        -0.622966541046498
+      ],
+      "directionToLight": [
+        -0.35966990016932554,
+        0.6946583704589973,
+        0.622966541046498
+      ],
+      "overheadOmniLights": [
+        {
+          "id": "ephemeris-vault-ceiling",
+          "lightPosition": [
+            -36,
+            16.35,
+            0
+          ],
+          "lightEnergy": 1.2,
+          "rangeMetres": 20.0
+        },
+        {
+          "id": "tidal-pump-vault-ceiling",
+          "lightPosition": [
+            24,
+            4.35,
+            78
+          ],
+          "lightEnergy": 1.2,
+          "rangeMetres": 20.0
+        },
+        {
+          "id": "meridian-service-gallery",
+          "lightPosition": [
+            36,
+            17.55,
+            0
+          ],
+          "lightEnergy": 1.2,
+          "rangeMetres": 20.0
+        },
+        {
+          "id": "polar-hall-ceiling",
+          "lightPosition": [
+            0,
+            31.55,
+            -84
+          ],
+          "lightEnergy": 1.2,
+          "rangeMetres": 20.0
+        },
+        {
+          "id": "optical-arcade-ceiling",
+          "lightPosition": [
+            69,
+            18.55,
+            0
+          ],
+          "lightEnergy": 1.2,
+          "rangeMetres": 20.0
+        }
+      ]
+    },
+    "perCorner": [
+      {
+        "corner": 0,
+        "vertex": 24049,
+        "sampledRGB": [
+          143,
+          132,
+          254
+        ],
+        "sampledColumnRow": [
+          188,
+          221
+        ],
+        "sameTexelAcrossOrigins": true,
+        "models": {
+          "blenderNormalMapNode": {
+            "comparable": false,
+            "status": "degenerateFrame",
+            "worldNormalAngleDegrees": null,
+            "maxComponentError": null,
+            "binormalAngleDegrees": null,
+            "greenComponentAngleDegrees": null
+          },
+          "godotForwardMixDepth": {
+            "comparable": false,
+            "status": "degenerateFrame",
+            "worldNormalAngleDegrees": null,
+            "maxComponentError": null,
+            "binormalAngleDegrees": null,
+            "greenComponentAngleDegrees": null
+          }
+        }
+      },
+      {
+        "corner": 1,
+        "vertex": 24050,
+        "sampledRGB": [
+          93,
+          141,
+          250
+        ],
+        "sampledColumnRow": [
+          378,
+          272
+        ],
+        "sameTexelAcrossOrigins": true,
+        "models": {
+          "blenderNormalMapNode": {
+            "comparable": true,
+            "status": null,
+            "worldNormalAngleDegrees": 4.8981065021778525,
+            "maxComponentError": 0.08546205607435829,
+            "binormalAngleDegrees": 180.0,
+            "greenComponentAngleDegrees": 180.0,
+            "directionalDiffuse": {
+              "xBasis": 0.7025222423263356,
+              "acBasis": 0.7557622437897005,
+              "absoluteDelta": 0.05324000146336483,
+              "relativeDeltaPercent": 7.578407950055164,
+              "albedoLinearRangeFromCommittedPack": [
+                0.29,
+                0.43
+              ],
+              "linearRadianceDelta": 0.011499840316086802
+            }
+          },
+          "godotForwardMixDepth": {
+            "comparable": true,
+            "status": null,
+            "worldNormalAngleDegrees": 4.905837492371824,
+            "maxComponentError": 0.08559686386858346,
+            "binormalAngleDegrees": 180.0,
+            "greenComponentAngleDegrees": 180.0,
+            "directionalDiffuse": {
+              "xBasis": 0.7025270222545686,
+              "acBasis": 0.7558510044632081,
+              "absoluteDelta": 0.05332398220863943,
+              "relativeDeltaPercent": 7.5903104819385705,
+              "albedoLinearRangeFromCommittedPack": [
+                0.29,
+                0.43
+              ],
+              "linearRadianceDelta": 0.011517980157066116
+            }
+          }
+        }
+      },
+      {
+        "corner": 2,
+        "vertex": 24051,
+        "sampledRGB": [
+          125,
+          143,
+          254
+        ],
+        "sampledColumnRow": [
+          373,
+          270
+        ],
+        "sameTexelAcrossOrigins": true,
+        "models": {
+          "blenderNormalMapNode": {
+            "comparable": true,
+            "status": null,
+            "worldNormalAngleDegrees": 5.5852321375639695,
+            "maxComponentError": 0.09744209867313101,
+            "binormalAngleDegrees": 180.0,
+            "greenComponentAngleDegrees": 180.0,
+            "directionalDiffuse": {
+              "xBasis": 0.6662867237254511,
+              "acBasis": 0.726989890888163,
+              "absoluteDelta": 0.06070316716271196,
+              "relativeDeltaPercent": 9.11066737504516,
+              "albedoLinearRangeFromCommittedPack": [
+                0.29,
+                0.43
+              ],
+              "linearRadianceDelta": 0.01311188410714578
+            }
+          },
+          "godotForwardMixDepth": {
+            "comparable": true,
+            "status": null,
+            "worldNormalAngleDegrees": 5.584712033546011,
+            "maxComponentError": 0.09743303192480884,
+            "binormalAngleDegrees": 180.0,
+            "greenComponentAngleDegrees": 180.0,
+            "directionalDiffuse": {
+              "xBasis": 0.6662894424848793,
+              "acBasis": 0.7269869613667505,
+              "absoluteDelta": 0.06069751888187114,
+              "relativeDeltaPercent": 9.109782477642755,
+              "albedoLinearRangeFromCommittedPack": [
+                0.29,
+                0.43
+              ],
+              "linearRadianceDelta": 0.013110664078484166
+            }
+          }
+        }
+      }
+    ],
+    "faceUvFootprint": {
+      "sampling": "barycentric 64x grid over the three reviewed UVs, bilinear REPEAT sample -- the filter both pinned samplers declare",
+      "greenRange": [
+        84.64214201271534,
+        185.4842597693205
+      ],
+      "greenNeutralFraction": 0.0037296037296037296,
+      "worldNormalAngleByModel": {
+        "blenderNormalMapNode": {
+          "samples": 2145,
+          "minDegrees": 0.0007899002853962222,
+          "p25Degrees": 0.5392498594771628,
+          "medianDegrees": 1.8247618197145181,
+          "p75Degrees": 5.395823062995413,
+          "p90Degrees": 10.40695546136501,
+          "p99Degrees": 20.468105086437255,
+          "maxDegrees": 21.573972427310714,
+          "meanDegrees": 3.5524785203187332,
+          "fractionAbove": {
+            "1deg": 0.6242424242424243,
+            "2deg": 0.46060606060606063,
+            "3deg": 0.35244755244755244,
+            "5deg": 0.2568764568764569,
+            "10deg": 0.1034965034965035
+          }
+        },
+        "godotForwardMixDepth": {
+          "samples": 2145,
+          "minDegrees": 0.000789957959038907,
+          "p25Degrees": 0.5392663381702582,
+          "medianDegrees": 1.8255716994833266,
+          "p75Degrees": 5.38807658790475,
+          "p90Degrees": 10.403407657131309,
+          "p99Degrees": 20.475257688046163,
+          "maxDegrees": 21.555980394801313,
+          "meanDegrees": 3.5521245263508536,
+          "fractionAbove": {
+            "1deg": 0.6242424242424243,
+            "2deg": 0.46107226107226107,
+            "3deg": 0.35244755244755244,
+            "5deg": 0.2568764568764569,
+            "10deg": 0.1034965034965035
+          }
+        }
+      }
+    },
+    "wholeNormalMap": {
+      "texels": 262144,
+      "note": "upper bound on the same reversal anywhere on this material; the reviewed face addresses 2145 distinct bilinear samples of it",
+      "worldNormalAngleByModel": {
+        "blenderNormalMapNode": {
+          "samples": 262144,
+          "minDegrees": 0.1796344450395011,
+          "p25Degrees": 0.5392497513885055,
+          "medianDegrees": 1.976659057258122,
+          "p75Degrees": 5.9537341891234625,
+          "p90Degrees": 12.180975509919945,
+          "p99Degrees": 21.778329219291752,
+          "maxDegrees": 31.52135398802149,
+          "meanDegrees": 4.18556941717109,
+          "fractionAbove": {
+            "1deg": 0.6196327209472656,
+            "2deg": 0.4659690856933594,
+            "3deg": 0.4008750915527344,
+            "5deg": 0.2848930358886719,
+            "10deg": 0.13788604736328125
+          }
+        },
+        "godotForwardMixDepth": {
+          "samples": 262144,
+          "minDegrees": 0.1797522023050655,
+          "p25Degrees": 0.5393460048485851,
+          "medianDegrees": 1.9778098413041265,
+          "p75Degrees": 5.95139388417009,
+          "p90Degrees": 12.170990144128846,
+          "p99Degrees": 21.761512805457812,
+          "maxDegrees": 31.52131021104068,
+          "meanDegrees": 4.185750117297139,
+          "fractionAbove": {
+            "1deg": 0.6196327209472656,
+            "2deg": 0.4660758972167969,
+            "3deg": 0.4008750915527344,
+            "5deg": 0.2848777770996094,
+            "10deg": 0.13796234130859375
+          }
+        }
+      }
+    },
+    "geometryFootprint": {
+      "areaSquareMetres": 0.09058172586082947,
+      "edgeLengthsMetres": [
+        37.72294346865144,
+        37.74350843733902,
+        0.021117981113346992
+      ],
+      "longestEdgeMetres": 37.74350843733902,
+      "shortestEdgeMetres": 0.021117981113346992,
+      "meanWidthMetres": 0.004799857226373714,
+      "uvArea": 0.022645431465207366,
+      "squareMetresPerUvUnit": 4.0,
+      "saltstoneSurfaceSquareMetres": 140706.0324288798,
+      "sceneSurfaceSquareMetres": 637138.7618986139,
+      "fractionOfSaltstone": 6.437657596991388e-07,
+      "fractionOfScene": 1.421695418293252e-07,
+      "distanceForOnePixelWidthMetres": 2.5617891521719756,
+      "distanceForTenPixelWidthMetres": 0.25617891521719754,
+      "note": "The reviewed face is a long needle: shortest edge 0.0211 m, longest 37.7435 m, mean width 0.0048 m, total 0.090582 m2, which is 6.438e-07 of the saltstone surface and 1.422e-07 of the whole scene."
+    },
+    "cameraVisibility": {
+      "available": true,
+      "image": [
+        1280,
+        720
+      ],
+      "faceCentroid": [
+        46.59979120890299,
+        24.0,
+        -78.124755859375
+      ],
+      "faceNormal": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "meanWidthMetres": 0.004799857226373714,
+      "cameras": [
+        {
+          "camera": "arrival-eye",
+          "fovDegrees": 68,
+          "eye": [
+            -111.0,
+            13.45,
+            -3.0
+          ],
+          "target": [
+            0.0,
+            20.0,
+            -60.0
+          ],
+          "distanceToCentroidMetres": 174.90776321255873,
+          "depthMetres": 174.8260150172669,
+          "ndc": [
+            0.024632015598775685,
+            0.011766085196234108
+          ],
+          "inFrustum": true,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.05242029687474996,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.014653363527841993,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "lens-eye",
+          "fovDegrees": 68,
+          "eye": [
+            8.0,
+            13.45,
+            5.0
+          ],
+          "target": [
+            -50.0,
+            30.0,
+            -85.0
+          ],
+          "distanceToCentroidMetres": 92.2549262535698,
+          "depthMetres": 49.999654693110415,
+          "ndc": [
+            1.2921940868218171,
+            0.08737557635060919
+          ],
+          "inFrustum": false,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.15275757282843108,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.051236136887260766,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "cistern-eye",
+          "fovDegrees": 68,
+          "eye": [
+            -10.0,
+            1.45,
+            78.0
+          ],
+          "target": [
+            24.0,
+            2.0,
+            78.0
+          ],
+          "distanceToCentroidMetres": 167.59170103868766,
+          "depthMetres": 56.957118889930825,
+          "ndc": [
+            -2.2859085307305262,
+            0.5630576886118551
+          ],
+          "inFrustum": false,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.016174354488670547,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.04497750592200095,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "overview",
+          "fovDegrees": 68,
+          "eye": [
+            185.0,
+            160.0,
+            210.0
+          ],
+          "target": [
+            0.0,
+            10.0,
+            0.0
+          ],
+          "distanceToCentroidMetres": 347.37082884497323,
+          "depthMetres": 335.4341205245308,
+          "ndc": [
+            0.21532427497326448,
+            0.11261903540540334
+          ],
+          "inFrustum": true,
+          "frontFacing": true,
+          "faceNormalDotAgainstViewAxis": 0.47239701391442884,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.007637234841124722,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "archive-interior",
+          "fovDegrees": 68,
+          "eye": [
+            -45.0,
+            13.45,
+            0.0
+          ],
+          "target": [
+            -25.0,
+            14.0,
+            3.0
+          ],
+          "distanceToCentroidMetres": 120.85239644955978,
+          "depthMetres": 79.2549135331992,
+          "ndc": [
+            -0.9559298239220164,
+            0.15710438074604374
+          ],
+          "inFrustum": true,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.027185698171257804,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.03232341110433316,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "polar-interior",
+          "fovDegrees": 68,
+          "eye": [
+            -12.0,
+            25.45,
+            -84.0
+          ],
+          "target": [
+            13.0,
+            28.0,
+            -80.0
+          ],
+          "distanceToCentroidMetres": 58.911429480525875,
+          "depthMetres": 58.350787845467046,
+          "ndc": [
+            -0.049403422767106506,
+            -0.18634957471163666
+          ],
+          "inFrustum": true,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.10021193675706146,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.04390324872658916,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "arcade-eye",
+          "fovDegrees": 68,
+          "eye": [
+            54.0,
+            13.45,
+            0.0
+          ],
+          "target": [
+            89.0,
+            16.0,
+            0.0
+          ],
+          "distanceToCentroidMetres": 79.1804462493031,
+          "inFrustum": false,
+          "reason": "the face centroid is behind this camera"
+        },
+        {
+          "camera": "pump-interior",
+          "fovDegrees": 68,
+          "eye": [
+            15.0,
+            1.45,
+            78.0
+          ],
+          "target": [
+            34.0,
+            2.5,
+            81.0
+          ],
+          "distanceToCentroidMetres": 160.8788012654113,
+          "depthMetres": 8.082386665716443,
+          "ndc": [
+            -16.42033504790931,
+            4.06160064461996
+          ],
+          "inFrustum": false,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.054505754909560944,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.3169594895822634,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "well-descent",
+          "fovDegrees": 68,
+          "eye": [
+            32.0,
+            9.45,
+            -34.0
+          ],
+          "target": [
+            43.0,
+            12.0,
+            -34.0
+          ],
+          "distanceToCentroidMetres": 48.70164764146085,
+          "depthMetres": 17.50845264084019,
+          "ndc": [
+            -2.10169474680986,
+            0.9210356107698681
+          ],
+          "inFrustum": false,
+          "frontFacing": false,
+          "faceNormalDotAgainstViewAxis": -0.22582958180806936,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.1463172791293018,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "court-relief",
+          "fovDegrees": 68,
+          "eye": [
+            24.0,
+            13.45,
+            -34.0
+          ],
+          "target": [
+            10.0,
+            17.0,
+            -34.0
+          ],
+          "distanceToCentroidMetres": 50.68576863711803,
+          "inFrustum": false,
+          "reason": "the face centroid is behind this camera"
+        },
+        {
+          "camera": "wayfinding-2-glyph-close",
+          "fovDegrees": 40,
+          "eye": [
+            12.845000267028809,
+            6.513679904632568,
+            82.4228
+          ],
+          "target": [
+            10.845000267028809,
+            5.513679904632568,
+            80.4228
+          ],
+          "distanceToCentroidMetres": 164.98689340195,
+          "depthMetres": 78.69973657987805,
+          "ndc": [
+            2.6980278488597498,
+            1.6188736441609985
+          ],
+          "inFrustum": false,
+          "frontFacing": true,
+          "faceNormalDotAgainstViewAxis": 0.3333333333333333,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.060324214170219666,
+          "resolvesTheFace": false
+        },
+        {
+          "camera": "wayfinding-3-glyph-close",
+          "fovDegrees": 40,
+          "eye": [
+            39.154998779296875,
+            6.513679904632568,
+            77.5772
+          ],
+          "target": [
+            37.154998779296875,
+            5.513679904632568,
+            75.5772
+          ],
+          "distanceToCentroidMetres": 156.85756399750807,
+          "depthMetres": 93.00933558805677,
+          "ndc": [
+            1.916873886037484,
+            1.5192559556593332
+          ],
+          "inFrustum": false,
+          "frontFacing": true,
+          "faceNormalDotAgainstViewAxis": 0.3333333333333333,
+          "faceLitByStagedSun": true,
+          "sliverWidthPixelsAtCentroid": 0.05104326070676776,
+          "resolvesTheFace": false
+        }
+      ],
+      "camerasResolvingTheFace": [],
+      "camerasWithFaceInFrustum": [
+        "arrival-eye",
+        "overview",
+        "archive-interior",
+        "polar-interior"
+      ],
+      "camerasWithFaceFrontFacing": [
+        "overview",
+        "wayfinding-2-glyph-close",
+        "wayfinding-3-glyph-close"
+      ]
+    }
+  },
+  "renderFeasibility": {
+    "harness": {
+      "capture": "godot/tests/new_maps/parallax_glyph/AC01/capture.gd",
+      "staged": "godot/tests/new_maps/parallax_glyph/AC01/staged.gd",
+      "stage": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/stage.py",
+      "successor": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v4-glyph-tangents/successor.py",
+      "committedCapturePngs": 24
+    },
+    "checks": [
+      {
+        "precondition": "harnessSupportsThreeVariants",
+        "satisfied": false,
+        "detail": "capture.gd iterates exactly [false,true] (failed-AA-before, candidate-runtime-after) and asserts records.size()==probes.cameras.size()*2, so a third variant cannot be expressed without editing a frozen staged script"
+      },
+      {
+        "precondition": "stagedScriptsAreRewritable",
+        "satisfied": false,
+        "detail": "staged.gd asserts FileAccess.get_sha256(path) against manifest.json[\"files\"] for every staged file, so editing capture.gd, staged.gd or probes.json invalidates the committed AC01 stage"
+      },
+      {
+        "precondition": "stageIsRerenderable",
+        "satisfied": false,
+        "detail": "stage.prepare() calls mkdir(exist_ok=False) and capture.gd refuses an existing capture path or receipt, so the committed AC01 stage cannot be re-rendered in place"
+      },
+      {
+        "precondition": "committedCapturesDoNotBlockRerun",
+        "satisfied": false,
+        "detail": "24 capture PNGs already sit under the stage captures directory and each is asserted absent before writing"
+      },
+      {
+        "precondition": "noNewGrantOrBuildReceiptNeeded",
+        "satisfied": false,
+        "detail": "stage.prepare() requires an active exclusive successor grant plus actual build-report.json and reopen-report.json artifact/master hashes"
+      },
+      {
+        "precondition": "noRealUidSidecarCheck",
+        "satisfied": false,
+        "detail": "stage.check_sidecar requires importer=\"scene\", a generated uid://, meshes/force_disable_compression=true and meshes/generate_lods=false"
+      },
+      {
+        "precondition": "projectImportCachePresent",
+        "satisfied": false,
+        "detail": "this worktree has no godot/.godot import cache, so real generated-UID, full-precision, LOD-off sidecars would need a first editor import of the whole 709 MB project"
+      },
+      {
+        "precondition": "blenderAvailable",
+        "satisfied": false,
+        "detail": "no Blender 4.5.14 is reachable here, and the AC production path (build.py) requires it to derive a new editable master and canonical bytes"
+      },
+      {
+        "precondition": "committedCamerasResolveTheFace",
+        "satisfied": false,
+        "detail": "no committed probe camera is simultaneously inside its frustum, front facing and at a scale that resolves the face; the best committed camera projects it to a small fraction of one pixel, so a close-up needs a new probe camera and therefore a new stage. Cameras that resolve it: none"
+      }
+    ],
+    "unsatisfiedPreconditions": [
+      "harnessSupportsThreeVariants",
+      "stagedScriptsAreRewritable",
+      "stageIsRerenderable",
+      "committedCapturesDoNotBlockRerun",
+      "noNewGrantOrBuildReceiptNeeded",
+      "noRealUidSidecarCheck",
+      "projectImportCachePresent",
+      "blenderAvailable",
+      "committedCamerasResolveTheFace"
+    ],
+    "feasible": false,
+    "verdict": "NOT FEASIBLE with the committed harness: harnessSupportsThreeVariants; stagedScriptsAreRewritable; stageIsRerenderable; committedCapturesDoNotBlockRerun; noNewGrantOrBuildReceiptNeeded; noRealUidSidecarCheck; projectImportCachePresent; blenderAvailable; committedCamerasResolveTheFace",
+    "missingFixture": [
+      "a new write-once stage directory; AC01 is already populated and hash-pinned",
+      "a third staged GLB variant with a manifest entry, which means a new artifact",
+      "a real generated-UID, full-precision, LOD-off .import sidecar for that variant, which needs an editor import pass over a project with no import cache here",
+      "a new probe camera inside probes.json that frames face 11823, because none of the twelve committed cameras resolves it",
+      "a capture.gd that iterates three variants instead of [false,true]",
+      "an actual artifact and editable master for the revert, i.e. a Blender 4.5.14 build and a separate fresh-process reopen under a new exclusive successor grant"
+    ],
+    "boundedAlternative": "a purpose-built static fixture would work: a minimal scene holding only the saltstone role plane plus the committed normal map, one camera framing face 11823, and a frozen X / AC / revert basis triple. That is a new fixture, not the parity-glyph harness, and it would demonstrate basis arithmetic rather than scene appearance, so it cannot settle final art acceptance either."
+  },
+  "revertPatch": {
+    "path": "tools/godot-multiplayer/new-maps/parallax-11823-revert/revert-11823-successor.patch",
+    "applied": false,
+    "targetDirectory": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v5-saltstone-green-revert",
+    "addedFiles": [
+      {
+        "addedPath": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v5-saltstone-green-revert/contract.py",
+        "sha256": "9d108fb46af0e9161ab53d4503ed9b3d8bf4b120c11cb53469af145372efdf66",
+        "bytes": 16549,
+        "lines": 334
+      },
+      {
+        "addedPath": "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/districts-v5-saltstone-green-revert/README.md",
+        "sha256": "f8a779cef3151f369ff7a65a58fd5f2c66f83861bc06c7d04e65ec7a02ed3541",
+        "bytes": 4711,
+        "lines": 86
+      }
+    ],
+    "sha256": "8dae1fa8a28a7da6deedc6b239ca60d0d08c3886a3b2e234625b9313af3dca9a",
+    "bytes": 22493
+  },
+  "boundaries": [
+    "An analytic CPU source measurement over the two pinned shader expressions; not a Blender or Godot render measurement.",
+    "The authored side is reconstructed as v_authored = 1 - v_exported, the inverse of the pinned exporter transform. Blender was not run.",
+    "Per-record basis only. No MikkTSpace smoothing-seam claim, no native importer run, no native world transform.",
+    "Which strength convention the accepted appearance refers to stays a render question; both pinned models are reported side by side everywhere.",
+    "The directional-diffuse figures use the committed AC01 sun/ambient literals and the committed pack albedo range; they are analytic, not sampled pixels.",
+    "No artifact change, no native claim, no promotion. AC stays exactly as it is."
+  ]
+}
