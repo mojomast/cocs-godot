@@ -34,6 +34,11 @@ func _init() -> void:
 	floor_snap_length = 0.3
 	floor_max_angle = deg_to_rad(46.0)
 	floor_stop_on_slope = true
+	# Godot's grounded wall-blocking path cancels forward motion on walkable
+	# apron contacts (Vesper stairs). Disabled per the approved stair-traversal
+	# fix (VESPER_STAIR_FIX_EXPERIMENT_20261005.md /
+	# VESPER_STAIR_TRAVERSAL_RESEARCH_20261005.md).
+	floor_block_on_wall = false
 	safe_margin = 0.02
 
 func set_spawn(value: Vector3, yaw: float = 0.0, pitch: float = 0.0) -> void:
