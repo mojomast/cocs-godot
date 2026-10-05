@@ -411,22 +411,24 @@ test acceptance in this package is represented as a native pass.
 Package `tools/godot-multiplayer/new-maps/walker-support-query-compare/` at
 commit time (sha256, bytes):
 
+At commit `88214d99`:
+
 ```
-README.md        HASH_README                                                                    
-__init__.py      HASH_INIT                                                                      
-campaign.py      HASH_CAMPAIGN                                                                  
-cli.py           HASH_CLI                                                                       
-driver.py        HASH_DRIVER                                                                     
-evidence.py      HASH_EVIDENCE                                                                  
-fixtures.py      HASH_FIXTURES                                                                  
-history.py       HASH_HISTORY                                                                  
-hook.py          HASH_HOOK                                                                       
-invocation.py    HASH_INVOCATION                                                                 
-policy.py        HASH_POLICY                                                                     
-prepare.py       HASH_PREPARE                                                                    
-seals.py         HASH_SEALS                                                                      
-supervisor.py    HASH_SUPERVISOR                                                                 
-test_compare.py  HASH_TEST                                                                       
+README.md        aa2776266283856bf5dd54180feb3c7e813bd0df2124bde6cecea1b9e2d38cfd  10993
+__init__.py      80459abcb5a78a0e00ed507dcc3448996aa843686fbc710146bf11351312c07e   301
+campaign.py      a4c63dee93ebfc077c6e0dc59322860dcfc665ddcd3632515443fc5100c20379  4049
+cli.py           c627fbc736dcfd1bb90d07f3764a195ea251dce9ce6e93148b93df703cfca015  1238
+driver.py        b31de4072d2da805905c297b38c58968db7bdec5728c3fbb280d8ea665a39b92 19613
+evidence.py      91b64a40639f1bc2b5f583a23a72333113c93bfc237eacf64a3b30ddb16a3972 22991
+fixtures.py      e05eaa22cbdda7d2c7c50d83b54360815f70f2ea5bff517b60c9dfa89d3b9e9c 11451
+history.py       0c462cae44ae7013ac7ff93cbdb813319374833a0b0ea9956fb9af334e93b6cf  9543
+hook.py          476aaff44e9b88c4b413c7553b022cb667b0b3d3fa0e16ff36ef9ceaa6da64c4 24586
+invocation.py    513b397fddd2acd1d6dc36bc034edfb9995a32d3f53426c597e3ffeb752b0ac7  4639
+policy.py        125a451dcfecc6bb2adbcfc47bdce25edb69acabe14b6b1b9b8e3bb7d5a9b78f  8387
+prepare.py       dff31c1b03e30a5818afc8429c32faf88cdf54ee91c2e1331ba7e95569f204d1 12597
+seals.py         a204d17e477584dd930d1ee423a54fa95568c8d62cc730509bf0867192d4a625  4738
+supervisor.py    78430d40dee7993910444dc559cafc9380512f907a30009b1e8fb2fac5a8cfb0  9805
+test_compare.py  83cddcd2a73cd472cf82fea99653ec5afc7132f352b33417f84c79e3346f6dc0 91219
 ```
 
 **This report's own digest is deliberately not printed here.** A file cannot contain
