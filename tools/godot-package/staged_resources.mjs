@@ -12,7 +12,6 @@ export const STAGED_MANIFEST_SHA='03c5a898d819363ebd56614bc7f7ba0c6337250563457d
 export const STAGED_ENTRIES=Object.freeze([
  Object.freeze({id:'foundry-r5',activation:STAGED_REVIEW,candidate:STAGED_CANDIDATE,manifest:STAGED_MANIFEST,sha256:STAGED_MANIFEST_SHA,count:63,status:'staged-not-runtime-promoted'}),
  Object.freeze({id:'foundry-r6',activation:'fceaac00b3b74a0272294a9470ab30ae7e5c4846',candidate:'fceaac00b3b74a0272294a9470ab30ae7e5c4846',source:'b5dfe08e36abf0c125c6a05abaf8cd28dce39184',manifest:'tools/godot-multiplayer/new-maps/gravemill-foundry/revision6/evidence/W/final-manifest.json',sha256:'234cdbe8118cddf0d10b605e4eebd1fb512ddad73f35fcc9bde745715f5766fc',count:74,status:'unpromoted-artifact-review-pending'}),
- Object.freeze({id:'foundry-r7',activation:'f3b51b2c0017ed44cad96a2657e256e41766e805',candidate:'f3b51b2c0017ed44cad96a2657e256e41766e805',source:'26da91b384abcf33c54180f72ad05c56b45cb2a3',manifest:'tools/godot-multiplayer/new-maps/gravemill-foundry/revision7/evidence/Y/final-manifest.json',sha256:'8f928a24352ff69418b73e246e56aef5ccfa3a40104f4b55a317d3b2408fed29',count:74,status:'unpromoted-artifact-review-pending'}),
 ]);
 const hash=b=>createHash('sha256').update(b).digest('hex');
 export const nativeCandidate=p=>p.startsWith('godot/')&&!['godot/tests/','godot/content/','godot/.godot/'].some(prefix=>p.startsWith(prefix))&&!['godot/.gitignore','godot/export_presets.cfg'].includes(p);
