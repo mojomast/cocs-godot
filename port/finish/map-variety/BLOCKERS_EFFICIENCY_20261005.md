@@ -93,6 +93,15 @@ research/synthesis, not a native claim and not a replacement for any review.
 - The ramp/bevel fallback is a bounded, reviewable collision change rather than
   another engine-profile negotiation.
 
+**Status 2026-10-05 (closed on the shipping map).** The prepared batch ran; the
+apron cleared the source census but the engine still jammed on the ramp until a
+minimal reproduction isolated Godot's grounded wall-blocking cancellation
+(`floor_block_on_wall`). The production one-line walker fix is in (`778645bf`)
+and the acceptance run `vesper-binding-04` reached 10/10 clean ascents at both
+.35 and .42 on the aproned accepted world; the candidate controls (r.42 clean,
+r.35 pre-apron 90° edges) are recorded unwaived. No receipt advance was needed
+(the walker is not a receipt input). See `VESPER_STAIR_PRODUCTION_20261005.md`.
+
 ## 2. Parallax tangents (4,729 "nonorthogonal" records)
 
 ### Root cause (proved source-only)
