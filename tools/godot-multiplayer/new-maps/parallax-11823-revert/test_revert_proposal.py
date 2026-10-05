@@ -564,7 +564,7 @@ class CommittedSourceTests(unittest.TestCase):
         self.assertTrue(any('no promotion' in b for b in self.report['boundaries']))
 
     def test_run_is_deterministic(self):
-        again = rp.run()
+        again = rp.run(render_environment={'import_cache': False, 'blender': None})
         self.assertEqual(json.dumps(again, sort_keys=True),
                          json.dumps(self.report, sort_keys=True))
 
