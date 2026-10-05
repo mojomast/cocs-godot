@@ -236,6 +236,19 @@ Both need the same helper: for each authored tread, pull the walkable top face
 back by `leg` at its −Z edge and add a 45° chamfer quad. **Applying it requires
 a new grant.** Nothing in this branch edits those files.
 
+**Erratum (2026-10-05), after the first rebuild.** The patch text's
+`bevelTread` ends with a quad→triangle flatten (four triangles) while its own
+`beveled()` adapter indexes `p[0..7]` as two 4-vertex quads; applied literally
+it throws. The rebuild transcribed the shared 4-vertex quad convention instead.
+More importantly, the rebuilt 45° chamfer is invisible to the production support
+query (`terrain.maxSlope = 0.7 rad = 40.107°`), regressing the mover from 60/60
+to 40/60 clean trials, and the candidate chain refuses to build. The rebuild
+result, census and blockers are recorded in `VESPER_BEVEL_REBUILD_20261005.md`;
+this proposal's "exactly 45.0°" contact figure is also 45.0000° only for the .42
+envelope (45.7619° for the .35 capsule at the pinned feet). Do not apply the
+patch as an acceptance path: the support-query coupling needs its own reviewed
+design decision.
+
 ## 9. Scope statement
 
 - Proposal and analysis tooling only. No runtime or artifact change.
