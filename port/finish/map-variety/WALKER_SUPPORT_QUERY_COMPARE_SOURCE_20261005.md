@@ -5,6 +5,11 @@ Branch `spacebunny/walker-support-query-20261005`, base `feature/relay-campaign`
 `map-variety/WALKER_SUPPORT_QUERY_DESIGN_REVIEW.md` (integrated as `d008a28b`,
 parent `721bddd5`) as a deterministic offline Python package.
 
+Commits: `62ed480e` the package; `88214d99` the C1 fix; `f311f667` and `8d4be734` its
+delivery hashes and line counts; **`33809aad` this pass — N1 (the run-frozen body RID)
+and N2 (behavioural anchor coverage)**, settling the two non-blocking observations of
+the independent re-review at `8d4be734`. Suite: **100 tests, OK**.
+
 **No native claim. No grant. No engine invocation. AM stays failed, .42/+45°
 stays unrun, and 60 map journeys / 184 static failures / production accounting are
 untouched.**
@@ -583,11 +588,33 @@ supervisor.py    78430d40dee7993910444dc559cafc9380512f907a30009b1e8fb2fac5a8cfb
 test_compare.py  83cddcd2a73cd472cf82fea99653ec5afc7132f352b33417f84c79e3346f6dc0 91219
 ```
 
-At commit `DELIVERY_COMMIT` (N1 + N2):
+At commit `33809aad` (N1 + N2):
 
 ```
-DELIVERY_HASHES
+README.md        09927094a92fd9b42dbdf3b4157f64de2cbb3cdebe6db13412fba07e6a85ecda  13143
+__init__.py      80459abcb5a78a0e00ed507dcc3448996aa843686fbc710146bf11351312c07e   301
+campaign.py      a4c63dee93ebfc077c6e0dc59322860dcfc665ddcd3632515443fc5100c20379  4049
+cli.py           c627fbc736dcfd1bb90d07f3764a195ea251dce9ce6e93148b93df703cfca015  1238
+driver.py        e04b19ba75155340b6b04ec4c844be828807937dd645efc9b685b1ddb7484717 20027
+evidence.py      9e819fe1602d8766e557b37b4cb6f2134cb1465edf219abebb572f1d5138e282 24874
+fixtures.py      5304dd94747c0388dc376b6a9e6d7ece3ebebd6517eb8ac585cdd9cc42c3c2bc 12292
+history.py       0c462cae44ae7013ac7ff93cbdb813319374833a0b0ea9956fb9af334e93b6cf  9543
+hook.py          b79b39c4399751e366fcd4b3bc4e9cf0e8223a1adb26cd5484df611e907127ca 27315
+invocation.py    513b397fddd2acd1d6dc36bc034edfb9995a32d3f53426c597e3ffeb752b0ac7  4639
+policy.py        125a451dcfecc6bb2adbcfc47bdce25edb69acabe14b6b1b9b8e3bb7d5a9b78f  8387
+prepare.py       9f9fa8c105835bdba117604ffed68e38d41d2e93ff793ac53e420a9004409891 13022
+seals.py         a204d17e477584dd930d1ee423a54fa95568c8d62cc730509bf0867192d4a625  4738
+supervisor.py    78430d40dee7993910444dc559cafc9380512f907a30009b1e8fb2fac5a8cfb0  9805
+test_compare.py  0a4252ca6b838f22f7a1b977a74cc04198e5353351b717af1c58039e233e4c60 122916
 ```
+
+**Seven of these 15 changed and eight are byte-identical to the `88214d99` block.**
+The eight unchanged are `__init__`, `campaign`, `cli`, `history`, `invocation`,
+`policy`, `seals` and `supervisor` — verified by comparing `git show` at both commits,
+not by reading. The changed set is exactly the N1 and N2 work: `evidence`, `hook` and
+`test_compare` carry the semantic change and its coverage; `driver`, `prepare` and
+`fixtures` carry comment and per-run-RID plumbing; `README` carries the wording the N1
+settlement requires.
 
 **This report's own digest is deliberately not printed here.** A file cannot contain
 its own SHA256, so any such line is unverifiable by construction; the previous
