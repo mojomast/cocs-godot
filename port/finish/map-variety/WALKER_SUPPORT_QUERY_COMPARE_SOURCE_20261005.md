@@ -265,8 +265,10 @@ Four verification passes were run beyond the suite itself:
 * All **100 declared** `test_*` methods were confirmed to be collected and run
   (declared vs. executed names compared; zero missing).
 * Each of the **11 test classes** was removed in turn and the remainder re-run:
-  every case reported `OK`, so no class is dead weight and no test depends on
-  another class's execution.
+  **every case reported `OK`** (96, 95, 91, 79, 95, 96, 90, 90, 82, 92, 94), so no
+  class is dead weight and no test depends on another class's execution. The 79 with
+  `FrozenOperandTests` removed is the point of the count: its 21 tests carry the
+  whole cross-observation proof and are not a convenience layer over the others.
 * A **forger model** and **mutation testing** were run against the frozen-operand
   checks specifically, as described under *Independent re-verification of the C1 fix*
   below.
