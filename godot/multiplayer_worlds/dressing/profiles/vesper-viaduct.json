@@ -1,0 +1,1498 @@
+{
+  "version": 1,
+  "map_id": "vesper-viaduct",
+  "geometry_hash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+  "materials": [
+    {
+      "source": "sandstone",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "cast",
+        "tint": "bb9370",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.3,
+        "roughness": 0.86,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.34,
+        "texture_saturation": 0.08,
+        "normal_strength": 0.12,
+        "metallic": 0.02,
+        "specular_strength": 0.2,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610420
+      }
+    },
+    {
+      "source": "brick",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "worn",
+        "tint": "984e36",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.3,
+        "roughness": 0.88,
+        "albedo_gain": 1.3,
+        "texture_strength": 0.3,
+        "texture_saturation": 0.05,
+        "normal_strength": 0.1,
+        "metallic": 0.02,
+        "specular_strength": 0.2,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610421
+      }
+    },
+    {
+      "source": "plaster",
+      "family": "enamel-glaze",
+      "options": {
+        "variant": "stucco",
+        "tint": "b1816b",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.1,
+        "roughness": 0.82,
+        "albedo_gain": 1.25,
+        "texture_strength": 0.26,
+        "texture_saturation": 0.06,
+        "normal_strength": 0.08,
+        "metallic": 0,
+        "specular_strength": 0.24,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610422
+      }
+    },
+    {
+      "source": "slate",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "polished",
+        "tint": "293449",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.55,
+        "albedo_gain": 1.4,
+        "texture_strength": 0.28,
+        "texture_saturation": 0.12,
+        "normal_strength": 0.14,
+        "metallic": 0.05,
+        "specular_strength": 0.3,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610423
+      }
+    },
+    {
+      "source": "quay",
+      "family": "regolith",
+      "options": {
+        "variant": "scoured",
+        "tint": "535969",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.4,
+        "roughness": 0.9,
+        "albedo_gain": 1.8,
+        "texture_strength": 0.3,
+        "texture_saturation": 0.1,
+        "normal_strength": 0.12,
+        "metallic": 0.02,
+        "specular_strength": 0.18,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610424
+      }
+    },
+    {
+      "source": "cobbles",
+      "family": "regolith",
+      "options": {
+        "variant": "scoured",
+        "tint": "77605b",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.6,
+        "roughness": 0.93,
+        "albedo_gain": 2,
+        "texture_strength": 0.36,
+        "texture_saturation": 0.14,
+        "normal_strength": 0.16,
+        "metallic": 0.02,
+        "specular_strength": 0.16,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610425
+      }
+    },
+    {
+      "source": "asphalt",
+      "family": "pearl-ceramic",
+      "options": {
+        "variant": "worn",
+        "tint": "3e424c",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.2,
+        "roughness": 0.92,
+        "albedo_gain": 1.15,
+        "texture_strength": 0.24,
+        "texture_saturation": 0,
+        "normal_strength": 0.08,
+        "metallic": 0.02,
+        "specular_strength": 0.14,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610426
+      }
+    },
+    {
+      "source": "iron",
+      "family": "brushed-alloy",
+      "options": {
+        "variant": "default",
+        "tint": "252d37",
+        "lut_gain": 0,
+        "pulse_speed": 0,
+        "pulse_depth": 0,
+        "detail_strength": 0.06,
+        "ao_strength": 0.14,
+        "roughness_variation": 0.1,
+        "tiles_per_metre": 1.5,
+        "roughness": 0.42,
+        "albedo_gain": 1.35,
+        "texture_strength": 0.2,
+        "texture_saturation": 0,
+        "normal_strength": 0.06,
+        "metallic": 0.6,
+        "specular_strength": 0.3,
+        "variation_mode": "organic",
+        "variation_strength": 0.3,
+        "variation_scale": 0.07,
+        "variation_seed": 610427
+      }
+    }
+  ],
+  "panels": [
+    {
+      "id": "parcel-plate-west-courtyard-n",
+      "position": [
+        -66,
+        0.7,
+        -15.18
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-west-courtyard-s",
+      "position": [
+        -66,
+        0.7,
+        15.18
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-east-post-office-n",
+      "position": [
+        66,
+        0.7,
+        -15.18
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-east-post-office-s",
+      "position": [
+        66,
+        0.7,
+        15.18
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-bonded-warehouse-n",
+      "position": [
+        -66,
+        0.7,
+        -98.18
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-bonded-warehouse-s",
+      "position": [
+        -66,
+        0.7,
+        -71.82
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-canal-service-n",
+      "position": [
+        66,
+        0.7,
+        -98.18
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "parcel-plate-canal-service-s",
+      "position": [
+        66,
+        0.7,
+        -71.82
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3,
+        0.3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-ticket-concourse--16",
+      "position": [
+        -82,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-ticket-concourse-0",
+      "position": [
+        -66,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-ticket-concourse-16",
+      "position": [
+        -50,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-platform-gallery--12",
+      "position": [
+        -12,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-platform-gallery-12",
+      "position": [
+        12,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-east-station--16",
+      "position": [
+        50,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-east-station-0",
+      "position": [
+        66,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "desk-divider-east-station-16",
+      "position": [
+        82,
+        25.48,
+        96.15
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        1.1,
+        0.65
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "stair-nosing-4",
+      "position": [
+        32,
+        12.69,
+        27
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        0.16
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "stair-nosing-16",
+      "position": [
+        32,
+        14.49,
+        33
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        0.16
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "stair-nosing-28",
+      "position": [
+        32,
+        16.29,
+        39
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        0.16
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "stair-nosing-40",
+      "position": [
+        32,
+        18.09,
+        45
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        0.16
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "stair-nosing-52",
+      "position": [
+        32,
+        19.89,
+        51
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        0.16
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "stair-nosing-64",
+      "position": [
+        32,
+        21.69,
+        57
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        0.16
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "quay-coping--120",
+      "position": [
+        -120,
+        0.16,
+        -104
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.3
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610400
+    },
+    {
+      "id": "quay-coping--72",
+      "position": [
+        -72,
+        0.16,
+        -104
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.3
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610401
+    },
+    {
+      "id": "quay-coping--24",
+      "position": [
+        -24,
+        0.16,
+        -104
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.3
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610402
+    },
+    {
+      "id": "quay-coping-24",
+      "position": [
+        24,
+        0.16,
+        -104
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.3
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610403
+    },
+    {
+      "id": "quay-coping-72",
+      "position": [
+        72,
+        0.16,
+        -104
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.3
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610404
+    },
+    {
+      "id": "quay-coping-120",
+      "position": [
+        120,
+        0.16,
+        -104
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.3
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.18,
+      "feather": 0.4,
+      "seed": 610405
+    },
+    {
+      "id": "cobble-ramp-foot--100",
+      "position": [
+        -100,
+        0.24,
+        -65
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        7,
+        0.44
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610406
+    },
+    {
+      "id": "cobble-ramp-foot-0",
+      "position": [
+        0,
+        0.24,
+        -65
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        7,
+        0.44
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610407
+    },
+    {
+      "id": "cobble-ramp-foot-100",
+      "position": [
+        100,
+        0.24,
+        -65
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        7,
+        0.44
+      ],
+      "texture": "weathered_concrete-worn",
+      "tint": "8d8a80",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610408
+    },
+    {
+      "id": "clock-movement",
+      "position": [
+        22,
+        55,
+        12.18
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        5
+      ],
+      "texture": "circuit_board-etch",
+      "tint": "7c6a52",
+      "essential": false
+    },
+    {
+      "id": "tram-cover--60",
+      "position": [
+        -2,
+        13.4,
+        -60
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        1.2
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "tram-cover-0",
+      "position": [
+        -2,
+        13.4,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        1.2
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "tram-cover-60",
+      "position": [
+        -2,
+        13.4,
+        60
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        1.2
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "canal-crossing-grate--100",
+      "position": [
+        -100,
+        0.1,
+        -108
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        10
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "canal-crossing-grate-100",
+      "position": [
+        100,
+        0.1,
+        -108
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4,
+        10
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    }
+  ],
+  "signs": [
+    {
+      "id": "quay-level-west",
+      "position": [
+        -100,
+        1.6,
+        -63
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "LEVEL 0\nQUAY",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "quay-level-east",
+      "position": [
+        100,
+        1.6,
+        -63
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "LEVEL 0\nQUAY",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "cobble-level-west",
+      "position": [
+        -100,
+        13.6,
+        -23
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "LEVEL 1\nCOBBLE",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "cobble-level-east",
+      "position": [
+        100,
+        13.6,
+        -23
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "LEVEL 1\nCOBBLE",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "upper-deck-west",
+      "position": [
+        -100,
+        25.6,
+        68
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "LEVEL 2\nUPPER DECK",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "upper-deck-east",
+      "position": [
+        100,
+        25.6,
+        68
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "LEVEL 2\nUPPER DECK",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "clock-square-west",
+      "position": [
+        -6.5,
+        14.6,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        3.2,
+        0.66
+      ],
+      "text": "CLOCK SQUARE\nCIVIC",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "clock-square-east",
+      "position": [
+        6.5,
+        14.6,
+        0
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        3.2,
+        0.66
+      ],
+      "text": "CLOCK SQUARE\nCIVIC",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "parcel-bays-west",
+      "position": [
+        -66,
+        8.4,
+        15.4
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "PARCEL BAYS\nWEST",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "parcel-bays-east",
+      "position": [
+        66,
+        8.4,
+        15.4
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "PARCEL BAYS\nEAST",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "bonded-dock",
+      "position": [
+        -66,
+        8.4,
+        -98.4
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "BONDED DOCK",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "canal-service",
+      "position": [
+        66,
+        8.4,
+        -98.4
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "CANAL SERVICE",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "ticket-hall-portal",
+      "position": [
+        -41.6,
+        28,
+        85
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        4.4,
+        0.66
+      ],
+      "text": "TICKET HALL",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "platforms-portal-east",
+      "position": [
+        18.4,
+        28,
+        85
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        4.4,
+        0.66
+      ],
+      "text": "PLATFORMS 1 - 6",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "platforms-portal-west",
+      "position": [
+        -18.4,
+        28,
+        85
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        4.4,
+        0.66
+      ],
+      "text": "PLATFORMS 1 - 6",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "east-station-portal",
+      "position": [
+        41.6,
+        28,
+        85
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        4.4,
+        0.66
+      ],
+      "text": "EAST STATION",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "canal-crossing-west",
+      "position": [
+        -100,
+        1.6,
+        -116
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.4,
+        0.66
+      ],
+      "text": "CANAL CROSSING",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "canal-crossing-east",
+      "position": [
+        100,
+        1.6,
+        -116
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        4.4,
+        0.66
+      ],
+      "text": "CANAL CROSSING",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    }
+  ],
+  "pockets": [
+    {
+      "id": "canal-mist-west",
+      "kind": "mist",
+      "position": [
+        -100,
+        0.9,
+        -108
+      ],
+      "size": [
+        8,
+        2,
+        3
+      ],
+      "color": "9fb3c4",
+      "count": 10
+    },
+    {
+      "id": "canal-mist-east",
+      "kind": "mist",
+      "position": [
+        100,
+        0.9,
+        -108
+      ],
+      "size": [
+        8,
+        2,
+        3
+      ],
+      "color": "9fb3c4",
+      "count": 10
+    },
+    {
+      "id": "cobble-ramp-dust",
+      "kind": "dust",
+      "position": [
+        -60,
+        13.2,
+        -25
+      ],
+      "size": [
+        4,
+        1.6,
+        4
+      ],
+      "color": "b3a894",
+      "count": 6
+    },
+    {
+      "id": "clock-square-dust",
+      "kind": "dust",
+      "position": [
+        0,
+        13.2,
+        0
+      ],
+      "size": [
+        4,
+        1.6,
+        4
+      ],
+      "color": "b3a894",
+      "count": 6
+    },
+    {
+      "id": "ticket-hall-vent",
+      "kind": "vent",
+      "position": [
+        -66,
+        28,
+        70
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "color": "a9b6bd",
+      "count": 6
+    },
+    {
+      "id": "platform-gallery-vent",
+      "kind": "vent",
+      "position": [
+        0,
+        28,
+        70
+      ],
+      "size": [
+        3,
+        2,
+        2
+      ],
+      "color": "a9b6bd",
+      "count": 6
+    }
+  ],
+  "preserve_materials": [
+    "glass",
+    "letter",
+    "water"
+  ],
+  "budgets": {
+    "material_variants": 8,
+    "panels": 48,
+    "signs": 20,
+    "motes": 64
+  }
+}
