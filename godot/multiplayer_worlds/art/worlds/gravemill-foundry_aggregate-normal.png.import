@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dc418mwvcmhfs"
-path="res://.godot/imported/gravemill-foundry-r7_aggregate-normal.png-a1a38cc1738b1497cfe6705d60c1cbfd.ctex"
+path="res://.godot/imported/gravemill-foundry_aggregate-normal.png-b39431ab88928387d65301a289eaff5e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -14,7 +14,7 @@ generator_parameters={
 [deps]
 
 source_file="res://multiplayer_worlds/art/worlds/gravemill-foundry_aggregate-normal.png"
-dest_files=["res://.godot/imported/gravemill-foundry-r7_aggregate-normal.png-a1a38cc1738b1497cfe6705d60c1cbfd.ctex"]
+dest_files=["res://.godot/imported/gravemill-foundry_aggregate-normal.png-b39431ab88928387d65301a289eaff5e.ctex"]
 
 [params]
 

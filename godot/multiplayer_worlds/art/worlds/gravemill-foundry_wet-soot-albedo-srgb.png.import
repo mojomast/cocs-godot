@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hlp8j3ph7k0n"
-path="res://.godot/imported/gravemill-foundry-r7_wet-soot-albedo-srgb.png-68fe4506d32c94599a159b1455bc7bea.ctex"
+path="res://.godot/imported/gravemill-foundry_wet-soot-albedo-srgb.png-7a007dc8ae44ed766a986b8d3e98759a.ctex"
 metadata={
 "vram_texture": false
 }
@@ -14,7 +14,7 @@ generator_parameters={
 [deps]
 
 source_file="res://multiplayer_worlds/art/worlds/gravemill-foundry_wet-soot-albedo-srgb.png"
-dest_files=["res://.godot/imported/gravemill-foundry-r7_wet-soot-albedo-srgb.png-68fe4506d32c94599a159b1455bc7bea.ctex"]
+dest_files=["res://.godot/imported/gravemill-foundry_wet-soot-albedo-srgb.png-7a007dc8ae44ed766a986b8d3e98759a.ctex"]
 
 [params]
 
