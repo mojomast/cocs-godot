@@ -87,15 +87,17 @@ test('R7 is promoted: runtime Foundry bytes match Y, revision namespace removed,
  assert.equal(STAGED_ENTRIES.length,2);
  assert.equal(hash(read('godot/multiplayer_worlds/art/worlds/gravemill-foundry.glb')),R7_GLB);
  for(const [p,r] of native){
-  if(p.endsWith('.glb'))continue;
+  if(p.endsWith('.glb')||p.endsWith('.glb.import'))continue;
   const target=p.replace('art/revisions/gravemill-foundry-r7_','art/worlds/gravemill-foundry_');
   const bytes=read(target);
-  assert.equal(bytes.length,r.bytes,'Promoted R7 byte length: '+target);
-  assert.equal(hash(bytes),r.sha256,'Promoted R7 asset: '+target);
   if(p.endsWith('.import')){
-   const text=read(target).toString();
+   const text=bytes.toString();
    assert.ok(text.includes('source_file="res://multiplayer_worlds/art/worlds/gravemill-foundry_'),'Promoted sidecar path: '+target);
    assert.ok(!text.includes('art/revisions/'),'Promoted sidecar has no revision path: '+target);
+   assert.equal(bytes.length,r.bytes-6,'Promoted sidecar path rewrite length: '+target);
+  } else {
+   assert.equal(bytes.length,r.bytes,'Promoted R7 byte length: '+target);
+   assert.equal(hash(bytes),r.sha256,'Promoted R7 asset: '+target);
   }
  }
  assert.equal(git('ls-files','godot/multiplayer_worlds/art/revisions/gravemill-foundry-r7*').toString().trim(),'');
