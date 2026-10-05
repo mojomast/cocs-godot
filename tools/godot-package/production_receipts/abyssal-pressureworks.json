@@ -393,7 +393,7 @@
     "godot/multiplayer_worlds/art/worlds/abyssal-pressureworks_MothLocal_navy.png.import": "fc4684b473385d5c7b4b77e572c6b1bf83e71708dac494ad942f7f8e92ab48b9",
     "godot/multiplayer_worlds/catalog.gd": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
-    "godot/multiplayer_worlds/dressing/profile.gd": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
+    "godot/multiplayer_worlds/dressing/profile.gd": "39266460066c05238564245f01ad85ec1f97f474e1bdb23ada75aff7e004f3f6",
     "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
@@ -799,20 +799,21 @@
     "tools/godot-multiplayer/new-maps/abyssal-pressureworks/recipe.mjs": "be7baa4dc1eaa3a2daa2d4fb890874df3aa432367788174280889b92e765c8ad",
     "tools/godot-package/abyssal_i_inventory.json": "9b77b11fa09975e69c373d74ef3d721e4535dd5ada89817c8766cdd55cd38d9f",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
-    "tools/godot-package/dressing_dependencies.mjs": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
+    "tools/godot-package/dressing_dependencies.mjs": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-    "tools/godot-package/production_resources.mjs": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+    "tools/godot-package/production_resources.mjs": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
     "tools/godot-package/racing_dependencies.mjs": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
     "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
-    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
+    "tools/godot-package/vesper_apron_dependencies.mjs": "ba51e974e3fb7920ee2d10fb92466ce00fb6814db814707e3ebfa6b0c875d411"
   },
   "runtimeHooks": {
     "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
@@ -2081,5 +2082,41 @@
       "nativeChecks": "pending",
       "document": "port/finish/map-variety/RUNTIME_DRESSING_THREE_MAPS_20261005.md"
     }
+  },
+  "vesperApronAdvance": {
+    "previousReceipt": {
+      "commit": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
+      "path": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
+      "sha256": "6f35af5b21504754d0d965798f224602a4c13ec04dfee6288c20be5c1eff5c05"
+    },
+    "changed": {
+      "godot/multiplayer_worlds/dressing/profile.gd": {
+        "before": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
+        "after": "39266460066c05238564245f01ad85ec1f97f474e1bdb23ada75aff7e004f3f6"
+      },
+      "tools/godot-package/dressing_dependencies.mjs": {
+        "before": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
+        "after": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+        "after": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18"
+      }
+    },
+    "added": {
+      "tools/godot-package/vesper_apron_dependencies.mjs": "ba51e974e3fb7920ee2d10fb92466ce00fb6814db814707e3ebfa6b0c875d411"
+    },
+    "runtimeChanged": {},
+    "sourceChanged": {},
+    "sourceFingerprint": "68487ea2e93e97aa7e2dc0eed7e5f000d6ba64f467971f843f2a8b75acdaecfe",
+    "packageFingerprint": "f1aabcbb681d3b6e4da3e47860a98e364c5c9096964153e695ff2a28af964d9f",
+    "review": {
+      "foundation": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
+      "scope": "Vesper support-visible stair apron: 80 walkable -apron surfaces carry the ascent face at 40.030259 deg, inside terrain.maxSlope (40.107 deg). Vesper rebinds its runtime dressing identity to the aproned world; the shared Profile.IDENTITIES table and its verifier change therefore rebind in all seven receipts. Native acceptance pending.",
+      "nativeChecks": "pending",
+      "document": "port/finish/map-variety/VESPER_APRON_PROMOTION_READY_20261005.md"
+    },
+    "previousPackageFingerprint": "26042e193586d0e720efa468be60659db8a4a925ec777b699e47d098b5f061cc",
+    "previousSourceFingerprint": "68487ea2e93e97aa7e2dc0eed7e5f000d6ba64f467971f843f2a8b75acdaecfe"
   }
 }

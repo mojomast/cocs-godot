@@ -3,9 +3,17 @@
 // particular) can still reconstruct their exact pre-dressing predecessor bytes.
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {reverseVesperApron, vesperApronSupportingHash, vesperApronSupportingHookHash} from './vesper_apron_dependencies.mjs';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 export function verifyDressingAdvance(receipt, read) {
+  // The Vesper apron layer is newer than dressing; reverse it before
+  // reconstructing the dressing-era package inputs. Keep the unreversed receipt:
+  // a newer lane may have moved a path this lane also changed, and the
+  // live-bytes assertions below must resolve through it rather than insist this
+  // lane still owns the newest bytes.
+  const newer = receipt;
+  receipt = reverseVesperApron(receipt, read);
   const r = receipt.dressingAdvance;
   assert.ok(r, 'Explicit dressing reconciliation required');
   assert.match(r.previousReceipt?.commit ?? '', /^[0-9a-f]{40}$/, 'Dressing predecessor commit');
@@ -39,10 +47,12 @@ export function verifyDressingAdvance(receipt, read) {
   assert.equal(hash(JSON.stringify(receipt.packageInputs)), r.packageFingerprint,
     'Dressing current fingerprint');
   for (const [path, change] of Object.entries(r.changed ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed dressing bytes: ' + path);
+    assert.equal(hash(read(path)), vesperApronSupportingHash(path, change.after, newer),
+      'Reviewed dressing bytes: ' + path);
   }
   for (const [path, change] of Object.entries(r.runtimeChanged ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed dressing hook bytes: ' + path);
+    assert.equal(hash(read(path)), vesperApronSupportingHookHash(path, change.after, newer),
+      'Reviewed dressing hook bytes: ' + path);
   }
   return pre;
 }

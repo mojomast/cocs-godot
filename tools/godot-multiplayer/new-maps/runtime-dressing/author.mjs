@@ -292,7 +292,11 @@ function vesperPockets() {
 const vesper = {
   version: 1,
   map_id: 'vesper-viaduct',
-  geometry_hash: '27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7',
+  // Rebound 2026-10-05 by the Vesper support-visible stair apron
+  // (VESPER_APRON_PROMOTION_READY_20261005.md). Recomputed from the rebuilt world,
+  // not retyped: readWorld('vesper-viaduct').geometryHash. The apron adds 80
+  // walkable -apron surfaces, which is what moved this identity.
+  geometry_hash: 'db20ce1fec59678ac3b7086be40b1dbac25fdaf9b576d284a1db448dcd9ebd22',
   materials: [
     // 34 cornice/window pieces, 80 terrace surfaces and every hand-cut trim cube.
     material('sandstone', 'pearl-ceramic', base('pearl-ceramic', 'cast', VESPER_PALETTE.sandstone,

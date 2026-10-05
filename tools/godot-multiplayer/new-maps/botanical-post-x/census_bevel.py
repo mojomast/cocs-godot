@@ -169,7 +169,9 @@ def build_report():
     require(len(native["records"]) == 368, "pinned X stair diagnostic must still carry 368 records")
 
     worlds = {variant: source(variant)["arena"] for variant in SOURCE_PINS}
-    colliders = {variant: dc.colliders(arena) for variant, arena in worlds.items()}
+    # diagnose_contacts.colliders no longer derives the positional OverheadSide
+    # indices, so the recorded names are resolved through the frozen evidence.
+    colliders = {variant: dc.colliders(arena, dc.wall_ids_by_name()) for variant, arena in worlds.items()}
     surface_ids = {
         variant: {s["id"] for s in arena["terrain"]["surfaces"]}
         for variant, arena in worlds.items()

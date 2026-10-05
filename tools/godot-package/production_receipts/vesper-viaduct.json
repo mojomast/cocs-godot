@@ -6,21 +6,21 @@
   "sourceHashes": {
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
     "tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py": "f540161e4ec506f7ce3098bd1533d6d321a2aa806cd7c0180db8f0b8278ac4c6",
-    "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": "f1a244bacfddb57a95d290dba7c573e096231ae8ce2dc6fa4e0f43ed0d089400"
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": "ac6b2a8011fd9349829a5bc9640ea70aa0a0e8a2d01de3bb69ea45fc92a8a8e1"
   },
-  "sourceFingerprint": "1fbf980f118a179747e057d6dbb9661ddf6fcaa7cd17a7ef61012234bbfc15dd",
+  "sourceFingerprint": "690dfef291e068cfd5ea04ac77bbdd38e548106e01efec5a02aee28c6b76bd37",
   "masters": [
     {
       "path": "tools/godot-multiplayer/new-maps/vesper-viaduct/masters/vesper-viaduct.blend",
-      "sha256": "e9068c9c7226a231d379359157aa4c1b5fe57d81406d87e90abbb096c474548b"
+      "sha256": "59c490c9b1d7df0a4ff53c1156ca7b8fee5936d00fe652200f5742b4ecaecfde"
     }
   ],
   "exports": [
     {
       "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb",
-      "bytes": 3647280,
-      "sha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
-      "triangles": 54804,
+      "bytes": 3658480,
+      "sha256": "51a5b5768e5eb66bc0941652ea47436a5db4f75a282bd23e72bf007091b022d2",
+      "triangles": 54964,
       "surfaces": 11,
       "texturedSurfaces": 8,
       "textures": [
@@ -107,7 +107,7 @@
       ]
     }
   ],
-  "measuredGLBTriangles": 54804,
+  "measuredGLBTriangles": 54964,
   "configuredTriangleCap": 250000,
   "accepted": false,
   "pending": [
@@ -469,11 +469,11 @@
     "godot/multiplayer_worlds/art/worlds/vesper-viaduct_MothLocal_slate.png.import": "c051851e3e030aabff523844003499d6bf860bffbe38f98b7e210bea9c87dc06",
     "godot/multiplayer_worlds/catalog.gd": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
-    "godot/multiplayer_worlds/dressing/profile.gd": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
+    "godot/multiplayer_worlds/dressing/profile.gd": "39266460066c05238564245f01ad85ec1f97f474e1bdb23ada75aff7e004f3f6",
     "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
-    "godot/multiplayer_worlds/generated/vesper-viaduct.json": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+    "godot/multiplayer_worlds/generated/vesper-viaduct.json": "0f7f8a0aa5bd8ff1bd8b5098fa0c9e3a63fa770cc748407ae2a0db29ca484a0c",
     "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
     "godot/multiplayer_worlds/sports_demo.gd": "691049e03c4aa2c39b0bf42eb24f614c1c3598aa805821a69a938dbd5ed855e6",
     "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
@@ -857,7 +857,7 @@
     "port/multiplayer-worlds/catalog.mjs": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1",
     "port/native-campaign/core.generated.mjs": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
     "port/native-campaign/generate-core.mjs": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
-    "port/native-multiplayer-worlds/worlds/vesper-viaduct.json": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f",
+    "port/native-multiplayer-worlds/worlds/vesper-viaduct.json": "6886cf86c360f24fdcd5e39762d7c978e89a1438b11e19a92b8de4ab563f3561",
     "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
     "tools/asset-production/package-receipt.mjs": "e1917daa642b15e6e3290b537fbf9024ba72e6f5dfd18f4025d3e589d9702621",
@@ -866,23 +866,24 @@
     "tools/godot-multiplayer/generate-scenes.mjs": "e523acfeff55779cf8a8ce002f1e7414de71b9a59aef8480c10353726602ff8e",
     "tools/godot-multiplayer/new-maps/vesper-viaduct/author_blender.py": "f540161e4ec506f7ce3098bd1533d6d321a2aa806cd7c0180db8f0b8278ac4c6",
     "tools/godot-multiplayer/new-maps/vesper-viaduct/build.mjs": "3f87fc86d5619115e9ef3d947d4e86f34a6c0705afcbdfceee013281e9c0d049",
-    "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": "f1a244bacfddb57a95d290dba7c573e096231ae8ce2dc6fa4e0f43ed0d089400",
+    "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": "ac6b2a8011fd9349829a5bc9640ea70aa0a0e8a2d01de3bb69ea45fc92a8a8e1",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
-    "tools/godot-package/dressing_dependencies.mjs": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
+    "tools/godot-package/dressing_dependencies.mjs": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-    "tools/godot-package/production_resources.mjs": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+    "tools/godot-package/production_resources.mjs": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
     "tools/godot-package/racing_dependencies.mjs": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
     "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
-    "tools/godot-package/vesper_h_inventory.json": "d5cea8ca91848cc75fdcd8a71bcfbe2f68335544d0d4bff926d56bfb056ebf15",
-    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba"
+    "tools/godot-package/vesper_h_inventory.json": "0d04c179792bc98e7035cfedf64d27867875448ca8d430c60a86b0f9ee0c3539",
+    "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
+    "tools/godot-package/vesper_apron_dependencies.mjs": "ba51e974e3fb7920ee2d10fb92466ce00fb6814db814707e3ebfa6b0c875d411"
   },
   "runtimeHooks": {
     "godot/multiplayer_worlds/demo.gd": "07754d84e61a71756f602d9b9c18e7b717b61fc4e04a21dc8e698d0049cc2748",
@@ -2205,6 +2206,99 @@
       "scope": "runtime Moth dressing for Vesper, Abyssal and Stormglass; native dressing acceptance pending",
       "nativeChecks": "pending",
       "document": "port/finish/map-variety/RUNTIME_DRESSING_THREE_MAPS_20261005.md"
+    }
+  },
+  "vesperApronAdvance": {
+    "previousReceipt": {
+      "commit": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
+      "path": "tools/godot-package/production_receipts/vesper-viaduct.json",
+      "sha256": "08df2b06859c2fbc2366366a7f885c9dc0330ac0f21057cc5cdf73418b9f03a1"
+    },
+    "changed": {
+      "godot/multiplayer_worlds/dressing/profile.gd": {
+        "before": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
+        "after": "39266460066c05238564245f01ad85ec1f97f474e1bdb23ada75aff7e004f3f6"
+      },
+      "godot/multiplayer_worlds/generated/vesper-viaduct.json": {
+        "before": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+        "after": "0f7f8a0aa5bd8ff1bd8b5098fa0c9e3a63fa770cc748407ae2a0db29ca484a0c"
+      },
+      "port/native-multiplayer-worlds/worlds/vesper-viaduct.json": {
+        "before": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f",
+        "after": "6886cf86c360f24fdcd5e39762d7c978e89a1438b11e19a92b8de4ab563f3561"
+      },
+      "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": {
+        "before": "f1a244bacfddb57a95d290dba7c573e096231ae8ce2dc6fa4e0f43ed0d089400",
+        "after": "ac6b2a8011fd9349829a5bc9640ea70aa0a0e8a2d01de3bb69ea45fc92a8a8e1"
+      },
+      "tools/godot-package/dressing_dependencies.mjs": {
+        "before": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
+        "after": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+        "after": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18"
+      },
+      "tools/godot-package/vesper_h_inventory.json": {
+        "before": "d5cea8ca91848cc75fdcd8a71bcfbe2f68335544d0d4bff926d56bfb056ebf15",
+        "after": "0d04c179792bc98e7035cfedf64d27867875448ca8d430c60a86b0f9ee0c3539"
+      }
+    },
+    "added": {
+      "tools/godot-package/vesper_apron_dependencies.mjs": "ba51e974e3fb7920ee2d10fb92466ce00fb6814db814707e3ebfa6b0c875d411"
+    },
+    "runtimeChanged": {},
+    "sourceChanged": {
+      "tools/godot-multiplayer/new-maps/vesper-viaduct/recipe.mjs": {
+        "before": "f1a244bacfddb57a95d290dba7c573e096231ae8ce2dc6fa4e0f43ed0d089400",
+        "after": "ac6b2a8011fd9349829a5bc9640ea70aa0a0e8a2d01de3bb69ea45fc92a8a8e1"
+      }
+    },
+    "sourceFingerprint": "690dfef291e068cfd5ea04ac77bbdd38e548106e01efec5a02aee28c6b76bd37",
+    "packageFingerprint": "e9b6fe8b1ed194f12d034b0b07f5ac9b3221e70bc97e8c975df015fbd44d0b83",
+    "review": {
+      "foundation": "623736f4596f3cfacaf131cff8cdf43c92c389ce",
+      "scope": "Vesper support-visible stair apron: 80 walkable -apron surfaces carry the ascent face at 40.030259 deg, inside terrain.maxSlope (40.107 deg). Vesper rebinds its runtime dressing identity to the aproned world; the shared Profile.IDENTITIES table and its verifier change therefore rebind in all seven receipts. Native acceptance pending.",
+      "nativeChecks": "pending",
+      "document": "port/finish/map-variety/VESPER_APRON_PROMOTION_READY_20261005.md"
+    },
+    "bindsGeometry": {
+      "world": "godot/multiplayer_worlds/generated/vesper-viaduct.json",
+      "geometryHash": "db20ce1fec59678ac3b7086be40b1dbac25fdaf9b576d284a1db448dcd9ebd22",
+      "dressingProfile": "godot/multiplayer_worlds/dressing/profiles/vesper-viaduct.json",
+      "identityTable": "godot/multiplayer_worlds/dressing/profile.gd"
+    },
+    "previousPackageFingerprint": "8ca08fc30bbf86552891007a0d0ed270cd51bad364bd1928c05ae5e70a487bc9",
+    "previousSourceFingerprint": "1fbf980f118a179747e057d6dbb9661ddf6fcaa7cd17a7ef61012234bbfc15dd",
+    "exportsChanged": {
+      "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb": {
+        "before": {
+          "bytes": 3647280,
+          "sha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+          "triangles": 54804
+        },
+        "after": {
+          "bytes": 3658480,
+          "sha256": "51a5b5768e5eb66bc0941652ea47436a5db4f75a282bd23e72bf007091b022d2",
+          "triangles": 54964
+        }
+      }
+    },
+    "mastersChanged": {
+      "tools/godot-multiplayer/new-maps/vesper-viaduct/masters/vesper-viaduct.blend": {
+        "before": {
+          "sha256": "e9068c9c7226a231d379359157aa4c1b5fe57d81406d87e90abbb096c474548b"
+        },
+        "after": {
+          "sha256": "59c490c9b1d7df0a4ff53c1156ca7b8fee5936d00fe652200f5742b4ecaecfde"
+        }
+      }
+    },
+    "fieldChanged": {
+      "measuredGLBTriangles": {
+        "before": 54804,
+        "after": 54964
+      }
     }
   }
 }
