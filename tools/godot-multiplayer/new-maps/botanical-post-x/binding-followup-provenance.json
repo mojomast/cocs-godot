@@ -24,9 +24,9 @@
   "artPins": {
     "accepted": {
       "path": "godot/multiplayer_worlds/art/worlds/vesper-viaduct.glb",
-      "artSha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
-      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
-      "recipeHash": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f"
+      "artSha256": "51a5b5768e5eb66bc0941652ea47436a5db4f75a282bd23e72bf007091b022d2",
+      "geometryHash": "db20ce1fec59678ac3b7086be40b1dbac25fdaf9b576d284a1db448dcd9ebd22",
+      "recipeHash": "6886cf86c360f24fdcd5e39762d7c978e89a1438b11e19a92b8de4ab563f3561"
     },
     "candidate": {
       "path": "tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/vesper-viaduct/vesper-viaduct.glb",

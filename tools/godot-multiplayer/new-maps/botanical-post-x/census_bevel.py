@@ -31,7 +31,7 @@ import math
 import sys
 from pathlib import Path
 
-from fixture_inputs import HERE, ROOT, SOURCE_PINS, X_PINS, x_bytes, source
+from fixture_inputs import HERE, ROOT, SOURCE_PINS, X_PINS, x_bytes, source, sha
 sys.path.insert(0, str(HERE.parent / "botanical-correction"))
 import diagnose_contacts as dc  # noqa: E402  (shares the capsule reconstruction)
 
@@ -169,6 +169,13 @@ def build_report():
     require(len(native["records"]) == 368, "pinned X stair diagnostic must still carry 368 records")
 
     worlds = {variant: source(variant)["arena"] for variant in SOURCE_PINS}
+    # The native fixture's candidate pair stays the frozen pre-apron control (its
+    # external X GLB is immutable), but this census validates both *rebuilt*
+    # worlds, so the candidate read is the regenerated aproned authority.
+    aproned = ROOT / 'port/new-maps/vesper-viaduct/variety/urban-v3/authority.json'
+    require(sha(aproned.read_bytes()) == 'd4a61518a58dfd9c906d6d5641e2b9f58ea2fa005d202da95c5528c0fa26e70f',
+            'Aproned candidate authority drift')
+    worlds['candidate'] = json.loads(aproned.read_bytes())['arena']
     # diagnose_contacts.colliders no longer derives the positional OverheadSide
     # indices, so the recorded names are resolved through the frozen evidence.
     colliders = {variant: dc.colliders(arena, dc.wall_ids_by_name()) for variant, arena in worlds.items()}

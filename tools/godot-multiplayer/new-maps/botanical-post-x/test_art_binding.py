@@ -11,7 +11,7 @@ class ArtBinding(unittest.TestCase):
     def test_accepted_exact_parent_art_is_nonempty_and_counted_from_actual_glb(self):
         authority=(ROOT/SOURCE_PINS['accepted'][0]).read_bytes()
         record=inspect_pair('accepted',authority,art_bytes('accepted'))
-        self.assertEqual(record['triangles'],54804);self.assertEqual(record['meshInstances'],11)
+        self.assertEqual(record['triangles'],54964);self.assertEqual(record['meshInstances'],11)
         self.assertEqual(len(record['materials']),11);self.assertFalse(record['nativeReady'])
     def test_accepted_art_cannot_substitute_for_candidate_even_with_valid_candidate_json(self):
         authority=(ROOT/SOURCE_PINS['candidate'][0]).read_bytes()

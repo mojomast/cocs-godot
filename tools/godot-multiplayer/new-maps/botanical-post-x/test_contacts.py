@@ -1,11 +1,11 @@
 import json
 import unittest
 from fixture_inputs import HERE,source
-from diagnose_contacts import check,colliders
+from diagnose_contacts import check,colliders,wall_ids_by_name
 
 class Contacts(unittest.TestCase):
     def test_all_184_original_failures_have_exact_source_geometry(self):
-        fixture=json.loads((HERE/'contacts-evidence.json').read_text());maps={v:colliders(source(v)['arena']) for v in ['accepted','candidate']}
+        fixture=json.loads((HERE/'contacts-evidence.json').read_text());maps={v:colliders(source(v)['arena'],wall_ids_by_name()) for v in ['accepted','candidate']}
         self.assertEqual(len(fixture['records']),368);self.assertEqual(len(fixture['candidateOnlyContactPositions']),13)
         for r in fixture['records']:
             for c in r['contacts']:

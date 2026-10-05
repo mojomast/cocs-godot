@@ -20,7 +20,11 @@ SOURCE_PINS={
  # 27c71cc8... -> db20ce1f...; wall collider indices still shift by +160 because
  # the aprons add 160 surface triangles ahead of them in WorldMap.build order.
  'accepted':('godot/multiplayer_worlds/generated/vesper-viaduct.json','0f7f8a0aa5bd8ff1bd8b5098fa0c9e3a63fa770cc748407ae2a0db29ca484a0c'),
- 'candidate':('port/new-maps/vesper-viaduct/variety/urban-v3/authority.json','d4a61518a58dfd9c906d6d5641e2b9f58ea2fa005d202da95c5528c0fa26e70f'),
+ # The candidate pair stays the frozen pre-apron control: the external X GLB is
+ # immutable, and the reviewed candidate authority is kept as an explicit snapshot
+ # so the regenerated urban-v3 variety authority (which now carries the apron for
+ # the candidate chain tests) cannot desynchronise the native fixture.
+ 'candidate':('tools/godot-multiplayer/new-maps/botanical-post-x/candidate-authority-pre-apron.json','397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec'),
 }
 def sha(raw):return hashlib.sha256(raw).hexdigest()
 def x_bytes(path):
