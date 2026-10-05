@@ -8,6 +8,7 @@ Run from this directory:  python3 -m unittest test_stair_clearance -v
 """
 import json
 import math
+import re
 import unittest
 
 import stair_clearance as sc
@@ -205,6 +206,130 @@ class AuthorityIntegrity(unittest.TestCase):
             for triangle in proposal["chamfer_triangles"]:
                 for vertex in triangle:
                     self.assertLessEqual(vertex[1], tread.y + 1e-12)
+
+
+class AppliedBevel(unittest.TestCase):
+    """The reviewed bevel is present in the rebuilt world, exactly as analysed.
+
+    These are the load-bearing checks for the 2026-10-05 rebuild: the analysis
+    above proves a *proposal*, and these prove the built authority carries that
+    same geometry rather than something that merely looks similar.
+    """
+
+    def setUp(self):
+        self.leg = sc.build_report()["recommended"]["leg"]
+        self.treads = sc.civic_treads_from_authority()
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        self.surfaces = {s["id"]: s for s in arena["terrain"]["surfaces"]}
+
+    def test_every_civic_tread_carries_a_bevel_companion(self):
+        self.assertEqual(len(self.treads), 80)
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                self.assertIn(f"{tread.id}-bevel", self.surfaces)
+                self.assertFalse(self.surfaces[f"{tread.id}-bevel"]["walkable"])
+
+    def test_the_applied_leg_is_the_recommended_window_midpoint(self):
+        """The leg read back out of the world is the proven midpoint."""
+        for tread in self.treads:
+            span = tread.walkable_span(self.leg)
+            actual = span[0] - tread.z0
+            self.assertTrue(
+                sc._within_ulps(actual, self.leg, 4, 65.0),
+                f"{tread.id} applied leg {actual!r} is not the reviewed {self.leg!r}",
+            )
+
+    def test_built_top_faces_are_the_proven_beveled_tops(self):
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                proposal = sc.bevel_triangles(tread, self.leg)
+                built = self.surfaces[tread.id]
+                actual = [[built["vertices"][i] for i in face] for face in built["triangles"]]
+                self.assertEqual(actual, proposal["top_triangles"])
+
+    def test_built_chamfers_are_the_proven_chamfer_faces(self):
+        for tread in self.treads:
+            with self.subTest(tread=tread.id):
+                proposal = sc.bevel_triangles(tread, self.leg)
+                built = self.surfaces[f"{tread.id}-bevel"]
+                actual = [[built["vertices"][i] for i in face] for face in built["triangles"]]
+                self.assertEqual(actual, proposal["chamfer_triangles"])
+
+    def test_the_bevel_adds_exactly_two_faces_per_tread_and_nothing_else(self):
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        surfaces = arena["terrain"]["surfaces"]
+        treads = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+", s["id"])]
+        chamfers = [s for s in surfaces if re.fullmatch(r"civic-stair-\d+-bevel", s["id"])]
+        others = [
+            s
+            for s in surfaces
+            if not re.fullmatch(r"civic-stair-\d+(-bevel)?", s["id"])
+        ]
+        self.assertEqual(len(treads), 80)
+        self.assertEqual(len(chamfers), 80)
+        self.assertTrue(all(len(s["triangles"]) == 2 for s in treads))
+        self.assertTrue(all(len(s["triangles"]) == 2 for s in chamfers))
+        self.assertEqual(len(others), len(surfaces) - 160)
+        # The 80 tops are pulled back; nothing else in the run is touched.
+        self.assertEqual(sum(len(s["triangles"]) for s in chamfers), 2 * 80)
+
+    def test_the_applied_bevel_preserves_every_audited_height(self):
+        """The rebuild reproduces the audit's own preservation verdict."""
+        report = sc.build_report()
+        self.assertTrue(report["heightPreservation"]["preserved"])
+        self.assertTrue(report["heightPreservation"]["capsulePreserved"])
+        self.assertEqual(report["heightPreservation"]["genuineSupportChanges"], [])
+        self.assertEqual(report["heightPreservation"]["auditedPoints"], 765)
+
+    def test_nav490_and_the_seam_case_are_unchanged_by_the_rebuild(self):
+        nav = sc.nav490_regression(sc.civic_treads_from_authority())
+        self.assertEqual(nav["supporting_tread"], "civic-stair-11")
+        self.assertTrue(nav["bevel_preserves_fixed_y"])
+        self.assertEqual(sc.bits(nav["bevel_support_y"]), sc.bits(13.8))
+        seam = sc.build_report()["heightPreservation"]["seamAmbiguityOnly"]
+        self.assertEqual([(c["point"], c["classification"]) for c in seam], [("navNode[493]", "on_boundary")])
+
+
+class SeamSupportSlots(unittest.TestCase):
+    """A recorded, bounded consequence of the applied bevel.
+
+    ``recipe.mjs`` declares ``terrain.maxSlope = 0.7`` rad = 40.107 deg, and
+    ``terrainSupportAt`` drops any triangle whose normal is shallower than that.
+    A 45 degree chamfer is shallower, so the leg-deep band at each tread seam
+    resolves to no support, and ``navConnectivity`` treats the nine civic-stair
+    navNodes above the run as unreachable. This is stated here rather than left
+    for a reviewer to discover: the physical claim (a 45 deg face, under the 46
+    deg guard) and this query-layer claim (no support in the band) are different
+    questions, and only the native run settles the first.
+    """
+
+    def test_the_chamfer_is_too_shallow_for_this_maps_support_query(self):
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        max_slope = arena["terrain"]["maxSlope"]
+        self.assertTrue(
+            math.cos(math.radians(45.0)) < math.cos(max_slope) - 1e-9,
+            "this test documents the slot only while the chamfer is steeper than maxSlope",
+        )
+
+    def test_the_slot_is_exactly_the_applied_leg_at_every_seam(self):
+        arena = json.loads(sc.AUTHORITY.read_text())["arena"]
+        leg = sc.APPLIED_BEVEL
+        for index in range(80):
+            tread = self.tread(index)
+            top = next(
+                s
+                for s in arena["terrain"]["surfaces"]
+                if s["id"] == f"civic-stair-{index}"
+            )
+            zs = [v[2] for face in top["triangles"] for v in (top["vertices"][i] for i in face)]
+            self.assertTrue(
+                sc._within_ulps(min(zs) - tread.z0, leg, 4, 65.0),
+                f"civic-stair-{index} does not start leg past its authored edge",
+            )
+
+    @staticmethod
+    def tread(index):
+        return sc.civic_treads_from_authority()[index]
 
 
 class HeightPreservation(unittest.TestCase):

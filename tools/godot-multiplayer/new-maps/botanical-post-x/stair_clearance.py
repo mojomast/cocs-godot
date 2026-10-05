@@ -79,6 +79,11 @@ NAV490_EXPECTED_NAIVE_RAMP_Y = 13.772727272727272
 # Tread-faithful continuous ramp: endpoints of the authored run, 12.15 -> 24.
 TREAD_FAITHFUL_RAMP = {"z0": 25.0, "y0": 12.15, "z1": 65.0, "y1": 24.0}
 
+# The reviewed leg, as applied to the recipes on 2026-10-05 (recipe.mjs
+# STAIR_BEVEL). Read back from the rebuilt authority rather than trusted: the
+# geometry, not this constant, is what the audit measures.
+APPLIED_BEVEL = 0.043438367470067386
+
 
 def bits(value: float) -> str:
     """Bit-exact identity token for a float, for 'bit-identical' assertions."""
@@ -137,18 +142,99 @@ def _flat_quad(surface: dict) -> tuple[float, float, float, float, float, float]
     return xs[0], xs[1], ys[0], zs[0], zs[1]
 
 
+def _within_ulps(a: float, b: float, ulps: int, scale: float) -> bool:
+    """True when two differences agree to ``ulps`` ulp of ``scale``.
+
+    ``scale`` is the magnitude of the world coordinate the differences were taken
+    from, because that is what bounds their rounding: two 43 mm legs recovered
+    from z=64 m and from y=23.85 m cannot agree to the last bit.
+    """
+    require(math.isfinite(a) and math.isfinite(b), "non-finite value in a ulp comparison")
+    return abs(a - b) <= ulps * 2.0**-52 * max(abs(scale), 1.0)
+
+
+def _applied_leg(top: dict, chamfer: dict | None) -> float:
+    """Bevel leg actually present in the authority, recovered from the geometry.
+
+    The audit model keeps the authored tread edge in ``Tread.z0`` and applies the
+    leg analytically through ``walkable_span``. The rebuilt world stores the
+    result: the walkable top face starts ``leg`` later, and a non-walkable
+    ``<id>-bevel`` chamfer quad spans the removed wedge. Both are read back here
+    so the audited treads describe the *authored* run, not the post-bevel faces,
+    and so a drift between the two is a hard failure rather than a silent change.
+    """
+    if chamfer is None:
+        return 0.0
+    require(chamfer.get("walkable") is False, f"{top['id']} chamfer must be non-walkable")
+    _, _, y, z_top0, z_top1 = _flat_quad(top)
+    # The chamfer is sloped, not flat, so read its extents from the vertices.
+    pts = [chamfer["vertices"][i] for tri in chamfer["triangles"] for i in tri]
+    cy = min(p[1] for p in pts)
+    cz0 = min(p[2] for p in pts)
+    cz_hi = max(p[2] for p in pts)
+    require(cy < y, f"{top['id']} chamfer must sit below the tread top plane")
+    # The chamfer's Z depth is the leg that was removed from the authored edge.
+    leg = cz_hi - cz0
+    require(leg > 0.0, f"{top['id']} bevel leg must be positive")
+    # 45 degree chamfer: the drop in Y equals the pullback in Z. Compared with a
+    # few ulp rather than bit-exact identity, because both legs are recovered by
+    # subtracting from world coordinates (z up to 65 m, y up to 24 m), so the
+    # recovered values carry the rounding of their origins. The applied leg
+    # itself is still pinned exactly, by tests/builder-leg-literal.test.mjs.
+    require(
+        _within_ulps(y - cy, leg, 4, max(abs(y), abs(cy))),
+        f"{top['id']} chamfer is not a 45 degree bevel: dy {y - cy!r} vs dz {leg!r}",
+    )
+    # Its upper edge is where the walkable top now begins, and its lower edge is
+    # the authored ascent edge, so the two faces stay contiguous and no wedge of
+    # tread is consumed.
+    require(cz_hi == z_top0, f"{top['id']} chamfer does not meet the walkable top")
+    require(cz_hi < z_top1, f"{top['id']} bevel must not consume the tread going")
+    return leg
+
+
 def civic_treads_from_authority(path: Path = AUTHORITY) -> list[Tread]:
-    """The 80 civic treads, straight from the accepted runtime authority JSON."""
+    """The 80 civic treads, straight from the accepted runtime authority JSON.
+
+    Tolerates both the pre-bevel authority (no ``-bevel`` companion, leg 0) and
+    the rebuilt one, so the same audit runs before and after the change.
+    """
     arena = json.loads(path.read_text())["arena"]
     surfaces = {s["id"]: s for s in arena["terrain"]["surfaces"] if s["id"].startswith("civic-stair-")}
-    require(len(surfaces) == 80, f"expected 80 civic treads in authority, found {len(surfaces)}")
     treads = []
+    legs: dict[int, float] = {}
     for index in range(80):
         s = surfaces[f"civic-stair-{index}"]
         x0, x1, y, z0, z1 = _flat_quad(s)
-        # civic-stair-0 crosses the 12 m city grade at z=25 as its first riser.
+        leg = _applied_leg(s, surfaces.get(f"civic-stair-{index}-bevel"))
+        # The walkable top starts leg later than the authored edge; recover the
+        # authored edge so Tread.z0 keeps meaning "the ascent (-Z) face".
+        z0 = z0 - leg
+        legs[index] = leg
         treads.append(
             Tread(s["id"], "civic", x0, x1, z0, z1, y, 0.15, has_ascent_riser=True)
+        )
+    require(len(surfaces) in (80, 160), f"expected 80 treads (+80 chamfers), found {len(surfaces)}")
+    beveled = [i for i, leg in legs.items() if leg]
+    if beveled:
+        require(
+            len(beveled) == 80,
+            f"the bevel must be applied to all 80 civic treads, found {len(beveled)}",
+        )
+        # The recipe emits one literal leg, but it is *recovered* here by
+        # subtracting world coordinates up to 65 m, so the recovered values can
+        # differ from each other and from the literal by a couple of ulp. They
+        # must still agree to the reviewed leg, at the ulp of the world extent.
+        extent = max(abs(t.z1) for t in treads)
+        for i in beveled:
+            require(
+                _within_ulps(legs[i], APPLIED_BEVEL, 4, extent),
+                f"civic-stair-{i} leg {legs[i]!r} is not the reviewed {APPLIED_BEVEL!r}",
+            )
+        spread = max(legs[i] for i in beveled) - min(legs[i] for i in beveled)
+        require(
+            _within_ulps(spread, 0.0, 4, extent),
+            f"recovered civic legs disagree with each other by {spread!r}",
         )
     # recipe.mjs:15 authored the run at 150 mm rise over 0.5 m going.
     for index, t in enumerate(treads):

@@ -12,7 +12,13 @@ X_PINS={
  'tools/godot-multiplayer/new-maps/botanical-correction/runs/x-03/parallax-observatory/parallax-observatory.glb':'6356cf895c65cec181e1c6c077118b98f3ee80cb567955b37835433971342422',
 }
 SOURCE_PINS={
- 'accepted':('godot/multiplayer_worlds/generated/vesper-viaduct.json','e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885'),
+ # 'accepted' re-pinned 2026-10-05 by the reviewed Vesper stair bevel rebuild
+ # (VESPER_BEVEL_REBUILD_20261005.md). Same path, new reviewed content hash:
+ # 80 civic treads pulled back by STAIR_BEVEL at their ascent edge plus 80
+ # non-walkable -bevel chamfer surfaces. geometryHash
+ # 27c71cc8... -> d8f7b6bb...; wall collider indices shift by +160 because the
+ # bevel adds 160 surface triangles ahead of them in WorldMap.build order.
+ 'accepted':('godot/multiplayer_worlds/generated/vesper-viaduct.json','cafb93e54b61c223e62279abdb36e606a1d157682071264dd3753143dc56c172'),
  'candidate':('port/new-maps/vesper-viaduct/variety/urban-v3/authority.json','397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec'),
 }
 def sha(raw):return hashlib.sha256(raw).hexdigest()

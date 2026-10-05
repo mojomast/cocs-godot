@@ -1,10 +1,38 @@
 // Vesper: a single-valued city hillside, never stacked playable decks.
+// Height-preserving stair bevel (applied 2026-10-05). Pulls each civic tread's
+// walkable top face back by STAIR_BEVEL at its ascent (-Z) edge and adds a 45 deg
+// chamfer, so a 0.35 capsule rests on a 45 deg face instead of a 90 deg wall.
+// The top plane Y is reused verbatim; no route, nav, spawn or objective height moves.
+// See VESPER_STAIR_COLLISION_PROPOSAL_20261005.md and
+// VESPER_BEVEL_REBUILD_20261005.md.
+export const STAIR_BEVEL = 0.043438367470067386;
 export const ID='vesper-viaduct';
 export const height=z=>z<=-65?0:z<-25?(z+65)*.3:z<=25?12:z<65?12+(z-25)*.3:24;
+// Bevel one authored flat tread quad in place: same Y plane, -Z edge pulled
+// back by `leg`, one 45 deg chamfer quad prepended. Returns the two corner
+// quads as flat vertex lists -- [walkable top (0..3), chamfer (4..7)] -- the
+// same shape bevelSurfaced() builds in revisions/urban-v2/recipe-v2.mjs.
+export const bevelTread=(quad,leg)=>{
+  const y=quad[0][1],z0=quad[0][2],z1=quad[2][2],x0=quad[0][0],x1=quad[2][0],zl=z0+leg;
+  const top=[[x0,y,zl],[x0,y,z1],[x1,y,z1],[x1,y,zl]];
+  const cham=[[x0,y-leg,z0],[x0,y,zl],[x1,y,zl],[x1,y-leg,z0]];
+  return [top,cham].flat();
+};
 export function recipe(){
  const m={id:ID,name:'Vesper Viaduct',tag:'CANAL CITY / STATION INTERCHANGE',description:'Warm brick station galleries above a cobalt canal cut; civic courtyards connect three urban street levels.',bounds:{minX:-140,maxX:140,minZ:-120,maxZ:120},sky:'dusk',floorColor:'#66515a',background:'#182239',color:'#e7aa69',nextGen:true,raised:false,scatter:false,blocks:[],props:[],structures:[],spawns:[],pickups:[],navNodes:[],routes:[],objectiveZones:[],modeBindings:{combat:['deathmatch','teamdeathmatch'],objectives:['ctf'],zones:['domination','koth','uplink']},terrain:{maxSlope:.7,base:0,amplitude:24,surfaces:[],walls:[]},art:{ground:[],pieces:[],palette:'warm-brick-charcoal-cobalt',labels:[]}};
  const face=(id,p,material='brick')=>{for(let i=1;i<p.length-1;i++)m.terrain.walls.push({id:`${id}-${m.terrain.walls.length}`,material,vertices:[p[0],p[i],p[i+1]]});};
  const roof=(id,p,material='slate',walkable=false)=>m.terrain.surfaces.push({id,material,walkable,vertices:p,triangles:Array.from({length:p.length-2},(_,i)=>[0,i+1,i+2])});
+  // bevelTread() returns [top quad (0..3), chamfer quad (4..7)]. The walkable top
+  // keeps the authored id and its two triangles; the 45 deg chamfer is a separate
+  // non-walkable surface, so support resolution and the original collider name
+  // are unchanged.
+  const beveled=(id,q,mat,leg)=>{
+    const p=bevelTread(q,leg);
+    m.terrain.surfaces.push({id,material:mat,walkable:true,
+      vertices:[p[0],p[1],p[2],p[3]],triangles:[[0,1,2],[0,2,3]]});
+    m.terrain.surfaces.push({id:id+'-bevel',material:mat,walkable:false,
+      vertices:[p[4],p[5],p[6],p[7]],triangles:[[0,1,2],[0,2,3]]});
+  };
  const box=(id,x,z,w,d,b,t,material='brick')=>{const p=[[x-w/2,b,z-d/2],[x+w/2,b,z-d/2],[x+w/2,b,z+d/2],[x-w/2,b,z+d/2]];for(let i=0;i<4;i++){const a=p[i],c=p[(i+1)%4];face(id,[a,c,[c[0],t,c[2]],[a[0],t,a[2]]],material);}roof(id+'-cap',p.map(v=>[v[0],t,v[2]]),material);};
  const wall=(id,a,b,y,t,mat='brick')=>face(id,[[a[0],y,a[1]],[b[0],y,b[1]],[b[0],t,b[1]],[a[0],t,a[1]]],mat);
  const route=(id,points,width=5)=>{m.routes.push({id,width,points});for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],n=Math.ceil(Math.hypot(b[0]-a[0],b[1]-a[1])/4);for(let j=0;j<=n;j++)m.navNodes.push({x:a[0]+(b[0]-a[0])*j/n,z:a[1]+(b[1]-a[1])*j/n});}};
@@ -12,7 +40,8 @@ export function recipe(){
  for(const [a,b,mat] of [[-104,-65,'quay'],[-65,-25,'cobbles'],[-25,25,'cobbles'],[25,65,'asphalt'],[65,120,'asphalt']])for(const [left,right] of a===25?[[-140,30],[34,140]]:[[-140,140]])roof('city-grade-'+a+'-'+left,[[left,height(a),a],[left,height(b),b],[right,height(b),b],[right,height(a),a]],mat,true);
  // Hand-authored 150 mm civic stair: its 4 m footprint replaces the sloping
  // support, rather than layering decorative treads over a hidden ramp.
- for(let i=0;i<80;i++){const z=25+i*.5,y=12+(i+1)*.15;roof('civic-stair-'+i,[[30,y,z],[30,y,z+.5],[34,y,z+.5],[34,y,z]],'sandstone',true);}
+ for(let i=0;i<80;i++){const z=25+i*.5,y=12+(i+1)*.15,q=[[30,y,z],[30,y,z+.5],[34,y,z+.5],[34,y,z]];
+  beveled('civic-stair-'+i,q,'sandstone',STAIR_BEVEL);}
  roof('far-quay',[[-140,0,-120],[-140,0,-116],[140,0,-116],[140,0,-120]],'quay',true);
  for(const x of [-100,100]){
   roof('canal-bridge-'+x,[[x-6,0,-116],[x-6,0,-104],[x+6,0,-104],[x+6,0,-116]],'brick',true);
