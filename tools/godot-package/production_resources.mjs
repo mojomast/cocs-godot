@@ -175,6 +175,11 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
           assert.equal(advance.before,expected,'Broken Parallax native-to-supporting history');
           expected=advance.after;
         }
+        const dressing=receipt.dressingAdvance?.runtimeChanged?.[path];
+        if(dressing){
+          assert.equal(dressing.before,expected,'Broken Parallax dressing history');
+          expected=dressing.after;
+        }
         assert.equal(receipt.runtimeHooks[path],expected);add(path,expected);
       }
       assert.deepEqual(receipt.masters,evidence.masters,'Parallax production master identity');

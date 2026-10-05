@@ -29,7 +29,7 @@ test('all original producer/assets/native identities and F/H/I histories are pre
   assert.equal(now.featureAdvance.previousReceipt.sha256,hash(previous(path)));
   assert.equal(now.featureAdvance.review.scope,FEATURE_REVIEW_SCOPE);
   assert.equal(now.featureAdvance.review.nativeFeatureChecks,'pending');
-   for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(now.featureAdvance.runtimeChanged[p]?.before??now.stormglassPackageVerifierAdvance.runtimeChanged[p]?.before??now.runtimeHooks[p],sha);
+   for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(now.dressingAdvance.runtimeChanged[p]?.before??now.featureAdvance.runtimeChanged[p]?.before??now.stormglassPackageVerifierAdvance.runtimeChanged[p]?.before??now.runtimeHooks[p],sha);
   for(const row of [...now.masters,...now.exports])assert.equal(hash(read(row.path)),row.sha256);
  }
 });

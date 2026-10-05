@@ -764,7 +764,7 @@
     "godot/multiplayer_worlds/abyssal_presentation.gd": "2a2be7d8c8dc95ece97bbd4f8cec0190d6f407f8a34655882898a48e4868dea8",
     "godot/multiplayer_worlds/catalog.gd": "c902cb9c083772c3ad3c75fdc1f8e3a5f1c4e226f54aafb67b7b32c19c76e61d",
     "godot/multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
-    "godot/multiplayer_worlds/dressing/profile.gd": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+    "godot/multiplayer_worlds/dressing/profile.gd": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526",
     "godot/multiplayer_worlds/dressing/surface.gd": "70e88ee5b9d46e95f0ff8bc7a7b5876cf20a6b052d016efd69955fe72e35b5d0",
     "godot/multiplayer_worlds/dressing/surface.gdshader": "8d77b5729585a3129009a0f67da64044181e7747c641c03c9b02dcd09206d3ff",
     "godot/multiplayer_worlds/dressing/wear_panel.gdshader": "2628addabee8718df5801862c85407df9088feba17cfaec243e75bcffd4490e3",
@@ -1301,13 +1301,14 @@
     "tools/asset-production/reopen.py": "4628bc44122a690495766f3cc967a82d3ab7aeab52c272cca7a202be88e0f5de",
     "tools/godot-multiplayer/generate-scenes.mjs": "e523acfeff55779cf8a8ce002f1e7414de71b9a59aef8480c10353726602ff8e",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
+    "tools/godot-package/dressing_dependencies.mjs": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
     "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-    "tools/godot-package/production_resources.mjs": "63e04fd04d05d9ff9080e273ebb732e960ef41ad1d9071d3e7465b3b545b084d",
-    "tools/godot-package/racing_dependencies.mjs": "5beb9c3e7ed9dce14406bdad8d100512778ed753c4fa37870b2a96b4492c9096",
+    "tools/godot-package/production_resources.mjs": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56",
+    "tools/godot-package/racing_dependencies.mjs": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
@@ -2803,6 +2804,39 @@
       "scope": "racing gameplay and presentation reconciliation; native race acceptance pending",
       "nativeChecks": "pending",
       "document": "port/finish/RACING_RECONCILIATION.md"
+    }
+  },
+  "dressingAdvance": {
+    "previousReceipt": {
+      "commit": "5b74e3ff56081d180f64a22e1f0541b2907acd41",
+      "path": "tools/godot-package/production_receipts/vehicles.json",
+      "sha256": "41a50dc76275edb911f40d39ae4c676d1372a8ff2ef7cfefb9232eeaf72efbac"
+    },
+    "changed": {
+      "godot/multiplayer_worlds/dressing/profile.gd": {
+        "before": "ee41823e074ea8571e25d1671aedf5c3918ffa56af0427e24640a45a3662a59c",
+        "after": "8ce5eef88ef0f14a54c6759148fc888f73929a79144379fc781605d7479b7526"
+      },
+      "tools/godot-package/racing_dependencies.mjs": {
+        "before": "5beb9c3e7ed9dce14406bdad8d100512778ed753c4fa37870b2a96b4492c9096",
+        "after": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "63e04fd04d05d9ff9080e273ebb732e960ef41ad1d9071d3e7465b3b545b084d",
+        "after": "a98b5602ff7e518c9415f3c25b31165782ad04dbb2295671080defd7e1448d56"
+      }
+    },
+    "added": {
+      "tools/godot-package/dressing_dependencies.mjs": "7e33d72a73ef7ceefe632923775cefe9c0e0fca72ab1b5efa9c23359cea2f91c"
+    },
+    "runtimeChanged": {},
+    "previousPackageFingerprint": "aaf4c96afc04f96cde615f8dcd70fe4dad46d8e929fc6758d669a5b9ebd4560d",
+    "packageFingerprint": "aa5af5ad8d9fb73f78fb927fa77b9acc9f075a4fdd959b33dcab51a59110a52a",
+    "review": {
+      "foundation": "09e100587fc23896b00ea422a4e5c7ef5c07acb1",
+      "scope": "runtime Moth dressing for Vesper, Abyssal and Stormglass; native dressing acceptance pending",
+      "nativeChecks": "pending",
+      "document": "port/finish/map-variety/RUNTIME_DRESSING_THREE_MAPS_20261005.md"
     }
   }
 }

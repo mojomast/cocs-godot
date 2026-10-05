@@ -87,7 +87,7 @@ test('all previous producer/native fields and histories are byte-identical in va
   const path=`tools/godot-package/production_receipts/${id}.json`,oldBytes=git(s.foundation,path),old=JSON.parse(oldBytes),raw=JSON.parse(read(path)),now=reverseRacing(raw,read);
   for(const [key,value]of Object.entries(old))if(!['packageInputs','runtimeHooks'].includes(key))assert.deepEqual(now[key],value,id+': '+key);
   assert.equal(now.polishAdvance.previousReceipt.sha256,hash(oldBytes));
-  for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(now.polishAdvance.runtimeChanged[p]?.before??now.runtimeHooks[p],sha);
+  for(const [p,sha]of Object.entries(old.runtimeHooks))assert.equal(now.dressingAdvance?.runtimeChanged?.[p]?.before??now.polishAdvance.runtimeChanged[p]?.before??now.runtimeHooks[p],sha);
   assert.equal(now.polishAdvance.review.combinedNativeChecks,'pending');assert.equal(now.polishAdvance.review.liveKickAcceptance,'not accepted');
  }
  assert.equal(execFileSync('git',['diff','5b5c8791','8921ed41','--','game/','server/','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','*.glb','*.blend','*.png'],{encoding:'utf8'}),'');

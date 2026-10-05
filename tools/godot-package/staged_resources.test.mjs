@@ -85,7 +85,8 @@ test('R7 exact Git artifact inventory adds 74 exclusions; combined 211 leave acc
  assert.equal(entry.paths.filter(p=>p.endsWith('.png')).length,36);assert.equal(entry.paths.filter(p=>p.endsWith('.import')).length,37);
  assert.equal(entry.paths.reduce((n,f)=>n+p.files[f].bytes,0),19007438);
  assert.equal(Object.keys(p.files).length,211);assert.equal(Object.values(p.files).reduce((n,r)=>n+r.bytes,0),54926437);
- assert.deepEqual(p.nativeFiles,stagedResources(both).nativeFiles);assert.equal(p.nativeFiles.length,2494);
+ const dressing=['godot/multiplayer_worlds/dressing/profiles/abyssal-pressureworks.json','godot/multiplayer_worlds/dressing/profiles/stormglass-causeway.json','godot/multiplayer_worlds/dressing/profiles/vesper-viaduct.json'];
+ assert.deepEqual(p.nativeFiles,[...stagedResources(both).nativeFiles,...dressing].sort());assert.equal(p.nativeFiles.length,2497);
  assert.equal(entry.status,'unpromoted-artifact-review-pending');
  for(const f of entry.paths){assert.deepEqual(read(f),git('show',`${r7.candidate}:${f}`));assert.ok(!p.nativeFiles.includes(f));assert.ok(p.excludePaths.includes(f.slice(6)));}
  assert.deepEqual(read(r7.manifest),git('show',`${r7.candidate}:${r7.manifest}`));git('merge-base','--is-ancestor',r7.source,r7.candidate);

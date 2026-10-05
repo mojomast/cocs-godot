@@ -3,9 +3,13 @@
 // still reconstruct their exact pre-racing predecessor bytes.
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {reverseDressing} from './dressing_dependencies.mjs';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 export function verifyRacingAdvance(receipt, read) {
+  // Newer layers sit on top of racing; reverse them before reconstructing the
+  // racing-era package inputs.
+  receipt = reverseDressing(receipt, read);
   const r = receipt.racingAdvance;
   assert.ok(r, 'Explicit racing reconciliation required');
   assert.match(r.previousReceipt?.commit ?? '', /^[0-9a-f]{40}$/, 'Racing predecessor commit');
