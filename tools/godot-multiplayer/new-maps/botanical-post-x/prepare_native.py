@@ -6,7 +6,10 @@ import subprocess
 from fixture_inputs import ROOT,HERE,SOURCE_PINS,sha,write
 from art_binding import preflight,inspect_pair
 PINS={
- 'godot/exploration/walker.gd':'3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8',
+ # TEST-ONLY native experiment (VESPER_STAIR_TRAVERSAL_RESEARCH_20261005):
+ # floor_block_on_wall=false candidate; not a production pin. The production
+ # exploration walker stays 3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8.
+ 'godot/exploration/walker.gd':'407be806d92809faada564c5deb9f9b962ae1aa1394ae9d4d23fca8b4be93d3f',
  'godot/multiplayer_worlds/map.gd':'42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543',
  'godot/multiplayer_worlds/dressing/binder.gd':'b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d',
 }

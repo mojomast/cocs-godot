@@ -34,6 +34,10 @@ func _init() -> void:
 	floor_snap_length = 0.3
 	floor_max_angle = deg_to_rad(46.0)
 	floor_stop_on_slope = true
+	# TEST-ONLY native experiment (VESPER_STAIR_TRAVERSAL_RESEARCH_20261005):
+	# Godot's grounded wall-blocking path cancels forward motion on the apron
+	# contact; this single setting is being tested before any production change.
+	floor_block_on_wall = false
 	safe_margin = 0.02
 
 func set_spawn(value: Vector3, yaw: float = 0.0, pitch: float = 0.0) -> void:
