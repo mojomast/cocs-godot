@@ -190,7 +190,7 @@ numbers, so drift is a pin failure instead of a silent re-baseline. It re-assert
 
 | Path | Lines | Role |
 |---|---:|---|
-| `tools/…/walker-support-query-compare/README.md` | 196 | purpose, boundaries, how to run |
+| `tools/…/walker-support-query-compare/README.md` | 201 | purpose, boundaries, how to run |
 | `…/__init__.py` | 6 | importing grants no authority |
 | `…/cli.py` | 34 | isolated hashed package loader, single-operation CLI |
 | `…/policy.py` | 161 | phase/case allowlist, canonical cases, schemas, grant validation |
