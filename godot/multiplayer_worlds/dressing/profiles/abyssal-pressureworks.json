@@ -800,6 +800,30 @@
       "seed": 610512
     },
     {
+      "id": "reef-silt--83",
+      "position": [
+        -83,
+        -0.27999999999999936,
+        -107.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        9.6,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610513
+    },
+    {
       "id": "reef-silt--56",
       "position": [
         -56,
@@ -821,7 +845,31 @@
       "wear_mask": "weathered_concrete",
       "opacity": 0.16,
       "feather": 0.4,
-      "seed": 610513
+      "seed": 610514
+    },
+    {
+      "id": "reef-silt--29",
+      "position": [
+        -29,
+        5.280000000000001,
+        -108.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        8.4,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610515
     },
     {
       "id": "reef-silt--2",
@@ -845,7 +893,31 @@
       "wear_mask": "weathered_concrete",
       "opacity": 0.16,
       "feather": 0.4,
-      "seed": 610514
+      "seed": 610516
+    },
+    {
+      "id": "reef-silt-25",
+      "position": [
+        25,
+        -3.2799999999999994,
+        -106.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        10.799999999999999,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610517
     },
     {
       "id": "reef-silt-52",
@@ -869,7 +941,31 @@
       "wear_mask": "weathered_concrete",
       "opacity": 0.16,
       "feather": 0.4,
-      "seed": 610515
+      "seed": 610518
+    },
+    {
+      "id": "reef-silt-79",
+      "position": [
+        79,
+        2.280000000000001,
+        -107.8
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        9.6,
+        0.4
+      ],
+      "texture": "weathered_concrete-damp",
+      "tint": "7f8a86",
+      "essential": false,
+      "wear_mask": "weathered_concrete",
+      "opacity": 0.16,
+      "feather": 0.4,
+      "seed": 610519
     },
     {
       "id": "reef-silt-106",
@@ -893,7 +989,7 @@
       "wear_mask": "weathered_concrete",
       "opacity": 0.16,
       "feather": 0.4,
-      "seed": 610516
+      "seed": 610520
     },
     {
       "id": "pump-spine-grate--61.5",
@@ -973,6 +1069,1070 @@
       ],
       "texture": "metal_grating",
       "tint": "6f7a80",
+      "essential": false
+    },
+    {
+      "id": "crown-hatch-vessel-0-0",
+      "position": [
+        -94,
+        19.03,
+        -68
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-0-1",
+      "position": [
+        -34,
+        17.03,
+        -78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-0-2",
+      "position": [
+        31,
+        15.03,
+        -68
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-0-3",
+      "position": [
+        91,
+        13.03,
+        -58
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-1-0",
+      "position": [
+        -91,
+        30.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-1-1",
+      "position": [
+        -32,
+        30.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-1-2",
+      "position": [
+        34,
+        39.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-1-3",
+      "position": [
+        94,
+        30.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        3,
+        3
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-2-0",
+      "position": [
+        -98,
+        30.53,
+        68
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        2
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-2-1",
+      "position": [
+        -39,
+        30.53,
+        78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        2
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-2-2",
+      "position": [
+        26,
+        30.53,
+        64
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        2
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "crown-hatch-vessel-2-3",
+      "position": [
+        87,
+        30.53,
+        72
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2,
+        2
+      ],
+      "texture": "brushed_metal",
+      "tint": "8fa0a4",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "canopy-trough-vessel-0-0-w",
+      "position": [
+        -105,
+        11.350000000000001,
+        -58
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-0-e",
+      "position": [
+        -83,
+        11.350000000000001,
+        -58
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-1-w",
+      "position": [
+        -45,
+        9.350000000000001,
+        -68
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-1-e",
+      "position": [
+        -23,
+        9.350000000000001,
+        -68
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-2-w",
+      "position": [
+        20,
+        7.35,
+        -58
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-2-e",
+      "position": [
+        42,
+        7.35,
+        -58
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-3-w",
+      "position": [
+        80,
+        5.35,
+        -48
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-0-3-e",
+      "position": [
+        102,
+        5.35,
+        -48
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-0-w",
+      "position": [
+        -102,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-0-e",
+      "position": [
+        -80,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-1-w",
+      "position": [
+        -43,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-1-e",
+      "position": [
+        -21,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-2-w",
+      "position": [
+        23,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-2-e",
+      "position": [
+        45,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-3-w",
+      "position": [
+        83,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-1-3-e",
+      "position": [
+        105,
+        15.350000000000001,
+        10
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-0-w",
+      "position": [
+        -109,
+        25.35,
+        78
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-0-e",
+      "position": [
+        -87,
+        25.35,
+        78
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-1-w",
+      "position": [
+        -50,
+        25.35,
+        88
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-1-e",
+      "position": [
+        -28,
+        25.35,
+        88
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-2-w",
+      "position": [
+        15,
+        25.35,
+        74
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-2-e",
+      "position": [
+        37,
+        25.35,
+        74
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-3-w",
+      "position": [
+        76,
+        25.35,
+        82
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "canopy-trough-vessel-2-3-e",
+      "position": [
+        98,
+        25.35,
+        82
+      ],
+      "rotation_degrees": [
+        90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        2.4
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "port-threshold-vessel-0-0",
+      "position": [
+        -94,
+        6.03,
+        -47.4
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-0-1",
+      "position": [
+        -34,
+        4.03,
+        -57.4
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-0-2",
+      "position": [
+        31,
+        2.03,
+        -47.4
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-0-3",
+      "position": [
+        91,
+        0.03,
+        -37.4
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-1-0",
+      "position": [
+        -68.4,
+        10.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        90,
+        0
+      ],
+      "size": [
+        8,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-1-1",
+      "position": [
+        -9.4,
+        10.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        90,
+        0
+      ],
+      "size": [
+        8,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-1-2",
+      "position": [
+        56.6,
+        10.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        90,
+        0
+      ],
+      "size": [
+        8,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-1-3",
+      "position": [
+        71.4,
+        10.03,
+        0
+      ],
+      "rotation_degrees": [
+        -90,
+        -90,
+        0
+      ],
+      "size": [
+        8,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-2-0",
+      "position": [
+        -98,
+        20.03,
+        49.4
+      ],
+      "rotation_degrees": [
+        -90,
+        180,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-2-1",
+      "position": [
+        -39,
+        20.03,
+        59.4
+      ],
+      "rotation_degrees": [
+        -90,
+        180,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-2-2",
+      "position": [
+        26,
+        20.03,
+        45.4
+      ],
+      "rotation_degrees": [
+        -90,
+        180,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "port-threshold-vessel-2-3",
+      "position": [
+        87,
+        20.03,
+        53.4
+      ],
+      "rotation_degrees": [
+        -90,
+        180,
+        0
+      ],
+      "size": [
+        6,
+        3
+      ],
+      "texture": "diamond_plate",
+      "tint": "8d9aa0",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "observation-bay--94",
+      "position": [
+        -94,
+        6.6,
+        -88.16
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "observation-bay--34",
+      "position": [
+        -34,
+        4.6,
+        -98.16
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "observation-bay-31",
+      "position": [
+        31,
+        2.6,
+        -88.16
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
+      "essential": false
+    },
+    {
+      "id": "observation-bay-91",
+      "position": [
+        91,
+        0.6,
+        -78.16
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        8,
+        0.9
+      ],
+      "texture": "holographic_grid",
+      "tint": "8fc4cc",
       "essential": false
     }
   ],
@@ -1291,6 +2451,195 @@
       "foreground": "dbe7e4",
       "background": "1d2f38",
       "essential": true
+    },
+    {
+      "id": "gallery-low-maintenance-bypass-0",
+      "position": [
+        -64,
+        7.8,
+        -82
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "MAINTENANCE BYPASS\nQUARANTINE LINK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-low-maintenance-bypass-1",
+      "position": [
+        -1.5,
+        5.8,
+        -82
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "MAINTENANCE BYPASS\nSPECTROMETRY LINK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-low-maintenance-bypass-2",
+      "position": [
+        61,
+        3.8,
+        -72
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "MAINTENANCE BYPASS\nARCHIVE LINK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-broad-pump-spine-0",
+      "position": [
+        -61.5,
+        12.8,
+        -6
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "BROAD PUMP SPINE\nFREIGHT LOCK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-broad-pump-spine-1",
+      "position": [
+        1,
+        12.8,
+        -6
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "BROAD PUMP SPINE\nPUMP CATHEDRAL",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-broad-pump-spine-2",
+      "position": [
+        64,
+        12.8,
+        -6
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "BROAD PUMP SPINE\nEQUALIZER ATRIUM",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-operations-gallery-0",
+      "position": [
+        -68.5,
+        22.8,
+        64
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "OPERATIONS GALLERY\nCOMMONS LINK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-operations-gallery-1",
+      "position": [
+        -6.5,
+        22.8,
+        60
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "OPERATIONS GALLERY\nMEDICAL LINK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
+    },
+    {
+      "id": "gallery-operations-gallery-2",
+      "position": [
+        56.5,
+        22.8,
+        60
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        4.6,
+        0.66
+      ],
+      "text": "OPERATIONS GALLERY\nCONTROL LINK",
+      "foreground": "dbe7e4",
+      "background": "1d2f38",
+      "essential": true
     }
   ],
   "pockets": [
@@ -1308,7 +2657,7 @@
         0.6
       ],
       "color": "9fc2c6",
-      "count": 6
+      "count": 8
     },
     {
       "id": "observation-mist--34",
@@ -1324,7 +2673,7 @@
         0.6
       ],
       "color": "9fc2c6",
-      "count": 6
+      "count": 8
     },
     {
       "id": "observation-mist-31",
@@ -1340,7 +2689,7 @@
         0.6
       ],
       "color": "9fc2c6",
-      "count": 6
+      "count": 8
     },
     {
       "id": "observation-mist-91",
@@ -1356,7 +2705,7 @@
         0.6
       ],
       "color": "9fc2c6",
-      "count": 6
+      "count": 8
     },
     {
       "id": "equalizer-core-vent",
@@ -1372,7 +2721,7 @@
         7
       ],
       "color": "b7cfd0",
-      "count": 8
+      "count": 12
     },
     {
       "id": "reef-silt-dust--83",
@@ -1388,7 +2737,7 @@
         7
       ],
       "color": "b6ab97",
-      "count": 4
+      "count": 6
     },
     {
       "id": "reef-silt-dust--2",
@@ -1404,7 +2753,7 @@
         7
       ],
       "color": "b6ab97",
-      "count": 4
+      "count": 6
     },
     {
       "id": "reef-silt-dust-79",
@@ -1420,7 +2769,7 @@
         7
       ],
       "color": "b6ab97",
-      "count": 4
+      "count": 6
     },
     {
       "id": "pump-cathedral-dust",
@@ -1436,7 +2785,55 @@
         8
       ],
       "color": "b6ab97",
+      "count": 8
+    },
+    {
+      "id": "reef-silt-dust--29",
+      "kind": "dust",
+      "position": [
+        -29,
+        43.2,
+        -116
+      ],
+      "size": [
+        6,
+        2,
+        6
+      ],
+      "color": "b6ab97",
       "count": 6
+    },
+    {
+      "id": "reef-silt-dust-52",
+      "kind": "dust",
+      "position": [
+        52,
+        39.2,
+        -110
+      ],
+      "size": [
+        6,
+        2,
+        6
+      ],
+      "color": "b6ab97",
+      "count": 6
+    },
+    {
+      "id": "operations-gallery-dust",
+      "kind": "dust",
+      "position": [
+        -6.5,
+        21.4,
+        71
+      ],
+      "size": [
+        8,
+        2,
+        8
+      ],
+      "color": "b6ab97",
+      "count": 8
     }
   ],
   "preserve_materials": [
@@ -1444,8 +2841,8 @@
   ],
   "budgets": {
     "material_variants": 6,
-    "panels": 48,
-    "signs": 20,
-    "motes": 56
+    "panels": 96,
+    "signs": 24,
+    "motes": 96
   }
 }

@@ -1004,6 +1004,1201 @@
       "texture": "metal_grating",
       "tint": "6d6a62",
       "essential": false
+    },
+    {
+      "id": "street-cover-hatch--112--78",
+      "position": [
+        -112,
+        1.62,
+        -78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch--36--78",
+      "position": [
+        -36,
+        1.62,
+        -78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch-36--78",
+      "position": [
+        36,
+        1.62,
+        -78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch-112--78",
+      "position": [
+        112,
+        1.62,
+        -78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch--112-7",
+      "position": [
+        -112,
+        13.62,
+        7
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch--36-7",
+      "position": [
+        -36,
+        13.62,
+        7
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch-36-7",
+      "position": [
+        36,
+        13.62,
+        7
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch-112-7",
+      "position": [
+        112,
+        13.62,
+        7
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch--112-92",
+      "position": [
+        -112,
+        25.62,
+        92
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch--36-92",
+      "position": [
+        -36,
+        25.62,
+        92
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch-36-92",
+      "position": [
+        36,
+        25.62,
+        92
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "street-cover-hatch-112-92",
+      "position": [
+        112,
+        25.62,
+        92
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        2.6,
+        2.6
+      ],
+      "texture": "diamond_plate",
+      "tint": "6d6a62",
+      "essential": false,
+      "normal": "baked:diamond_plate"
+    },
+    {
+      "id": "quay-rail-walk-0",
+      "position": [
+        -123,
+        1.52,
+        -104
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-1",
+      "position": [
+        -47,
+        1.52,
+        -104
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-2",
+      "position": [
+        47,
+        1.52,
+        -104
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-3",
+      "position": [
+        123,
+        1.52,
+        -104
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-4",
+      "position": [
+        -123,
+        1.52,
+        -116
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-5",
+      "position": [
+        -47,
+        1.52,
+        -116
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-6",
+      "position": [
+        47,
+        1.52,
+        -116
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "quay-rail-walk-7",
+      "position": [
+        123,
+        1.52,
+        -116
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        0.5
+      ],
+      "texture": "metal_grating",
+      "tint": "6d6a62",
+      "essential": false
+    },
+    {
+      "id": "bridge-parapet-band--106",
+      "position": [
+        -106,
+        1.42,
+        -110
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        0.5,
+        8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "bridge-parapet-band--94",
+      "position": [
+        -94,
+        1.42,
+        -110
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        0.5,
+        8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "bridge-parapet-band-94",
+      "position": [
+        94,
+        1.42,
+        -110
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        0.5,
+        8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "bridge-parapet-band-106",
+      "position": [
+        106,
+        1.42,
+        -110
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        0.5,
+        8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot--82",
+      "position": [
+        -82,
+        35.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot--74",
+      "position": [
+        -74,
+        38.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot--66",
+      "position": [
+        -66,
+        41.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot--58",
+      "position": [
+        -58,
+        35.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot--50",
+      "position": [
+        -50,
+        38.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot-54",
+      "position": [
+        54,
+        35.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot-62",
+      "position": [
+        62,
+        38.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot-70",
+      "position": [
+        70,
+        41.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot-78",
+      "position": [
+        78,
+        35.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "chimney-cap-soot-86",
+      "position": [
+        86,
+        38.120000000000005,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.1,
+        1.4
+      ],
+      "texture": "riveted_armor-scorched",
+      "tint": "6f6157",
+      "essential": false
+    },
+    {
+      "id": "terrace-cap-membrane--84-45",
+      "position": [
+        -84,
+        33.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610409
+    },
+    {
+      "id": "terrace-cap-membrane--76-45",
+      "position": [
+        -76,
+        36.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610410
+    },
+    {
+      "id": "terrace-cap-membrane--68-45",
+      "position": [
+        -68,
+        39.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610411
+    },
+    {
+      "id": "terrace-cap-membrane--60-45",
+      "position": [
+        -60,
+        33.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610412
+    },
+    {
+      "id": "terrace-cap-membrane--52-45",
+      "position": [
+        -52,
+        36.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610413
+    },
+    {
+      "id": "terrace-cap-membrane-52-45",
+      "position": [
+        52,
+        33.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610414
+    },
+    {
+      "id": "terrace-cap-membrane-60-45",
+      "position": [
+        60,
+        36.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610415
+    },
+    {
+      "id": "terrace-cap-membrane-68-45",
+      "position": [
+        68,
+        39.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610416
+    },
+    {
+      "id": "terrace-cap-membrane-76-45",
+      "position": [
+        76,
+        33.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610417
+    },
+    {
+      "id": "terrace-cap-membrane-84-45",
+      "position": [
+        84,
+        36.13,
+        45
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        6,
+        14
+      ],
+      "texture": "rough_stucco-weathered",
+      "tint": "8a8076",
+      "essential": false,
+      "wear_mask": "rough_stucco",
+      "opacity": 0.2,
+      "feather": 0.4,
+      "seed": 610418
+    },
+    {
+      "id": "arcade-pier-band--90",
+      "position": [
+        -90,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band--78",
+      "position": [
+        -78,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band--66",
+      "position": [
+        -66,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band--54",
+      "position": [
+        -54,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band--42",
+      "position": [
+        -42,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band-42",
+      "position": [
+        42,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band-54",
+      "position": [
+        54,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band-66",
+      "position": [
+        66,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band-78",
+      "position": [
+        78,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "arcade-pier-band-90",
+      "position": [
+        90,
+        34.02,
+        66
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        1.6,
+        2.8
+      ],
+      "texture": "hazard_stripes",
+      "tint": "b08a52",
+      "essential": false
+    },
+    {
+      "id": "hall-roof-hatch--66",
+      "position": [
+        -66,
+        39.06,
+        78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        5
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "hall-roof-hatch-0",
+      "position": [
+        0,
+        44.06,
+        78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        5
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
+    },
+    {
+      "id": "hall-roof-hatch-66",
+      "position": [
+        66,
+        41.06,
+        78
+      ],
+      "rotation_degrees": [
+        -90,
+        0,
+        0
+      ],
+      "size": [
+        5,
+        5
+      ],
+      "texture": "brushed_metal",
+      "tint": "8d8a80",
+      "essential": false,
+      "normal": "baked:metal"
     }
   ],
   "signs": [
@@ -1384,6 +2579,132 @@
       "foreground": "e8e2d2",
       "background": "2a2f3a",
       "essential": true
+    },
+    {
+      "id": "objective-west-steps",
+      "position": [
+        -112,
+        15.4,
+        7
+      ],
+      "rotation_degrees": [
+        0,
+        90,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "WEST STEPS\nGRAB",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "objective-east-steps",
+      "position": [
+        112,
+        15.4,
+        7
+      ],
+      "rotation_degrees": [
+        0,
+        -90,
+        0
+      ],
+      "size": [
+        3.5,
+        0.66
+      ],
+      "text": "EAST STEPS\nGRAB",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "arcade-west",
+      "position": [
+        -66,
+        33.4,
+        70.08
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "CLOCK ARCADE\nMARKET ROW",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "arcade-east",
+      "position": [
+        66,
+        33.4,
+        70.08
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "CLOCK ARCADE\nCIVIC ARCADE",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "terrace-north",
+      "position": [
+        -84,
+        35.4,
+        119.08
+      ],
+      "rotation_degrees": [
+        0,
+        180,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "NORTH TERRACE\nHOUSING",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
+    },
+    {
+      "id": "terrace-south",
+      "position": [
+        -84,
+        18.9,
+        -58.08
+      ],
+      "rotation_degrees": [
+        0,
+        0,
+        0
+      ],
+      "size": [
+        3.8,
+        0.66
+      ],
+      "text": "SOUTH TERRACE\nDEPOTS",
+      "foreground": "e8e2d2",
+      "background": "2a2f3a",
+      "essential": true
     }
   ],
   "pockets": [
@@ -1392,32 +2713,32 @@
       "kind": "mist",
       "position": [
         -100,
-        0.9,
+        1.4,
         -108
       ],
       "size": [
         8,
-        2,
-        3
+        3,
+        4
       ],
       "color": "9fb3c4",
-      "count": 10
+      "count": 12
     },
     {
       "id": "canal-mist-east",
       "kind": "mist",
       "position": [
         100,
-        0.9,
+        1.4,
         -108
       ],
       "size": [
         8,
-        2,
-        3
+        3,
+        4
       ],
       "color": "9fb3c4",
-      "count": 10
+      "count": 12
     },
     {
       "id": "cobble-ramp-dust",
@@ -1433,7 +2754,7 @@
         4
       ],
       "color": "b3a894",
-      "count": 6
+      "count": 7
     },
     {
       "id": "clock-square-dust",
@@ -1449,7 +2770,7 @@
         4
       ],
       "color": "b3a894",
-      "count": 6
+      "count": 7
     },
     {
       "id": "ticket-hall-vent",
@@ -1460,12 +2781,12 @@
         70
       ],
       "size": [
+        4,
         3,
-        2,
-        2
+        4
       ],
       "color": "a9b6bd",
-      "count": 6
+      "count": 8
     },
     {
       "id": "platform-gallery-vent",
@@ -1476,12 +2797,108 @@
         70
       ],
       "size": [
+        4,
         3,
-        2,
-        2
+        4
       ],
       "color": "a9b6bd",
+      "count": 8
+    },
+    {
+      "id": "far-quay-mist",
+      "kind": "mist",
+      "position": [
+        0,
+        1.4,
+        -118
+      ],
+      "size": [
+        8,
+        2.6,
+        4
+      ],
+      "color": "9fb3c4",
+      "count": 8
+    },
+    {
+      "id": "roof-vent-ticket-concourse",
+      "kind": "vent",
+      "position": [
+        -66,
+        42,
+        85
+      ],
+      "size": [
+        8,
+        3,
+        8
+      ],
+      "color": "a9b6bd",
+      "count": 8
+    },
+    {
+      "id": "roof-vent-east-station",
+      "kind": "vent",
+      "position": [
+        66,
+        44,
+        85
+      ],
+      "size": [
+        8,
+        3,
+        8
+      ],
+      "color": "a9b6bd",
+      "count": 8
+    },
+    {
+      "id": "civic-stair-dust",
+      "kind": "dust",
+      "position": [
+        32,
+        18.2,
+        45
+      ],
+      "size": [
+        4,
+        2,
+        4
+      ],
+      "color": "b3a894",
       "count": 6
+    },
+    {
+      "id": "chimney-ash-west",
+      "kind": "ash",
+      "position": [
+        -66,
+        42.3,
+        45
+      ],
+      "size": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "color": "a49a8c",
+      "count": 6
+    },
+    {
+      "id": "arcade-dust",
+      "kind": "dust",
+      "position": [
+        -66,
+        34.4,
+        67.25
+      ],
+      "size": [
+        8,
+        2,
+        5
+      ],
+      "color": "b3a894",
+      "count": 5
     }
   ],
   "preserve_materials": [
@@ -1491,8 +2908,8 @@
   ],
   "budgets": {
     "material_variants": 8,
-    "panels": 48,
-    "signs": 20,
-    "motes": 64
+    "panels": 96,
+    "signs": 24,
+    "motes": 96
   }
 }
