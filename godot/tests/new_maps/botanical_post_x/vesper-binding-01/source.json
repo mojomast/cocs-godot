@@ -1,0 +1,912 @@
+{
+  "status": "exact JSON/art source pairs verified; import and runtime binding pending",
+  "groups": {
+    "accepted-civic-r035": {
+      "variant": "accepted",
+      "run": "civic",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "unmodified exploration walker",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ]
+    },
+    "accepted-civic-r042": {
+      "variant": "accepted",
+      "run": "civic",
+      "radius": 0.42,
+      "height": 1.8,
+      "controller": "exploration walker with test-only authoritative-radius envelope",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ]
+    },
+    "candidate-civic-r035": {
+      "variant": "candidate",
+      "run": "civic",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "unmodified exploration walker",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ]
+    },
+    "candidate-civic-r042": {
+      "variant": "candidate",
+      "run": "civic",
+      "radius": 0.42,
+      "height": 1.8,
+      "controller": "exploration walker with test-only authoritative-radius envelope",
+      "trials": [
+        {
+          "id": "civic:30.5:-1",
+          "start": [
+            30.5,
+            24,
+            66
+          ],
+          "goal": [
+            30.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:30.5:1",
+          "start": [
+            30.5,
+            12,
+            24
+          ],
+          "goal": [
+            30.5,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:31.25:-1",
+          "start": [
+            31.25,
+            23.999999999999996,
+            66
+          ],
+          "goal": [
+            31.25,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:31.25:1",
+          "start": [
+            31.25,
+            12,
+            24
+          ],
+          "goal": [
+            31.25,
+            23.999999999999996,
+            66
+          ]
+        },
+        {
+          "id": "civic:32:-1",
+          "start": [
+            32,
+            24,
+            66
+          ],
+          "goal": [
+            32,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32:1",
+          "start": [
+            32,
+            12,
+            24
+          ],
+          "goal": [
+            32,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:32.75:-1",
+          "start": [
+            32.75,
+            24,
+            66
+          ],
+          "goal": [
+            32.75,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:32.75:1",
+          "start": [
+            32.75,
+            12,
+            24
+          ],
+          "goal": [
+            32.75,
+            24,
+            66
+          ]
+        },
+        {
+          "id": "civic:33.5:-1",
+          "start": [
+            33.5,
+            24,
+            66
+          ],
+          "goal": [
+            33.5,
+            12,
+            24
+          ]
+        },
+        {
+          "id": "civic:33.5:1",
+          "start": [
+            33.5,
+            12,
+            24
+          ],
+          "goal": [
+            33.5,
+            24,
+            66
+          ]
+        }
+      ]
+    },
+    "candidate-roof-r035": {
+      "variant": "candidate",
+      "run": "roof",
+      "radius": 0.35,
+      "height": 1.8,
+      "controller": "unmodified exploration walker",
+      "trials": [
+        {
+          "id": "roof:16.5:-1",
+          "start": [
+            16.5,
+            24,
+            70
+          ],
+          "goal": [
+            16.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:16.5:1",
+          "start": [
+            16.5,
+            22,
+            51
+          ],
+          "goal": [
+            16.5,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:17.25:-1",
+          "start": [
+            17.25,
+            24,
+            70
+          ],
+          "goal": [
+            17.25,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:17.25:1",
+          "start": [
+            17.25,
+            22,
+            51
+          ],
+          "goal": [
+            17.25,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18:-1",
+          "start": [
+            18,
+            24,
+            70
+          ],
+          "goal": [
+            18,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18:1",
+          "start": [
+            18,
+            22,
+            51
+          ],
+          "goal": [
+            18,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18.75:-1",
+          "start": [
+            18.75,
+            24,
+            70
+          ],
+          "goal": [
+            18.75,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18.75:1",
+          "start": [
+            18.75,
+            22,
+            51
+          ],
+          "goal": [
+            18.75,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:19.5:-1",
+          "start": [
+            19.5,
+            24,
+            70
+          ],
+          "goal": [
+            19.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:19.5:1",
+          "start": [
+            19.5,
+            22,
+            51
+          ],
+          "goal": [
+            19.5,
+            24,
+            70
+          ]
+        }
+      ]
+    },
+    "candidate-roof-r042": {
+      "variant": "candidate",
+      "run": "roof",
+      "radius": 0.42,
+      "height": 1.8,
+      "controller": "exploration walker with test-only authoritative-radius envelope",
+      "trials": [
+        {
+          "id": "roof:16.5:-1",
+          "start": [
+            16.5,
+            24,
+            70
+          ],
+          "goal": [
+            16.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:16.5:1",
+          "start": [
+            16.5,
+            22,
+            51
+          ],
+          "goal": [
+            16.5,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:17.25:-1",
+          "start": [
+            17.25,
+            24,
+            70
+          ],
+          "goal": [
+            17.25,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:17.25:1",
+          "start": [
+            17.25,
+            22,
+            51
+          ],
+          "goal": [
+            17.25,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18:-1",
+          "start": [
+            18,
+            24,
+            70
+          ],
+          "goal": [
+            18,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18:1",
+          "start": [
+            18,
+            22,
+            51
+          ],
+          "goal": [
+            18,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:18.75:-1",
+          "start": [
+            18.75,
+            24,
+            70
+          ],
+          "goal": [
+            18.75,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:18.75:1",
+          "start": [
+            18.75,
+            22,
+            51
+          ],
+          "goal": [
+            18.75,
+            24,
+            70
+          ]
+        },
+        {
+          "id": "roof:19.5:-1",
+          "start": [
+            19.5,
+            24,
+            70
+          ],
+          "goal": [
+            19.5,
+            22,
+            51
+          ]
+        },
+        {
+          "id": "roof:19.5:1",
+          "start": [
+            19.5,
+            22,
+            51
+          ],
+          "goal": [
+            19.5,
+            24,
+            70
+          ]
+        }
+      ]
+    }
+  },
+  "files": {
+    "res://exploration/walker.gd": "3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8",
+    "res://multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
+    "res://multiplayer_worlds/dressing/binder.gd": "b3e707af9da73f21b3c791c1d7deca9caad5472b422f263d9998ac961444a87d",
+    "res://tests/new_maps/botanical_post_x/vesper-binding-01/accepted.json": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+    "res://tests/new_maps/botanical_post_x/vesper-binding-01/accepted.glb": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+    "res://tests/new_maps/botanical_post_x/vesper-binding-01/candidate.json": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+    "res://tests/new_maps/botanical_post_x/vesper-binding-01/candidate.glb": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+    "res://tests/new_maps/botanical_post_x/vesper-binding-01/controller_journey.gd": "6ca932c96bfed3f8e3ad0f54e0317bb32781544f5c5ebb3497f846e0c9ce5d70",
+    "res://tests/new_maps/botanical_post_x/vesper-binding-01/art_binding.gd": "ef44102c1c7c83e126101eda1431dab914109dc0576276f5d80ca59425db487a"
+  },
+  "attempt": "vesper-binding-01",
+  "variants": {
+    "accepted": {
+      "map": "vesper-viaduct",
+      "authoritySha256": "e273264a789036b26bda83bf8e390c8ae53f78e4357da241ce4a49368e8af885",
+      "geometryHash": "27c71cc8895eab2ca3a0b5cae3c2b8f96ed9afd75db3deec4a5c96bd2f395ea7",
+      "recipeHash": "84aa9e5e7dd415fe9681a35c4bb03403e7b6b23b4713936039936af0cfa7c89f",
+      "artSha256": "6afe34c82d45f06c30dedc780f59ac6afa5200835b487d41705902d771fc0bfd",
+      "triangles": 54804,
+      "meshInstances": 11,
+      "surfaces": 11,
+      "materials": [
+        "asphalt",
+        "brick",
+        "cobbles",
+        "glass",
+        "iron",
+        "letter",
+        "plaster",
+        "quay",
+        "sandstone",
+        "slate",
+        "water"
+      ],
+      "nativeReady": false,
+      "authorityPath": "res://tests/new_maps/botanical_post_x/vesper-binding-01/accepted.json",
+      "artPath": "res://tests/new_maps/botanical_post_x/vesper-binding-01/accepted.glb"
+    },
+    "candidate": {
+      "map": "vesper-viaduct",
+      "authoritySha256": "397cedc8f5583a229bb3f65ed94d9a8c74c30fd4132b57bd4e754299a47c67ec",
+      "geometryHash": "fd8e7134c8933e908336d7b0409c66bdc90f4adc03fcfc6e596d5b4579f1c740",
+      "recipeHash": "f22b863cab4caec974602b81548b11e7fd60e221d441e136c47c35df144220e2",
+      "artSha256": "f859d49cc1b462b4a88e351d915518c49940ce24a7b8c2047c2d8f94f419e1db",
+      "triangles": 64311,
+      "meshInstances": 29,
+      "surfaces": 29,
+      "materials": [
+        "asphalt",
+        "brick",
+        "cobbles",
+        "glass",
+        "iron",
+        "letter",
+        "plaster",
+        "quay",
+        "sandstone",
+        "slate",
+        "vesper.awning",
+        "vesper.brick-era",
+        "vesper.coping",
+        "vesper.quay",
+        "vesper.slate",
+        "vesper.stall",
+        "water"
+      ],
+      "nativeReady": false,
+      "authorityPath": "res://tests/new_maps/botanical_post_x/vesper-binding-01/candidate.json",
+      "artPath": "res://tests/new_maps/botanical_post_x/vesper-binding-01/candidate.glb"
+    }
+  },
+  "scope": "60 walk-only direct Walker.step JSON/art diagnostics; no Binder/Weather, keyboard, network or map acceptance claim"
+}
