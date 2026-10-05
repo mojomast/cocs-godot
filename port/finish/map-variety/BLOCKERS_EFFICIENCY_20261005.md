@@ -17,7 +17,9 @@ research/synthesis, not a native claim and not a replacement for any review.
    a glTF spec violation.** The spec-invalid subset was the 16 singular glyph
    records already closed by AC. Replace the orthogonality gate with a record
    classifier plus a bounded appearance-preservation contract; do not attempt a
-   global W/green flip.
+   global W/green flip. The classifier is not itself an acceptance: the
+   appearance contract remains the qualification gate, and the withdrawn
+   shading-defect inference of `8c43b112` is not revived.
 3. **Motion accounting:** define one canonical per-frame ledger (pre-lift,
    `move_and_slide`, snap, collision response, totals) emitted by every runner,
    and reconcile with tolerance. This ends the planner/parent disputes.
