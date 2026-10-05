@@ -9,6 +9,15 @@ server, capture or network ran. This document makes **no native claim** and does
 **not** retract the recorded flat-road concession, which remains truthful for the
 accepted world.
 
+**Decision (2026-10-05): keep flat, on record.** The owner reviewed this plan
+and accepted the flat racing layout as a design decision: grade-v1 changes lap
+speed by exactly 0 and grip by −0.195%, so it would buy cosmetic relief at the
+cost of a recipe revision, race edits, a ~6,030-mesh re-export, receipt advances
+and native re-acceptance. No implementation is queued. This plan stays as the
+reviewed basis if a future balance pass wants real slope handling (grade-v1 plus
+a slope-resistance physics term). The recorded flat-road concession therefore
+remains an intentional property of the accepted world.
+
 The concession under address, cited from committed source:
 
 - `port/finish/STORMGLASS_PACKAGE_PROMOTION.md:8-12` — "an explicit **flat-road
