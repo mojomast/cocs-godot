@@ -188,15 +188,15 @@
   ],
   "panels": [
     {
-      "id": "gate-readout-gate-1-n",
+      "id": "gate-readout-gate-1-low",
       "position": [
-        -10,
+        -14.603,
         12,
-        -123.1
+        -122.5
       ],
       "rotation_degrees": [
         0,
-        0,
+        -90,
         0
       ],
       "size": [
@@ -208,15 +208,15 @@
       "essential": false
     },
     {
-      "id": "gate-readout-gate-1-s",
+      "id": "gate-readout-gate-1-high",
       "position": [
-        -10,
+        -5.397,
         12,
-        -121.9
+        -122.5
       ],
       "rotation_degrees": [
         0,
-        180,
+        90,
         0
       ],
       "size": [
@@ -228,15 +228,15 @@
       "essential": false
     },
     {
-      "id": "gate-readout-gate-14-n",
+      "id": "gate-readout-gate-14-low",
       "position": [
         -200,
         12,
-        54.4
+        50.211
       ],
       "rotation_degrees": [
         0,
-        0,
+        180,
         0
       ],
       "size": [
@@ -248,31 +248,11 @@
       "essential": false
     },
     {
-      "id": "gate-readout-gate-14-s",
+      "id": "gate-readout-gate-14-high",
       "position": [
         -200,
         12,
-        55.6
-      ],
-      "rotation_degrees": [
-        0,
-        180,
-        0
-      ],
-      "size": [
-        2.4,
-        1.6
-      ],
-      "texture": "circuit_board-etch",
-      "tint": "7fa3a8",
-      "essential": false
-    },
-    {
-      "id": "gate-readout-gate-18-n",
-      "position": [
-        -77.5,
-        12,
-        -43.1
+        59.789
       ],
       "rotation_degrees": [
         0,
@@ -288,15 +268,35 @@
       "essential": false
     },
     {
-      "id": "gate-readout-gate-18-s",
+      "id": "gate-readout-gate-18-low",
       "position": [
         -77.5,
         12,
-        -41.9
+        -50.666
       ],
       "rotation_degrees": [
         0,
         180,
+        0
+      ],
+      "size": [
+        2.4,
+        1.6
+      ],
+      "texture": "circuit_board-etch",
+      "tint": "7fa3a8",
+      "essential": false
+    },
+    {
+      "id": "gate-readout-gate-18-high",
+      "position": [
+        -77.5,
+        12,
+        -34.334
+      ],
+      "rotation_degrees": [
+        0,
+        0,
         0
       ],
       "size": [
