@@ -169,6 +169,11 @@ class BoundedDriver:
         # The AM guard's own recorded operands are the anchor for the frozen tuple.
         # Checking here, before anything executes, means a re-tuned profile is
         # refused rather than measured against a history it no longer matches.
+        # ``bodyRid`` is deliberately absent from ``compared``: it is run-frozen
+        # rather than design-frozen, so it is not required to equal the AM run's RID.
+        # It is required to be a positive integer (checked below) and, on the
+        # validator's side, to agree with itself across this run's three requests
+        # (``hook.run_frozen_unchanged``) -- which is the same rule, not a looser one.
         frozen_from_history = self.historical.get('amFrozenOperands')
         if not isinstance(frozen_from_history, dict):
             raise BoundedContractError('historical record must bind the AM frozen operands')

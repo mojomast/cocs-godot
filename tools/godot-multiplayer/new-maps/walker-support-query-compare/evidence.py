@@ -13,6 +13,15 @@ Two things this validator deliberately does *not* do:
   caches or other hidden state were unaffected. Those fields must be present and
   explicitly false, and ``queryStateEqualityProvesCacheNeutrality`` is required
   to stay false in the receipt itself.
+
+A third refusal belongs with those two, because it is the same kind of mistake --
+holding this run to a value that is a fact about the AM run: **this run's body RID is
+not required to be the AM run's body RID.** A RID is assigned by the engine for one
+run, so the run-frozen operand is pinned by this run's own agreement across the pre-UP
+request, the guard's own recorded request and the duplicate
+(:func:`hook.run_frozen_unchanged`), and only the design-frozen constants are anchored
+to the SHA256-pinned AM request. A receipt from a genuine run whose RID differs from
+the AM run's validates; see ``hook.RUN_FROZEN_CONSTANTS``.
 """
 import hashlib
 import json
@@ -125,18 +134,29 @@ def _observation(row, ordinal, site, issuer, *, require_from=None):
 def _frozen_operands(row, historical, observations):
     """The cross-observation proof the duplicate's honesty rests on.
 
-    Three independent checks, each of which must pass:
+    The recorded tuple must first be well formed (:func:`hook.frozen_tuple`), and then
+    four independent anchors must all hold -- each pinned by the rule its own
+    provenance allows, so no group of constants is held to a rule that does not apply
+    to it:
 
-    1. the record carries exactly one well-formed frozen-operand tuple
-       (:func:`hook.frozen_tuple`);
-    2. that tuple is anchored: its design-frozen constants equal the SHA256-pinned AM
-       guard's, and its body RID equals the RID in the record's own AM binding --
-       so the tuple cannot be re-tuned inside the receipt;
-    3. all three executed requests carry exactly that tuple, and agree with each other
-       pairwise (:func:`hook.operands_unchanged`, which checks both, so the guarantee
-       does not rest on the tuple anchor alone).
+    1. **design-frozen.** The tuple's :data:`hook.DESIGN_FROZEN_CONSTANTS` equal the
+       SHA256-pinned AM guard request's. These are fixed by reviewed source, so
+       re-tuning one of them is a different case, not a fresh measurement of this one.
+    2. **binding.** The record's own AM binding is the very tuple the validator was
+       handed, on every constant. Both sides are the AM run's *own* recorded operands,
+       so this binds a receipt to one approved set; it makes no claim about this run's
+       body RID, which is not among the values being compared.
+    3. **run-frozen.** The run-frozen body RID is identical in the record's own recorded
+       tuple and in all three executed requests (:func:`hook.run_frozen_unchanged`). It
+       is deliberately *not* compared with the AM run's RID: a body RID is assigned by
+       the engine for one run, so a fresh one is what a genuine run produces, and
+       ``driver.run_case`` does not compare it either. Requiring the AM value here
+       would refuse the next real run's receipt.
+    4. **cross-observation.** All three executed requests carry exactly the whole tuple
+       and agree with each other pairwise (:func:`hook.operands_unchanged` performs
+       both, so the guarantee does not rest on the tuple anchor alone).
 
-    Without (2) and (3) a receipt could re-tune any one of the six forged constants
+    Without (1) and (4) a receipt could re-tune any one of the six forged constants
     the independent review demonstrated -- or all of them at once, consistently -- and
     still validate, because each observation is otherwise self-consistent in
     isolation. Any mismatch fails closed.
@@ -154,18 +174,19 @@ def _frozen_operands(row, historical, observations):
     if not equal:
         return False
     # The record's own history binding must carry the same AM tuple the validator
-    # was handed, so a receipt cannot substitute one approved set for another.
+    # was handed, so a receipt cannot substitute one approved set for another. Both
+    # sides of this comparison are the AM run's own recorded operands; this run's body
+    # RID is not among the values being compared, and is pinned by its own rule below.
     bound = row['history'].get('amFrozenOperands') if isinstance(row.get('history'), dict) else None
     if hook.design_frozen(bound) is None:
         return False
     equal, _ = hook.operand_equal(approved, bound, keys=hook.CONSTANTS)
     if not equal:
         return False
-    # ``bodyRid`` is the body under test, not the support RID, so it is anchored by
-    # the AM binding too rather than left free.
-    if bound['bodyRid'] != frozen['bodyRid']:
-        return False
     requests = tuple(observation['request'] for observation in observations)
+    equal, _ = hook.run_frozen_unchanged(frozen, *requests)
+    if not equal:
+        return False
     equal, _ = hook.operands_unchanged(frozen, *requests)
     return equal
 
@@ -233,6 +254,10 @@ def record(row, case_id, spec, historical):
     confirm that the recorded history *binding* is the right one and that the
     declared agreement flag is arithmetically consistent with the recorded guard;
     it is never used to overwrite or second-guess an observed outcome.
+
+    It is also never used to check this run's body RID against the AM run's: the
+    AM table is the anchor for the design-frozen constants, and the run-frozen body
+    RID is checked by ``hook.run_frozen_unchanged`` instead.
     """
     try:
         if not isinstance(row, dict) or set(row) != policy.RECORD_KEYS:

@@ -74,10 +74,15 @@ all three executed requests against it:
    set, positive integer RID, margin that yields a nonzero motion, motion equal to
    the *derived* `-UP * (margin + LIMIT)`, 32 contacts, the two true flags, empty
    exclusions, test-only);
-2. it is **anchored** — its design-frozen constants equal the pinned AM guard's, and
-   its body RID equals the RID in the record's own AM binding, so the tuple cannot
-   be re-tuned inside a receipt;
-3. the pre-UP request, the guard's own recorded request and the duplicate request
+2. it is **anchored on the design-frozen constants** — those equal the pinned AM
+   guard's, so the tuple cannot be re-tuned inside a receipt — and the record's own AM
+   binding is the very tuple the validator was handed, on every constant, so a receipt
+   cannot substitute one approved set for another;
+3. the run-frozen body RID is **pinned by this run's own agreement**
+   (`hook.run_frozen_unchanged`): identical in the record's own recorded tuple and in
+   all three executed requests. It is deliberately *not* compared with the AM run's
+   RID — see below;
+4. the pre-UP request, the guard's own recorded request and the duplicate request
    each carry exactly that tuple on every constant, **and** agree with each other
    pairwise (`hook.operands_unchanged`, which checks both).
 
@@ -85,22 +90,46 @@ Which constant is pinned how is enumerated rather than implied — the three gro
 partition `CONSTANTS` exactly (`hook.DESIGN_FROZEN_CONSTANTS`,
 `hook.DERIVED_FROZEN_CONSTANTS`, `hook.RUN_FROZEN_CONSTANTS`):
 
-| Group | Constants | Provenance |
-|---|---|---|
-| design-frozen | margin, max collisions, recovery-as-collision, separation-ray, exclusions, test-only | reviewed `sweep_proposal.gd` / `response_guard.gd`, recorded in the pinned AM request |
-| derived | motion | computed from the frozen margin; the AM request records a float32 rounding of it, so the anchor derives rather than copies |
-| run-frozen | body RID | assigned by the engine for one run, so it is pinned by being identical across all three requests rather than by comparison with the AM value |
+| Group | Constants | Provenance | Pinned by |
+|---|---|---|---|
+| design-frozen | margin, max collisions, recovery-as-collision, separation-ray, exclusions, test-only | reviewed `sweep_proposal.gd` / `response_guard.gd`, recorded in the pinned AM request | equality with the SHA256-pinned AM guard request |
+| derived | motion | computed from the frozen margin; the AM request records a float32 rounding of it, so the anchor derives rather than copies | re-derivation from the frozen margin (`hook.frozen_tuple`) |
+| run-frozen | body RID | assigned by the engine for one run | identity across the record's own tuple and all three requests (`hook.run_frozen_unchanged`) |
+
+**This run's body RID is not required to be the AM run's body RID.** A RID is
+assigned by the engine for one run, so a fresh one is what a genuine next run
+produces; requiring the AM value would refuse the first real run's receipt, and
+`driver.run_case` does not compare it either. `prepare.contract`'s
+`frozenOperandsByCase` carries the AM run's `bodyRid` as *provenance of the anchor*,
+not as a prediction of the next run's RID — which is why the table's authority is
+over the design-frozen and derived constants.
 
 `tests` reproduce the independent review's six re-tunings (guard margin, guard
-motion, guard bodyRid, duplicate margin, duplicate bodyRid, pre-UP bodyRid) as
+motion, guard bodyRid, duplicate margin, duplicate bodyRid, pre-UP bodyRId) as
 negative cases with `recordsSha256` **re-derived by the forger**, so only a
 structural predicate can refuse; all six are refused, as is a *consistent* re-tune
-of all three requests plus the recorded tuple plus the receipt table.
+of all three requests plus the recorded tuple plus the receipt table. Every such
+forgery is **preconditioned**: each observation is still internally consistent (the
+edit is mirrored into its own `result`), so the refusal is attributable to the
+cross-observation layer rather than to the isolation predicates it makes redundant.
+
+The anchors are carried **behaviourally**, not by source shape alone.
+`FrozenOperandTests` loads a copy of the validator with one anchor's *enforcement*
+removed — the call, its operands and its docstring all kept, which is the mutation a
+`co_names` assertion cannot see — and requires the forgery that anchor is responsible
+for to be admitted by the copy. Mutating the shipped validator is therefore a test
+failure: neutering the design-frozen anchor, either record-binding anchor, the
+run-frozen anchor, or the whole-tuple comparison each fails, as does deleting any of
+them. Measured, and stated rather than implied: the well-formedness gate
+(`hook.frozen_tuple`) is *redundant* — every malformed tuple it refuses is also refused
+by one of the four anchors — so it is kept as defence-in-depth and its redundancy is
+asserted, not left implicit.
 
 What the check does not claim: that the recorded tuple is the one the driver froze.
 That is the prepared source record's job, and the receipt's `sourceSha256` binds the
 two. From a self-attested record alone the validator proves that the three requests
-agree with each other and with one operand set anchored to the pinned AM history.
+agree with each other and with one operand set whose design-frozen constants are
+anchored to the pinned AM history.
 
 ### Guard outcomes are preserved and history is reported, never enforced
 

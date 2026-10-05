@@ -115,6 +115,12 @@ def contract(attempt, *, params=None, root=ROOT):
         # live in the frozen history -- derived from the SHA256-pinned AM export --
         # and are recorded there per case, so the validator has an authoritative
         # tuple to compare against rather than a placeholder.
+        #
+        # This table is the *anchor*, so its authority is over the design-frozen and
+        # derived constants, which are fixed before any body exists. Its ``bodyRid``
+        # is the AM run's own, recorded as provenance of that anchor; it is not a
+        # prediction of the next run's RID, and neither the driver nor the validator
+        # compares this run's RID against it (``hook.RUN_FROZEN_CONSTANTS``).
         'frozenOperandsByCase': {case_id: frozen_history['cases'][case_id]['amFrozenOperands']
                                  for case_id in policy.case_ids()},
         'preUpRequestName': hook.PRE_UP_NAME,

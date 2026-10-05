@@ -6,6 +6,7 @@ engine is started, no fixture is staged, and every "measurement" here is a
 deterministic in-memory answer from :mod:`fixtures`.
 """
 import copy
+import hashlib
 import importlib.util
 import inspect
 import json
@@ -45,20 +46,28 @@ def params(case_id):
     return fixtures.params_for(case_id)
 
 
-def run_campaign(misbehave=None, **kwargs):
+def run_campaign(misbehave=None, *, run_rid=None, **kwargs):
     """Run the two authorized cases and compose a receipt.
 
     ``misbehave`` may be one behaviour applied to both cases or a per-case
     mapping, which is what lets a test produce a campaign that diverges on one
     case and agrees on the other.
+
+    ``run_rid`` is this run's own body RID -- one value for both cases, or a
+    per-case mapping. The driver and the fake are always told the *same* value, which
+    is what a genuine run does when the engine assigns a fresh RID: the number is new,
+    all three requests inside the run carry it, and the AM anchor is untouched.
     """
     reference = historical()
     records = []
     for case_id in policy.CASES:
         behaviour = misbehave.get(case_id) if isinstance(misbehave, dict) else misbehave
-        bounded = driver.BoundedDriver(case_id, params=params(case_id),
-                                      historical=reference['cases'][case_id])
-        records.append(bounded.run_case(fixtures.FakeLive(case_id, misbehave=behaviour, **kwargs)))
+        rid = run_rid.get(case_id) if isinstance(run_rid, dict) else run_rid
+        bounded = driver.BoundedDriver(case_id,
+                                       params=fixtures.params_for(case_id, body_rid=rid),
+                                       historical=reference['cases'][case_id])
+        records.append(bounded.run_case(
+            fixtures.FakeLive(case_id, misbehave=behaviour, run_rid=rid, **kwargs)))
     return campaign.assert_receipt(
         campaign.compose(records, source_hash=SOURCE_HASH, grant_hash=GRANT_HASH,
                          engine_hash=policy.ENGINE, historical=reference),
@@ -296,16 +305,124 @@ class FrozenOperandTests(unittest.TestCase):
       what separates a real cross-observation check from a digest-masked test.
     * the driver refuses a re-tuned guard request on the live side of the boundary,
       before any observation is recorded.
+
+    Every forgery here is additionally *preconditioned* (see
+    :meth:`per_observation_intact`): each observation is still internally consistent,
+    so a refusal is attributable to the cross-observation layer under test rather than
+    to the isolation predicates it was meant to make redundant. That precondition is
+    the whole difference between a test that reaches the layer it names and one that
+    stops one layer earlier.
+
+    The four anchors are carried behaviourally rather than by source shape alone: the
+    tests in this class load a copy of the validator with each anchor's *enforcement*
+    removed and require the attributable forgery to be admitted, so neutering an
+    anchor fails the suite instead of quietly doing nothing.
     """
 
-    def forge(self, change):
+    #: This run's own body RID per case: a value the engine would assign, deliberately
+    #: different from the AM run's (154618822659 / 274877906947) for both cases.
+    RUN_RIDS = {policy.CASES[0]: 777000333, policy.CASES[1]: 777000444}
+
+    #: The validator's anchor sites, as exact source pairs. Each is required to occur
+    #: exactly once (see :meth:`shadow_evidence`), so deleting an anchor fails these
+    #: tests as loudly as neutering it does. The new half of each pair removes the
+    #: *enforcement* while leaving the call, the operands and the docstring in place --
+    #: the shape-preserving mutation, which a ``co_names`` assertion cannot see.
+    ANCHORS = {
+        'design_frozen': (
+            "    equal, _ = hook.operand_equal(approved, frozen, keys=hook.DESIGN_FROZEN_CONSTANTS)\n"
+            "    if not equal:\n        return False\n",
+            "    equal, _ = hook.operand_equal(approved, frozen, keys=hook.DESIGN_FROZEN_CONSTANTS)\n"
+            "    if not equal:\n        pass  # anchor neutered by the anchor-cargo test\n"),
+        'record_binding': (
+            "    equal, _ = hook.operand_equal(approved, bound, keys=hook.CONSTANTS)\n"
+            "    if not equal:\n        return False\n",
+            "    equal, _ = hook.operand_equal(approved, bound, keys=hook.CONSTANTS)\n"
+            "    if not equal:\n        pass  # anchor neutered by the anchor-cargo test\n"),
+        'run_frozen': (
+            "    equal, _ = hook.run_frozen_unchanged(frozen, *requests)\n"
+            "    if not equal:\n        return False\n",
+            "    equal, _ = hook.run_frozen_unchanged(frozen, *requests)\n"
+            "    if not equal:\n        pass  # anchor neutered by the anchor-cargo test\n"),
+        'cross_observation': (
+            "    equal, _ = hook.operands_unchanged(frozen, *requests)\n    return equal\n",
+            "    equal, _ = hook.operands_unchanged(frozen, *requests)\n    return True\n"),
+        # The well-formedness gate, inventoried for the same reason and measured as
+        # redundant defence-in-depth: see
+        # ``test_the_well_formedness_gate_is_redundant_but_still_present``.
+        'well_formedness': (
+            "    try:\n        frozen = hook.frozen_tuple(row['frozenOperands'])\n"
+            "    except (hook.HookError, KeyError, TypeError):\n        return False\n",
+            "    frozen = row['frozenOperands']\n"),
+        'record_history_binding': (
+            "        equal, _ = hook.operand_equal(historical['amFrozenOperands'],\n"
+            "                                      history_row.get('amFrozenOperands'), keys=hook.CONSTANTS)\n"
+            "        if not equal:\n            return False\n",
+            "        equal, _ = hook.operand_equal(historical['amFrozenOperands'],\n"
+            "                                      history_row.get('amFrozenOperands'), keys=hook.CONSTANTS)\n"
+            "        if not equal:\n            pass  # anchor neutered by the anchor-cargo test\n"),
+    }
+
+    def shadow_evidence(self, anchors):
+        """Load ``evidence`` from a copy of this package's own modules.
+
+        ``anchors`` is a sequence of :data:`ANCHORS` keys, each of which has its
+        *enforcement* removed in the copy -- the call, its operands and its docstring
+        all stay, which is the shape-preserving neutering rather than a deletion. The
+        copy carries the same ``hook`` and ``policy`` byte for byte, so a forgery
+        admitted here can only have been admitted by the code that was removed.
+
+        Three states are distinguished, and each fails differently, which is why a
+        neutered anchor cannot pass by being unremarkable:
+
+        * the enforcing form is present once -- it is replaced by the neutered form;
+        * the neutered form is *already* present (the shipped source has been neutered
+          in place) -- the copy is left as it is, so the behavioural assertion reports
+          the failure rather than a text tripwire;
+        * neither -- the anchor was deleted, moved or rewritten, and this fails with
+          that as the message.
+
+        Nothing is written outside a temporary directory, nothing is launched, and the
+        copy is thrown away with it.
+        """
+        holder = tempfile.TemporaryDirectory(dir='/tmp/opencode',
+                                            prefix='support-query-compare-anchor-')
+        self.addCleanup(holder.cleanup)
+        directory = Path(holder.name)
+        for source in ('__init__.py', 'hook.py', 'policy.py', 'evidence.py'):
+            (directory / source).write_bytes((HERE / source).read_bytes())
+        text = (directory / 'evidence.py').read_text()
+        for key in anchors:
+            old, new = self.ANCHORS[key]
+            if text.count(old) == 1:
+                text = text.replace(old, new)
+            else:
+                self.assertEqual(text.count(new), 1,
+                                 'anchor %r is neither enforced nor already neutered: '
+                                 'it was deleted, moved or rewritten' % (key,))
+        (directory / 'evidence.py').write_text(text)
+        package = '_support_query_compare_anchor_' + \
+            hashlib.sha256(str(directory).encode()).hexdigest()[:16]
+        module_spec = importlib.util.spec_from_file_location(
+            package, directory / '__init__.py', submodule_search_locations=[str(directory)])
+        module = importlib.util.module_from_spec(module_spec)
+        sys.modules[package] = module
+        module_spec.loader.exec_module(module)
+        return importlib.import_module(package + '.evidence')
+
+    def admits(self, shadow, receipt):
+        """Whether a (possibly mutated) copy of the validator admits this receipt."""
+        return shadow.receipt(receipt, source_hash=SOURCE_HASH, grant_hash=GRANT_HASH,
+                              engine_hash=policy.ENGINE, historical=historical())
+
+    def forge(self, change, base=None):
         """Edit a receipt and re-derive its digest, as an attacker would.
 
         ``ReceiptValidatorTests.mutate`` leaves the digest stale, so a refusal it
         observes may be the digest rather than the predicate under test. Re-deriving
         it here is what forces the cross-observation predicates to act on their own.
         """
-        receipt = copy.deepcopy(run_campaign())
+        receipt = copy.deepcopy(base if base is not None else run_campaign())
         change(receipt)
         # Re-derived by the attacker's own code, so the digest can never be what
         # refuses: only a structural predicate can.
@@ -333,6 +450,114 @@ class FrozenOperandTests(unittest.TestCase):
             request['motion'] = changes['motion']
         if 'bodyRid' in changes:
             request['bodyRid'] = changes['bodyRid']
+
+    def retune_observation(self, observation, **changes):
+        """Re-tune one observation's operands *and its own result*.
+
+        Observation 3 (the guard) has ``request is result``; observations 1 and 4 hold
+        two distinct objects. Editing only the request leaves those two disagreeing
+        with their own result, and they are then refused by the per-observation
+        isolation predicate before the cross-observation layer is ever consulted -- so a
+        test named after that layer would prove nothing about it while staying green.
+        Mirroring the edit into the result is what makes the forgery the hard one: every
+        observation is internally consistent, and only a cross-observation check can
+        refuse it. ``per_observation_intact`` asserts that rather than assuming it.
+        """
+        self.retune(observation['request'], **changes)
+        self.retune(observation['result'], **changes)
+
+    def per_observation_intact(self, row):
+        """True when every isolation predicate still passes for this case record.
+
+        The precondition a cross-observation test owes its refusal: if an isolation
+        predicate would refuse the forged record, the layer under test is never
+        reached, and a test that reports a refusal is measuring the wrong predicate.
+        """
+        try:
+            if not evidence._plan(row):
+                return False
+            hook.frozen_tuple(row['frozenOperands'])
+            for observation in row['observations']:
+                if not evidence._observation(observation, observation['ordinal'],
+                                             observation['site'], observation['issuedBy']):
+                    return False
+        except (hook.HookError, KeyError, TypeError, IndexError):
+            return False
+        return True
+
+    def forgery_reaching_only_the_design_frozen_anchor(self):
+        """A consistent re-tune of every design-frozen operand in the first case.
+
+        All three observations are re-tuned together *and each into its own result*,
+        the recorded tuple follows, and the receipt's per-case table is updated to match
+        the record. Every isolation predicate therefore still passes, and the three
+        requests agree with the tuple and with each other, so the only thing left that
+        can refuse this is the anchor on the SHA256-pinned AM guard request. Both
+        preconditions are asserted here, not assumed.
+        """
+        def change(receipt):
+            row = receipt['records'][0]
+            for observation in row['observations']:
+                self.retune_observation(observation, margin=0.0150)
+            self.retune(row['frozenOperands'], margin=0.0150)
+            receipt['frozenOperands'][row['caseId']] = copy.deepcopy(row['frozenOperands'])
+        forged = self.forge(change)
+        row = forged['records'][0]
+        self.assertTrue(self.per_observation_intact(row))
+        self.assertEqual(hook.operands_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']]), (True, []))
+        self.assertFalse(hook.operand_equal(
+            historical()['cases'][row['caseId']]['amFrozenOperands'], row['frozenOperands'],
+            keys=hook.DESIGN_FROZEN_CONSTANTS)[0])
+        return forged
+
+    def forgery_reaching_only_the_binding_anchors(self):
+        """A re-tune of the record's own AM binding, and of nothing else.
+
+        The record claims a different approved tuple from the one the validator was
+        handed, while the recorded tuple, all three requests and the receipt's per-case
+        table stay exactly as the run left them. The design-frozen anchor still passes
+        and the cross-observation layer still passes -- only the two binding anchors
+        can refuse, which is asserted below.
+        """
+        def change(receipt):
+            self.retune(receipt['records'][0]['history']['amFrozenOperands'], margin=0.0150)
+        forged = self.forge(change)
+        row = forged['records'][0]
+        approved = historical()['cases'][row['caseId']]['amFrozenOperands']
+        self.assertTrue(self.per_observation_intact(row))
+        self.assertTrue(hook.operand_equal(approved, row['frozenOperands'],
+                                           keys=hook.DESIGN_FROZEN_CONSTANTS)[0])
+        self.assertEqual(hook.operands_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']]), (True, []))
+        self.assertFalse(hook.operand_equal(approved, row['history']['amFrozenOperands'])[0])
+        return forged
+
+    def forgery_reaching_only_the_run_frozen_rule(self):
+        """One observation's body RID disagreeing with the rest of this run's.
+
+        Built from a run whose RID is not the AM run's, so the AM anchor cannot be what
+        refuses it: only the run-frozen rule and the whole-tuple comparison can, and
+        both are dropped in turn.
+        """
+        base = run_campaign(run_rid=self.RUN_RIDS)
+        rid = self.RUN_RIDS[policy.CASES[0]]
+
+        def change(receipt):
+            duplicate = receipt['records'][0]['observations'][2]
+            duplicate['request']['bodyRid'] = rid + 1
+            duplicate['result']['bodyRid'] = rid + 1
+        forged = self.forge(change, base=base)
+        row = forged['records'][0]
+        approved = historical()['cases'][row['caseId']]['amFrozenOperands']
+        self.assertTrue(self.per_observation_intact(row))
+        self.assertTrue(hook.operand_equal(approved, row['frozenOperands'],
+                                           keys=hook.DESIGN_FROZEN_CONSTANTS)[0])
+        self.assertEqual(row['frozenOperands']['bodyRid'], rid)
+        self.assertEqual(hook.run_frozen_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']]),
+            (False, ['request2:bodyRid', '0~2:bodyRid', '1~2:bodyRid']))
+        return forged
 
     def test_the_unaltered_receipt_carries_one_frozen_tuple_shared_by_all_three_requests(self):
         receipt = run_campaign()
@@ -362,26 +587,37 @@ class FrozenOperandTests(unittest.TestCase):
 
     def test_the_reviewers_six_constant_retunings_are_all_refused(self):
         # Exactly the six forgeries the independent reviewer's model accepted, with
-        # the digest re-derived each time.
+        # the digest re-derived each time. Five of the six are re-tuned into each
+        # observation's own result as well, so they reach the cross-observation layer
+        # instead of being refused one layer earlier by the isolation predicate. The
+        # sixth -- a guard motion that disagrees with its own margin -- is *not*
+        # self-consistent and cannot be made so: it is refused by the derivation
+        # predicate, which is the stronger statement of the two.
         def guard_margin(receipt):
-            self.retune(receipt['records'][0]['observations'][1]['request'], margin=0.0150)
+            self.retune_observation(receipt['records'][0]['observations'][1], margin=0.0150)
         self.refuses(self.forge(guard_margin))
         def guard_motion(receipt):
             self.retune(receipt['records'][0]['observations'][1]['request'],
                         motion=[0.0, -0.0400, 0.0])
         self.refuses(self.forge(guard_motion))
         def guard_rid(receipt):
-            self.retune(receipt['records'][0]['observations'][1]['request'], bodyRid=999000111)
+            self.retune_observation(receipt['records'][0]['observations'][1], bodyRid=999000111)
         self.refuses(self.forge(guard_rid))
         def duplicate_margin(receipt):
-            self.retune(receipt['records'][0]['observations'][2]['request'], margin=0.0150)
+            self.retune_observation(receipt['records'][0]['observations'][2], margin=0.0150)
         self.refuses(self.forge(duplicate_margin))
         def duplicate_rid(receipt):
-            self.retune(receipt['records'][0]['observations'][2]['request'], bodyRid=999000111)
+            self.retune_observation(receipt['records'][0]['observations'][2], bodyRid=999000111)
         self.refuses(self.forge(duplicate_rid))
         def pre_up_rid(receipt):
-            self.retune(receipt['records'][0]['observations'][0]['request'], bodyRid=999000111)
+            self.retune_observation(receipt['records'][0]['observations'][0], bodyRid=999000111)
         self.refuses(self.forge(pre_up_rid))
+        # The five self-consistent re-tunings above are all internally intact, so each
+        # of them really is refused by the cross-observation layer and not by an
+        # isolation predicate it never reached.
+        for change in (guard_margin, guard_rid, duplicate_margin, duplicate_rid, pre_up_rid):
+            self.assertTrue(self.per_observation_intact(self.forge(change)['records'][0]))
+        self.assertFalse(self.per_observation_intact(self.forge(guard_motion)['records'][0]))
 
     def test_retuning_all_three_requests_together_is_still_refused(self):
         # The stronger forgery: re-tune the pre-UP, guard and duplicate requests
@@ -393,10 +629,19 @@ class FrozenOperandTests(unittest.TestCase):
         def consistent(receipt):
             row = receipt['records'][0]
             for observation in row['observations']:
-                self.retune(observation['request'], margin=0.0150)
+                self.retune_observation(observation, margin=0.0150)
             self.retune(row['frozenOperands'], margin=0.0150)
             receipt['frozenOperands'][row['caseId']] = copy.deepcopy(row['frozenOperands'])
         receipt = self.forge(consistent)
+        # Preconditioned, and it matters: each observation's edit is mirrored into its
+        # own result, so the isolation predicates still pass and the cross-observation
+        # layer is genuinely reached. Editing only the requests would leave observations
+        # 1 and 4 disagreeing with their own results and this test would pass while
+        # proving nothing about the anchor it names.
+        row = receipt['records'][0]
+        self.assertTrue(self.per_observation_intact(row))
+        self.assertEqual(hook.operands_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']]), (True, []))
         self.refuses(receipt)
         # And even re-tuning the recorded AM binding cannot help: the validator is
         # handed the real one, and the receipt's copy must equal it.
@@ -404,6 +649,254 @@ class FrozenOperandTests(unittest.TestCase):
         self.retune(receipt['records'][0]['history']['amFrozenOperands'], margin=0.0150)
         receipt['recordsSha256'] = evidence.records_digest(receipt['records'])
         self.refuses(receipt)
+
+    # -- the run-frozen body RID: this run's own value, never the AM run's --------
+
+    def test_a_genuine_fresh_per_run_body_rid_is_accepted_by_driver_and_validator(self):
+        # The AM run's body RID is a fact about the AM run. A RID is assigned by the
+        # engine for one run, so the next real run will not reproduce it: the driver
+        # deliberately does not compare it (``driver.run_case``), and the validator must
+        # not either, or the first genuine run's receipt would be refused by a check the
+        # driver already declined to make. Both RIDs here differ from the AM values, for
+        # both cases.
+        reference = historical()
+        receipt = run_campaign(run_rid=self.RUN_RIDS)
+        for row in receipt['records']:
+            case_id = row['caseId']
+            approved = reference['cases'][case_id]['amFrozenOperands']
+            rid = self.RUN_RIDS[case_id]
+            # The driver ran the case rather than refusing it, so the whole bounded
+            # sequence happened with a body RID that is not the AM run's.
+            self.assertEqual(row['status'], 'stopped_after_duplicate_observation')
+            self.assertEqual(row['frozenOperands']['bodyRid'], rid)
+            self.assertNotEqual(rid, approved['bodyRid'])
+            # Every executed request in this run carries this run's RID, results
+            # included: one value, used consistently, which is what a run is.
+            for observation in row['observations']:
+                self.assertEqual(observation['request']['bodyRid'], rid)
+                self.assertEqual(observation['result']['bodyRid'], rid)
+            self.assertEqual(hook.run_frozen_unchanged(
+                row['frozenOperands'], *[o['request'] for o in row['observations']]), (True, []))
+            # The AM binding still carries the AM run's own tuple, and the design-frozen
+            # constants are still the pinned ones: the run's RID is not the anchor, and
+            # the anchor is unchanged by it.
+            self.assertEqual(row['history']['amFrozenOperands'], approved)
+            self.assertEqual(row['history']['amFrozenOperands']['bodyRid'], approved['bodyRid'])
+            self.assertTrue(hook.operand_equal(approved, row['frozenOperands'],
+                                               keys=hook.DESIGN_FROZEN_CONSTANTS)[0])
+        # ``run_campaign`` composes through ``campaign.assert_receipt``, so returning at
+        # all *is* the whole-receipt acceptance: nothing above was taken on trust.
+        self.assertEqual([row['caseId'] for row in receipt['records']], list(policy.CASES))
+
+    def test_a_body_rid_that_disagrees_across_the_observations_is_refused(self):
+        # Same run, two observations' RIDs edited. Each edit is mirrored into that
+        # observation's own result, so the isolation predicates still pass and this is
+        # refused by the run-frozen rule rather than by a schema check.
+        base = run_campaign(run_rid=self.RUN_RIDS)
+        rid = self.RUN_RIDS[policy.CASES[0]]
+
+        def change(receipt):
+            for index, drift in ((0, 7), (2, 11)):
+                observation = receipt['records'][0]['observations'][index]
+                observation['request']['bodyRid'] = rid + drift
+                observation['result']['bodyRid'] = rid + drift
+        receipt = self.forge(change, base=base)
+        row = receipt['records'][0]
+        self.assertTrue(self.per_observation_intact(row))
+        self.refuses(receipt)
+        # The recorded tuple and the untouched observation still agree; the two drifted
+        # ones are named, against the tuple and pairwise. The AM anchor plays no part in
+        # the refusal, because the design-frozen constants never moved.
+        approved = historical()['cases'][row['caseId']]['amFrozenOperands']
+        self.assertTrue(hook.operand_equal(approved, row['frozenOperands'],
+                                           keys=hook.DESIGN_FROZEN_CONSTANTS)[0])
+        equal, differences = hook.run_frozen_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']])
+        self.assertFalse(equal)
+        self.assertEqual(differences, ['request0:bodyRid', 'request2:bodyRid',
+                                       '0~1:bodyRid', '0~2:bodyRid', '1~2:bodyRid'])
+        # And the whole-tuple comparison names the same two, so either layer refuses.
+        equal, differences = hook.operands_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']])
+        self.assertFalse(equal)
+        self.assertIn('request0:bodyRid', differences)
+        self.assertIn('request2:bodyRid', differences)
+
+    def test_a_recorded_body_rid_that_differs_from_the_runs_own_requests_is_refused(self):
+        # The record's own binding of the run-frozen RID disagrees with the three
+        # requests that run actually issued. The receipt's per-case table is updated to
+        # match the record, so the table-vs-record comparison cannot be what refuses.
+        base = run_campaign(run_rid=self.RUN_RIDS)
+        rid = self.RUN_RIDS[policy.CASES[0]]
+
+        def change(receipt):
+            row = receipt['records'][0]
+            row['frozenOperands']['bodyRid'] = rid + 1
+            receipt['frozenOperands'][row['caseId']] = copy.deepcopy(row['frozenOperands'])
+        receipt = self.forge(change, base=base)
+        row = receipt['records'][0]
+        self.assertTrue(self.per_observation_intact(row))
+        self.refuses(receipt)
+        approved = historical()['cases'][row['caseId']]['amFrozenOperands']
+        # The design-frozen anchor and the AM binding are both untouched and still pass;
+        # the only thing that moved is this run's own RID, and that is what is refused.
+        self.assertTrue(hook.operand_equal(approved, row['frozenOperands'],
+                                           keys=hook.DESIGN_FROZEN_CONSTANTS)[0])
+        self.assertTrue(hook.operand_equal(approved, row['history']['amFrozenOperands'])[0])
+        self.assertEqual(row['frozenOperands']['bodyRid'], rid + 1)
+        for observation in row['observations']:
+            self.assertEqual(observation['request']['bodyRid'], rid)
+        # Each request is named as differing from the recorded binding, and the pairwise
+        # half correctly stays silent: the three observations agree with *each other*,
+        # which is the whole point of the forgery.
+        self.assertEqual(hook.run_frozen_unchanged(
+            row['frozenOperands'], *[o['request'] for o in row['observations']]),
+            (False, ['request0:bodyRid', 'request1:bodyRid', 'request2:bodyRid']))
+
+    def test_the_run_frozen_rule_is_empty_safe_and_reports_individually(self):
+        # "All the requests agree" is not a statement about no requests, so the rule
+        # refuses an empty observation set rather than passing vacuously -- and it
+        # refuses a tuple that is not a frozen-operand tuple at all, like its
+        # whole-tuple sibling.
+        frozen = hook.frozen_operands({'margin': 0.02}, body_rid=777000333)
+        self.assertEqual(hook.run_frozen_unchanged(frozen), (False, ['no_executed_request']))
+        self.assertEqual(hook.run_frozen_unchanged(None, frozen), (False, ['frozen_operand_tuple']))
+        self.assertEqual(hook.run_frozen_unchanged({}, frozen), (False, ['frozen_operand_tuple']))
+        # Only the run-frozen keys are compared: a design-frozen drift is *not* this
+        # rule's business, which is exactly why the design-frozen anchor exists.
+        drifted = copy.deepcopy(frozen)
+        self.retune(drifted, margin=0.03)
+        self.assertEqual(hook.run_frozen_unchanged(frozen, drifted), (True, []))
+        other = dict(frozen, bodyRid=777000444)
+        self.assertEqual(hook.run_frozen_unchanged(frozen, frozen, other),
+                         (False, ['request1:bodyRid', '0~1:bodyRid']))
+        self.assertEqual(hook.run_frozen_unchanged(frozen, other, frozen),
+                         (False, ['request0:bodyRid', '0~1:bodyRid']))
+        # A malformed request is refused, and the key is named as missing rather than
+        # silently defaulted.
+        self.assertEqual(hook.run_frozen_unchanged(frozen, {'name': 'x'}),
+                         (False, ['request0:missing:bodyRid']))
+
+    # -- the four anchors, carried behaviourally ---------------------------------
+    #
+    # Deleting an anchor used to be caught only by a ``co_names`` introspection
+    # assertion, and *neutering* it -- keeping the call, dropping ``if not equal:
+    # return False`` -- was caught by nothing at all: the suite stayed green while a
+    # consistent re-tune of every design-frozen operand was admitted. Each test below
+    # therefore loads a copy of the validator with one anchor's enforcement removed and
+    # requires the forgery that anchor is responsible for to be admitted by the copy.
+    # Neuter any anchor and the matching test fails; delete it and the uniqueness
+    # assertion inside ``shadow_evidence`` fails.
+
+    def test_every_anchor_site_exists_exactly_once_in_the_validator(self):
+        # The inventory these tests draw on, checked in the shipped source. If an anchor
+        # is deleted, moved, duplicated or rewritten, this fails here rather than leaving
+        # the anchor tests below unable to find their site.
+        source = (HERE / 'evidence.py').read_text()
+        for key, (old, _) in sorted(self.ANCHORS.items()):
+            with self.subTest(anchor=key):
+                self.assertEqual(source.count(old), 1)
+        self.assertEqual(len(self.ANCHORS), 6)
+
+    def test_the_well_formedness_gate_is_redundant_but_still_present(self):
+        # Measured, not assumed: every malformed tuple the gate rejects is also rejected
+        # by one of the four anchors, so removing the gate admits no forgery of its own.
+        # That makes it redundant defence-in-depth -- the same category as the review's
+        # two recorded survivors -- and it is kept anyway, because it is the layer that
+        # refuses for the *right stated reason* ("the recorded tuple is not well
+        # formed") instead of letting an anchor report a confusing key difference.
+        malformed = {
+            'maxCollisions': 16, 'testOnly': False, 'excludeBodies': [1],
+            'bodyRid': 0, 'bodyRidFloat': 1.5, 'extra': 1,
+            'motion': [0.0, -0.0400, 0.0],
+        }
+        for key, value in malformed.items():
+            field = 'bodyRid' if key.startswith('bodyRid') else key
+
+            def change(receipt, field=field, value=value):
+                tuple_ = receipt['records'][0]['frozenOperands']
+                tuple_[field] = value
+                receipt['frozenOperands'][receipt['records'][0]['caseId']] = \
+                    copy.deepcopy(tuple_)
+            forged = self.forge(change)
+            with self.subTest(field=field):
+                # The shipped gate refuses it, naming the malformation...
+                with self.assertRaises(hook.HookError):
+                    hook.frozen_tuple(forged['records'][0]['frozenOperands'])
+                self.refuses(forged)
+                # ... and so does the validator with the gate removed, which is what
+                # makes this layer redundant rather than load-bearing.
+                self.assertFalse(self.admits(self.shadow_evidence(['well_formedness']), forged))
+        # A tuple that is not a mapping at all is the one shape only the gate's
+        # exception path refuses.
+        for value in ({}, None, 'frozen', []):
+            with self.subTest(value=type(value).__name__):
+                forged = self.forge(
+                    lambda r, v=value: r['records'][0].__setitem__('frozenOperands', v))
+                with self.assertRaises(hook.HookError):
+                    hook.frozen_tuple(value)
+                self.refuses(forged)
+                self.assertFalse(self.admits(self.shadow_evidence(['well_formedness']), forged))
+
+    def test_the_design_frozen_anchor_alone_refuses_a_consistent_retune(self):
+        # The design-frozen anchor is the only thing that can refuse this forgery: the
+        # per-observation predicates pass (asserted in the forgery's own construction),
+        # the run-frozen rule passes, and the three requests agree with the re-tuned
+        # tuple and with each other. So the shipped validator refusing it proves the
+        # anchor fired, and the neutered copy admitting it proves the test is not
+        # passing on some other predicate's account.
+        forged = self.forgery_reaching_only_the_design_frozen_anchor()
+        self.refuses(forged)
+        neutered = self.shadow_evidence(['design_frozen'])
+        self.assertTrue(self.admits(neutered, forged),
+                        'the design-frozen anchor is not load-bearing: a consistent '
+                        're-tune of every design-frozen operand was admitted with it '
+                        'neutered, so the refusal above came from something else')
+
+    def test_the_record_binding_anchors_are_jointly_necessary(self):
+        # Two anchors make the same comparison at two layers: the record's own AM binding
+        # must be the tuple the validator was handed (:func:`evidence._frozen_operands`)
+        # and must be the approved table entry for this case (:func:`evidence.record`).
+        # Neither can be dropped on its own -- each is caught by the other, which is the
+        # redundancy the review measured -- but with both gone the forgery is admitted,
+        # so neither is redundant in the pair.
+        forged = self.forgery_reaching_only_the_binding_anchors()
+        self.refuses(forged)
+        for alone in ('record_binding', 'record_history_binding'):
+            with self.subTest(anchor=alone):
+                self.assertFalse(self.admits(self.shadow_evidence([alone]), forged),
+                                 'this anchor was reported as load-bearing on its own, '
+                                 'but its sibling refused the forgery without it')
+        self.assertTrue(
+            self.admits(self.shadow_evidence(['record_binding', 'record_history_binding']),
+                        forged),
+            'both record-binding anchors are dead weight: a re-tuned AM binding was '
+            'admitted with both removed')
+
+    def test_the_run_frozen_anchor_is_jointly_necessary_with_the_whole_tuple_comparison(self):
+        # The run-frozen rule and the whole-tuple comparison are both about agreement
+        # across the three requests, and they overlap by construction: a RID that
+        # differs from the recorded tuple is also a RID that differs from the frozen
+        # tuple. So neither refusal can be attributed to one of them from the outside;
+        # what can be established is that dropping both admits the forgery, and that
+        # dropping one alone does not.
+        forged = self.forgery_reaching_only_the_run_frozen_rule()
+        self.refuses(forged)
+        for alone in ('run_frozen', 'cross_observation'):
+            with self.subTest(anchor=alone):
+                self.assertFalse(self.admits(self.shadow_evidence([alone]), forged),
+                                 'this anchor was reported as load-bearing on its own, '
+                                 'but its sibling refused the forgery without it')
+        self.assertTrue(
+            self.admits(self.shadow_evidence(['run_frozen', 'cross_observation']), forged),
+            'the run-frozen rule and the whole-tuple comparison are jointly dead: a body '
+            'RID that disagreed across the observations was admitted with both removed')
+        # The same pairing, from the other end: the design-frozen anchor alone is what
+        # refuses a *consistent* re-tune, so it cannot be the cross-observation layer
+        # quietly carrying that forgery.
+        consistent = self.forgery_reaching_only_the_design_frozen_anchor()
+        self.assertFalse(self.admits(self.shadow_evidence(['cross_observation']), consistent))
+        self.assertTrue(self.admits(self.shadow_evidence(['design_frozen']), consistent))
 
     def test_other_frozen_constants_are_covered_too_not_just_margin_and_rid(self):
         for change, expected in ((lambda r: r['records'][0]['observations'][1]['request']
@@ -1382,17 +1875,28 @@ class QualificationTests(unittest.TestCase):
         self.assertNotIn('floor_angle', inspect.signature(evidence.receipt).parameters)
         self.assertIn('does not judge it', evidence._observation.__doc__)
         # The claim that the validator proves the three requests carry the frozen
-        # constants unchanged is true only because these three calls exist. A
-        # refactor that drops one of them must fail a test, since the validator's
-        # other anchors would then carry the whole forgery load on their own.
+        # constants unchanged is true only because these calls exist. This is a *shape*
+        # assertion, so it catches a refactor that drops a call outright; it cannot
+        # catch a call whose verdict is ignored, which is why
+        # ``FrozenOperandTests`` also loads a copy of the validator with each anchor's
+        # enforcement removed and requires the forgery it is responsible for to be
+        # admitted. Both are needed: deletion and neutering are different failures.
         # ``co_names`` records ``hook`` and each attribute separately, so these are
-        # the three calls the cross-observation proof is made of.
+        # the calls the cross-observation proof is made of.
         calls = evidence._frozen_operands.__code__.co_names
         self.assertIn('hook', calls)
         for required in ('frozen_tuple', 'operands_unchanged', 'operand_equal',
-                         'DESIGN_FROZEN_CONSTANTS'):
+                         'run_frozen_unchanged', 'DESIGN_FROZEN_CONSTANTS'):
             self.assertIn(required, calls)
-        self.assertIn('carry exactly that tuple', evidence._frozen_operands.__doc__)
+        self.assertIn('carry exactly the whole tuple', evidence._frozen_operands.__doc__)
+        # Each group of constants is pinned by its own rule, and the prose says so in
+        # all three places the rule is written down -- the module that defines the
+        # groups, the validator that enforces them and the validator's non-claims. A
+        # run's body RID must not be described as anchored to the AM run anywhere.
+        self.assertIn('and *never* by comparison with the AM run\'s value', hook.__doc__)
+        self.assertIn('deliberately *not* compared with the AM run\'s RID',
+                      evidence._frozen_operands.__doc__)
+        self.assertIn('not required to be the AM run\'s body RID', evidence.__doc__)
 
     def test_the_native_readiness_blockers_are_pinned_verbatim(self):
         # Pinned as six literals, not compared against policy.NATIVE_READINESS_BLOCKERS

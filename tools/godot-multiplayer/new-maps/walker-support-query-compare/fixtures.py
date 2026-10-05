@@ -69,11 +69,18 @@ class FakeLive:
     be shown to refuse it. The default ``None`` behaves.
     """
 
-    def __init__(self, case_id, *, first_transition=None, extra_transitions=(), misbehave=None):
+    def __init__(self, case_id, *, first_transition=None, extra_transitions=(), misbehave=None,
+                 run_rid=None):
         if case_id not in PROFILES:
             raise ValueError('no synthetic profile for ' + repr(case_id))
         self.case_id = case_id
         self.profile = copy.deepcopy(PROFILES[case_id])
+        if run_rid is not None:
+            # A body RID is assigned by the engine for one run, so this run's RID is
+            # not required to be the AM run's. The profile keeps the recorded AM value
+            # by default (so the ordinary fixture cannot drift), and this override is
+            # how a genuine fresh RID is exercised rather than assumed away.
+            self.profile['bodyRid'] = run_rid
         self.first_transition = self.profile['frame'] if first_transition is None else first_transition
         self.extra = list(extra_transitions)
         self.misbehave = misbehave
@@ -212,9 +219,17 @@ class FakeLive:
         return [call for call in self.calls if call.startswith(('test_motion', 'candidate_response'))]
 
 
-def params_for(case_id):
+def params_for(case_id, *, body_rid=None):
+    """The frozen parameters for one case.
+
+    ``body_rid`` is *this run's* body RID. It defaults to the recorded AM value, so the
+    ordinary fixture stays the reviewed one; passing a different value is how a run
+    with a fresh engine-assigned RID is expressed, and the driver and the validator
+    must both accept it.
+    """
     profile = PROFILES[case_id]
-    return {'margin': profile['margin'], 'bodyRid': profile['bodyRid']}
+    return {'margin': profile['margin'],
+            'bodyRid': profile['bodyRid'] if body_rid is None else body_rid}
 
 
 def lives(misbehave=None, **kwargs):

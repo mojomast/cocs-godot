@@ -23,9 +23,20 @@ request, and it is *checked* rather than asserted. The validator holds all three
 executed requests -- the pre-UP one, the guard's own recorded one and the duplicate
 -- against the single recorded frozen-operand tuple: all three must carry exactly it
 on every constant in :data:`CONSTANTS`, and they are compared against each other as
-well. See :func:`operands_unchanged` for that predicate and ``evidence.record`` for
-the check itself, which also anchors the tuple to the SHA256-pinned AM guard request
-so it cannot be re-tuned inside a receipt.
+well (:func:`operands_unchanged`, ``evidence.record``).
+
+On top of that, each group of constants is pinned by the rule its own provenance
+allows, and by nothing else:
+
+* the :data:`DESIGN_FROZEN_CONSTANTS` are anchored to the SHA256-pinned AM guard
+  request, so they cannot be re-tuned inside a receipt;
+* the :data:`DERIVED_FROZEN_CONSTANTS` are pinned by re-deriving them from the frozen
+  margin (:func:`frozen_tuple`), which is why the anchor holds the *derived* motion and
+  not the engine's float32 round-trip of it;
+* the :data:`RUN_FROZEN_CONSTANTS` are pinned by this run's own agreement
+  (:func:`run_frozen_unchanged`) and *never* by comparison with the AM run's value: a
+  RID is assigned by the engine for one run, so a fresh one is what a genuine next run
+  produces, and ``driver.run_case`` does not compare it either.
 
 What the check does *not* claim: that the recorded tuple is the one the driver froze.
 That is the prepared source record's job, and the receipt's ``sourceSha256`` is what
@@ -55,8 +66,13 @@ CONSTANTS = ('motion', 'margin', 'maxCollisions', 'recoveryAsCollision',
 #:   with the engine's float32 round-trip of the same value.
 #: * :data:`RUN_FROZEN_CONSTANTS` -- assigned by the engine for one run and frozen
 #:   into the prepared record before execution. Provenance is the run itself, so
-#:   these are pinned by being identical across the pre-UP request, the guard's
-#:   own request and the duplicate, not by comparison with the AM value.
+#:   these are pinned by being identical across the pre-UP request, the guard's own
+#:   request and the duplicate, and by being well formed (:func:`frozen_tuple`), *not*
+#:   by comparison with the AM value: the AM run's RID is a fact about the AM run, and
+#:   requiring the next run to reproduce it would refuse the very run this package
+#:   exists to take. :func:`run_frozen_unchanged` is that rule, and
+#:   ``driver.run_case`` excludes these constants from its AM comparison for the same
+#:   reason.
 DESIGN_FROZEN_CONSTANTS = ('margin', 'maxCollisions', 'recoveryAsCollision',
                            'collideSeparationRay', 'excludeBodies', 'excludeObjects',
                            'testOnly')
@@ -261,6 +277,39 @@ def operands_unchanged(frozen, *requests):
     for index, request in enumerate(requests):
         for other_index in range(index + 1, len(requests)):
             equal, found = operand_equal(request, requests[other_index], keys=CONSTANTS)
+            differences.extend('%d~%d:%s' % (index, other_index, key) for key in found)
+    return not differences, differences
+
+
+def run_frozen_unchanged(frozen, *requests):
+    """The run-frozen rule: this run's own agreement, and no comparison with AM.
+
+    A :data:`RUN_FROZEN_CONSTANTS` value is assigned by the engine for one run, so
+    the only provenance it has is this run. It is pinned by being identical in the
+    record's own recorded tuple and in every executed request -- against the tuple and
+    pairwise, exactly as :func:`operands_unchanged` does for the whole constant set --
+    and by nothing from the AM run. A per-run body RID that differs from the AM run's
+    is what a genuine run produces, so comparing against the AM value here would
+    refuse the next real run.
+
+    An empty request list is refused rather than passed vacuously: "all the requests
+    agree" is not a statement about no requests.
+
+    Differences are reported as ``request<i>:<key>`` and ``<i>~<j>:<key>``, the same
+    form :func:`operands_unchanged` uses, so a refusal names which observation drifted
+    and on which operand.
+    """
+    if not requests:
+        return False, ['no_executed_request']
+    differences = []
+    if not isinstance(frozen, dict) or set(frozen) != set(CONSTANTS):
+        return False, ['frozen_operand_tuple']
+    for index, request in enumerate(requests):
+        equal, found = operand_equal(frozen, request, keys=RUN_FROZEN_CONSTANTS)
+        differences.extend('request%d:%s' % (index, key) for key in found)
+    for index, request in enumerate(requests):
+        for other_index in range(index + 1, len(requests)):
+            equal, found = operand_equal(request, requests[other_index], keys=RUN_FROZEN_CONSTANTS)
             differences.extend('%d~%d:%s' % (index, other_index, key) for key in found)
     return not differences, differences
 
