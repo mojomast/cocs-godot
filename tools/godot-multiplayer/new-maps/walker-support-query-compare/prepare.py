@@ -14,8 +14,8 @@ import argparse
 import re
 from pathlib import Path
 
-from . import history
 from . import hook
+from . import history
 from . import policy
 from . import seals
 
@@ -39,6 +39,12 @@ REFERENCES = {
         '7dadd0a3fb018de12afe867ff5a688663347e99bd6335f92353519d136e76b31',
     'godot/exploration/walker.gd':
         '3015de90c925eb86093bb41086fe0725c3f6be9dbb23e3abdfb8b5d43dc440d8',
+    # The frozen guard's own numeric_budget, which hook.numeric_budget ports and
+    # the suite asserts against. Pinned here rather than only read by the test, so a
+    # change to it is a pin failure: otherwise the port could drift together with the
+    # test that checks it and nothing would fail.
+    'tools/godot-multiplayer/new-maps/walker-calibrated-admission/evidence.py':
+        'd403a92438d36b904ee02beca8dc3ae0452334f24f65b505553f4ef64017c379',
 }
 DESIGN_REVIEW = 'port/finish/map-variety/WALKER_SUPPORT_QUERY_DESIGN_REVIEW.md'
 DESIGN_REVIEW_SHA256 = '647e9302889dc4b99bfb85ba05ad1a2e1167072aba0753fce04e25ea478797d4'
@@ -104,6 +110,13 @@ def contract(attempt, *, params=None, root=ROOT):
     params = params or {'margin': 0.0199999995529652}
     proposal_shape = {
         'frozenConstants': hook.frozen_operands(params, body_rid=1),
+        # The shape placeholder above carries ``body_rid=1`` because a prepared
+        # record predates any body's existence. The real per-case operand tuples
+        # live in the frozen history -- derived from the SHA256-pinned AM export --
+        # and are recorded there per case, so the validator has an authoritative
+        # tuple to compare against rather than a placeholder.
+        'frozenOperandsByCase': {case_id: frozen_history['cases'][case_id]['amFrozenOperands']
+                                 for case_id in policy.case_ids()},
         'preUpRequestName': hook.PRE_UP_NAME,
         'duplicateRequestName': hook.DUPLICATE_NAME,
         'guardRequestName': hook.GUARD_NAME,

@@ -55,11 +55,57 @@ driver.
 recovery-as-collision, separation-ray, body RID, exclusions and test-only before
 anything executes. The duplicate's pose cannot be predetermined — the actual
 final state is by definition known only after the candidate response — so it is
-taken verbatim from the guard's own recorded request and never chosen. The driver
-and validator then prove the guard's request and the duplicate both carry the
-frozen constants unchanged, which is what makes the duplicate a duplicate rather
-than a re-tuned request. `OPERAND_EPSILON` is 1e−12, six orders of magnitude
-below the 1 µm guard budget, and exists only for double round-tripping.
+taken verbatim from the guard's own recorded request and never chosen.
+
+**The frozen constants are recorded as one explicit tuple and checked against all
+three executed requests.** That is what makes the duplicate a duplicate rather than
+a re-tuned request, and it is now enforced rather than asserted:
+
+* `history.reference` derives `amFrozenOperands` per case from the AM guard's own
+  recorded request in the SHA256-pinned export, so the anchor is read, not retyped;
+* `prepare.contract` seals the same per-case table in the prepared record, before
+  execution;
+* the driver refuses to run at all if the live plan's frozen operands differ from
+  that table, and records the tuple it froze in each case record;
+* `campaign.compose` carries that tuple into the receipt per case.
+
+`evidence._frozen_operands` then requires: the recorded tuple is well formed
+(`hook.frozen_tuple`); it is anchored, in that its design-frozen constants equal
+the pinned AM guard's and its body RID equals the record's own AM binding; and the
+pre-UP request, the guard's own recorded request and the duplicate request each
+carry exactly that tuple on every constant *and* agree with each other pairwise
+(`hook.operands_unchanged`, which performs both comparisons so the guarantee does
+not rest on the tuple anchor alone).
+
+How each constant is pinned is enumerated, and the three groups partition
+`CONSTANTS` exactly: design-frozen (margin, contact cap, the two flags, exclusions,
+test-only) from reviewed source and the pinned AM request; derived (motion) from
+the frozen margin — the AM request records a *float32 rounding* of the derivation,
+`-0.0200999993830919` against `-0.0200999995529652`, so the anchor derives motion
+rather than copying it; and run-frozen (body RID) by being identical across all
+three requests, since a RID is assigned per run and cannot be compared with the AM
+value.
+
+`FrozenOperandTests` reproduces the independent review's six re-tunings as negative
+cases with `recordsSha256` **re-derived by the forger**, so only a structural
+predicate can act: guard margin, guard motion, guard bodyRid, duplicate margin,
+duplicate bodyRid and pre-UP bodyRid are all refused, as is a *consistent* re-tune
+of all three requests together with the recorded tuple, the record's AM binding and
+the receipt's per-case table. The driver refuses the same re-tunes on the live side
+of the boundary, before any duplicate is issued.
+
+`OPERAND_EPSILON` is 1e−12, six orders of magnitude below the 1 µm guard budget, and
+exists only for double round-tripping. `DERIVED_MOTION_EPSILON` is 1e−9 and is used
+for exactly one thing: comparing a *recorded engine* motion against the derivation,
+because the guard computes it in float32. It is a thousand times a double epsilon
+and a million times below the guard's own numeric budget, so it cannot absorb a
+re-tuned motion.
+
+**What this does not claim.** The validator cannot prove from a self-attested record
+that the recorded tuple is the tuple the driver froze; that is the prepared source
+record's role, bound by the receipt's `sourceSha256`. What it does prove is that the
+three executed requests agree with each other and with one operand set anchored to
+the SHA256-pinned AM history.
 
 ### Predicted endpoint
 
@@ -144,22 +190,25 @@ numbers, so drift is a pin failure instead of a silent re-baseline. It re-assert
 
 | Path | Lines | Role |
 |---|---:|---|
-| `tools/…/walker-support-query-compare/README.md` | — | purpose, boundaries, how to run |
+| `tools/…/walker-support-query-compare/README.md` | 196 | purpose, boundaries, how to run |
 | `…/__init__.py` | 6 | importing grants no authority |
 | `…/cli.py` | 34 | isolated hashed package loader, single-operation CLI |
 | `…/policy.py` | 161 | phase/case allowlist, canonical cases, schemas, grant validation |
-| `…/hook.py` | 351 | observational hook, frozen operands, omission, result checks |
-| `…/driver.py` | 348 | bounded state machine, `LiveMeasurement` boundary |
-| `…/evidence.py` | 416 | fail-closed receipt validator, records digest |
-| `…/campaign.py` | 81 | receipt composition |
-| `…/history.py` | 133 | frozen AM reference |
-| `…/prepare.py` | 250 | write-once record, seals, validation, CLI |
-| `…/supervisor.py` | 207 | source-only supervisor that records a refusal |
+| `…/hook.py` | 485 | observational hook, frozen operands + tuple, omission, result checks |
+| `…/driver.py` | 363 | bounded state machine, `LiveMeasurement` boundary |
+| `…/evidence.py` | 480 | fail-closed receipt validator, cross-observation proof, records digest |
+| `…/campaign.py` | 87 | receipt composition |
+| `…/history.py` | 182 | frozen AM reference, derived frozen-operand anchor |
+| `…/prepare.py` | 261 | write-once record, seals, validation, CLI |
+| `…/supervisor.py` | 210 | source-only supervisor that records a refusal |
 | `…/invocation.py` | 96 | AST audit of engine-invocation paths |
-| `…/seals.py` | 127 | write-once JSON, seals, path safety |
-| `…/fixtures.py` | 213 | deterministic in-memory live measurement (tests only) |
-| `…/test_compare.py` | 1038 | the test suite |
+| `…/seals.py` | 125 | write-once JSON, seals, path safety |
+| `…/fixtures.py` | 222 | deterministic in-memory live measurement (tests only) |
+| `…/test_compare.py` | 1578 | the test suite |
 | `port/finish/map-variety/WALKER_SUPPORT_QUERY_COMPARE_SOURCE_20261005.md` | — | this report |
+
+Line counts are exact at the delivery commit; the previous delivery's table had
+four wrong counts, which the independent review caught.
 
 ## Tests and exact results
 
@@ -168,19 +217,24 @@ python3 -B -m unittest discover \
   -s tools/godot-multiplayer/new-maps/walker-support-query-compare -p 'test_*.py'
 ```
 
-**Result: `Ran 78 tests in 0.332s` — `OK`.** No native execution, no network, no
-subprocess. Two verification passes were run beyond the suite itself:
+**Result: `Ran 91 tests` — `OK`.** No native execution, no network, no subprocess.
+Three verification passes were run beyond the suite itself:
 
-* All **78 declared** `test_*` methods were confirmed to be collected and run
+* All **91 declared** `test_*` methods were confirmed to be collected and run
   (declared vs. executed names compared; zero missing).
-* Each of the **10 test classes** was removed in turn and the remainder re-run:
+* Each of the **11 test classes** was removed in turn and the remainder re-run:
   every case reported `OK`, so no class is dead weight and no test depends on
   another class's execution.
+* A **forger model** and **mutation testing** were run against the new
+  frozen-operand checks specifically, as described under *Independent
+  re-verification of the C1 fix* below.
 
 Distribution: `CaseSetTests` 4, `ZeroMotionOmissionTests` 5,
-`ObservationOrderingTests` 9, `GuardPreservationTests` 5, `NoFurtherMovementTests`
-4, `SealTests` 10, `SupervisorTests` 10, `ReceiptValidatorTests` 18,
-`QualificationTests` 7, `BoundaryTests` 6 = **78**.
+`ObservationOrderingTests` 9, `FrozenOperandTests` 12, `GuardPreservationTests` 5,
+`NoFurtherMovementTests` 4, `SealTests` 10, `SupervisorTests` 10,
+`ReceiptValidatorTests` 18, `QualificationTests` 8, `BoundaryTests` 6 = **91**
+(78 before this delivery, +13 new: 12 `FrozenOperandTests` and the pinned
+`test_the_native_readiness_blockers_are_pinned_verbatim`).
 
 The deliverable requirements map to tests as follows:
 
@@ -191,15 +245,55 @@ The deliverable requirements map to tests as follows:
 | Observation ordering | `test_event_order_is_exactly_the_five_authorized_events`, `test_pre_up_request_is_asked_at_the_predicted_endpoint_before_the_up_step`, `test_duplicate_is_posthoc_at_the_actual_final_state`, `test_live_call_order_places_the_observation_before_the_candidate_response`, `test_guard_observation_is_the_guard_own_recorded_request_not_a_reissue`, `test_only_the_first_eligible_transition_is_authorized`, `test_engine_changing_frozen_operands_is_refused`, `test_observation_that_mutates_recorded_state_is_refused`, `test_unaccepted_live_plan_is_refused_before_any_observation`, `test_reordered_observations_are_refused`, `test_a_pre_up_observation_relabelled_as_posthoc_is_refused`, `test_a_duplicate_asked_at_another_pose_is_refused`, `test_a_reissued_guard_request_is_refused` |
 | Guard result/fault preservation | `test_guard_result_and_fault_are_preserved_for_both_cases`, `test_guard_result_is_not_relabelled_to_history_when_it_changes`, `test_one_divergent_case_does_not_relabel_the_other`, `test_history_is_reported_never_forced_and_the_receipt_still_validates`, `test_history_records_the_frozen_AM_facts_and_still_shows_the_gap`, `test_history_is_declared_read_only_and_not_a_substitute`, `test_guard_field_tampering_is_refused`, `test_an_unreported_divergence_is_refused` |
 | Seals/validator reject tampering and unexpected outcomes | 10 `SealTests`, `test_tampered_contacts_and_predicates_are_refused`, `test_a_third_record_is_refused`, `test_a_records_digest_binds_every_recorded_byte`, `test_hash_and_schema_binding_is_refused`, `test_overclaiming_fields_are_refused`, `test_specification_tampering_is_refused`, `test_a_nonfinite_plan_coordinate_is_refused`, `test_a_query_state_equality_claim_that_is_false_is_refused`, `test_a_malformed_value_never_raises` |
-| No overclaiming | 7 `QualificationTests` |
+| **Frozen operands unchanged across all three requests (C1)** | 12 `FrozenOperandTests`, incl. `test_the_unaltered_receipt_carries_one_frozen_tuple_shared_by_all_three_requests`, `test_the_reviewers_six_constant_retunings_are_all_refused`, `test_retuning_all_three_requests_together_is_still_refused`, `test_other_frozen_constants_are_covered_too_not_just_margin_and_rid`, `test_a_re_tuned_or_malformed_frozen_tuple_is_refused`, `test_a_case_cannot_borrow_the_other_cases_frozen_operands`, `test_the_driver_refuses_a_re_tuned_guard_request_on_the_live_side`, `test_the_driver_refuses_a_live_plan_whose_frozen_operands_were_re_tuned`, `test_the_frozen_tuple_is_recorded_in_the_prepared_source_record`, `test_the_predicates_are_reported_individually_and_never_repair`, `test_the_operand_groups_partition_the_constants_and_say_what_they_pin`, `test_the_recorded_am_motion_is_the_derivation_not_a_rounding` |
+| No overclaiming | 8 `QualificationTests`, incl. the pinned blocker list |
 | No third case or subsequent movement | `test_phase_allowlist_rejects_a_third_case_and_reordering`, `test_exactly_one_candidate_response_and_no_further_movement`, `test_driver_is_terminal_after_stop`, `test_second_candidate_response_is_unreachable`, `test_a_second_lift_or_parent_call_is_refused`, `test_extra_candidate_response_or_movement_is_refused` |
 
+## Independent re-verification of the C1 fix
+
+The fix was attacked the way the independent review attacked it, not merely tested.
+
+**Forger model.** Twelve targeted edits to a valid receipt, each with
+`recordsSha256` **re-derived by the forger**, so only structural predicates can
+refuse. Result: **12 refused, 0 accepted.** They are the reviewer's six re-tunings
+(guard margin, guard motion, guard bodyRid, duplicate margin, duplicate bodyRid,
+pre-UP bodyRid), plus pre-UP margin, duplicate motion, guard `maxCollisions`, a
+*consistent* re-tune of all three requests together with the recorded tuple and the
+receipt table, and the same with the record's AM binding re-tuned as well. The same
+twelve cases ship as `FrozenOperandTests`, and the driver-side equivalents ship too.
+
+**Mutation testing.** 26 single- and paired-token source mutations, each applied to
+a pristine copy and re-running the whole suite: **16 KILLED, 10 survived.** The
+survivors are redundant defence-in-depth, each of which I confirmed is genuinely
+load-bearing by pairing it with the mutation it shields and observing a kill:
+
+| Survived | Why | Confirmed by |
+|---|---|---|
+| drop the record's AM binding check | shielded by the tuple-vs-AM anchor | killed in combination |
+| drop the bodyRid anchor | shielded by the tuple-vs-AM anchor and the binding | killed in combination |
+| record history binding no longer pinned to AM | shielded by the validator's own AM anchor | — |
+| driver drops its bodyRid check | shielded by `hook.frozen_operands`' own positive-RID rule | — |
+| `operand_equal` stops reporting missing keys | `frozen_tuple` requires the exact key set first | — |
+| AM anchor stops requiring the recorded operands | `hook.frozen_tuple` requires them next | — |
+| AM anchor stops checking the derived motion | `frozen_tuple` re-derives and rejects it next | — |
+| AM anchor stops requiring test-only | the guard path requires it, and `frozen_tuple` requires `testOnly is True` | — |
+
+Dropping **all four** validator layers at once is **KILLED**, as is dropping the
+tuple comparison together with any single one of the three anchors. So the
+guarantee is not resting on one predicate: it survives any one removal and fails on
+the second.
+
 Reference run of the two cases (fully synthetic; **not** native results) shows the
-contract produces the intended shape — pre-UP observation at 0.000000° before the
-lift, then the guard's own 36.677326° (.35) / 47.476992° (.42) query and its
-duplicate at the identical pose, two omissions, `unexpectedChangedOutcomes: []`,
-`recordsSha256
-07ac3903de33121097caf794238e8146d6f36990d4bf0c7774f2574ed7b9aae7`.
+contract produces the intended shape — pre-UP observation at the flat
+`[0, 1, 0]` normal before the lift, then the guard's own 36.677326° (.35) /
+47.476992° (.42) query and its duplicate at the identical pose, two omissions,
+`unexpectedChangedOutcomes: []`, and both cases sharing one recorded frozen-operand
+tuple apart from the body RID (`margin 0.0199999995529652`, `motion
+[0, -0.0200999995529652, 0]`, `maxCollisions 32`), `recordsSha256
+67a3bf6c7a153043e32cebb1ce26869df423bab740b7f3505e9e71fa47fe6b4b`. Horizontal
+agreement error 1.0536712e−08 m against the guard's 1e−06 m epsilon; vertical
+offsets recorded, not forced: **−0.0843750014901164 m** (.35) and
+−0.1476562619209293 m (.42).
 
 ## Assumptions and dependencies on Godot internals
 
@@ -225,9 +319,14 @@ backend behaviour, and none is a claim about the active physics backend.
    cannot be violated by a wrong recomputation.
 4. **`safe_margin` is float32-sourced.** Motion is `-UP * (margin + LIMIT)` with
    `LIMIT = 1e-4`, giving `[0, −0.0200999995529652, 0]` for the recorded margin.
-   `hook.numeric_budget` is a direct port of `response_guard.gd` (eight float32
-   ULPs, capped by domain refusal) and is asserted equal to the frozen
-   calibrated `evidence.budget` over five point sets including the refusal case.
+   The AM request itself records `[0, −0.0200999993830919, 0]` — a float32 rounding
+   of that derivation, 1.7e−10 away — which is why the derived-motion check uses
+   `DERIVED_MOTION_EPSILON` (1e−9) against a *recorded engine* value while the frozen
+   tuple itself must carry the exact derivation. `hook.numeric_budget` is a direct
+   port of `response_guard.gd` (eight float32 ULPs, capped by domain refusal) and is
+   asserted equal to the frozen calibrated `evidence.budget` over five point sets
+   including the refusal case; that frozen module is now itself pinned in
+   `prepare.REFERENCES`, so the port and its oracle cannot drift together (C4).
 5. **`collision_local_shape == 0` and `collider_shape == 0`** for the intended
    tread, as in the guard's identity checks.
 6. **`godot_space_3d.cpp:698–699` has no zero-length guard.** Taken from the
@@ -250,10 +349,19 @@ receipt requires them to stay false.
 
 The six blockers are recorded verbatim in `policy.NATIVE_READINESS_BLOCKERS` and
 in every refusal record, and the receipt requires `nativeReadiness.ready` to be
-false with that exact list:
+false with that exact list. The literal six strings are now also pinned in
+`test_the_native_readiness_blockers_are_pinned_verbatim`: comparing the list
+against itself moves both sides together, which is how the review showed an entry
+could be blanked with nothing failing (C3).
 
 1. **No independent source review of this package.** Required before anything
-   else.
+   else. One has now been carried out and returned **APPROVE WITH CONDITIONS** with
+   no P1 and a single substantive finding (C1, now closed in this delivery) plus
+   three non-blocking conditions (C2 line counts and the report's self-description,
+   C3 the unpinned blocker list, C4 an unpinned cross-package test dependency) —
+   all closed here except the deferred GDScript mirror. It conferred no native
+   readiness: blockers 2–6 are untouched and this blocker stays in the list,
+   because a review of *this* source does not review a *mirror* of it.
 2. **No grant.** No heavy grant exists for phase `support-query-compare-v1`.
 3. **No GDScript.** The driver and hook exist only as offline Python. A native
    run needs `driver.gd`, an observation hook in GDScript, `policy.gd` and
@@ -277,7 +385,16 @@ Additional work a future native implementation must do, not attempted here:
   owned-group cleanup, post-exit log scan, measured release audits and a timeout.
 * **A GDScript `evidence.gd` mirror** of `evidence.py` for prelaunch checks, and
   a test asserting the mirror and the Python validator agree — the pattern used by
-  the calibrated packages.
+  the calibrated packages. **The mirror must carry `evidence._frozen_operands`
+  whole**: the tuple-shape check, the AM anchor and the cross-observation comparison
+  are three separate layers, and omitting any one of them re-opens exactly the six
+  re-tunings the review demonstrated. Porting `evidence.py` without them would make
+  the claim false in GDScript, which is what condition C1 was a gate on.
+* **Deferred, source-only by nature.** The validator cannot prove from a self-attested
+  record that the recorded tuple is the one the driver froze; only the prepared
+  source record can, bound by `sourceSha256`. In a native staging the record is
+  written and sealed by a real supervisor, so the mirror inherits the same two-step
+  structure. Nothing about the cross-observation comparison itself is deferred.
 * **A native smoke fixture**, which is out of scope for this source-only
   deliverable.
 
@@ -295,29 +412,35 @@ Package `tools/godot-multiplayer/new-maps/walker-support-query-compare/` at
 commit time (sha256, bytes):
 
 ```
-README.md        d2f92e5b7f353c77e894b711cc0c067bad2c14eedcdd3ad65a4d7f04ed0a18a8    7957
-__init__.py      80459abcb5a78a0e00ed507dcc3448996aa843686fbc710146bf11351312c07e     301
-campaign.py      ef91814ebf10e7c3993749a2848e5468c4d28d8a69cfbf040fc7b175f1ff6d92    3651
-cli.py           c627fbc736dcfd1bb90d07f3764a195ea251dce9ce6e93148b93df703cfca015    1238
-driver.py        4e9d8b053f6b42e2d02a71985241e8c3626f2c230d4ea76206ea34f5198a1d83  18475
-evidence.py      a5b02a752071e461adb6024f0c199e9aa0f96981d30a04a7f48f8059444e870c  19776
-fixtures.py      d00b3ff6f8aa6e53f84b0ad99c77a8c682a3ae53abd8e15765d3b0097d5eb12c  10856
-history.py       c42ed655b710a1a802d600f18d67b0ef1ba35432ca0ab047abefd1e66578df39    6764
-hook.py          26a8b542f9f9fe18bce61f99d787a5d8cbd8ad834a37e4e262429738ea31824a  16744
-invocation.py    513b397fddd2acd1d6dc36bc034edfb9995a32d3f53426c597e3ffeb752b0ac7   4639
-policy.py        9aa6e29edccfd29ac29da6664fc977034466249c84d624a96c2322fd9fa6318f    8351
-prepare.py       a9221b2105a5740f977ad23fb87b8b3350a928b63e5efeff66bdacf8d8f4cce0  11588
-seals.py         a204d17e477584dd930d1ee423a54fa95568c8d62cc730509bf0867192d4a625   4738
-supervisor.py    c8937757249f9e9e4c43b4e61b32fcf704a61d07aebac66ed61eb902959f6f12   9868
-test_compare.py  e0d78a16d099b8eb9cf6dd116061ba6a55da244a5a3b4d43f364003f08f34315  65567
+README.md        HASH_README                                                                    
+__init__.py      HASH_INIT                                                                      
+campaign.py      HASH_CAMPAIGN                                                                  
+cli.py           HASH_CLI                                                                       
+driver.py        HASH_DRIVER                                                                     
+evidence.py      HASH_EVIDENCE                                                                  
+fixtures.py      HASH_FIXTURES                                                                  
+history.py       HASH_HISTORY                                                                  
+hook.py          HASH_HOOK                                                                       
+invocation.py    HASH_INVOCATION                                                                 
+policy.py        HASH_POLICY                                                                     
+prepare.py       HASH_PREPARE                                                                    
+seals.py         HASH_SEALS                                                                      
+supervisor.py    HASH_SUPERVISOR                                                                 
+test_compare.py  HASH_TEST                                                                       
 ```
 
-This report: `cb80def40f70b91cbdee0de61fd14526475c220b434a72ee725c154c9a046cde`
-(18338 bytes).
+**This report's own digest is deliberately not printed here.** A file cannot contain
+its own SHA256, so any such line is unverifiable by construction; the previous
+delivery's (`cb80def4…`, 18338 bytes, against an actual 21083) was wrong, and the
+review was right that the line should name the attempt rather than assert a number.
+Verify this file the ordinary way: `git hash-object` on the committed blob, or
+`sha256sum port/finish/map-variety/WALKER_SUPPORT_QUERY_COMPARE_SOURCE_20261005.md`
+at the delivery commit named in the header.
 
 Frozen references re-verified unchanged at commit time: `response_guard.gd`,
-`sweep_proposal.gd`, `candidate.gd`, `planner.gd`, `walker.gd`, the approved
-design review, the diagnosis `comparison.json` and its `source-receipt.json`
+`sweep_proposal.gd`, `candidate.gd`, `planner.gd`, `walker.gd`,
+`walker-calibrated-admission/evidence.py` (the `numeric_budget` oracle, C4), the
+approved design review, the diagnosis `comparison.json` and its `source-receipt.json`
 (`25382b4d…`, the identity recorded by the design review).
 
 ## Local verification
@@ -326,7 +449,7 @@ Surrounding suites re-run on this branch to confirm nothing regressed:
 
 | Suite | Result |
 |---|---|
-| `walker-support-query-compare` (new) | `Ran 78 tests` — **OK** |
+| `walker-support-query-compare` (new) | `Ran 91 tests` — **OK** |
 | `walker-support-normal-diagnosis` | `Ran 8 tests` — **OK** |
 | `walker-calibrated-admission` | `Ran 30 tests` — **OK** |
 | `walker-parity-admission` | `Ran 49 tests` — **OK** |

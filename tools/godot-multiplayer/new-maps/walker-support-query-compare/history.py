@@ -9,6 +9,7 @@ numbers, and the disagreement is what the comparison exists to report.
 import math
 from pathlib import Path
 
+from . import hook
 from . import seals
 
 HERE = Path(__file__).resolve().parent
@@ -50,6 +51,53 @@ def load_export(root=ROOT):
     return export
 
 
+def _am_frozen_operands(raw, case_id):
+    """The AM fresh guard's own down32 operand tuple, read not retyped.
+
+    This is the *predetermined* operand set the reviewed guard actually issued at
+    the actual final state, so it is the one thing the three observations of this
+    package must all agree with: it comes from the SHA256- and size-pinned export
+    rather than from a local constant, so a re-tuned receipt cannot match it by
+    coincidence.
+
+    ``testOnly`` is absent from a recorded ``log_sweep`` serialization, so it is
+    supplied here as the reviewed default (test-only) rather than read; a genuine
+    ``test_only: false`` in the export is still refused.
+    """
+    if raw.get('testOnly', True) is not True:
+        raise HistoryError('recorded AM guard request is not test-only: ' + case_id)
+    # ``raw`` is a full request/response serialization, so project it down to the
+    # operand constants rather than passing the whole mapping: an operand missing
+    # from the recorded request must be a hard error, not a silent default.
+    missing = [key for key in hook.CONSTANTS
+               if key != 'testOnly' and key not in raw]
+    if missing:
+        raise HistoryError('recorded AM guard request omits frozen operands for ' + case_id
+                           + ': ' + ','.join(missing))
+    operands = {key: (list(raw[key]) if isinstance(raw[key], list) else raw[key])
+                for key in hook.CONSTANTS if key in raw}
+    operands['testOnly'] = True
+    # ``motion`` is derived from the frozen margin, so the anchor's motion is
+    # derived from the *recorded* margin rather than copied from the recorded
+    # motion. The recorded motion is checked against that derivation within
+    # hook.DERIVED_MOTION_EPSILON -- the guard computes it in float32, so it is a
+    # rounding of the derivation, not the derivation itself -- and then the derived
+    # value is what the anchor carries, so the anchor is exact rather than
+    # float32-shaped.
+    recorded_motion = list(operands['motion'])
+    derived_motion = hook.down_motion({'margin': operands['margin']})
+    if any(not hook.near(a, b, hook.DERIVED_MOTION_EPSILON)
+           for a, b in zip(recorded_motion, derived_motion)):
+        raise HistoryError('recorded AM guard motion is not the derived down32 motion for '
+                           + case_id + ': %r vs %r' % (recorded_motion, derived_motion))
+    operands['motion'] = derived_motion
+    try:
+        return hook.frozen_tuple(operands)
+    except hook.HookError as error:
+        raise HistoryError('recorded AM guard operands are not a frozen down32 tuple '
+                           'for %s: %s' % (case_id, error)) from error
+
+
 def reference(case_ids, specs, *, root=ROOT):
     """Historical record per authorized case, keyed by case id.
 
@@ -85,6 +133,7 @@ def reference(case_ids, specs, *, root=ROOT):
             'freshGuardMaxCollisions': raw['maxCollisions'],
             'freshGuardRecoveryAsCollision': raw['recoveryAsCollision'],
             'freshGuardCollideSeparationRay': raw['collideSeparationRay'],
+            'amFrozenOperands': _am_frozen_operands(raw, case_id),
             'freshGuardNormalAngleDegrees': normal['rawDotAngleDegrees'],
             'endpointError': application['endpointError'],
             'epsilon': application['epsilon'],

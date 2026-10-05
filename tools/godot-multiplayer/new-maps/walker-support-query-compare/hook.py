@@ -11,13 +11,26 @@ motion is never substituted for an omitted observation.
 Predetermination, stated precisely. Everything about the down32 request that can
 be known before execution *is* frozen first: motion, margin, max contacts,
 recovery-as-collision, separation-ray, body RID, exclusions and test-only. Those
-constants are fixed in :func:`frozen_operands` before the UP step runs. The one
-field that cannot be predetermined is the pose, because "the actual final state"
-is by definition only known after the candidate response returns; that pose is
-taken verbatim from the guard's own recorded request and is never chosen. The
-validator then proves the guard's request and the duplicate both carry the frozen
-constants unchanged, which is what makes the duplicate a genuine duplicate rather
-than a re-tuned request.
+constants are fixed in :func:`frozen_operands` before the UP step runs, and the
+resulting tuple is written into the prepared source record before execution and
+carried into the receipt. The one field that cannot be predetermined is the pose,
+because "the actual final state" is by definition only known after the candidate
+response returns; that pose is taken verbatim from the guard's own recorded
+request and is never chosen.
+
+That is what makes the duplicate a genuine duplicate rather than a re-tuned
+request, and it is *checked* rather than asserted. The validator holds all three
+executed requests -- the pre-UP one, the guard's own recorded one and the duplicate
+-- against the single recorded frozen-operand tuple: all three must carry exactly it
+on every constant in :data:`CONSTANTS`, and they are compared against each other as
+well. See :func:`operands_unchanged` for that predicate and ``evidence.record`` for
+the check itself, which also anchors the tuple to the SHA256-pinned AM guard request
+so it cannot be re-tuned inside a receipt.
+
+What the check does *not* claim: that the recorded tuple is the one the driver froze.
+That is the prepared source record's job, and the receipt's ``sourceSha256`` is what
+binds the two. What the validator can prove from a self-attested record alone is that
+the three requests agree with each other and with one recorded operand set.
 """
 import math
 
@@ -29,6 +42,43 @@ MAX_CONTACTS = 32
 #: unchanged guard's own request, and the issued duplicate.
 CONSTANTS = ('motion', 'margin', 'maxCollisions', 'recoveryAsCollision',
              'collideSeparationRay', 'bodyRid', 'excludeBodies', 'excludeObjects', 'testOnly')
+#: How each frozen constant is pinned. The three groups together are exactly
+#: ``CONSTANTS``, and each group has its own fail-closed rule; the split matters
+#: because the three kinds of constant have genuinely different provenance.
+#:
+#: * :data:`DESIGN_FROZEN_CONSTANTS` -- fixed by reviewed source (the
+#:   ``sweep_proposal.gd`` operand set, ``response_guard.gd`` LIMIT) and recorded
+#:   in the SHA256-pinned AM guard request. Re-tuning one of these is not a fresh
+#:   measurement of this case, it is a different case.
+#: * :data:`DERIVED_FROZEN_CONSTANTS` -- computed from the frozen margin by
+#:   :func:`down_motion`, so the right test is the derivation rather than equality
+#:   with the engine's float32 round-trip of the same value.
+#: * :data:`RUN_FROZEN_CONSTANTS` -- assigned by the engine for one run and frozen
+#:   into the prepared record before execution. Provenance is the run itself, so
+#:   these are pinned by being identical across the pre-UP request, the guard's
+#:   own request and the duplicate, not by comparison with the AM value.
+DESIGN_FROZEN_CONSTANTS = ('margin', 'maxCollisions', 'recoveryAsCollision',
+                           'collideSeparationRay', 'excludeBodies', 'excludeObjects',
+                           'testOnly')
+DERIVED_FROZEN_CONSTANTS = ('motion',)
+RUN_FROZEN_CONSTANTS = ('bodyRid',)
+
+#: Tolerance for checking a *recorded* engine motion against the derivation.
+#:
+#: The reviewed guard computes ``-UP * (margin + LIMIT)`` in float32, so its
+#: serialized motion is a float32 rounding of the double-precision derivation: the
+#: pinned AM guard request records ``[0, -0.0200999993830919, 0]`` where
+#: ``down_motion(0.0199999995529652)`` gives ``[0, -0.0200999995529652, 0]``, a gap
+#: of 1.6987e-10. The recorded value is therefore not bit-identical to the
+#: derivation and must not be required to be -- what has to hold is the identity
+#: "this motion is the derived motion, to within the guard's own arithmetic", which
+#: is why this tolerance is used for the recorded check and only there.
+#:
+#: 1e-9 is a thousand times a double epsilon (so ordinary float32 rounding of a
+#: 20 mm vector passes) and a million times below any physical difference in this
+#: contract (the guard's own numeric budget for these coordinates is 1e-6 m), so it
+#: cannot absorb a re-tuned margin or motion.
+DERIVED_MOTION_EPSILON = 1e-9
 #: The subset a legacy log_sweep serialization actually carries.
 GUARD_CONSTANTS = ('motion', 'margin', 'maxCollisions', 'recoveryAsCollision',
                    'collideSeparationRay', 'bodyRid', 'excludeBodies', 'excludeObjects')
@@ -165,6 +215,56 @@ def frozen_operands(params, *, body_rid, test_only=True):
             'excludeBodies': [], 'excludeObjects': [], 'testOnly': bool(test_only)}
 
 
+def design_frozen(tuple_or_none):
+    """The design-frozen subset of a recorded frozen-operand tuple, or ``None``.
+
+    ``None`` for anything that is not exactly a frozen-operand tuple, so callers
+    fail closed rather than comparing against a partial mapping.
+    """
+    if not isinstance(tuple_or_none, dict) or set(tuple_or_none) != set(CONSTANTS):
+        return None
+    return {key: tuple_or_none[key] for key in DESIGN_FROZEN_CONSTANTS}
+
+
+def operands_unchanged(frozen, *requests):
+    """Fail closed: every request must carry exactly the frozen operand constants.
+
+    This is the cross-observation proof the duplicate depends on, and it is checked
+    two ways on purpose.
+
+    * against the recorded frozen-operand tuple, on every constant in
+      :data:`CONSTANTS` -- so a re-tuned margin, motion, body RID, flag or exclusion
+      in *any one* of the pre-UP request, the guard's own recorded request or the
+      duplicate is refused even if the other two were re-tuned with it;
+    * against each other, pairwise -- so the three requests are proven equal to one
+      another directly rather than only through the tuple. The two overlap by
+      construction, and the pairwise half is kept anyway: it is the property the
+      package actually relies on (the duplicate is a duplicate of the guard), and
+      deriving it only from a tuple that is itself a recorded field would let a
+      future change that loosens the tuple anchor remove the comparison silently.
+
+    Differences are reported as ``request<i>:<key>`` for the tuple comparison and
+    ``<i>~<j>:<key>`` for the pairwise one, so a refusal names which observation
+    drifted, on which operand, and whether it disagreed with the frozen set or only
+    with another observation.
+
+    What this does *not* claim: that the tuple is the one the driver froze. That is
+    the prepared source record's job, and the record is what the receipt's
+    ``sourceSha256`` binds.
+    """
+    differences = []
+    if not isinstance(frozen, dict) or set(frozen) != set(CONSTANTS):
+        return False, ['frozen_operand_tuple']
+    for index, request in enumerate(requests):
+        equal, found = operand_equal(frozen, request, keys=CONSTANTS)
+        differences.extend('request%d:%s' % (index, key) for key in found)
+    for index, request in enumerate(requests):
+        for other_index in range(index + 1, len(requests)):
+            equal, found = operand_equal(request, requests[other_index], keys=CONSTANTS)
+            differences.extend('%d~%d:%s' % (index, other_index, key) for key in found)
+    return not differences, differences
+
+
 def request_from(name, start, frozen):
     """Bind frozen operand constants to a pose. The pose is supplied, never chosen."""
     if not isinstance(name, str) or not name:
@@ -210,6 +310,40 @@ def omission(ordinal, site, *, reason=OMISSION_REASON, requested_motion=(0.0, 0.
             'qualification': ('Not a result. This observation was removed from the '
                               'executable proposal; it is not evidence of support '
                               'semantics and not a valid support certificate.')}
+
+
+def frozen_tuple(value):
+    """Fail-closed validation of a recorded frozen-operand tuple.
+
+    Requires the exact :data:`CONSTANTS` key set and requires the values to be the
+    ones :func:`frozen_operands` produces for those operands: a positive integer
+    body RID, a margin that yields a nonzero motion, motion equal to the derived
+    :func:`down_motion` value, the reviewed contact cap, the two true flags, empty
+    exclusions and test-only. Nothing is repaired or defaulted; a malformed tuple
+    raises :class:`HookError` rather than being filled in.
+
+    The derived-motion check is exact equality on purpose. The frozen tuple is
+    computed once in Python before execution and serialized; a float64 round-trip
+    through JSON is exact, and the engine's own float32 round-trip is a different
+    question answered by the recorded result, not by the frozen tuple.
+    """
+    if not isinstance(value, dict) or set(value) != set(CONSTANTS):
+        raise HookError('exact frozen operand tuple required')
+    if not integer(value['bodyRid']) or value['bodyRid'] <= 0:
+        raise HookError('positive integer body RID required')
+    if not num(value['margin']) or value['margin'] + LIMIT <= 0:
+        raise HookError('frozen safe margin must yield a nonzero motion')
+    if list(value['motion']) != down_motion({'margin': value['margin']}):
+        raise HookError('frozen motion must be the derived down32 motion')
+    if value['maxCollisions'] != MAX_CONTACTS:
+        raise HookError('frozen max contacts must be the reviewed contact cap')
+    for key in ('recoveryAsCollision', 'collideSeparationRay', 'testOnly'):
+        if value[key] is not True:
+            raise HookError('frozen ' + key + ' must be true')
+    if value['excludeBodies'] != [] or value['excludeObjects'] != []:
+        raise HookError('frozen exclusions must be empty')
+    return {key: (list(value[key]) if isinstance(value[key], list) else value[key])
+            for key in CONSTANTS}
 
 
 def proposal(plan, params, *, body_rid):

@@ -122,6 +122,54 @@ def _observation(row, ordinal, site, issuer, *, require_from=None):
     return True
 
 
+def _frozen_operands(row, historical, observations):
+    """The cross-observation proof the duplicate's honesty rests on.
+
+    Three independent checks, each of which must pass:
+
+    1. the record carries exactly one well-formed frozen-operand tuple
+       (:func:`hook.frozen_tuple`);
+    2. that tuple is anchored: its design-frozen constants equal the SHA256-pinned AM
+       guard's, and its body RID equals the RID in the record's own AM binding --
+       so the tuple cannot be re-tuned inside the receipt;
+    3. all three executed requests carry exactly that tuple, and agree with each other
+       pairwise (:func:`hook.operands_unchanged`, which checks both, so the guarantee
+       does not rest on the tuple anchor alone).
+
+    Without (2) and (3) a receipt could re-tune any one of the six forged constants
+    the independent review demonstrated -- or all of them at once, consistently -- and
+    still validate, because each observation is otherwise self-consistent in
+    isolation. Any mismatch fails closed.
+    """
+    if not isinstance(historical, dict):
+        return False
+    try:
+        frozen = hook.frozen_tuple(row['frozenOperands'])
+    except (hook.HookError, KeyError, TypeError):
+        return False
+    approved = historical.get('amFrozenOperands')
+    if hook.design_frozen(approved) is None:
+        return False
+    equal, _ = hook.operand_equal(approved, frozen, keys=hook.DESIGN_FROZEN_CONSTANTS)
+    if not equal:
+        return False
+    # The record's own history binding must carry the same AM tuple the validator
+    # was handed, so a receipt cannot substitute one approved set for another.
+    bound = row['history'].get('amFrozenOperands') if isinstance(row.get('history'), dict) else None
+    if hook.design_frozen(bound) is None:
+        return False
+    equal, _ = hook.operand_equal(approved, bound, keys=hook.CONSTANTS)
+    if not equal:
+        return False
+    # ``bodyRid`` is the body under test, not the support RID, so it is anchored by
+    # the AM binding too rather than left free.
+    if bound['bodyRid'] != frozen['bodyRid']:
+        return False
+    requests = tuple(observation['request'] for observation in observations)
+    equal, _ = hook.operands_unchanged(frozen, *requests)
+    return equal
+
+
 def _omission(row, ordinal, site):
     if not isinstance(row, dict) or set(row) != policy.OMISSION_KEYS:
         return False
@@ -247,6 +295,8 @@ def record(row, case_id, spec, historical):
                             'bounded_observer',
                             require_from=observations[1]['request']['from']['origin']):
             return False
+        if not _frozen_operands(row, historical, observations):
+            return False
         equality = row['queryStateEquality']
         if not isinstance(equality, list) or len(equality) != policy.EXECUTED_OBSERVATIONS:
             return False
@@ -279,6 +329,12 @@ def record(row, case_id, spec, historical):
             return False
         if history_row['amCaseIndex'] != historical['amCaseIndex'] or \
                 history_row['amFrame'] != historical['amFrame']:
+            return False
+        # The recorded AM binding must be exactly the approved table's entry, so a
+        # receipt cannot swap one case's frozen operands in for another's.
+        equal, _ = hook.operand_equal(historical['amFrozenOperands'],
+                                      history_row.get('amFrozenOperands'), keys=hook.CONSTANTS)
+        if not equal:
             return False
         if history_row['preUpPredictedEndpointRecordedInAM'] is not False:
             return False
@@ -360,6 +416,14 @@ def receipt(value, *, source_hash, grant_hash, engine_hash, historical):
                 return False
         if value['physicalCallCounts'] is not None:
             return False
+        frozen_table = value['frozenOperands']
+        if not isinstance(frozen_table, dict) or set(frozen_table) != set(policy.CASES):
+            return False
+        for row in value['records'] if isinstance(value['records'], list) else []:
+            case_id = row.get('caseId') if isinstance(row, dict) else None
+            if case_id in frozen_table and \
+                    not hook.operand_equal(frozen_table[case_id], row.get('frozenOperands'))[0]:
+                return False
         readiness = value['nativeReadiness']
         if not isinstance(readiness, dict) or set(readiness) != {'ready', 'blockingReasons'}:
             return False

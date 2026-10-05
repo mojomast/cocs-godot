@@ -166,6 +166,19 @@ class BoundedDriver:
         # frozen duplicate constants -- is built here, before any execution.
         predetermined = hook.proposal(plan, self.params, body_rid=self.params['bodyRid'])
         self.frozen = predetermined['frozenOperands']
+        # The AM guard's own recorded operands are the anchor for the frozen tuple.
+        # Checking here, before anything executes, means a re-tuned profile is
+        # refused rather than measured against a history it no longer matches.
+        frozen_from_history = self.historical.get('amFrozenOperands')
+        if not isinstance(frozen_from_history, dict):
+            raise BoundedContractError('historical record must bind the AM frozen operands')
+        compared = hook.DESIGN_FROZEN_CONSTANTS + hook.DERIVED_FROZEN_CONSTANTS
+        equal, differences = hook.operand_equal(frozen_from_history, self.frozen, keys=compared)
+        if not equal:
+            raise BoundedContractError('the live plan\'s frozen down32 operands differ from '
+                                        'the recorded AM operands at: ' + ','.join(differences))
+        _require(hook.integer(self.frozen['bodyRid']) and self.frozen['bodyRid'] > 0,
+                 'the frozen body RID must be a positive integer')
         horizontal_error = math.hypot(
             plan['expectedFinal'][0] - predetermined['predictedEndpoint'][0],
             plan['expectedFinal'][2] - predetermined['predictedEndpoint'][2])
@@ -311,11 +324,13 @@ class BoundedDriver:
                                            'is compared against the actual final position'),
             },
             'observations': list(self.observations),
+            'frozenOperands': dict(self.frozen),
             'omissions': list(predetermined['omissions']),
             'queryStateEquality': list(self.query_state),
             'guard': guard,
             'history': {'amCaseIndex': self.historical['amCaseIndex'],
                         'amFrame': self.historical['amFrame'],
+                        'amFrozenOperands': dict(self.historical['amFrozenOperands']),
                         'agreesWithHistory': agrees,
                         'historicalGuardReason': self.historical['guardReason'],
                         'historicalFreshGuardNormalAngleDegrees':

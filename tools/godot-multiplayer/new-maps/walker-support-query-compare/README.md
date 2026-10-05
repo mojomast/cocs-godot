@@ -56,9 +56,51 @@ motion, margin, max contacts, recovery-as-collision, separation-ray, body RID,
 exclusions, test-only. The one field that cannot be predetermined is the pose —
 "the actual final state" is by definition known only after the candidate response
 returns — so it is taken verbatim from the guard's own recorded request and never
-chosen. The validator then proves both the guard's request and the duplicate
-carry the frozen constants unchanged, which is what makes the duplicate a genuine
-duplicate rather than a re-tuned request.
+chosen.
+
+The frozen constants are recorded as one explicit tuple, and the validator checks
+all three executed requests against it:
+
+| Where | What |
+|---|---|
+| `history.reference` → `amFrozenOperands` | the AM guard's own operand tuple, read from the SHA256-pinned export (per case) |
+| `prepare.contract` → `proposal.frozenOperandsByCase` | the same per-case table, sealed in the prepared record **before** execution |
+| `driver._record` → `frozenOperands` | the tuple the driver actually froze for that case |
+| `campaign.compose` → `frozenOperands` | the same tuple, per case, carried into the receipt |
+
+`evidence._frozen_operands` then requires all three of:
+
+1. the recorded tuple is well formed (`hook.frozen_tuple`: exact `CONSTANTS` key
+   set, positive integer RID, margin that yields a nonzero motion, motion equal to
+   the *derived* `-UP * (margin + LIMIT)`, 32 contacts, the two true flags, empty
+   exclusions, test-only);
+2. it is **anchored** — its design-frozen constants equal the pinned AM guard's, and
+   its body RID equals the RID in the record's own AM binding, so the tuple cannot
+   be re-tuned inside a receipt;
+3. the pre-UP request, the guard's own recorded request and the duplicate request
+   each carry exactly that tuple on every constant, **and** agree with each other
+   pairwise (`hook.operands_unchanged`, which checks both).
+
+Which constant is pinned how is enumerated rather than implied — the three groups
+partition `CONSTANTS` exactly (`hook.DESIGN_FROZEN_CONSTANTS`,
+`hook.DERIVED_FROZEN_CONSTANTS`, `hook.RUN_FROZEN_CONSTANTS`):
+
+| Group | Constants | Provenance |
+|---|---|---|
+| design-frozen | margin, max collisions, recovery-as-collision, separation-ray, exclusions, test-only | reviewed `sweep_proposal.gd` / `response_guard.gd`, recorded in the pinned AM request |
+| derived | motion | computed from the frozen margin; the AM request records a float32 rounding of it, so the anchor derives rather than copies |
+| run-frozen | body RID | assigned by the engine for one run, so it is pinned by being identical across all three requests rather than by comparison with the AM value |
+
+`tests` reproduce the independent review's six re-tunings (guard margin, guard
+motion, guard bodyRid, duplicate margin, duplicate bodyRid, pre-UP bodyRid) as
+negative cases with `recordsSha256` **re-derived by the forger**, so only a
+structural predicate can refuse; all six are refused, as is a *consistent* re-tune
+of all three requests plus the recorded tuple plus the receipt table.
+
+What the check does not claim: that the recorded tuple is the one the driver froze.
+That is the prepared source record's job, and the receipt's `sourceSha256` binds the
+two. From a self-attested record alone the validator proves that the three requests
+agree with each other and with one operand set anchored to the pinned AM history.
 
 ### Guard outcomes are preserved and history is reported, never enforced
 
@@ -96,6 +138,9 @@ failure the campaign exists to re-observe.
   campaign cannot run. It is a written refusal, not a dry run and not a stub. The
   `{engine}` and `{fixture}` argv slots stay literal placeholders because
   resolving either would imply a stage exists.
+* **The blocker list is pinned.** `NATIVE_READINESS_BLOCKERS` is asserted against
+  six literals in the suite, not only against itself, so softening or blanking an
+  entry fails.
 * **No GDScript staging.** The bounded driver and hook exist as offline Python.
   `prepare.build` refuses to place a record anywhere under `godot/`.
 * **AM stays failed.** Whole calibrated positive admission remains FAIL; the
@@ -116,7 +161,7 @@ failure the campaign exists to re-observe.
 | `driver.py` | bounded driver state machine and the `LiveMeasurement` boundary |
 | `evidence.py` | fail-closed receipt validator |
 | `campaign.py` | receipt composition |
-| `history.py` | frozen AM reference derived from the approved diagnosis export |
+| `history.py` | frozen AM reference and the derived per-case frozen-operand anchor |
 | `prepare.py` | write-once offline source record, seal manifest, validation |
 | `supervisor.py` | source-only supervisor that records a refusal |
 | `invocation.py` | AST audit proving no engine-invocation path exists |
@@ -131,15 +176,17 @@ python3 -B -m unittest discover \
   -s tools/godot-multiplayer/new-maps/walker-support-query-compare -p 'test_*.py'
 ```
 
-**78 offline tests pass.** No native execution. The suite covers: the case set is
+**91 offline tests pass.** No native execution. The suite covers: the case set is
 exactly two; zero-motion requests are omitted with no epsilon substitution;
 observation ordering including the pre-UP predicted-endpoint request, one
 candidate response plus guard, the post-hoc actual-endpoint duplicate and the
-stop; guard result and fault preservation and reported divergence; seals and the
-validator rejecting tampering and unexpected outcomes; that no third case, second
-candidate response, later eligible transition or post-stop movement is reachable;
-and that the package never claims cache neutrality, backend verification or a
-verdict on a support normal.
+stop; the frozen down32 operand tuple being recorded, anchored to the pinned AM
+history and proven unchanged across all three requests; guard result and fault
+preservation and reported divergence; seals and the validator rejecting tampering
+and unexpected outcomes; the native-readiness blocker list being pinned verbatim;
+that no third case, second candidate response, later eligible transition or
+post-stop movement is reachable; and that the package never claims cache
+neutrality, backend verification or a verdict on a support normal.
 
 Optional CLI exercise (offline; writes a record and a refusal, still no engine):
 

@@ -39,7 +39,7 @@ RECEIPT_KEYS = {'phase', 'mode', 'group', 'scope', 'sourceSha256', 'grantSha256'
                 'caseCount', 'executableObservationCount', 'omittedObservationCount',
                 'candidateResponseBudget', 'exactZeroMotionOmitted', 'zeroMotionRequestsExecuted',
                 'epsilonSubstitutionUsed', 'unexpectedChangedOutcomes',
-                'guardOutcomesAgreeWithHistory', 'recordsSha256',
+                'guardOutcomesAgreeWithHistory', 'frozenOperands', 'recordsSha256',
                 'operationalNeutralityProven', 'hiddenStateUnaffectedProven',
                 'queryStateEqualityProvesCacheNeutrality', 'backendImplementationVerified',
                 'parentInternalCallsTraced', 'physicalCallCounts', 'nativeReadiness', 'records'}
@@ -48,7 +48,7 @@ RECORD_KEYS = {'caseIndex', 'caseId', 'spec', 'status', 'firstEligibleTransition
                'queryStateEquality', 'candidateResponses', 'appliedUpCount', 'parentResponseCount',
                'guard', 'history', 'unexpectedOutcome', 'subsequentMovementResponses', 'retries',
                'normalSelections', 'acceptanceSubstitutions', 'stoppedAfterDuplicateObservation',
-               'subsequentMovementPossible'}
+               'subsequentMovementPossible', 'frozenOperands'}
 OBSERVATION_KEYS = {'ordinal', 'site', 'issuedBy', 'request', 'result', 'bodyStateBefore',
                     'bodyStateAfter', 'queryStateEqual', 'recordedBeforeUpStep',
                     'issuedAfterUpStep', 'qualification'}

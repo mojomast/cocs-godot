@@ -281,6 +281,362 @@ class ObservationOrderingTests(unittest.TestCase):
                 fixtures.FakeLive(case_id, misbehave='state_mutated_by_query'))
 
 
+class FrozenOperandTests(unittest.TestCase):
+    """The frozen down32 operand tuple is recorded, anchored and cross-checked.
+
+    Condition C1 of the independent review: the claim that the validator proves the
+    guard's request and the duplicate both carry the frozen constants unchanged was
+    false, because ``evidence.record`` validated each observation in isolation and
+    the receipt carried no frozen-operand tuple to compare against. These tests
+    close that gap on both sides of it:
+
+    * the six re-tunings the reviewer's forger demonstrated are reproduced here as
+      negative cases and every one must be refused, with ``recordsSha256``
+      **re-derived by the forger** so only a structural predicate can refuse. That is
+      what separates a real cross-observation check from a digest-masked test.
+    * the driver refuses a re-tuned guard request on the live side of the boundary,
+      before any observation is recorded.
+    """
+
+    def forge(self, change):
+        """Edit a receipt and re-derive its digest, as an attacker would.
+
+        ``ReceiptValidatorTests.mutate`` leaves the digest stale, so a refusal it
+        observes may be the digest rather than the predicate under test. Re-deriving
+        it here is what forces the cross-observation predicates to act on their own.
+        """
+        receipt = copy.deepcopy(run_campaign())
+        change(receipt)
+        # Re-derived by the attacker's own code, so the digest can never be what
+        # refuses: only a structural predicate can.
+        receipt['recordsSha256'] = evidence.records_digest(receipt['records'])
+        return receipt
+
+    def refuses(self, receipt):
+        reference = historical()
+        self.assertFalse(evidence.receipt(receipt, source_hash=SOURCE_HASH,
+                                          grant_hash=GRANT_HASH, engine_hash=policy.ENGINE,
+                                          historical=reference))
+
+    def retune(self, request, **changes):
+        """Re-tune a recorded request's operands, keeping motion and margin consistent.
+
+        A self-consistent re-tune is the hard case: every per-observation predicate
+        still passes, because ``motion[1] == -(margin + LIMIT)`` holds and the
+        result still mirrors its own request. Only a cross-observation check
+        against the frozen tuple can catch it.
+        """
+        if 'margin' in changes:
+            request['margin'] = changes['margin']
+            request['motion'] = [0.0, -(changes['margin'] + hook.LIMIT), 0.0]
+        if 'motion' in changes:
+            request['motion'] = changes['motion']
+        if 'bodyRid' in changes:
+            request['bodyRid'] = changes['bodyRid']
+
+    def test_the_unaltered_receipt_carries_one_frozen_tuple_shared_by_all_three_requests(self):
+        receipt = run_campaign()
+        reference = historical()
+        self.assertEqual(set(receipt['frozenOperands']), set(policy.CASES))
+        for row in receipt['records']:
+            frozen = row['frozenOperands']
+            # The tuple is well formed, complete and exactly the operand key set.
+            self.assertEqual(set(frozen), set(hook.CONSTANTS))
+            self.assertEqual(hook.frozen_tuple(frozen), frozen)
+            # It is the AM guard's own recorded tuple, not a local retyping.
+            approved = reference['cases'][row['caseId']]['amFrozenOperands']
+            self.assertTrue(hook.operand_equal(approved, frozen)[0])
+            self.assertEqual(row['history']['amFrozenOperands'], approved)
+            self.assertEqual(receipt['frozenOperands'][row['caseId']], frozen)
+            # All three executed requests carry exactly it, and are proven equal to
+            # one another pairwise as well as through the tuple anchor.
+            equal, differences = hook.operands_unchanged(
+                frozen, *[o['request'] for o in row['observations']])
+            self.assertTrue(equal, differences)
+            # The recorded margin is the reviewed float32-sourced one, and motion
+            # is its derivation rather than a re-derived or rounded value.
+            self.assertEqual(frozen['margin'], 0.0199999995529652)
+            self.assertEqual(frozen['motion'], [0.0, -0.0200999995529652, 0.0])
+            self.assertEqual(frozen['maxCollisions'], 32)
+            self.assertGreater(frozen['bodyRid'], 0)
+
+    def test_the_reviewers_six_constant_retunings_are_all_refused(self):
+        # Exactly the six forgeries the independent reviewer's model accepted, with
+        # the digest re-derived each time.
+        def guard_margin(receipt):
+            self.retune(receipt['records'][0]['observations'][1]['request'], margin=0.0150)
+        self.refuses(self.forge(guard_margin))
+        def guard_motion(receipt):
+            self.retune(receipt['records'][0]['observations'][1]['request'],
+                        motion=[0.0, -0.0400, 0.0])
+        self.refuses(self.forge(guard_motion))
+        def guard_rid(receipt):
+            self.retune(receipt['records'][0]['observations'][1]['request'], bodyRid=999000111)
+        self.refuses(self.forge(guard_rid))
+        def duplicate_margin(receipt):
+            self.retune(receipt['records'][0]['observations'][2]['request'], margin=0.0150)
+        self.refuses(self.forge(duplicate_margin))
+        def duplicate_rid(receipt):
+            self.retune(receipt['records'][0]['observations'][2]['request'], bodyRid=999000111)
+        self.refuses(self.forge(duplicate_rid))
+        def pre_up_rid(receipt):
+            self.retune(receipt['records'][0]['observations'][0]['request'], bodyRid=999000111)
+        self.refuses(self.forge(pre_up_rid))
+
+    def test_retuning_all_three_requests_together_is_still_refused(self):
+        # The stronger forgery: re-tune the pre-UP, guard and duplicate requests
+        # *consistently*, so the three agree with each other and with each own
+        # result. The recorded tuple is re-tuned to match, and the receipt's
+        # per-case table is updated too. Only the SHA256-pinned AM anchor can catch
+        # this, which is exactly why the tuple is anchored rather than merely
+        # recorded.
+        def consistent(receipt):
+            row = receipt['records'][0]
+            for observation in row['observations']:
+                self.retune(observation['request'], margin=0.0150)
+            self.retune(row['frozenOperands'], margin=0.0150)
+            receipt['frozenOperands'][row['caseId']] = copy.deepcopy(row['frozenOperands'])
+        receipt = self.forge(consistent)
+        self.refuses(receipt)
+        # And even re-tuning the recorded AM binding cannot help: the validator is
+        # handed the real one, and the receipt's copy must equal it.
+        receipt = self.forge(consistent)
+        self.retune(receipt['records'][0]['history']['amFrozenOperands'], margin=0.0150)
+        receipt['recordsSha256'] = evidence.records_digest(receipt['records'])
+        self.refuses(receipt)
+
+    def test_other_frozen_constants_are_covered_too_not_just_margin_and_rid(self):
+        for change, expected in ((lambda r: r['records'][0]['observations'][1]['request']
+                                  .__setitem__('maxCollisions', 16), 'maxCollisions'),
+                                 (lambda r: r['records'][0]['observations'][1]['request']
+                                  .__setitem__('recoveryAsCollision', False),
+                                  'recoveryAsCollision'),
+                                 (lambda r: r['records'][0]['observations'][1]['request']
+                                  .__setitem__('collideSeparationRay', False),
+                                  'collideSeparationRay'),
+                                 (lambda r: r['records'][0]['observations'][1]['request']
+                                  .__setitem__('excludeBodies', [1]), 'excludeBodies'),
+                                 (lambda r: r['records'][0]['observations'][1]['request']
+                                  .__setitem__('testOnly', False), 'testOnly')):
+            self.refuses(self.forge(change))
+            # The named constant is what the check reports, so the refusal is the
+            # cross-observation predicate and not an incidental schema failure.
+            row = self.forge(change)['records'][0]
+            frozen = row['frozenOperands']
+            differences = hook.operands_unchanged(
+                frozen, *[o['request'] for o in row['observations']])[1]
+            self.assertTrue(any(expected in entry for entry in differences), differences)
+
+    def test_a_re_tuned_or_malformed_frozen_tuple_is_refused(self):
+        for change in (lambda r: r['records'][0].__setitem__('frozenOperands', {}),
+                       lambda r: r['records'][0]['frozenOperands'].__setitem__('bodyRid', -1),
+                       lambda r: r['records'][0]['frozenOperands'].__setitem__('bodyRid', 1.5),
+                       lambda r: r['records'][0]['frozenOperands'].__setitem__('margin', -0.02),
+                       lambda r: r['records'][0]['frozenOperands'].__setitem__(
+                           'motion', [0.0, -0.0400, 0.0]),
+                       lambda r: r['records'][0]['frozenOperands'].pop('bodyRid'),
+                       lambda r: r['records'][0]['frozenOperands'].__setitem__(
+                           'maxCollisions', 16),
+                       lambda r: r['records'][0]['frozenOperands'].__setitem__(
+                           'excludeObjects', [3])):
+            self.refuses(self.forge(change))
+        # Dropping the receipt-level table, or making it disagree with a record, is
+        # refused as well: the table is carried, never independently invented.
+        self.refuses(self.forge(lambda r: r.__setitem__('frozenOperands', {})))
+        self.refuses(self.forge(lambda r: r.__setitem__(
+            'frozenOperands', {case: dict(row['frozenOperands'], bodyRid=999000111)
+                               for case, row in zip(policy.CASES, r['records'])})))
+        self.refuses(self.forge(lambda r: r.pop('frozenOperands')))
+        self.refuses(self.forge(lambda r: r.__setitem__('frozenOperands', [])))
+        self.refuses(self.forge(lambda r: r['records'][0].pop('frozenOperands')))
+        self.refuses(self.forge(lambda r: r['records'][0].pop('history')
+                                ['amFrozenOperands']))
+
+    def test_a_case_cannot_borrow_the_other_cases_frozen_operands(self):
+        receipt = self.forge(lambda r: r['records'][0].__setitem__(
+            'frozenOperands', copy.deepcopy(r['records'][1]['frozenOperands'])))
+        self.refuses(receipt)
+        # Swapping the whole history entry, AM frame and all, is still refused.
+        receipt = self.forge(lambda r: r['records'][0].__setitem__(
+            'history', copy.deepcopy(r['records'][1]['history'])))
+        receipt['recordsSha256'] = evidence.records_digest(receipt['records'])
+        self.refuses(receipt)
+
+    def test_the_driver_refuses_a_re_tuned_guard_request_on_the_live_side(self):
+        # The same six-class forgery, but delivered by the engine instead of forged
+        # into the receipt afterwards. The driver must refuse it before the duplicate
+        # is ever issued, so no record exists that the validator would ever accept.
+        reference = historical()
+        case_id = policy.CASES[1]
+        for behaviour in ('guard_request_margin_retuned', 'guard_request_body_rid_retuned'):
+            live = fixtures.FakeLive(case_id, misbehave=behaviour)
+            with self.assertRaises(driver.BoundedContractError):
+                driver.BoundedDriver(case_id, params=params(case_id),
+                                     historical=reference['cases'][case_id]).run_case(live)
+            # The re-tune is caught on the guard's own request, before the duplicate
+            # is issued, so no record exists that the validator could ever accept.
+            self.assertEqual(live.orders(), ['test_motion:' + hook.PRE_UP_NAME,
+                                             'candidate_response'])
+            self.assertEqual(live.candidate_calls, 1)
+
+    def test_the_driver_refuses_a_live_plan_whose_frozen_operands_were_re_tuned(self):
+        # The same anchor on the driver side: a margin that is not the recorded one
+        # is a different case, not a fresh measurement of this one, and is refused
+        # before anything executes.
+        reference = historical()
+        case_id = policy.CASES[0]
+        approved_rid = reference['cases'][case_id]['amFrozenOperands']['bodyRid']
+        # A re-tuned margin or motion is caught against the recorded AM tuple before
+        # anything executes at all -- not one observation is issued.
+        for retuned in ({'margin': 0.015, 'bodyRid': approved_rid},
+                        {'margin': 0.02, 'bodyRid': approved_rid},
+                        {'margin': 0.015, 'bodyRid': 999000111}):
+            live = fixtures.FakeLive(case_id)
+            with self.assertRaises(driver.BoundedContractError):
+                driver.BoundedDriver(case_id, params=dict(retuned),
+                                     historical=reference['cases'][case_id]).run_case(live)
+            self.assertEqual(live.orders(), [])
+        # ``bodyRid`` is deliberately not design-frozen (it is assigned per run), so
+        # a re-tuned RID is caught by the guard-request comparison instead -- still
+        # before the duplicate is issued, and still leaving no record behind.
+        live = fixtures.FakeLive(case_id)
+        with self.assertRaises(driver.BoundedContractError):
+            driver.BoundedDriver(case_id, params={'margin': 0.0199999995529652,
+                                                  'bodyRid': 999000111},
+                                 historical=reference['cases'][case_id]).run_case(live)
+        self.assertEqual(live.orders(), ['test_motion:' + hook.PRE_UP_NAME,
+                                         'candidate_response'])
+
+    def test_the_frozen_tuple_is_recorded_in_the_prepared_source_record(self):
+        # The tuple has to exist before execution too, not only in the receipt: the
+        # prepared record is what a future native staging would bind its driver to.
+        contract = prepare.contract('support-query-compare-review-only')
+        table = contract['proposal']['frozenOperandsByCase']
+        self.assertEqual(set(table), set(policy.CASES))
+        reference = historical()
+        for case_id, operands in table.items():
+            self.assertEqual(operands, reference['cases'][case_id]['amFrozenOperands'])
+            self.assertEqual(set(operands), set(hook.CONSTANTS))
+        # The shape placeholder still records the operand *set*, and the real
+        # per-case RIDs are no longer a placeholder of 1.
+        self.assertEqual(contract['proposal']['frozenConstants']['bodyRid'], 1)
+        self.assertNotEqual(table[policy.CASES[0]]['bodyRid'], 1)
+        self.assertNotEqual(table[policy.CASES[1]]['bodyRid'], 1)
+        self.assertEqual(table[policy.CASES[0]]['bodyRid'], 154618822659)
+        self.assertEqual(table[policy.CASES[1]]['bodyRid'], 274877906947)
+
+    def test_the_predicates_are_reported_individually_and_never_repair(self):
+        frozen = hook.frozen_operands({'margin': 0.02}, body_rid=7)
+        good = hook.request_from('n', {'origin': [0.0, 0.0, 0.0],
+                                       'basis': [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0],
+                                                 [0.0, 0.0, 1.0]]}, frozen)
+        frozen_0 = hook.frozen_operands({'margin': 0.02}, body_rid=7)
+        self.assertEqual(hook.operands_unchanged(frozen_0, good), (True, []))
+        self.assertEqual(hook.operands_unchanged(frozen_0, good, good, good), (True, []))
+        # A malformed tuple is refused, never defaulted or repaired.
+        for bad in ({}, dict(frozen, bodyRid=0), dict(frozen, bodyRid=1.5),
+                    dict(frozen, margin=-0.02), dict(frozen, motion=[0.0, -0.04, 0.0]),
+                    dict(frozen, maxCollisions=16), dict(frozen, testOnly=False),
+                    dict(frozen, excludeBodies=[1]), None, 'frozen'):
+            with self.assertRaises(hook.HookError):
+                hook.frozen_tuple(bad)
+        with self.assertRaises(hook.HookError):
+            hook.frozen_tuple(dict(frozen, extra=1))
+        # A non-mapping frozen tuple is refused by the comparison too.
+        self.assertEqual(hook.operands_unchanged(None, good)[0], False)
+        self.assertEqual(hook.operands_unchanged(None, good)[1], ['frozen_operand_tuple'])
+        self.assertEqual(hook.operands_unchanged({}, good)[0], False)
+        # Differences name the request index and the key.
+        other = hook.request_from('n', {'origin': [0.0, 0.0, 0.0],
+                                        'basis': [[1.0, 0.0, 0.0], [0.0, 1.0, 0.0],
+                                                  [0.0, 0.0, 1.0]]},
+                                  hook.frozen_operands({'margin': 0.03}, body_rid=9))
+        equal, differences = hook.operands_unchanged(frozen, good, other)
+        self.assertFalse(equal)
+        self.assertIn('request1:motion', differences)
+        self.assertIn('request1:margin', differences)
+        self.assertIn('request1:bodyRid', differences)
+        # The pairwise half reports the disagreement as well, so a refusal names both
+        # "differs from the frozen set" and "differs from another observation".
+        equal, differences = hook.operands_unchanged(frozen, good, other)
+        self.assertFalse(equal)
+        self.assertIn('0~1:motion', differences)
+        self.assertIn('0~1:margin', differences)
+        self.assertIn('0~1:bodyRid', differences)
+        # The pairwise half is redundant with the tuple half by construction (two
+        # requests that both equal the tuple necessarily equal each other). It is
+        # kept as defense in depth, so the redundancy is asserted rather than left
+        # implicit: if a future change ever makes the tuple comparison weaker, this
+        # test fails instead of the guarantee quietly narrowing.
+        for triple in ((good, good, good), (good, good), (good,)):
+            with_tuple, with_differences = hook.operands_unchanged(frozen_0, *triple)
+            self.assertEqual(with_tuple, True, with_differences)
+            self.assertEqual(with_differences, [])
+        # Every pairwise disagreement is accompanied by a tuple disagreement and
+        # vice versa, for any single-key drift: that is the redundancy, measured.
+        for field, value in (('margin', 0.03), ('bodyRid', 9), ('maxCollisions', 16),
+                             ('recoveryAsCollision', False), ('testOnly', False)):
+            drifted = copy.deepcopy(good)
+            if field == 'margin':
+                self.retune(drifted, margin=value)
+            else:
+                drifted[field] = value
+            equal, differences = hook.operands_unchanged(frozen, drifted, copy.deepcopy(drifted))
+            self.assertFalse(equal)
+            self.assertIn('request0:' + field if field != 'margin' else 'request0:margin',
+                          differences)
+            # Two requests that agree with each other but not with the tuple: the
+            # tuple half fires, the pairwise half correctly does not. That is the
+            # asymmetry the tuple anchor exists to cover.
+            equal, differences = hook.operands_unchanged(frozen, drifted, drifted)
+            self.assertFalse(equal)
+            self.assertTrue(any(e.startswith('request') for e in differences))
+            self.assertFalse(any(e.startswith('0~1:') for e in differences), differences)
+
+    def test_the_operand_groups_partition_the_constants_and_say_what_they_pin(self):
+        # How each constant is pinned is documented, exhaustive and non-overlapping,
+        # so a future constant cannot be silently left unpinned.
+        self.assertEqual(set(hook.DESIGN_FROZEN_CONSTANTS)
+                         | set(hook.DERIVED_FROZEN_CONSTANTS)
+                         | set(hook.RUN_FROZEN_CONSTANTS), set(hook.CONSTANTS))
+        self.assertEqual(len(set(hook.DESIGN_FROZEN_CONSTANTS)
+                             | set(hook.DERIVED_FROZEN_CONSTANTS)
+                             | set(hook.RUN_FROZEN_CONSTANTS)), len(hook.CONSTANTS))
+        self.assertEqual(hook.DERIVED_FROZEN_CONSTANTS, ('motion',))
+        self.assertEqual(hook.RUN_FROZEN_CONSTANTS, ('bodyRid',))
+        self.assertIn('bodyRid', hook.RUN_FROZEN_CONSTANTS)
+        self.assertNotIn('bodyRid', hook.DESIGN_FROZEN_CONSTANTS)
+        self.assertNotIn('motion', hook.DESIGN_FROZEN_CONSTANTS)
+        # ``bodyRid`` is deliberately *not* design-frozen: a RID is assigned by the
+        # engine for one run, so it is anchored by being identical across the three
+        # requests rather than by comparison with the AM value.
+        self.assertIs(hook.design_frozen(
+            {'bodyRid': 1, 'margin': 0.02, 'maxCollisions': 32, 'recoveryAsCollision': True,
+             'collideSeparationRay': True, 'excludeBodies': [], 'excludeObjects': [],
+             'testOnly': True, 'motion': [0.0, -0.0201, 0.0]})['margin'], 0.02)
+        self.assertIsNone(hook.design_frozen({'bodyRid': 1}))
+        self.assertIsNone(hook.design_frozen(None))
+
+    def test_the_recorded_am_motion_is_the_derivation_not_a_rounding(self):
+        # The AM export serializes the motion the guard computed in float32, which is
+        # a rounding of ``-UP * (margin + LIMIT)`` rather than the double-precision
+        # derivation. The anchor therefore derives motion from the recorded margin and
+        # checks the recorded motion against it, so the anchor is exact.
+        export = history.load_export(prepare.ROOT)
+        for application in export['applications']:
+            if math.degrees(application['spec']['yaw']) > 0:
+                continue
+            raw = application['queries'][-1]['rawRequestResponse']
+            derived = hook.down_motion({'margin': raw['margin']})
+            self.assertNotEqual(list(raw['motion']), derived)
+            self.assertLess(abs(raw['motion'][1] - derived[1]), hook.DERIVED_MOTION_EPSILON)
+            self.assertGreater(abs(raw['motion'][1] - derived[1]), hook.OPERAND_EPSILON)
+        # And the derived tolerance is far below the guard's own numeric budget, so
+        # it cannot absorb a re-tuned motion.
+        self.assertLess(hook.DERIVED_MOTION_EPSILON, hook.LIMIT)
+        self.assertGreater(hook.DERIVED_MOTION_EPSILON, hook.OPERAND_EPSILON)
+
+
 class GuardPreservationTests(unittest.TestCase):
     """The guard's result and fault stay intact; history is reported, not enforced."""
 
@@ -1025,6 +1381,50 @@ class QualificationTests(unittest.TestCase):
         self.assertNotIn('floor_angle', inspect.signature(evidence.record).parameters)
         self.assertNotIn('floor_angle', inspect.signature(evidence.receipt).parameters)
         self.assertIn('does not judge it', evidence._observation.__doc__)
+        # The claim that the validator proves the three requests carry the frozen
+        # constants unchanged is true only because these three calls exist. A
+        # refactor that drops one of them must fail a test, since the validator's
+        # other anchors would then carry the whole forgery load on their own.
+        # ``co_names`` records ``hook`` and each attribute separately, so these are
+        # the three calls the cross-observation proof is made of.
+        calls = evidence._frozen_operands.__code__.co_names
+        self.assertIn('hook', calls)
+        for required in ('frozen_tuple', 'operands_unchanged', 'operand_equal',
+                         'DESIGN_FROZEN_CONSTANTS'):
+            self.assertIn(required, calls)
+        self.assertIn('carry exactly that tuple', evidence._frozen_operands.__doc__)
+
+    def test_the_native_readiness_blockers_are_pinned_verbatim(self):
+        # Pinned as six literals, not compared against policy.NATIVE_READINESS_BLOCKERS
+        # itself: comparing a value against itself moves both sides together, so
+        # blanking or softening an entry would otherwise fail nothing. A reviewer
+        # discharging a blocker must edit this list in the same commit as the policy,
+        # which is what makes the edit visible.
+        self.assertEqual(list(policy.NATIVE_READINESS_BLOCKERS), [
+            'no independent source review of this package',
+            'no heavy grant exists for phase support-query-compare-v1',
+            'no GDScript staging is implemented; the bounded driver and hook exist only '
+            'as offline Python',
+            'no engine-invocation path exists in this source package by design',
+            'zero-motion support semantics remain undefined; those two observations stay '
+            'omitted',
+            'AM whole positive admission remains failed and .42/.18/+45 remains unrun',
+        ])
+        self.assertEqual(len(policy.NATIVE_READINESS_BLOCKERS), 6)
+        # Every entry must be a non-empty string, and no entry may be softened to a
+        # vacuous one ("ready", "n/a", "" or a bare ".").
+        for entry in policy.NATIVE_READINESS_BLOCKERS:
+            self.assertIsInstance(entry, str)
+            self.assertGreaterEqual(len(entry), 20)
+            self.assertNotIn(entry.strip().lower(), ('', 'n/a', 'na', 'none', 'ready', '.'))
+            self.assertTrue(entry.startswith('no ') or entry.startswith('zero-motion')
+                            or entry.startswith('AM '), entry)
+        # The receipt carries the same six, and the validator requires them exactly.
+        receipt = run_campaign()
+        self.assertIs(receipt['nativeReadiness']['ready'], False)
+        self.assertEqual(receipt['nativeReadiness']['blockingReasons'],
+                         list(policy.NATIVE_READINESS_BLOCKERS))
+        self.assertEqual(len(receipt['nativeReadiness']['blockingReasons']), 6)
 
     def test_history_is_declared_read_only_and_not_a_substitute(self):
         reference = historical()
@@ -1038,9 +1438,13 @@ class QualificationTests(unittest.TestCase):
         self.assertIn('not a comparison of\nobserved normals', history.agree.__doc__)
 
     def test_numeric_budget_matches_the_frozen_guard(self):
+        # The frozen guard module is a pinned source reference, so this cross-package
+        # dependency cannot drift silently: verify_references fails first.
+        name = 'tools/godot-multiplayer/new-maps/walker-calibrated-admission/evidence.py'
+        self.assertIn(name, prepare.REFERENCES)
+        self.assertEqual(seals.sha(ROOT / name), prepare.REFERENCES[name])
         original = importlib.util.spec_from_file_location(
-            '_support_query_compare_frozen_evidence',
-            HERE.parent / 'walker-calibrated-admission' / 'evidence.py')
+            '_support_query_compare_frozen_evidence', ROOT / name)
         frozen = importlib.util.module_from_spec(original)
         original.loader.exec_module(frozen)
         for points in ([[0.212131947278976, 0.0166666638106108, -0.212131947278976]],

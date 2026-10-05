@@ -5,6 +5,11 @@ the validator cannot disagree by accident: a receipt is exactly the two case
 records the driver produced, plus the fixed qualification fields and the hash
 bindings. Any divergence from the frozen history is carried into
 ``unexpectedChangedOutcomes`` rather than removed.
+
+``frozenOperands`` is *carried into* the receipt rather than recomputed here, so
+the receipt can only ever report the tuple its own case records used. The per-case
+entries are read straight off the records the driver produced; nothing in this
+module could substitute a different set of operands for one of them.
 """
 from . import evidence
 from . import policy
@@ -50,6 +55,7 @@ def compose(records, *, source_hash, grant_hash, engine_hash, historical=None):
         'epsilonSubstitutionUsed': False,
         'unexpectedChangedOutcomes': unexpected,
         'guardOutcomesAgreeWithHistory': agrees,
+        'frozenOperands': {row['caseId']: row['frozenOperands'] for row in records},
         'recordsSha256': digest,
         'operationalNeutralityProven': False,
         'hiddenStateUnaffectedProven': False,

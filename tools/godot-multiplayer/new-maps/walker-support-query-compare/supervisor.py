@@ -24,10 +24,9 @@ from . import seals
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[3]
 REFUSAL_NAME = prepare.REFUSAL_FILENAME
-#: Recorded so a reviewer can see exactly what would have been attempted. This is
-#: a description, not a command: nothing here is executed.
-#: The argv a future supervisor would build, with named substitution slots. This is
-#: a description for review, not a command: nothing here is executed, the engine
+#: The argv a future supervisor would build, with named substitution slots. Recorded
+#: so a reviewer can see exactly what would have been attempted. This is a
+#: description for review, not a command: nothing here is executed, and the engine
 #: path and fixture path are deliberately left unsubstituted because no such stage
 #: exists. ``planned_argv`` fills only the four named slots.
 PLANNED_ARGV_TEMPLATE = [

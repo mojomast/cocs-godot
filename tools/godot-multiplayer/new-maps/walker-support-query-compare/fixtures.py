@@ -145,6 +145,15 @@ class FakeLive:
             hook.GUARD_NAME, {'origin': actual, 'basis': [list(r) for r in BASIS]},
             hook.frozen_operands({'margin': self.profile['margin']},
                                  body_rid=self.profile['bodyRid'])))
+        if self.misbehave == 'guard_request_margin_retuned':
+            # A consistent re-tune: margin *and* motion moved together, so the
+            # request is still internally self-consistent and only an
+            # engine/engine rewrite. This is the shape the independent review's
+            # forger used, reproduced here on the live side of the boundary.
+            guard_request['margin'] = 0.015
+            guard_request['motion'] = [0.0, -(0.015 + hook.LIMIT), 0.0]
+        if self.misbehave == 'guard_request_body_rid_retuned':
+            guard_request['bodyRid'] = 999000111
         return {'guard': {'passed': passed, 'reason': reason},
                 'guardRequest': guard_request, 'actualFinal': actual,
                 'candidateFault': fault, 'appliedUpCount': 1, 'parentResponseCount': 1}
