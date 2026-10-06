@@ -101,3 +101,77 @@ export function deployEncounter(match, state, encounter, anchor) {
   }
   placeEncounter(match,match.actors.filter(actor=>state.enemies.includes(actor.id)),anchor);
 }
+
+// F10 experiment (objective completion): bounded withdrawal for the guards an
+// encounter left standing.
+//
+// A withdrawal is NOT a kill. It must reach the same terminal state the source
+// already uses for a guard that stops mattering (singleplayer's sapper
+// detonation: `health=0; dead=NPC_DEAD`), but it deliberately skips
+// match.damage(), so no frag, kill-feed entry, stats.kills increment or banked
+// reward is produced. Rewards are banked by the caller BEFORE this runs.
+//
+// Two bounded halves, neither of which can wedge the objective:
+//  1. disengage now -- the same campaignStaggerUntil/campaignExposedUntil
+//     suppression the interact bypass already uses, so the survivors stop
+//     shooting, stop meleeing and stop walking in the same tick;
+//  2. despawn at a fixed deadline measured in match time -- unconditional, not
+//     tied to the player, the anchor, the objective or the next step.
+export const WITHDRAW_GRACE = 1.2;
+
+// `force` drains immediately regardless of the deadline. Used when the match is
+// closing (level complete / dead) so a finished match can never report a
+// standing guard.
+export function beginEncounterWithdrawal(match, state, seconds = WITHDRAW_GRACE) {
+  const surviving = state.enemies.filter(id => (match.actors[id]?.health ?? 0) > 0);
+  if (!surviving.length) return [];
+  // Merge, never replace: a second encounter can complete while an earlier
+  // withdrawal is still draining. Keeping the set intact and the latest
+  // deadline bounds the whole drain to `seconds` from the newest completion,
+  // and leaves no survivor behind to block a later step.
+  state.withdrawn = [...new Set([...state.withdrawn, ...surviving])];
+  state.withdrawUntil = Math.max(state.withdrawUntil, match.time + seconds);
+  for (const id of surviving) {
+    const actor = match.actors[id];
+    actor.campaignWithdrawn = true;
+    // Disengage in the same tick. feel.attack() refuses while exposed/staggered
+    // (so no gun or melee), botInput zeroes movement and melee, and the role
+    // pass in singleplayer runs off state.enemies, which the caller has already
+    // cleared -- so no artillery telegraph can outlive the objective.
+    const until = state.withdrawUntil + 1;
+    actor.campaignExposedUntil = until;
+    actor.campaignStaggerUntil = until;
+    actor.vx = 0; actor.vy = 0; actor.vz = 0;
+    actor.phalanxWindup = undefined;
+    actor.artilleryMark = null; actor.artilleryWindup = undefined;
+    actor.npcPhalanx = null; actor.npcSummon = null;
+  }
+  return surviving;
+}
+
+export function tickEncounterWithdrawal(match, state, force = false) {
+  if (!state.withdrawn.length) return 0;
+  if (!force && match.time < state.withdrawUntil) return 0;
+  const drained = state.withdrawn;
+  state.withdrawn = [];
+  for (const id of drained) {
+    const actor = match.actors[id];
+    if (!actor) continue;
+    actor.campaignWithdrawn = true;
+    // Direct health zero, not damage(): no source kill path, no frag, no
+    // kill-feed entry, no stats.kills, no banked reward.
+    actor.health = 0;
+    actor.armor = 0;
+    // `dead` pins the corpse slot and match.step re-pins it every tick, so the
+    // base respawn branch is unreachable; `campaignWithdrawn` is kept set as a
+    // durable marker that CampaignMatch.spawn also refuses on. The indexed
+    // actor slot is deliberately preserved: source projectiles and bots index
+    // actors[id].
+    actor.dead = 1e9;
+    actor.vx = 0; actor.vy = 0; actor.vz = 0;
+    actor.melee = 0; actor.burstLeft = 0; actor.shotWait = 0;
+    actor.temporaryShield = 0; actor.npcShield = null; actor.campaignSavedShield = null;
+    if (actor.bot) { actor.bot.target = -1; actor.bot.route = []; actor.bot.fired = false; }
+  }
+  return drained.length;
+}
