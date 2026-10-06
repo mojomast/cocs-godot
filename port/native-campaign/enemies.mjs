@@ -103,7 +103,9 @@ export function deployEncounter(match, state, encounter, anchor) {
 }
 
 // F10 experiment (objective completion): bounded withdrawal for the guards an
-// encounter left standing.
+// encounter left standing. The withdrawal READS AS A RETREAT: the survivors
+// walk off along the existing locomotion and gait, then leave. Nothing pops out
+// of the fight where it stood.
 //
 // A withdrawal is NOT a kill. It must reach the same terminal state the source
 // already uses for a guard that stops mattering (singleplayer's sapper
@@ -111,67 +113,169 @@ export function deployEncounter(match, state, encounter, anchor) {
 // match.damage(), so no frag, kill-feed entry, stats.kills increment or banked
 // reward is produced. Rewards are banked by the caller BEFORE this runs.
 //
-// Two bounded halves, neither of which can wedge the objective:
-//  1. disengage now -- the same campaignStaggerUntil/campaignExposedUntil
-//     suppression the interact bypass already uses, so the survivors stop
-//     shooting, stop meleeing and stop walking in the same tick;
-//  2. despawn at a fixed deadline measured in match time -- unconditional, not
-//     tied to the player, the anchor, the objective or the next step.
-export const WITHDRAW_GRACE = 1.2;
+// Three bounded halves, none of which can wedge the objective:
+//  1. DISENGAGE, same tick, without pinning the pose. feel.attack() is vetoed by
+//     a `campaignReady` the campaign re-asserts every tick, botInput is bypassed
+//     for a withdrawing guard (no target reacquire, no melee, no artillery
+//     telegraph), and the role pass in singleplayer runs off state.enemies,
+//     which the caller has already cleared. Note the veto is deliberately NOT
+//     campaignStaggerUntil/campaignExposedUntil: the Godot presentation reads
+//     those as "planted", so pinning them would freeze the guard instead of
+//     letting it walk.
+//  2. RETREAT, bounded and deterministic: one nav-graph goal per guard, away
+//     from the player, driven by the same trackingInput speed budget every other
+//     campaign guard moves on.
+//  3. DESPAWN, per guard, first match wins: arrival at the goal, out of
+//     relevance past the contested position, or the fixed match-time deadline
+//     (which is also forced when the match closes, so a finished match can never
+//     report a standing guard).
+export const WITHDRAW_GRACE = 6;      // hard deadline, match seconds, unconditional
+export const WITHDRAW_ARRIVAL = 1.15; // metres: arrived at the retreat goal
+export const WITHDRAW_RELEASE = 10;   // metres past the contested anchor: out of relevance
+export const WITHDRAW_MIN_WALK = 6;   // metres: minimum covered before ANY despawn condition
+export const WITHDRAW_FACING = 7;     // rad/s: turn rate onto the retreat heading
 
-// `force` drains immediately regardless of the deadline. Used when the match is
-// closing (level complete / dead) so a finished match can never report a
-// standing guard.
-export function beginEncounterWithdrawal(match, state, seconds = WITHDRAW_GRACE) {
+// One deterministic retreat goal per guard: the campaign's own nav node nearest
+// the ideal fall-back point `WITHDRAW_RELEASE` metres from the contested anchor,
+// on the far side of the guard from the player. Nav nodes are the graph's
+// guaranteed-reachable points (bots route on them), so the goal is walkable
+// without authoring or verifying a new coordinate. Ties keep the lowest node
+// index, so the goal is identical for identical sim state.
+function retreatGoal(match, anchor, actor) {
+  const player = match.actors[0];
+  let ax = actor.x - player.x, az = actor.z - player.z;
+  let length = Math.hypot(ax, az);
+  if (length < 1e-3) {
+    // Standing on top of the player: fall back along the contested axis instead.
+    ax = anchor.x - player.x; az = anchor.z - player.z;
+    length = Math.hypot(ax, az) || 1;
+  }
+  const ux = ax / length, uz = az / length;
+  const goal = {x: anchor.x + ux * WITHDRAW_RELEASE, z: anchor.z + uz * WITHDRAW_RELEASE};
+  // A goal must be far enough away to be a visible retreat. Nav nodes closer to
+  // the guard than that are skipped, so the walk-off always reads as one.
+  const floor = WITHDRAW_MIN_WALK + WITHDRAW_ARRIVAL;
+  let best = null, bestDistance = Infinity;
+  for (const node of match.nav ?? []) {
+    if (Math.hypot(node.x - actor.x, node.z - actor.z) < floor) continue;
+    const distance = Math.hypot(node.x - goal.x, node.z - goal.z);
+    if (distance < bestDistance) { bestDistance = distance; best = node; }
+  }
+  // No node clears the floor (a tiny nav graph, or the guard boxed in): fall back
+  // to the ideal point, which the core's own wall resolution will handle.
+  return best ? {x: best.x, z: best.z} : goal;
+}
+
+// The retreat control frame, handed to the core in place of the combat policy.
+// A unit movement vector toward the goal plus the facing turn that goes with it:
+// the presentation gait reads bodyYaw, and bodyYaw follows yaw, so without the
+// turn a guard walking backwards would moonwalk.
+export function withdrawInput(match, actor, dt) {
+  const goal = actor.campaignRetreat;
+  if (!goal) return {};
+  const dx = goal.x - actor.x, dz = goal.z - actor.z;
+  const length = Math.hypot(dx, dz);
+  if (length <= WITHDRAW_ARRIVAL) return {};
+  const heading = Math.atan2(-dx / length, -dz / length);
+  const delta = Math.atan2(Math.sin(heading - actor.yaw), Math.cos(heading - actor.yaw));
+  actor.yaw += Math.max(-WITHDRAW_FACING * dt, Math.min(WITHDRAW_FACING * dt, delta));
+  return {x: dx / length, z: dz / length};
+}
+
+// `anchor` is the contested position the encounter was fought over, kept in
+// state so the relevance test stays independent of the player and of the step.
+// `seconds` bounds the whole drain, merged with (never shorter than) any
+// withdrawal already in flight.
+export function beginEncounterWithdrawal(match, state, anchor, seconds = WITHDRAW_GRACE) {
   const surviving = state.enemies.filter(id => (match.actors[id]?.health ?? 0) > 0);
   if (!surviving.length) return [];
   // Merge, never replace: a second encounter can complete while an earlier
-  // withdrawal is still draining. Keeping the set intact and the latest
+  // withdrawal is still retreating. Keeping the set intact and the latest
   // deadline bounds the whole drain to `seconds` from the newest completion,
   // and leaves no survivor behind to block a later step.
   state.withdrawn = [...new Set([...state.withdrawn, ...surviving])];
   state.withdrawUntil = Math.max(state.withdrawUntil, match.time + seconds);
+  state.withdrawAnchor = {x: anchor.x, z: anchor.z};
   for (const id of surviving) {
     const actor = match.actors[id];
     actor.campaignWithdrawn = true;
-    // Disengage in the same tick. feel.attack() refuses while exposed/staggered
-    // (so no gun or melee), botInput zeroes movement and melee, and the role
-    // pass in singleplayer runs off state.enemies, which the caller has already
-    // cleared -- so no artillery telegraph can outlive the objective.
-    const until = state.withdrawUntil + 1;
-    actor.campaignExposedUntil = until;
-    actor.campaignStaggerUntil = until;
-    actor.vx = 0; actor.vy = 0; actor.vz = 0;
+    // Where the guard stood when the objective completed, so the despawn test
+    // can require a real walk-off rather than trusting an absolute radius.
+    actor.campaignX0 = actor.x; actor.campaignZ0 = actor.z;
+    actor.campaignRetreat = retreatGoal(match, state.withdrawAnchor, actor);
+    // Disengage in the same tick. The attack veto is a value, not a window:
+    // feel.update's lane cleanup can rewrite campaignReady mid-withdrawal, so
+    // tickEncounterWithdrawal re-asserts it every tick and a merged batch cannot
+    // re-arm when a later completion extends the deadline.
+    actor.campaignReady = Infinity;
+    // Settle any telegraph the guard was already winding up: the presentation
+    // reads campaignFireAt/artilleryWindup as an attack pose, and a half-played
+    // tell outliving the objective would be a lie.
+    actor.campaignFireAt = 0;
     actor.phalanxWindup = undefined;
     actor.artilleryMark = null; actor.artilleryWindup = undefined;
     actor.npcPhalanx = null; actor.npcSummon = null;
+    actor.melee = 0; actor.burstLeft = 0;
+    actor.temporaryShield = 0; actor.npcShield = null; actor.campaignSavedShield = null;
+    // Drop any inherited suppression window rather than pinning the pose for the
+    // whole withdrawal. A stagger earned AFTER this point still reads, which is
+    // honest: a guard flinching on its way out is a guard flinching.
+    actor.campaignExposedUntil = 0; actor.campaignStaggerUntil = 0;
+    if (actor.bot) {
+      actor.bot.target = -1; actor.bot.memory = 0; actor.bot.seen = null;
+      actor.bot.route = []; actor.bot.fired = false; actor.bot.state = 'withdraw';
+    }
   }
   return surviving;
 }
 
+function drainWithdrawnGuard(match, actor) {
+  actor.campaignWithdrawn = true;
+  // Direct health zero, not damage(): no source kill path, no frag, no
+  // kill-feed entry, no stats.kills, no banked reward.
+  actor.health = 0;
+  actor.armor = 0;
+  // `dead` pins the corpse slot and match.step re-pins it every tick, so the
+  // base respawn branch is unreachable; `campaignWithdrawn` is kept set as a
+  // durable marker that CampaignMatch.spawn also refuses on. The indexed actor
+  // slot is deliberately preserved: source projectiles and bots index actors[id].
+  actor.dead = 1e9;
+  actor.vx = 0; actor.vy = 0; actor.vz = 0;
+  actor.melee = 0; actor.burstLeft = 0; actor.shotWait = 0;
+  actor.temporaryShield = 0; actor.npcShield = null; actor.campaignSavedShield = null;
+  if (actor.bot) { actor.bot.target = -1; actor.bot.route = []; actor.bot.fired = false; }
+}
+
 export function tickEncounterWithdrawal(match, state, force = false) {
   if (!state.withdrawn.length) return 0;
-  if (!force && match.time < state.withdrawUntil) return 0;
-  const drained = state.withdrawn;
-  state.withdrawn = [];
-  for (const id of drained) {
+  // `force` drains immediately regardless of arrival, relevance or the
+  // deadline. Used when the match is closing (level complete / dead) so a
+  // finished match can never report a standing guard.
+  const expired = force || match.time >= state.withdrawUntil;
+  const anchor = state.withdrawAnchor;
+  const keep = [];
+  let drained = 0;
+  for (const id of state.withdrawn) {
     const actor = match.actors[id];
-    if (!actor) continue;
-    actor.campaignWithdrawn = true;
-    // Direct health zero, not damage(): no source kill path, no frag, no
-    // kill-feed entry, no stats.kills, no banked reward.
-    actor.health = 0;
-    actor.armor = 0;
-    // `dead` pins the corpse slot and match.step re-pins it every tick, so the
-    // base respawn branch is unreachable; `campaignWithdrawn` is kept set as a
-    // durable marker that CampaignMatch.spawn also refuses on. The indexed
-    // actor slot is deliberately preserved: source projectiles and bots index
-    // actors[id].
-    actor.dead = 1e9;
-    actor.vx = 0; actor.vy = 0; actor.vz = 0;
-    actor.melee = 0; actor.burstLeft = 0; actor.shotWait = 0;
-    actor.temporaryShield = 0; actor.npcShield = null; actor.campaignSavedShield = null;
-    if (actor.bot) { actor.bot.target = -1; actor.bot.route = []; actor.bot.fired = false; }
+    if (!actor) { drained++; continue; }        // indexed slot already released
+    // Re-assert the attack veto every tick; see beginEncounterWithdrawal.
+    actor.campaignReady = Infinity;
+    // Despawn on arrival or out of relevance, but never before the guard has
+    // actually covered WITHDRAW_MIN_WALK: a guard that pops out where it stood
+    // is the exact presentation defect this change exists to remove. The
+    // deadline is not gated -- it is the hard bound.
+    if (!expired) {
+      const walked = Math.hypot(actor.x - actor.campaignX0, actor.z - actor.campaignZ0);
+      if (walked < WITHDRAW_MIN_WALK) { keep.push(id); continue; }
+      const goal = actor.campaignRetreat;
+      const arrived = !goal || Math.hypot(actor.x - goal.x, actor.z - goal.z) <= WITHDRAW_ARRIVAL;
+      const past = !anchor || Math.hypot(actor.x - anchor.x, actor.z - anchor.z) >= WITHDRAW_RELEASE;
+      if (!(arrived || past)) { keep.push(id); continue; }
+    }
+    drainWithdrawnGuard(match, actor);
+    drained++;
   }
-  return drained.length;
+  state.withdrawn = keep;
+  if (!keep.length) state.withdrawAnchor = null;
+  return drained;
 }
