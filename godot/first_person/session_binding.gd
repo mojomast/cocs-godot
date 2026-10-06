@@ -49,6 +49,9 @@ func refresh() -> void:
 	var settings := SettingsAccess.service()
 	if settings != null: rig.reduced_motion = settings.values.get("reduced_motion", false) == true
 	rig.apply_actor(session.presentation.local_actor, allowed)
+	# The additive sprint cue reads the same shared presentation profile the rig
+	# just resolved for the held weapon; a no-op while the weapon is unchanged.
+	sprint_fov.bind(rig.profile)
 	var aiming := false
 	if allowed:
 		if session.has_method("aim_requested"):

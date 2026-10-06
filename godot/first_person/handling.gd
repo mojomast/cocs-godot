@@ -11,70 +11,75 @@ extends RefCounted
 ## Bounded by construction: fixed part references, one persistent FX root and a
 ## fixed pool of quads. No node, mesh, material or collection is created while
 ## running.
-const PUFFS := 3
-const PUFF_LIFE := 0.40
-const HAZE_SIZE := 0.026
-const HAZE_GROWTH := 0.026
-const CHARGE_TIME := 0.28
+const Profile = preload("res://first_person/profiles/weapon_presentation_profile.gd")
+## Fixed cosmetic pool and FX bounds, mirrored from the profile's documented
+## default; `bind_profile()` re-reads them per weapon.
+const PUFFS := Profile.PUFF_POOL
+const HAZE_REDUCED_SCALE := Profile.HAZE_REDUCED_SCALE
+const HAZE_SIZE := Profile.HAZE_SIZE
+const HAZE_GROWTH := Profile.HAZE_GROWTH
+const PUFF_LIFE := Profile.PUFF_LIFE
+const CHARGE_TIME := Profile.CHARGE_TIME
 
 ## --- Recoil presentation amplification --------------------------------------
 ## The rig reads the source `feel.kick = [pitchKick, yawKick, recover]` triple
-## from its manifest. These pure functions turn that source data into a stronger,
-## per-weapon first-person response: a sustained shove that settles more slowly
-## than the source rate, plus a short transient punch that decays fast. The
-## per-weapon character is derived from the weapon's own source kick magnitude, so
-## no second table can drift from the manifest. Presentation only: nothing here
-## reads or writes aim, spread, ammo, damage or any authoritative value.
-const RECOIL_MIN_SCALE := 1.6
-const RECOIL_MAX_SCALE := 2.2
-const RECOIL_PITCH_HOLD_MIN := 1.12
-const RECOIL_PITCH_HOLD_MAX := 1.22
-const RECOIL_RECOVER := 0.78
-const PUNCH_PITCH_MIN := 0.30
-const PUNCH_PITCH_MAX := 0.50
-const PUNCH_ROLL_MIN := 0.85
-const PUNCH_ROLL_MAX := 1.60
-const PUNCH_BACK_MIN := 0.35
-const PUNCH_BACK_MAX := 0.60
-const PUNCH_RATE_LIGHT := 34.0
-const PUNCH_RATE_HEAVY := 24.0
-const KICK_HEFT_LOW := 0.042
-const KICK_HEFT_HIGH := 0.205
+## from its manifest. `WeaponPresentationProfile` turns that source data into a
+## stronger, per-weapon first-person response: a sustained shove that settles
+## more slowly than the source rate, plus a short transient punch that decays
+## fast. The per-weapon character is derived from the weapon's own source kick
+## magnitude, so no second table can drift from the manifest, and a weapon may
+## pin its own channels in the profile without touching source balance.
+## Presentation only: nothing here reads or writes aim, spread, ammo, damage or
+## any authoritative value. The constants below mirror the profile's documented
+## default, and the statics delegate to it, so the numbers are authored once.
+const RECOIL_MIN_SCALE := Profile.RECOIL_SCALE_LOW
+const RECOIL_MAX_SCALE := Profile.RECOIL_SCALE_HIGH
+const RECOIL_PITCH_HOLD_MIN := Profile.PITCH_HOLD_LOW
+const RECOIL_PITCH_HOLD_MAX := Profile.PITCH_HOLD_HIGH
+const RECOIL_RECOVER := Profile.RECOVER_SCALE
+const PUNCH_PITCH_MIN := Profile.PUNCH_PITCH_LOW
+const PUNCH_PITCH_MAX := Profile.PUNCH_PITCH_HIGH
+const PUNCH_ROLL_MIN := Profile.PUNCH_ROLL_LOW
+const PUNCH_ROLL_MAX := Profile.PUNCH_ROLL_HIGH
+const PUNCH_BACK_MIN := Profile.PUNCH_BACK_LOW
+const PUNCH_BACK_MAX := Profile.PUNCH_BACK_HIGH
+const PUNCH_RATE_LIGHT := Profile.PUNCH_RATE_LIGHT
+const PUNCH_RATE_HEAVY := Profile.PUNCH_RATE_HEAVY
+const KICK_HEFT_LOW := Profile.HEFT_LOW
+const KICK_HEFT_HIGH := Profile.HEFT_HIGH
 
 ## Normalised 0..1 "heft" of a source kick triple (light pistol-style vs heavy
 ## break-action), used for every per-weapon recoil character below.
 static func recoil_heft(kick: Array) -> float:
-	if kick.size() < 2: return 0.0
-	var total := clampf(float(kick[0]) + float(kick[1]), KICK_HEFT_LOW, KICK_HEFT_HIGH)
-	return (total - KICK_HEFT_LOW) / (KICK_HEFT_HIGH - KICK_HEFT_LOW)
+	return Profile.default_for_weapon().recoil_heft(kick)
 
 ## Headline kick multiplier applied to the source feel: 1.6x light, 2.2x heavy.
 ## This is the sustained translation multiplier; the sustained pitch hold below is
 ## deliberately smaller so the heat micro-effect cannot enter the reticle
 ## corridor, and the transient punch carries the rest of the felt impulse.
 static func recoil_scale(kick: Array) -> float:
-	return lerpf(RECOIL_MIN_SCALE, RECOIL_MAX_SCALE, recoil_heft(kick))
+	return Profile.default_for_weapon().recoil_scale(kick)
 
 ## Sustained muzzle-rise hold. Kept close to the source rate on purpose: the
 ## rest of the per-weapon kick lives in the fast transient and the shove.
 static func pitch_hold(kick: Array) -> float:
-	return lerpf(RECOIL_PITCH_HOLD_MIN, RECOIL_PITCH_HOLD_MAX, recoil_heft(kick))
+	return Profile.default_for_weapon().pitch_hold(kick)
 
 ## Sustained recover rate from the source `recover`, ~28% slower settling.
 static func recover_rate(kick: Array) -> float:
-	return maxf(1.0, float(kick[2]) if kick.size() > 2 else 16.0) * RECOIL_RECOVER
+	return Profile.default_for_weapon().recover_rate(kick)
 
 static func punch_pitch(kick: Array) -> float:
-	return lerpf(PUNCH_PITCH_MIN, PUNCH_PITCH_MAX, recoil_heft(kick))
+	return Profile.default_for_weapon().punch_pitch(kick)
 
 static func punch_roll(kick: Array) -> float:
-	return lerpf(PUNCH_ROLL_MIN, PUNCH_ROLL_MAX, recoil_heft(kick))
+	return Profile.default_for_weapon().punch_roll(kick)
 
 static func punch_back(kick: Array) -> float:
-	return lerpf(PUNCH_BACK_MIN, PUNCH_BACK_MAX, recoil_heft(kick))
+	return Profile.default_for_weapon().punch_back(kick)
 
 static func punch_rate(kick: Array) -> float:
-	return lerpf(PUNCH_RATE_LIGHT, PUNCH_RATE_HEAVY, recoil_heft(kick))
+	return Profile.default_for_weapon().punch_rate(kick)
 
 var _viewport: Node
 var _fx_root: Node3D
@@ -83,6 +88,12 @@ var _anchors: Dictionary = {}
 var _info: Dictionary = {}
 var _id := -1
 var _rattle := 0.18
+var _profile: WeaponPresentationProfile = Profile.default_for_weapon()
+var _charge_time := CHARGE_TIME
+var _puff_life := PUFF_LIFE
+var _haze_size := HAZE_SIZE
+var _haze_growth := HAZE_GROWTH
+var _haze_reduced := HAZE_REDUCED_SCALE
 var _bolt: Node3D
 var _bolt_rest := Transform3D.IDENTITY
 var _feed: Node3D
@@ -155,7 +166,7 @@ func configure(viewport: Node) -> void:
 		node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 		node.visible = false
 		_fx_root.add_child(node)
-		_puffs.append({"node":node, "material":material, "remaining":0.0, "total":PUFF_LIFE, "size":0.05, "velocity":Vector3.ZERO})
+		_puffs.append({"node":node, "material":material, "remaining":0.0, "total":_puff_life, "size":0.05, "velocity":Vector3.ZERO})
 
 func _make_material() -> StandardMaterial3D:
 	var material := StandardMaterial3D.new()
@@ -168,6 +179,18 @@ func _make_material() -> StandardMaterial3D:
 	material.cull_mode = BaseMaterial3D.CULL_DISABLED
 	material.albedo_color = Color(1, 1, 1, 0)
 	return material
+
+## Binds the shared, immutable presentation profile for the held weapon. The
+## profile owns the cosmetic bounds; this helper owns the runtime state it feeds
+## (bolt phase, heat, puff slots). Called on every weapon select, before `bind()`,
+## which resolves the source-kick recoil channels from the same profile.
+func bind_profile(profile: WeaponPresentationProfile) -> void:
+	_profile = profile if profile != null else Profile.default_for_weapon()
+	_charge_time = _profile.charge_time()
+	_puff_life = _profile.puff_life()
+	_haze_size = _profile.haze_size()
+	_haze_growth = _profile.haze_growth()
+	_haze_reduced = _profile.haze_reduced_scale()
 
 ## Per-weapon binding from the rig's imported parts, rest pose and anchors.
 func bind(weapon: Node3D, parts: Dictionary, rest: Dictionary, anchors: Dictionary, info: Dictionary, id: int) -> void:
@@ -186,13 +209,13 @@ func bind(weapon: Node3D, parts: Dictionary, rest: Dictionary, anchors: Dictiona
 	cycle_duration = maxf(0.02, float(_info.get("cycle", 0.09)))
 	cycle_stroke = maxf(0.0, float(_info.get("stroke", 0.05)))
 	var kick: Array = info.get("kick", [])
-	kick_scale = recoil_scale(kick)
-	lift_hold = pitch_hold(kick)
-	recover_speed = recover_rate(kick)
-	transient_pitch = punch_pitch(kick)
-	transient_roll = punch_roll(kick)
-	transient_back = punch_back(kick)
-	transient_rate = punch_rate(kick)
+	kick_scale = _profile.recoil_scale(kick)
+	lift_hold = _profile.pitch_hold(kick)
+	recover_speed = _profile.recover_rate(kick)
+	transient_pitch = _profile.punch_pitch(kick)
+	transient_roll = _profile.punch_roll(kick)
+	transient_back = _profile.punch_back(kick)
+	transient_rate = _profile.punch_rate(kick)
 	_glow.clear()
 	_glow_steady.clear()
 	_glow_energy = -1.0
@@ -247,7 +270,7 @@ func advance(delta: float, reloading: bool, progress: float, aim_weight: float, 
 		charge_offset = charge_stroke * _reload_charge_curve(progress)
 	elif charge_stroke > 0.0 and _charge_t >= 0.0:
 		_charge_t += dt
-		var charge_phase := _charge_t / CHARGE_TIME
+		var charge_phase := _charge_t / _charge_time
 		if charge_phase >= 1.0: _charge_t = -1.0
 		else: charge_offset = charge_stroke * _charge_curve(charge_phase)
 	if _bolt != null and is_instance_valid(_bolt):
@@ -326,12 +349,12 @@ func _advance_fx(delta: float, level: float, aim_weight: float, reduced_motion: 
 	# ADS owns the sight picture: the heat micro-effect fades out completely
 	# before the cheek weld settles, so no haze can enter the sight corridor.
 	var scale := clampf(1.0 - aim_weight / 0.55, 0.0, 1.0)
-	if reduced_motion: scale *= 0.5
+	if reduced_motion: scale *= _haze_reduced
 	var visible := level > 0.02 and scale > 0.01
 	_haze.visible = visible
 	haze_alpha = 0.0
 	if visible:
-		var size := (HAZE_SIZE + HAZE_GROWTH * level) * (1.0 + level * 0.7)
+		var size := (_haze_size + _haze_growth * level) * (1.0 + level * 0.7)
 		_haze.scale = Vector3(size, size, 1.0)
 		haze_alpha = 0.16 * level * scale
 		_haze_material.albedo_color = Color(_tint.r, _tint.g, _tint.b, haze_alpha)
@@ -376,8 +399,8 @@ func _spawn_puff(level: float) -> void:
 			break
 		if candidate.remaining < slot.remaining: slot = candidate
 	var side := -1.0 if _puff_serial % 2 == 0 else 1.0
-	slot.total = PUFF_LIFE
-	slot.remaining = PUFF_LIFE
+	slot.total = _puff_life
+	slot.remaining = _puff_life
 	slot.size = 0.024 + 0.016 * level
 	slot.velocity = Vector3(0.010 * side, 0.025 + 0.015 * level, -0.02)
 	slot.node.position = Vector3(0.006 * side, 0.002, 0.0)
