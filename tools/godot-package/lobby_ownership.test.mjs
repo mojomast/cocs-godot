@@ -35,6 +35,9 @@ for (const kind of ['package', 'dev']) {
           script = join(root,'run.mjs');
         } else {
           for (const name of ['launch.mjs','launch_options.mjs']) await copy('../godot-dev/'+name,'tools/godot-dev/'+name);
+          await copy('../godot-dev/active_source.mjs','tools/godot-dev/active_source.mjs');
+          await copy('../../port/contracts/active-source.json','port/contracts/active-source.json');
+          await copy('../../port/contracts/racing-candidate-derivative.json','port/contracts/racing-candidate-derivative.json');
           await copy('endpoint.mjs','tools/godot-package/endpoint.mjs');
            await copy('settings_path.mjs','tools/godot-package/settings_path.mjs');
            await copy('career_path.mjs','tools/godot-package/career_path.mjs');

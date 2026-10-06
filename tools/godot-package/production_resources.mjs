@@ -15,6 +15,7 @@ import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,ST
 import {polishPaths,verifyPolishAdvance,verifyOperatorFinishImports} from './polish_dependencies.mjs';
 import {movementSupportingHash,verifyMovementPredecessor} from './movement_dependencies.mjs';
 import {verifyVesperApronAdvance} from './vesper_apron_dependencies.mjs';
+import {verifyConsolidationAdvance} from './consolidation_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -242,6 +243,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='vesper-viaduct')verifyVesperImports(read);
     if(unit.id==='abyssal-pressureworks')verifyAbyssalImports(read);
     if(unit.id==='stormglass-causeway')verifyStormglassImports(read,receipt);
+    verifyConsolidationAdvance(receipt,read);
     verifyVesperApronAdvance(receipt,read);
     verifyMovementPredecessor(receipt,read);
     if(unit.id==='vehicles')for(const kind of ['puma','titan','scout'])for(let lod=0;lod<3;lod++) {

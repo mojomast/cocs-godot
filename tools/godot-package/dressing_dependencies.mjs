@@ -4,6 +4,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {reverseVesperApron, vesperApronSupportingHash, vesperApronSupportingHookHash} from './vesper_apron_dependencies.mjs';
+import {consolidationSupportingHash, consolidationSupportingHookHash} from './consolidation_dependencies.mjs';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 export function verifyDressingAdvance(receipt, read) {
@@ -47,11 +48,11 @@ export function verifyDressingAdvance(receipt, read) {
   assert.equal(hash(JSON.stringify(receipt.packageInputs)), r.packageFingerprint,
     'Dressing current fingerprint');
   for (const [path, change] of Object.entries(r.changed ?? {})) {
-    assert.equal(hash(read(path)), vesperApronSupportingHash(path, change.after, newer),
+    assert.equal(hash(read(path)), consolidationSupportingHash(path, vesperApronSupportingHash(path, change.after, newer), newer),
       'Reviewed dressing bytes: ' + path);
   }
   for (const [path, change] of Object.entries(r.runtimeChanged ?? {})) {
-    assert.equal(hash(read(path)), vesperApronSupportingHookHash(path, change.after, newer),
+    assert.equal(hash(read(path)), consolidationSupportingHookHash(path, vesperApronSupportingHookHash(path, change.after, newer), newer),
       'Reviewed dressing hook bytes: ' + path);
   }
   return pre;

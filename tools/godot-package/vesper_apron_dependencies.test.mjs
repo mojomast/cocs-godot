@@ -4,7 +4,8 @@ import {readFileSync,existsSync} from 'node:fs';
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {productionResources,REQUIREMENTS,REQUIRED_UNITS} from './production_resources.mjs';
-import {verifyVesperApronAdvance,reverseVesperApron,APRON_UNIT} from './vesper_apron_dependencies.mjs';
+import {verifyVesperApronAdvance,reverseVesperApron,vesperApronSupportingHash,APRON_UNIT} from './vesper_apron_dependencies.mjs';
+import {consolidationSupportingHash,reverseConsolidationAdvance} from './consolidation_dependencies.mjs';
 import {reverseDressing} from './dressing_dependencies.mjs';
 import {reverseRacing} from './racing_dependencies.mjs';
 import {verifyMovementPredecessor} from './movement_dependencies.mjs';
@@ -24,6 +25,7 @@ function forged(id,mutate){
 test('every unit carries the apron layer, and undoing it lands on its exact committed predecessor',()=>{
   for(const id of REQUIRED_UNITS){
     const r=JSON.parse(read(receipt(id))),layer=r.vesperApronAdvance;
+    const apronEra=reverseConsolidationAdvance(r,read);
     assert.ok(layer,id+': explicit Vesper apron reconciliation required');
     assert.equal(layer.previousReceipt.path,receipt(id),id+': predecessor receipt path');
     const committed=git('show',`${layer.previousReceipt.commit}:${layer.previousReceipt.path}`);
@@ -35,12 +37,12 @@ test('every unit carries the apron layer, and undoing it lands on its exact comm
     assert.equal(layer.previousPackageFingerprint,hash(JSON.stringify(JSON.parse(committed.toString('utf8')).packageInputs)),
       id+': previous package fingerprint');
     // And the live tree must still hold the reviewed bytes this layer declares.
-    for(const [p,c]of Object.entries(layer.changed))assert.equal(hash(read(p)),c.after,id+': reviewed apron bytes: '+p);
-    for(const [p,c]of Object.entries(layer.runtimeChanged))assert.equal(hash(read(p)),c.after,id+': reviewed apron hook bytes: '+p);
-    for(const [p,c]of Object.entries(layer.sourceChanged))assert.equal(hash(read(p)),c.after,id+': reviewed apron source bytes: '+p);
-    for(const [p,sha]of Object.entries(layer.added))assert.equal(hash(read(p)),sha,id+': apron addition: '+p);
-    assert.equal(layer.packageFingerprint,hash(JSON.stringify(r.packageInputs)),id+': current package fingerprint');
-    assert.equal(layer.sourceFingerprint,hash(JSON.stringify(r.sourceHashes)),id+': current source fingerprint');
+    for(const [p,c]of Object.entries(layer.changed))assert.equal(hash(read(p)),consolidationSupportingHash(p,c.after,r),id+': reviewed apron bytes: '+p);
+    for(const [p,c]of Object.entries(layer.runtimeChanged))assert.equal(hash(read(p)),consolidationSupportingHash(p,c.after,r),id+': reviewed apron hook bytes: '+p);
+    for(const [p,c]of Object.entries(layer.sourceChanged))assert.equal(hash(read(p)),consolidationSupportingHash(p,c.after,r),id+': reviewed apron source bytes: '+p);
+    for(const [p,sha]of Object.entries(layer.added))assert.equal(hash(read(p)),consolidationSupportingHash(p,sha,r),id+': apron addition: '+p);
+    assert.equal(layer.packageFingerprint,hash(JSON.stringify(apronEra.packageInputs)),id+': current package fingerprint');
+    assert.equal(layer.sourceFingerprint,hash(JSON.stringify(apronEra.sourceHashes)),id+': current source fingerprint');
     // The whole chain still reconstructs its own historical predecessor.
     const r2=JSON.parse(read(receipt(id)));
     verifyMovementPredecessor(reverseRacing(r2,read),read);

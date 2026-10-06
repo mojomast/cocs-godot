@@ -9,7 +9,7 @@ const exports=receipt.exports.map(r=>r.path),paths=sceneryImportPaths(exports,re
 test('F exact 118 embedded/extracted images and 142 lossless import sidecars',()=>{
  assert.equal(paths.length,260);verifySceneryImports(exports,read);
  const result=productionResources({read,has:existsSync,worldIds:['parallax-observatory','vesper-viaduct','abyssal-pressureworks'],strict:false});
- assert.equal(result.units.scenery.expected.packageInputs.length,912);
+ assert.equal(result.units.scenery.expected.packageInputs.length,913);
  assert.deepEqual(result.pending,['stormglass-causeway']);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({read,has:existsSync,worldIds:['parallax-observatory']}),/Required final production units remain pending/);
