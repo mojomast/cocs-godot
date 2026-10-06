@@ -50,7 +50,7 @@ test('active source descriptor resolves the reviewed overlay to current runtime 
   const {activeSource}=await import('../../tools/godot-dev/active_source.mjs');
   const lock=JSON.parse(readFileSync(new URL('port/contracts/source-lock.json',root)));
   const selection=activeSource(path);
-  assert.equal(selection.contract.derivative_commit,'6ce98a65821fe6b550ca4d9929d32f32491cc3ab');
+  assert.equal(selection.contract.derivative_commit,'8a6e7be2b9999338e556a9714a31861d097ef553');
   assert.equal(selection.contract.parent_contract,'port/contracts/racing-candidate-derivative.json');
   const resolved=verifySource(lock,selection.contract,path);
   assert.equal(resolved.derivative_commit,selection.contract.derivative_commit);
