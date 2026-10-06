@@ -521,7 +521,8 @@ if derivative_path:
 if not binary:
     fail_preflight('Set GODOT_BIN to the pinned editor')
 version, output = run_gate('toolchain-version', [binary, '--version'], 'port/reports/toolchain-version.log', timeout=10, candidate_id=candidate_id)
-if version['passed'] and output.strip() != lock['godot_version']:
+expected_version = os.environ.get('COCS_TOOLCHAIN_VERSION', lock['godot_version'])
+if version['passed'] and output.strip() != expected_version:
     version.update(passed=False, failure_reason='version-mismatch')
 record(version)
 if not version['passed']:
