@@ -26,7 +26,7 @@ between the audit and this implementation start). Engine: pinned Godot
 | T6 F08 | `godot --headless --audio-driver Dummy --script res://tests/protocol/audio_feedback.gd` | **412 checks / 0 failures** |
 | T7 F07 | `node --test game/cadence.test.mjs` (new `cadence-source` gate) | 2/0; audit counterexamples reproduced |
 | T8 F17 | `world_weather/unit.gd` (headless) and `world_weather/spatial.gd` (xvfb) | `WORLD_WEATHER_NATIVE_OK`, `WORLD_WEATHER_SPATIAL_OK` |
-| T2/T3 | Flash decode-once + Space Bunny weapon profile worker branches | pending integration (see ledger) |
+| T2/T3 | Flash decode-once (merged) + Space Bunny weapon profile worker branch | T2 merged (see ledger); T3 pending integration |
 
 ## Real process journeys executed
 
@@ -34,7 +34,25 @@ between the audit and this implementation start). Engine: pinned Godot
 |---|---|---|
 | Dev supervisor → menu → self-quit | `node tools/godot-dev/launch.mjs --experience=menu --smoke` | exit 0; `MENU_READY {"routes":26,"categories":5,"visible":16,"developer":false}` |
 | Dev supervisor → menu with developer navigation | `COCS_DEV_MENU=1 node tools/godot-dev/launch.mjs --experience=menu --smoke` | exit 0; `MENU_READY {"visible":26,"developer":true}` |
-| Client protocol input flow (campaign/arena/horde) | `godot --headless --script res://tests/campaign/input_flow.gd` | **1970 checks / 0 failures** (baseline for the W1 migration; rerun on merge) |
+| Client protocol input flow (campaign/arena/horde) | `godot --headless --script res://tests/campaign/input_flow.gd` | **1970 checks / 0 failures** (rerun after the W1 merge: still 0) |
+| W1 decode-once guard (new gate) | `godot --headless --script res://tests/protocol/decode_once.gd` | `DECODE_ONCE_OK` — exactly one `JSON.parse_string` across the chain, in `net/client.gd` |
+| Native client contract after W1 | `godot --headless --script res://tests/native_arenas/protocol/client_contract.gd` | `NATIVE_ARENA_PROTOCOL {"failures":0,"ok":true}` |
+| Package suite with the receipt advance | `node --test tools/godot-package/*.test.mjs` (minus career_native) | **315 pass / 0 fail** (advance layer verified for all seven receipts) |
+
+## Receipt advance (required because protocol/UI/audio files are receipt-pinned)
+
+`godot/net/client.gd`, `godot/native_arenas/client.gd`, `godot/campaign/client.gd`,
+`godot/ui/main_menu.gd` and `godot/world/audio_feedback.gd` are production
+package inputs of all seven units, so their byte changes ship through the
+sanctioned additive advance layer:
+
+- `tools/godot-package/consolidation_dependencies.mjs` (newest layer; verifies
+  and reverses to the exact committed predecessor).
+- `tools/godot-package/reconcile_consolidation_advance.mjs` derives the layer
+  from the unpromoted expectation closure, fail-closed on unreviewed drift.
+- The apron/dressing/racing/movement/polish lanes resolve live bytes through the
+  newer layer; every earlier lane still reconstructs its own history.
+- The layer is reversed and re-derived after each worker merge, never stacked.
 
 ## Explicitly unrun / not claimed
 
