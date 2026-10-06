@@ -189,7 +189,12 @@ registrations can fall back to a machine-path engine. It also records that only
 that no audio-hardware gate exists, that 11 "smoke" gates are actually headless,
 and that a second registry (`port/finish/matrix.json`) pins a different candidate.
 Orchestrator spot-check confirmed the 384+2=386 count and the direct call sites;
-independent verification is recorded under T18.
+independent verification (T18) recomputed the census and tier math from scratch —
+the registry count, tier sums and every assignment were confirmed, and S2/S5/S6
+were confirmed exact — and corrected seven presentation-level discrepancies in
+the document (D-subset wording, the ±2 renderer-census split, a fifth
+unpinned-engine fallback plus its reachability nuance, S9's arithmetic and two
+citations); the merged `GATE_TIERS.md` carries the corrections.
 
 ## Explicitly unrun / not claimed
 

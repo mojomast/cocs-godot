@@ -148,8 +148,9 @@ launches. Each definition is mechanical enough to be re-derived.
   whose pass condition is agreement with a recorded inventory rather than new
   behaviour: a generator/checker invoked with `--check` (byte-equality against
   regenerated output), or a `*oracle*.mjs` script that steps the real `game/*.mjs`
-  source and asserts recorded vectors. **D is a strict subset of A** and is counted
-  separately so that A_exclusive + B + C + D = 386.
+  source and asserts recorded vectors. **D is a strict subset of the engine-free
+  class (A-exclusive 98 + D 22 = 120)** and is counted separately so that
+  A_exclusive + B + C + D = 386.
 - **Tier E — environment-dependent / conditional.** *Not a partition.* An overlay:
   gates that cannot produce a result without an external condition (§5). Listed with
   its own count; gates appear in both their A–D tier and in E.
@@ -158,15 +159,16 @@ launches. Each definition is mechanical enough to be re-derived.
 
 | Engine/display actually used | Gates |
 |---|---|
-| Godot `--headless` directly in `argv` | 215 |
-| Godot `--headless` launched transitively by a node/python script | 21 |
-| Godot windowed (`--rendering-method gl_compatibility`) directly in `argv` | 8 |
+| Godot `--headless` directly in `argv` (including `toolchain-version`) | 216 |
+| Godot `--headless` launched transitively by a node/python script | 22 |
+| Godot windowed directly in `argv` (six `xvfb_run.py`-wrapped Godot commands) | 6 |
 | Godot windowed launched transitively (own `Xvfb` / `xvfb-run`) | 22 |
 | **No engine at all** | **120** |
 
 The only audio driver ever requested anywhere in the registry is `Dummy`
-(9 gates); the only rendering method ever requested is `gl_compatibility`
-(5 gates). **No registered gate requests a real audio device** (§6, S5).
+(9 gates); the only rendering method ever requested in `argv` is
+`gl_compatibility` (5 gates; at least 4 further gates request it inside their
+scripts). **No registered gate requests a real audio device** (§6, S5).
 
 ### Per-tier counts
 
@@ -442,7 +444,8 @@ artifact only:
 21:                 if path.stat().st_mtime_ns >= since]
 ```
 
-**G4 — Four registered gates can run an engine other than the pinned one.**
+**G4 — Five unguarded fallback sites (six gate ids) can resolve an engine other
+than the pinned one, but not inside a `verify.py` run.**
 `toolchain-version` (`:516-518`) pins `binary = $GODOT_BIN` and refuses on mismatch
 (`:517-518`), but these scripts resolve Godot themselves and fall back to a
 hard-coded machine path when `GODOT_BIN` is unset:
@@ -452,12 +455,15 @@ hard-coded machine path when `GODOT_BIN` is unset:
 | `port/native-reconnect/journey.mjs:8` | `reconnect-source-native` |
 | `port/native-reconnect/offline-results.mjs:8` | `reconnect-offline-results` |
 | `scripts/world-weather-journey.mjs:45` | `world-weather-source-journey`, `world-weather-campaign-journey` |
+| `port/native-vehicle-expansion/run.py:21` | `vehicle-three-native-crew` |
 | `tools/release/options.mjs:11-12`, applied at `:190` (`options.godotBin ??= process.env.GODOT_BIN \|\| DEFAULT_PINNED_GODOT`) | `release-pipeline-tools` — the fallback is a default constant; `tools/release/release.test.mjs` injects a stub runner, so this gate currently exercises the constant, not the fallback |
 
-The first three sites are exactly `process.env.GODOT_BIN ?? '<hard-coded path>'`, so
-the fallback engages whenever `GODOT_BIN` is absent from the child's environment.
-`verify.py:37` reads `GODOT_BIN` into a local variable and never re-exports it, so
-whether children inherit it depends entirely on the caller's environment.
+These sites are `process.env.GODOT_BIN ?? '<hard-coded path>'` (or an `os.environ`
+equivalent), so the fallback engages whenever the script is invoked directly with
+`GODOT_BIN` unset. **Inside a `verify.py` aggregate it cannot engage:**
+`verify.py:37` only *reads* `GODOT_BIN`, `:514-515` fails preflight before any gate
+runs when it is absent, and `gate_runner.run_gate` spawns children with the
+inherited environment, so every child sees the same pinned value.
 
 The committed report proves the class is live: `gates[0].command` is
 `["/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64", "--version"]`.
@@ -549,7 +555,8 @@ Trigger scope is `push` to `[main, port/lattice-flagship-next]`, `pull_request`,
 - **`port/finish/matrix.json`** — 96 registered jobs, including an 8-job `manual`
   cohort and a 4-job `external` cohort. `verify.py:387-388` describes them as
   "opt-in serial jobs … with gate-specific deadlines". **No workflow runs this
-  file.** Its only in-repo consumers are `tools/release/cinematic-v3/identity.py:17`
+  file.** Its in-repo consumers are `tools/godot-dev/finish_runner.py` (the actual
+  runner, `:21`, `:366`), `tools/release/cinematic-v3/identity.py:17`
   (which loads `port/finish/final_matrix.json`, not `matrix.json`) and
   `tools/godot-dev/test_finish_runner.py` (unit tests of the loader).
 - **The three `manual_acceptance` scopes** at `verify.py:24-28` —
@@ -581,7 +588,7 @@ every tier); rows 4-12 name specific gates.
 | 6 | `material-coverage-floor`, `campaign-compact-ui` | share `/tmp/opencode` with item 5 — concurrent verifier runs on one host collide | `verify.py:15`, `:274`, `:290` |
 | 7 | `first-person-slide` | `missing-prerequisite` branch: fails without launching anything if `godot/first_person/generated/weapon-0.glb` is absent | `verify.py:541-543`, `:550-555` |
 | 8 | `horde-controls` | reads `port/reports/horde-input-vectors.json`, which is **tracked in git** and is written by gate `horde-input-oracle`; see S10 | `verify.py:122`, `:432` |
-| 9 | `reconnect-source-native`, `reconnect-offline-results`, `world-weather-source-journey`, `world-weather-campaign-journey` | engine identity is not bound when `GODOT_BIN` is unset (G4) | see §3.2 |
+| 9 | `reconnect-source-native`, `reconnect-offline-results`, `world-weather-source-journey`, `world-weather-campaign-journey`, `vehicle-three-native-crew` | engine identity is not bound when these scripts are invoked directly with `GODOT_BIN` unset; inside a `verify.py` run the fallback cannot engage (G4) | see §3.2 |
 | 10 | `native-arena-composition` | asserts against a deliberately unreachable endpoint `ws://127.0.0.1:1` | `verify.py:302` |
 | 11 | `career-player-flow-clarity-journey`, `career-equipped-journey` | both refuse to run if their output directory already exists (`clarity-journey.mjs:32`, `equipped-journey.mjs:31-32`), so they depend on `verify.py:50-52` having created a *fresh* `COCS_CAREER_ROOT`; they write real PNGs into the repo tree when `CAREER_CLARITY_OUT`/`CAREER_EQUIPPED_OUT` are unset | `verify.py:50-52`; `port/native-player-flow/clarity-journey.mjs:31-32`; `port/native-career/equipped-journey.mjs:30-32` |
 | 12 | `edge-map-fixtures` → `edge-map-geometry`, `edge-render-masks` | `EDGE_MAP_CASES` is written by `port/edge-effects/measure.mjs:30` and read by `godot/tests/edge_effects/maps.gd:9`; `EDGE_RENDER_OUT` is read by `godot/tests/edge_effects/render.gd:35`. Both are set by `verify.py:57`, so the ordering is load-bearing and no prerequisite is declared for it | `verify.py:57`, `:246-250` |
@@ -624,14 +631,15 @@ So `native-live`, `native-lifecycle` and `native-session` — listed in the repo
 `'live-source'` — cannot fail for any rendering or input-device reason, and
 `showcase-startup` produces no visual evidence despite the name.
 
-**S4 — Four registered gate ids resolve the engine outside the pinned preflight.**
+**S4 — Five fallback sites (six gate ids) resolve the engine outside the pinned
+preflight when invoked directly; none can engage inside a `verify.py` run.**
 See §3.2 G4. The committed report contains the hard-coded path verbatim
 (`gates[0].command[0]`).
 
 **S5 — There is no audio-hardware gate, so no registered gate can produce audio
 acceptance.** Across all 386 registrations the only `--audio-driver` value is `Dummy`
-(9 gates) and the only rendering method is `gl_compatibility` (5 gates); everything
-else is `--headless`. Real-driver PCM acceptance exists only as 2 unexecuted
+(9 gates) and the only rendering method in `argv` is `gl_compatibility` (5 gates;
+at least 4 more request it inside their scripts); everything else is `--headless`. Real-driver PCM acceptance exists only as 2 unexecuted
 `matrix.json` `audio`-cohort jobs and as the `manual_acceptance` scope *"Rendered
 visual fidelity and actual player input"*. Consequently the 412 audio checks cited at
 `GATE_STATUS.md:26` are a headless assertion count, not an audio-hardware result.
@@ -692,7 +700,7 @@ repository range from 105 to 384.**
   Static inventory is 381 commands plus version/release guards = **383 planned
   gates**, against the 359-gate published baseline. This is a count, **not a
   383-pass result**."* The live inventory is **384 commands / 386 planned**
-  (§1.2), so this document is 1 command and 3 planned gates behind the code it
+  (§1.2), so this document is 3 commands and 3 planned gates behind the code it
   describes — and, notably, it applies the same "+2 guards" arithmetic that §1.2
   shows is required, while the audit record omits it.
 - Earlier claims: `port/graphics-batch/README.md:92` "105 gates";
@@ -727,9 +735,26 @@ decision", not "ran". This is tested and intended
 (`tools/godot-dev/test_verifier_report.py:124-139`) but the field name overstates it.
 
 **S12 — `/tmp/opencode` is a hard-coded, shared scratch root.** Created
-unconditionally at `verify.py:15` and used by `benchmark-autostart`
-(`:211`), `campaign-compact-ui` (`:274`) and `material-coverage-floor` (`:290`).
+unconditionally at `verify.py:15` and used by `benchmark-autostart` (`:211`) and
+`campaign-compact-ui` (`:274`); `material-coverage-floor`'s registration is at
+`:290`, but its shared-scratch use is `tools/godot-dev/coverage_floor.py:22`.
 Two verifier runs on one host share it.
+
+---
+
+### Post-verification corrections (T18)
+
+Flash's independent verification recomputed the registry census and tier math
+from scratch and corrected this document before shipment: the Tier D subset
+relation is now stated against the engine-free class (A-exclusive 98 + D 22);
+the renderer census cells match the tier-derived counts (216 direct headless +
+22 transitive headless + 6 windowed-direct + 22 windowed-transitive + 120
+no-engine = 386); G4/S4 list five fallback sites / six gate ids and state that
+the fallbacks cannot engage inside a `verify.py` aggregate (`GODOT_BIN` is
+required at `verify.py:515` and children inherit the environment); the
+`gl_compatibility` figure is marked as the `argv` count; S9's arithmetic is
+corrected to 3 commands behind; and S12 cites `coverage_floor.py:22` for the
+shared scratch root.
 
 ---
 
