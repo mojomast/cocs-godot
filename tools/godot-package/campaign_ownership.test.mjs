@@ -38,6 +38,7 @@ else { console.log('CHILD '+JSON.stringify({args:process.argv.slice(2),career:pr
         copy('tools/godot-dev/active_source.mjs');
         copy('port/contracts/active-source.json');
         copy('port/contracts/racing-candidate-derivative.json');
+        copy('port/contracts/contact-candidate-derivative.json');
         for (const name of ['endpoint.mjs','settings_path.mjs','career_path.mjs']) copy('tools/godot-package/'+name);
         copy('port/contracts/map-selection.json');
         put('port/contracts/source-lock.json','{"godot_version":"synthetic-pinned"}');

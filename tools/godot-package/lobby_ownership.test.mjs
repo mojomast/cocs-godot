@@ -38,6 +38,7 @@ for (const kind of ['package', 'dev']) {
           await copy('../godot-dev/active_source.mjs','tools/godot-dev/active_source.mjs');
           await copy('../../port/contracts/active-source.json','port/contracts/active-source.json');
           await copy('../../port/contracts/racing-candidate-derivative.json','port/contracts/racing-candidate-derivative.json');
+          await copy('../../port/contracts/contact-candidate-derivative.json','port/contracts/contact-candidate-derivative.json');
           await copy('endpoint.mjs','tools/godot-package/endpoint.mjs');
            await copy('settings_path.mjs','tools/godot-package/settings_path.mjs');
            await copy('career_path.mjs','tools/godot-package/career_path.mjs');

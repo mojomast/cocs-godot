@@ -76,6 +76,7 @@ for (const kind of ['dev','package']) {
         await copy('tools/godot-dev/active_source.mjs','tools/godot-dev/active_source.mjs');
         await copy('port/contracts/active-source.json','port/contracts/active-source.json');
         await copy('port/contracts/racing-candidate-derivative.json','port/contracts/racing-candidate-derivative.json');
+        await copy('port/contracts/contact-candidate-derivative.json','port/contracts/contact-candidate-derivative.json');
         for(const name of ['endpoint.mjs','settings_path.mjs','career_path.mjs'])await copy('tools/godot-package/'+name,'tools/godot-package/'+name);
         await copy('port/contracts/map-selection.json','port/contracts/map-selection.json');
         await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'journey-fixture'}));

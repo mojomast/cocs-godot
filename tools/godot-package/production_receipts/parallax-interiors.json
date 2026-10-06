@@ -31,7 +31,7 @@
     "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
     "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
     "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
-    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/core.mjs": "b11165db97ab5423ecb77cd8b908b6935a046bdeaf6989aa3679878ccf49ea3f",
     "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
     "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
     "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
@@ -44,7 +44,7 @@
     "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
     "game/environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
     "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
-    "game/feedback.mjs": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
+    "game/feedback.mjs": "1091bf906e6b2872d576320ebbe0f599b156c6645a445af58d003fb51b8eaa0b",
     "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
     "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
     "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
@@ -132,7 +132,7 @@
     "godot/campaign/art/landmarks/crown-receiver.glb": "a4fe581adb2d2a3014d3a008935a47ce82805389a7912064530f2238d74f1370",
     "godot/campaign/art/landmarks/fallen-relay.glb": "dc013e16360fb018fb28dcf76fc6faf74aa7fc1d5ef6a8f480f1f47f4f61b2cf",
     "godot/campaign/catalog.gd": "612e964df74f2bc2db73f24f2caeec6602d0d174e6fa6323d981d473f7e126c7",
-    "godot/campaign/client.gd": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
+    "godot/campaign/client.gd": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6",
     "godot/campaign/demo.gd": "cd90b6be02614af02f01b145ffbb9ee419b60a9612e3520029963a60b6414a43",
     "godot/campaign/environment.gd": "8264c0f32500450dbb01129fb4e9d560b3f5087d9eda4104e352061eb93895ae",
     "godot/campaign/environment_art.gd": "da891f287ca5be6659581c9542d5926283b77b6951d289836e307aa5e61b03ae",
@@ -198,13 +198,13 @@
     "godot/first_person/finish.gd": "9e52812cf032b12761330555ecb2601ace27ebeadfb7a5971b3b99e035934b89",
     "godot/first_person/generated/catalog.gd": "abdc0a3ef4cce7a1d7c3bc14ae3e798110bd62edeec0e01ea5c60a7d4218e6c4",
     "godot/first_person/generated/finishes.gd": "29f1fb1709a567f7eea56cc192ab93495c76c6b92214a372101c0d7499eca798",
-    "godot/first_person/handling.gd": "87bd1654ef5ed5a2ad24244236ae570a73914eb7772a55ecc0eee410436966ec",
-    "godot/first_person/inertia.gd": "6b1aa98d57eae2a0d4cace886b77b390200b16ffd271ace79fb1f737a54dfef1",
+    "godot/first_person/handling.gd": "6aca4855f390ca735ae0ed7b456a49c745043a965c6ab71e33b080b2ea17d5c4",
+    "godot/first_person/inertia.gd": "cc080264d7f2f78db24cf6c499ec89b1d261df1cb42e4a475fcc1f5cc01e6839",
     "godot/first_person/kick_motion.gd": "f58e81f2ccf2d6fc35790fd72cdfc2c1098e7b65a5430198388f97e75ff59714",
     "godot/first_person/kick_rig.gd": "683d79a1dc40a888302df9f3d0f904dc3a29cb94f787b058ccdbc5ae4fb572bf",
-    "godot/first_person/rig.gd": "1e6869124115ef7cbdf147b9f1597759ee198a2467af4d8ef6f4f285268ef0cf",
-    "godot/first_person/session_binding.gd": "ee6f478bc8a020dfbeac0cf2e70f4e59855fe29b567461fb9e74390a5673e99c",
-    "godot/first_person/sprint_fov.gd": "ba8381203cb66b7e6faf66c80bf05270a2362b760ce58a96865c6fb1aacc1277",
+    "godot/first_person/rig.gd": "a341b1c9b87cc7033b23c0c83aa57eb0bcb98e43664cc45e47f1c7183c503adb",
+    "godot/first_person/session_binding.gd": "a24dbbd52917014d772617c427a3e3a21aa01d9e51014193d98a37991312e412",
+    "godot/first_person/sprint_fov.gd": "062d2c521fba35bace8b562e23cad431753bed13e5dee443e1f668268d5ffcc7",
     "godot/graphics_atmosphere/atmosphere.gd": "8acfa2611bbc7909bfd752b7887daaf42038ef76f43654da292538b21514a322",
     "godot/graphics_atmosphere/distant_ground.gdshader": "899f567100471d9b0c037363e0d509dfaebfd4e4ce401fcfb71223a3721ac86b",
     "godot/graphics_atmosphere/horizon.gdshader": "6a06b0d7203f2ae386ffc656eda63d445d1c6e866b813fbbd3462a80f2c4ab58",
@@ -253,17 +253,17 @@
     "godot/multiplayer_worlds/sports_demo.gd": "691049e03c4aa2c39b0bf42eb24f614c1c3598aa805821a69a938dbd5ed855e6",
     "godot/multiplayer_worlds/urban_lighting.gd": "aa02961ccd39d1655df7ba9619d6270b6751f1e6dd3742ec4daa7a60bba83674",
     "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
-    "godot/native_arenas/client.gd": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c",
+    "godot/native_arenas/client.gd": "114dd093d232b92dc589bb30e3b18d2b1e8e6dd4f05a435e5dd6b6073ba9eed4",
     "godot/native_arenas/identity_environment.gd": "547631de9df3d1d6f9813f057a142447e7134f713542107c073b31e9e83cfbd0",
     "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
-    "godot/net/client.gd": "1ecbfeb7fc343073e6682d1430b0c6492574a352e9520da4988f6cd368193c3a",
+    "godot/net/client.gd": "d798327ed8e6a8ddae52f962d1a1b69c502a89a2ba6a90583b78f364fa6088d6",
     "godot/net/reconnect_ticket.gd": "e959832b372071a4d0f61218e269c514a9bc2b686680313ebed310aece50e585",
     "godot/net/snapshot_watch.gd": "2f06c11b1426bfd80d3b8fadcd85d6a57883b8143b9d970667594493306882f0",
     "godot/objectives/guidance.gd": "a288d3dc5e4002453171fbf975e03193fb4107d3230b6dd486156d1d4e9c3b8f",
     "godot/objectives/renderer.gd": "18aeba6749d92325b7183d3465c7b8b0577226ac06a43abd6942476ded9df438",
     "godot/player_fx/burst.gdshader": "631af2e378ec16993fd9aec139cb28afb302c283fe7472834a629f7a9b33e085",
     "godot/player_fx/director.gd": "bdee1965773c17e17639b95d550e5f36b3f7baf05abf9c0e2482ae25d1c15798",
-    "godot/player_fx/impacts.gd": "7ec3685e07a499873be1d1eaec4be937e921af703ea56ea312144d1fcb6fce9f",
+    "godot/player_fx/impacts.gd": "a8cd2cd1b773dcb6056f4153fdbae136968a64a40762d78747f8ec1bf0804ed4",
     "godot/player_fx/mark.gdshader": "7d5d742267dee78825683a27fe12d491953d79a9b287ee28e624449319df72f0",
     "godot/player_fx/mark_pool.gd": "233d01d73745702ee5a3512e544eb5fa856a3b624cda43b04bbfa96cb1f582e4",
     "godot/player_fx/surface.gd": "d071ab50c0f59e633584453dcab0ba22ac1971506ebcf91a4b2bdfd2079183e3",
@@ -557,7 +557,7 @@
     "godot/ui/lobby_choice.gd": "9eba4c8067e4b769a3486cf0949680a5e145c1620d00608f9ece1fad8b9d7e95",
     "godot/ui/lobby_menu.gd": "657087bc31cd8f8e22f7bb7d4907f21be14fc01191b2546c0cd94d1f9ae64a6a",
     "godot/ui/local_settings.gd": "073a48948796a68680cd0f4242655374c5f8b7fc5b835347ebaf0dd35b7d42f9",
-    "godot/ui/main_menu.gd": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
+    "godot/ui/main_menu.gd": "273a4fd04bca0fc82c7385e1a116467f8f1493a74efcdd0bdad0cbfa6d4d4fea",
     "godot/ui/match_setup.gd": "082ea48c7109941e126092ddc80434d1cf3c5b644f87584ed9a75a20f896b95a",
     "godot/ui/menu_preferences.gd": "5c4cd6d581d0eb512807344cbb72bb4c00218f26cab1e30b60f64c26e467a174",
     "godot/ui/mouse_motion.gd": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
@@ -579,7 +579,7 @@
     "godot/weapon_effects/origin.gd": "335b41aff6a852d406ce7f507772294d15abfaadcef066abd6d5bf37d899a924",
     "godot/weapon_effects/profiles.gd": "5b64d43356d00573cddada184574c5e373eb4a2a52b374611585a6b2b658bcbf",
     "godot/weapon_effects/trail.gdshader": "4a5f73ca10e50d7d0abe22e5915acecea1ac7ef1015c2b2a9a3a70dad70def41",
-    "godot/world/audio_feedback.gd": "7b903df2e0685840c76df37be88ad22e3d31e8d106cee3c362949ecebdf44078",
+    "godot/world/audio_feedback.gd": "e52c9a16f0a2a1be3950f032c79b5a6f08e13d2eeaf1ccce746eb268d1a20375",
     "godot/world/catalog.gd": "12d668783a81e3398e134a31013dffcf0d03feffcc44382ee96da736718b856b",
     "godot/world/combat_actions.gd": "393e75dea9e72d36cbff0c86df04888cbfca777b20332d7fff3ec17bc41b5834",
     "godot/world/combat_feedback.gd": "f541b80d63c1fb5026d85cfd45f8a8e61dbf8c7c5ecd80304e28df9f0344695c",
@@ -623,8 +623,8 @@
     "port/map-finish/parallax-observatory/source-check.json": "dd734927a3ad0bfb4d6977c47c8e6aa1b28992a39c0ee8135feeaf081619ffe8",
     "port/map-finish/parallax-observatory/validate.py": "61afa1dcd01881f024d6eb689167f99d02c7e4e04274427e080a3bc96f5db101",
     "port/multiplayer-worlds/catalog.mjs": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1",
-    "port/native-campaign/core.generated.mjs": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
-    "port/native-campaign/generate-core.mjs": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
+    "port/native-campaign/core.generated.mjs": "9fd79ef0aef6facdc3263e8bc1abce9b022d45e45c05c42275057feed939b92b",
+    "port/native-campaign/generate-core.mjs": "a1fe4005a9c6abf287f24d1fe66267a7d1c29f356ab22ff1478e05a50143c552",
     "port/native-multiplayer-worlds/worlds/parallax-observatory.json": "e949e43d5546ec8b0c9024810f1da6229152e370ad640ecf27ecb54c05f2e23d",
     "port/new-maps/parallax-observatory/audit-art.mjs": "4a334a3e4dd1b1bef8c5140e8a92df32e2e39e3702e23d791e48c04c989651bc",
     "port/new-maps/parallax-observatory/production-c.json": "f369bc9d595dd84c08c791cb6a443aa7bbd06e37b65d080d85c7095a92050ec1",
@@ -645,21 +645,23 @@
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/reopen_candidate.py": "4ad9e40bdbe0e6d0321a259786f32b4ef14600b30ba4ebe0146091c7475b031a",
     "tools/godot-multiplayer/new-maps/parallax-observatory/revisions/interiors-v2/source-check.json": "299a068f800667feff17baa952cdbe08c44786b75fc9173b1782ace37c882534",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
-    "tools/godot-package/dressing_dependencies.mjs": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
+    "tools/godot-package/dressing_dependencies.mjs": "fe8c5cdaff706bc68d8954bae39e56021ee0a0fcee0a5ce3efab2304ffd2d378",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
-    "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
+    "tools/godot-package/movement_dependencies.mjs": "271c8d90a4fd7a33e63067a1dc0e98002384609ebed949e4ff770f606c27da37",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-    "tools/godot-package/production_resources.mjs": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
-    "tools/godot-package/racing_dependencies.mjs": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
+    "tools/godot-package/polish_dependencies.mjs": "c4d63a93f93898f0783279ab004d7ac3efbc137764d7b4f00e4aa526b81fd52a",
+    "tools/godot-package/production_resources.mjs": "f97585f472c6c257f08a8cfb49bead91b95c830845963def93441cef9001d8c5",
+    "tools/godot-package/racing_dependencies.mjs": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
     "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
-    "tools/godot-package/vesper_apron_dependencies.mjs": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e"
+    "tools/godot-package/vesper_apron_dependencies.mjs": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b",
+    "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
+    "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
   },
   "masters": [
     {
@@ -2124,5 +2126,113 @@
     },
     "previousPackageFingerprint": "d08f35423df9667d698e8e3226fd40206fdc7a804914d6fe9245c7a8faf007bf",
     "previousSourceFingerprint": "9df425067dbe25f654fb4eea17b4f381917f167064d089b38cd67e1edc2b2ba9"
+  },
+  "consolidationAdvance": {
+    "previousReceipt": {
+      "commit": "d34c9b6773925081e2d4986f130df5e35d378c34",
+      "path": "tools/godot-package/production_receipts/parallax-interiors.json",
+      "sha256": "b93b2cff1933b3a4ddc12fbde4926a6f7819abaafcec795fc08b88cd48374c35"
+    },
+    "changed": {
+      "game/core.mjs": {
+        "before": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+        "after": "b11165db97ab5423ecb77cd8b908b6935a046bdeaf6989aa3679878ccf49ea3f"
+      },
+      "game/feedback.mjs": {
+        "before": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
+        "after": "1091bf906e6b2872d576320ebbe0f599b156c6645a445af58d003fb51b8eaa0b"
+      },
+      "godot/campaign/client.gd": {
+        "before": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
+        "after": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6"
+      },
+      "godot/first_person/handling.gd": {
+        "before": "87bd1654ef5ed5a2ad24244236ae570a73914eb7772a55ecc0eee410436966ec",
+        "after": "6aca4855f390ca735ae0ed7b456a49c745043a965c6ab71e33b080b2ea17d5c4"
+      },
+      "godot/first_person/inertia.gd": {
+        "before": "6b1aa98d57eae2a0d4cace886b77b390200b16ffd271ace79fb1f737a54dfef1",
+        "after": "cc080264d7f2f78db24cf6c499ec89b1d261df1cb42e4a475fcc1f5cc01e6839"
+      },
+      "godot/first_person/rig.gd": {
+        "before": "1e6869124115ef7cbdf147b9f1597759ee198a2467af4d8ef6f4f285268ef0cf",
+        "after": "a341b1c9b87cc7033b23c0c83aa57eb0bcb98e43664cc45e47f1c7183c503adb"
+      },
+      "godot/first_person/session_binding.gd": {
+        "before": "ee6f478bc8a020dfbeac0cf2e70f4e59855fe29b567461fb9e74390a5673e99c",
+        "after": "a24dbbd52917014d772617c427a3e3a21aa01d9e51014193d98a37991312e412"
+      },
+      "godot/first_person/sprint_fov.gd": {
+        "before": "ba8381203cb66b7e6faf66c80bf05270a2362b760ce58a96865c6fb1aacc1277",
+        "after": "062d2c521fba35bace8b562e23cad431753bed13e5dee443e1f668268d5ffcc7"
+      },
+      "godot/native_arenas/client.gd": {
+        "before": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c",
+        "after": "114dd093d232b92dc589bb30e3b18d2b1e8e6dd4f05a435e5dd6b6073ba9eed4"
+      },
+      "godot/net/client.gd": {
+        "before": "1ecbfeb7fc343073e6682d1430b0c6492574a352e9520da4988f6cd368193c3a",
+        "after": "d798327ed8e6a8ddae52f962d1a1b69c502a89a2ba6a90583b78f364fa6088d6"
+      },
+      "godot/player_fx/impacts.gd": {
+        "before": "7ec3685e07a499873be1d1eaec4be937e921af703ea56ea312144d1fcb6fce9f",
+        "after": "a8cd2cd1b773dcb6056f4153fdbae136968a64a40762d78747f8ec1bf0804ed4"
+      },
+      "godot/ui/main_menu.gd": {
+        "before": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
+        "after": "273a4fd04bca0fc82c7385e1a116467f8f1493a74efcdd0bdad0cbfa6d4d4fea"
+      },
+      "godot/world/audio_feedback.gd": {
+        "before": "7b903df2e0685840c76df37be88ad22e3d31e8d106cee3c362949ecebdf44078",
+        "after": "e52c9a16f0a2a1be3950f032c79b5a6f08e13d2eeaf1ccce746eb268d1a20375"
+      },
+      "port/native-campaign/core.generated.mjs": {
+        "before": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
+        "after": "9fd79ef0aef6facdc3263e8bc1abce9b022d45e45c05c42275057feed939b92b"
+      },
+      "port/native-campaign/generate-core.mjs": {
+        "before": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
+        "after": "a1fe4005a9c6abf287f24d1fe66267a7d1c29f356ab22ff1478e05a50143c552"
+      },
+      "tools/godot-package/dressing_dependencies.mjs": {
+        "before": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
+        "after": "fe8c5cdaff706bc68d8954bae39e56021ee0a0fcee0a5ce3efab2304ffd2d378"
+      },
+      "tools/godot-package/movement_dependencies.mjs": {
+        "before": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
+        "after": "271c8d90a4fd7a33e63067a1dc0e98002384609ebed949e4ff770f606c27da37"
+      },
+      "tools/godot-package/polish_dependencies.mjs": {
+        "before": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
+        "after": "c4d63a93f93898f0783279ab004d7ac3efbc137764d7b4f00e4aa526b81fd52a"
+      },
+      "tools/godot-package/production_resources.mjs": {
+        "before": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
+        "after": "f97585f472c6c257f08a8cfb49bead91b95c830845963def93441cef9001d8c5"
+      },
+      "tools/godot-package/racing_dependencies.mjs": {
+        "before": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
+        "after": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2"
+      },
+      "tools/godot-package/vesper_apron_dependencies.mjs": {
+        "before": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e",
+        "after": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b"
+      }
+    },
+    "added": {
+      "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
+      "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
+    },
+    "runtimeChanged": {},
+    "sourceChanged": {},
+    "previousPackageFingerprint": "f78f1f62dbea24649898eb34356114f7cf197c48c9bf07c01e95be31b92479bd",
+    "packageFingerprint": "a9050e7c472395d5776223783a9ed700e8a3bc9d072e185c16856c62f5f5103e",
+    "previousSourceFingerprint": "9df425067dbe25f654fb4eea17b4f381917f167064d089b38cd67e1edc2b2ba9",
+    "sourceFingerprint": "9df425067dbe25f654fb4eea17b4f381917f167064d089b38cd67e1edc2b2ba9",
+    "review": {
+      "scope": "Audit 2026-10-06 implementation: decoded-frame base hook with the native-arena and campaign clients migrated to bounded deliver_frame validation (godot/net/client.gd, godot/native_arenas/client.gd, godot/campaign/client.gd), developer-navigation disclosure in godot/ui/main_menu.gd, and same-batch weapon attribution in godot/world/audio_feedback.gd. Protocol/presentation only; source gameplay authority, epochs, acknowledgements, event ordering and snapshot coalescing are preserved.",
+      "nativeChecks": "pending",
+      "document": "docs/audit-2026-10-06/GATE_STATUS.md"
+    }
   }
 }
