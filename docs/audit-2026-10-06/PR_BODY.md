@@ -45,6 +45,15 @@ evidence; unrun/manual gates are never reported as passing.
   primary weapon at 60 Hz: effective cadence is tick-quantized with bounded
   overshoot (Pulse Rifle `.1 s → 116.667 ms`, SMG `.058 s → 66.667 ms`), with
   tap/pause tests proving no catch-up burst. No balance change.
+- **F05 — weapon presentation profile + sampled-animation pilot.** A shared
+  immutable `WeaponPresentationProfile` now backs the first-person helpers
+  (rig/handling/inertia/sprint-FOV/session-binding) with independently verified
+  byte-identical parity (166-check executed parity, 84-row constant comparison
+  zero mismatch, gate result lines unchanged) plus new gates
+  `presentation_profile` 970 and `mechanism_pilot` 574. The reload pilot slaves
+  a profile-named clip to source progress with cancellations and no rotation
+  leak; the source Pulse Rifle currently cannot reload, so the pilot is
+  test-exercised only. No visual acceptance claimed.
 - **F10 — encounter completion policy (measured experiment, not promoted).** An
   opt-in `restore-and-withdraw` policy for `siltwake-crossing:1` lets the
   transfer objective complete while surviving guards withdraw (bounded despawn,
@@ -76,8 +85,13 @@ evidence; unrun/manual gates are never reported as passing.
 - client input flow 1970/0 · real dev-launcher menu journeys (16 visible default,
   26 with developer navigation)
 - receipt advance: independently verified (7/7 byte-identical reversals, all tamper
-  probes rejected, strict closure clean, package suite 315/0) + dedicated
-  consolidation contract test 3/3
+  probes rejected, strict closure clean) + dedicated consolidation contract test 3/3;
+  regenerated for the W2 profile (16 changed / 2 added inputs, pending empty),
+  package suite **318/0**
+- first-person after the W2 merge: presentation_profile 970/0, mechanism_pilot 574/0,
+  handling/recoil/ads/lifecycle/muzzle/detail/finishes byte-identical to base
+- decode-once gate hardened to 16 checks (12 in-gate self-tests; whitespace and
+  relocation evasions closed)
 - F08 source experiment (unpromoted branch): 38/38 probes, differential
   invariance, only the expected hash-pin boundary failures
 

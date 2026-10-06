@@ -270,11 +270,15 @@ rejected frame can wedge the connection. Scope gap: `horde/client.gd` and
   disk-free host (menu smoke, menu contracts, campaign client, input flow, package
   suite) pass, and the 384+2 registry completed (386 executed). The final aggregate
   at the frozen candidate is the authoritative record.
-- **`product-shell-journey` timing is under investigation**: its committed log
-  proves it passed historically (`passed:true`, 18 visits), but recent runs produce
-  an empty log and exceed the 400 s rerun budget. A long-budget run is in progress;
-  the outcome will be classified as environment-budget or regression, never
-  claimed as passing without a completed run.
+- **`product-shell-journey` is environment/harness-blocked on this host (not
+  claimed, not a regression).** Its committed log proves it passed historically
+  (`passed:true`, 18 visits). On this llvmpipe host the run proceeds through the
+  first visit and return-to-menu, then the driver's own deadline —
+  `max(240 s, 18 × 30 s) = 540 s` — kills the child (`exit_code:null`, 1/18
+  visits) while the registered gate budget is 300 s. A `COCS_DEV_MENU=1` control
+  run is in flight to test whether hidden-route navigation is implicated; the
+  completing menu gates (smoke, contracts 1153/0, launcher journeys) are green.
+  No pass is claimed.
 - The F08 experiment branch fails only the expected hash-pin provenance boundary
   (no receipts or production files changed there). Worker-branch validation is
   recorded on merge.
