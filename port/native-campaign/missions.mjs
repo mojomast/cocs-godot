@@ -31,3 +31,36 @@ export function missionForCampaign(id) {
   if (!mission) throw new TypeError(`Unknown campaign map: ${id}`);
   return mission;
 }
+
+// Objective completion policy (F10 experiment).
+// Audit finding F10: every authored objective label resolves through one shared
+// rule -- `remaining()===0` -- so "restore the pump" and "clear the terrace" are
+// mechanically the same task, and an authored transfer/hold can never complete
+// on its own terms.
+//
+// The default is the CONTROL rule and must stay reachable unchanged: all
+// deployed guards must die. `restore-and-withdraw` is the measured alternative
+// and is opted into by exactly ONE encounter, so the experiment cannot leak
+// into any other map, step or mechanic. It is a proposal, not a promotion.
+export const OBJECTIVE_COMPLETION = Object.freeze({
+  requireAllGuards: 'require-all-guards',
+  restoreAndWithdraw: 'restore-and-withdraw',
+});
+export const DEFAULT_OBJECTIVE_COMPLETION = OBJECTIVE_COMPLETION.requireAllGuards;
+
+// `siltwake-crossing` step 1, "Restart the west pump": a 5 s transfer beside a
+// four-guard maintenance patrol whose own brief tells the player to use the
+// pump platform to catch their breath. The encounter is already framed as a
+// transfer rather than an extermination, which is what makes it the honest
+// place to measure a completion rule that is not "kill everything".
+const COMPLETION_EXPERIMENT = Object.freeze({
+  'siltwake-crossing:1': OBJECTIVE_COMPLETION.restoreAndWithdraw,
+});
+
+// Resolve the effective policy for one encounter. An unknown request fails
+// closed (TypeError, never silently downgraded); a request for the experiment
+// against an encounter that did not opt in resolves to the control rule.
+export function completionPolicyFor(mapId, stepIndex, requested = DEFAULT_OBJECTIVE_COMPLETION) {
+  if (!Object.values(OBJECTIVE_COMPLETION).includes(requested)) throw new TypeError('Unsupported objective completion policy');
+  return COMPLETION_EXPERIMENT[`${mapId}:${stepIndex}`] === requested ? requested : DEFAULT_OBJECTIVE_COMPLETION;
+}

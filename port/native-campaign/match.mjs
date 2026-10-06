@@ -4,8 +4,8 @@ import {updateEnemyRoles} from '../../game/singleplayer.mjs';
 import {createFeel} from './feel.mjs';
 import {playerWeapon,projectileWeapon,trackingInput} from './targeting.mjs';
 import {loadCampaignMap} from './maps.mjs';
-import {missionForCampaign} from './missions.mjs';
-import {deployEncounter} from './enemies.mjs';
+import {missionForCampaign, completionPolicyFor, OBJECTIVE_COMPLETION, DEFAULT_OBJECTIVE_COMPLETION} from './missions.mjs';
+import {deployEncounter, beginEncounterWithdrawal, tickEncounterWithdrawal} from './enemies.mjs';
 import {createCampaignStory} from './story.mjs';
 import {createCampaignInterludes} from './interludes.mjs';
 import {createStructureRay} from '../edge-effects/structure-rays.mjs';
@@ -64,11 +64,14 @@ function applyPlayerCarry(match, carry) {
   player.armor = carry.armor;
 }
 export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal', random=Math.random,
-  mapData, checkpoint=0, elapsed=0, totalElapsed=0, kills=0, checkpointPoint, storyCarry, interludeCarry, playerCarry: carryInput=null} = {}) {
+  mapData, checkpoint=0, elapsed=0, totalElapsed=0, kills=0, checkpointPoint, storyCarry, interludeCarry, playerCarry: carryInput=null,
+  objectiveCompletion=DEFAULT_OBJECTIVE_COMPLETION} = {}) {
   const mission = missionForCampaign(mapId);
   if (!['easy','normal','hard'].includes(difficulty)) throw new TypeError('Unsupported difficulty');
   if (typeof random !== 'function') throw new TypeError('RNG must be a function');
   if (!Number.isInteger(checkpoint) || checkpoint < 0 || checkpoint > 5) throw new TypeError('Invalid checkpoint');
+  // Fail closed on an unknown policy name, at the constructor, once per match.
+  completionPolicyFor(mapId, 0, objectiveCompletion);
   const data = mapData ?? loadCampaignMap(mapId);
   if (data.id !== mapId) throw new TypeError('Campaign map identity mismatch');
   const anchors = data.campaign.anchors;
@@ -80,18 +83,34 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     checkpoint, checkpointPoint:checkpointPoint ?? anchors.start, elapsed, totalElapsed,
     bankedKills:kills, nextId:1, enemies:[], allies:[], groups:{}, steps:[],
      holdProgress:0, restoring:false, bypassed:false, deployed:false, boss:null, bossPhase:1, summonCount:0,
+     // F10 experiment: ids of guards currently withdrawing, and the match-time
+     // deadline at which they are despawned. Empty and inert unless an
+     // opted-in encounter completes under the restore-and-withdraw policy.
+     withdrawn:[], withdrawUntil:0,
     transmission:{speaker:'ECHO',text:mission.brief}};
   let controls = {}, arenaAssigned = false;
   const feel=createFeel(difficulty);
   const structureRay=createStructureRay(data);
   const remaining = match => match.actors.filter(a => a.isNpc && a.health > 0).length;
+  // F10 experiment: guards that are mid-withdrawal no longer belong to any
+  // encounter, so they must not count toward the live-guard completion gate.
+  // Without this, a withdrawal still in flight stalls the NEXT encounter for
+  // the rest of its grace window -- a dead beat after the player has already
+  // earned that objective. Inert while `withdrawn` is empty, so the control
+  // gate is bit-for-bit the same `remaining()` it always was.
+  const encounterAlive = match => remaining(match)
+    - state.withdrawn.filter(id => (match.actors[id]?.health ?? 0) > 0).length;
   const currentAnchor = () => anchors[state.stepIndex < 5 ? `encounter-${state.stepIndex + 1}` : 'exit'];
   const checkpointPosition = (match, player) => {
     const y=floorAt(player.x,player.z,match.arena);
     return Number.isFinite(y)&&!obstructed(player.x,y,player.z,undefined,match.arena)
       ? {x:player.x,y,z:player.z} : {...state.checkpointPoint};
   };
-  const finish = (match, phase) => {state.phase=phase; state.winner=phase==='dead'?1:0; match.over=true; match.overReason=phase;};
+  const finish = (match, phase) => {
+    // Nothing may outlive the match: drain any in-flight withdrawal here so a
+    // dead or completed match never reports a guard still standing.
+    tickEncounterWithdrawal(match,state,true);
+    state.phase=phase; state.winner=phase==='dead'?1:0; match.over=true; match.overReason=phase;};
   class CampaignMatch extends Match {
 
     rayWorld(origin,direction,max) {return structureRay(origin,direction,max);}
@@ -129,7 +148,9 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     }
     spawn(actor) {
       // Retry/restart construct fresh actors; base automatic respawn is barred.
-      if (this.modeState===state && actor.deaths>0) return;
+      // F10 experiment: a guard drained by a withdrawal carries that marker
+      // permanently, so the invariant does not rest on the `dead` pin alone.
+      if (this.modeState===state && (actor.deaths>0 || actor.campaignWithdrawn)) return;
       super.spawn(actor);
     }
     endMatch(reason) {if(reason==='time')return;super.endMatch(reason);}
@@ -163,6 +184,11 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         state.bossPhase=phase;
       }
       updateEnemyRoles(this,state,dt); feel.update(this,dt);
+      // F10 experiment: the withdrawal drain runs unconditionally every tick, so
+      // it completes even when the player has already run ahead to the next
+      // anchor or the level has closed. It is time-driven, never player-driven,
+      // so it can leave the objective blocked.
+      tickEncounterWithdrawal(this,state);
       if (player.health<=0) {finish(this,'dead'); return;}
       const anchor=currentAnchor(), near=distance(player,anchor)<=anchor.radius && Math.abs(player.y-anchor.y)<3;
       const encounterForStory=mission.encounters[state.stepIndex];
@@ -172,6 +198,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       interludes.update(this,state,controls,near||!!storySnapshot.prompt);
       if (state.stepIndex===5) {
         if (near) {state.transmission={speaker:'ECHO',text:mission.outro}; this.objectiveState.winner=0; finish(this,'level-complete');}
+        else tickEncounterWithdrawal(this,state,true);
         return;
       }
       const encounter=mission.encounters[state.stepIndex];
@@ -182,7 +209,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         this.emit('campaign-checkpoint',{step:state.checkpoint});
       }
       if (!state.deployed) return;
-      const alive=remaining(this);
+      const alive=encounterAlive(this);
       // Hold progress belongs to the contested position, not a post-clear wait.
       // Leaving pauses progress; living guards still block completion below.
       if (encounter.mechanic==='hold' && near) {
@@ -204,7 +231,24 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
          if(near&&controls.interact===true)state.restoring=true;
          if(near&&state.restoring)state.holdProgress=Math.min(encounter.seconds,state.holdProgress+dt);
        }
-       if (alive>0) return;
+       // F10 experiment: how a single encounter decides it is finished.
+      // CONTROL (default, `require-all-guards`): the shared `alive>0` gate below
+      // stays exactly where it was: every objective label -- clear, interact,
+      // restore, hold, guardian -- resolves through "every deployed guard is
+      // dead". This is the behaviour under audit (F10: different objective
+      // labels converge on eliminating all guards).
+      // EXPERIMENT (`restore-and-withdraw`): an authored transfer/hold may
+      // complete on its own terms, and the guards it left standing withdraw
+      // through the same transition instead of blocking it. The relaxation is
+      // deliberately narrow: the encounter's OWN completion condition must
+      // already be satisfied, so the policy can never complete an objective
+      // that the control rule rejected for any other reason, and it is inert
+      // for every encounter that did not explicitly opt in.
+      const policy=completionPolicyFor(mapId,state.stepIndex,objectiveCompletion);
+      const transferComplete=encounter.seconds>0&&state.holdProgress>=encounter.seconds
+        &&(encounter.mechanic==='restore'||encounter.mechanic==='hold');
+      const withdraws=alive>0&&policy===OBJECTIVE_COMPLETION.restoreAndWithdraw&&transferComplete;
+      if (alive>0 && !withdraws) return;
       let done=(encounter.mechanic==='clear'||encounter.mechanic==='guardian')&&near;
       if (encounter.mechanic==='interact') done=near && controls.interact===true;
        if (encounter.mechanic==='restore') {
@@ -213,8 +257,15 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       if (encounter.mechanic==='hold') done=near&&state.holdProgress>=encounter.seconds;
       if (!done) return;
       this.emit('campaign-objective-complete',{step:state.stepIndex});
+      // Bank the guards that actually died, BEFORE any withdrawal: the drain
+      // zeroes survivor health, so counting afterwards would pay out kills that
+      // were never earned and could be farmed by retrying the same encounter.
       state.bankedKills+=state.enemies.filter(id=>this.actors[id]?.health<=0).length;
+      // Remaining encounter guards disengage now and despawn on a bounded
+      // deadline, through the same transition the objective itself just used.
+      const withdrawing=withdraws?beginEncounterWithdrawal(this,state):[];
       state.enemies=[]; state.boss=null;
+      if (withdrawing.length) this.emit('campaign-guard-withdrawal',{step:state.stepIndex,count:withdrawing.length});
        state.stepIndex++; state.deployed=false; state.holdProgress=0; state.restoring=false;state.bypassed=false;
       state.checkpoint=state.stepIndex; state.checkpointPoint=checkpointPosition(this,player);
       player.health=Math.max(player.health,player.maxHealth*.8); player.armor=Math.max(player.armor,40);
