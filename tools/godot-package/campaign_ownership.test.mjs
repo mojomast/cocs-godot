@@ -71,3 +71,43 @@ else { console.log('CHILD '+JSON.stringify({args:process.argv.slice(2),career:pr
     } finally {rmSync(root,{recursive:true,force:true});}
   });
 }
+
+// The dev launcher is the only described way to reach the rendered campaign with
+// the F10 opt-in. This runs it end-to-end through the synthetic Godot boundary
+// and pins that the reviewed policy reaches the authority factory verbatim,
+// while the unopted control never grows the key (the loop above pins that).
+test('dev: campaign objective-completion reaches the authority factory only when opted in', () => {
+  const root = mkdtempSync(join(tmpdir(),'campaign objective '));
+  const put = (path, text, mode) => {const full=join(root,path);mkdirSync(dirname(full),{recursive:true});writeFileSync(full,text,{mode});};
+  const copy = (path, dest=path) => {mkdirSync(dirname(join(root,dest)),{recursive:true});copyFileSync(new URL('../../'+path,import.meta.url),join(root,dest));};
+  try {
+    put('package.json','{"type":"commonjs"}');
+    put('cocs.x86_64',`#!${process.execPath}
+if(process.argv.includes('--version'))console.log('synthetic-pinned');
+else { console.log('CHILD '+JSON.stringify({args:process.argv.slice(2)})); }
+`,0o755);
+    for (const name of ['launch.mjs','launch_options.mjs']) copy('tools/godot-dev/'+name);
+    copy('tools/godot-dev/active_source.mjs');
+    copy('port/contracts/active-source.json');
+    copy('port/contracts/racing-candidate-derivative.json');
+    copy('port/contracts/contact-candidate-derivative.json');
+    for (const name of ['endpoint.mjs','settings_path.mjs','career_path.mjs']) copy('tools/godot-package/'+name);
+    copy('port/contracts/map-selection.json');
+    put('port/contracts/source-lock.json','{"godot_version":"synthetic-pinned"}');
+    put('tools/godot-export/semantic.mjs','export function verifySource(){}');
+    put('port/native-campaign/authority.mjs',authority);
+    put('server/game-server.mjs',"throw Error('WRONG_AUTHORITY');");
+    const script=join(root,'tools/godot-dev/launch.mjs');
+    const args=['--experience=campaign','--map=siltwake-crossing','--objective-completion=restore-and-withdraw','--smoke'];
+    const result=spawnSync(process.execPath,[script,...args],{cwd:root,encoding:'utf8',timeout:10000,
+      env:{...process.env,COCS_SOURCE_DERIVATIVE:'',SCENARIO:'exit',PORT:'must-not-be-used',GODOT_BIN:join(root,'cocs.x86_64'),TMPDIR:root}});
+    const text=result.stdout+result.stderr;
+    assert.equal(result.status,0,text);
+    assert.doesNotMatch(text,/WRONG_AUTHORITY/);
+    const record=prefix=>result.stdout.split('\n').find(line=>line.startsWith(prefix))?.slice(prefix.length);
+    assert.deepEqual(JSON.parse(record('FACTORY ')),{mapId:'siltwake-crossing',difficulty:'normal',objectiveCompletion:'restore-and-withdraw'});
+    const child=JSON.parse(record('CHILD '));
+    assert.ok(!child.args.some(arg=>arg.startsWith('--objective-completion')),'the client renders the policy from snapshots; the flag stays Node-side');
+    assert.match(text,/CLOSED/);
+  } finally {rmSync(root,{recursive:true,force:true});}
+});

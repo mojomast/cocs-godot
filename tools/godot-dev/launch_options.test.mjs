@@ -138,6 +138,30 @@ test('identity-zones routes Domination on Vermilion Fold only',()=>{
   }
 });
 
+test('campaign objective-completion is an opt-in policy with a clear rejection and an untouched default',()=>{
+  // Default: no field, no session arg, no Match factory option. The control
+  // launch stays byte-identical to before the option existed.
+  const control=launchOptions(['--experience=campaign','--map=siltwake-crossing'],catalog);
+  assert.equal(control.objectiveCompletion,undefined);
+  assert.ok(!control.sessionOptions.some(arg=>arg.startsWith('--objective-completion')));
+  assert.deepEqual(launchOptions(['--experience=campaign'],catalog).sessionOptions,['--map=rootfall-verge','--mode=campaign','--difficulty=normal']);
+  // Opt-in carries the reviewed value through the plan; it is not forwarded to
+  // the Godot client, which renders the policy from the authority snapshot.
+  const opted=launchOptions(['--experience=campaign','--map=siltwake-crossing','--objective-completion=restore-and-withdraw'],catalog);
+  assert.equal(opted.objectiveCompletion,'restore-and-withdraw');
+  assert.ok(!opted.sessionOptions.some(arg=>arg.startsWith('--objective-completion')));
+  // The shipped rule is also accepted explicitly, it is not a second mode.
+  assert.equal(launchOptions(['--experience=campaign','--objective-completion=require-all-guards'],catalog).objectiveCompletion,'require-all-guards');
+  for(const bad of ['--objective-completion=','--objective-completion=restore','--objective-completion=Restore-and-Withdraw','--objective-completion=require_all_guards']){
+    assert.throws(()=>launchOptions(['--experience=campaign',bad],catalog),/objective completion|objective-completion/,bad);
+  }
+  // Every other experience rejects the campaign-only control before any scene.
+  for(const experience of ['combat','horde','native-dm','identity-zones','sports','lattice-world']){
+    assert.throws(()=>launchOptions([`--experience=${experience}`,'--objective-completion=restore-and-withdraw'],catalog),Error,experience);
+  }
+  assert.throws(()=>launchOptions(['--objective-completion=restore-and-withdraw'],catalog),/requires campaign/);
+});
+
 test('dev launcher mirrors owned route bot and diagnostics bounds',()=>{
   const dm=launchOptions(['--experience=native-dm','--bots=24','--diagnostics','--debug-panel'],catalog);
   assert.equal(dm.bots,24);

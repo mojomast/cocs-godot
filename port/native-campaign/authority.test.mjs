@@ -131,3 +131,19 @@ test('actual authority Continue carries story pets into the next chapter',async 
   assert.equal(next.state.campaign.story.version,1);
   assert.equal(next.state.campaign.story.pets,1);
 });
+
+test('authority forwards the opt-in objective completion and omits it on the control default',async t=>{
+  const control=[],opted=[];
+  const c1=await connect(t,{matchFactory:options=>{control.push(options);return createCampaignMatch(options);}});
+  assert.equal('objectiveCompletion' in control[0],false,'control factory options must not grow a new key');
+  assert.equal(control[0].mapId,'rootfall-verge');
+  await c1.authority.close();
+  const c2=await connect(t,{mapId:'siltwake-crossing',objectiveCompletion:'restore-and-withdraw',
+    matchFactory:options=>{opted.push(options);return createCampaignMatch(options);}});
+  assert.equal(opted[0].objectiveCompletion,'restore-and-withdraw');
+  assert.equal(opted[0].mapId,'siltwake-crossing');
+  await c2.authority.close();
+  // The authority fails closed on an unknown policy before it ever listens.
+  assert.throws(()=>createAuthority({objectiveCompletion:'restore'}),/Unsupported objective completion policy/);
+  assert.throws(()=>createAuthority({objectiveCompletion:'require-all-guards-nope'}),/Unsupported objective completion policy/);
+});
