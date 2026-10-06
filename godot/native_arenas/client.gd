@@ -28,30 +28,36 @@ func create_room(player_name: String = "Godot", character: String = "chatgpt",
 	return send_frame({"type":"create", "name":"Native arena Deathmatch", "playerName":player_name,
 		"v":3, "delta":0, "nativeArenaInput":1})
 
+# Pre-parse size guard only. The base hook owns the single JSON decode and the
+# bounded size check; this override keeps the native-chain step ordering.
 func decode_text(text: String) -> bool:
 	if text.to_utf8_buffer().size() > MAX_FRAME_BYTES: return fail("Oversized frame")
-	var frame: Variant = JSON.parse_string(text)
-	if frame is Dictionary:
-		if frame.get("type") in ["start", "snapshot", "results", "native-arena-input-reset"]:
-			if not wire_integer(frame.get("inputEpoch")) or frame.inputEpoch < 1:
-				return fail("Missing native arena input epoch")
-			var next_epoch := int(frame.inputEpoch)
-			if next_epoch < input_epoch: return fail("Native arena input epoch regressed")
-			var changed := next_epoch != input_epoch
-			input_epoch = next_epoch
-			if frame.get("type") == "start":
-				outstanding_inputs.clear()
-				outstanding_epoch = input_epoch
-				input_status.clear()
-			elif changed:
-				input_status.clear()
-				input_reset.emit(str(frame.get("reason", "authority boundary")))
-		if frame.has("nativeArenaInput") and frame.get("type") in ["snapshot", "results"]:
-			if not frame.nativeArenaInput is Dictionary: return fail("Malformed native input status")
-			for key: String in ["receivedSeq", "appliedSeq", "cancelledThrough", "queueDepth"]:
-				if not wire_integer(frame.nativeArenaInput.get(key)): return fail("Malformed native input status")
-			input_status = frame.nativeArenaInput.duplicate(true)
 	return super.decode_text(text)
+
+# Native protocol checks run on the already-decoded frame, after the campaign
+# layer and before the base envelope contract and dispatch. Hand the frame to
+# the base state machine exactly once at the end.
+func deliver_frame(frame: Dictionary) -> bool:
+	if frame.get("type") in ["start", "snapshot", "results", "native-arena-input-reset"]:
+		if not wire_integer(frame.get("inputEpoch")) or frame.inputEpoch < 1:
+			return fail("Missing native arena input epoch")
+		var next_epoch := int(frame.inputEpoch)
+		if next_epoch < input_epoch: return fail("Native arena input epoch regressed")
+		var changed := next_epoch != input_epoch
+		input_epoch = next_epoch
+		if frame.get("type") == "start":
+			outstanding_inputs.clear()
+			outstanding_epoch = input_epoch
+			input_status.clear()
+		elif changed:
+			input_status.clear()
+			input_reset.emit(str(frame.get("reason", "authority boundary")))
+	if frame.has("nativeArenaInput") and frame.get("type") in ["snapshot", "results"]:
+		if not frame.nativeArenaInput is Dictionary: return fail("Malformed native input status")
+		for key: String in ["receivedSeq", "appliedSeq", "cancelledThrough", "queueDepth"]:
+			if not wire_integer(frame.nativeArenaInput.get(key)): return fail("Malformed native input status")
+		input_status = frame.nativeArenaInput.duplicate(true)
+	return super.deliver_frame(frame)
 
 func send_controls(controls: Dictionary, cancel: bool = false) -> Error:
 	if input_epoch < 1: return ERR_UNCONFIGURED
