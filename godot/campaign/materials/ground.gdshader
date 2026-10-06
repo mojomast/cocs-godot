@@ -49,7 +49,5 @@ void fragment() {
  base*=.86+coarse*.14+patches*.13+grains*.08;
  ALBEDO=base;
  ROUGHNESS=clamp(.92-moisture*.14-rock*.10+grains*.03,.65,1.)*(1.-weather_wetness*.55);
- // Soil and rock stay dielectric: wetness is a roughness/specular response, not
- // a metal mask (Visual Bible material roles: mineral .75-.95 roughness, metallic 0).
- METALLIC=0.0;
+ METALLIC=min(.35,weather_wetness*.3);
 }
