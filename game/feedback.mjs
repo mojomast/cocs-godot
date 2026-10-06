@@ -8,6 +8,7 @@ import {latticeSoundCue,createLatticeAudioState} from './lattice-feedback.mjs';
 import {deathPlan} from './deaths.mjs';
 import {createAnnouncerSelector} from './announcer-clips.mjs';
 import {strideFrequency,advancePhase} from './character-anim.mjs';
+import {shotActorContact} from './shot-contact.mjs';
 
 // Per-space reverb wetness for the baked convolution IRs. `cavern` keeps the
 // historical .42; drier outdoor/tunnel responses sit lower, big interiors higher.
@@ -1904,11 +1905,16 @@ export class SynthAudio{
     this._shotImpact(t,out,nodes,e,local,player,vol);
    },{send:(.2+.3*Math.min(1,tail))*vol});
   }
-  // Surface-aware impact/ricochet at a shot's endpoint when it hit geometry. A
-  // truthy `hit` is an actor and is already confirmed by the damage event, so
-  // only misses add layers. Shared by the normal and alt reports.
+  // Surface-aware impact/ricochet at a shot's endpoint when it hit geometry. An
+  // actor contact is already confirmed by the damage event, so only surface
+  // contacts add layers. A shot the source labelled `blocked` is the surface
+  // contact it is even though its `hit` still names the camera candidate it
+  // never reached, so the cue is no longer suppressed there. Producers that
+  // carry no classification keep the legacy `hit` test. Shared by the normal and
+  // alt reports.
   _shotImpact(t,out,nodes,e,local,player,vol){
-   if((e.hit==null||e.hit===false)&&e.to&&Number.isFinite(e.to.x)&&player){
+   const actor=shotActorContact(e);
+   if((actor==null?e.hit==null||e.hit===false:!actor)&&e.to&&Number.isFinite(e.to.x)&&player){
     const dist=Math.hypot((e.to.x||0)-(player.x||0),(e.to.z||0)-(player.z||0));
     const iv=(local?Math.max(0,.5*(1-dist/26)):Math.max(0,1-dist/30)*.8)*vol;
     if(iv>.02)this._impact(t+.012,out,nodes,{vol:iv,surface:e.surface??e.material,ricochet:dist>12});
