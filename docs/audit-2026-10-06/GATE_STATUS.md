@@ -275,10 +275,11 @@ rejected frame can wedge the connection. Scope gap: `horde/client.gd` and
   (`passed:true`, 18 visits). On this llvmpipe host the run proceeds through the
   first visit and return-to-menu, then the driver's own deadline —
   `max(240 s, 18 × 30 s) = 540 s` — kills the child (`exit_code:null`, 1/18
-  visits) while the registered gate budget is 300 s. A `COCS_DEV_MENU=1` control
-  run is in flight to test whether hidden-route navigation is implicated; the
-  completing menu gates (smoke, contracts 1153/0, launcher journeys) are green.
-  No pass is claimed.
+  visits) while the registered gate budget is 300 s. The `COCS_DEV_MENU=1`
+  control run behaves the same (1/18 sessions, `exit_code:null`, a different
+  first route), so hidden-route navigation is **not** implicated; both variants
+  are killed by the driver's deadline. The completing menu gates (smoke,
+  contracts 1153/0, launcher journeys) are green. No pass is claimed.
 - The F08 experiment branch fails only the expected hash-pin provenance boundary
   (no receipts or production files changed there). Worker-branch validation is
   recorded on merge.
