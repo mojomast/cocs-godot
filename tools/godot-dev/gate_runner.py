@@ -16,7 +16,7 @@ def save_report(path, report):
     temporary.replace(path)
 
 
-def run_gate(name, command, log_path, timeout=180, success_marker=None, allowed_error_patterns=()):
+def run_gate(name, command, log_path, timeout=180, success_marker=None, allowed_error_patterns=(), candidate_id=None):
     """Run one gate. Any SCRIPT ERROR or ERROR line fails it unless the gate both
     prints its declared success marker and exits 0, and the line matches one of the
     explicitly allowed engine-teardown patterns. That keeps error detection strict
@@ -52,7 +52,8 @@ def run_gate(name, command, log_path, timeout=180, success_marker=None, allowed_
             if errors:
                 reason = 'engine-error'
     Path(log_path).parent.mkdir(parents=True, exist_ok=True)
-    Path(log_path).write_text(output)
+    header = f"# gate {name} candidate {candidate_id}\n" if candidate_id else ""
+    Path(log_path).write_text(header + output)
     return {'gate': name, 'command': command, 'exit_code': code,
             'passed': reason is None, 'failure_reason': reason,
             'duration_seconds': round(time.monotonic() - start, 3)}, output

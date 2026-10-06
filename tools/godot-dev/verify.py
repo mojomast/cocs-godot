@@ -19,6 +19,8 @@ report = {
     'status': 'running', 'gates': [],
     'source_commit': lock['source_commit'],
     'port_commit': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+    'port_tree': subprocess.check_output(['git', 'rev-parse', 'HEAD^{tree}'], text=True).strip(),
+    'port_diff_sha256': hashlib.sha256(subprocess.check_output(['git', 'diff', 'HEAD', '--binary'])).hexdigest(),
     'port_worktree_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()),
     'source_derivative': {'selection': 'none'},
     'manual_acceptance': [
@@ -28,6 +30,7 @@ report = {
     ],
 }
 save_report(report_path, report)
+candidate_id = f"{report['port_commit']}+tree:{report['port_tree'][:12]}+diff:{report['port_diff_sha256'][:12]}"
 def fail_preflight(message):
     report.update(status='failed', failure_reason=message)
     save_report(report_path, report)
@@ -35,6 +38,10 @@ def fail_preflight(message):
 
 
 binary = os.environ.get("GODOT_BIN")
+# Pin the resolved engine for every child process: four gate scripts resolve a
+# machine-path fallback when GODOT_BIN is absent from the child environment.
+if binary:
+    os.environ['GODOT_BIN'] = binary
 derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
 active_source = False
 if not derivative_path:
@@ -513,7 +520,7 @@ if derivative_path:
         fail_preflight(f'Invalid explicit COCS_SOURCE_DERIVATIVE: {error}')
 if not binary:
     fail_preflight('Set GODOT_BIN to the pinned editor')
-version, output = run_gate('toolchain-version', [binary, '--version'], 'port/reports/toolchain-version.log', timeout=10)
+version, output = run_gate('toolchain-version', [binary, '--version'], 'port/reports/toolchain-version.log', timeout=10, candidate_id=candidate_id)
 if version['passed'] and output.strip() != lock['godot_version']:
     version.update(passed=False, failure_reason='version-mismatch')
 record(version)
@@ -524,6 +531,13 @@ if not version['passed']:
 # creates for pointer capture as leaked when a display run exits; a bare display
 # session and a session without capture produce no such line, so this is engine
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
+# Shared documented engine noise for the node/scene-tree family (see GATE_STATUS).
+# Pre-existing prints from untouched node/transform access outside the scene tree;
+# allowed only for gates that also print their success marker and exit 0.
+_scene_tree_noise = (
+    r'^ERROR: Cannot get path of node as it is not in a scene tree\.$',
+    r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$',
+)
 gate_options = {
     'campaign-input-flow': {'timeout': 60},
     'campaign-client': {
@@ -533,6 +547,13 @@ gate_options = {
         # itself logs this single parse error for that documented input.
         'allowed_error_patterns': (r'^ERROR: Parse JSON failed\. Error at line 0: Expected key$',),
     },
+    'round-boundaries': {'success_marker': 'PORT_ROUND_BOUNDARIES_OK', 'allowed_error_patterns': _scene_tree_noise},
+    'local-lifecycle': {'success_marker': 'PORT_LOCAL_LIFECYCLE_OK', 'allowed_error_patterns': _scene_tree_noise},
+    'horde-model': {'success_marker': 'HORDE_TESTS', 'allowed_error_patterns': _scene_tree_noise},
+    'horde-death-presentation': {'success_marker': 'HORDE_DEATH_CONTRACTS', 'allowed_error_patterns': _scene_tree_noise},
+    'lattice-world': {'success_marker': 'WORLD_CONTRACT', 'allowed_error_patterns': _scene_tree_noise},
+    'lattice-world-usability': {'success_marker': 'USABILITY_CONTRACT', 'allowed_error_patterns': _scene_tree_noise},
+    'control-safety': {'success_marker': 'PORT_CONTROL_SAFETY_OK', 'allowed_error_patterns': _scene_tree_noise},
     'first-person-slide': {'timeout': 60},
     'campaign-compact-ui': {'timeout': 300},
     'product-shell-journey': {'timeout': 300},
@@ -557,11 +578,11 @@ for name, command in commands:
     missing = [path for path in gate_prerequisites.get(name, []) if not (root / path).is_file()]
     if missing:
         output = 'Missing gate prerequisites: ' + ', '.join(missing) + '\n'
-        Path(f'port/reports/{name}.log').write_text(output)
+        Path(f'port/reports/{name}.log').write_text(f"# gate {name} candidate {candidate_id}\n" + output)
         result = {'gate': name, 'command': command, 'exit_code': None, 'passed': False,
                   'failure_reason': 'missing-prerequisite', 'duration_seconds': 0}
     else:
-        result, output = run_gate(name, command, f'port/reports/{name}.log', **gate_options.get(name, {}))
+        result, output = run_gate(name, command, f'port/reports/{name}.log', candidate_id=candidate_id, **gate_options.get(name, {}))
     record(result)
     if not result['passed']: failed_gates.append(name)
     report['failed_gate_names'] = failed_gates.copy()
@@ -573,7 +594,7 @@ for name, command in commands:
         if not keep_going: raise SystemExit(1)
 report['active_gate'] = 'release-refused'
 save_report(report_path, report)
-release, output = run_gate('release-refused', ['node', 'tools/godot-export/semantic.mjs', '--release'], 'port/reports/release-refused.log')
+release, output = run_gate('release-refused', ['node', 'tools/godot-export/semantic.mjs', '--release'], 'port/reports/release-refused.log', candidate_id=candidate_id)
 release['passed'] = release['exit_code'] not in (None, 0) and release['failure_reason'] == 'nonzero-exit' and 'Release disabled' in output
 release['failure_reason'] = None if release['passed'] else 'release-guard-failure'
 record(release)
