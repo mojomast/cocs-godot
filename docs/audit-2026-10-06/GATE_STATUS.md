@@ -196,6 +196,41 @@ the document (D-subset wording, the ±2 renderer-census split, a fifth
 unpinned-engine fallback plus its reachability nuance, S9's arithmetic and two
 citations); the merged `GATE_TIERS.md` carries the corrections.
 
+## W1 decode-once independent review (Space Bunny, read-only)
+
+Verdict: **VERIFIED, no behavioral counterexample.**
+
+- The three moved validation bodies are byte-identical modulo indentation
+  (`net/client.gd` unchanged since the merge); the only ordering change
+  (native/base size guards before campaign checks) is unobservable because all
+  three share one inherited `MAX_FRAME_BYTES`.
+- Reconstructed pre-migration chain vs the shipped chain, same process: a
+  46-frame battery with 40-field state fingerprints and ordered signal
+  sequences — `BUNNY_DIFFERENTIAL checks=46 failures=0`; reconnect/identity
+  scenarios 18/0.
+- Runtime parse count on a malformed packet: pre-migration **3** (2 subclass +
+  1 base) → post-migration **1**, always originating in `net/client.gd`; a 1 MB
+  frame produces zero parses and zero `deliver_frame` entries, so rejection
+  precedes parse.
+- Required gates green: `DECODE_ONCE_OK` (10 checks, `singleParseInBase`),
+  campaign client, native arena protocol, input flow 1970/0. The eight
+  broader-suite failures were proven pre-existing/environmental
+  (`Missing/empty manifest. Run semantic exporter.`): identical with the two
+  migrated files reverted.
+
+Gate weaknesses (being fixed by T19): the original `decode_once.gd` was purely
+lexical — a double `super.deliver_frame` was accepted and a comment mention
+false-failed; alternate JSON APIs evaded it. The hardened gate adds
+comment/string stripping, exactly-one-super and alternative-parse detection,
+with in-gate self-tests making the negative controls permanent.
+
+Pre-existing latent hazards recorded (unchanged by the migration, out of its
+contract): a non-string `type` raises a script error instead of the intended
+`fail("Malformed JSON envelope")` (the base envelope check is unreachable
+through both chains), and `input_epoch` mutates before validation, so a
+rejected frame can wedge the connection. Scope gap: `horde/client.gd` and
+`lattice/transport.gd` still parse twice per packet (pre-existing; follow-up).
+
 ## Explicitly unrun / not claimed
 
 - The full `tools/godot-dev/verify.py` aggregate (**386** registered gates:
