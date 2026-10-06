@@ -4,6 +4,11 @@ import {lobbyEndpoint} from '../godot-package/endpoint.mjs';
 // this module and endpoint.mjs. The package parser mirrors these fixed ids.
 const HORDE_OPERATORS = ['chatgpt','claude','grok','meta','gemini','deepseek','mistral','kimi','qwen'];
 const HORDE_HARNESSES = ['openclaw','hermes','opencode','claudecode','codex','cline','roo'];
+// Campaign objective completion policies. The dev launcher stays self-contained
+// (ownership fixtures copy only this module and endpoint.mjs), so the two
+// reviewed values are mirrored verbatim from port/native-campaign/missions.mjs.
+// The match constructor and the authority both fail closed on anything else.
+export const OBJECTIVE_COMPLETION_POLICIES = Object.freeze(['require-all-guards','restore-and-withdraw']);
 export const EXPERIENCES = {
   'mode-expansion': {scene:'res://mode_expansion/demo.tscn',map:'meridian-exchange',modes:{'meridian-exchange':['arsenal','juggernaut'],'verdant-reliquary':['arsenal','juggernaut'],'ember-crucible':['arsenal','juggernaut'],'tidal-citadel':['team-elimination'],'sunscar-convoy':['vip-escort']}},
   'multiplayer-worlds': {scene:'res://multiplayer_worlds/demo.tscn',map:'switchyard-ward',modes:{
@@ -69,7 +74,7 @@ export function launchOptions(argv, catalog) {
   const values = {}, flags = new Set(), sessionOptions = [];
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
-    const key = ['map','mode','experience','difficulty','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
+    const key = ['map','mode','experience','difficulty','objective-completion','endpoint','join-room','wait-for-players','rung','time-limit','round-target','bots','round-seconds','score-limit','waves','operator','harness'].find(key => arg === `--${key}` || arg.startsWith(`--${key}=`));
     if (key) {
       const value = arg.includes('=') ? arg.slice(arg.indexOf('=') + 1) : argv[++i];
       if (!value || value.startsWith('--')) throw Error(`--${key} requires a value`);
@@ -116,16 +121,22 @@ export function launchOptions(argv, catalog) {
   const experience = values.experience ?? 'combat';
   if (values.difficulty !== undefined && experience !== 'campaign') throw Error('--difficulty requires campaign');
   if (experience === 'campaign') {
-    for (const key of Object.keys(values)) if (!['experience','map','mode','difficulty'].includes(key)) throw Error(`--${key} is not supported by campaign`);
+    for (const key of Object.keys(values)) if (!['experience','map','mode','difficulty','objective-completion'].includes(key)) throw Error(`--${key} is not supported by campaign`);
     for (const flag of flags) if (!['--smoke','--diagnostics'].includes(flag)) throw Error(`${flag} is not supported by campaign`);
     const map = values.map ?? 'rootfall-verge', mode = values.mode ?? 'campaign', difficulty = values.difficulty ?? 'normal';
     if (!Object.hasOwn(EXPERIENCES.campaign.modes, map) || mode !== 'campaign') throw Error('Unsupported campaign map/mode');
     if (!['easy','normal','hard'].includes(difficulty)) throw Error('Campaign difficulty must be easy, normal or hard');
+    if (values['objective-completion'] !== undefined && !OBJECTIVE_COMPLETION_POLICIES.includes(values['objective-completion'])) throw Error(`Campaign objective completion must be ${OBJECTIVE_COMPLETION_POLICIES.join(' or ')}`);
+    // Undefined (not the shipped rule) when omitted: the authority then omits
+    // the field entirely and the match factory keeps its own default, so the
+    // control launch is byte-identical to before this option existed.
+    const objectiveCompletion = values['objective-completion'];
     const smoke = flags.has('--smoke') ? '--smoke' : null;
-    return {experience, campaign:true, map, mode, difficulty, endpoint:null, smoke,
+    return {experience, campaign:true, map, mode, difficulty, objectiveCompletion, endpoint:null, smoke,
       sessionOptions:[`--map=${map}`,`--mode=${mode}`,`--difficulty=${difficulty}`,...diagnostics,...(smoke ? [smoke] : [])],
       args:[...(smoke ? ['--headless','--audio-driver','Dummy'] : []),...(diagnostics.length ? ['--verbose'] : []),'--path','godot',EXPERIENCES.campaign.scene]};
   }
+  if (values['objective-completion'] !== undefined) throw Error('--objective-completion requires campaign');
   if (!['lattice', 'lattice-world', 'combined-arms', 'multiplayer-worlds', 'mode-expansion'].includes(experience) && values['join-room'] !== undefined) throw Error('--join-room requires a multiplayer experience');
   if (!['lattice', 'lattice-world'].includes(experience) && values.rung !== undefined) throw Error('--rung requires lattice-world');
   if (experience === 'native-dm') {
@@ -309,6 +320,7 @@ export const HELP = `Native COCS launcher — source matches and native-only gra
   node tools/godot-dev/launch.mjs --play --setup
   node tools/godot-dev/launch.mjs --experience=lobby
   node tools/godot-dev/launch.mjs --experience=campaign --map=rootfall-verge --difficulty=normal
+  node tools/godot-dev/launch.mjs --experience=campaign --map=siltwake-crossing --objective-completion=restore-and-withdraw
   node tools/godot-dev/launch.mjs --experience=lobby --endpoint=ws://127.0.0.1:PORT
   node tools/godot-dev/launch.mjs --experience=zones --map=meridian-exchange --mode=domination
   node tools/godot-dev/launch.mjs --experience=zones --map=verdant-reliquary --mode=koth
@@ -353,7 +365,11 @@ Combat: --map, --mode, --setup, --mute, --debug-hud, --native-trace
 Campaign: The Quiet Relay, four linked solo chapters. --map selects the starting
   chapter: rootfall-verge, siltwake-crossing, emberline-ascent or crown-array.
   --mode=campaign; --difficulty=easy|normal|hard (default normal).
-  Owned loopback authority only; --smoke and --diagnostics supported.
+  --objective-completion=require-all-guards|restore-and-withdraw (default
+  require-all-guards) opts the one reviewed encounter, siltwake-crossing step 1
+  ("Restart the west pump"), into the F10 bounded-retreat presentation; it is
+  inert on every other chapter and step. Owned loopback authority only;
+  --smoke and --diagnostics supported.
 Native DM: prism-foundry (default), aurora-basin, cinder-array, lacuna-court,
   vermilion-fold, nacre-engine; Deathmatch only.
   Owned local loopback authority, one human plus --bots=1..24 (default 2).

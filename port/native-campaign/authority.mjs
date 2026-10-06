@@ -4,7 +4,7 @@ import {parseInputEnvelope} from '../../game/protocol.mjs';
 import {InputBuffer} from '../native-arenas/input-buffer.mjs';
 import {EventCursor} from '../native-arenas/event-cursor.mjs';
 import {loadCampaignMap} from './maps.mjs';
-import {missionForCampaign} from './missions.mjs';
+import {missionForCampaign, OBJECTIVE_COMPLETION} from './missions.mjs';
 import {createCampaignMatch} from './match.mjs';
 import {attachSoloCheats, parseSoloCheat, soloCheatPreferences} from '../native-debug/solo_cheats.mjs';
 
@@ -30,10 +30,14 @@ export function validateCampaignInput(frame) {
 
 /** Unbound local authority. mapLoader is a trusted in-process deterministic-test seam. */
 export function createAuthority(options={}) {
-  keys(options,['mapId','difficulty','random','observe','mapLoader','matchFactory']);
-  const {mapId='rootfall-verge',difficulty='normal',random=Math.random,observe=()=>{},mapLoader=loadCampaignMap,matchFactory=createCampaignMatch}=options;
+  keys(options,['mapId','difficulty','objectiveCompletion','random','observe','mapLoader','matchFactory']);
+  const {mapId='rootfall-verge',difficulty='normal',objectiveCompletion,random=Math.random,observe=()=>{},mapLoader=loadCampaignMap,matchFactory=createCampaignMatch}=options;
   missionForCampaign(mapId);
   if (!['easy','normal','hard'].includes(difficulty)) throw new TypeError('Unsupported difficulty');
+  // The launch option is opt-in: absent means the match factory keeps its own
+  // shipped default, so the control path stays byte-identical. When present it
+  // fails closed here, before the transport, not only in the match constructor.
+  if (objectiveCompletion!==undefined && !Object.values(OBJECTIVE_COMPLETION).includes(objectiveCompletion)) throw new TypeError('Unsupported objective completion policy');
   if ([random,observe,mapLoader,matchFactory].some(fn=>typeof fn!=='function')) throw new TypeError('Invalid authority callbacks');
   let data=mapLoader(mapId), socket=null, match=null, created=false, selected=false, epochRequired=false;
    let epoch=0,seq=0,round=0,cursor=null,closing=false,closePromise,finished=false,playerName='Operator',chapterKills=0,storyCarry={};
@@ -68,7 +72,7 @@ export function createAuthority(options={}) {
   function snapshot(type='snapshot') {send({type,seq:++seq,acks:{0:inputs.applied},inputEpoch:epoch,
     nativeArenaInput:inputs.status(),state:match.snapshot()});}
   function start(resume={}) {
-    match=matchFactory({...resume,mapId:data.id,difficulty,random,mapData:data});
+    match=matchFactory({...resume,mapId:data.id,difficulty,random,mapData:data,...(objectiveCompletion===undefined?{}:{objectiveCompletion})});
     cheats=attachSoloCheats(match,cheatPreferences);
     match.actors[0].name=playerName;
     inputs.reset();epoch++;seq=0;round++;finished=false;cursor=new EventCursor();

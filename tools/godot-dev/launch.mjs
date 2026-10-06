@@ -43,7 +43,7 @@ async function runRoute(plan){
  process.once('SIGINT',interrupt);process.once('SIGTERM',terminate);
   try{
    career=acquireCareer(plan,env,{developmentRoot:process.cwd()});Object.assign(env,career.env);
-   game=await factory?.(plan.campaign?{mapId:plan.map,difficulty:plan.difficulty}:plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:plan.world?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
+   game=await factory?.(plan.campaign?{mapId:plan.map,difficulty:plan.difficulty,...(plan.objectiveCompletion===undefined?{}:{objectiveCompletion:plan.objectiveCompletion})}:plan.nativeArena?{port:0,host:'127.0.0.1',mapId:plan.map,mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds}:plan.identityZone?{port:0,host:'127.0.0.1',mode:plan.mode,bots:plan.bots,roundSeconds:plan.roundSeconds,fragLimit:plan.scoreLimit}:plan.experience==='horde'?{}:plan.world?{}:{historyPath:career.historyPath,progressionPath:career.progressionPath});
   game?.server?.on('error',serverError);
   let endpoint=plan.endpoint;
   if(game){
