@@ -13,7 +13,16 @@ import {resolveFinish} from './cosmetics.mjs';
 import {buildWeaponBody} from './weapon-models/index.mjs';
 import {buildAltParts,applyAltMorph} from './weapon-models/alt-parts.mjs';
 import {ALT_FIRE,altSpecFor} from './alt-fire.mjs';
-import {shotActorContact} from './shot-contact.mjs';
+// Explicit shot contact classification (audit F08): true for an actor/vehicle/
+// sentry contact, false for world/blocked, null when the producer made no
+// claim. Callers keep their historical `hit` fallback for the null case.
+function shotActorContact(event){
+ if(!event)return null;
+ if(event.blocked===true)return false;
+ const contact=event.contact;
+ if(typeof contact!=='string'||!contact)return null;
+ return contact==='actor'||contact==='vehicle'||contact==='sentry';
+}
 import {buildSimpleWeaponBody,chassisFor} from './weapon-models/chassis.mjs';
 import {AdsController} from './weapon-ads.mjs';
 import {legacyWeaponBody} from './weapon-models/legacy.mjs';

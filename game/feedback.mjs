@@ -8,7 +8,16 @@ import {latticeSoundCue,createLatticeAudioState} from './lattice-feedback.mjs';
 import {deathPlan} from './deaths.mjs';
 import {createAnnouncerSelector} from './announcer-clips.mjs';
 import {strideFrequency,advancePhase} from './character-anim.mjs';
-import {shotActorContact} from './shot-contact.mjs';
+// Explicit shot contact classification (audit F08): true for an actor/vehicle/
+// sentry contact, false for world/blocked, null when the producer made no
+// claim. Callers keep their historical `hit` fallback for the null case.
+function shotActorContact(event){
+ if(!event)return null;
+ if(event.blocked===true)return false;
+ const contact=event.contact;
+ if(typeof contact!=='string'||!contact)return null;
+ return contact==='actor'||contact==='vehicle'||contact==='sentry';
+}
 
 // Per-space reverb wetness for the baked convolution IRs. `cavern` keeps the
 // historical .42; drier outdoor/tunnel responses sit lower, big interiors higher.
