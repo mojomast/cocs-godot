@@ -177,13 +177,28 @@ HUD/story `enemiesRemaining` still counts withdrawing guards during the grace
 window (presentation-only; `live.mjs:36` surfaces it); (4) `dead:1e9` is a
 behavioral value future consumers must not read as a respawn timer.
 
+## F15 gate-tier inventory (merged)
+
+`docs/audit-2026-10-06/GATE_TIERS.md` (`f1c34ce5`) classifies all **386**
+registered gates into tiers (A deterministic 98 · B Godot headless 238 ·
+C display-requiring 28 · D frozen pins 22 as a computed sub-count) and audits
+candidate binding: `port_commit` and the derivative sha are real, but there is no
+dirty-tree hash, no post-run tree state, no per-log candidate header, and four
+registrations can fall back to a machine-path engine. It also records that only
+`godot-native.yml` executes the registry (`ci.yml` runs zero registered gates),
+that no audio-hardware gate exists, that 11 "smoke" gates are actually headless,
+and that a second registry (`port/finish/matrix.json`) pins a different candidate.
+Orchestrator spot-check confirmed the 384+2=386 count and the direct call sites;
+independent verification is recorded under T18.
+
 ## Explicitly unrun / not claimed
 
-- The full `tools/godot-dev/verify.py` aggregate (384 registered gates) was
-  dispatched at the W1-merged candidate (`59279c0e`) and was still running when
-  this record was refreshed; its result lands in `port/reports/verification.json`
-  and a final aggregate runs at the frozen candidate. The historical failed
-  report is preserved at
+- The full `tools/godot-dev/verify.py` aggregate (**386** registered gates:
+  384 table commands + the direct `toolchain-version` and `release-refused`
+  probes; see `GATE_TIERS.md`) was dispatched at the W1-merged candidate
+  (`59279c0e`) and was still running when this record was refreshed; its result
+  lands in `port/reports/verification.json` and a final aggregate runs at the
+  frozen candidate. The historical failed report is preserved at
   `docs/audit-2026-10-06/historical-verification-e530c1c9.json`.
 - GPU/rendered captures, color-vision review, audio-hardware listening, human
   playtests, target-hardware latency/performance and the 4.7.2 engine trial are

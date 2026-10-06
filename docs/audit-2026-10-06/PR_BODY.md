@@ -81,7 +81,7 @@ evidence; unrun/manual gates are never reported as passing.
 - F08 source experiment (unpromoted branch): 38/38 probes, differential
   invariance, only the expected hash-pin boundary failures
 
-Not run and not claimed: the full 384-gate aggregate, GPU/visual captures,
+Not run and not claimed: the full 386-gate aggregate, GPU/visual captures,
 audio-hardware listening, human playtests, target-hardware performance, package
 CI and the 4.7.2 engine trial.
 
