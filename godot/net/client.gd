@@ -336,8 +336,16 @@ func valid_envelope(frame: Dictionary) -> bool:
 func decode_text(text: String) -> bool:
 	if text.to_utf8_buffer().size() > MAX_FRAME_BYTES: return fail("Oversized frame")
 	var value: Variant = JSON.parse_string(text)
-	if not value is Dictionary or not value.get("type") is String: return fail("Malformed JSON envelope")
-	var frame: Dictionary = value
+	if not value is Dictionary: return fail("Malformed JSON envelope")
+	return deliver_frame(value)
+
+# Decoded-frame entry point: one text decode per packet, then protocol-specific
+# validation hooks in subclasses (each calls super.deliver_frame(frame) once).
+# Base owns the JSON envelope contract; subclasses own their protocol checks and
+# must preserve rejection ordering, epochs, acknowledgements, event ordering and
+# snapshot coalescing.
+func deliver_frame(frame: Dictionary) -> bool:
+	if not frame.get("type") is String: return fail("Malformed JSON envelope")
 	if not valid_envelope(frame): return fail("Malformed protocol envelope")
 	if frame.type not in ["welcome", "lobby", "error"]: spectator_notice_stage = 0
 	match frame.type:
