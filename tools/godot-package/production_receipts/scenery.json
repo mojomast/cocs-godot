@@ -1397,7 +1397,7 @@
     "godot/campaign/art/landmarks/crown-receiver.glb": "a4fe581adb2d2a3014d3a008935a47ce82805389a7912064530f2238d74f1370",
     "godot/campaign/art/landmarks/fallen-relay.glb": "dc013e16360fb018fb28dcf76fc6faf74aa7fc1d5ef6a8f480f1f47f4f61b2cf",
     "godot/campaign/catalog.gd": "612e964df74f2bc2db73f24f2caeec6602d0d174e6fa6323d981d473f7e126c7",
-    "godot/campaign/client.gd": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6",
+    "godot/campaign/client.gd": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
     "godot/campaign/demo.gd": "cd90b6be02614af02f01b145ffbb9ee419b60a9612e3520029963a60b6414a43",
     "godot/campaign/environment.gd": "8264c0f32500450dbb01129fb4e9d560b3f5087d9eda4104e352061eb93895ae",
     "godot/campaign/environment_art.gd": "da891f287ca5be6659581c9542d5926283b77b6951d289836e307aa5e61b03ae",
@@ -1514,10 +1514,10 @@
     "godot/multiplayer_worlds/map.gd": "42f7a343947a43f8de328d6b7fedc031824432d73655cc488d42c167cddac543",
     "godot/multiplayer_worlds/sports_demo.gd": "691049e03c4aa2c39b0bf42eb24f614c1c3598aa805821a69a938dbd5ed855e6",
     "godot/multiplayer_worlds/viewer.gd": "99b859a39f9b849f12f469c7c6b9accf53a9760d38587ecf3bb0ede68d2bfa55",
-    "godot/native_arenas/client.gd": "114dd093d232b92dc589bb30e3b18d2b1e8e6dd4f05a435e5dd6b6073ba9eed4",
+    "godot/native_arenas/client.gd": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c",
     "godot/native_arenas/identity_environment.gd": "547631de9df3d1d6f9813f057a142447e7134f713542107c073b31e9e83cfbd0",
     "godot/native_arenas/maps/geometry.gd": "5879559142e2be1548c313b1902a2c4a89bcc4c37ca6fed5c41ab9aa61cab231",
-    "godot/net/client.gd": "d798327ed8e6a8ddae52f962d1a1b69c502a89a2ba6a90583b78f364fa6088d6",
+    "godot/net/client.gd": "1ecbfeb7fc343073e6682d1430b0c6492574a352e9520da4988f6cd368193c3a",
     "godot/net/reconnect_ticket.gd": "e959832b372071a4d0f61218e269c514a9bc2b686680313ebed310aece50e585",
     "godot/net/snapshot_watch.gd": "2f06c11b1426bfd80d3b8fadcd85d6a57883b8143b9d970667594493306882f0",
     "godot/player_fx/burst.gdshader": "631af2e378ec16993fd9aec139cb28afb302c283fe7472834a629f7a9b33e085",
@@ -1816,7 +1816,7 @@
     "godot/ui/lobby_choice.gd": "9eba4c8067e4b769a3486cf0949680a5e145c1620d00608f9ece1fad8b9d7e95",
     "godot/ui/lobby_menu.gd": "657087bc31cd8f8e22f7bb7d4907f21be14fc01191b2546c0cd94d1f9ae64a6a",
     "godot/ui/local_settings.gd": "073a48948796a68680cd0f4242655374c5f8b7fc5b835347ebaf0dd35b7d42f9",
-    "godot/ui/main_menu.gd": "f95c59a9fefd201ece3ecfe493860400dbf51bd2be585debfe820b78d0af83a6",
+    "godot/ui/main_menu.gd": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
     "godot/ui/match_setup.gd": "082ea48c7109941e126092ddc80434d1cf3c5b644f87584ed9a75a20f896b95a",
     "godot/ui/menu_preferences.gd": "5c4cd6d581d0eb512807344cbb72bb4c00218f26cab1e30b60f64c26e467a174",
     "godot/ui/mouse_motion.gd": "1edc97f26ccf98a6c5f776bf72968cf5fd1258d129566006c0c3ae1222716581",
@@ -1838,7 +1838,7 @@
     "godot/weapon_effects/origin.gd": "335b41aff6a852d406ce7f507772294d15abfaadcef066abd6d5bf37d899a924",
     "godot/weapon_effects/profiles.gd": "5b64d43356d00573cddada184574c5e373eb4a2a52b374611585a6b2b658bcbf",
     "godot/weapon_effects/trail.gdshader": "4a5f73ca10e50d7d0abe22e5915acecea1ac7ef1015c2b2a9a3a70dad70def41",
-    "godot/world/audio_feedback.gd": "f786d90871c48c5731006eb20d306c0d2884e4269a32456314b7e9b343e303ef",
+    "godot/world/audio_feedback.gd": "7b903df2e0685840c76df37be88ad22e3d31e8d106cee3c362949ecebdf44078",
     "godot/world/catalog.gd": "12d668783a81e3398e134a31013dffcf0d03feffcc44382ee96da736718b856b",
     "godot/world/combat_actions.gd": "393e75dea9e72d36cbff0c86df04888cbfca777b20332d7fff3ec17bc41b5834",
     "godot/world/combat_feedback.gd": "f541b80d63c1fb5026d85cfd45f8a8e61dbf8c7c5ecd80304e28df9f0344695c",
@@ -1911,22 +1911,21 @@
     "tools/godot-biomes/expansion/reopen.py": "cee5760adf5640d118eec601b8f2ea0d64e0f35ee940d862e128623a948a617c",
     "tools/godot-multiplayer/generate-scenes.mjs": "e523acfeff55779cf8a8ce002f1e7414de71b9a59aef8480c10353726602ff8e",
     "tools/godot-package/abyssal_imports.mjs": "cc8c44866350bf0ef9d8a68c410b12411039beb0349e6cd0387e8dbfa197591d",
-    "tools/godot-package/dressing_dependencies.mjs": "fe8c5cdaff706bc68d8954bae39e56021ee0a0fcee0a5ce3efab2304ffd2d378",
+    "tools/godot-package/dressing_dependencies.mjs": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
     "tools/godot-package/feature_dependencies.mjs": "bc2a3d53839c38a9f63104554a7dae0bb9fc44a921bba1117ec05a42018a267d",
-    "tools/godot-package/movement_dependencies.mjs": "271c8d90a4fd7a33e63067a1dc0e98002384609ebed949e4ff770f606c27da37",
+    "tools/godot-package/movement_dependencies.mjs": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "c4d63a93f93898f0783279ab004d7ac3efbc137764d7b4f00e4aa526b81fd52a",
-    "tools/godot-package/production_resources.mjs": "34de18bc48389b19f9c2192b0e54d3027610249d4b75b92fb538ca15c9249f01",
-    "tools/godot-package/racing_dependencies.mjs": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2",
+    "tools/godot-package/polish_dependencies.mjs": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
+    "tools/godot-package/production_resources.mjs": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
+    "tools/godot-package/racing_dependencies.mjs": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
     "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
-    "tools/godot-package/vesper_apron_dependencies.mjs": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b",
-    "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
+    "tools/godot-package/vesper_apron_dependencies.mjs": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e"
   },
   "runtimeHooks": {
     "godot/biomes/expansion/scenery_pack.gd": "8518e24c6397db09408e7e1d9bc38546be26572beb8baf753fac34bb646646c3",
@@ -3485,72 +3484,5 @@
     },
     "previousPackageFingerprint": "2a6e44062cdcde1253d13557bb4b8b40bb918ab10728b313c876950f48b1ad93",
     "previousSourceFingerprint": "376c5c392bf54a94e16ec93cb39a973e1311a7d1bb4b75be20e411aeaf0f41b1"
-  },
-  "consolidationAdvance": {
-    "previousReceipt": {
-      "commit": "1656693445e1e7c5a0fd96b38a3b142809ba42a6",
-      "path": "tools/godot-package/production_receipts/scenery.json",
-      "sha256": "144099359a4aedba3363c2b6103e45a50f4631716a6208049011a80ffbd2c6b9"
-    },
-    "changed": {
-      "godot/campaign/client.gd": {
-        "before": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
-        "after": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6"
-      },
-      "godot/native_arenas/client.gd": {
-        "before": "ce746b41d71f52b8b48f300e516bc8a072087e24c0846a370d16873af8be473c",
-        "after": "114dd093d232b92dc589bb30e3b18d2b1e8e6dd4f05a435e5dd6b6073ba9eed4"
-      },
-      "godot/net/client.gd": {
-        "before": "1ecbfeb7fc343073e6682d1430b0c6492574a352e9520da4988f6cd368193c3a",
-        "after": "d798327ed8e6a8ddae52f962d1a1b69c502a89a2ba6a90583b78f364fa6088d6"
-      },
-      "godot/ui/main_menu.gd": {
-        "before": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
-        "after": "f95c59a9fefd201ece3ecfe493860400dbf51bd2be585debfe820b78d0af83a6"
-      },
-      "godot/world/audio_feedback.gd": {
-        "before": "7b903df2e0685840c76df37be88ad22e3d31e8d106cee3c362949ecebdf44078",
-        "after": "f786d90871c48c5731006eb20d306c0d2884e4269a32456314b7e9b343e303ef"
-      },
-      "tools/godot-package/dressing_dependencies.mjs": {
-        "before": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
-        "after": "fe8c5cdaff706bc68d8954bae39e56021ee0a0fcee0a5ce3efab2304ffd2d378"
-      },
-      "tools/godot-package/movement_dependencies.mjs": {
-        "before": "708bdd21deddc3537c049de824ff867602ab9ba940a6ab6e1f66753cf927ea58",
-        "after": "271c8d90a4fd7a33e63067a1dc0e98002384609ebed949e4ff770f606c27da37"
-      },
-      "tools/godot-package/polish_dependencies.mjs": {
-        "before": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-        "after": "c4d63a93f93898f0783279ab004d7ac3efbc137764d7b4f00e4aa526b81fd52a"
-      },
-      "tools/godot-package/production_resources.mjs": {
-        "before": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
-        "after": "34de18bc48389b19f9c2192b0e54d3027610249d4b75b92fb538ca15c9249f01"
-      },
-      "tools/godot-package/racing_dependencies.mjs": {
-        "before": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
-        "after": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2"
-      },
-      "tools/godot-package/vesper_apron_dependencies.mjs": {
-        "before": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e",
-        "after": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b"
-      }
-    },
-    "added": {
-      "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
-    },
-    "runtimeChanged": {},
-    "sourceChanged": {},
-    "previousPackageFingerprint": "12f01b4dbbe74e13da4444cfd9940f3ccfa3b8e8b81061b77ce1234ed001a468",
-    "packageFingerprint": "3c20745ac2e1811a913466c2410dcdb8b3b33195f2c52c323f9a01ae33b5fafa",
-    "previousSourceFingerprint": "376c5c392bf54a94e16ec93cb39a973e1311a7d1bb4b75be20e411aeaf0f41b1",
-    "sourceFingerprint": "376c5c392bf54a94e16ec93cb39a973e1311a7d1bb4b75be20e411aeaf0f41b1",
-    "review": {
-      "scope": "Audit 2026-10-06 implementation: decoded-frame base hook with the native-arena and campaign clients migrated to bounded deliver_frame validation (godot/net/client.gd, godot/native_arenas/client.gd, godot/campaign/client.gd), developer-navigation disclosure in godot/ui/main_menu.gd, and same-batch weapon attribution in godot/world/audio_feedback.gd. Protocol/presentation only; source gameplay authority, epochs, acknowledgements, event ordering and snapshot coalescing are preserved.",
-      "nativeChecks": "pending",
-      "document": "docs/audit-2026-10-06/GATE_STATUS.md"
-    }
   }
 }
