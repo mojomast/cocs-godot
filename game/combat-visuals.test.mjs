@@ -122,6 +122,32 @@ test('world impacts pick dust on terrain floors, sparks on walls and tinted deca
  assert.equal(hitMark.obj.material.color.getHexString(),'171310','actor hits keep the legacy decal colour');
  const hitColors=view.effectPool.slots.filter(slot=>slot.active).map(slot=>slot.obj.material.color.getHexString());
  assert.ok(!hitColors.includes('8a7f6b')&&!hitColors.includes('ffcf9a'),'actor hits spawn no surface accents');
+
+ // Explicit contact (audit F08) drives the gore/surface split, not the `hit`
+ // candidate: a shot blocked before that candidate is a wall contact.
+ view.effectPool.clear();
+ const markColors=()=>view.decalPool.slots.filter(slot=>slot.active).map(slot=>slot.obj.material.color.getHexString());
+ const accents=()=>view.effectPool.slots.filter(slot=>slot.active).map(slot=>slot.obj.material.color.getHexString());
+ const blockedBase={type:'shot',weapon:0,from:{x:2,y:2,z:9},to:{x:2,y:2,z:1}};
+ view.shotEffect({...blockedBase,hit:{id:9},blocked:true,contact:'blocked'},{color:'#88ffcc',feel:{}},false);
+ assert.ok(markColors().includes('14161c'),'a blocked shot stamps the wall decal, not the actor-gore decal');
+ assert.ok(accents().includes('ffcf9a'),'a blocked shot throws wall sparks');
+ assert.ok(!accents().includes('8a7f6b'),'a blocked shot spawns no actor accent');
+ view.effectPool.clear();
+ view.shotEffect({...blockedBase,hit:false,blocked:false,contact:'world'},{color:'#88ffcc',feel:{}},false);
+ assert.ok(markColors().includes('14161c'),'a classified world contact keeps the wall path');
+ view.effectPool.clear();
+ view.shotEffect({...blockedBase,hit:{id:9},blocked:false,contact:'actor'},{color:'#88ffcc',feel:{}},false);
+ assert.ok(markColors().includes('171310'),'a classified actor contact keeps the legacy gore decal');
+ assert.ok(!accents().includes('ffcf9a'),'a classified actor contact spawns no wall spark');
+ // Shrapnel carries no classification and keeps its candidate semantics.
+ view.effectPool.clear();
+ view.shotEffect({...blockedBase,hit:{id:9},alt:true,altId:'bomb',shrapnel:0},{color:'#88ffcc',feel:{}},false);
+ assert.ok(markColors().includes('171310'),'unclassified shrapnel keeps the legacy gore path');
+ // The alternate-style report classifies the same way.
+ view.effectPool.clear();
+ view.shotEffect({...blockedBase,weapon:0,alt:true,altId:'double',hit:{id:9},blocked:true,contact:'blocked'},{color:'#88ffcc',feel:{}},false);
+ assert.ok(markColors().includes('14161c'),'a blocked alt shot stamps the wall decal too');
  view.effectPool.dispose();view.decalPool.dispose();
 });
 
