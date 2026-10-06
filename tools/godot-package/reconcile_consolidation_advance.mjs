@@ -20,6 +20,8 @@ const base = execFileSync('git', ['rev-parse', 'HEAD'], {encoding:'utf8'}).trim(
 // Exactly the paths this implementation changed inside the production closure.
 const IMPLEMENTATION = new Set([
   'godot/net/client.gd',
+  'godot/native_arenas/client.gd',
+  'godot/campaign/client.gd',
   'godot/ui/main_menu.gd',
   'godot/world/audio_feedback.gd',
   'tools/godot-package/production_resources.mjs',
@@ -28,6 +30,7 @@ const IMPLEMENTATION = new Set([
   'tools/godot-package/polish_dependencies.mjs',
   'tools/godot-package/dressing_dependencies.mjs',
   'tools/godot-package/racing_dependencies.mjs',
+  'tools/godot-package/movement_dependencies.mjs',
 ]);
 
 // Expected closure from the unpromoted snapshot: receipt bytes are not read, so

@@ -1,6 +1,9 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {reverseRacing} from './racing_dependencies.mjs';
+import {reverseRacing,racingSupportingHash} from './racing_dependencies.mjs';
+import {dressingSupportingHash} from './dressing_dependencies.mjs';
+import {vesperApronSupportingHash} from './vesper_apron_dependencies.mjs';
+import {consolidationSupportingHash} from './consolidation_dependencies.mjs';
 export const MOVEMENT_INVENTORY='tools/godot-package/movement_f61_inventory.json';
 export const MOVEMENT_INVENTORY_SHA='532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d';
 const hash=b=>createHash('sha256').update(b).digest('hex');
@@ -52,7 +55,8 @@ export function verifyMovementAdvance(receipt,read){
  for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],c.before,'Original native hook identity retained');
  assert.deepEqual(r.review,{foundation:s.foundation,status:s.status,nativeChecks:'pending',assetProduction:'reuse unchanged original production bytes',document:'port/finish/movement-research/PACKAGE_RECONCILIATION.md'},'Movement review boundary');
  for(const [p,sha]of Object.entries({...Object.fromEntries(Object.entries(s.changed).map(([p,c])=>[p,c.after])),...s.added})){
-  assert.equal(hash(read(p)),sha,'Reviewed movement bytes: '+p);
-  assert.equal(receipt.packageInputs[p],sha,'Current movement dependency: '+p);
+  const live=consolidationSupportingHash(p,vesperApronSupportingHash(p,dressingSupportingHash(p,racingSupportingHash(p,sha,receipt),receipt),receipt),receipt);
+  assert.equal(hash(read(p)),live,'Reviewed movement bytes: '+p);
+  assert.equal(receipt.packageInputs[p],live,'Current movement dependency: '+p);
  }
 }

@@ -5,7 +5,10 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {productionResources,REQUIREMENTS,REQUIRED_UNITS} from './production_resources.mjs';
 import {movementInventory,verifyMovementPredecessor} from './movement_dependencies.mjs';
-import {reverseRacing} from './racing_dependencies.mjs';
+import {reverseRacing,racingSupportingHash} from './racing_dependencies.mjs';
+import {dressingSupportingHash} from './dressing_dependencies.mjs';
+import {vesperApronSupportingHash} from './vesper_apron_dependencies.mjs';
+import {consolidationSupportingHash} from './consolidation_dependencies.mjs';
 import {RACING_CONTRACT,resolveReviewedDerivative} from './racing_derivative.mjs';
 import {MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
 import {verifySourceState,rederiveClosure} from './manifest_validation.mjs';
@@ -20,8 +23,9 @@ function forged(id,mutate){
  return ()=>productionResources({...options,read:x=>x===p?bytes:x===REQUIREMENTS?Buffer.from(JSON.stringify(req)):read(x)});
 }
 test('movement inventories exact ancestor bytes and preserves every O producer/history field for all seven units',()=>{
+ const newer=JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'));
  for(const [p,c]of Object.entries(s.changed)){
-  assert.equal(hash(gitRead(s.previous,p)),c.before);assert.equal(hash(gitRead(s.foundation,p)),c.after);assert.equal(hash(read(p)),c.after);
+  assert.equal(hash(gitRead(s.previous,p)),c.before);assert.equal(hash(gitRead(s.foundation,p)),c.after);assert.equal(hash(read(p)),consolidationSupportingHash(p,vesperApronSupportingHash(p,dressingSupportingHash(p,racingSupportingHash(p,c.after,newer),newer),newer),newer));
  }
  for(const id of REQUIRED_UNITS){
   const p=`tools/godot-package/production_receipts/${id}.json`,old=JSON.parse(gitRead(s.foundation,p)),raw=JSON.parse(read(p)),r=reverseRacing(raw,read);

@@ -137,6 +137,7 @@ commands = [
     ("career-history-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/history.gd"]),
     ("career-results-history-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/results_history_ui.gd"]),
     ("social-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_social.gd"]),
+    ("protocol-decode-once", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/decode_once.gd"]),
     ("reconnect-source-native", ["node", "port/native-reconnect/journey.mjs"]),
     ("reconnect-offline-results", ["node", "port/native-reconnect/offline-results.mjs"]),
     ("reconnect-menu", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/reconnect_menu.gd"]),

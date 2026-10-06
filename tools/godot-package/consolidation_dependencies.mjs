@@ -16,7 +16,7 @@ import {createHash} from 'node:crypto';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 export const CONSOLIDATION_REVIEW = Object.freeze({
-  scope: 'Audit 2026-10-06 implementation: decoded-frame base hook and bounded validation ownership in godot/net/client.gd, developer-navigation disclosure in godot/ui/main_menu.gd, and same-batch weapon attribution in godot/world/audio_feedback.gd. Presentation/protocol only; source gameplay authority, epochs, acknowledgements, event ordering and snapshot coalescing are preserved.',
+  scope: 'Audit 2026-10-06 implementation: decoded-frame base hook with the native-arena and campaign clients migrated to bounded deliver_frame validation (godot/net/client.gd, godot/native_arenas/client.gd, godot/campaign/client.gd), developer-navigation disclosure in godot/ui/main_menu.gd, and same-batch weapon attribution in godot/world/audio_feedback.gd. Protocol/presentation only; source gameplay authority, epochs, acknowledgements, event ordering and snapshot coalescing are preserved.',
   nativeChecks: 'pending',
   document: 'docs/audit-2026-10-06/GATE_STATUS.md',
 });
