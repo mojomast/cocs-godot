@@ -18,8 +18,8 @@ export const CATEGORIES = [
   {id: 'play',   label: 'Play',       description: 'Core combat and multiplayer'},
   {id: 'native', label: 'Bot Matches', description: 'Local matches against bots'},
   {id: 'modes',  label: 'Activities', description: 'Objective, vehicle and LATTICE activities'},
-  {id: 'lab',    label: 'Extras',     description: 'Previews, galleries and labs'},
-  {id: 'cheats', label: 'Cheats',     description: 'Local debug panel routes'},
+  {id: 'lab',    label: 'Extras',     description: 'Previews, galleries and labs', developer: true},
+  {id: 'cheats', label: 'Cheats',     description: 'Local debug panel routes', developer: true},
 ];
 
 // Display names for maps absent from port/contracts/map-selection.json: the eight
