@@ -73,6 +73,30 @@ func run() -> void:
 	var actor_hit: Dictionary = {"id": 901, "type": "shot", "actor": 3, "hit": 1, "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
 	impacts.consume([actor_hit], 0)
 	check(int(impacts.counters.actor_hits) == 1, "actor hits are not surface impacts")
+
+	# Explicit contact classification (audit F08). `hit` names the camera
+	# candidate, which a shot blocked before that candidate still carries, so the
+	# classification is what decides actor-hit accounting.
+	check(Impacts.actor_contact({"hit": 1}), "no classification keeps the legacy hit test")
+	check(not Impacts.actor_contact({"hit": false}), "an unlabelled miss is not an actor contact")
+	check(Impacts.actor_contact({"hit": 1, "contact": "actor"}), "an actor contact is an actor contact")
+	check(Impacts.actor_contact({"hit": 1, "contact": "vehicle"}), "a vehicle contact counts as an actor contact")
+	check(Impacts.actor_contact({"hit": 1, "contact": "sentry"}), "a sentry contact counts as an actor contact")
+	check(not Impacts.actor_contact({"hit": false, "contact": "world"}), "a world contact is not an actor contact")
+	# The audit counterexample: cover between muzzle and target, zero damage.
+	var blocked: Dictionary = {"id": 907, "type": "shot", "actor": 3, "hit": 1, "blocked": true, "contact": "blocked", "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
+	check(not Impacts.actor_contact(blocked), "a blocked shot is a surface contact, not an actor hit")
+	check(not Impacts.actor_contact({"hit": 1, "blocked": true}), "blocked alone classifies as a surface")
+	check(Impacts.actor_contact({"hit": 1, "contact": ""}), "an empty contact string is no classification")
+	# Flak shrapnel carries neither field and must keep its candidate semantics.
+	check(Impacts.actor_contact({"hit": 1, "alt": true, "altId": "bomb", "shrapnel": 0}), "shrapnel keeps the legacy hit test")
+	# Actor-hit accounting is decided before any geometry confirmation, so this
+	# holds without the semantic catalog: the blocked shot's camera candidate
+	# must not be tallied as an actor hit the way `hit` alone would.
+	var before_blocked := int(impacts.counters.actor_hits)
+	impacts.consume([blocked], 0)
+	check(int(impacts.counters.actor_hits) == before_blocked,
+		"a blocked shot counts as a surface contact, not an actor hit")
 	var legacy: Dictionary = {"id": 902, "type": "shot", "actor": 3, "hit": false, "surface_hit": true, "normal": {"x": 0, "y": 1, "z": 0}, "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
 	impacts.consume([legacy], 0)
 	check(int(impacts.counters.legacy) == 1, "legacy surface_hit cue is left to the weapon-effects owner")
