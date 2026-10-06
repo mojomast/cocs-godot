@@ -177,7 +177,7 @@
     "game/cocs-traversal.mjs": "555e742ff721549db974ac470a2b523ac6dad98659c40f7399a11e904c7672f7",
     "game/cocs.mjs": "1224034a80181d83571f15034059aa979545afc171632e6588fe9d2ebf3724e6",
     "game/config.mjs": "d2c8679e3a77bbe0dd3ccb8d010b8cb46345617f3758c58c8df31b1cecd88d9c",
-    "game/core.mjs": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+    "game/core.mjs": "b11165db97ab5423ecb77cd8b908b6935a046bdeaf6989aa3679878ccf49ea3f",
     "game/cosmetics.mjs": "466d6eba56296a88b698a6036cc40b1381634b30d350fe04757832a15779b98a",
     "game/ctf-maps.mjs": "4f91623e6cc6914b9cca688edd7b37a1ba0e804808943a40deb27525ab78107f",
     "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
@@ -190,7 +190,7 @@
     "game/enemy-types.mjs": "92b600584061d0626b35dd44ae94e1903ba178b390f600a0254fbc5505685613",
     "game/environment.mjs": "fe9a1e84add0d1f16ab9667cb617c5f94a1cb53e480666c79746759dcbabe0c5",
     "game/expansion-maps.mjs": "62b30255393daa473f5c6e46056e8922c1dc74c02c993499cbe6ac3e6439537f",
-    "game/feedback.mjs": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
+    "game/feedback.mjs": "1091bf906e6b2872d576320ebbe0f599b156c6645a445af58d003fb51b8eaa0b",
     "game/floor-lattice.mjs": "99470180ac24d125aad7f18ce8bc36f285ae3a9ff9fe1648c5107b2edb685951",
     "game/harness-profiles.mjs": "b015141979502e565a70f988f068592901387ad47fb0a3a2fbf3603bf1350c93",
     "game/horde-stages.mjs": "132bb551f0e517ed037d2e97fbd8ff510802eaaa7163e39da10e59745d656afb",
@@ -409,7 +409,7 @@
     "godot/net/snapshot_watch.gd": "2f06c11b1426bfd80d3b8fadcd85d6a57883b8143b9d970667594493306882f0",
     "godot/player_fx/burst.gdshader": "631af2e378ec16993fd9aec139cb28afb302c283fe7472834a629f7a9b33e085",
     "godot/player_fx/director.gd": "bdee1965773c17e17639b95d550e5f36b3f7baf05abf9c0e2482ae25d1c15798",
-    "godot/player_fx/impacts.gd": "7ec3685e07a499873be1d1eaec4be937e921af703ea56ea312144d1fcb6fce9f",
+    "godot/player_fx/impacts.gd": "a8cd2cd1b773dcb6056f4153fdbae136968a64a40762d78747f8ec1bf0804ed4",
     "godot/player_fx/mark.gdshader": "7d5d742267dee78825683a27fe12d491953d79a9b287ee28e624449319df72f0",
     "godot/player_fx/mark_pool.gd": "233d01d73745702ee5a3512e544eb5fa856a3b624cda43b04bbfa96cb1f582e4",
     "godot/player_fx/surface.gd": "d071ab50c0f59e633584453dcab0ba22ac1971506ebcf91a4b2bdfd2079183e3",
@@ -672,7 +672,7 @@
     "godot/source_operators/moth_finish/assets/shared-trim-roughness.png": "ab83479ff4a9f14a91600f19f565232e929ef87afb50fc4a35a86301c991dd52",
     "godot/source_operators/moth_finish/assets/shared-trim-roughness.png.import": "38ae3f4d55344cfcce3ef94683e7ebb349e647778ebd47ac710db30d0adee7f2",
     "godot/source_operators/moth_finish/binder.gd": "7c807e8e257b2d8bc667eeebf283678316a86f269c653bf1cb050091fc4636f0",
-    "godot/source_operators/moth_finish/manifest.json": "0982e3a1619e3fd2cff782a10d267264a2e73bbb2582f7cfef0c1811779aa7c9",
+    "godot/source_operators/moth_finish/manifest.json": "f1913ca1b0f97470162becbf3a81d4cd996dc843b42e16a6178cd667fe7aaa62",
     "godot/source_operators/moth_finish/profiles/chatgpt.json": "366a6fe2560bda9b81bae189b351562d801c18b6ea36eab42040703789c6a143",
     "godot/source_operators/moth_finish/profiles/claude.json": "f34b85619518251d8422dc3af49a7df213c090e6cfc719cbbabdacb31e88ee72",
     "godot/source_operators/moth_finish/profiles/deepseek.json": "672b2fbbdfed657c7a9a6577b2ef04f1f11eaaea11eca7790bf4ffc10844c285",
@@ -725,7 +725,7 @@
     "godot/weapon_effects/origin.gd": "335b41aff6a852d406ce7f507772294d15abfaadcef066abd6d5bf37d899a924",
     "godot/weapon_effects/profiles.gd": "5b64d43356d00573cddada184574c5e373eb4a2a52b374611585a6b2b658bcbf",
     "godot/weapon_effects/trail.gdshader": "4a5f73ca10e50d7d0abe22e5915acecea1ac7ef1015c2b2a9a3a70dad70def41",
-    "godot/world/audio_feedback.gd": "f786d90871c48c5731006eb20d306c0d2884e4269a32456314b7e9b343e303ef",
+    "godot/world/audio_feedback.gd": "e52c9a16f0a2a1be3950f032c79b5a6f08e13d2eeaf1ccce746eb268d1a20375",
     "godot/world/catalog.gd": "12d668783a81e3398e134a31013dffcf0d03feffcc44382ee96da736718b856b",
     "godot/world/combat_actions.gd": "393e75dea9e72d36cbff0c86df04888cbfca777b20332d7fff3ec17bc41b5834",
     "godot/world/combat_feedback.gd": "f541b80d63c1fb5026d85cfd45f8a8e61dbf8c7c5ecd80304e28df9f0344695c",
@@ -785,8 +785,8 @@
     "port/finish/polish/package-evidence-l/release-L.json": "819946192b5425341e3759d0f1ea0e00b03e6ee287b06ff6651eed6d3dc44675",
     "port/finish/polish/package-evidence-l/sidecars-post-import.json": "6dd729453631d929094fb28ee1c027e740e180508a59958f6a2e78f0d53bdf5f",
     "port/multiplayer-worlds/catalog.mjs": "a74314f0b84143ae36a2983f102613ffcced69bfbecc891597797ec268eee3f1",
-    "port/native-campaign/core.generated.mjs": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
-    "port/native-campaign/generate-core.mjs": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
+    "port/native-campaign/core.generated.mjs": "9fd79ef0aef6facdc3263e8bc1abce9b022d45e45c05c42275057feed939b92b",
+    "port/native-campaign/generate-core.mjs": "a1fe4005a9c6abf287f24d1fe66267a7d1c29f356ab22ff1478e05a50143c552",
     "port/native-multiplayer-worlds/worlds/abyssal-pressureworks.json": "5119ea83e8defa9f726fa70d2d478785111a51fcf0aefaf72c5117b4fde320af",
     "tools/asset-production/material-validation.mjs": "874e5d31c666a8af4a98b600bb182a4f4cb9c5e6b1488d80908f855b2584bb3d",
     "tools/asset-production/moth_finish.py": "ef54cb3191635832fcf6521203119de6b7ebd90d1263f8865db96e20597edd40",
@@ -804,8 +804,8 @@
     "tools/godot-package/movement_dependencies.mjs": "271c8d90a4fd7a33e63067a1dc0e98002384609ebed949e4ff770f606c27da37",
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
-    "tools/godot-package/polish_dependencies.mjs": "c4d63a93f93898f0783279ab004d7ac3efbc137764d7b4f00e4aa526b81fd52a",
-    "tools/godot-package/production_resources.mjs": "34de18bc48389b19f9c2192b0e54d3027610249d4b75b92fb538ca15c9249f01",
+    "tools/godot-package/polish_dependencies.mjs": "5a01b9417708b60e6646a5a249ee0f403209189d4895a204e49f6fd4874a8cdf",
+    "tools/godot-package/production_resources.mjs": "f97585f472c6c257f08a8cfb49bead91b95c830845963def93441cef9001d8c5",
     "tools/godot-package/racing_dependencies.mjs": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
@@ -2123,11 +2123,19 @@
   },
   "consolidationAdvance": {
     "previousReceipt": {
-      "commit": "a4421f2546d011785e6c5bf6e80b1c9b1d9a3ec5",
+      "commit": "c04dfefeda0206f18478a7c069e5397ec2be2166",
       "path": "tools/godot-package/production_receipts/abyssal-pressureworks.json",
       "sha256": "9bc2bb5b9fe93c3cb51c40b0adcd0218578a650a24bbe24efb728afbccf21fd2"
     },
     "changed": {
+      "game/core.mjs": {
+        "before": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+        "after": "b11165db97ab5423ecb77cd8b908b6935a046bdeaf6989aa3679878ccf49ea3f"
+      },
+      "game/feedback.mjs": {
+        "before": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
+        "after": "1091bf906e6b2872d576320ebbe0f599b156c6645a445af58d003fb51b8eaa0b"
+      },
       "godot/campaign/client.gd": {
         "before": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
         "after": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6"
@@ -2160,13 +2168,29 @@
         "before": "1ecbfeb7fc343073e6682d1430b0c6492574a352e9520da4988f6cd368193c3a",
         "after": "d798327ed8e6a8ddae52f962d1a1b69c502a89a2ba6a90583b78f364fa6088d6"
       },
+      "godot/player_fx/impacts.gd": {
+        "before": "7ec3685e07a499873be1d1eaec4be937e921af703ea56ea312144d1fcb6fce9f",
+        "after": "a8cd2cd1b773dcb6056f4153fdbae136968a64a40762d78747f8ec1bf0804ed4"
+      },
+      "godot/source_operators/moth_finish/manifest.json": {
+        "before": "0982e3a1619e3fd2cff782a10d267264a2e73bbb2582f7cfef0c1811779aa7c9",
+        "after": "f1913ca1b0f97470162becbf3a81d4cd996dc843b42e16a6178cd667fe7aaa62"
+      },
       "godot/ui/main_menu.gd": {
         "before": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
         "after": "273a4fd04bca0fc82c7385e1a116467f8f1493a74efcdd0bdad0cbfa6d4d4fea"
       },
       "godot/world/audio_feedback.gd": {
         "before": "7b903df2e0685840c76df37be88ad22e3d31e8d106cee3c362949ecebdf44078",
-        "after": "f786d90871c48c5731006eb20d306c0d2884e4269a32456314b7e9b343e303ef"
+        "after": "e52c9a16f0a2a1be3950f032c79b5a6f08e13d2eeaf1ccce746eb268d1a20375"
+      },
+      "port/native-campaign/core.generated.mjs": {
+        "before": "949e8a599d0bea5773e35043fefdc1d58d38a3f0ea678ad76f76ba5e47e78abb",
+        "after": "9fd79ef0aef6facdc3263e8bc1abce9b022d45e45c05c42275057feed939b92b"
+      },
+      "port/native-campaign/generate-core.mjs": {
+        "before": "cc7eb3e0e49faccfdbe66511a04ac9541fdd21692541d9da29a1aaa747482655",
+        "after": "a1fe4005a9c6abf287f24d1fe66267a7d1c29f356ab22ff1478e05a50143c552"
       },
       "tools/godot-package/dressing_dependencies.mjs": {
         "before": "9b58c80485fa4016074f3e6703f11b4e37db015876ec15b7380c3ac321076a2f",
@@ -2178,11 +2202,11 @@
       },
       "tools/godot-package/polish_dependencies.mjs": {
         "before": "b9cfffedfa896ac7e505c327ac04104727d453ff75964be980396b8f21a20386",
-        "after": "c4d63a93f93898f0783279ab004d7ac3efbc137764d7b4f00e4aa526b81fd52a"
+        "after": "5a01b9417708b60e6646a5a249ee0f403209189d4895a204e49f6fd4874a8cdf"
       },
       "tools/godot-package/production_resources.mjs": {
         "before": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
-        "after": "34de18bc48389b19f9c2192b0e54d3027610249d4b75b92fb538ca15c9249f01"
+        "after": "f97585f472c6c257f08a8cfb49bead91b95c830845963def93441cef9001d8c5"
       },
       "tools/godot-package/racing_dependencies.mjs": {
         "before": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
@@ -2200,7 +2224,7 @@
     "runtimeChanged": {},
     "sourceChanged": {},
     "previousPackageFingerprint": "10a96df74e8570a91015ba26e5de4559b5530f7ce8aefeea302c609486e50696",
-    "packageFingerprint": "3371dd2022f548f0e4b06030151f2f0a15941560bcd733852790994add2f8b4b",
+    "packageFingerprint": "ec89d8530a71a0c6e674ea55fca13a8e814d72c4080a12b23db990c11ab27cf5",
     "previousSourceFingerprint": "68487ea2e93e97aa7e2dc0eed7e5f000d6ba64f467971f843f2a8b75acdaecfe",
     "sourceFingerprint": "68487ea2e93e97aa7e2dc0eed7e5f000d6ba64f467971f843f2a8b75acdaecfe",
     "review": {

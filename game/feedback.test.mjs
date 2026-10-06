@@ -679,6 +679,23 @@ test('missed shots synthesize a surface impact but actor hits do not double up',
  assert.ok(missedTones>0);
  audio._gunshot({type:'shot',weapon:0,id:2,time:2,hit:{id:9},to:{x:3,z:0}},false,0,1,player);
  assert.ok(noises.length-missed<missed,'an actor hit gets no surface impact layers');
+ // Explicit contact (audit F08): a shot blocked before its camera candidate is a
+ // surface contact, so it gets the cue even though `hit` still names the candidate.
+ const blocked=e=>{const capture=audioFixture2(),n=[],t=[];
+  capture.audio._play=(d,p,b)=>b(0,{},[]);
+  capture.audio._noise=(time,out,nodes,o)=>n.push(o);
+  capture.audio._tone=(time,out,nodes,o)=>t.push(o);
+  capture.audio._gunshot(e,false,0,1,player);
+  capture.audio.dispose();
+  return n;};
+ const impactLayers=n=>n.filter(o=>o.type==='bandpass'&&o.freq>=2000).length;
+ const worldMiss=impactLayers(blocked({type:'shot',weapon:0,id:3,time:3,hit:false,blocked:false,contact:'world',to:{x:3,z:0},surface:'metal'}));
+ assert.ok(worldMiss>0,'a classified world contact keeps the surface impact layer');
+ const blockedShot=impactLayers(blocked({type:'shot',weapon:0,id:4,time:4,hit:{id:9},blocked:true,contact:'blocked',to:{x:3,z:0},surface:'metal'}));
+ assert.ok(blockedShot>0,'a blocked shot voices the surface impact it actually made');
+ assert.equal(impactLayers(blocked({type:'shot',weapon:0,id:5,time:5,hit:{id:9},blocked:false,contact:'actor',to:{x:3,z:0}})),0,'a classified actor contact adds no surface layers');
+ assert.equal(impactLayers(blocked({type:'shot',weapon:0,id:6,time:6,hit:false,to:{x:3,z:0},surface:'metal'})),worldMiss,'an unclassified miss keeps its legacy surface layer');
+ assert.equal(impactLayers(blocked({type:'shot',weapon:0,id:7,time:7,hit:{id:9},alt:true,altId:'bomb',shrapnel:0,to:{x:3,z:0}})),0,'shrapnel keeps the legacy actor-hit suppression');
  audio.dispose();
 });
 

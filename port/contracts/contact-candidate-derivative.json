@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "status": "source-candidate-not-native-acceptance",
+  "source_commit": "515daf07589150dd3241f4ae1425cc1b093912f5",
+  "parent_contract": "port/contracts/racing-candidate-derivative.json",
+  "parent_derivative_commit": "9812edfaa3e90a3ca4204d1ec2168587d8d657fb",
+  "baseline_commit": "9812edfaa3e90a3ca4204d1ec2168587d8d657fb",
+  "derivative_commit": "6ce98a65821fe6b550ca4d9929d32f32491cc3ab",
+  "runtime_overrides": {
+    "game/core.mjs": {
+      "before": "655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3",
+      "after": "b11165db97ab5423ecb77cd8b908b6935a046bdeaf6989aa3679878ccf49ea3f"
+    },
+    "game/feedback.mjs": {
+      "before": "bce79610e67236a16e135e05338809e6dd29411be40ac8aff4fbe99f9f69e923",
+      "after": "1091bf906e6b2872d576320ebbe0f599b156c6645a445af58d003fb51b8eaa0b"
+    },
+    "game/view.mjs": {
+      "before": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d",
+      "after": "b2c7d493c193e56b2f239533a0349f8aeda6b2294a7adf5cb6efeca234516b5e"
+    }
+  }
+}

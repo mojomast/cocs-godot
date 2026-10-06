@@ -37,7 +37,8 @@ test('movement candidate preserves historical derivative identity and inventorie
     assert.equal(sha(git('show',`${derivative.derivative_commit}:${path}`)),hash,path);
     if(path!=='game/core.mjs')assert.equal(sha(git('show',`61fca35c65488502b794900cde0a5247bfb123bf:${path}`)),hash,path);
   }
-  assert.equal(expected['game/core.mjs'],SOURCE_SHA256);
+  const contact=JSON.parse(readFileSync(new URL('port/contracts/contact-candidate-derivative.json',root)));
+  assert.equal(contact.runtime_overrides['game/core.mjs'].after,SOURCE_SHA256);
   assert.equal(expected['game/operator-verbs.mjs'],MOVEMENT_DEPENDENCY_SHA256);
 });
 
@@ -49,8 +50,8 @@ test('active source descriptor resolves the reviewed overlay to current runtime 
   const {activeSource}=await import('../../tools/godot-dev/active_source.mjs');
   const lock=JSON.parse(readFileSync(new URL('port/contracts/source-lock.json',root)));
   const selection=activeSource(path);
-  assert.equal(selection.contract.derivative_commit,'9812edfaa3e90a3ca4204d1ec2168587d8d657fb');
-  assert.equal(selection.contract.parent_contract,'port/contracts/movement-candidate-derivative.json');
+  assert.equal(selection.contract.derivative_commit,'6ce98a65821fe6b550ca4d9929d32f32491cc3ab');
+  assert.equal(selection.contract.parent_contract,'port/contracts/racing-candidate-derivative.json');
   const resolved=verifySource(lock,selection.contract,path);
   assert.equal(resolved.derivative_commit,selection.contract.derivative_commit);
   // Every current tracked change is covered by the reviewed active source and

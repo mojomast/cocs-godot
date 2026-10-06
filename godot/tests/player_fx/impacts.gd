@@ -73,11 +73,39 @@ func run() -> void:
 	var actor_hit: Dictionary = {"id": 901, "type": "shot", "actor": 3, "hit": 1, "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
 	impacts.consume([actor_hit], 0)
 	check(int(impacts.counters.actor_hits) == 1, "actor hits are not surface impacts")
+
+	# Explicit contact classification (audit F08). `hit` names the camera
+	# candidate, which a shot blocked before that candidate still carries, so the
+	# classification is what decides actor-hit accounting.
+	check(Impacts.actor_contact({"hit": 1}), "no classification keeps the legacy hit test")
+	check(not Impacts.actor_contact({"hit": false}), "an unlabelled miss is not an actor contact")
+	check(Impacts.actor_contact({"hit": 1, "contact": "actor"}), "an actor contact is an actor contact")
+	check(Impacts.actor_contact({"hit": 1, "contact": "vehicle"}), "a vehicle contact counts as an actor contact")
+	check(Impacts.actor_contact({"hit": 1, "contact": "sentry"}), "a sentry contact counts as an actor contact")
+	check(not Impacts.actor_contact({"hit": false, "contact": "world"}), "a world contact is not an actor contact")
+	# The audit counterexample: cover between muzzle and target, zero damage.
+	var blocked: Dictionary = {"id": 907, "type": "shot", "actor": 3, "hit": 1, "blocked": true, "contact": "blocked", "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
+	check(not Impacts.actor_contact(blocked), "a blocked shot is a surface contact, not an actor hit")
+	check(not Impacts.actor_contact({"hit": 1, "blocked": true}), "blocked alone classifies as a surface")
+	check(Impacts.actor_contact({"hit": 1, "contact": ""}), "an empty contact string is no classification")
+	# Flak shrapnel carries neither field and must keep its candidate semantics.
+	check(Impacts.actor_contact({"hit": 1, "alt": true, "altId": "bomb", "shrapnel": 0}), "shrapnel keeps the legacy hit test")
+	# Actor-hit accounting is decided before any geometry confirmation, so this
+	# holds without the semantic catalog: the blocked shot's camera candidate
+	# must not be tallied as an actor hit the way `hit` alone would.
+	var before_blocked := int(impacts.counters.actor_hits)
+	var before_blocked_shown := int(impacts.counters.shown)
+	impacts.consume([blocked], 0)
+	check(int(impacts.counters.actor_hits) == before_blocked,
+		"a blocked shot counts as a surface contact, not an actor hit")
+	check(int(impacts.counters.shown) == before_blocked_shown + 1,
+		"the blocked shot draws a surface impact")
 	var legacy: Dictionary = {"id": 902, "type": "shot", "actor": 3, "hit": false, "surface_hit": true, "normal": {"x": 0, "y": 1, "z": 0}, "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
 	impacts.consume([legacy], 0)
 	check(int(impacts.counters.legacy) == 1, "legacy surface_hit cue is left to the weapon-effects owner")
+	var before_malformed := int(impacts.counters.shown)
 	impacts.consume([{"id": 903, "type": "shot", "actor": 3, "hit": false, "from": {"x": 0}, "to": null}], 0)
-	check(int(impacts.counters.shown) == 1, "malformed geometry skipped")
+	check(int(impacts.counters.shown) == before_malformed, "malformed geometry skipped")
 
 	# Occlusion: a wall between the camera and the confirmed endpoint hides it.
 	var blocks := [
@@ -91,15 +119,16 @@ func run() -> void:
 	impacts.configure(camera, wall_query)
 	impacts.set_map(wall_map)
 	var behind_wall: Dictionary = {"id": 904, "type": "shot", "actor": 3, "hit": false, "from": {"x": 0, "y": 2.5, "z": -2}, "to": {"x": 0, "y": 2.5, "z": 5.5}}
+	var before_occluded := int(impacts.counters.shown)
 	impacts.consume([behind_wall], 0)
-	check(int(impacts.counters.occluded) == 1 and int(impacts.counters.shown) == 1, "occluded endpoint is skipped")
+	check(int(impacts.counters.occluded) == 1 and int(impacts.counters.shown) == before_occluded, "occluded endpoint is skipped")
 	# The same confirmed endpoint is visible from the wall's own side.
 	camera.position = Vector3(0, 2.5, 4)
 	camera.look_at(Vector3(0, 2.5, 10))
 	var visible_shot: Dictionary = behind_wall.duplicate(true)
 	visible_shot.id = 905
 	impacts.consume([visible_shot], 0)
-	check(int(impacts.counters.shown) == 2, "confirmed endpoint in view draws")
+	check(int(impacts.counters.shown) == before_occluded + 1, "confirmed endpoint in view draws")
 	# A viewer facing away still never draws a cue behind itself.
 	camera.position = Vector3(0, 2.5, 8)
 	camera.look_at(Vector3(0, 2.5, 20))

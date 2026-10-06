@@ -219,6 +219,26 @@ func run() -> void:
 		{"type":"damage","actor":1,"source":0,"amount":2},{"type":"shot","actor":0,"weapon":8}], 0)
 	check(playing(feedback, "hit/8") == 1 and playing(feedback, "hit/0") == 0,
 		"damage-before-shot batch confirms with the causing weapon and ignores a remote shot")
+	# The damage event's own weapon is the preferred attribution: a rocket still
+	# confirmed after the shooter switched weapons must not take a stale timbre.
+	feedback.clear_round()
+	feedback.apply_events([{"type":"shot","actor":0,"weapon":0}], 0)
+	check(playing(feedback, "shot/0") == 1, "local rifle report voices before the switch")
+	feedback.apply_events([{"type":"damage","actor":1,"source":0,"amount":2,"weapon":6}], 0)
+	check(playing(feedback, "hit/6") == 1 and playing(feedback, "hit/0") == 0,
+		"damage weapon outranks the stale last-held weapon")
+	# An explicit damage weapon also wins over a different weapon in the same batch.
+	feedback.clear_round()
+	feedback.apply_events([{"type":"shot","actor":0,"weapon":1},
+		{"type":"damage","actor":1,"source":0,"amount":2,"weapon":5}], 0)
+	check(playing(feedback, "hit/5") == 1 and playing(feedback, "hit/1") == 0,
+		"damage weapon outranks the same-batch local shot")
+	# An out-of-table damage weapon falls back rather than voicing an empty cue.
+	feedback.clear_round()
+	feedback.apply_events([{"type":"shot","actor":0,"weapon":4}], 0)
+	feedback.apply_events([{"type":"damage","actor":1,"source":0,"amount":2,"weapon":42}], 0)
+	check(playing(feedback, "hit/4") == 1 and playing(feedback, "hit/42") == 0,
+		"an unusable damage weapon falls back to the persisted confirmation")
 	feedback.clear_round()
 	feedback.apply_events([{"type":"damage","actor":0,"source":null,"amount":2}], 0)
 	feedback.apply_events([{"type":"pickup","actor":0}], 0)

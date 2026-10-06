@@ -15,7 +15,7 @@ import {stormglassImportPaths,verifyStormglassImports,verifyStormglassAdvance,ST
 import {polishPaths,verifyPolishAdvance,verifyOperatorFinishImports} from './polish_dependencies.mjs';
 import {movementSupportingHash,verifyMovementPredecessor} from './movement_dependencies.mjs';
 import {verifyVesperApronAdvance} from './vesper_apron_dependencies.mjs';
-import {verifyConsolidationAdvance} from './consolidation_dependencies.mjs';
+import {verifyConsolidationAdvance, consolidationSupportingHash} from './consolidation_dependencies.mjs';
 export const REQUIREMENTS='tools/godot-package/production_requirements.json';
 export const REQUIRED_UNITS=Object.freeze(['parallax-interiors','robots','vehicles','scenery','vesper-viaduct','abyssal-pressureworks','stormglass-causeway']);
 const skins=['needle_surveyor','caisson_guard','kiln_tender'];
@@ -230,7 +230,7 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     if(unit.id==='robots') {
       verifyRobotImports(spec.exports,read);
       const contract=JSON.parse(read('godot/robot_assets/switchyard/contract.json'));
-      for(const [path,sha]of Object.entries(contract.source))add(path,movementSupportingHash(path,robotSupportingHash(path,sha,receipt,read),read));
+      for(const [path,sha]of Object.entries(contract.source))add(path,consolidationSupportingHash(path,movementSupportingHash(path,robotSupportingHash(path,sha,receipt,read),read),receipt));
       const built=JSON.parse(read('godot/robot_assets/switchyard/generated/build-receipt.json'));
       // Archive the exact Python json.dumps(manifest(), sort_keys=True) bytes
       // used by the builder, so verification needs no Python/Blender on Windows.

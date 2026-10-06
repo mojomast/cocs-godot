@@ -13,6 +13,16 @@ import {resolveFinish} from './cosmetics.mjs';
 import {buildWeaponBody} from './weapon-models/index.mjs';
 import {buildAltParts,applyAltMorph} from './weapon-models/alt-parts.mjs';
 import {ALT_FIRE,altSpecFor} from './alt-fire.mjs';
+// Explicit shot contact classification (audit F08): true for an actor/vehicle/
+// sentry contact, false for world/blocked, null when the producer made no
+// claim. Callers keep their historical `hit` fallback for the null case.
+function shotActorContact(event){
+ if(!event)return null;
+ if(event.blocked===true)return false;
+ const contact=event.contact;
+ if(typeof contact!=='string'||!contact)return null;
+ return contact==='actor'||contact==='vehicle'||contact==='sentry';
+}
 import {buildSimpleWeaponBody,chassisFor} from './weapon-models/chassis.mjs';
 import {AdsController} from './weapon-ads.mjs';
 import {legacyWeaponBody} from './weapon-models/legacy.mjs';
@@ -3270,20 +3280,26 @@ export class ArenaView{
     // chain arcs, twin/double side pairs) all live in one branch so the base
     // per-weapon tracers stay byte-for-byte unchanged.
     if(altSpec)return this._altShotEffect(e,altSpec,from,to,reduced);
+    // Explicit contact classification (audit F08). `hit` names the camera
+    // candidate, which a shot blocked before that candidate still carries, so a
+    // blocked shot is placed and styled as the surface contact it is and can
+    // never take the actor-gore path. Producers with no claim keep the legacy
+    // `hit` truthiness.
+    const contact=shotActorContact(e),hit=contact==null?e.hit:contact;
     if(e.type==='dash'){if(from&&to)this.effectPool.add({from,to,color:'#c99aff',life:.12,size:.08});return;}
     if(e.type==='launch'){if(to){this.effectPool.add({pos:to,color,size:(feel.muzzle?.[0]||.12)*1.5,life:feel.muzzle?.[1]||.09});this.effectPool.add({pos:to,color:'#ffffff',size:.06,life:.08});}return;}
       if(e.type==='vehicle-shot'){if(from&&to){this.effectPool.add({from,to,color,life:.08,size:.06*tracerScale,additive:true});this.effectPool.add({pos:to,color:'#fff2ce',size:.09*tracerScale,life:.12,expand:reduced?0:.3,additive:true});}return;}
      // A trace whose visual origin was clamped behind a close wall (or that is
      // simply shorter than ~5cm) keeps its impact but drops the backwards line.
-     if(e.suppressTrace){if(to)this.impact(weapon,to,color,reduced,e.hit,from);return;}
+     if(e.suppressTrace){if(to)this.impact(weapon,to,color,reduced,hit,from);return;}
      if(!from||!to)return;
-     {const dx=(to.x||0)-(from.x||0),dy=(to.y||0)-(from.y||0),dz=(to.z||0)-(from.z||0);if(dx*dx+dy*dy+dz*dz<.0025){this.impact(weapon,to,color,reduced,e.hit,from);return;}}
+     {const dx=(to.x||0)-(from.x||0),dy=(to.y||0)-(from.y||0),dz=(to.z||0)-(from.z||0);if(dx*dx+dy*dy+dz*dz<.0025){this.impact(weapon,to,color,reduced,hit,from);return;}}
     if(weapon===2&&this.railPool){this.railPool.spawn(from,to,color,reduced,tracerScale);this.railImpact(to,color,reduced);return;}
-    if(weapon===6){this.lightning(from,to,color,reduced,tracerScale);this.impact(weapon,to,color,reduced,e.hit,from);return;}
-     if(weapon===3||weapon===7){this.effectPool.add({from,to,color,life:.06,size:(weapon===7?.055:.04)*tracerScale,additive:true});this.impact(weapon,to,color,reduced,e.hit,from);return;}
-     if(weapon===8){this.effectPool.add({from,to,color,life:.14,size:.05*tracerScale,additive:true});this.effectPool.add({from,to,color:'#ffffff',life:.06,size:.022*tracerScale,additive:true});this.impact(weapon,to,color,reduced,e.hit,from);return;}
-     if(weapon===9){this.effectPool.add({from,to,color,life:.05,size:.035*tracerScale,additive:true});this.impact(weapon,to,color,reduced,e.hit,from);return;}
-     this.effectPool.add({from,to,color,life:tracer[0],size:tracer[1]*tracerScale,additive:true});this.effectPool.add({from,to,color:'#ffffff',life:tracer[0]*.6,size:Math.max(.022,tracer[1]*.4*tracerScale),additive:true});this.impact(weapon,to,color,reduced,e.hit,from);
+    if(weapon===6){this.lightning(from,to,color,reduced,tracerScale);this.impact(weapon,to,color,reduced,hit,from);return;}
+     if(weapon===3||weapon===7){this.effectPool.add({from,to,color,life:.06,size:(weapon===7?.055:.04)*tracerScale,additive:true});this.impact(weapon,to,color,reduced,hit,from);return;}
+     if(weapon===8){this.effectPool.add({from,to,color,life:.14,size:.05*tracerScale,additive:true});this.effectPool.add({from,to,color:'#ffffff',life:.06,size:.022*tracerScale,additive:true});this.impact(weapon,to,color,reduced,hit,from);return;}
+     if(weapon===9){this.effectPool.add({from,to,color,life:.05,size:.035*tracerScale,additive:true});this.impact(weapon,to,color,reduced,hit,from);return;}
+     this.effectPool.add({from,to,color,life:tracer[0],size:tracer[1]*tracerScale,additive:true});this.effectPool.add({from,to,color:'#ffffff',life:tracer[0]*.6,size:Math.max(.022,tracer[1]*.4*tracerScale),additive:true});this.impact(weapon,to,color,reduced,hit,from);
    }
    lightning(from,to,color,reduced,widthScale=1){const segments=reduced?5:9,width=Math.max(.2,Math.min(2.5,Number(widthScale)||1)),dx=(to.x-from.x)/segments,dy=(to.y-from.y)/segments,dz=(to.z-from.z)/segments,amp=reduced?.05:.16;let px=from.x,py=from.y,pz=from.z;for(let i=0;i<segments;i++){const last=i===segments-1,jitter=last?0:amp,ox=(Math.random()-.5)*jitter,oy=(Math.random()-.5)*jitter,oz=(Math.random()-.5)*jitter,nx=px+dx+ox,ny=py+dy+oy,nz=pz+dz+oz;this.effectPool.add({from:{x:px,y:py,z:pz},to:{x:nx,y:ny,z:nz},color,life:.07,size:.03*width});this.effectPool.add({from:{x:px,y:py,z:pz},to:{x:nx,y:ny,z:nz},color:'#ffffff',life:.04,size:.012*width});px=nx;py=ny;pz=nz;}}
     railImpact(pos,color,reduced){this.effectPool.add({pos,color:'#e8f7ff',size:.2,life:.22,expand:reduced?0:.7,wireframe:!reduced});this.effectPool.add({pos,color,size:.12,life:.3,expand:reduced?0:.4});if(!reduced)for(let i=0;i<6;i++)this.effectPool.add({pos,color:'#ffffff',endColor:color,fade:'smooth',damping:2.5,gravity:6,size:.05,life:.24,velocity:V((Math.random()-.5)*7,(Math.random()-.2)*7,(Math.random()-.5)*7)});}
@@ -3322,8 +3338,9 @@ export class ArenaView{
          impact(weapon,pos,color,reduced,hit,from=null){
           if(!pos)return;
           // The authoritative shot direction branches floor vs wall before any
-          // accent spawns. Actor hits (`hit`) keep the legacy gore path; only
-          // world surfaces pick a style.
+          // accent spawns. A classified actor contact keeps the legacy gore path;
+          // world surfaces — and shots the source labelled `blocked`, whose `hit`
+          // only names the camera candidate they never reached — pick a style.
           const dir=from?this._shotDir??=new T.Vector3():null;
           if(dir)dir.set((pos.x||0)-(from.x||0),(pos.y||0)-(from.y||0),(pos.z||0)-(from.z||0));
           const surface=hit?null:this._impactStyle(pos,dir),base=hit?'#fff2ce':color;
@@ -3345,11 +3362,14 @@ export class ArenaView{
   // camera-independent and testable.
   _altShotEffect(e,spec,from,to,reduced){
    const pool=this.effectPool,weapon=e.weapon??0,color=spec.tracer,tracerScale=Number(this._quality?.().tracers)||1;
+   // Same explicit contact classification as the base report: a blocked shot is
+   // a surface contact and never styles itself from the camera candidate.
+   const contact=shotActorContact(e),hit=contact==null?e.hit:contact;
    if(e.type==='launch'){
     if(to){pool.add({pos:to,color,size:.18,life:.14,expand:reduced?0:.35});pool.add({pos:to,color:'#ffffff',size:.07,life:.09});}
     return;
    }
-   if(e.suppressTrace){if(to)this.impact(weapon,to,color,reduced,e.hit,from);return;}
+   if(e.suppressTrace){if(to)this.impact(weapon,to,color,reduced,hit,from);return;}
    if(!from||!to)return;
    const dir=V((to.x||0)-(from.x||0),(to.y||0)-(from.y||0),(to.z||0)-(from.z||0)),length=dir.length()||1;
    dir.multiplyScalar(1/length);
@@ -3370,16 +3390,16 @@ export class ArenaView{
     case 'chain':{
      this.lightning(stem,to,color,reduced,tracerScale);
      for(const target of (Array.isArray(e.targets)?e.targets:[]).slice(0,4))if(target&&Number.isFinite(target.x))this.lightning(to,target,color,reduced,tracerScale);
-     this.impact(weapon,to,color,reduced,e.hit,from);
+     this.impact(weapon,to,color,reduced,hit,from);
      break;
     }
     case 'double':case 'twin':{
      const pellets=Number.isInteger(e.pellet)?[e.pellet]:[0,1];
      for(const index of pellets){const k=index%2?1:-1;line(shift(stem,k*.05),shift(to,k*.06),(spec.id==='twin'?.03:.045)*tracerScale,spec.id==='twin'?.08:.14);}
-     this.impact(weapon,to,color,reduced,e.hit,from);
+     this.impact(weapon,to,color,reduced,hit,from);
      break;
     }
-    default:{line(from,to,.07*tracerScale,.09);this.impact(weapon,to,color,reduced,e.hit,from);break;}
+    default:{line(from,to,.07*tracerScale,.09);this.impact(weapon,to,color,reduced,hit,from);break;}
    }
   }
   // The keyed projectile pool. Lazily created on the first alt projectile so a

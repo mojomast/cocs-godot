@@ -211,11 +211,15 @@ func apply_events(items: Array, local_id: int) -> void:
 				if actor == local_id:
 					_play_cue("hurt")
 				elif _identity(item.get("source")) == local_id and not _melee_damage(item, items):
-					# Damage events carry no weapon; the source emits the causing
-					# shot in the same accepted batch. Follow that batch's local
-					# weapon so the impact voice is not a stale last-held one, and
-					# only fall back to the cache when the batch is ambiguous.
-					var confirmation: int = batch_weapon if batch_weapon >= 0 else _last_weapon
+					# Preferred: the damage event names the causing weapon wherever
+					# the source knows it (hitscan, detonation, pierce, chain, flak),
+					# so the impact voice is the real one and survives a weapon
+					# switch between the launch and the impact. Fall back to the
+					# causing shot in the same accepted batch, and only then to the
+					# persisted confirmation, for producers that omit it.
+					var confirmation: int = _identity(item.get("weapon"))
+					if confirmation < 0 or confirmation >= FEEL.size():
+						confirmation = batch_weapon if batch_weapon >= 0 else _last_weapon
 					_play_cue("hit", confirmation)
 			"pickup":
 				if actor == local_id: _play_cue("pickup")

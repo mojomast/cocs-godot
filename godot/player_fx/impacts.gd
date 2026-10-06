@@ -224,11 +224,24 @@ func consume(items: Array, _local_id: int) -> void:
 			_blast(event, true)
 	_sync_marks()
 
+## Whether the authority says this shot contacted an actor, a vehicle or a
+## sentry rather than a surface. The explicit `blocked`/`contact` pair is what
+## the source knows: a shot whose muzzle ray is stopped before the camera
+## candidate reports `blocked:true, contact:"blocked"` and is the surface
+## contact it is, even though `hit` still names the candidate it never reached.
+## Producers that carry neither field (older cores, the recorded capture,
+## flak shrapnel) keep the legacy `hit` test, so nothing is reclassified here.
+static func actor_contact(event: Dictionary) -> bool:
+	if event.get("blocked") == true: return false
+	var contact := str(event.get("contact", ""))
+	if contact == "": return identity(event.get("hit")) >= 0
+	return contact == "actor" or contact == "vehicle" or contact == "sentry"
+
 ## Confirmed shot: burst flash at the authoritative endpoint plus one persistent
 ## pock on the confirmed surface.
 func _shot(event: Dictionary) -> void:
 	if not _fresh(event): return
-	if identity(event.get("hit")) >= 0:
+	if actor_contact(event):
 		counters.actor_hits += 1 # Authority confirmed an actor hit, not a surface.
 		return
 	var normal: Variant = point(event.get("normal"))

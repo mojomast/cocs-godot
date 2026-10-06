@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
 import {productionResources} from './production_resources.mjs';
 import {reverseRacing} from './racing_dependencies.mjs';
+import {CONTACT_CONTRACT} from './contact_derivative.mjs';
 import {verifySourceState} from './manifest_validation.mjs';
 import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 const cwd=fileURLToPath(new URL('../../',import.meta.url));
@@ -21,8 +22,13 @@ test('committed seven-unit promotion and import bytes validate independently of 
   const result=productionResources(options);
   const staged=gitStagedResources(cwd,commit);
   rejectStagedInputs([...Object.keys(result.resources),...Object.keys(result.raw)],staged);
+  // The committed tree is validated through the active reviewed derivative, which
+  // the F08 promotion moved from the racing contract to the contact contract that
+  // extends it (game/core.mjs, game/feedback.mjs, game/view.mjs).
+  const active=JSON.parse(read('port/contracts/active-source.json'));
+  assert.equal(active.derivative,CONTACT_CONTRACT,'Active descriptor selects the contact derivative');
   verifySourceState(cwd,JSON.parse(read('port/contracts/source-lock.json')).source_commit,
-    JSON.parse(read('port/contracts/racing-candidate-derivative.json')),{portCommit:commit});
+    JSON.parse(read(CONTACT_CONTRACT)),{portCommit:commit});
   assert.deepEqual(result.pending,[]);
   assert.throws(()=>productionResources({...options,worldIds:options.worldIds.slice(0,-1)}),/remain pending/);
   for(const id of ['abyssal-pressureworks','vesper-viaduct','scenery','robots','vehicles','parallax-interiors','stormglass-causeway']) {

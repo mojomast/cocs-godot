@@ -3,7 +3,7 @@ import {readFileSync,writeFileSync,mkdirSync,existsSync,renameSync,rmSync} from 
 import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {resolveReviewedDerivative} from '../godot-package/racing_derivative.mjs';
+import {resolveReviewedDerivative} from '../godot-package/contact_derivative.mjs';
 import {resolveActiveDerivative} from '../godot-dev/active_source.mjs';
 import {verifyAuthoringResources} from '../godot-package/authoring_resources.mjs';
 import {MAPS} from '../../game/maps.mjs';

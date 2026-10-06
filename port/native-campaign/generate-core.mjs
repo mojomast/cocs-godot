@@ -5,7 +5,10 @@ import {resolve} from 'node:path';
 
 // Candidate overlay: port/contracts/movement-candidate-derivative.json, 91f58a1c.
 // Historical source-lock/lattice derivative and production receipts stay immutable.
-export const SOURCE_SHA256='655f112934b7b4a4f1d9f043a8c545511e7284f557e4c9586dfd72d3e5a8e7a3';
+// F08 experiment: pinned to the measured `blocked`/contact classification and
+// weapon-carrying damage bytes on this branch; promotion needs the derivative
+// layer + receipt advance, which the orchestrator owns.
+export const SOURCE_SHA256='b11165db97ab5423ecb77cd8b908b6935a046bdeaf6989aa3679878ccf49ea3f';
 export const MOVEMENT_DEPENDENCY_SHA256='357b7b2174f6f280c3cf386612d886a725c772ca2c14bb66ecce3b6e32024a6e';
 export function verifyCampaignMovementDependency(source=readFileSync(new URL('../../game/operator-verbs.mjs',import.meta.url))) {
   const hash=createHash('sha256').update(source).digest('hex');

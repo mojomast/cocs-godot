@@ -564,7 +564,7 @@
       "game/data.mjs": "2c96517b6a04e0c35f82cd03ab3bb5ff17202181fe8870f6ff605fb88af45e44",
       "game/operator-anatomy.mjs": "72a2a5c6620f5e57f53c247d57eea5e4d9b36f86ae8c53e8efdfc693bfb5bca9",
       "game/operator-detail.mjs": "7b6e8b1a0eb2ead87b0212e01b7d0bdddc672015c68d89d5b41c6387314c076a",
-      "game/view.mjs": "98f8aca46bece81a191760a253db68814bf4e768ee56f37be41eae09723af33d"
+      "game/view.mjs": "b2c7d493c193e56b2f239533a0349f8aeda6b2294a7adf5cb6efeca234516b5e"
     },
     "dependencies": {
       "numpy": "2.5.3",
