@@ -112,6 +112,7 @@ commands = [
     ("career-equipped-source", ["node", "--test", "port/native-career/equipped.test.mjs"]),
     ("social-source", ["node", "--test", "port/native-social/social_authority.test.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
+    ("cadence-source", ["node", "--test", "game/cadence.test.mjs"]),
     ("arms-race-source", ["node", "--test", "game/armsrace.test.mjs", "game/outcome.test.mjs", "game/input.test.mjs", "game/movement-input.test.mjs"]),
     ("horde-source", ["node", "--test", "game/singleplayer.test.mjs", "game/singleplayer-ui.test.mjs"]),
     ("cinderwake-source", ["node", "--test", "--test-concurrency=1", "game/horde-stages.test.mjs", "tools/godot-horde-maps/cinderwake.test.mjs", "tools/godot-horde-maps/source-fixture.test.mjs", "port/native-horde/cinderwake.test.mjs", "port/native-identity-horde/validate_cinderwake.test.mjs"]),
