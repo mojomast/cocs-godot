@@ -11,10 +11,17 @@ extends SceneTree
 ## string) can no longer change a verdict. The checker's own logic is exercised
 ## by the self-test table below, which keeps the negative controls permanent.
 ##
+## Parse detection is whitespace-insensitive (`JSON.new ()`, `.parse (`,
+## `JSON . parse_string` are all matched), and the base's single parse is bound
+## to the `decode_text` body rather than merely to the file.
+##
 ## KNOWN LIMITS (accepted, not closed by this gate):
-##   * A parse reached only through a callable/reflection indirection, or via a
-##     JSON API whose spelling differs from the tokens below, is not detected.
-##     The token list is a denylist, not a proof of absence.
+##   * A parse reached through a callable/reflection indirection, or through a
+##     JSON API whose spelling differs from the patterns below, is not detected.
+##     The pattern list is a denylist, not a proof of absence.
+##   * Placement is proved textually, by extracting the `decode_text` body up to
+##     the next top-level `func`. A base parse invoked from inside that body but
+##     bound to a parse in some other file would not be seen.
 ##   * Structural presence of `super.deliver_frame` is not proof that the base
 ##     state machine runs semantically once. A subclass can still swallow a
 ##     frame type, reorder a check against the base envelope contract, or return
@@ -33,11 +40,16 @@ const CHAIN := {
 }
 const BASE_KEY := "net/client.gd"
 
-# Any spelling of a JSON text parser. The base is allowed exactly one and it must
-# be the static call; a subclass is allowed none.
+# Any spelling of a JSON text parser, matched whitespace-insensitively so that
+# `JSON.new ()`, `.parse (` and `JSON . parse_string` cannot slip past. The base
+# is allowed exactly one, it must be the static call, and it must sit inside the
+# `decode_text` body; a subclass is allowed none.
 const PARSE_STATIC := "JSON.parse_string"
-const PARSE_ALT_CTOR := "JSON.new("
-const PARSE_ALT_METHOD := ".parse("
+const PARSE_PATTERNS := {
+	"JSON.parse_string": "JSON\\s*\\.\\s*parse_string",
+	"JSON.new(": "JSON\\s*\\.\\s*new\\s*\\(",
+	".parse(": "\\.\\s*parse\\s*\\(",
+}
 const DELIVER_DECL := "func deliver_frame("
 const SUPER_DELIVER := "super.deliver_frame"
 const SUPER_DECODE := "return super.decode_text("
@@ -101,9 +113,21 @@ static func strip_comments_and_strings(text: String) -> String:
 
 static func parse_entry_points(code: String) -> Array[String]:
 	var found: Array[String] = []
-	for token: String in [PARSE_STATIC, PARSE_ALT_CTOR, PARSE_ALT_METHOD]:
-		if code.contains(token): found.append(token)
+	for label: String in PARSE_PATTERNS:
+		var re := RegEx.new()
+		# A pattern we cannot compile must not silently pass: report it as a hit.
+		if re.compile(String(PARSE_PATTERNS[label])) != OK or re.search(code) != null:
+			found.append(label)
 	return found
+
+# Textual extent of a top-level function: from its declaration up to the next
+# top-level `func `. Operates on the lexed view, which preserves newlines.
+static func function_region(code: String, declaration: String) -> String:
+	var start := code.find(declaration)
+	if start < 0: return ""
+	var next_top := code.find("\nfunc ", start + 1)
+	if next_top < 0: return code.substr(start)
+	return code.substr(start, next_top - start)
 
 # Pure checker. Returns the list of failures for one file; empty means clean.
 static func analyze_source(key: String, text: String) -> Array[String]:
@@ -117,6 +141,10 @@ static func analyze_source(key: String, text: String) -> Array[String]:
 			found.append("%s single parse must be %s, found %s" % [key, PARSE_STATIC, str(parses)])
 		if not code.contains(BASE_DECODE_DECL):
 			found.append("%s must keep the base decode_text declaration" % key)
+		else:
+			var body := function_region(code, BASE_DECODE_DECL)
+			if parse_entry_points(body) != [PARSE_STATIC]:
+				found.append("%s single parse must sit inside the decode_text body, found %s there" % [key, str(parse_entry_points(body))])
 	else:
 		if not parses.is_empty():
 			found.append("%s must not parse text, found %s" % [key, str(parses)])
@@ -144,6 +172,11 @@ const SNIPPET_SUBCLASS_PARSE := "func decode_text(text: String) -> bool:\n\tvar 
 const SNIPPET_NO_SUPER := "func decode_text(text: String) -> bool:\n\treturn super.decode_text(text)\n\nfunc deliver_frame(frame: Dictionary) -> bool:\n\tif frame.get(\"type\") == \"start\": return true\n\treturn true\n"
 const SNIPPET_NO_HANDOFF := "func decode_text(text: String) -> bool:\n\treturn true\n\nfunc deliver_frame(frame: Dictionary) -> bool:\n\treturn super.deliver_frame(frame)\n"
 const SNIPPET_SEMANTIC_SWALLOW := "func decode_text(text: String) -> bool:\n\treturn super.decode_text(text)\n\nfunc deliver_frame(frame: Dictionary) -> bool:\n\tif frame.get(\"type\") == \"start\": return true\n\treturn super.deliver_frame(frame)\n"
+# Whitespace-insensitive evasion: `JSON.new ()` and `.parse (` defeat a
+# character-exact denylist.
+const SNIPPET_WHITESPACE_PARSE := "func decode_text(text: String) -> bool:\n\tvar j := JSON . new ()\n\tif j . parse (text) != OK: return fail(\"Malformed JSON envelope\")\n\treturn super.decode_text(text)\n\nfunc deliver_frame(frame: Dictionary) -> bool:\n\treturn super.deliver_frame(frame)\n"
+# The single base parse moved out of decode_text into another function.
+const SNIPPET_BASE_PARSE_RELOCATED := "func debug_peek(text: String) -> Variant:\n\treturn JSON.parse_string(text)\n\nfunc decode_text(text: String) -> bool:\n\tif text.to_utf8_buffer().size() > MAX_FRAME_BYTES: return fail(\"Oversized frame\")\n\treturn deliver_frame(debug_peek(text))\n\nfunc deliver_frame(frame: Dictionary) -> bool:\n\treturn true\n"
 
 func self_tests() -> Dictionary:
 	var cases: Array = [
@@ -156,6 +189,8 @@ func self_tests() -> Dictionary:
 		{"case": "static-parse-in-subclass", "key": "native_arenas/client.gd", "text": SNIPPET_SUBCLASS_PARSE, "expect": "fail"},
 		{"case": "missing-super-deliver", "key": "campaign/client.gd", "text": SNIPPET_NO_SUPER, "expect": "fail"},
 		{"case": "missing-decode-handoff", "key": "campaign/client.gd", "text": SNIPPET_NO_HANDOFF, "expect": "fail"},
+		{"case": "whitespace-parse-api", "key": "campaign/client.gd", "text": SNIPPET_WHITESPACE_PARSE, "expect": "fail"},
+		{"case": "base-parse-relocated", "key": BASE_KEY, "text": SNIPPET_BASE_PARSE_RELOCATED, "expect": "fail"},
 		{"case": "semantic-swallow", "key": "campaign/client.gd", "text": SNIPPET_SEMANTIC_SWALLOW, "expect": "known-limit"},
 	]
 	var results: Array = []
@@ -176,8 +211,7 @@ func self_tests() -> Dictionary:
 	# Lexer self-test: a `#` inside a string literal is not a comment, and a
 	# real comment is not code.
 	var lexer_code := strip_comments_and_strings("const S := \"a # b JSON.parse_string\"\nvar v := JSON.new()\n")
-	check(not lexer_code.contains(PARSE_STATIC), "lexer: a quoted mention must not be read as a parse call")
-	check(lexer_code.contains(PARSE_ALT_CTOR), "lexer: real code outside strings must survive")
+	check(parse_entry_points(lexer_code) == ["JSON.new("], "lexer: a quoted mention must not be read as a parse call, got %s" % str(parse_entry_points(lexer_code)))
 	return {"results": results, "checks": case_checks, "failures": case_failures, "ok": case_failures == 0}
 
 func read_source(path: String) -> String:
@@ -214,6 +248,11 @@ func _initialize() -> void:
 			check(false, problem)
 	check(total_parses == 1, "Exactly one JSON parse entry point across the three-file chain (found %d) %s" % [total_parses, str(parses)])
 	check(int(parses.get(BASE_KEY, 0)) == 1, "The single parse entry point is in net/client.gd")
+	# The base parse must be inside decode_text, not merely somewhere in the file.
+	var base_code := strip_comments_and_strings(read_source(String(CHAIN[BASE_KEY])))
+	var base_body := function_region(base_code, BASE_DECODE_DECL)
+	var body_parses := parse_entry_points(base_body)
+	check(body_parses == [PARSE_STATIC], "The single base parse sits inside the decode_text body, found %s there" % str(body_parses))
 
 	print("DECODE_ONCE_SELFTEST ", JSON.stringify({"ok": self_run["ok"], "cases": results.size(), "checks": self_run["checks"], "failures": self_run["failures"]}))
 	print("DECODE_ONCE ", JSON.stringify({
