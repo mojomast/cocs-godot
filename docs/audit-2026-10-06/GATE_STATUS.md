@@ -94,8 +94,63 @@ carries the causing weapon on damage events where the source knows it:
 `game/core.mjs` derivative layer + repointed active descriptor + regenerated core
 + receipt advance + migration of the four presentation consumers
 (`player_fx/impacts.gd`, `game/feedback.mjs`, `game/view.mjs`,
-`world/audio_feedback.gd`). The recipe is in the experiment report; the branch is
-preserved for the gated phase, and Flash's independent verification is running.
+`world/audio_feedback.gd`). Flash's independent verification confirmed the claims
+and refined the recipe below; the branch is preserved for the gated phase.
+
+### Independent verification (Flash, read-only) — claims verified, no counterexample
+
+- Full diff inspection plus a mechanical additive-only proof: stripping exactly
+  the advertised inserted tokens reproduces both `game/core.mjs` and the
+  generated core equal to `59279c0e` (whitespace-insensitive), so nothing else
+  changed.
+- Own probes (31 checks × both cores): world-cover counterexample (0 damage,
+  `blocked:true`, source `hit` still the camera candidate), two-enemy ray case,
+  clear `contact:'actor'`, muzzle stub (no `hit` field), delayed-rocket launch
+  weapon identity, melee/ability/sentry omissions, damage-before-shot order.
+- Differential fuzz: 40 randomized seeds + a scripted matrix — event streams
+  (after stripping the new fields) and actor/match state byte-identical;
+  coverage 6744 shots / 2975 clear / 5 blocked / 802 damage samples.
+- Regeneration: `generate-core.mjs --check` exit 0; all three SHA pins agree.
+- Tests: only tests 17/18 flip to `not ok` vs the clean baseline; both are the
+  `655f…→b111…` pin boundary. No other assertion regressed.
+
+**Promotion recipe additions from the review:** include the
+`port/finish/matrix.json` `lattice-source` oracle pin
+(`tools/port/lattice/source-oracle.mjs` fails on the same boundary); cover the
+`_flakBurst` shrapnel `shot` events that carry neither `blocked` nor `contact`
+(consumers must tolerate undefined); add
+`port/expansion-three/horde/analyze-trace.mjs` to the consumer migration list;
+decide the vehicle-mounted chaingun attribution (`fireVehicle` omits `weapon:0`
+although its `vehicle-shot` event carries it); and note that `contact:'world'`
+includes open-air max-range shots (consumers must probe geometry before spawning
+surface effects).
+
+## F10 completion-policy experiment (measured, not promoted)
+
+Space Bunny's experiment on `audit/exp-f10-completion-20261006` (commits
+`50439b4a`, `f6c910a2`) adds an explicit, opt-in completion policy
+(`restore-and-withdraw`) for exactly one encounter (`siltwake-crossing:1`),
+leaving the shipped rule bit-for-bit as the control:
+
+- **Control reproduces the audit finding** in a scripted match: `holdProgress`
+  reaches 1.00 and the objective still refuses to complete while guards live
+  (40 s sim, 208 damage, never completes).
+- **Experiment**: completes with 4/4 guards alive; survivors withdraw via a
+  bounded 73-tick despawn (no kill credit, no orphans, no damage after
+  completion); partial kills bank exactly their kills and retry carries them
+  without re-earning; leave/return, death/retry and whole-map completion all
+  reach terminal states. All four other timed encounters still resolve to the
+  control (progress 1.00 with guards alive → no completion).
+- **Defect caught and fixed during measurement**: withdrawing guards previously
+  counted against the next encounter for 71 ticks; now excluded
+  (`encounterAlive`), re-measured at 0.
+- Tests: campaign+interludes 20/0, new completion-policy 11/0, all
+  native-campaign 64/0, feel + solo-cheats 13/0, eslint clean.
+
+**Not promoted.** Open items before promotion: withdrawal is a despawn (no
+walk-off presentation), the objective string is stale under the experiment, and
+"smart play vs giving up" needs an owner playtest. The emitted
+`campaign-guard-withdrawal` event is additive; `playerCarry` is untouched.
 
 ## Explicitly unrun / not claimed
 

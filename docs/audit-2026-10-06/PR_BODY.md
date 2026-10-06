@@ -45,6 +45,12 @@ evidence; unrun/manual gates are never reported as passing.
   primary weapon at 60 Hz: effective cadence is tick-quantized with bounded
   overshoot (Pulse Rifle `.1 s → 116.667 ms`, SMG `.058 s → 66.667 ms`), with
   tap/pause tests proving no catch-up burst. No balance change.
+- **F10 — encounter completion policy (measured experiment, not promoted).** An
+  opt-in `restore-and-withdraw` policy for `siltwake-crossing:1` lets the
+  transfer objective complete while surviving guards withdraw (bounded despawn,
+  no kill credit, no reward farming on retry); the control reproduces the audit
+  finding (`holdProgress` 1.00, never completes while guards live). Not promoted:
+  withdrawal presentation and an owner playtest are open items.
 
 ## Product / visuals
 
@@ -85,5 +91,8 @@ CI and the 4.7.2 engine trial.
 - F17 weapon GLB rubber/ceramic role export needs the Blender master pipeline
   plus matched visual review.
 - F02 round composition, F05 sampled-animation promotion beyond the pilot,
-  F13/F14 visual capability work, F10 encounter prototype, F15 archive/deletion
-  and the 4.7.2 trial remain gated follow-ups.
+  F13/F14 visual capability work, F15 archive/deletion and the 4.7.2 trial
+  remain gated follow-ups.
+- F10's `restore-and-withdraw` policy is measured on
+  `audit/exp-f10-completion-20261006`; promotion needs a withdrawal presentation
+  pass, the objective-string update and an owner playtest.
