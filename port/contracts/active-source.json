@@ -4,5 +4,5 @@
   "description": "One reviewed active-source selection for dev, package, CI and verification. Historical derivatives remain immutable evidence and are verified at their own frozen commits.",
   "source_lock": "port/contracts/source-lock.json",
   "derivative": "port/contracts/contact-candidate-derivative.json",
-  "derivative_sha256": "df082342aa6cb24c7085f2ba859ae9a9bab15f106edc181bf7412e2e8327ef13"
+  "derivative_sha256": "93ddd73fcdd1ff6a2497d25c93cf2f08cb3733fc29db024607fa83c9ef317d10"
 }
