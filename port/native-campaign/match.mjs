@@ -4,8 +4,8 @@ import {updateEnemyRoles} from '../../game/singleplayer.mjs';
 import {createFeel} from './feel.mjs';
 import {playerWeapon,projectileWeapon,trackingInput} from './targeting.mjs';
 import {loadCampaignMap} from './maps.mjs';
-import {missionForCampaign, completionPolicyFor, OBJECTIVE_COMPLETION, DEFAULT_OBJECTIVE_COMPLETION} from './missions.mjs';
-import {deployEncounter, beginEncounterWithdrawal, tickEncounterWithdrawal} from './enemies.mjs';
+import {missionForCampaign, completionPolicyFor, objectivePresentationFor, OBJECTIVE_COMPLETION, DEFAULT_OBJECTIVE_COMPLETION} from './missions.mjs';
+import {deployEncounter, beginEncounterWithdrawal, tickEncounterWithdrawal, withdrawInput} from './enemies.mjs';
 import {createCampaignStory} from './story.mjs';
 import {createCampaignInterludes} from './interludes.mjs';
 import {createStructureRay} from '../edge-effects/structure-rays.mjs';
@@ -83,10 +83,11 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     checkpoint, checkpointPoint:checkpointPoint ?? anchors.start, elapsed, totalElapsed,
     bankedKills:kills, nextId:1, enemies:[], allies:[], groups:{}, steps:[],
      holdProgress:0, restoring:false, bypassed:false, deployed:false, boss:null, bossPhase:1, summonCount:0,
-     // F10 experiment: ids of guards currently withdrawing, and the match-time
-     // deadline at which they are despawned. Empty and inert unless an
+     // F10 experiment: ids of guards currently retreating, the match-time
+     // deadline at which they are despawned regardless, and the contested
+     // position the relevance test measures from. Empty and inert unless an
      // opted-in encounter completes under the restore-and-withdraw policy.
-     withdrawn:[], withdrawUntil:0,
+     withdrawn:[], withdrawUntil:0, withdrawAnchor:null,
     transmission:{speaker:'ECHO',text:mission.brief}};
   let controls = {}, arenaAssigned = false;
   const feel=createFeel(difficulty);
@@ -100,6 +101,13 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
   // gate is bit-for-bit the same `remaining()` it always was.
   const encounterAlive = match => remaining(match)
     - state.withdrawn.filter(id => (match.actors[id]?.health ?? 0) > 0).length;
+  // Same exclusion, applied to every PRESENTATION count. A guard that is walking
+  // off is no longer part of the encounter, so the HUD threat count, the
+  // objective line and the story must stop reporting it while it is still on
+  // screen; `campaign.withdrawing` carries the honest number instead. Also inert
+  // while `withdrawn` is empty, so every control-facing number is unchanged.
+  const engaged = match => encounterAlive(match);
+  const withdrawingCount = match => state.withdrawn.filter(id => (match.actors[id]?.health ?? 0) > 0).length;
   const currentAnchor = () => anchors[state.stepIndex < 5 ? `encounter-${state.stepIndex + 1}` : 'exit'];
   const checkpointPosition = (match, player) => {
     const y=floorAt(player.x,player.z,match.arena);
@@ -141,6 +149,14 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     throwGrenade(actor) {return actor.isNpc?false:super.throwGrenade(actor);}
     power(actor) {return actor.isNpc?false:super.power(actor);}
     botInput(actor,dt) {
+      // F10 experiment: a guard mid-withdrawal is driven by the retreat, not by
+      // the combat policy. This is the whole additive branch -- the core still
+      // resolves walls, slopes, gravity and the gait from vx/vz exactly as it
+      // does for every other actor, and the tracking speed budget below still
+      // applies. Bypassing the policy is what guarantees no target reacquire, no
+      // reacquired telegraph, no melee and no zone leash: the guard can only walk.
+      if (actor.campaignWithdrawn && actor.campaignRetreat)
+        return trackingInput(this,actor,withdrawInput(this,actor,dt),difficulty);
       const input=super.botInput(actor,dt);
       if(input.melee){input.melee=feel.attack(this,actor,'melee');if(input.melee)feel.afterAttack(this,actor,'melee');}
       if(this.time<(actor.campaignStaggerUntil??0)||this.time<(actor.campaignExposedUntil??0)){input.x=0;input.z=0;input.melee=false;}
@@ -184,17 +200,17 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         state.bossPhase=phase;
       }
       updateEnemyRoles(this,state,dt); feel.update(this,dt);
-      // F10 experiment: the withdrawal drain runs unconditionally every tick, so
-      // it completes even when the player has already run ahead to the next
-      // anchor or the level has closed. It is time-driven, never player-driven,
-      // so it can leave the objective blocked.
+      // F10 experiment: the withdrawal tick runs unconditionally every tick, so
+      // a retreat completes even when the player has already run ahead to the
+      // next anchor or the level has closed. It is anchored on match time and on
+      // the guard's own position, never on the player or the next step.
       tickEncounterWithdrawal(this,state);
       if (player.health<=0) {finish(this,'dead'); return;}
       const anchor=currentAnchor(), near=distance(player,anchor)<=anchor.radius && Math.abs(player.y-anchor.y)<3;
       const encounterForStory=mission.encounters[state.stepIndex];
       storySnapshot=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,
         encounter:encounterForStory,deployed:state.deployed,
-        enemiesRemaining:remaining(this),marker:anchor},player,controls.interact===true,this.arena);
+        enemiesRemaining:engaged(this),marker:anchor},player,controls.interact===true,this.arena);
       interludes.update(this,state,controls,near||!!storySnapshot.prompt);
       if (state.stepIndex===5) {
         if (near) {state.transmission={speaker:'ECHO',text:mission.outro}; this.objectiveState.winner=0; finish(this,'level-complete');}
@@ -204,7 +220,14 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       const encounter=mission.encounters[state.stepIndex];
       if (!state.deployed && distance(player,anchor)<=Math.max(36,anchor.radius+20)) {
         state.checkpoint=state.stepIndex; state.checkpointPoint=checkpointPosition(this,player);
-        state.deployed=true; state.transmission={speaker:'ECHO',text:encounter.text.replace(/^ECHO: /,'').replace(/hold Interact/gi,'press Interact, then remain nearby')};
+        state.deployed=true;
+        // F10 experiment: under the control rule this resolves to the authored
+        // encounter text verbatim. Under the opted-in policy the shipped brief
+        // is stale -- it was written for a rule that only ends when the patrol
+        // is dead -- so the experiment shows copy that describes the transfer as
+        // the completion and the survivors as retreating.
+        const brief=(objectivePresentationFor(mapId,state.stepIndex,objectiveCompletion)?.brief ?? encounter.text);
+        state.transmission={speaker:'ECHO',text:brief.replace(/^ECHO: /,'').replace(/hold Interact/gi,'press Interact, then remain nearby')};
         deployEncounter(this,state,encounter,anchor);
         this.emit('campaign-checkpoint',{step:state.checkpoint});
       }
@@ -261,9 +284,13 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
       // zeroes survivor health, so counting afterwards would pay out kills that
       // were never earned and could be farmed by retrying the same encounter.
       state.bankedKills+=state.enemies.filter(id=>this.actors[id]?.health<=0).length;
-      // Remaining encounter guards disengage now and despawn on a bounded
-      // deadline, through the same transition the objective itself just used.
-      const withdrawing=withdraws?beginEncounterWithdrawal(this,state):[];
+      // Remaining encounter guards break off through the same transition the
+      // objective itself just used: they disengage in the same tick, walk a
+      // bounded retreat away from the contested position on the existing
+      // locomotion, and despawn on arrival, out of relevance, or on the fixed
+      // deadline. `anchor` is the position they were defending, which is what
+      // the relevance test measures from.
+      const withdrawing=withdraws?beginEncounterWithdrawal(this,state,anchor):[];
       state.enemies=[]; state.boss=null;
       if (withdrawing.length) this.emit('campaign-guard-withdrawal',{step:state.stepIndex,count:withdrawing.length});
        state.stepIndex++; state.deployed=false; state.holdProgress=0; state.restoring=false;state.bypassed=false;
@@ -273,7 +300,7 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         if ((amount>0||i===player.weapon)&&Number.isFinite(cap)) player.ammo[i]=Math.max(amount,Math.ceil(cap*.8));});
       state.transmission={speaker:'ECHO',text:state.stepIndex===5?mission.outro:'Relay secured. Follow the service route; side paths carry supplies. Recover before the next contact.'};
       storySnapshot=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,
-        encounter:mission.encounters[state.stepIndex],deployed:false,enemiesRemaining:0,
+        encounter:mission.encounters[state.stepIndex],deployed:false,enemiesRemaining:engaged(this),
         marker:currentAnchor()},player,controls.interact===true,this.arena);
     }
     campaignCheckpoint() {return {mapId,difficulty,checkpoint:state.checkpoint,checkpointPoint:{...state.checkpointPoint},
@@ -288,24 +315,40 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         actor.campaignSlamDuration=source.campaignSlamDuration??1.15;
         actor.campaignStagger=Math.max(0,(source.campaignStaggerUntil??0)-this.time);
         actor.campaignShieldHit=Math.max(0,(source.campaignShieldHitUntil??0)-this.time);
-        actor.campaignExposed=Math.max(0,(source.campaignExposedUntil??0)-this.time);}
+        actor.campaignExposed=Math.max(0,(source.campaignExposedUntil??0)-this.time);
+        // F10 experiment: additive, and present ONLY while a guard is actually
+        // walking off. The field is omitted entirely when no guard is
+        // withdrawing, so every control snapshot -- actor objects included --
+        // serializes to the exact same bytes it did before this experiment. A
+        // consumer that does read it can present a retreat instead of a threat.
+        if(source.campaignWithdrawn&&source.campaignRetreat&&source.health>0)actor.campaignWithdrawing=1;}
       const mechanic=encounter?.mechanic;
+      // F10 experiment: only the opted-in encounter has experiment copy, and only
+      // while the experiment policy is requested. The control path falls through
+      // to the shipped mechanic strings untouched.
+      const copy=objectivePresentationFor(mapId,state.stepIndex,objectiveCompletion);
       snapshot.campaign={id:'quiet-relay',mapId,index:data.campaign.index,title:mission.title,
         stepIndex:state.stepIndex,stepCount:6,objective:encounter?.title??'Follow the service route to the exit',
         detail:!state.deployed&&encounter?'Follow the waypoint. Optional supply routes branch from the service path.':
-          mechanic==='restore'?'Press Interact to start the transfer. Defend nearby; dodge without losing progress.':
+          mechanic==='restore'?(copy?.detail??'Press Interact to start the transfer. Defend nearby; dodge without losing progress.'):
           mechanic==='interact'?(state.bypassed?'Guard network disabled. Finish the guards and return to the console.':'Clear the guards, or rush the console and press Interact to disable their guards.'): 
-          mechanic==='hold'?(remaining(this)>0?'Hold the relay and eliminate its guards':'Remain inside the relay marker to finish synchronization. Progress is retained when you dodge.'):
-          encounter?(state.deployed&&remaining(this)===0?'Area clear—reach the relay marker':'Eliminate the deployed security robots.'):'Reach the exit to continue.',
+          mechanic==='hold'?(engaged(this)>0?'Hold the relay and eliminate its guards':'Remain inside the relay marker to finish synchronization. Progress is retained when you dodge.'):
+          encounter?(state.deployed&&engaged(this)===0?'Area clear—reach the relay marker':'Eliminate the deployed security robots.'):'Reach the exit to continue.',
         marker:state.phase==='playing'?{x:marker.x,y:marker.y,z:marker.z,radius:marker.radius}:null,
         phase:state.phase,checkpoint:state.checkpoint,elapsed:state.elapsed,totalElapsed:state.totalElapsed,
-        kills:state.bankedKills+state.enemies.filter(id=>this.actors[id]?.health<=0).length,enemiesRemaining:remaining(this),
+        kills:state.bankedKills+state.enemies.filter(id=>this.actors[id]?.health<=0).length,enemiesRemaining:engaged(this),
          holdProgress:encounter?.seconds?state.holdProgress/encounter.seconds:0,transmission:{...state.transmission},nextMapId:data.campaign.nextMapId,
          interludes:interludes.snapshot(state.phase==='playing'),
          story:state.phase==='dead'?{...(storySnapshot??=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,
-           encounter,deployed:state.deployed,enemiesRemaining:remaining(this),marker},this.actors[0],false,this.arena)),prompt:null}:
+           encounter,deployed:state.deployed,enemiesRemaining:engaged(this),marker},this.actors[0],false,this.arena)),prompt:null}:
            storySnapshot??=story.update({stepIndex:state.stepIndex,totalElapsed:state.totalElapsed,
-           encounter,deployed:state.deployed,enemiesRemaining:remaining(this),marker},this.actors[0],false,this.arena)};
+           encounter,deployed:state.deployed,enemiesRemaining:engaged(this),marker},this.actors[0],false,this.arena)};
+      // F10 experiment: the honest count of guards leaving, so a HUD that knows
+      // the field can say "withdrawing" instead of silently dropping them out of
+      // `enemiesRemaining`. Added only while a withdrawal is actually in flight,
+      // so every control snapshot serializes byte-identically to the shipped one.
+      const withdrawing=withdrawingCount(this);
+      if(withdrawing>0)snapshot.campaign.withdrawing=withdrawing;
       return snapshot;
     }
   }

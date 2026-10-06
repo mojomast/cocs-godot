@@ -64,3 +64,27 @@ export function completionPolicyFor(mapId, stepIndex, requested = DEFAULT_OBJECT
   if (!Object.values(OBJECTIVE_COMPLETION).includes(requested)) throw new TypeError('Unsupported objective completion policy');
   return COMPLETION_EXPERIMENT[`${mapId}:${stepIndex}`] === requested ? requested : DEFAULT_OBJECTIVE_COMPLETION;
 }
+
+// Objective PRESENTATION for the experiment, resolved the same way: control sees
+// the shipped strings, unchanged. Under `restore-and-withdraw` the shipped copy
+// is stale -- it was authored for a rule that only ends when the patrol is dead,
+// so it never mentions that the transfer itself finishes the job or that anyone
+// still standing falls back. Only the copy changes; the objective id, the
+// mechanic and the control rule are untouched.
+//
+// `detail` mirrors the mechanic-derived HUD line in match.mjs and `brief` is the
+// ECHO transmission shown when the encounter deploys (stored with the `ECHO: `
+// prefix and stripped at presentation time, like every other encounter).
+const COMPLETION_EXPERIMENT_COPY = Object.freeze({
+  'siltwake-crossing:1': Object.freeze({
+    detail: 'Press Interact to start the transfer, then hold the pump for 5 s. The transfer ends this objective — whoever is still standing falls back.',
+    brief: 'ECHO: A small maintenance patrol on the west pump. Start the transfer and hold the platform. When the pump turns over, whoever is left falls back. You do not have to clear them.',
+  }),
+});
+
+// Null for the control rule, so a consumer that knows nothing about this keeps
+// reading the shipped encounter verbatim.
+export function objectivePresentationFor(mapId, stepIndex, requested = DEFAULT_OBJECTIVE_COMPLETION) {
+  if (completionPolicyFor(mapId, stepIndex, requested) === DEFAULT_OBJECTIVE_COMPLETION) return null;
+  return COMPLETION_EXPERIMENT_COPY[`${mapId}:${stepIndex}`] ?? null;
+}
