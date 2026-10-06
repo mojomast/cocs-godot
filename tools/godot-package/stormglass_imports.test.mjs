@@ -10,6 +10,7 @@ import {CANDIDATES,identity} from '../asset-production/candidate-admission.mjs';
 import {polishSupportingHash} from './polish_dependencies.mjs';
 import {racingSupportingHookHash} from './racing_dependencies.mjs';
 import {reverseVesperApron} from './vesper_apron_dependencies.mjs';
+import {CONTACT_CONTRACT} from './contact_derivative.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const path='tools/godot-package/production_receipts/stormglass-causeway.json';
 const options={read,has:existsSync,worldIds:Object.keys(WORLDS),strict:true};
@@ -41,10 +42,13 @@ test('all J bytes equal the received commit; original receipt accepted/pending/n
  const protectedPaths=['game/','server/','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','godot/sports/','godot/first_person/','tools/godot-multiplayer/new-maps/stormglass-causeway/','port/expansion-four/stormglass/'];
  assert.equal(execFileSync('git',['diff','8921ed41','14d8a72d','--',...protectedPaths],{encoding:'utf8'}),'');
  const drifted=execFileSync('git',['diff','--name-only','4b5595f8','--',...protectedPaths],{encoding:'utf8'}).trim().split('\n').filter(Boolean).filter(p=>!/^(game|server)\/.*\.test\.mjs$/.test(p)).filter(p=>!p.startsWith('tools/godot-multiplayer/new-maps/stormglass-causeway/grade-plan/')).filter(p=>!p.endsWith('.uid')).sort();
- // The newest reviewed lane (consolidation: the audit implementation) owns the
- // current protected-path drift; .uid identifiers are Godot-generated and are
- // never package inputs.
- const advanced=[...Object.keys(r.racingAdvance.changed),...Object.keys(r.consolidationAdvance.changed),...Object.keys(r.consolidationAdvance.added)].filter(p=>protectedPaths.some(prefix=>p.startsWith(prefix))).sort();
+ // The newest reviewed lane (consolidation: the audit implementation) and the F08
+ // contact derivative that extends the reviewed racing chain own the current
+ // protected-path drift; .uid identifiers are Godot-generated and are never package
+ // inputs. The contact overlay re-pins game/core.mjs and game/feedback.mjs, which the
+ // consolidation advance already carries, so the union is deduplicated.
+ const contact=JSON.parse(read(CONTACT_CONTRACT));
+ const advanced=[...new Set([...Object.keys(contact.runtime_overrides),...Object.keys(r.racingAdvance.changed),...Object.keys(r.consolidationAdvance.changed),...Object.keys(r.consolidationAdvance.added)])].filter(p=>protectedPaths.some(prefix=>p.startsWith(prefix))).sort();
  assert.deepEqual(drifted,advanced);
 });
 test('missing actual PNG or either sidecar type fails closed without reconstruction',()=>{

@@ -9,7 +9,7 @@ import {reverseRacing,racingSupportingHash} from './racing_dependencies.mjs';
 import {dressingSupportingHash} from './dressing_dependencies.mjs';
 import {vesperApronSupportingHash} from './vesper_apron_dependencies.mjs';
 import {consolidationSupportingHash} from './consolidation_dependencies.mjs';
-import {RACING_CONTRACT,resolveReviewedDerivative} from './racing_derivative.mjs';
+import {CONTACT_CONTRACT,CONTACT_COMMIT,resolveReviewedDerivative as resolveActiveDerivative} from './contact_derivative.mjs';
 import {MOVEMENT_CONTRACT,resolveSourceDerivative} from './source_derivative.mjs';
 import {verifySourceState,rederiveClosure} from './manifest_validation.mjs';
 import {verifySource} from '../godot-export/semantic.mjs';
@@ -32,7 +32,19 @@ test('movement inventories exact ancestor bytes and preserves every O producer/h
   for(const [k,v]of Object.entries(old))if(k!=='packageInputs')assert.deepEqual(r[k],v,id+': '+k);
   verifyMovementPredecessor(r,read);
   const racingSet=new Set(Object.keys(raw.racingAdvance.changed));
-  for(const p of Object.keys(r.movementAdvance.added))if(!p.startsWith('tools/godot-package/')&&!racingSet.has(p))assert.deepEqual(read(p),gitRead(s.foundation,p));
+  // The F08 contact promotion re-pinned four movement-declared package inputs on the
+  // active reviewed chain: game/core.mjs and game/feedback.mjs were rewritten by the
+  // contact derivative, and the regenerated campaign core pair was re-declared by the
+  // consolidation advance. Resolve those forward from the frozen movement foundation
+  // bytes through the same supporting chain the loop above uses; every other declared
+  // input must still be the exact foundation bytes.
+  const live=(p,base)=>consolidationSupportingHash(p,vesperApronSupportingHash(p,dressingSupportingHash(p,racingSupportingHash(p,base,newer),newer),newer),newer);
+  for(const p of Object.keys(r.movementAdvance.added)){
+   if(p.startsWith('tools/godot-package/')||racingSet.has(p))continue;
+   const base=s.changed[p]?.after??hash(gitRead(s.foundation,p)),active=live(p,base);
+   if(active===base)assert.deepEqual(read(p),gitRead(s.foundation,p),id+': '+p);
+   else assert.equal(hash(read(p)),active,id+': '+p);
+  }
  }
  assert.deepEqual(productionResources(options).pending,[]);
 });
@@ -58,8 +70,18 @@ test('racing advance rejects forged, missing and tampered layers',()=>{
 test('package source preflight resolves the exact movement overlay and generator without old-source substitution',()=>{
  const raw=JSON.parse(read(MOVEMENT_CONTRACT)),resolved=resolveSourceDerivative(raw,read,gitRead,ancestor),lock=JSON.parse(read('port/contracts/source-lock.json'));
  assert.equal(Object.keys(resolved.runtime_files).length,13);
- const racing=JSON.parse(read(RACING_CONTRACT));
- assert.deepEqual(verifySource(lock,racing).runtime_files,resolveReviewedDerivative(racing,read,gitRead,ancestor).runtime_files);
+ // The working-tree preflight runs through the active chain, so it resolves the
+ // contact derivative named by the active descriptor instead of the movement-era
+ // one. Every movement-overlay and generator assertion below stays on its own
+ // frozen derivative commit.
+ const activeDescriptor=JSON.parse(read('port/contracts/active-source.json'));
+ assert.equal(activeDescriptor.derivative,CONTACT_CONTRACT,'Active descriptor selects the contact derivative');
+ const contact=JSON.parse(read(CONTACT_CONTRACT));
+ assert.equal(hash(read(CONTACT_CONTRACT)),activeDescriptor.derivative_sha256,'Exact active derivative bytes');
+ assert.equal(contact.derivative_commit,CONTACT_COMMIT);
+ const activeResolved=resolveActiveDerivative(contact,read,gitRead,ancestor);
+ assert.equal(Object.keys(activeResolved.runtime_files).length,15);
+ assert.deepEqual(verifySource(lock,contact).runtime_files,activeResolved.runtime_files);
  verifySourceState(process.cwd(),lock.source_commit,raw,{portCommit:s.foundation});
  const closure=rederiveClosure(process.cwd(),{port_commit:s.foundation},raw);
  assert.ok(closure.modules['game/core.mjs'].includes('./operator-verbs.mjs'));
