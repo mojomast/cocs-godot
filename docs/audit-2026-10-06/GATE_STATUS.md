@@ -218,11 +218,18 @@ Verdict: **VERIFIED, no behavioral counterexample.**
   (`Missing/empty manifest. Run semantic exporter.`): identical with the two
   migrated files reverted.
 
-Gate weaknesses (being fixed by T19): the original `decode_once.gd` was purely
-lexical — a double `super.deliver_frame` was accepted and a comment mention
-false-failed; alternate JSON APIs evaded it. The hardened gate adds
-comment/string stripping, exactly-one-super and alternative-parse detection,
-with in-gate self-tests making the negative controls permanent.
+Gate weaknesses found by the review and fixed before merge (T19, commits
+`85b1931e` + `e1a68289`): the original gate was purely lexical — a double
+`super.deliver_frame` was accepted, a comment mention false-failed, and alternate
+JSON APIs (including whitespace spellings) evaded it; a parse could also be
+relocated out of `decode_text`. The hardened gate strips comments/strings,
+detects parse APIs whitespace-insensitively, requires exactly one
+`super.deliver_frame`, binds the base parse to the `decode_text` body, and carries
+12 in-gate self-tests (checks 10→16). Flash found the initial whitespace and
+relocation gaps; both are closed with pre/post falsification. Residual limits are
+documented in the gate header: callable/reflection indirection, textual (not
+call-graph) placement, semantic swallow, unverified check order, ungated
+horde/lattice routes, and no runtime measurement.
 
 Pre-existing latent hazards recorded (unchanged by the migration, out of its
 contract): a non-string `type` raises a script error instead of the intended
@@ -250,7 +257,24 @@ rejected frame can wedge the connection. Scope gap: `horde/client.gd` and
 
 ## New regressions observed
 
-None so far: every gate touched by T1/T4/T5/T6/T7/T8 passes, and the previously
-red provenance test is green. The F08 experiment branch fails only the expected
-hash-pin provenance boundary (no receipts or production files changed there).
-Worker-branch validation is recorded on merge.
+- **Menu disclosure (F12) selection-loop regression — found by the first aggregate
+  run and fixed (`ef423531`).** `select_category` iterated every registry route and
+  indexed `route_buttons[id]`, raising `SCRIPT ERROR: Invalid access to property or
+  key 'viewer'` on the first hidden developer route; `main-menu-smoke` fails on
+  ERROR lines even when the process exits 0. The button lookup is now guarded and
+  hidden categories return early. Disk-free reruns: smoke output clean, contracts
+  1153/0, both launcher journeys green.
+- **The first aggregate run at the W1 candidate is not usable as evidence.** It was
+  executed while the tmpfs holding `TMPDIR` was exhausted (61 G / 100 %); 43 gates
+  failed with an environment-wide blast pattern. Gates re-run in isolation on a
+  disk-free host (menu smoke, menu contracts, campaign client, input flow, package
+  suite) pass, and the 384+2 registry completed (386 executed). The final aggregate
+  at the frozen candidate is the authoritative record.
+- **`product-shell-journey` timing is under investigation**: its committed log
+  proves it passed historically (`passed:true`, 18 visits), but recent runs produce
+  an empty log and exceed the 400 s rerun budget. A long-budget run is in progress;
+  the outcome will be classified as environment-budget or regression, never
+  claimed as passing without a completed run.
+- The F08 experiment branch fails only the expected hash-pin provenance boundary
+  (no receipts or production files changed there). Worker-branch validation is
+  recorded on merge.
