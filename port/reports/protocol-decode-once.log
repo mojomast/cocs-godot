@@ -1,0 +1,17 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+DECODE_ONCE_SELFTEST base-honest expect=pass actual=pass ok=true
+DECODE_ONCE_SELFTEST subclass-honest expect=pass actual=pass ok=true
+DECODE_ONCE_SELFTEST comment-only-mention expect=pass actual=pass ok=true
+DECODE_ONCE_SELFTEST string-only-mention expect=pass actual=pass ok=true
+DECODE_ONCE_SELFTEST double-super-deliver expect=fail actual=fail ok=true  -> campaign/client.gd must hand the frame to the base exactly once, found 2 super.deliver_frame
+DECODE_ONCE_SELFTEST alt-json-parse-api expect=fail actual=fail ok=true  -> campaign/client.gd must not parse text, found ["JSON.new(", ".parse("]
+DECODE_ONCE_SELFTEST static-parse-in-subclass expect=fail actual=fail ok=true  -> native_arenas/client.gd must not parse text, found ["JSON.parse_string"]
+DECODE_ONCE_SELFTEST missing-super-deliver expect=fail actual=fail ok=true  -> campaign/client.gd must hand the frame to the base exactly once, found 0 super.deliver_frame
+DECODE_ONCE_SELFTEST missing-decode-handoff expect=fail actual=fail ok=true  -> campaign/client.gd must hand the text to the base exactly once, found 0 return super.decode_text(
+DECODE_ONCE_SELFTEST whitespace-parse-api expect=fail actual=fail ok=true  -> campaign/client.gd must not parse text, found ["JSON.new(", ".parse("]
+DECODE_ONCE_SELFTEST base-parse-relocated expect=fail actual=fail ok=true  -> net/client.gd single parse must sit inside the decode_text body, found [] there
+DECODE_ONCE_SELFTEST semantic-swallow expect=known-limit actual=pass ok=true
+DECODE_ONCE_SELFTEST {"cases":12,"checks":12,"failures":0,"ok":true}
+DECODE_ONCE {"checks":16,"failures":0,"ok":true,"parses":{"campaign/client.gd":0,"native_arenas/client.gd":0,"net/client.gd":1},"selftests":12,"selftests_ok":true,"singleParseInBase":true}
+DECODE_ONCE_OK

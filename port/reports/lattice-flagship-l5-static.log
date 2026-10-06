@@ -2,7 +2,7 @@ TAP version 13
 # Subtest: board uses one configured host frame, explicit start, source echo and bounded handshake
 ok 1 - board uses one configured host frame, explicit start, source echo and bounded handshake
   ---
-  duration_ms: 0.469961
+  duration_ms: 0.456245
   type: 'test'
   ...
 1..1
@@ -13,4 +13,4 @@ ok 1 - board uses one configured host frame, explicit start, source echo and bou
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 31.1978
+# duration_ms 30.186701

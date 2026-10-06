@@ -2,255 +2,279 @@ TAP version 13
 # Subtest: valid Linux package passes end to end
 ok 1 - valid Linux package passes end to end
   ---
-  duration_ms: 97.056737
+  duration_ms: 122.374489
   type: 'test'
   ...
 # Subtest: valid Windows package structure passes without executing the engine
 ok 2 - valid Windows package structure passes without executing the engine
   ---
-  duration_ms: 108.156796
+  duration_ms: 126.397798
+  type: 'test'
+  ...
+# Subtest: campaign facade data is verified against recorded Git bytes even with a forged inventory
+ok 3 - campaign facade data is verified against recorded Git bytes even with a forged inventory
+  ---
+  duration_ms: 149.692803
+  type: 'test'
+  ...
+# Subtest: facade adapter cannot ship with its JSON omitted or redirected
+ok 4 - facade adapter cannot ship with its JSON omitted or redirected
+  ---
+  duration_ms: 45.704099
+  type: 'test'
+  ...
+# Subtest: seven multiplayer world files are bound to the recorded discovery and Git bytes
+ok 5 - seven multiplayer world files are bound to the recorded discovery and Git bytes
+  ---
+  duration_ms: 180.135452
+  type: 'test'
+  ...
+# Subtest: world closure cannot omit a packaged file or hide a file recorded by discovery
+ok 6 - world closure cannot omit a packaged file or hide a file recorded by discovery
+  ---
+  duration_ms: 140.019535
   type: 'test'
   ...
 # Subtest: a career-capable recorded launcher requires its committed helper even if the inventory is forged
-ok 3 - a career-capable recorded launcher requires its committed helper even if the inventory is forged
+ok 7 - a career-capable recorded launcher requires its committed helper even if the inventory is forged
   ---
-  duration_ms: 136.015863
+  duration_ms: 184.607582
   type: 'test'
   ...
 # Subtest: a genuinely new source module (Cinderwake horde-stages style) is discovered dynamically
-ok 4 - a genuinely new source module (Cinderwake horde-stages style) is discovered dynamically
+ok 8 - a genuinely new source module (Cinderwake horde-stages style) is discovered dynamically
   ---
-  duration_ms: 92.71214
+  duration_ms: 108.135214
   type: 'test'
   ...
 # Subtest: a valid older artifact still passes from an advanced, dirty checkout with a bogus ambient contract
-ok 5 - a valid older artifact still passes from an advanced, dirty checkout with a bogus ambient contract
+ok 9 - a valid older artifact still passes from an advanced, dirty checkout with a bogus ambient contract
   ---
-  duration_ms: 99.516834
+  duration_ms: 113.368852
   type: 'test'
   ...
 # Subtest: changed runtime bytes fail the exact inventory
-ok 6 - changed runtime bytes fail the exact inventory
+ok 10 - changed runtime bytes fail the exact inventory
   ---
-  duration_ms: 40.518056
+  duration_ms: 42.511927
   type: 'test'
   ...
 # Subtest: changed runtime bytes with a refreshed manifest fail the git anchor
-ok 7 - changed runtime bytes with a refreshed manifest fail the git anchor
+ok 11 - changed runtime bytes with a refreshed manifest fail the git anchor
   ---
-  duration_ms: 56.219282
+  duration_ms: 60.449632
   type: 'test'
   ...
 # Subtest: an extra file not in the manifest fails
-ok 8 - an extra file not in the manifest fails
+ok 12 - an extra file not in the manifest fails
   ---
-  duration_ms: 46.785914
+  duration_ms: 40.019887
   type: 'test'
   ...
 # Subtest: an uninventoried runtime file inside the inventory fails
-ok 9 - an uninventoried runtime file inside the inventory fails
+ok 13 - an uninventoried runtime file inside the inventory fails
   ---
-  duration_ms: 47.110483
+  duration_ms: 43.864291
   type: 'test'
   ...
 # Subtest: an extra bundled dependency fails
-ok 10 - an extra bundled dependency fails
+ok 14 - an extra bundled dependency fails
   ---
-  duration_ms: 39.224594
+  duration_ms: 39.609999
   type: 'test'
   ...
 # Subtest: a missing packaged file fails
-ok 11 - a missing packaged file fails
+ok 15 - a missing packaged file fails
   ---
-  duration_ms: 40.363777
+  duration_ms: 44.365651
   type: 'test'
   ...
 # Subtest: a shipped test module fails even when the closure claims it
-ok 12 - a shipped test module fails even when the closure claims it
+ok 16 - a shipped test module fails even when the closure claims it
   ---
-  duration_ms: 41.696433
+  duration_ms: 44.582397
   type: 'test'
   ...
 # Subtest: a missing ws LICENSE fails
-ok 13 - a missing ws LICENSE fails
+ok 17 - a missing ws LICENSE fails
   ---
-  duration_ms: 42.457558
+  duration_ms: 42.004036
   type: 'test'
   ...
 # Subtest: a missing settings_path helper fails
-ok 14 - a missing settings_path helper fails
+ok 18 - a missing settings_path helper fails
   ---
-  duration_ms: 40.392311
+  duration_ms: 42.762507
   type: 'test'
   ...
 # Subtest: a settings_path helper without the shared export fails
-ok 15 - a settings_path helper without the shared export fails
+ok 19 - a settings_path helper without the shared export fails
   ---
-  duration_ms: 40.742135
+  duration_ms: 40.701935
   type: 'test'
   ...
 # Subtest: a forged launcher and forged file hash cannot claim the recorded commit
-ok 16 - a forged launcher and forged file hash cannot claim the recorded commit
+ok 20 - a forged launcher and forged file hash cannot claim the recorded commit
   ---
-  duration_ms: 58.907387
+  duration_ms: 64.954173
   type: 'test'
   ...
 # Subtest: a forged catalog.json cannot claim the recorded map selection
-ok 17 - a forged catalog.json cannot claim the recorded map selection
+ok 21 - a forged catalog.json cannot claim the recorded map selection
   ---
-  duration_ms: 59.06902
+  duration_ms: 74.152671
   type: 'test'
   ...
 # Subtest: dropping a module from disk, manifest and closure fails committed discovery
-ok 18 - dropping a module from disk, manifest and closure fails committed discovery
+ok 22 - dropping a module from disk, manifest and closure fails committed discovery
   ---
-  duration_ms: 94.993873
+  duration_ms: 103.556103
   type: 'test'
   ...
 # Subtest: a provided manifest that disagrees with the package manifest fails
-ok 19 - a provided manifest that disagrees with the package manifest fails
+ok 23 - a provided manifest that disagrees with the package manifest fails
   ---
-  duration_ms: 46.634542
+  duration_ms: 43.281349
   type: 'test'
   ...
 # Subtest: a provided manifestPath that disagrees with the package manifest fails
-ok 20 - a provided manifestPath that disagrees with the package manifest fails
+ok 24 - a provided manifestPath that disagrees with the package manifest fails
   ---
-  duration_ms: 37.637291
+  duration_ms: 41.4626
   type: 'test'
   ...
 # Subtest: a wrong port commit fails against the recorded commit
-ok 21 - a wrong port commit fails against the recorded commit
+ok 25 - a wrong port commit fails against the recorded commit
   ---
-  duration_ms: 39.953589
+  duration_ms: 43.288743
   type: 'test'
   ...
 # Subtest: a wrong source commit fails against the recorded source lock
-ok 22 - a wrong source commit fails against the recorded source lock
+ok 26 - a wrong source commit fails against the recorded source lock
   ---
-  duration_ms: 41.374019
+  duration_ms: 45.984265
   type: 'test'
   ...
 # Subtest: missing source metadata fails closed
-ok 23 - missing source metadata fails closed
+ok 27 - missing source metadata fails closed
   ---
-  duration_ms: 37.042537
+  duration_ms: 42.199622
   type: 'test'
   ...
 # Subtest: a future manifest schema version fails closed
-ok 24 - a future manifest schema version fails closed
+ok 28 - a future manifest schema version fails closed
   ---
-  duration_ms: 45.92928
+  duration_ms: 41.745781
   type: 'test'
   ...
 # Subtest: optional fields a future lane might add are not required
-ok 25 - optional fields a future lane might add are not required
+ok 29 - optional fields a future lane might add are not required
   ---
-  duration_ms: 94.720621
+  duration_ms: 107.845922
   type: 'test'
   ...
 # Subtest: a valid derivative-bound package passes
-ok 26 - a valid derivative-bound package passes
+ok 30 - a valid derivative-bound package passes
   ---
-  duration_ms: 101.280978
+  duration_ms: 127.956579
   type: 'test'
   ...
 # Subtest: a derivative that adds a reviewed source module passes
-ok 27 - a derivative that adds a reviewed source module passes
+ok 31 - a derivative that adds a reviewed source module passes
   ---
-  duration_ms: 113.974401
+  duration_ms: 133.233468
   type: 'test'
   ...
 # Subtest: a derivative-added source module outside runtime_files fails
-ok 28 - a derivative-added source module outside runtime_files fails
+ok 32 - a derivative-added source module outside runtime_files fails
   ---
-  duration_ms: 64.927873
+  duration_ms: 66.464013
   type: 'test'
   ...
 # Subtest: a tampered recorded committed contract hash fails
-ok 29 - a tampered recorded committed contract hash fails
+ok 33 - a tampered recorded committed contract hash fails
   ---
-  duration_ms: 56.75173
+  duration_ms: 52.755914
   type: 'test'
   ...
 # Subtest: a tampered recorded contract source commit fails
-ok 30 - a tampered recorded contract source commit fails
+ok 34 - a tampered recorded contract source commit fails
   ---
-  duration_ms: 56.395182
+  duration_ms: 54.391058
   type: 'test'
   ...
 # Subtest: a mismatched recorded derivative commit fails
-ok 31 - a mismatched recorded derivative commit fails
+ok 35 - a mismatched recorded derivative commit fails
   ---
-  duration_ms: 55.286135
+  duration_ms: 55.540653
   type: 'test'
   ...
 # Subtest: the optional horde-map data family is hashed, anchored and shipped
-ok 32 - the optional horde-map data family is hashed, anchored and shipped
+ok 36 - the optional horde-map data family is hashed, anchored and shipped
   ---
-  duration_ms: 91.454054
+  duration_ms: 117.924179
   type: 'test'
   ...
 # Subtest: a tampered horde-map data byte fails the port-commit anchor
-ok 33 - a tampered horde-map data byte fails the port-commit anchor
+ok 37 - a tampered horde-map data byte fails the port-commit anchor
   ---
-  duration_ms: 59.232346
+  duration_ms: 66.573258
   type: 'test'
   ...
 # Subtest: an absent hordeDataFiles closure field stays valid on the baseline
-ok 34 - an absent hordeDataFiles closure field stays valid on the baseline
+ok 38 - an absent hordeDataFiles closure field stays valid on the baseline
   ---
-  duration_ms: 97.364773
+  duration_ms: 109.04511
   type: 'test'
   ...
 # Subtest: linux: campaign data family is shipped and anchored
-ok 35 - linux: campaign data family is shipped and anchored
+ok 39 - linux: campaign data family is shipped and anchored
   ---
-  duration_ms: 106.411317
+  duration_ms: 128.822252
   type: 'test'
   ...
 # Subtest: windows: campaign data family is shipped and anchored
-ok 36 - windows: campaign data family is shipped and anchored
+ok 40 - windows: campaign data family is shipped and anchored
   ---
-  duration_ms: 121.874077
+  duration_ms: 144.870075
   type: 'test'
   ...
 # Subtest: campaign data tampering fails despite refreshed file hashes
-ok 37 - campaign data tampering fails despite refreshed file hashes
+ok 41 - campaign data tampering fails despite refreshed file hashes
   ---
-  duration_ms: 64.617492
+  duration_ms: 80.478947
   type: 'test'
   ...
 # Subtest: omitting a campaign chapter from every inventory fails committed discovery
-ok 38 - omitting a campaign chapter from every inventory fails committed discovery
+ok 42 - omitting a campaign chapter from every inventory fails committed discovery
   ---
-  duration_ms: 98.666642
+  duration_ms: 121.216239
   type: 'test'
   ...
 # Subtest: older manifests without campaign fields continue to validate
-ok 39 - older manifests without campaign fields continue to validate
+ok 43 - older manifests without campaign fields continue to validate
   ---
-  duration_ms: 90.332803
+  duration_ms: 114.228082
   type: 'test'
   ...
 # Subtest: validation is independent of the caller working directory
-ok 40 - validation is independent of the caller working directory
+ok 44 - validation is independent of the caller working directory
   ---
-  duration_ms: 86.857665
+  duration_ms: 113.740819
   type: 'test'
   ...
 # Subtest: the CLI reports JSON and a nonzero exit on failure
-ok 41 - the CLI reports JSON and a nonzero exit on failure
+ok 45 - the CLI reports JSON and a nonzero exit on failure
   ---
-  duration_ms: 144.613755
+  duration_ms: 181.052481
   type: 'test'
   ...
-1..41
-# tests 41
+1..45
+# tests 45
 # suites 0
-# pass 41
+# pass 45
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2981.501128
+# duration_ms 3939.400731

@@ -526,6 +526,13 @@ if not version['passed']:
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
     'campaign-input-flow': {'timeout': 60},
+    'campaign-client': {
+        'success_marker': 'CAMPAIGN_CLIENT_OK',
+        # The negative decode-once cases intentionally feed malformed JSON; the
+        # base hook keeps its exact "Malformed JSON envelope" message, and Godot
+        # itself logs this single parse error for that documented input.
+        'allowed_error_patterns': (r'^ERROR: Parse JSON failed\. Error at line 0: Expected key$',),
+    },
     'first-person-slide': {'timeout': 60},
     'campaign-compact-ui': {'timeout': 300},
     'product-shell-journey': {'timeout': 300},

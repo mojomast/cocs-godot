@@ -1,7 +1,7 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-CAMPAIGN_TERRAIN rootfall-verge { "terrain_chunks": 179, "horizon_chunks": 112, "art_batches": 278, "art_instances": 1335 }
-CAMPAIGN_TERRAIN siltwake-crossing { "terrain_chunks": 215, "horizon_chunks": 104, "art_batches": 250, "art_instances": 950 }
-CAMPAIGN_TERRAIN emberline-ascent { "terrain_chunks": 237, "horizon_chunks": 96, "art_batches": 246, "art_instances": 1075 }
-CAMPAIGN_TERRAIN crown-array { "terrain_chunks": 279, "horizon_chunks": 144, "art_batches": 376, "art_instances": 1334 }
+CAMPAIGN_TERRAIN rootfall-verge { "terrain_chunks": 179, "horizon_chunks": 112, "art_batches": 277, "art_instances": 1255 }
+CAMPAIGN_TERRAIN siltwake-crossing { "terrain_chunks": 215, "horizon_chunks": 104, "art_batches": 251, "art_instances": 954 }
+CAMPAIGN_TERRAIN emberline-ascent { "terrain_chunks": 237, "horizon_chunks": 96, "art_batches": 240, "art_instances": 1072 }
+CAMPAIGN_TERRAIN crown-array { "terrain_chunks": 279, "horizon_chunks": 144, "art_batches": 373, "art_instances": 1318 }
 CAMPAIGN_TERRAIN failures=0

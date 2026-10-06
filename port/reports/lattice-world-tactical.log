@@ -18,6 +18,8 @@ TACTICAL_HUD HUD tracks logical 1280x800 viewport true
 TACTICAL_HUD standard cards fit without overlap or clipping true
 TACTICAL_HUD HUD tracks logical 760x520 viewport true
 TACTICAL_HUD compact cards fit without overlap true
+TACTICAL_HUD source capture progress and latest HOLD failure appear together true
+TACTICAL_HUD rejected order has source recovery instruction true
 TACTICAL_HUD HUD tracks logical 507x347 viewport true
 TACTICAL_HUD narrow 150% cards stay inside the logical width true
 TACTICAL_HUD narrow 150% directive stacks above live mission true
@@ -28,4 +30,4 @@ TACTICAL_HUD narrow 150% drops only supplemental copy true
 TACTICAL_HUD narrow 150% keeps every essential source fact visible true
 TACTICAL_HUD narrow 150% essential copy stays source-backed and readable true
 TACTICAL_HUD identity loss clears HUD and wallet delta true
-TACTICAL_HUD checks=28 failures=0
+TACTICAL_HUD checks=30 failures=0

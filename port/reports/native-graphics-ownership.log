@@ -2,26 +2,25 @@ TAP version 13
 # Subtest: source native-only stub: showcase exit
 not ok 1 - source native-only stub: showcase exit
   ---
-  duration_ms: 31.084948
+  duration_ms: 33.839616
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20DsLosA/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub y87fuo/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub y87fuo/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20y87fuo/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -35,13 +34,14 @@ not ok 1 - source native-only stub: showcase exit
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20DsLosA/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
@@ -49,26 +49,25 @@ not ok 1 - source native-only stub: showcase exit
 # Subtest: source native-only stub: showcase smoke
 not ok 2 - source native-only stub: showcase smoke
   ---
-  duration_ms: 24.301995
+  duration_ms: 23.044155
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20zgYeRB/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub 9i9srE/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub 9i9srE/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%209i9srE/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -82,39 +81,39 @@ not ok 2 - source native-only stub: showcase smoke
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20zgYeRB/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: aurora-basin exit
 not ok 3 - source native-only stub: aurora-basin exit
   ---
-  duration_ms: 23.512807
+  duration_ms: 21.529025
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20mpfv5p/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub ADQqdN/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub ADQqdN/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20ADQqdN/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -128,39 +127,40 @@ not ok 3 - source native-only stub: aurora-basin exit
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20mpfv5p/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: aurora-basin smoke
 not ok 4 - source native-only stub: aurora-basin smoke
   ---
-  duration_ms: 25.427603
+  duration_ms: 27.966529
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%203XYvgQ/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub onhdaA/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub onhdaA/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20onhdaA/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -174,39 +174,39 @@ not ok 4 - source native-only stub: aurora-basin smoke
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%203XYvgQ/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: cinder-array exit
 not ok 5 - source native-only stub: cinder-array exit
   ---
-  duration_ms: 24.509914
+  duration_ms: 27.836836
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20pQqHDu/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub EkWIgv/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub EkWIgv/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20EkWIgv/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -220,13 +220,14 @@ not ok 5 - source native-only stub: cinder-array exit
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20pQqHDu/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -234,26 +235,25 @@ not ok 5 - source native-only stub: cinder-array exit
 # Subtest: source native-only stub: cinder-array smoke
 not ok 6 - source native-only stub: cinder-array smoke
   ---
-  duration_ms: 22.412025
+  duration_ms: 21.841321
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%202B7J9G/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub DjKCW5/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub DjKCW5/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20DjKCW5/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -267,13 +267,14 @@ not ok 6 - source native-only stub: cinder-array smoke
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%202B7J9G/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -281,26 +282,25 @@ not ok 6 - source native-only stub: cinder-array smoke
 # Subtest: source native-only stub: particle-lab exit
 not ok 7 - source native-only stub: particle-lab exit
   ---
-  duration_ms: 25.744637
+  duration_ms: 24.180654
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20lQcaR9/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub xnsuNR/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub xnsuNR/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20xnsuNR/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -314,13 +314,14 @@ not ok 7 - source native-only stub: particle-lab exit
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20lQcaR9/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -328,26 +329,25 @@ not ok 7 - source native-only stub: particle-lab exit
 # Subtest: source native-only stub: particle-lab smoke
 not ok 8 - source native-only stub: particle-lab smoke
   ---
-  duration_ms: 27.387303
+  duration_ms: 22.715118
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20HlfM7t/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub lqtnJy/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub lqtnJy/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20lqtnJy/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -361,39 +361,40 @@ not ok 8 - source native-only stub: particle-lab smoke
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20HlfM7t/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: shader-lab exit
 not ok 9 - source native-only stub: shader-lab exit
   ---
-  duration_ms: 25.880671
+  duration_ms: 24.436083
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20jiHly8/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub f0X2IZ/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub f0X2IZ/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20f0X2IZ/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -407,40 +408,39 @@ not ok 9 - source native-only stub: shader-lab exit
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20jiHly8/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub: shader-lab smoke
 not ok 10 - source native-only stub: shader-lab smoke
   ---
-  duration_ms: 22.378372
+  duration_ms: 22.964465
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:6:44'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20cLhMHs/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub 2ERKUS/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub 2ERKUS/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%202ERKUS/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -454,13 +454,14 @@ not ok 10 - source native-only stub: shader-lab smoke
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20cLhMHs/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -468,26 +469,25 @@ not ok 10 - source native-only stub: shader-lab smoke
 # Subtest: source native-only stub ownership: native-failure
 not ok 11 - source native-only stub ownership: native-failure
   ---
-  duration_ms: 23.792541
+  duration_ms: 22.616323
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20O2w8XC/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub xv2xRp/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub xv2xRp/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20xv2xRp/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -501,39 +501,40 @@ not ok 11 - source native-only stub ownership: native-failure
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20O2w8XC/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: native-crash
 not ok 12 - source native-only stub ownership: native-crash
   ---
-  duration_ms: 27.04352
+  duration_ms: 24.959725
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%20YL9ROM/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub zezqxh/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub zezqxh/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20zezqxh/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -547,13 +548,14 @@ not ok 12 - source native-only stub ownership: native-crash
   actual: false
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%20YL9ROM/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:118:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:119:12)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -561,7 +563,7 @@ not ok 12 - source native-only stub ownership: native-crash
 # Subtest: source native-only stub ownership: missing-native
 not ok 13 - source native-only stub ownership: missing-native
   ---
-  duration_ms: 25.216027
+  duration_ms: 25.838842
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
@@ -576,7 +578,7 @@ not ok 13 - source native-only stub ownership: missing-native
   actual: false
   operator: 'strictEqual'
   stack: |-
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:140:32)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -584,7 +586,7 @@ not ok 13 - source native-only stub ownership: missing-native
 # Subtest: source native-only stub ownership: spawn-failure
 not ok 14 - source native-only stub ownership: spawn-failure
   ---
-  duration_ms: 26.818638
+  duration_ms: 21.31821
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
@@ -599,14 +601,14 @@ not ok 14 - source native-only stub ownership: spawn-failure
   actual: false
   operator: 'strictEqual'
   stack: |-
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:140:32)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: wrong-version
 not ok 15 - source native-only stub ownership: wrong-version
   ---
-  duration_ms: 21.884447
+  duration_ms: 21.191833
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
@@ -621,7 +623,7 @@ not ok 15 - source native-only stub ownership: wrong-version
   actual: false
   operator: 'strictEqual'
   stack: |-
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:140:32)
     process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
@@ -629,7 +631,7 @@ not ok 15 - source native-only stub ownership: wrong-version
 # Subtest: source native-only stub ownership: invalid-lock
 not ok 16 - source native-only stub ownership: invalid-lock
   ---
-  duration_ms: 23.913888
+  duration_ms: 22.550279
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
@@ -644,33 +646,32 @@ not ok 16 - source native-only stub ownership: invalid-lock
   actual: false
   operator: 'strictEqual'
   stack: |-
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:139:32)
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:140:32)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: interrupt
 not ok 17 - source native-only stub ownership: interrupt
   ---
-  duration_ms: 24.707674
+  duration_ms: 23.662273
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%207ZLrqg/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub hTgtbN/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub hTgtbN/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20hTgtbN/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -684,40 +685,39 @@ not ok 17 - source native-only stub ownership: interrupt
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%207ZLrqg/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: terminate
 not ok 18 - source native-only stub ownership: terminate
   ---
-  duration_ms: 26.977105
+  duration_ms: 25.191358
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%204h5p3X/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub puHvK8/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub puHvK8/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20puHvK8/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -731,39 +731,39 @@ not ok 18 - source native-only stub ownership: terminate
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%204h5p3X/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: uncooperative
 not ok 19 - source native-only stub ownership: uncooperative
   ---
-  duration_ms: 22.695476
+  duration_ms: 25.231724
   type: 'test'
   location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/native_showcase_ownership.test.mjs:9:3'
   failureType: 'testCodeFailure'
   error: |-
-    node:fs:560
-      return binding.open(
-                     ^
+    node:internal/modules/esm/resolve:275
+        throw new ERR_MODULE_NOT_FOUND(
+              ^
     
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/native%20graphics%20launcher%20stub%200NqaWO/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
+    Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/tmp/opencode/native graphics launcher stub o7CsPQ/tools/godot-dev/active_source.mjs' imported from /tmp/opencode/native graphics launcher stub o7CsPQ/tools/godot-dev/launch.mjs
+        at finalizeResolution (node:internal/modules/esm/resolve:275:11)
+        at moduleResolve (node:internal/modules/esm/resolve:861:10)
+        at defaultResolve (node:internal/modules/esm/resolve:985:11)
+        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+      code: 'ERR_MODULE_NOT_FOUND',
+      url: 'file:///tmp/opencode/native%20graphics%20launcher%20stub%20o7CsPQ/tools/godot-dev/active_source.mjs'
     }
     
     Node.js v22.23.1
@@ -777,135 +777,135 @@ not ok 19 - source native-only stub ownership: uncooperative
   actual: 1
   operator: 'strictEqual'
   stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/native%20graphics%20launcher%20stub%200NqaWO/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:116:12)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    finalizeResolution (node:internal/modules/esm/resolve:275:11)
+    moduleResolve (node:internal/modules/esm/resolve:861:10)
+    defaultResolve (node:internal/modules/esm/resolve:985:11)
+    #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)
+    ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)
+    ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)
+    ModuleJob._link (node:internal/modules/esm/module_job:182:49) {
+    verifyLifecycle (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-graphics-launchers/fixtures.mjs:117:12)
     async Test.run (node:internal/test_runner/test:1054:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: source native-only stub ownership: bad-args
 ok 20 - source native-only stub ownership: bad-args
   ---
-  duration_ms: 26.358697
+  duration_ms: 22.716821
   type: 'test'
   ...
 # Subtest: source native-only stub ownership: ambiguous-help
 ok 21 - source native-only stub ownership: ambiguous-help
   ---
-  duration_ms: 21.679193
+  duration_ms: 23.022845
   type: 'test'
   ...
 # Subtest: package native-only stub: showcase exit
 ok 22 - package native-only stub: showcase exit
   ---
-  duration_ms: 56.823254
+  duration_ms: 57.646509
   type: 'test'
   ...
 # Subtest: package native-only stub: showcase smoke
 ok 23 - package native-only stub: showcase smoke
   ---
-  duration_ms: 45.711954
+  duration_ms: 43.653626
   type: 'test'
   ...
 # Subtest: package native-only stub: aurora-basin exit
 ok 24 - package native-only stub: aurora-basin exit
   ---
-  duration_ms: 44.608056
+  duration_ms: 51.187885
   type: 'test'
   ...
 # Subtest: package native-only stub: aurora-basin smoke
 ok 25 - package native-only stub: aurora-basin smoke
   ---
-  duration_ms: 42.468699
+  duration_ms: 42.719506
   type: 'test'
   ...
 # Subtest: package native-only stub: cinder-array exit
 ok 26 - package native-only stub: cinder-array exit
   ---
-  duration_ms: 49.937287
+  duration_ms: 48.023666
   type: 'test'
   ...
 # Subtest: package native-only stub: cinder-array smoke
 ok 27 - package native-only stub: cinder-array smoke
   ---
-  duration_ms: 45.139892
+  duration_ms: 38.901992
   type: 'test'
   ...
 # Subtest: package native-only stub: particle-lab exit
 ok 28 - package native-only stub: particle-lab exit
   ---
-  duration_ms: 47.489743
+  duration_ms: 46.348467
   type: 'test'
   ...
 # Subtest: package native-only stub: particle-lab smoke
 ok 29 - package native-only stub: particle-lab smoke
   ---
-  duration_ms: 43.502115
+  duration_ms: 40.914533
   type: 'test'
   ...
 # Subtest: package native-only stub: shader-lab exit
 ok 30 - package native-only stub: shader-lab exit
   ---
-  duration_ms: 45.833922
+  duration_ms: 47.460981
   type: 'test'
   ...
 # Subtest: package native-only stub: shader-lab smoke
 ok 31 - package native-only stub: shader-lab smoke
   ---
-  duration_ms: 39.429036
+  duration_ms: 45.168445
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: native-failure
 ok 32 - package native-only stub ownership: native-failure
   ---
-  duration_ms: 45.348533
+  duration_ms: 42.235078
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: native-crash
 ok 33 - package native-only stub ownership: native-crash
   ---
-  duration_ms: 37.663821
+  duration_ms: 45.484849
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: missing-native
 ok 34 - package native-only stub ownership: missing-native
   ---
-  duration_ms: 27.319998
+  duration_ms: 27.834842
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: interrupt
 ok 35 - package native-only stub ownership: interrupt
   ---
-  duration_ms: 147.063414
+  duration_ms: 148.647665
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: terminate
 ok 36 - package native-only stub ownership: terminate
   ---
-  duration_ms: 144.500053
+  duration_ms: 146.217691
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: uncooperative
 ok 37 - package native-only stub ownership: uncooperative
   ---
-  duration_ms: 3151.811881
+  duration_ms: 3154.619348
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: bad-args
 ok 38 - package native-only stub ownership: bad-args
   ---
-  duration_ms: 23.509641
+  duration_ms: 26.017357
   type: 'test'
   ...
 # Subtest: package native-only stub ownership: ambiguous-help
 ok 39 - package native-only stub ownership: ambiguous-help
   ---
-  duration_ms: 25.781406
+  duration_ms: 21.8195
   type: 'test'
   ...
 1..39
@@ -916,4 +916,4 @@ ok 39 - package native-only stub ownership: ambiguous-help
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 4101.742087
+# duration_ms 4108.360479

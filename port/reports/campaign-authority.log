@@ -2,177 +2,195 @@ TAP version 13
 # Subtest: NativeClient v3 handshake, cancellation, restart epoch, stale packet rejection
 ok 1 - NativeClient v3 handshake, cancellation, restart epoch, stale packet rejection
   ---
-  duration_ms: 333.998019
+  duration_ms: 420.406839
   type: 'test'
   ...
 # Subtest: stale held controls expire, advance epoch, and never remain firing
 ok 2 - stale held controls expire, advance epoch, and never remain firing
   ---
-  duration_ms: 451.771144
+  duration_ms: 421.500968
   type: 'test'
   ...
 # Subtest: wire cannot select arbitrary geometry or non-finite controls
 ok 3 - wire cannot select arbitrary geometry or non-finite controls
   ---
-  duration_ms: 137.414079
+  duration_ms: 138.255939
   type: 'test'
   ...
 # Subtest: final Continue emits fresh same-map start then terminal results without reconstruction
 ok 4 - final Continue emits fresh same-map start then terminal results without reconstruction
   ---
-  duration_ms: 119.397096
+  duration_ms: 118.27556
   type: 'test'
   ...
 # Subtest: actual authority accepts fresh E pet, preserves it on retry, and clears chapter on restart
 ok 5 - actual authority accepts fresh E pet, preserves it on retry, and clears chapter on restart
   ---
-  duration_ms: 335.107266
+  duration_ms: 327.506081
   type: 'test'
   ...
 # Subtest: actual authority Continue carries story pets into the next chapter
 ok 6 - actual authority Continue carries story pets into the next chapter
   ---
-  duration_ms: 315.701193
+  duration_ms: 372.97114
   type: 'test'
   ...
 # Subtest: authored palettes teach six actual source brains within a finite budget
 ok 7 - authored palettes teach six actual source brains within a finite budget
   ---
-  duration_ms: 0.719948
+  duration_ms: 0.680985
   type: 'test'
   ...
 # Subtest: ordinary ticks gate future anchors, require combat, and advance exactly once
 ok 8 - ordinary ticks gate future anchors, require combat, and advance exactly once
   ---
-  duration_ms: 315.008826
+  duration_ms: 373.444507
   type: 'test'
   ...
 # Subtest: clearing guards from outside the relay zone does not skip mandatory anchor traversal
 ok 9 - clearing guards from outside the relay zone does not skip mandatory anchor traversal
   ---
-  duration_ms: 202.32321
+  duration_ms: 196.036993
   type: 'test'
   ...
 # Subtest: death freezes controls and retry reconstructs an unsolved checkpoint without stale actors/projectiles
 ok 10 - death freezes controls and retry reconstructs an unsolved checkpoint without stale actors/projectiles
   ---
-  duration_ms: 796.576823
+  duration_ms: 810.659573
   type: 'test'
   ...
 # Subtest: dead NPC indexed slots stay dead beyond respawn delay and the base clock cannot end play
 ok 11 - dead NPC indexed slots stay dead beyond respawn delay and the base clock cannot end play
   ---
-  duration_ms: 207.082823
+  duration_ms: 204.055731
   type: 'test'
   ...
 # Subtest: all four chapters complete through ticks, interaction gates, and a non-looping ending
 ok 12 - all four chapters complete through ticks, interaction gates, and a non-looping ending
   ---
-  duration_ms: 1526.886702
+  duration_ms: 1586.375403
   type: 'test'
   ...
 # Subtest: Crown guardian deploys locally with full body clearance on five fixed seeds
 ok 13 - Crown guardian deploys locally with full body clearance on five fixed seeds
   ---
-  duration_ms: 1837.37371
+  duration_ms: 1825.689445
   type: 'test'
   ...
 # Subtest: source artillery telegraphs a fixed point and resolves real damage
 ok 14 - source artillery telegraphs a fixed point and resolves real damage
   ---
-  duration_ms: 200.299149
+  duration_ms: 206.898976
   type: 'test'
   ...
 # Subtest: restoration requires an interaction pulse, pauses outside, then finishes on natural ticks
 ok 15 - restoration requires an interaction pulse, pauses outside, then finishes on natural ticks
   ---
-  duration_ms: 198.84206
+  duration_ms: 256.843643
   type: 'test'
   ...
 # Subtest: hold progresses with live guards but requires full duration, all guards dead and relay arrival
 ok 16 - hold progresses with live guards but requires full duration, all guards dead and relay arrival
   ---
-  duration_ms: 290.428823
+  duration_ms: 247.287677
   type: 'test'
   ...
 # Subtest: source hitscan collision accepts shots through every visible chassis after spawn
 ok 17 - source hitscan collision accepts shots through every visible chassis after spawn
   ---
-  duration_ms: 1007.231095
+  duration_ms: 995.532288
   type: 'test'
   ...
 # Subtest: finite typed inputs and cancellation validate at the wire boundary
 ok 18 - finite typed inputs and cancellation validate at the wire boundary
   ---
-  duration_ms: 0.733254
+  duration_ms: 0.662912
   type: 'test'
   ...
-# Subtest: explicit melee derivative preserves original identity and inventories every runtime change
-ok 19 - explicit melee derivative preserves original identity and inventories every runtime change
+# Subtest: death retry preserves the checkpoint inventory snapshot (weapon, ammo, armor)
+ok 19 - death retry preserves the checkpoint inventory snapshot (weapon, ammo, armor)
   ---
-  duration_ms: 83.332735
+  duration_ms: 212.691744
+  type: 'test'
+  ...
+# Subtest: invalid or unbounded checkpoint carry fails closed to default gear
+ok 20 - invalid or unbounded checkpoint carry fails closed to default gear
+  ---
+  duration_ms: 1448.163096
+  type: 'test'
+  ...
+# Subtest: movement candidate preserves historical derivative identity and inventories every runtime change
+ok 21 - movement candidate preserves historical derivative identity and inventories every runtime change
+  ---
+  duration_ms: 76.36619
+  type: 'test'
+  ...
+# Subtest: active source descriptor resolves the reviewed overlay to current runtime bytes
+ok 22 - active source descriptor resolves the reviewed overlay to current runtime bytes
+  ---
+  duration_ms: 888.316171
   type: 'test'
   ...
 # Subtest: committed static adapter is exactly reproducible from the pinned source
-ok 20 - committed static adapter is exactly reproducible from the pinned source
+ok 23 - committed static adapter is exactly reproducible from the pinned source
   ---
-  duration_ms: 1.967335
+  duration_ms: 2.090606
   type: 'test'
   ...
-# Subtest: independent inverse comparison preserves every source byte outside imports and actorHit
-ok 21 - independent inverse comparison preserves every source byte outside imports and actorHit
+# Subtest: independent inverse comparison preserves every source byte outside four reviewed adapters
+ok 24 - independent inverse comparison preserves every source byte outside four reviewed adapters
   ---
-  duration_ms: 0.985666
+  duration_ms: 1.482436
   type: 'test'
   ...
 # Subtest: every robot central visible body hits, above-body empty space misses
-ok 22 - every robot central visible body hits, above-body empty space misses
+ok 25 - every robot central visible body hits, above-body empty space misses
   ---
-  duration_ms: 11.670125
+  duration_ms: 11.844813
   type: 'test'
   ...
 # Subtest: source projectile sweep hits chassis and passes through overhead empty space
-ok 23 - source projectile sweep hits chassis and passes through overhead empty space
+ok 26 - source projectile sweep hits chassis and passes through overhead empty space
   ---
-  duration_ms: 11.286928
+  duration_ms: 11.53878
   type: 'test'
   ...
 # Subtest: humans and actors without valid explicit volumes retain exact scalar fallback
-ok 24 - humans and actors without valid explicit volumes retain exact scalar fallback
+ok 27 - humans and actors without valid explicit volumes retain exact scalar fallback
   ---
-  duration_ms: 0.668311
+  duration_ms: 0.682128
   type: 'test'
   ...
 # Subtest: campaign kicks contact every robot body and shove through the shared authority
-ok 25 - campaign kicks contact every robot body and shove through the shared authority
+ok 28 - campaign kicks contact every robot body and shove through the shared authority
   ---
-  duration_ms: 7.150291
+  duration_ms: 6.71177
   type: 'test'
   ...
 # Subtest: generated campaign construction primes original bot floor queries and retries reuse the bridge
-ok 26 - generated campaign construction primes original bot floor queries and retries reuse the bridge
+ok 29 - generated campaign construction primes original bot floor queries and retries reuse the bridge
   ---
-  duration_ms: 14.809726
+  duration_ms: 65.268236
   type: 'test'
   ...
 # Subtest: new surfaces invalidate the bridge and a second arena with shared surfaces is independently primed
-ok 27 - new surfaces invalidate the bridge and a second arena with shared surfaces is independently primed
+ok 30 - new surfaces invalidate the bridge and a second arena with shared surfaces is independently primed
   ---
-  duration_ms: 13.443006
+  duration_ms: 9.465377
   type: 'test'
   ...
 # Subtest: authored route and anchor replacement invalidate story positions without changing terrain
-ok 28 - authored route and anchor replacement invalidate story positions without changing terrain
+ok 31 - authored route and anchor replacement invalidate story positions without changing terrain
   ---
-  duration_ms: 1.193334
+  duration_ms: 1.177275
   type: 'test'
   ...
-1..28
-# tests 28
+1..31
+# tests 31
 # suites 0
-# pass 28
+# pass 31
 # fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 11174.046033
+# duration_ms 13875.246607

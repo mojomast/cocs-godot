@@ -1,0 +1,83 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+LATTICE_EXPANSION {"message":"source vectors loaded","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-terminal-shard\", \"action\": \"collect\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-terminal-shard\", \"action\": \"return\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-capture\", \"node\": \"relay-2\", \"depot\": \"depot-0\", \"item\": \"puma\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-depot-capture\", \"node\": \"relay-2\", \"depot\": \"depot-0\", \"item\": \"puma\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-depot-vehicle-spawn\", \"node\": \"relay-2\", \"depot\": \"depot-0\", \"item\": \"puma\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-depot-purchase\", \"node\": \"relay-2\", \"depot\": \"depot-0\", \"item\": \"puma\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-device-use\", \"kind\": \"zipline\", \"actor\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-wave\", \"wave\": 4.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-wave-cleared\", \"wave\": 4.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-spawn\", \"wave\": 4.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-init\", \"tier\": \"D2\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-spawn-telegraph\", \"kind\": \"boss\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-spawn-telegraph\", \"kind\": \"scout\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-modifier\", \"name\": \"hard-shell\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-escalation\", \"kind\": \"siege\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-boss\", \"phase\": 2.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-phase\", \"phase\": 3.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-retarget\", \"node\": \"front-1\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-denial\", \"node\": \"front-1\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-reinforce\", \"node\": \"front-1\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"director-retire\", \"count\": 7.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-order-complete\", \"verb\": \"hold\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-order-rejected\", \"verb\": \"hold\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"coop-spend-rejected\", \"verb\": \"hold\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"coop-bonus\", \"state\": \"done\", \"label\": \"Convoy\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-terminal-sabotage\", \"terminal\": \"terminal-1\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-sapper\", \"node\": \"relay-2\", \"denied\": 2.0, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-siphon\", \"flux\": 8.7, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-scan\", \"marked\": 0.0, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-scan\", \"marked\": 3.0, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-role-spawn\", \"role\": \"saboteur\", \"refund\": 8.7, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-role-killed\", \"role\": \"saboteur\", \"refund\": 8.7, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-role-expire\", \"role\": \"saboteur\", \"refund\": 8.7, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-role-rally\", \"targets\": [0.0, 1.0], \"actor\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-role-repair\", \"repaired\": [\"device:a\", \"terminal:b\"], \"actor\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-role-spot\", \"targets\": [3.0, 4.0, 5.0], \"actor\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-prime-start\", \"node\": \"siphon-0\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-prime\", \"node\": \"siphon-0\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-prime-interrupt\", \"node\": \"siphon-0\" }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"take\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"release\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"mutiny-vote\", \"votes\": 2.0, \"needed\": 3.0, \"seat\": false, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"mutiny-vote\", \"seat\": \"0\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"policy\", \"policy\": \"ASSAULT\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"policy\", \"policy\": <null>, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"set-route\", \"value\": \"front-1\", \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source caption: { \"type\": \"cocs-command\", \"action\": \"set-route\", \"value\": <null>, \"team\": 0.0 }","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: contested","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: no-relay","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: flux","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: out-of-flux","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: slice","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: executor","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: thread","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: no-thread","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: dependency","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: target","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: no-response","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: blocked","ok":true}
+LATTICE_EXPANSION {"message":"source recovery: wrong-team","ok":true}
+LATTICE_EXPANSION {"message":"source progress front-0","ok":true}
+LATTICE_EXPANSION {"message":"published radius and planar distance","ok":true}
+LATTICE_EXPANSION {"message":"source progress front-1","ok":true}
+LATTICE_EXPANSION {"message":"published radius and planar distance","ok":true}
+LATTICE_EXPANSION {"message":"source progress front-2","ok":true}
+LATTICE_EXPANSION {"message":"published radius and planar distance","ok":true}
+LATTICE_EXPANSION {"message":"source progress front-3","ok":true}
+LATTICE_EXPANSION {"message":"published radius and planar distance","ok":true}
+LATTICE_EXPANSION {"message":"missing state remains unknown","ok":true}
+LATTICE_EXPANSION {"message":"nonfinite remains unknown","ok":true}
+LATTICE_EXPANSION {"message":"no invented unknown event caption","ok":true}
+LATTICE_EXPANSION {"message":"only source count, no target identities","ok":true}
+LATTICE_EXPANSION {"message":"plain bounded source label","ok":true}
+LATTICE_EXPANSION {"message":"latest HOLD replaces old BUY receipt","ok":true}
+LATTICE_EXPANSION {"message":"acceptance is not settlement","ok":true}
+LATTICE_EXPANSION {"message":"source failure is visible","ok":true}
+LATTICE_EXPANSION {"message":"settled HOLD does not claim capture","ok":true}
+LATTICE_EXPANSION {"message":"old round receipts cleared","ok":true}
+LATTICE_EXPANSION {"message":"missing local actions clear receipt","ok":true}
+LATTICE_EXPANSION_RESULT {"checks":80,"failures":0}

@@ -1,0 +1,54 @@
+TAP version 13
+# {"mapId":"rootfall-verge","beat":"nursery","approachWalkingSeconds":6.633333333333334,"entrySpurSeconds":1.7333333333333334,"completed":true,"checkpointClaim":true}
+# {"mapId":"rootfall-verge","beat":"canopy","approachWalkingSeconds":5.566666666666666,"entrySpurSeconds":1.6833333333333333,"completed":true,"checkpointClaim":true}
+# {"mapId":"siltwake-crossing","beat":"waterwheel","approachWalkingSeconds":13.866666666666667,"entrySpurSeconds":1.4333333333333333,"completed":true,"checkpointClaim":true}
+# {"mapId":"siltwake-crossing","beat":"ferry","approachWalkingSeconds":11.05,"entrySpurSeconds":1.85,"completed":true,"checkpointClaim":true}
+# {"mapId":"emberline-ascent","beat":"condenser","approachWalkingSeconds":18.816666666666666,"entrySpurSeconds":1.4,"completed":true,"checkpointClaim":true}
+# {"mapId":"emberline-ascent","beat":"foundry","approachWalkingSeconds":14.083333333333334,"entrySpurSeconds":2.0166666666666666,"completed":true,"checkpointClaim":true}
+# {"mapId":"crown-array","beat":"choir","approachWalkingSeconds":18.883333333333333,"entrySpurSeconds":1.5666666666666667,"completed":true,"checkpointClaim":true}
+# {"mapId":"crown-array","beat":"garden","approachWalkingSeconds":16.816666666666666,"entrySpurSeconds":1.55,"completed":true,"checkpointClaim":true}
+# Subtest: rootfall-verge: walk from checkpoint, play both authored workshops, rejoin next fight
+ok 1 - rootfall-verge: walk from checkpoint, play both authored workshops, rejoin next fight
+  ---
+  duration_ms: 598.447888
+  type: 'test'
+  ...
+# Subtest: siltwake-crossing: walk from checkpoint, play both authored workshops, rejoin next fight
+ok 2 - siltwake-crossing: walk from checkpoint, play both authored workshops, rejoin next fight
+  ---
+  duration_ms: 422.149652
+  type: 'test'
+  ...
+# Subtest: emberline-ascent: walk from checkpoint, play both authored workshops, rejoin next fight
+ok 3 - emberline-ascent: walk from checkpoint, play both authored workshops, rejoin next fight
+  ---
+  duration_ms: 399.225971
+  type: 'test'
+  ...
+# Subtest: crown-array: walk from checkpoint, play both authored workshops, rejoin next fight
+ok 4 - crown-array: walk from checkpoint, play both authored workshops, rejoin next fight
+  ---
+  duration_ms: 671.545587
+  type: 'test'
+  ...
+# Subtest: source eligibility rejects remote, vertical, inside-solid, priority, held and dead interactions
+ok 5 - source eligibility rejects remote, vertical, inside-solid, priority, held and dead interactions
+  ---
+  duration_ms: 104.097095
+  type: 'test'
+  ...
+# Subtest: allocation is mutually exclusive, including retries, and B gives ammunition instead of armor
+ok 6 - allocation is mutually exclusive, including retries, and B gives ammunition instead of armor
+  ---
+  duration_ms: 127.68432
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2971.440167

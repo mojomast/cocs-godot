@@ -1,23 +1,23 @@
 TAP version 13
-# {"gate":"generated-source-simulation","mapId":"prism-foundry","geometryHash":"c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13","nav":429,"edges":6858,"time":60.01666666666454,"reason":"time","stats":{"shots":320,"kills":5,"pickups":24,"powers":9,"respawns":8,"falls":0,"grenades":15},"frags":[0,3,1,1],"deaths":[3,0,1,1],"playerDamageEvents":37}
-# {"gate":"generated-source-simulation","mapId":"aurora-basin","geometryHash":"94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d","nav":311,"edges":2272,"time":31.649999999999483,"reason":"frag","stats":{"shots":339,"kills":7,"pickups":11,"powers":5,"respawns":10,"falls":0,"grenades":5},"frags":[5,0,0,2],"deaths":[0,3,4,0],"playerDamageEvents":106}
-# {"gate":"generated-source-simulation","mapId":"cinder-array","geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","nav":234,"edges":2390,"time":30.716666666666203,"reason":"frag","stats":{"shots":306,"kills":5,"pickups":17,"powers":3,"respawns":12,"falls":4,"grenades":5},"frags":[5,0,0,0],"deaths":[0,2,4,3],"playerDamageEvents":101}
+# {"gate":"generated-source-simulation","mapId":"prism-foundry","geometryHash":"c727d8ca82f761c710af0c535c8502ccfbbaed2299ace1f9923cb74e3b3e9c13","nav":429,"edges":6858,"time":60.01666666666454,"reason":"time","stats":{"shots":217,"kills":4,"pickups":18,"powers":3,"respawns":8,"falls":0,"grenades":12},"frags":[2,1,0,1],"deaths":[1,2,0,1],"playerDamageEvents":14}
+# {"gate":"generated-source-simulation","mapId":"aurora-basin","geometryHash":"94f1c30664dfcf058c005a7aa2dea296e8528b1acf772b4f04e66421d243382d","nav":311,"edges":2272,"time":31.066666666666183,"reason":"frag","stats":{"shots":324,"kills":6,"pickups":10,"powers":4,"respawns":8,"falls":0,"grenades":9},"frags":[5,1,0,0],"deaths":[0,2,3,1],"playerDamageEvents":65}
+# {"gate":"generated-source-simulation","mapId":"cinder-array","geometryHash":"f372c98c4172b7885218748031c9eed7f7a087dc9f347491ac04bb558ac10cca","nav":234,"edges":2390,"time":34.86666666666597,"reason":"frag","stats":{"shots":343,"kills":5,"pickups":17,"powers":4,"respawns":15,"falls":7,"grenades":7},"frags":[5,0,0,0],"deaths":[0,4,4,4],"playerDamageEvents":110}
 # Subtest: GENERATED prism-foundry: source constructor, AI/combat, results and restart
 ok 1 - GENERATED prism-foundry: source constructor, AI/combat, results and restart
   ---
-  duration_ms: 3070.497567
+  duration_ms: 2817.774195
   type: 'test'
   ...
 # Subtest: GENERATED aurora-basin: source constructor, AI/combat, results and restart
 ok 2 - GENERATED aurora-basin: source constructor, AI/combat, results and restart
   ---
-  duration_ms: 3394.710911
+  duration_ms: 3296.796745
   type: 'test'
   ...
 # Subtest: GENERATED cinder-array: source constructor, AI/combat, results and restart
 ok 3 - GENERATED cinder-array: source constructor, AI/combat, results and restart
   ---
-  duration_ms: 413.236647
+  duration_ms: 444.811009
   type: 'test'
   ...
 1..3
@@ -28,4 +28,4 @@ ok 3 - GENERATED cinder-array: source constructor, AI/combat, results and restar
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 7497.989662
+# duration_ms 7188.455032

@@ -2,43 +2,43 @@ TAP version 13
 # Subtest: ideal connected-hit matrix reduces grinding while preserving precision and automatic roles
 ok 1 - ideal connected-hit matrix reduces grinding while preserving precision and automatic roles
   ---
-  duration_ms: 1063.170878
+  duration_ms: 1162.811222
   type: 'test'
   ...
 # Subtest: normal absorbs simultaneous crossfire but sustained fire still kills; tiers order survival
 ok 2 - normal absorbs simultaneous crossfire but sustained fire still kills; tiers order survival
   ---
-  duration_ms: 258.913231
+  duration_ms: 270.163819
   type: 'test'
   ...
 # Subtest: guard break uses source damage, exposes briefly, and restores; stagger cannot stunlock
 ok 3 - guard break uses source damage, exposes briefly, and restores; stagger cannot stunlock
   ---
-  duration_ms: 65.151535
+  duration_ms: 69.253349
   type: 'test'
   ...
 # Subtest: attack lane budget, acquisition warning, distance limit and rest are enforced
 ok 4 - attack lane budget, acquisition warning, distance limit and rest are enforced
   ---
-  duration_ms: 69.157818
+  duration_ms: 68.495901
   type: 'test'
   ...
 # Subtest: recovery permits return fire and near kills grant bounded salvage once
 ok 5 - recovery permits return fire and near kills grant bounded salvage once
   ---
-  duration_ms: 62.26541
+  duration_ms: 68.129595
   type: 'test'
   ...
 # Subtest: console rush disables guard network but cannot bypass living enemies
 ok 6 - console rush disables guard network but cannot bypass living enemies
   ---
-  duration_ms: 118.335037
+  duration_ms: 111.834957
   type: 'test'
   ...
 # Subtest: restoration overlaps combat and Warden slam has a readable punish window
 ok 7 - restoration overlaps combat and Warden slam has a readable punish window
   ---
-  duration_ms: 138.797689
+  duration_ms: 149.000071
   type: 'test'
   ...
 1..7
@@ -49,4 +49,4 @@ ok 7 - restoration overlaps combat and Warden slam has a readable punish window
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2491.542122
+# duration_ms 2573.075981

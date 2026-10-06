@@ -238,6 +238,48 @@ through both chains), and `input_epoch` mutates before validation, so a
 rejected frame can wedge the connection. Scope gap: `horde/client.gd` and
 `lattice/transport.gd` still parse twice per packet (pre-existing; follow-up).
 
+## Final aggregate (frozen candidate, 386/386 executed)
+
+`COCS_VERIFY_KEEP_GOING=1 python3 tools/godot-dev/verify.py` completed:
+**386 planned / 386 executed / 31 failed** (`port/reports/verification.json`;
+log `/tmp/opencode/full-verify-final.log`). Triage, evidence in each
+`port/reports/<gate>.log`:
+
+- **Self-inflicted, fixed post-run:** `campaign-client` — the W1 negative decode
+  tests intentionally feed malformed JSON, and Godot logs
+  `ERROR: Parse JSON failed...` which the runner flags despite
+  `CAMPAIGN_CLIENT_OK`. `verify.py` now declares the gate's success marker and
+  allowlists that exact documented error; a targeted `gate_runner` re-run
+  reports `passed: true`, exit 0, marker present.
+- **Pre-existing source drift (audit F01's condition):** the tree differed from
+  `source-lock.json`'s source commit in **920 files at the audited baseline**
+  and **921 now** (this branch adds exactly one test file). Strict `verifySource`
+  consumers and source fixtures still pinning the historical source fail on it:
+  `weapon-export`, `two-native-clients`, `product-shell-guest-leave`,
+  `multiplayer-world-mode-matrix`, `player-gameplay-source-fixtures`,
+  `finish-gameplay-source`, `source-inventory`, `native-ci-contracts` —
+  descriptor adoption for these tools is the gated F01 follow-up.
+- **Pre-existing engine-noise strictness:** gates that print their success
+  markers with 0 failures but emit the generic
+  `ERROR: Cannot get path of node as it is not in a scene tree.` from untouched
+  code (`operator_visual.gd`, `session.gd`): `round-boundaries`,
+  `local-lifecycle`, `horde-model`, `lattice-world`, `lattice-world-usability`,
+  `control-safety`, and `horde-death-presentation` (also one of the audited 7).
+- **Historical baseline failures still present:** `native-graphics-ownership`
+  (and `horde-death-presentation`, above).
+- **Environment/timeout:** `product-shell-journey` (driver deadline, documented
+  above) and `player-flow-journey` (240 s gate budget).
+- **Unattributed pre-existing failures in untouched domains:**
+  `main-menu-live-attract` (replay/clip fixtures),
+  `animation-world-physics`, `operator-detail-textures`,
+  `vehicle-fleet-visuals`, `vehicle-shared-shot-owner`,
+  `vehicle-three-native-crew`, `world-weather-campaign-journey`,
+  `horde-upgrade-fixture`, `experience-combined-arms-journey`, `export-tests`,
+  `verifier-report-tests`.
+- **Baseline failures now passing:** `product-shell-supervisor`,
+  `lobby-ownership`, `horde-ownership`, `campaign-ownership`,
+  `horde-upgrade-native`.
+
 ## Explicitly unrun / not claimed
 
 - The full `tools/godot-dev/verify.py` aggregate (**386** registered gates:

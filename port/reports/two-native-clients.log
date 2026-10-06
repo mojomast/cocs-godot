@@ -1,8 +1,12 @@
-[native 0] Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
-[native 0] 
-[native 0] PORT_ROOM EP7C
-[native 1] Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
-[native 1] 
-[native 1] PORT_TWO_OK {"ack":16,"actor_id":1,"actors":4,"both_moved":true,"humans":[0,1],"peer_id":2,"remote_poses":132}
-[native 0] PORT_TWO_OK {"ack":16,"actor_id":0,"actors":4,"both_moved":true,"humans":[0,1],"peer_id":1,"remote_poses":135}
-PORT_TWO_NATIVE_CLIENTS_OK
+file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-export/semantic.mjs:66
+  if(!derivative){if(changed.length||runtimeAdded.length)throw Error('Locked source differs from working tree');return;}
+                                                               ^
+
+Error: Locked source differs from working tree
+    at verifySource (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-export/semantic.mjs:66:64)
+    at file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/two-clients.mjs:10:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1

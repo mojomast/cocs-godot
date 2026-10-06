@@ -1,0 +1,18 @@
+Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
+
+RATE_POSE scrapper fps=60 radians=0.00069053395418
+RATE_POSE scrapper fps=144 radians=0.00069053395418
+RATE_POSE skirmisher fps=60 radians=0.0
+RATE_POSE skirmisher fps=144 radians=0.0
+RATE_POSE sentinel fps=60 radians=0.0
+RATE_POSE sentinel fps=144 radians=0.0
+RATE_POSE mortar fps=60 radians=0.00069053395418
+RATE_POSE mortar fps=144 radians=0.00069053395418
+RATE_POSE bulwark fps=60 radians=0.0
+RATE_POSE bulwark fps=144 radians=0.0
+RATE_POSE warden fps=60 radians=0.0
+RATE_POSE warden fps=144 radians=0.0
+OPERATOR_TRANSITION fps=30 maximum_adjacent_foot_metres=0.31577548384666
+OPERATOR_TRANSITION fps=60 maximum_adjacent_foot_metres=0.16448783874512
+OPERATOR_TRANSITION fps=144 maximum_adjacent_foot_metres=0.07558446377516
+ACTOR_ANIMATION_OK checks=3264785 failures=0

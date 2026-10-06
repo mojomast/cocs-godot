@@ -95,7 +95,14 @@ evidence; unrun/manual gates are never reported as passing.
 - F08 source experiment (unpromoted branch): 38/38 probes, differential
   invariance, only the expected hash-pin boundary failures
 
-Not run and not claimed: the full 386-gate aggregate, GPU/visual captures,
+The full **386-gate aggregate was executed** at the frozen candidate:
+386/386 ran, 31 failed, with the complete triage in `GATE_STATUS.md`. One
+failure was self-inflicted and fixed after the run (`campaign-client` — its
+intentional malformed-JSON negative test is now a declared success marker plus
+an exact allowlisted engine line); the rest are pre-existing source-lock drift
+(the tree already differed from the locked source in 920 files at the audited
+baseline), engine-noise strictness in untouched domains, historical baseline
+failures, or environment timeouts. Not run and not claimed: GPU/visual captures,
 audio-hardware listening, human playtests, target-hardware performance, package
 CI and the 4.7.2 engine trial.
 

@@ -2,13 +2,13 @@ TAP version 13
 # Subtest: a GEAR reply is explicit, award-free and normalizes unknown IDs to known stock
 ok 1 - a GEAR reply is explicit, award-free and normalizes unknown IDs to known stock
   ---
-  duration_ms: 19.004223
+  duration_ms: 20.185538
   type: 'test'
   ...
 # Subtest: an unknown or level-gated finish is refused to explicit null, never saved
 ok 2 - an unknown or level-gated finish is refused to explicit null, never saved
   ---
-  duration_ms: 1.450417
+  duration_ms: 1.515991
   type: 'test'
   ...
 1..2
@@ -19,4 +19,4 @@ ok 2 - an unknown or level-gated finish is refused to explicit null, never saved
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 642.236128
+# duration_ms 647.097044

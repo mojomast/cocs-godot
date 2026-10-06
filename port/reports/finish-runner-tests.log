@@ -1,0 +1,28 @@
+..usage: test_finish_runner.py [-h] [--root ROOT] [--matrix MATRIX]
+                             [--evidence EVIDENCE] [--run]
+                             [--grant {engine,audio,horde-boss}]
+                             [--select SELECT] [--resume RESUME]
+                             [--retry-failed]
+                             [--budget-seconds BUDGET_SECONDS]
+                             [--attest ATTEST] [--receipt RECEIPT]
+                             [--grant-reference GRANT_REFERENCE]
+test_finish_runner.py: error: Input hash/environment changed: create a fresh report; old evidence is retained
+............./tmp/opencode/finish-runner-test-labclbnt/evidence/run-zthhkwj9/report.json
+/tmp/opencode/finish-runner-test-zvgmgm6m/evidence/run-zymrr3_w/report.json
+/tmp/opencode/finish-runner-test-xmlo132d/evidence/run-4l3ngx4w/report.json
+/tmp/opencode/finish-runner-test-xmlo132d/evidence/run-5dva1jah/report.json
+heavy: passed
+/tmp/opencode/finish-runner-test-slgqimj3/evidence/run-3ekjp9h_/report.json
+/tmp/opencode/finish-runner-test-slgqimj3/evidence/run-3ekjp9h_/report.json
+heavy: failed
+/tmp/opencode/finish-runner-test-slgqimj3/evidence/run-h67h254j/report.json
+/tmp/opencode/finish-runner-test-slgqimj3/evidence/run-h67h254j/report.json
+heavy: failed
+.../tmp/opencode/finish-runner-test-slgqimj3/evidence/run-h67h254j/report.json
+fighting-production-ui-journey: failed
+..
+----------------------------------------------------------------------
+Ran 20 tests in 3.976s
+
+OK
+/tmp/opencode/finish-runner-test-kw4rptsj/evidence/run-gqxquk_k/report.json

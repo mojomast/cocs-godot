@@ -1,5 +1,61 @@
-.....
+..FFFF
+======================================================================
+FAIL: test_keep_going_retains_failure_after_later_success (__main__.VerifierReportTest.test_keep_going_retains_failure_after_later_success)
 ----------------------------------------------------------------------
-Ran 5 tests in 0.308s
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 119, in test_keep_going_retains_failure_after_later_success
+    report = self.run_verifier()
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 47, in run_verifier
+    self.assertEqual(report["status"], "failed")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'running' != 'failed'
+- running
++ failed
 
-OK
+
+======================================================================
+FAIL: test_missing_engine_records_every_gate_as_unrun (__main__.VerifierReportTest.test_missing_engine_records_every_gate_as_unrun)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 68, in test_missing_engine_records_every_gate_as_unrun
+    report = self.run_verifier()
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 47, in run_verifier
+    self.assertEqual(report["status"], "failed")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'running' != 'failed'
+- running
++ failed
+
+
+======================================================================
+FAIL: test_slide_gate_missing_weapon_is_failed_without_launching_fixture (__main__.VerifierReportTest.test_slide_gate_missing_weapon_is_failed_without_launching_fixture)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 133, in test_slide_gate_missing_weapon_is_failed_without_launching_fixture
+    report = self.run_verifier()
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 47, in run_verifier
+    self.assertEqual(report["status"], "failed")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'running' != 'failed'
+- running
++ failed
+
+
+======================================================================
+FAIL: test_wrong_engine_version_does_not_claim_remaining_gates (__main__.VerifierReportTest.test_wrong_engine_version_does_not_claim_remaining_gates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 84, in test_wrong_engine_version_does_not_claim_remaining_gates
+    report = self.run_verifier()
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/test_verifier_report.py", line 47, in run_verifier
+    self.assertEqual(report["status"], "failed")
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'running' != 'failed'
+- running
++ failed
+
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.419s
+
+FAILED (failures=4)

@@ -2,43 +2,43 @@ TAP version 13
 # Subtest: source contract still supplies sequential six-second Assault with both drain rates
 ok 1 - source contract still supplies sequential six-second Assault with both drain rates
   ---
-  duration_ms: 1.70868
+  duration_ms: 1.619809
   type: 'test'
   ...
 # Subtest: native composition consumes authority and preserves vehicle support
 ok 2 - native composition consumes authority and preserves vehicle support
   ---
-  duration_ms: 0.374662
+  duration_ms: 0.3089
   type: 'test'
   ...
 # Subtest: projection requires wire fields without requiring contested or advancing local capture
 ok 3 - projection requires wire fields without requiring contested or advancing local capture
   ---
-  duration_ms: 0.185557
+  duration_ms: 0.184236
   type: 'test'
   ...
 # Subtest: Combined Arms host and genuine external guest preserve one locked identity and owner
 ok 4 - Combined Arms host and genuine external guest preserve one locked identity and owner
   ---
-  duration_ms: 1.998282
+  duration_ms: 1.902379
   type: 'test'
   ...
 # Subtest: Combined Arms guest rejects host settings and other routes reject its host/guest controls
 ok 5 - Combined Arms guest rejects host settings and other routes reject its host/guest controls
   ---
-  duration_ms: 0.484978
+  duration_ms: 0.465834
   type: 'test'
   ...
 # Subtest: five locked objective pairs keep separate source-backed scenes and host options
 ok 6 - five locked objective pairs keep separate source-backed scenes and host options
   ---
-  duration_ms: 2.719313
+  duration_ms: 2.749869
   type: 'test'
   ...
 # Subtest: objective aliases, wrong maps and out-of-range host config fail before scene launch
 ok 7 - objective aliases, wrong maps and out-of-range host config fail before scene launch
   ---
-  duration_ms: 2.331266
+  duration_ms: 2.470906
   type: 'test'
   ...
 1..7
@@ -49,4 +49,4 @@ ok 7 - objective aliases, wrong maps and out-of-range host config fail before sc
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 41.270531
+# duration_ms 43.815928
