@@ -28,7 +28,8 @@ import {productionResources} from './production_resources.mjs';
 import {channelProduction,verifyChannelManifest,previewReadme} from './build_channel.mjs';
 import {fighterImports} from './fighter_imports.mjs';
 import {MOVEMENT_COMMIT,MOVEMENT_CONTRACT} from './source_derivative.mjs';
-import {RACING_COMMIT,RACING_CONTRACT,resolveReviewedDerivative} from './racing_derivative.mjs';
+import {RACING_COMMIT,RACING_CONTRACT} from './racing_derivative.mjs';
+import {resolveReviewedDerivative} from './contact_derivative.mjs';
 import {verifyAuthoringResources,rejectAuthoringRuntime} from './authoring_resources.mjs';
 import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 
