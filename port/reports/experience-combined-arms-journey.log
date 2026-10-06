@@ -1,0 +1,21 @@
+EXPERIENCE_NATIVE_FAIL independent caption fits actual HUD
+EXPERIENCE_NATIVE FAIL ["independent caption fits actual HUD"]
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: native exit
+
+1 !== 0
+
+    at file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/experience/native-journey.mjs:82:9
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 1,
+  expected: 0,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

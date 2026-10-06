@@ -1,0 +1,274 @@
+TAP version 13
+# Subtest: objective metadata and target ranges are shared and legal
+ok 1 - objective metadata and target ranges are shared and legal
+  ---
+  duration_ms: 1.010044
+  type: 'test'
+  ...
+# Subtest: KOTH scores by dt and publishes a deterministic winner snapshot
+ok 2 - KOTH scores by dt and publishes a deterministic winner snapshot
+  ---
+  duration_ms: 16.126002
+  type: 'test'
+  ...
+# Subtest: Domination freezes contested capture and neutralizes before recapture
+ok 3 - Domination freezes contested capture and neutralizes before recapture
+  ---
+  duration_ms: 4.314053
+  type: 'test'
+  ...
+# Subtest: objective stats split owned time and count contest transitions
+ok 4 - objective stats split owned time and count contest transitions
+  ---
+  duration_ms: 1.680542
+  type: 'test'
+  ...
+# Subtest: objective progress and score events are bucketed
+ok 5 - objective progress and score events are bucketed
+  ---
+  duration_ms: 2.804732
+  type: 'test'
+  ...
+# Subtest: urgent bot supply diversion precedes objective routing
+ok 6 - urgent bot supply diversion precedes objective routing
+  ---
+  duration_ms: 3.644247
+  type: 'test'
+  ...
+# Subtest: team objective bots do not chase optional weapons with unlimited Pulse ammo
+ok 7 - team objective bots do not chase optional weapons with unlimited Pulse ammo
+  ---
+  duration_ms: 15.650951
+  type: 'test'
+  ...
+# Subtest: objective bot follows the selected nearby strategic pickup
+ok 8 - objective bot follows the selected nearby strategic pickup
+  ---
+  duration_ms: 0.832732
+  type: 'test'
+  ...
+# Subtest: combined-arms establishes domination zones and routes bots to them
+ok 9 - combined-arms establishes domination zones and routes bots to them
+  ---
+  duration_ms: 121.156077
+  type: 'test'
+  ...
+# Subtest: assault bots push or hold the active sector
+ok 10 - assault bots push or hold the active sector
+  ---
+  duration_ms: 113.448328
+  type: 'test'
+  ...
+# Subtest: assault snapshots expose the active sector, teams and breach state
+ok 11 - assault snapshots expose the active sector, teams and breach state
+  ---
+  duration_ms: 20.397876
+  type: 'test'
+  ...
+# Subtest: objective capture ignores actors far above the zone
+ok 12 - objective capture ignores actors far above the zone
+  ---
+  duration_ms: 2.079131
+  type: 'test'
+  ...
+# Subtest: assault defenders win the round if time expires without a breach
+ok 13 - assault defenders win the round if time expires without a breach
+  ---
+  duration_ms: 22.764476
+  type: 'test'
+  ...
+# Subtest: combined-arms fields vehicles on a vehicle map while zone modes do not
+ok 14 - combined-arms fields vehicles on a vehicle map while zone modes do not
+  ---
+  duration_ms: 41.27413
+  type: 'test'
+  ...
+# Subtest: KOTH rotates the hill between authored points after the interval
+ok 15 - KOTH rotates the hill between authored points after the interval
+  ---
+  duration_ms: 18.399808
+  type: 'test'
+  ...
+# Subtest: KOTH rotates hills on maps whose points come from the authored table or nav candidates
+ok 16 - KOTH rotates hills on maps whose points come from the authored table or nav candidates
+  ---
+  duration_ms: 432.985135
+  type: 'test'
+  ...
+# Subtest: domination and KOTH ownership grants the mapped powerup to occupants
+ok 17 - domination and KOTH ownership grants the mapped powerup to occupants
+  ---
+  duration_ms: 0.840136
+  type: 'test'
+  ...
+# Subtest: Juggernaut banks hold points and transfers the powered role on death
+ok 18 - Juggernaut banks hold points and transfers the powered role on death
+  ---
+  duration_ms: 2.104248
+  type: 'test'
+  ...
+# Subtest: Juggernaut reassigns the role when the carrier falls without a killer
+ok 19 - Juggernaut reassigns the role when the carrier falls without a killer
+  ---
+  duration_ms: 1.352588
+  type: 'test'
+  ...
+# Subtest: Team Elimination spends shared tickets and ends when a side is exhausted
+ok 20 - Team Elimination spends shared tickets and ends when a side is exhausted
+  ---
+  duration_ms: 2.796486
+  type: 'test'
+  ...
+# Subtest: Juggernaut enters a sudden-death window and has a deterministic time tiebreak
+ok 21 - Juggernaut enters a sudden-death window and has a deterministic time tiebreak
+  ---
+  duration_ms: 2.083188
+  type: 'test'
+  ...
+# Subtest: Team Elimination starts a sudden-death window and resolves a dead-even clock
+ok 22 - Team Elimination starts a sudden-death window and resolves a dead-even clock
+  ---
+  duration_ms: 1.394797
+  type: 'test'
+  ...
+# Subtest: Team Elimination attrition bleeds the trailing side once the round runs long
+ok 23 - Team Elimination attrition bleeds the trailing side once the round runs long
+  ---
+  duration_ms: 0.678653
+  type: 'test'
+  ...
+# Subtest: bots value the new objective modes instead of ignoring them
+ok 24 - bots value the new objective modes instead of ignoring them
+  ---
+  duration_ms: 82.9165
+  type: 'test'
+  ...
+# Subtest: VIP Escort registers a distinct extraction objective and terminates
+ok 25 - VIP Escort registers a distinct extraction objective and terminates
+  ---
+  duration_ms: 876.097307
+  type: 'test'
+  ...
+# Subtest: escorting the VIP to the beacon wins the round
+ok 26 - escorting the VIP to the beacon wins the round
+  ---
+  duration_ms: 9.356001
+  type: 'test'
+  ...
+# Subtest: losing the VIP hands the round to the hunters
+ok 27 - losing the VIP hands the round to the hunters
+  ---
+  duration_ms: 9.455599
+  type: 'test'
+  ...
+# Subtest: both new modes complete with a winner at every difficulty
+ok 28 - both new modes complete with a winner at every difficulty
+  ---
+  duration_ms: 970.00699
+  type: 'test'
+  ...
+# Subtest: score modes publish a bounded sudden-death window that resolves a tie
+ok 29 - score modes publish a bounded sudden-death window that resolves a tie
+  ---
+  duration_ms: 3.588882
+  type: 'test'
+  ...
+# Subtest: low-health objective bots break line of sight instead of trading
+ok 30 - low-health objective bots break line of sight instead of trading
+  ---
+  duration_ms: 0.891833
+  type: 'test'
+  ...
+# Subtest: coverPoint prefers a node that breaks line of sight to the threat
+ok 31 - coverPoint prefers a node that breaks line of sight to the threat
+  ---
+  duration_ms: 0.219041
+  type: 'test'
+  ...
+# Subtest: Holdout wins when a team holds the quorum for the full window
+ok 32 - Holdout wins when a team holds the quorum for the full window
+  ---
+  duration_ms: 0.945854
+  type: 'test'
+  ...
+# Subtest: Holdout resets progress the moment the quorum breaks
+ok 33 - Holdout resets progress the moment the quorum breaks
+  ---
+  duration_ms: 0.56543
+  type: 'test'
+  ...
+# Subtest: Holdout resolves a winner on time expiry even without a completed window
+ok 34 - Holdout resolves a winner on time expiry even without a completed window
+  ---
+  duration_ms: 0.603833
+  type: 'test'
+  ...
+# Subtest: Uplink banks a stage per capture and advances the relay to the next node
+ok 35 - Uplink banks a stage per capture and advances the relay to the next node
+  ---
+  duration_ms: 0.763072
+  type: 'test'
+  ...
+# Subtest: Uplink ends when a team captures every stage
+ok 36 - Uplink ends when a team captures every stage
+  ---
+  duration_ms: 0.604865
+  type: 'test'
+  ...
+# Subtest: Uplink resolves a winner on time expiry from banked stages
+ok 37 - Uplink resolves a winner on time expiry from banked stages
+  ---
+  duration_ms: 0.568547
+  type: 'test'
+  ...
+# Subtest: holdout and uplink complete with a winner at every difficulty
+ok 38 - holdout and uplink complete with a winner at every difficulty
+  ---
+  duration_ms: 1719.989436
+  type: 'test'
+  ...
+# Subtest: all eight map/mode routes are source-supported, preserve identity and agree across launchers
+ok 39 - all eight map/mode routes are source-supported, preserve identity and agree across launchers
+  ---
+  duration_ms: 751.816117
+  type: 'test'
+  ...
+# Subtest: Arsenal grants all exact weapon identities with unlimited ammo on every spawn
+ok 40 - Arsenal grants all exact weapon identities with unlimited ammo on every spawn
+  ---
+  duration_ms: 104.990971
+  type: 'test'
+  ...
+# Subtest: Juggernaut buffer, damage, survival credit, transfer bounty and source winner
+ok 41 - Juggernaut buffer, damage, survival credit, transfer bounty and source winner
+  ---
+  duration_ms: 28.176288
+  type: 'test'
+  ...
+# Subtest: frozen Juggernaut damage flag is serialized but unused by source combat (known source discrepancy)
+ok 42 - frozen Juggernaut damage flag is serialized but unused by source combat (known source discrepancy)
+  ---
+  duration_ms: 29.756743
+  type: 'test'
+  ...
+# Subtest: Elimination friendly fire spends no tickets, enemy/self deaths do; paid respawn and zero-ticket outcome
+ok 43 - Elimination friendly fire spends no tickets, enemy/self deaths do; paid respawn and zero-ticket outcome
+  ---
+  duration_ms: 55.533871
+  type: 'test'
+  ...
+# Subtest: VIP proximity movement, extraction hold/decay, death and timeout use source results
+ok 44 - VIP proximity movement, extraction hold/decay, death and timeout use source results
+  ---
+  duration_ms: 205.520473
+  type: 'test'
+  ...
+1..44
+# tests 44
+# suites 0
+# pass 44
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5168.443689

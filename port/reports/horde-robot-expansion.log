@@ -2,97 +2,97 @@ TAP version 13
 # Subtest: authored Blackwater extent, stage gates, distinct districts and hash
 ok 1 - authored Blackwater extent, stage gates, distinct districts and hash
   ---
-  duration_ms: 5.634161
+  duration_ms: 3.422419
   type: 'test'
   ...
 # Subtest: server position and input arm objective; progress and reward survive snapshots
 ok 2 - server position and input arm objective; progress and reward survive snapshots
   ---
-  duration_ms: 0.750285
+  duration_ms: 0.701033
   type: 'test'
   ...
 # Subtest: distance, death, stage availability and restart do not leak objective progress
 ok 3 - distance, death, stage availability and restart do not leak objective progress
   ---
-  duration_ms: 0.122539
+  duration_ms: 0.120766
   type: 'test'
   ...
 # Subtest: ordered feeder/repair/valve chain executes actual source resupply only after hold
 ok 4 - ordered feeder/repair/valve chain executes actual source resupply only after hold
   ---
-  duration_ms: 0.225572
+  duration_ms: 0.236142
   type: 'test'
   ...
 # Subtest: real source physics graph links every district, station and stage with each floodgate mask
 ok 5 - real source physics graph links every district, station and stage with each floodgate mask
   ---
-  duration_ms: 446.687103
+  duration_ms: 432.526847
   type: 'test'
   ...
 # Subtest: source wave-clear and timed Blackwater gate opening change actual ray/collision mask
 ok 6 - source wave-clear and timed Blackwater gate opening change actual ray/collision mask
   ---
-  duration_ms: 66.482839
+  duration_ms: 64.668292
   type: 'test'
   ...
 # Subtest: all six local Horde arenas field source Warden once on final wave with a real hit volume
 ok 7 - all six local Horde arenas field source Warden once on final wave with a real hit volume
   ---
-  duration_ms: 1026.3444
+  duration_ms: 1020.169389
   type: 'test'
   ...
 # Subtest: source role brain and health are preserved while derived hit volumes track new robot silhouettes
 ok 8 - source role brain and health are preserved while derived hit volumes track new robot silhouettes
   ---
-  duration_ms: 127.614716
+  duration_ms: 120.278521
   type: 'test'
   ...
 # Subtest: Horde Warden health beats drive source boss-phase profiles through actual source damage
 ok 9 - Horde Warden health beats drive source boss-phase profiles through actual source damage
   ---
-  duration_ms: 263.966725
+  duration_ms: 261.336798
   type: 'test'
   ...
 # Subtest: full Blackwater objective chain advances through real authority steps and resets independently
 ok 10 - full Blackwater objective chain advances through real authority steps and resets independently
   ---
-  duration_ms: 178.2791
+  duration_ms: 165.876999
   type: 'test'
   ...
 # Subtest: live network census: every Horde arena sends only six-class robots for source NPCs
 ok 11 - live network census: every Horde arena sends only six-class robots for source NPCs
   ---
-  duration_ms: 43225.779815
+  duration_ms: 43216.377867
   type: 'test'
   ...
 # Subtest: solo reconnect starts a new authoritative Blackwater session; it is not a late join
 ok 12 - solo reconnect starts a new authoritative Blackwater session; it is not a late join
   ---
-  duration_ms: 218.850482
+  duration_ms: 208.919499
   type: 'test'
   ...
 # Subtest: Blackwater feeder can be armed and restored by actual loopback movement + E input
 ok 13 - Blackwater feeder can be armed and restored by actual loopback movement + E input
   ---
-  duration_ms: 12503.794958
+  duration_ms: 12520.25787
   type: 'test'
   ...
 # Subtest: every Horde source brain receives one of the six authored robot identities
 ok 14 - every Horde source brain receives one of the six authored robot identities
   ---
-  duration_ms: 0.670385
+  duration_ms: 0.69969
   type: 'test'
   ...
 # Subtest: presentation identity never overwrites source behavior, player or source snapshot
 ok 15 - presentation identity never overwrites source behavior, player or source snapshot
   ---
-  duration_ms: 0.16031
+  duration_ms: 0.202089
   type: 'test'
   ...
 # Subtest: source hitScale is assigned to enemies only; combat identity, health and boss phases survive
 ok 16 - source hitScale is assigned to enemies only; combat identity, health and boss phases survive
   ---
-  duration_ms: 0.109425
+  duration_ms: 0.118612
   type: 'test'
   ...
 1..16
@@ -103,4 +103,4 @@ ok 16 - source hitScale is assigned to enemies only; combat identity, health and
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 60009.692235
+# duration_ms 59906.810726

@@ -36,6 +36,14 @@ def fail_preflight(message):
 
 binary = os.environ.get("GODOT_BIN")
 derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
+active_source = False
+if not derivative_path:
+    descriptor = json.loads(Path('port/contracts/active-source.json').read_text())
+    derivative_path = str(root / descriptor['derivative'])
+    digest = hashlib.sha256(Path(derivative_path).read_bytes()).hexdigest()
+    if digest != descriptor['derivative_sha256']:
+        fail_preflight(f"Active source derivative drift: {descriptor['derivative']}")
+    active_source = True
 # Career state is durable in the product. Each aggregate uses an isolated
 # authority/credential root so scripted matches cannot mutate a real career.
 (root / '.port-runtime').mkdir(exist_ok=True)
@@ -104,6 +112,7 @@ commands = [
     ("career-equipped-source", ["node", "--test", "port/native-career/equipped.test.mjs"]),
     ("social-source", ["node", "--test", "port/native-social/social_authority.test.mjs"]),
     ("source-tests", ["node", "--test", "game/protocol.test.mjs", "game/arena-movement.test.mjs", "game/map-schema.test.mjs", "game/destination-maps.test.mjs", "game/destination-sports.test.mjs", "game/destination-lattice.test.mjs"]),
+    ("cadence-source", ["node", "--test", "game/cadence.test.mjs"]),
     ("arms-race-source", ["node", "--test", "game/armsrace.test.mjs", "game/outcome.test.mjs", "game/input.test.mjs", "game/movement-input.test.mjs"]),
     ("horde-source", ["node", "--test", "game/singleplayer.test.mjs", "game/singleplayer-ui.test.mjs"]),
     ("cinderwake-source", ["node", "--test", "--test-concurrency=1", "game/horde-stages.test.mjs", "tools/godot-horde-maps/cinderwake.test.mjs", "tools/godot-horde-maps/source-fixture.test.mjs", "port/native-horde/cinderwake.test.mjs", "port/native-identity-horde/validate_cinderwake.test.mjs"]),
@@ -128,6 +137,7 @@ commands = [
     ("career-history-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/history.gd"]),
     ("career-results-history-ui", [binary, "--headless", "--path", "godot", "--script", "res://tests/career/results_history_ui.gd"]),
     ("social-native", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/lobby_social.gd"]),
+    ("protocol-decode-once", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/decode_once.gd"]),
     ("reconnect-source-native", ["node", "port/native-reconnect/journey.mjs"]),
     ("reconnect-offline-results", ["node", "port/native-reconnect/offline-results.mjs"]),
     ("reconnect-menu", [binary, "--headless", "--path", "godot", "--script", "res://tests/protocol/reconnect_menu.gd"]),
@@ -493,7 +503,7 @@ if derivative_path:
         derivative_bytes = Path(derivative_path).read_bytes()
         derivative = json.loads(derivative_bytes)
         report['source_derivative'] = {
-            'selection': 'explicit', 'path': derivative_path,
+            'selection': 'active' if active_source else 'explicit', 'path': derivative_path,
             'sha256': hashlib.sha256(derivative_bytes).hexdigest(),
             'source_commit': derivative['source_commit'],
             'derivative_commit': derivative['derivative_commit'],
@@ -516,6 +526,13 @@ if not version['passed']:
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
 gate_options = {
     'campaign-input-flow': {'timeout': 60},
+    'campaign-client': {
+        'success_marker': 'CAMPAIGN_CLIENT_OK',
+        # The negative decode-once cases intentionally feed malformed JSON; the
+        # base hook keeps its exact "Malformed JSON envelope" message, and Godot
+        # itself logs this single parse error for that documented input.
+        'allowed_error_patterns': (r'^ERROR: Parse JSON failed\. Error at line 0: Expected key$',),
+    },
     'first-person-slide': {'timeout': 60},
     'campaign-compact-ui': {'timeout': 300},
     'product-shell-journey': {'timeout': 300},

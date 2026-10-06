@@ -1,0 +1,35 @@
+TAP version 13
+# facade provenance: 20 used prototypes
+# Subtest: committed glTF bytes are the actual campaign cover prototypes
+ok 1 - committed glTF bytes are the actual campaign cover prototypes
+  ---
+  duration_ms: 243.494723
+  type: 'test'
+  ...
+# Subtest: confirmed empty-AABB side and pitched-roof false blocks are removed; solid walls stay solid
+ok 2 - confirmed empty-AABB side and pitched-roof false blocks are removed; solid walls stay solid
+  ---
+  duration_ms: 1.933711
+  type: 'test'
+  ...
+# Subtest: actual source fire/damage crosses visible edge air, never a solid wall; swept plasma keeps first cover
+ok 3 - actual source fire/damage crosses visible edge air, never a solid wall; swept plasma keeps first cover
+  ---
+  duration_ms: 16.950184
+  type: 'test'
+  ...
+# Subtest: camera target behind muzzle cover is correctly published as surface contact, not actor damage
+ok 4 - camera target behind muzzle cover is correctly published as surface contact, not actor damage
+  ---
+  duration_ms: 2.746103
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 926.117295

@@ -181,6 +181,7 @@ func _alt_voice(cue: String, alt_id: String) -> Dictionary:
 func apply_events(items: Array, local_id: int) -> void:
 	if _muted or local_id < 0 or not is_inside_tree(): return
 	_initialize_audio()
+	var batch_weapon := _batch_local_weapon(items, local_id)
 	for value: Variant in items:
 		if not value is Dictionary: continue
 		var item: Dictionary = value
@@ -210,13 +211,31 @@ func apply_events(items: Array, local_id: int) -> void:
 				if actor == local_id:
 					_play_cue("hurt")
 				elif _identity(item.get("source")) == local_id and not _melee_damage(item, items):
-					# Damage events carry no weapon; confirm with the last local
-					# weapon's impact voice (presentation only).
-					_play_cue("hit", _last_weapon)
+					# Damage events carry no weapon; the source emits the causing
+					# shot in the same accepted batch. Follow that batch's local
+					# weapon so the impact voice is not a stale last-held one, and
+					# only fall back to the cache when the batch is ambiguous.
+					var confirmation: int = batch_weapon if batch_weapon >= 0 else _last_weapon
+					_play_cue("hit", confirmation)
 			"pickup":
 				if actor == local_id: _play_cue("pickup")
 			"campaign-salvage":
 				if actor == local_id and float(item.get("health", 0)) + float(item.get("armor", 0)) > 0: _play_cue("pickup")
+
+func _batch_local_weapon(items: Array, local_id: int) -> int:
+	# One distinct local shot weapon resolves the batch; two different weapons
+	# in one batch are ambiguous and fall back to the persisted confirmation.
+	var resolved := -1
+	for value: Variant in items:
+		if not value is Dictionary: continue
+		var item: Dictionary = value
+		if item.get("type") != "shot": continue
+		if _identity(item.get("actor")) != local_id: continue
+		var weapon := _identity(item.get("weapon"))
+		if weapon < 0: continue
+		if resolved >= 0 and resolved != weapon: return -1
+		resolved = weapon
+	return resolved
 
 func _melee_damage(damage: Dictionary, events: Array) -> bool:
 	# An accepted strike already has its own thump/crack, independent of the gun

@@ -2,79 +2,79 @@ TAP version 13
 # Subtest: routes.json regeneration is idempotent (gen_routes --check)
 ok 1 - routes.json regeneration is idempotent (gen_routes --check)
   ---
-  duration_ms: 252.373945
+  duration_ms: 412.73991
   type: 'test'
   ...
 # Subtest: registry preserves the existing 23 routes and adds Campaign, covering every experience
 ok 2 - registry preserves the existing 23 routes and adds Campaign, covering every experience
   ---
-  duration_ms: 0.869959
+  duration_ms: 1.213252
   type: 'test'
   ...
 # Subtest: every route argv (defaults, min and max variants) parses through options()
 ok 3 - every route argv (defaults, min and max variants) parses through options()
   ---
-  duration_ms: 7.757127
+  duration_ms: 9.006478
   type: 'test'
   ...
 # Subtest: batch wrappers only launch experiences the menu can reach
 ok 4 - batch wrappers only launch experiences the menu can reach
   ---
-  duration_ms: 1.957556
+  duration_ms: 0.566251
   type: 'test'
   ...
 # Subtest: debug-panel flags: never lobby, only cheats rows in the registry
 ok 5 - debug-panel flags: never lobby, only cheats rows in the registry
   ---
-  duration_ms: 0.12246
+  duration_ms: 0.113222
   type: 'test'
   ...
 # Subtest: optional diagnostics and cheats flags stay separate on every route
 ok 6 - optional diagnostics and cheats flags stay separate on every route
   ---
-  duration_ms: 0.634208
+  duration_ms: 0.622667
   type: 'test'
   ...
 # Subtest: generated capability matches a fresh parser probe for every route
 ok 7 - generated capability matches a fresh parser probe for every route
   ---
-  duration_ms: 222.449371
+  duration_ms: 336.619419
   type: 'test'
   ...
 # Subtest: generated capability scope agrees with every declared menu choice
 ok 8 - generated capability scope agrees with every declared menu choice
   ---
-  duration_ms: 0.492543
+  duration_ms: 0.426358
   type: 'test'
   ...
 # Subtest: authority ownership is derived, bounded and identical across dev/package parsers
 ok 9 - authority ownership is derived, bounded and identical across dev/package parsers
   ---
-  duration_ms: 2.96349
+  duration_ms: 2.62698
   type: 'test'
   ...
 # Subtest: external authority reuse can never construct a local authority
 ok 10 - external authority reuse can never construct a local authority
   ---
-  duration_ms: 1.068611
+  duration_ms: 0.459481
   type: 'test'
   ...
 # Subtest: battle mode and identity exceptions stay pinned
 ok 11 - battle mode and identity exceptions stay pinned
   ---
-  duration_ms: 0.251952
+  duration_ms: 0.164348
   type: 'test'
   ...
 # Subtest: category ids stay fixed while player-facing labels are friendlier
 ok 12 - category ids stay fixed while player-facing labels are friendlier
   ---
-  duration_ms: 0.148458
+  duration_ms: 0.092804
   type: 'test'
   ...
 # Subtest: build.py and export_presets.cfg ship ui/*.json through the include filter
 ok 13 - build.py and export_presets.cfg ship ui/*.json through the include filter
   ---
-  duration_ms: 0.816679
+  duration_ms: 0.171481
   type: 'test'
   ...
 1..13
@@ -85,4 +85,4 @@ ok 13 - build.py and export_presets.cfg ship ui/*.json through the include filte
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 568.050691
+# duration_ms 814.00026

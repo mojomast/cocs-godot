@@ -1,3 +1,4 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-SHARED_VEHICLE_SHOTS failures=0
+FAIL shared session vehicle-shot: repeated binding does not add another event handler
+SHARED_VEHICLE_SHOTS failures=1

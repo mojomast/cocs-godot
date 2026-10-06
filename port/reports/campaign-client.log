@@ -1,3 +1,10 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
+ERROR: Parse JSON failed. Error at line 0: Expected key
+   at: parse_string (core/io/json.cpp:604)
+   GDScript backtrace (most recent call first):
+       [0] decode_text (res://net/client.gd:338)
+       [1] decode_text (res://native_arenas/client.gd:35)
+       [2] decode_text (res://campaign/client.gd:55)
+       [3] _initialize (res://tests/campaign/client.gd:83)
 CAMPAIGN_CLIENT_OK

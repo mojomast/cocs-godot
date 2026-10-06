@@ -4,6 +4,7 @@ import {createHash} from 'node:crypto';
 import {resolve} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {resolveReviewedDerivative} from '../godot-package/racing_derivative.mjs';
+import {resolveActiveDerivative} from '../godot-dev/active_source.mjs';
 import {verifyAuthoringResources} from '../godot-package/authoring_resources.mjs';
 import {MAPS} from '../../game/maps.mjs';
 import {terrainTriangles,terrainWallTriangles,terrainWallSegments} from '../../game/terrain.mjs';
@@ -80,7 +81,7 @@ export function verifySource(lock,derivative=null,repositoryRoot=root) {
 export function build(output=resolve(root,'godot/content/generated')) {
   const lock=JSON.parse(readFileSync(resolve(root,'port/contracts/source-lock.json')));
   const selection=JSON.parse(readFileSync(resolve(root,'port/contracts/map-selection.json')));
-  const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+  const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
   validateSelection(lock,selection);verifySource(lock,derivative);
  const stage=output+'.staging';if(existsSync(stage))throw Error('Staging output exists; inspect/remove before retry');
  mkdirSync(stage,{recursive:true});

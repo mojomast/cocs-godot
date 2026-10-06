@@ -204,3 +204,46 @@ test('finite typed inputs and cancellation validate at the wire boundary',()=>{
   assert.throws(()=>validateCampaignInput({...base,path:'/tmp/geometry'}));
   assert.doesNotThrow(()=>validateCampaignInput({...base,cancel:true,input:{}}));
 });
+test('death retry preserves the checkpoint inventory snapshot (weapon, ammo, armor)',()=>{
+  const match=make(),player=match.actors[0];
+  player.weapon=3;player.ammo=[...player.ammo];player.ammo[3]=17;player.ammo[0]=Infinity;player.armor=95;
+  const checkpoint=match.campaignCheckpoint();
+  assert.deepEqual(checkpoint.playerCarry,{version:1,weapon:3,ammo:player.ammo,armor:95});
+  // Detach the snapshot from the live actor: retry must carry the recorded
+  // values, not observe a still-mutating source match.
+  player.armor=12;player.ammo[3]=0;player.weapon=0;
+  const retry=make('rootfall-verge',checkpoint);
+  assert.equal(retry.actors[0].weapon,3);
+  assert.equal(retry.actors[0].ammo[3],17);
+  assert.equal(retry.actors[0].ammo[0],Infinity);
+  assert.equal(retry.actors[0].armor,95);
+});
+test('invalid or unbounded checkpoint carry fails closed to default gear',()=>{
+  const match=make('rootfall-verge'),count=match.actors[0].ammo.length;
+  const fresh=make('rootfall-verge');
+  const valid={version:1,weapon:0,ammo:new Array(count).fill(0),armor:50};
+  for(const bad of [
+    {...valid,version:2},
+    {...valid,weapon:count},
+    {...valid,weapon:1.5},
+    {...valid,ammo:new Array(count).fill(0).map((value,index)=>index===1?NaN:value)},
+    {...valid,ammo:[0]},
+    {...valid,ammo:new Array(count).fill(-1)},
+    {...valid,armor:Infinity},
+    null,'carry',42,
+  ]) {
+    const retry=make('rootfall-verge',{...match.campaignCheckpoint(),playerCarry:bad});
+    assert.deepEqual(retry.actors[0].ammo,fresh.actors[0].ammo,`default ammo for ${JSON.stringify(bad)}`);
+    assert.equal(retry.actors[0].weapon,fresh.actors[0].weapon,`default weapon for ${JSON.stringify(bad)}`);
+    assert.equal(retry.actors[0].armor,fresh.actors[0].armor,`default armor for ${JSON.stringify(bad)}`);
+  }
+  // Finite but oversized values clamp to the weapon cap and armor ceiling;
+  // there is no unbounded or duplicate carry path.
+  const capped=make('rootfall-verge',{...match.campaignCheckpoint(),
+    playerCarry:{version:1,weapon:3,ammo:new Array(count).fill(999999),armor:500}});
+  const cap=capped.weaponForIndex(capped.actors[0],3).cap;
+  assert.equal(capped.actors[0].ammo[3],Number.isFinite(cap)?cap:999999);
+  assert.equal(capped.actors[0].armor,100);
+  const freshCap=fresh.weaponForIndex(fresh.actors[0],0).cap;
+  assert.equal(freshCap,Infinity,'starter rifle keeps its infinite-ammo identity');
+});

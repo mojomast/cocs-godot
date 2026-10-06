@@ -2,55 +2,55 @@ TAP version 13
 # Subtest: all authored marker families have source-compatible geometry and clear ground
 ok 1 - all authored marker families have source-compatible geometry and clear ground
   ---
-  duration_ms: 2.527834
+  duration_ms: 2.646847
   type: 'test'
   ...
 # Subtest: each infantry route is continuously walkable under the source movement rules
 ok 2 - each infantry route is continuously walkable under the source movement rules
   ---
-  duration_ms: 12.310735
+  duration_ms: 15.974788
   type: 'test'
   ...
 # Subtest: race checkpoints form a valid loop and grid/boxes stay on the driving ribbon
 ok 3 - race checkpoints form a valid loop and grid/boxes stay on the driving ribbon
   ---
-  duration_ms: 0.485889
+  duration_ms: 0.513402
   type: 'test'
   ...
 # Subtest: freight and archipelago vehicle corridors have a continuous Puma footprint
 ok 4 - freight and archipelago vehicle corridors have a continuous Puma footprint
   ---
-  duration_ms: 0.365355
+  duration_ms: 0.342031
   type: 'test'
   ...
 # Subtest: soccer is symmetric, with clear net pockets, ball and kickoff positions
 ok 5 - soccer is symmetric, with clear net pockets, ball and kickoff positions
   ---
-  duration_ms: 0.161843
+  duration_ms: 0.168435
   type: 'test'
   ...
 # Subtest: archipelago preserves source Lattice topology and reachable mandatory sockets
 ok 6 - archipelago preserves source Lattice topology and reachable mandatory sockets
   ---
-  duration_ms: 0.575147
+  duration_ms: 0.613669
   type: 'test'
   ...
 # Subtest: source bot navigation connects both teams to every mandatory capture and flag socket
 ok 7 - source bot navigation connects both teams to every mandatory capture and flag socket
   ---
-  duration_ms: 148.088158
+  duration_ms: 142.161223
   type: 'test'
   ...
 # Subtest: source Puma physics can negotiate all 14 Sirocco sectors without wall contact
 ok 8 - source Puma physics can negotiate all 14 Sirocco sectors without wall contact
   ---
-  duration_ms: 16.514117
+  duration_ms: 16.28525
   type: 'test'
   ...
 # Subtest: source Puma physics negotiates the dock freight bends and archipelago causeway
 ok 9 - source Puma physics negotiates the dock freight bends and archipelago causeway
   ---
-  duration_ms: 8.766929
+  duration_ms: 16.460307
   type: 'test'
   ...
 1..9
@@ -61,4 +61,4 @@ ok 9 - source Puma physics negotiates the dock freight bends and archipelago cau
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1446.245929
+# duration_ms 1419.72133

@@ -2,25 +2,25 @@ TAP version 13
 # Subtest: package: campaign chapter/difficulty parity independent of locked catalog
 ok 1 - package: campaign chapter/difficulty parity independent of locked catalog
   ---
-  duration_ms: 2.820162
+  duration_ms: 2.538484
   type: 'test'
   ...
 # Subtest: package: campaign rejects multiplayer, overrides and malformed arguments
 ok 2 - package: campaign rejects multiplayer, overrides and malformed arguments
   ---
-  duration_ms: 1.19075
+  duration_ms: 0.713386
   type: 'test'
   ...
 # Subtest: development: campaign chapter/difficulty parity independent of locked catalog
 ok 3 - development: campaign chapter/difficulty parity independent of locked catalog
   ---
-  duration_ms: 1.351751
+  duration_ms: 0.96138
   type: 'test'
   ...
 # Subtest: development: campaign rejects multiplayer, overrides and malformed arguments
 ok 4 - development: campaign rejects multiplayer, overrides and malformed arguments
   ---
-  duration_ms: 0.804236
+  duration_ms: 0.247744
   type: 'test'
   ...
 1..4
@@ -31,4 +31,4 @@ ok 4 - development: campaign rejects multiplayer, overrides and malformed argume
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 41.190552
+# duration_ms 46.023644

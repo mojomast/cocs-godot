@@ -126,16 +126,16 @@
 	"max_ramp_degrees": 27.6007699367574,
 	"rail_probes": [
 		{
-			"across_m": 2.15529131889343,
-			"feet": "(-4.608889, 9.503828, 8.651854)",
+			"across_m": 2.15501093864441,
+			"feet": "(-4.608745, 9.503828, 8.652094)",
 			"limit_m": 2.4,
 			"on_floor": true,
 			"outward_sprint_frames": 70,
 			"side": -1.0
 		},
 		{
-			"across_m": 2.15330219268799,
-			"feet": "(-2.392135, 9.503828, 12.34644)",
+			"across_m": 2.15344715118408,
+			"feet": "(-2.394012, 9.503542, 12.34774)",
 			"limit_m": 2.4,
 			"on_floor": true,
 			"outward_sprint_frames": 70,

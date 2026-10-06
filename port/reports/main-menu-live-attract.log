@@ -3,18 +3,23 @@ WARNING: Could not set V-Sync mode, as changing V-Sync mode is not supported by 
      at: set_use_vsync (platform/linuxbsd/x11/gl_manager_x11.cpp:364)
 OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.25.10.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.8, 256 bits)
 
-MENU_READY {"categories":5,"debug":false,"routes":25,"version":1}
-PASS verified four-clip replay loaded; menu starts immediately
+MENU_READY {"categories":5,"debug":false,"developer":false,"routes":26,"version":1,"visible":16}
+ERROR: verified four-clip replay loaded; menu starts immediately
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] require (res://tests/main_menu/live_attract.gd:13)
+       [1] run (res://tests/main_menu/live_attract.gd:51)
+FAIL verified four-clip replay loaded; menu starts immediately
 PASS 3D viewport stays behind foreground actions
 PASS chapter 0 loads bounded real campaign triangles
 PASS chapter 0 has one private daylight environment and no root camera
 PASS chapter 0 instantiates production story cast
-PASS saved 3D stage 00-forest-a
-PASS visible image 00-forest-a
-PASS saved screenshot 00-forest-a
-PASS saved 3D stage 00-forest-b
-PASS visible image 00-forest-b
-PASS saved screenshot 00-forest-b
+PASS saved 3D stage 00-root-reveal-a
+PASS visible image 00-root-reveal-a
+PASS saved screenshot 00-root-reveal-a
+PASS saved 3D stage 00-root-reveal-b
+PASS visible image 00-root-reveal-b
+PASS saved screenshot 00-root-reveal-b
 PASS chapter 0 has live in-engine camera/model animation
 PASS chapter 1 loads bounded real campaign triangles
 PASS chapter 1 has one private daylight environment and no root camera
@@ -40,17 +45,40 @@ PASS recorded Patch pet reaction serial reaches production story director
 PASS chapter 3 loads bounded real campaign triangles
 PASS chapter 3 has one private daylight environment and no root camera
 PASS chapter 3 instantiates production story cast
-PASS saved 3D stage 03-fire-a
-PASS visible image 03-fire-a
-PASS saved screenshot 03-fire-a
-PASS saved 3D stage 03-fire-b
-PASS visible image 03-fire-b
-PASS saved screenshot 03-fire-b
+PASS saved 3D stage 03-silt-reveal-a
+PASS visible image 03-silt-reveal-a
+PASS saved screenshot 03-silt-reveal-a
+PASS saved 3D stage 03-silt-reveal-b
+PASS visible image 03-silt-reveal-b
+PASS saved screenshot 03-silt-reveal-b
 PASS chapter 3 has live in-engine camera/model animation
-PASS combat replay creates production actor and robot visuals plus bounded event effect
-PASS production replay contains a recorded projectile origin
-PASS combat flash follows exact authority shot origin rather than a guessed player muzzle
-PASS loop frees old chapter and retains one world
+ERROR: combat replay creates production actor and robot visuals plus bounded event effect
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] require (res://tests/main_menu/live_attract.gd:13)
+       [1] run (res://tests/main_menu/live_attract.gd:80)
+       [2] capture (res://tests/main_menu/live_attract.gd:27)
+FAIL combat replay creates production actor and robot visuals plus bounded event effect
+ERROR: production replay contains a recorded projectile origin
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] require (res://tests/main_menu/live_attract.gd:13)
+       [1] run (res://tests/main_menu/live_attract.gd:91)
+       [2] capture (res://tests/main_menu/live_attract.gd:27)
+FAIL production replay contains a recorded projectile origin
+ERROR: chapter 0 loaded within bounded frames
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] require (res://tests/main_menu/live_attract.gd:13)
+       [1] wait_chapter (res://tests/main_menu/live_attract.gd:33)
+FAIL chapter 0 loaded within bounded frames
+ERROR: loop frees old chapter and retains one world
+   at: push_error (core/variant/variant_utility.cpp:1024)
+   GDScript backtrace (most recent call first):
+       [0] require (res://tests/main_menu/live_attract.gd:13)
+       [1] run (res://tests/main_menu/live_attract.gd:100)
+       [2] wait_chapter (res://tests/main_menu/live_attract.gd:33)
+FAIL loop frees old chapter and retains one world
 PASS route click and keyboard focus work over the moving replay
 PASS Settings overlay pauses viewport and every descendant animator
 PASS Settings close resumes same private world
@@ -60,4 +88,4 @@ PASS animation switch resumes without a second world
 PASS focus loss pauses replay
 PASS focus regain resumes replay
 PASS menu exit disables viewport rendering
-LIVE_ATTRACT checks=56 failures=0
+LIVE_ATTRACT checks=56 failures=5

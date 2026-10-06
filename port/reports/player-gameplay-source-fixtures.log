@@ -1,0 +1,814 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Player gameplay fixtures differ from source
++ actual - expected
+... Skipped lines
+
+  '{\n' +
+    '  "label": "CONTROLLED SOURCE FIXTURES, NOT LIVE INPUT PROOF",\n' +
+    '  "states": [\n' +
+    '    {\n' +
+    '      "operator": "chatgpt",\n' +
+...
+    '            "bot": null,\n' +
+-   '            "slideIntent": 0,\n' +
+-   '            "slideCrouchHeld": false,\n' +
+-   '            "slideTap": false,\n' +
+    '            "botScan": 34.72463343931399,\n' +
+    '            "gear": null,\n' +
+    '            "attachments": null,\n' +
+    '            "finish": null,\n' +
+    '            "maxHealth": 100,\n' +
+...
+    '              "flagDrops": 0,\n' +
++   '              "objectiveTime": 0,\n' +
++   '              "objectiveCaptures": 0,\n' +
++   '              "objectiveNeutralizations": 0'... 65282 more characters
+-   '              "o'... 66173 more characters
+
+    at file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/next-port/gameplay/fixtures.mjs:25:44
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '{\n' +
+    '  "label": "CONTROLLED SOURCE FIXTURES, NOT LIVE INPUT PROOF",\n' +
+    '  "states": [\n' +
+    '    {\n' +
+    '      "operator": "chatgpt",\n' +
+    '      "state": {\n' +
+    '        "config": {\n' +
+    '          "mode": "deathmatch",\n' +
+    '          "botCount": 0,\n' +
+    '          "difficulty": "easy",\n' +
+    '          "fragLimit": 15,\n' +
+    '          "timeLimit": 300,\n' +
+    '          "respawn": 2,\n' +
+    '          "speed": 1,\n' +
+    '          "gravity": 1,\n' +
+    '          "damage": 1,\n' +
+    '          "fastPowers": false,\n' +
+    '          "lifeSteal": false,\n' +
+    '          "unlimitedAmmo": false,\n' +
+    '          "suddenDeath": false,\n' +
+    '          "randomLoadout": false,\n' +
+    '          "oneShot": false,\n' +
+    '          "instagib": false,\n' +
+    '          "mirrorLoadout": false,\n' +
+    '          "bounty": false,\n' +
+    '          "berserk": false,\n' +
+    '          "bigHead": false,\n' +
+    '          "noRecoil": false,\n' +
+    '          "endless": false,\n' +
+    '          "startingWeapon": 0,\n' +
+    '          "playerName": "",\n' +
+    '          "mission": "convoy-run",\n' +
+    '          "loadout": null,\n' +
+    '          "checkpoint": null,\n' +
+    '          "mutators": []\n' +
+    '        },\n' +
+    '        "modeName": "Deathmatch",\n' +
+    '        "mapId": "exchange",\n' +
+    '        "mapName": "The Exchange",\n' +
+    '        "time": 0.03333333333333333,\n' +
+    '        "over": false,\n' +
+    '        "overReason": null,\n' +
+    '        "suddenDeath": false,\n' +
+    '        "feed": [],\n' +
+    '        "actors": [\n' +
+    '          {\n' +
+    '            "id": 0,\n' +
+    '            "character": "chatgpt",\n' +
+    '            "harness": "codex",\n' +
+    '            "name": "ChatGPT",\n' +
+    '            "frags": 0,\n' +
+    '            "deaths": 0,\n' +
+    '            "streak": 0,\n' +
+    '            "ladder": 0,\n' +
+    '            "scoreStats": {\n' +
+    '              "captures": 0,\n' +
+    '              "flagPickups": 0,\n' +
+    '              "flagReturns": 0,\n' +
+    '              "flagDrops": 0,\n' +
+    '              "objectiveTime": 0,\n' +
+    '              "objectiveCaptures": 0,\n' +
+    '              "objectiveNeutralizations": 0,\n' +
+    '              "objectiveContests": 0,\n' +
+    '              "shots": 0,\n' +
+    '              "hits": 0,\n' +
+    '              "damage": 0\n' +
+    '            },\n' +
+    '            "x": -11,\n' +
+    '            "y": 0,\n' +
+    '            "z": 10,\n' +
+    '            "lastValid": {\n' +
+    '              "x": -11,\n' +
+    '              "y": 0,\n' +
+    '              "z": 10\n' +
+    '            },\n' +
+    '            "vx": 0,\n' +
+    '            "vy": 0,\n' +
+    '            "vz": 0,\n' +
+    '            "yaw": -0.8329812666744317,\n' +
+    '            "pitch": 0,\n' +
+    '            "bodyYaw": -0.8329812666744318,\n' +
+    '            "grounded": true,\n' +
+    '            "coyote": 0.1,\n' +
+    '            "jumpBuffer": 0,\n' +
+    '            "health": 85,\n' +
+    '            "armor": 5,\n' +
+    '            "spawnArmor": 5,\n' +
+    '            "dead": 0,\n' +
+    '            "vehicleId": null,\n' +
+    '            "vehicleSeat": null,\n' +
+    '            "vehicleSeatIndex": 0,\n' +
+    '            "weapon": 0,\n' +
+    '            "ammo": [\n' +
+    '              "∞",\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0\n' +
+    '            ],\n' +
+    '            "cooldown": 15.983333333333333,\n' +
+    '            "active": 1.9833333333333334,\n' +
+    '            "slow": 0,\n' +
+    '            "slowMultiplier": 0.55,\n' +
+    '            "shotWait": 0.21666666666666667,\n' +
+    '            "grenadeCooldown": 0,\n' +
+    '            "protection": 0,\n' +
+    '            "shots": 0,\n' +
+    '            "traversalCooldown": 0,\n' +
+    '            "traversalPad": null,\n' +
+    '            "traversalTarget": null,\n' +
+    '            "zipRide": null,\n' +
+    '            "carryingFlag": false,\n' +
+    '            "carrySpeedMultiplier": 1,\n' +
+    '            "spread": 0,\n' +
+    '            "punchYaw": 0,\n' +
+    '            "punchPitch": 0,\n' +
+    '            "punchVelYaw": 0,\n' +
+    '            "punchVelPitch": 0,\n' +
+    '            "reloading": false,\n' +
+    '            "reloadTimer": 0,\n' +
+    '            "reloadDuration": 0,\n' +
+    '            "reloadWeapon": -1,\n' +
+    '            "melee": 0,\n' +
+    '            "weaponSwitch": 0,\n' +
+    '            "burst": 0,\n' +
+    '            "burstTimer": 0,\n' +
+    '            "sprinting": false,\n' +
+    '            "crouching": false,\n' +
+    '            "sliding": false,\n' +
+    '            "slideTimer": 0,\n' +
+    '            "slideCooldown": 0,\n' +
+    '            "eyeHeight": 1.45,\n' +
+    '            "baseHeight": 1.8,\n' +
+    '            "ads": false,\n' +
+    '            "jumpHeld": false,\n' +
+    '            "jumpCutArmed": false,\n' +
+    '            "powerups": {},\n' +
+    '            "speedMultiplier": 1,\n' +
+    '            "damageMultiplier": 1,\n' +
+    '            "cooldownMultiplier": 1,\n' +
+    '            "temporaryShield": 0,\n' +
+    '            "activeSpeedMultiplier": 45,\n' +
+    '            "hitScale": 1,\n' +
+    '            "juggernaut": false,\n' +
+    '            "juggernautShield": 0,\n' +
+    '            "juggernautDamage": 1,\n' +
+    '            "upgradeWeapon": null,\n' +
+    '            "upgradeTimer": 0,\n' +
+    '            "upgradeBase": -1,\n' +
+    '            "movement": {\n' +
+    '              "v": 1,\n' +
+    '              "verb": "grapple",\n' +
+    '              "phase": "ready",\n' +
+    '              "enabled": true,\n' +
+    '              "charges": 0,\n' +
+    '              "maxCharges": 0,\n' +
+    '              "cooldown": 0,\n' +
+    '              "fuel": 0,\n' +
+    '              "maxFuel": 0,\n' +
+    '              "fuelRecharge": 0,\n' +
+    '              "windup": 0,\n' +
+    '              "recovery": 0,\n' +
+    '              "activeTime": 0,\n' +
+    '              "landingArmed": false,\n' +
+    '              "chains": 0,\n' +
+    '              "miss": 0,\n' +
+    '              "anchor": null,\n' +
+    '              "grapple": null,\n' +
+    '              "grappleLanding": null\n' +
+    '            },\n' +
+    '            "verbState": {\n' +
+    '              "verb": "adaptive",\n' +
+    '              "active": true,\n' +
+    '              "open": false,\n' +
+    '              "windowIn": 0,\n' +
+    '              "shotsLeft": 0\n' +
+    '            },\n' +
+    '            "threatPing": 0,\n' +
+    '            "riderSpeedBonus": 0,\n' +
+    '            "riderSpeedTimer": 0,\n' +
+    '            "holsterSkip": 0,\n' +
+    '            "braceTimer": 0,\n' +
+    '            "braceMitigation": 0,\n' +
+    '            "braceKnockbackScale": 1,\n' +
+    '            "alt": false,\n' +
+    '            "firingThisTick": false,\n' +
+    '            "movementLanded": false,\n' +
+    '            "glideSteer": 0,\n' +
+    '            "inputJump": false,\n' +
+    '            "inputCrouch": false,\n' +
+    '            "inputMobility": false,\n' +
+    '            "bot": null,\n' +
+    '            "botScan": 34.72463343931399,\n' +
+    '            "gear": null,\n' +
+    '            "attachments": null,\n' +
+    '            "finish": null,\n' +
+    '            "maxHealth": 100,\n' +
+    '            "moveSpeed": 8.6,\n' +
+    '            "gearSpeed": 1,\n' +
+    '            "gearDamage": 1,\n' +
+    '            "gearSpread": 1,\n' +
+    '            "burstLeft": 0,\n' +
+    '            "traversalFlight": false,\n' +
+    '            "traversalEvent": null,\n' +
+    '            "meleeHeld": false\n' +
+    '          }\n' +
+    '        ],\n' +
+    '        "vehicles": [],\n' +
+    '        "pickups": [\n' +
+    '          {\n' +
+    '            "id": 0,\n' +
+    '            "kind": "health",\n' +
+    '            "x": -11,\n' +
+    '            "z": 7,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 1,\n' +
+    '            "kind": "health",\n' +
+    '            "x": 11,\n' +
+    '            "z": 7,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 2,\n' +
+    '            "kind": "armor",\n' +
+    '            "x": 0,\n' +
+    '            "z": 7,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 3,\n' +
+    '            "kind": "rocket",\n' +
+    '            "x": -4,\n' +
+    '            "z": 0,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 4,\n' +
+    '            "kind": "plasma",\n' +
+    '            "x": 4,\n' +
+    '            "z": 0,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 5,\n' +
+    '            "kind": "rail",\n' +
+    '            "x": 0,\n' +
+    '            "z": -12,\n' +
+    '            "y": 3.8,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 6,\n' +
+    '            "kind": "health",\n' +
+    '            "x": -6,\n' +
+    '            "z": -12,\n' +
+    '            "y": 3.8,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 7,\n' +
+    '            "kind": "armor",\n' +
+    '            "x": 6,\n' +
+    '            "z": -12,\n' +
+    '            "y": 3.8,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 8,\n' +
+    '            "kind": "scatter",\n' +
+    '            "x": 0,\n' +
+    '            "z": 11,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 9,\n' +
+    '            "kind": "megahealth",\n' +
+    '            "x": 0,\n' +
+    '            "z": -7.5,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 10,\n' +
+    '            "kind": "ammo",\n' +
+    '            "x": -11,\n' +
+    '            "z": -7,\n' +
+    '            "y": 3.1666666666666665,\n' +
+    '            "wait": 0\n' +
+    '          }\n' +
+    '        ],\n' +
+    '        "deployables": [],\n' +
+    '        "flags": [],\n' +
+    '        "teamScores": {\n' +
+    '          "0": 0,\n' +
+    '          "1": 0\n' +
+    '        },\n' +
+    '        "winner": null,\n' +
+    '        "objectives": null,\n' +
+    '        "projectiles": 0,\n' +
+    '        "rockets": [],\n' +
+    '        "stats": {\n' +
+    '          "shots": 0,\n' +
+    '          "kills": 0,\n' +
+    '          "pickups": 0,\n' +
+    '          "powers": 1,\n' +
+    '          "respawns": 1,\n' +
+    '          "falls": 0\n' +
+    '        },\n' +
+    '        "leaders": [\n' +
+    '          "ChatGPT"\n' +
+    '        ],\n' +
+    '        "singleplayer": null\n' +
+    '      }\n' +
+    '    },\n' +
+    '    {\n' +
+    '      "operator": "claude",\n' +
+    '      "state": {\n' +
+    '        "config": {\n' +
+    '          "mode": "deathmatch",\n' +
+    '          "botCount": 0,\n' +
+    '          "difficulty": "easy",\n' +
+    '          "fragLimit": 15,\n' +
+    '          "timeLimit": 300,\n' +
+    '          "respawn": 2,\n' +
+    '          "speed": 1,\n' +
+    '          "gravity": 1,\n' +
+    '          "damage": 1,\n' +
+    '          "fastPowers": false,\n' +
+    '          "lifeSteal": false,\n' +
+    '          "unlimitedAmmo": false,\n' +
+    '          "suddenDeath": false,\n' +
+    '          "randomLoadout": false,\n' +
+    '          "oneShot": false,\n' +
+    '          "instagib": false,\n' +
+    '          "mirrorLoadout": false,\n' +
+    '          "bounty": false,\n' +
+    '          "berserk": false,\n' +
+    '          "bigHead": false,\n' +
+    '          "noRecoil": false,\n' +
+    '          "endless": false,\n' +
+    '          "startingWeapon": 0,\n' +
+    '          "playerName": "",\n' +
+    '          "mission": "convoy-run",\n' +
+    '          "loadout": null,\n' +
+    '          "checkpoint": null,\n' +
+    '          "mutators": []\n' +
+    '        },\n' +
+    '        "modeName": "Deathmatch",\n' +
+    '        "mapId": "exchange",\n' +
+    '        "mapName": "The Exchange",\n' +
+    '        "time": 0.03333333333333333,\n' +
+    '        "over": false,\n' +
+    '        "overReason": null,\n' +
+    '        "suddenDeath": false,\n' +
+    '        "feed": [],\n' +
+    '        "actors": [\n' +
+    '          {\n' +
+    '            "id": 0,\n' +
+    '            "character": "claude",\n' +
+    '            "harness": "claudecode",\n' +
+    '            "name": "Claude",\n' +
+    '            "frags": 0,\n' +
+    '            "deaths": 0,\n' +
+    '            "streak": 0,\n' +
+    '            "ladder": 0,\n' +
+    '            "scoreStats": {\n' +
+    '              "captures": 0,\n' +
+    '              "flagPickups": 0,\n' +
+    '              "flagReturns": 0,\n' +
+    '              "flagDrops": 0,\n' +
+    '              "objectiveTime": 0,\n' +
+    '              "objectiveCaptures": 0,\n' +
+    '              "objectiveNeutralizations": 0'... 65282 more characters,
+  expected: '{\n' +
+    '  "label": "CONTROLLED SOURCE FIXTURES, NOT LIVE INPUT PROOF",\n' +
+    '  "states": [\n' +
+    '    {\n' +
+    '      "operator": "chatgpt",\n' +
+    '      "state": {\n' +
+    '        "config": {\n' +
+    '          "mode": "deathmatch",\n' +
+    '          "botCount": 0,\n' +
+    '          "difficulty": "easy",\n' +
+    '          "fragLimit": 15,\n' +
+    '          "timeLimit": 300,\n' +
+    '          "respawn": 2,\n' +
+    '          "speed": 1,\n' +
+    '          "gravity": 1,\n' +
+    '          "damage": 1,\n' +
+    '          "fastPowers": false,\n' +
+    '          "lifeSteal": false,\n' +
+    '          "unlimitedAmmo": false,\n' +
+    '          "suddenDeath": false,\n' +
+    '          "randomLoadout": false,\n' +
+    '          "oneShot": false,\n' +
+    '          "instagib": false,\n' +
+    '          "mirrorLoadout": false,\n' +
+    '          "bounty": false,\n' +
+    '          "berserk": false,\n' +
+    '          "bigHead": false,\n' +
+    '          "noRecoil": false,\n' +
+    '          "endless": false,\n' +
+    '          "startingWeapon": 0,\n' +
+    '          "playerName": "",\n' +
+    '          "mission": "convoy-run",\n' +
+    '          "loadout": null,\n' +
+    '          "checkpoint": null,\n' +
+    '          "mutators": []\n' +
+    '        },\n' +
+    '        "modeName": "Deathmatch",\n' +
+    '        "mapId": "exchange",\n' +
+    '        "mapName": "The Exchange",\n' +
+    '        "time": 0.03333333333333333,\n' +
+    '        "over": false,\n' +
+    '        "overReason": null,\n' +
+    '        "suddenDeath": false,\n' +
+    '        "feed": [],\n' +
+    '        "actors": [\n' +
+    '          {\n' +
+    '            "id": 0,\n' +
+    '            "character": "chatgpt",\n' +
+    '            "harness": "codex",\n' +
+    '            "name": "ChatGPT",\n' +
+    '            "frags": 0,\n' +
+    '            "deaths": 0,\n' +
+    '            "streak": 0,\n' +
+    '            "ladder": 0,\n' +
+    '            "scoreStats": {\n' +
+    '              "captures": 0,\n' +
+    '              "flagPickups": 0,\n' +
+    '              "flagReturns": 0,\n' +
+    '              "flagDrops": 0,\n' +
+    '              "objectiveTime": 0,\n' +
+    '              "objectiveCaptures": 0,\n' +
+    '              "objectiveNeutralizations": 0,\n' +
+    '              "objectiveContests": 0,\n' +
+    '              "shots": 0,\n' +
+    '              "hits": 0,\n' +
+    '              "damage": 0\n' +
+    '            },\n' +
+    '            "x": -11,\n' +
+    '            "y": 0,\n' +
+    '            "z": 10,\n' +
+    '            "lastValid": {\n' +
+    '              "x": -11,\n' +
+    '              "y": 0,\n' +
+    '              "z": 10\n' +
+    '            },\n' +
+    '            "vx": 0,\n' +
+    '            "vy": 0,\n' +
+    '            "vz": 0,\n' +
+    '            "yaw": -0.8329812666744317,\n' +
+    '            "pitch": 0,\n' +
+    '            "bodyYaw": -0.8329812666744318,\n' +
+    '            "grounded": true,\n' +
+    '            "coyote": 0.1,\n' +
+    '            "jumpBuffer": 0,\n' +
+    '            "health": 85,\n' +
+    '            "armor": 5,\n' +
+    '            "spawnArmor": 5,\n' +
+    '            "dead": 0,\n' +
+    '            "vehicleId": null,\n' +
+    '            "vehicleSeat": null,\n' +
+    '            "vehicleSeatIndex": 0,\n' +
+    '            "weapon": 0,\n' +
+    '            "ammo": [\n' +
+    '              "∞",\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0,\n' +
+    '              0\n' +
+    '            ],\n' +
+    '            "cooldown": 15.983333333333333,\n' +
+    '            "active": 1.9833333333333334,\n' +
+    '            "slow": 0,\n' +
+    '            "slowMultiplier": 0.55,\n' +
+    '            "shotWait": 0.21666666666666667,\n' +
+    '            "grenadeCooldown": 0,\n' +
+    '            "protection": 0,\n' +
+    '            "shots": 0,\n' +
+    '            "traversalCooldown": 0,\n' +
+    '            "traversalPad": null,\n' +
+    '            "traversalTarget": null,\n' +
+    '            "zipRide": null,\n' +
+    '            "carryingFlag": false,\n' +
+    '            "carrySpeedMultiplier": 1,\n' +
+    '            "spread": 0,\n' +
+    '            "punchYaw": 0,\n' +
+    '            "punchPitch": 0,\n' +
+    '            "punchVelYaw": 0,\n' +
+    '            "punchVelPitch": 0,\n' +
+    '            "reloading": false,\n' +
+    '            "reloadTimer": 0,\n' +
+    '            "reloadDuration": 0,\n' +
+    '            "reloadWeapon": -1,\n' +
+    '            "melee": 0,\n' +
+    '            "weaponSwitch": 0,\n' +
+    '            "burst": 0,\n' +
+    '            "burstTimer": 0,\n' +
+    '            "sprinting": false,\n' +
+    '            "crouching": false,\n' +
+    '            "sliding": false,\n' +
+    '            "slideTimer": 0,\n' +
+    '            "slideCooldown": 0,\n' +
+    '            "eyeHeight": 1.45,\n' +
+    '            "baseHeight": 1.8,\n' +
+    '            "ads": false,\n' +
+    '            "jumpHeld": false,\n' +
+    '            "jumpCutArmed": false,\n' +
+    '            "powerups": {},\n' +
+    '            "speedMultiplier": 1,\n' +
+    '            "damageMultiplier": 1,\n' +
+    '            "cooldownMultiplier": 1,\n' +
+    '            "temporaryShield": 0,\n' +
+    '            "activeSpeedMultiplier": 45,\n' +
+    '            "hitScale": 1,\n' +
+    '            "juggernaut": false,\n' +
+    '            "juggernautShield": 0,\n' +
+    '            "juggernautDamage": 1,\n' +
+    '            "upgradeWeapon": null,\n' +
+    '            "upgradeTimer": 0,\n' +
+    '            "upgradeBase": -1,\n' +
+    '            "movement": {\n' +
+    '              "v": 1,\n' +
+    '              "verb": "grapple",\n' +
+    '              "phase": "ready",\n' +
+    '              "enabled": true,\n' +
+    '              "charges": 0,\n' +
+    '              "maxCharges": 0,\n' +
+    '              "cooldown": 0,\n' +
+    '              "fuel": 0,\n' +
+    '              "maxFuel": 0,\n' +
+    '              "fuelRecharge": 0,\n' +
+    '              "windup": 0,\n' +
+    '              "recovery": 0,\n' +
+    '              "activeTime": 0,\n' +
+    '              "landingArmed": false,\n' +
+    '              "chains": 0,\n' +
+    '              "miss": 0,\n' +
+    '              "anchor": null,\n' +
+    '              "grapple": null,\n' +
+    '              "grappleLanding": null\n' +
+    '            },\n' +
+    '            "verbState": {\n' +
+    '              "verb": "adaptive",\n' +
+    '              "active": true,\n' +
+    '              "open": false,\n' +
+    '              "windowIn": 0,\n' +
+    '              "shotsLeft": 0\n' +
+    '            },\n' +
+    '            "threatPing": 0,\n' +
+    '            "riderSpeedBonus": 0,\n' +
+    '            "riderSpeedTimer": 0,\n' +
+    '            "holsterSkip": 0,\n' +
+    '            "braceTimer": 0,\n' +
+    '            "braceMitigation": 0,\n' +
+    '            "braceKnockbackScale": 1,\n' +
+    '            "alt": false,\n' +
+    '            "firingThisTick": false,\n' +
+    '            "movementLanded": false,\n' +
+    '            "glideSteer": 0,\n' +
+    '            "inputJump": false,\n' +
+    '            "inputCrouch": false,\n' +
+    '            "inputMobility": false,\n' +
+    '            "bot": null,\n' +
+    '            "slideIntent": 0,\n' +
+    '            "slideCrouchHeld": false,\n' +
+    '            "slideTap": false,\n' +
+    '            "botScan": 34.72463343931399,\n' +
+    '            "gear": null,\n' +
+    '            "attachments": null,\n' +
+    '            "finish": null,\n' +
+    '            "maxHealth": 100,\n' +
+    '            "moveSpeed": 8.6,\n' +
+    '            "gearSpeed": 1,\n' +
+    '            "gearDamage": 1,\n' +
+    '            "gearSpread": 1,\n' +
+    '            "burstLeft": 0,\n' +
+    '            "traversalFlight": false,\n' +
+    '            "traversalEvent": null,\n' +
+    '            "meleeHeld": false\n' +
+    '          }\n' +
+    '        ],\n' +
+    '        "vehicles": [],\n' +
+    '        "pickups": [\n' +
+    '          {\n' +
+    '            "id": 0,\n' +
+    '            "kind": "health",\n' +
+    '            "x": -11,\n' +
+    '            "z": 7,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 1,\n' +
+    '            "kind": "health",\n' +
+    '            "x": 11,\n' +
+    '            "z": 7,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 2,\n' +
+    '            "kind": "armor",\n' +
+    '            "x": 0,\n' +
+    '            "z": 7,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 3,\n' +
+    '            "kind": "rocket",\n' +
+    '            "x": -4,\n' +
+    '            "z": 0,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 4,\n' +
+    '            "kind": "plasma",\n' +
+    '            "x": 4,\n' +
+    '            "z": 0,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 5,\n' +
+    '            "kind": "rail",\n' +
+    '            "x": 0,\n' +
+    '            "z": -12,\n' +
+    '            "y": 3.8,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 6,\n' +
+    '            "kind": "health",\n' +
+    '            "x": -6,\n' +
+    '            "z": -12,\n' +
+    '            "y": 3.8,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 7,\n' +
+    '            "kind": "armor",\n' +
+    '            "x": 6,\n' +
+    '            "z": -12,\n' +
+    '            "y": 3.8,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 8,\n' +
+    '            "kind": "scatter",\n' +
+    '            "x": 0,\n' +
+    '            "z": 11,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 9,\n' +
+    '            "kind": "megahealth",\n' +
+    '            "x": 0,\n' +
+    '            "z": -7.5,\n' +
+    '            "y": 0,\n' +
+    '            "wait": 0\n' +
+    '          },\n' +
+    '          {\n' +
+    '            "id": 10,\n' +
+    '            "kind": "ammo",\n' +
+    '            "x": -11,\n' +
+    '            "z": -7,\n' +
+    '            "y": 3.1666666666666665,\n' +
+    '            "wait": 0\n' +
+    '          }\n' +
+    '        ],\n' +
+    '        "deployables": [],\n' +
+    '        "flags": [],\n' +
+    '        "teamScores": {\n' +
+    '          "0": 0,\n' +
+    '          "1": 0\n' +
+    '        },\n' +
+    '        "winner": null,\n' +
+    '        "objectives": null,\n' +
+    '        "projectiles": 0,\n' +
+    '        "rockets": [],\n' +
+    '        "stats": {\n' +
+    '          "shots": 0,\n' +
+    '          "kills": 0,\n' +
+    '          "pickups": 0,\n' +
+    '          "powers": 1,\n' +
+    '          "respawns": 1,\n' +
+    '          "falls": 0\n' +
+    '        },\n' +
+    '        "leaders": [\n' +
+    '          "ChatGPT"\n' +
+    '        ],\n' +
+    '        "singleplayer": null\n' +
+    '      }\n' +
+    '    },\n' +
+    '    {\n' +
+    '      "operator": "claude",\n' +
+    '      "state": {\n' +
+    '        "config": {\n' +
+    '          "mode": "deathmatch",\n' +
+    '          "botCount": 0,\n' +
+    '          "difficulty": "easy",\n' +
+    '          "fragLimit": 15,\n' +
+    '          "timeLimit": 300,\n' +
+    '          "respawn": 2,\n' +
+    '          "speed": 1,\n' +
+    '          "gravity": 1,\n' +
+    '          "damage": 1,\n' +
+    '          "fastPowers": false,\n' +
+    '          "lifeSteal": false,\n' +
+    '          "unlimitedAmmo": false,\n' +
+    '          "suddenDeath": false,\n' +
+    '          "randomLoadout": false,\n' +
+    '          "oneShot": false,\n' +
+    '          "instagib": false,\n' +
+    '          "mirrorLoadout": false,\n' +
+    '          "bounty": false,\n' +
+    '          "berserk": false,\n' +
+    '          "bigHead": false,\n' +
+    '          "noRecoil": false,\n' +
+    '          "endless": false,\n' +
+    '          "startingWeapon": 0,\n' +
+    '          "playerName": "",\n' +
+    '          "mission": "convoy-run",\n' +
+    '          "loadout": null,\n' +
+    '          "checkpoint": null,\n' +
+    '          "mutators": []\n' +
+    '        },\n' +
+    '        "modeName": "Deathmatch",\n' +
+    '        "mapId": "exchange",\n' +
+    '        "mapName": "The Exchange",\n' +
+    '        "time": 0.03333333333333333,\n' +
+    '        "over": false,\n' +
+    '        "overReason": null,\n' +
+    '        "suddenDeath": false,\n' +
+    '        "feed": [],\n' +
+    '        "actors": [\n' +
+    '          {\n' +
+    '            "id": 0,\n' +
+    '            "character": "claude",\n' +
+    '            "harness": "claudecode",\n' +
+    '            "name": "Claude",\n' +
+    '            "frags": 0,\n' +
+    '            "deaths": 0,\n' +
+    '            "streak": 0,\n' +
+    '            "ladder": 0,\n' +
+    '            "scoreStats": {\n' +
+    '              "captures": 0,\n' +
+    '              "flagPickups": 0,\n' +
+    '              "flagReturns": 0,\n' +
+    '              "flagDrops": 0,\n' +
+    '              "o'... 66173 more characters,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

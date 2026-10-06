@@ -1,174 +1,26 @@
 {
-  "evidence": "/tmp/opencode/native-vehicle-expansion/12390d63-59e4-4c05-bbb5-795f72226bb5",
+  "evidence": "/tmp/opencode/native-vehicle-expansion/8481987a-fac3-4f55-af3a-4a1a806bf78a",
   "classification": "3 distinct native clients, real Room wire; no authority position writes",
   "stepsSeconds": {
-    "copy": 0.47,
-    "export": 0.82,
-    "import": 5.67,
-    "parse-demo": 0.67,
-    "parse-session_bridge": 0.16,
-    "parse-observe_crew_host": 0.77,
-    "parse-observe_crew_guest": 0.72,
-    "parse-observe_crew_passenger": 0.72,
-    "controls": 0.26,
-    "fleet": 0.26,
-    "shared-shots": 0.82,
-    "source-oracle": 0.77,
-    "room-edge-oracle": 0.82,
-    "three_native_live": 76.85
+    "copy": 0.35,
+    "export": 0.82
   },
-  "renderFpsCap": 30,
-  "renderEnvironment": {
-    "LP_NUM_THREADS": "1",
-    "resolution": "640x360",
-    "cpuAffinity": [
-      0,
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27,
-      28,
-      29,
-      30,
-      31
-    ]
-  },
-  "heldInputRecoveryProbe": false,
-  "nativeExitCodes": {
-    "host": 0,
-    "guest": 0,
-    "passenger": 0
-  },
-  "live": {
-    "classification": "three distinct native processes, natural source entry; arranged five-kind oracle separate",
-    "native": {
-      "host": {
-        "sourceNativeCorrelations": 158,
-        "mountedSamples": 141,
-        "wireInputs": 804,
-        "completedSeconds": 66.1500000000003
-      },
-      "guest": {
-        "sourceNativeCorrelations": 121,
-        "mountedSamples": 32,
-        "wireInputs": 582,
-        "completedSeconds": 55.7399640000001
-      },
-      "passenger": {
-        "sourceNativeCorrelations": 102,
-        "mountedSamples": 12,
-        "wireInputs": 639,
-        "completedSeconds": 52.3113170000001
-      }
-    },
-    "sharedCrewSnapshots": 50,
-    "driverDisplacement": 27.883000000000003,
-    "gunnerVehicleShots": 88,
-    "acceptedJumpEdges": 1
-  },
-  "privateTempRemoved": true,
-  "status": "PASS",
+  "status": "FAIL",
+  "error": "export failed; inspect retained log",
   "ownedProcessesReaped": true,
-  "elapsedSeconds": 90.14,
+  "elapsedSeconds": 1.28,
   "retainedFiles": {
-    "controls.log": {
-      "bytes": 102,
-      "sha256": "1c0d3937a44ea475a6bd8593cd4053237ffc38c797acd25699680fa2f46c48c1"
-    },
     "export.log": {
-      "bytes": 61,
-      "sha256": "8dfa242f4c10d3f589d54e99e99a991f7623e094069590cbe2cd9ba97cf9aad4"
-    },
-    "fleet.log": {
-      "bytes": 123,
-      "sha256": "b1bb38e557e40184d371d0ec174035c1ee156a7f80232f276bf5264e55600db7"
-    },
-    "guest.log": {
-      "bytes": 2494560,
-      "sha256": "f741658b1cc61e97341a8382fa6c89d2a8ef55c2308df296171c7039537ec7a6"
-    },
-    "hashes.json": {
-      "bytes": 55725,
-      "sha256": "93488623dc0e3b4a340ca639ec4b3fe78d2afbb642a5a797ec0502f087719b28"
-    },
-    "host.log": {
-      "bytes": 3493712,
-      "sha256": "9b48af39df720b5fdb221a3c35d45f23ee6d2d58ab6f8561a2a45aa47f05074a"
-    },
-    "import.log": {
-      "bytes": 165073,
-      "sha256": "0407b97abc07ec79b2497eb52eca31bc1f717e7b4158f4ef515d7ba192d3b5bc"
-    },
-    "parse-demo.log": {
-      "bytes": 73,
-      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
-    },
-    "parse-observe_crew_guest.log": {
-      "bytes": 73,
-      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
-    },
-    "parse-observe_crew_host.log": {
-      "bytes": 73,
-      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
-    },
-    "parse-observe_crew_passenger.log": {
-      "bytes": 73,
-      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
-    },
-    "parse-session_bridge.log": {
-      "bytes": 73,
-      "sha256": "68c0df36651eeeedbbcffd96dd7918289aebc4495149c2f8605bf1e83fe506b3"
-    },
-    "passenger.log": {
-      "bytes": 2628065,
-      "sha256": "7a260359c913f6c1fc7fe277a5a2f5e1a774d9578895873b165761536f24f35e"
-    },
-    "room-edge-oracle.log": {
-      "bytes": 242,
-      "sha256": "788760344b23de8721adb695c6ea0c4be20263c74449908b16a0907428e3dff0"
-    },
-    "server.log": {
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    },
-    "shared-shots.log": {
-      "bytes": 105,
-      "sha256": "fb9fcb18359113dab269fdf9af5a39f37fe16eb16a69144dc8445f86d328c009"
-    },
-    "source-oracle.log": {
-      "bytes": 1159,
-      "sha256": "6bd36ad0f8946a5a84b3d6153e114978a3cce542c2f111c25a21d9cd38f6c93e"
-    },
-    "wire.json.gz": {
-      "bytes": 121910,
-      "sha256": "d672fba8824fff168480b585b0b558c44498eeb356a80d1e3fd11c200cb0245f"
-    },
-    "xvfb.log": {
-      "bytes": 396,
-      "sha256": "23dbac212d0ee37e6c72af4571c6fe45c23e07517d20e5a9f2336c39c747b00b"
+      "bytes": 941,
+      "sha256": "4853404454a1ce38cd817330d777a0c40cc8aa08a8b8868ae2fc740bd4687d5e"
     }
   }
 }
+Traceback (most recent call last):
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-vehicle-expansion/run.py", line 94, in <module>
+    run(['node',str(ROOT/'tools/godot-export/semantic.mjs'),str(temp/'godot/content/generated')], 'export',env)
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/port/native-vehicle-expansion/run.py", line 64, in run
+    assert code==0 and 'SCRIPT ERROR' not in text and 'ERROR:' not in text, f'{name} failed; inspect retained log'
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: export failed; inspect retained log

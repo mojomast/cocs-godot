@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "status": "reviewed-active-source",
+  "description": "One reviewed active-source selection for dev, package, CI and verification. Historical derivatives remain immutable evidence and are verified at their own frozen commits.",
+  "source_lock": "port/contracts/source-lock.json",
+  "derivative": "port/contracts/racing-candidate-derivative.json",
+  "derivative_sha256": "6f10ffb8fa278fad21687655776cd04851e25bc42b398a92d0a4f44abea5ae63"
+}

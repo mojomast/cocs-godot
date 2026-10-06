@@ -1,1 +1,23 @@
-{"sourceHashes":"verified","weapons":10,"byteIdenticalReexport":true,"batchesPerWeapon":8,"identityChannels":6,"silhouetteIoU":{"side":{"max":0.7441,"mean":0.5943},"top":{"max":0.8211,"mean":0.6008},"detailSide":{"max":0.2839,"mean":0.1751}},"toneLightMin":25.019992006393608,"triangles":[4424,4904,6432,4720,5968,5028,5564,4848,5936,4452],"detailTriangles":[912,852,388,800,944,1048,1116,1036,708,832],"glbBytes":5102900}
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: source changed: game/weapon-ads.mjs
++ actual - expected
+
++ '133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f'
+- '01d9eb7ddbb304b0bca39899e393730cbdf04fffb5024f28886399e76f20452b'
+
+    at file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-weapons/verify.mjs:10:70
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '133a10f85e9c59928c16e5e25e240e1aa0e89200f81cecd77bb62482f6ef795f',
+  expected: '01d9eb7ddbb304b0bca39899e393730cbdf04fffb5024f28886399e76f20452b',
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v22.23.1

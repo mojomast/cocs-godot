@@ -3,6 +3,7 @@ import {readFileSync,mkdirSync,mkdtempSync,rmSync} from 'node:fs';
 import {resolve,join} from 'node:path';
 import {tmpdir} from 'node:os';
 import {verifySource} from '../godot-export/semantic.mjs';
+import {resolveActiveDerivative} from './active_source.mjs';
 import {launchOptions,HELP} from './launch_options.mjs';
 import {settingsPath} from '../godot-package/settings_path.mjs';
 import {acquireCareer} from '../godot-package/career_path.mjs';
@@ -10,7 +11,7 @@ if(process.argv.length===3&&process.argv[2]==='--help'){console.log(HELP);proces
 const catalog=JSON.parse(readFileSync('port/contracts/map-selection.json'));
 const plan=launchOptions(process.argv.slice(2),catalog);
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;if(!binary)throw Error('Set GODOT_BIN to pinned Godot 4.5.2 executable');
 if(execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Godot version differs from lock');

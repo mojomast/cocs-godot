@@ -1,1 +1,12 @@
-GUEST_LEAVE_JOURNEY {"scope":"scripted native guest Settings/Back/Leave in one source room; protocol host, not two native humans or a natural round outcome","port_commit":"e530c1c9ff67cede3516df60cc1d67d960383eee","source_commit":"515daf07589150dd3241f4ae1425cc1b093912f5","source_derivative_commit":"0326b435a2fdd88e6e7a01b8a7325feccc4d15cb","output":"/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/.port-runtime/guest-leave/attempt-8lzb02","passed":true,"endpoint":"ws://127.0.0.1:39857","initial_rooms":1,"room":"KQXH","host_peer":1,"host_snapshots":86,"last_host_snapshot_type":"snapshot","guest":{"actor":1,"peer":2,"pointer_released":true,"room":"KQXH","scripted_ui":true,"settings_path":"/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/.port-runtime/guest-leave/attempt-8lzb02/local_settings.json","source_snapshots":32},"health_after_leave":{"players":2,"rooms":2},"source_roster_after_leave":[{"peer":1,"connected":true},{"peer":2,"connected":false}],"guest_retained_by_source_grace":true,"guest_joins":1,"guest_disconnected":true,"launcher_exit":0,"host_open_after_leave":true,"fixture_authority_closed":true}
+file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-export/semantic.mjs:66
+  if(!derivative){if(changed.length||runtimeAdded.length)throw Error('Locked source differs from working tree');return;}
+                                                               ^
+
+Error: Locked source differs from working tree
+    at verifySource (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-export/semantic.mjs:66:64)
+    at file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-dev/guest_leave_journey.mjs:14:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v22.23.1

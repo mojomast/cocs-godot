@@ -7,6 +7,9 @@ import {productionResources,REQUIREMENTS,REQUIRED_UNITS} from './production_reso
 import {POLISH_INVENTORY,polishInventory,verifyOperatorFinishImports,L_SOURCE_CHANGE,L_EVIDENCE,lSupportingHash,O_SOURCE_CHANGE,O_EVIDENCE} from './polish_dependencies.mjs';
 import {movementSupportingHash} from './movement_dependencies.mjs';
 import {reverseRacing,racingSupportingHash} from './racing_dependencies.mjs';
+import {dressingSupportingHash} from './dressing_dependencies.mjs';
+import {vesperApronSupportingHash} from './vesper_apron_dependencies.mjs';
+import {consolidationSupportingHash} from './consolidation_dependencies.mjs';
 import {WORLDS} from '../../port/multiplayer-worlds/catalog.mjs';
 const read=p=>readFileSync(p),hash=b=>createHash('sha256').update(b).digest('hex');
 const options={read,has:existsSync,worldIds:Object.keys(WORLDS),strict:true};
@@ -49,7 +52,7 @@ test('missing/forged O step, stale Settings, later source and altered final rece
 test('all seven strict closures bind exact 8921 snapshot, opaque shader, identity composition and scene compiler',()=>{
  assert.deepEqual(productionResources(options).pending,[]);
  assert.equal(Object.keys(s.changed).length,22);
- for(const [p,c]of Object.entries(s.changed)){assert.equal(hash(git(s.previous,p)),c.before);assert.equal(hash(git(s.foundation,p)),c.after);assert.equal(hash(read(p)),racingSupportingHash(p,movementSupportingHash(p,lSupportingHash(p,c.after),read),JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'))));}
+ for(const [p,c]of Object.entries(s.changed)){assert.equal(hash(git(s.previous,p)),c.before);assert.equal(hash(git(s.foundation,p)),c.after);assert.equal(hash(read(p)),consolidationSupportingHash(p,vesperApronSupportingHash(p,dressingSupportingHash(p,racingSupportingHash(p,movementSupportingHash(p,lSupportingHash(p,c.after),read),JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'))),JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'))),JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'))),JSON.parse(read('tools/godot-package/production_receipts/stormglass-causeway.json'))));}
  for(const [p,sha]of Object.entries(s.added))assert.equal(hash(git(s.foundation,p)),sha);
  for(const id of REQUIRED_UNITS){const r=JSON.parse(read(`tools/godot-package/production_receipts/${id}.json`));for(const p of ['godot/moth/surface_opaque.gdshader','godot/native_arenas/identity_environment.gd','tools/godot-multiplayer/generate-scenes.mjs'])assert.ok(r.packageInputs[p]);}
 });

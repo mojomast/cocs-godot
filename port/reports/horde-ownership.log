@@ -2,499 +2,189 @@ TAP version 13
 # Subtest: package Horde synthetic factory: exit
 ok 1 - package Horde synthetic factory: exit
   ---
-  duration_ms: 77.467839
+  duration_ms: 80.301905
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: native-failure
 ok 2 - package Horde synthetic factory: native-failure
   ---
-  duration_ms: 72.53525
+  duration_ms: 72.511226
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: native-crash
 ok 3 - package Horde synthetic factory: native-crash
   ---
-  duration_ms: 68.24741
+  duration_ms: 68.545884
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: missing-native
 ok 4 - package Horde synthetic factory: missing-native
   ---
-  duration_ms: 52.567072
+  duration_ms: 56.50482
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: interrupt
 ok 5 - package Horde synthetic factory: interrupt
   ---
-  duration_ms: 171.583197
+  duration_ms: 174.158672
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: terminate
 ok 6 - package Horde synthetic factory: terminate
   ---
-  duration_ms: 172.588249
+  duration_ms: 173.33045
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: server-failure
 ok 7 - package Horde synthetic factory: server-failure
   ---
-  duration_ms: 347.279888
+  duration_ms: 346.764654
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: listen-failure
 ok 8 - package Horde synthetic factory: listen-failure
   ---
-  duration_ms: 40.422356
+  duration_ms: 36.771199
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: factory-failure
 ok 9 - package Horde synthetic factory: factory-failure
   ---
-  duration_ms: 40.202214
+  duration_ms: 39.042866
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-service
 ok 10 - package Horde synthetic factory: wrong-service
   ---
-  duration_ms: 51.794927
+  duration_ms: 49.647018
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-transport
 ok 11 - package Horde synthetic factory: wrong-transport
   ---
-  duration_ms: 52.458279
+  duration_ms: 53.263285
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: string-transport
 ok 12 - package Horde synthetic factory: string-transport
   ---
-  duration_ms: 51.470368
+  duration_ms: 57.760713
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-local
 ok 13 - package Horde synthetic factory: wrong-local
   ---
-  duration_ms: 52.485931
+  duration_ms: 56.125378
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: wrong-port
 ok 14 - package Horde synthetic factory: wrong-port
   ---
-  duration_ms: 55.43322
+  duration_ms: 49.951328
   type: 'test'
   ...
 # Subtest: package Horde synthetic factory: bad-args
 ok 15 - package Horde synthetic factory: bad-args
   ---
-  duration_ms: 27.368498
+  duration_ms: 25.615353
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: exit
-not ok 16 - dev Horde synthetic factory: exit
+ok 16 - dev Horde synthetic factory: exit
   ---
-  duration_ms: 24.471282
+  duration_ms: 86.709062
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    node:fs:560
-      return binding.open(
-                     ^
-    
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/horde-owner-synthetic-CZwjNp/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
-    }
-    
-    Node.js v22.23.1
-    
-    
-    1 !== 0
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: 0
-  actual: 1
-  operator: 'strictEqual'
-  stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/horde-owner-synthetic-CZwjNp/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:67:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: native-failure
-not ok 17 - dev Horde synthetic factory: native-failure
+ok 17 - dev Horde synthetic factory: native-failure
   ---
-  duration_ms: 28.675887
+  duration_ms: 82.389838
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    node:fs:560
-      return binding.open(
-                     ^
-    
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/horde-owner-synthetic-zqBxHK/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
-    }
-    
-    Node.js v22.23.1
-    
-    
-    1 !== 17
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: 17
-  actual: 1
-  operator: 'strictEqual'
-  stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/horde-owner-synthetic-zqBxHK/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:67:11)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: native-crash
-not ok 18 - dev Horde synthetic factory: native-crash
+ok 18 - dev Horde synthetic factory: native-crash
   ---
-  duration_ms: 26.757183
+  duration_ms: 88.539111
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: missing-native
 ok 19 - dev Horde synthetic factory: missing-native
   ---
-  duration_ms: 25.197402
+  duration_ms: 28.604665
   type: 'test'
   ...
 # Subtest: dev Horde synthetic factory: interrupt
-not ok 20 - dev Horde synthetic factory: interrupt
+ok 20 - dev Horde synthetic factory: interrupt
   ---
-  duration_ms: 24.241982
+  duration_ms: 191.587363
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    node:fs:560
-      return binding.open(
-                     ^
-    
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/horde-owner-synthetic-pX8I5G/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
-    }
-    
-    Node.js v22.23.1
-    
-    
-    1 !== 130
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: 130
-  actual: 1
-  operator: 'strictEqual'
-  stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/horde-owner-synthetic-pX8I5G/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:67:11)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: terminate
-not ok 21 - dev Horde synthetic factory: terminate
+ok 21 - dev Horde synthetic factory: terminate
   ---
-  duration_ms: 24.833891
+  duration_ms: 192.127064
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    node:fs:560
-      return binding.open(
-                     ^
-    
-    Error: ENOENT: no such file or directory, open 'port/contracts/lattice-catalog-derivative.json'
-        at Object.openSync (node:fs:560:18)
-        at readFileSync (node:fs:444:35)
-        at file:///tmp/horde-owner-synthetic-P0VBIM/tools/godot-dev/launch.mjs:13:64
-        at ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-        at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-        at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-      errno: -2,
-      code: 'ENOENT',
-      syscall: 'open',
-      path: 'port/contracts/lattice-catalog-derivative.json'
-    }
-    
-    Node.js v22.23.1
-    
-    
-    1 !== 143
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: 143
-  actual: 1
-  operator: 'strictEqual'
-  stack: |-
-    Object.openSync (node:fs:560:18)
-    readFileSync (node:fs:444:35)
-    file:///tmp/horde-owner-synthetic-P0VBIM/tools/godot-dev/launch.mjs:13:64
-    ModuleJob.run (node:internal/modules/esm/module_job:343:25)
-    async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)
-    async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:67:11)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: server-failure
-not ok 22 - dev Horde synthetic factory: server-failure
+ok 22 - dev Horde synthetic factory: server-failure
   ---
-  duration_ms: 30.990121
+  duration_ms: 365.378415
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: listen-failure
-not ok 23 - dev Horde synthetic factory: listen-failure
+ok 23 - dev Horde synthetic factory: listen-failure
   ---
-  duration_ms: 27.054741
+  duration_ms: 65.284041
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: factory-failure
-not ok 24 - dev Horde synthetic factory: factory-failure
+ok 24 - dev Horde synthetic factory: factory-failure
   ---
-  duration_ms: 28.078568
+  duration_ms: 50.881712
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: wrong-service
-not ok 25 - dev Horde synthetic factory: wrong-service
+ok 25 - dev Horde synthetic factory: wrong-service
   ---
-  duration_ms: 29.646544
+  duration_ms: 73.278603
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: wrong-transport
-not ok 26 - dev Horde synthetic factory: wrong-transport
+ok 26 - dev Horde synthetic factory: wrong-transport
   ---
-  duration_ms: 30.125151
+  duration_ms: 68.565561
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: string-transport
-not ok 27 - dev Horde synthetic factory: string-transport
+ok 27 - dev Horde synthetic factory: string-transport
   ---
-  duration_ms: 25.894468
+  duration_ms: 73.054383
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: wrong-local
-not ok 28 - dev Horde synthetic factory: wrong-local
+ok 28 - dev Horde synthetic factory: wrong-local
   ---
-  duration_ms: 25.236205
+  duration_ms: 74.591383
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: wrong-port
-not ok 29 - dev Horde synthetic factory: wrong-port
+ok 29 - dev Horde synthetic factory: wrong-port
   ---
-  duration_ms: 30.13542
+  duration_ms: 67.044371
   type: 'test'
-  location: '/home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:31:2'
-  failureType: 'testCodeFailure'
-  error: |-
-    Expected values to be strictly equal:
-    
-    false !== true
-    
-  code: 'ERR_ASSERTION'
-  name: 'AssertionError'
-  expected: true
-  actual: false
-  operator: 'strictEqual'
-  stack: |-
-    TestContext.<anonymous> (file:///home/mojo/.tmp-on-disk/cocs-relay-campaign-20260930/tools/godot-package/horde_ownership.test.mjs:70:11)
-    process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    async Test.run (node:internal/test_runner/test:1054:7)
-    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
   ...
 # Subtest: dev Horde synthetic factory: bad-args
 ok 30 - dev Horde synthetic factory: bad-args
   ---
-  duration_ms: 23.731216
+  duration_ms: 22.973522
   type: 'test'
   ...
 1..30
 # tests 30
 # suites 0
-# pass 17
-# fail 13
+# pass 30
+# fail 0
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 1773.183651
+# duration_ms 2904.20837

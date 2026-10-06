@@ -238,7 +238,7 @@ const buildRegistry = () => {
   return {
     version: 1,
     generated_by: 'tools/godot-package/gen_routes.mjs',
-    categories: CATEGORIES.map(({id, label, description}) => ({id, label, description})),
+    categories: CATEGORIES.map(({id, label, description, developer}) => ({id, label, description, ...(developer ? {developer: true} : {})})),
     maps,
     routes,
   };

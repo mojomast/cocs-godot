@@ -4,7 +4,11 @@ extends Control
 ## options are plain Buttons, the shared ui/lobby_choice.gd row and HSliders —
 ## no OptionButton/PopupMenu window can outlive a launched route.
 ## Supervisor markers (run.mjs reads these from the piped child stdout):
-##   MENU_READY {"version":1,"routes":22,"categories":5,"debug":false}
+##   MENU_READY {"version":1,"routes":26,"categories":5,"visible":16,"debug":false,"developer":false}
+##
+## Developer navigation (the Extras/lab and Cheats categories) is hidden unless
+## COCS_DEV_MENU=1 or --dev-menu is passed. All declared capabilities stay in
+## routes.json for launcher/supervisor validation.
 ##   MENU_ROUTE {"args":["--experience=native-dm","--map=prism-foundry",...]}
 ##   MENU_QUIT
 ## --smoke in the user args prints MENU_READY and quits one frame later.
@@ -29,6 +33,8 @@ var restoring := false
 var preference_error := ""
 var registry_error := ""
 var current_category := ""
+var developer_menu := false
+var hidden_categories: Dictionary = {}
 var current_route: Dictionary = {}
 var selections: Dictionary = {}
 var category_buttons: Dictionary = {}
@@ -73,6 +79,7 @@ func update_layout() -> void:
 	route_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 
 func _ready() -> void:
+	developer_menu = _developer_navigation()
 	audiovisual = Audiovisual.new()
 	audiovisual.name = "MenuAudiovisual"
 	add_child(audiovisual)
@@ -101,8 +108,11 @@ func _ready() -> void:
 	refresh_status()
 	refresh_attract()
 	# The supervisor greps this line; it is printed on every path (SPEC §7).
+	var visible_routes := registry.routes.filter(func(route: Dictionary) -> bool:
+		return not hidden_categories.has(str(route.get("category", "")))).size()
 	var payload := {"version": registry.version, "routes": registry.routes.size(),
-		"categories": registry.categories.size(), "debug": OS.get_environment("COCS_DEBUG") == "1"}
+		"categories": registry.categories.size(), "visible": visible_routes,
+		"debug": OS.get_environment("COCS_DEBUG") == "1", "developer": developer_menu}
 	print("MENU_READY ", JSON.stringify(payload))
 	if "--smoke" in OS.get_cmdline_user_args():
 		# One frame of event loop so the marker flushes on headless runs too.
@@ -334,8 +344,22 @@ func stop_attract() -> void:
 func _on_local_preferences_changed(_values: Dictionary) -> void:
 	refresh_attract()
 
+func _developer_navigation() -> bool:
+	if OS.get_environment("COCS_DEV_MENU") == "1": return true
+	var args := OS.get_cmdline_args()
+	args.append_array(OS.get_cmdline_user_args())
+	return "--dev-menu" in args
+
+func _category_visible(category: Dictionary) -> bool:
+	return developer_menu or category.get("developer", false) != true
+
 func populate() -> void:
+	hidden_categories.clear()
+	for hidden: Dictionary in registry.categories:
+		if not _category_visible(hidden):
+			hidden_categories[str(hidden.get("id", ""))] = true
 	for category: Dictionary in registry.categories:
+		if hidden_categories.has(str(category.get("id", ""))): continue
 		var id := str(category.get("id", ""))
 		var button := Button.new()
 		button.name = "Category_" + id
@@ -347,6 +371,7 @@ func populate() -> void:
 		categories_box.add_child(button)
 		category_buttons[id] = button
 	for route: Dictionary in registry.routes:
+		if hidden_categories.has(str(route.get("category", ""))): continue
 		var id := str(route.get("id", ""))
 		var button := Button.new()
 		button.name = "Route_" + id
@@ -357,27 +382,38 @@ func populate() -> void:
 		button.pressed.connect(func() -> void: select_route(id))
 		routes_box.add_child(button)
 		route_buttons[id] = button
-	if registry.categories.is_empty(): return
+	var first_visible := ""
+	for category: Dictionary in registry.categories:
+		if not hidden_categories.has(str(category.get("id", ""))):
+			first_visible = str(category.get("id", ""))
+			break
+	if first_visible.is_empty(): return
 	var route: Dictionary = registry.route_by_id(preferences.last_route)
-	# New destinations may be listed before Combat. Invalid/absent preferences
-	# keep the established safe default rather than depending on display order.
+	# A hidden developer destination cannot be restored as the arrival route;
+	# New destinations may be listed before Combat, so invalid/absent
+	# preferences keep the established safe default rather than display order.
+	if not route.is_empty() and hidden_categories.has(str(route.get("category", ""))): route = {}
 	if route.is_empty(): route = registry.route_by_id("combat")
 	restoring = true
-	select_category(str(route.get("category", registry.categories[0].get("id", ""))))
+	select_category(str(route.get("category", first_visible)))
 	if not route.is_empty(): select_route(str(route.get("id", "")))
 	restoring = false
 
-## Left column pick: show only this category's route buttons (cheats stays
-## visible — every declared category is always rendered) and select its first
-## route unless the current selection already lives here.
+## Left column pick: show only this category's route buttons (developer
+## categories render only when developer navigation is enabled) and select its
+## first route unless the current selection already lives here.
 func select_category(id: String) -> void:
+	if hidden_categories.has(id): return
 	current_category = id
 	for key: String in category_buttons:
 		category_buttons[key].set_pressed_no_signal(key == id)
 	var category: Dictionary = registry.category_by_id(id)
 	category_description.text = str(category.get("description", ""))
 	for route: Dictionary in registry.routes:
-		route_buttons[str(route.get("id", ""))].visible = str(route.get("category", "")) == id
+		# Hidden developer routes have no button; never index past the visible set.
+		var route_id := str(route.get("id", ""))
+		if not route_buttons.has(route_id): continue
+		route_buttons[route_id].visible = str(route.get("category", "")) == id
 	if not current_route.is_empty() and str(current_route.get("category", "")) == id:
 		refresh_status()
 		return
@@ -412,7 +448,7 @@ func quick_select_route(id: String) -> void:
 	if route.is_empty(): return
 	select_category(str(route.get("category", "")))
 	select_route(id)
-	route_buttons[id].grab_focus()
+	if route_buttons.has(id): route_buttons[id].grab_focus()
 
 func clear_route() -> void:
 	current_route = {}
@@ -519,6 +555,10 @@ func _on_search_changed(query: String) -> void:
 		child.queue_free()
 	search_result_buttons.clear()
 	var matches := RouteSearch.search(registry, query, OS.get_environment("COCS_DEBUG") == "1")
+	if not hidden_categories.is_empty():
+		matches = matches.filter(func(result: Dictionary) -> bool:
+			var route: Dictionary = registry.route_by_id(str(result.get("route_id", "")))
+			return route.is_empty() or not hidden_categories.has(str(route.get("category", ""))))
 	search_count.text = "%d matches" % matches.size() if not RouteSearch.normalize_query(query).is_empty() else "Search catalog destinations and maps"
 	if matches.is_empty():
 		if not RouteSearch.normalize_query(query).is_empty():

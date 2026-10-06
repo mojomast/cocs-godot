@@ -7,7 +7,7 @@ extends SceneTree
 
 const MENU_SCENE_PATH := "res://ui/main_menu.tscn"
 const ROUTES_PATH := "res://ui/routes.json"
-const MIN_ROUTES := 22
+const MIN_ROUTES := 26
 const PREF_SCENE := preload("res://ui/main_menu.tscn")
 const MENU_SCRIPT := preload("res://ui/main_menu.gd")
 const ATTRACT_SCRIPT := preload("res://ui/attract/demo.gd")
@@ -33,6 +33,9 @@ func _initialize() -> void:
 	call_deferred("run")
 
 func run() -> void:
+	# Existing tree/preference/attract coverage exercises the full declared
+	# registry; default player-facing disclosure is checked separately below.
+	OS.set_environment("COCS_DEV_MENU", "1")
 	var raw: Variant = JSON.parse_string(FileAccess.get_file_as_string(ROUTES_PATH))
 	check(raw is Dictionary, "routes.json parses as a JSON object")
 	if not raw is Dictionary:
@@ -63,6 +66,8 @@ func run() -> void:
 		category_ids[id] = true
 		check(not str(category.get("label", "")).is_empty(), "category %s has a label" % id)
 		check(not str(category.get("description", "")).is_empty(), "category %s has a description" % id)
+		check(category.get("developer", false) == (id in ["lab", "cheats"]),
+			"developer navigation is declared only for lab/cheats (category %s)" % id)
 
 	for map_id: Variant in maps:
 		var entry: Variant = maps[map_id]
@@ -126,7 +131,47 @@ func run() -> void:
 	await check_tree(routes, categories)
 	await check_attract(routes.size(), categories.size())
 	check_preferences()
+	check_disclosure()
 	finish()
+
+## Default player-facing disclosure: developer families stay declared in the
+## registry but are not rendered unless developer navigation is requested.
+func check_disclosure() -> void:
+	OS.set_environment("COCS_DEV_MENU", "0")
+	var menu := fresh_menu(isolated_preferences_path())
+	check(menu.developer_menu == false, "developer navigation is off by default")
+	var route_nodes := {}
+	var category_nodes := {}
+	collect_prefixed(menu, "Route_", route_nodes)
+	collect_prefixed(menu, "Category_", category_nodes)
+	check(route_nodes.size() == 16, "default menu renders 16 player-facing routes (got %d)" % route_nodes.size())
+	check(category_nodes.size() == 3, "default menu renders three player-facing categories")
+	check(not route_nodes.has("Route_particle-lab") and not route_nodes.has("Route_cheats-native-dm")
+		and not category_nodes.has("Category_lab") and not category_nodes.has("Category_cheats"),
+		"Extras and Cheats destinations stay hidden by default")
+	check(route_nodes.has("Route_campaign") and route_nodes.has("Route_sports")
+		and category_nodes.has("Category_play") and category_nodes.has("Category_modes"),
+		"core play, bot-match and activity destinations remain visible by default")
+	menu._on_search_changed("particle")
+	check(menu.search_result_buttons.is_empty() and find_named(menu, "SearchNoResults") != null,
+		"search cannot surface a hidden developer destination by default")
+	menu.quick_select_route("campaign")
+	check(str(menu.current_route.get("id", "")) == "campaign" and menu.current_category == "play",
+		"default disclosure keeps the featured Campaign arrival")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(menu.preferences_path))
+	discard_menu(menu)
+	OS.set_environment("COCS_DEV_MENU", "1")
+	var dev := fresh_menu(isolated_preferences_path())
+	check(dev.developer_menu == true, "developer navigation is enabled by COCS_DEV_MENU=1")
+	var dev_routes := {}
+	var dev_categories := {}
+	collect_prefixed(dev, "Route_", dev_routes)
+	collect_prefixed(dev, "Category_", dev_categories)
+	check(dev_routes.size() == 26 and dev_categories.size() == 5,
+		"developer navigation renders the full declared registry")
+	DirAccess.remove_absolute(ProjectSettings.globalize_path(dev.preferences_path))
+	discard_menu(dev)
+	OS.set_environment("COCS_DEV_MENU", "0")
 
 func check_choice(route_id: String, key: String, param: Dictionary, maps: Dictionary) -> void:
 	var values: Variant = param.get("values")

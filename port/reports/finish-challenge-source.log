@@ -1,0 +1,23 @@
+TAP version 13
+# {"matches":12,"xp":2960,"bonuses":870,"unlocks":9}
+# Subtest: source rounds -> challenge bonus -> unlock -> atomic reload -> new rounds, with no duplicate settlement
+ok 1 - source rounds -> challenge bonus -> unlock -> atomic reload -> new rounds, with no duplicate settlement
+  ---
+  duration_ms: 1421.798218
+  type: 'test'
+  ...
+# Subtest: source persistence failure retries the same combined award; UTC rotation never re-awards the old match
+ok 2 - source persistence failure retries the same combined award; UTC rotation never re-awards the old match
+  ---
+  duration_ms: 105.232629
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2174.444986

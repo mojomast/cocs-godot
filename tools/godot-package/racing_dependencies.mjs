@@ -3,12 +3,16 @@
 // still reconstruct their exact pre-racing predecessor bytes.
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {reverseDressing} from './dressing_dependencies.mjs';
+import {reverseDressing, dressingSupportingHash, dressingSupportingHookHash} from './dressing_dependencies.mjs';
+import {vesperApronSupportingHash, vesperApronSupportingHookHash} from './vesper_apron_dependencies.mjs';
+import {consolidationSupportingHash, consolidationSupportingHookHash} from './consolidation_dependencies.mjs';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 export function verifyRacingAdvance(receipt, read) {
   // Newer layers sit on top of racing; reverse them before reconstructing the
-  // racing-era package inputs.
+  // racing-era package inputs. Keep the unreversed receipt for live-byte
+  // resolution through the newer supporting chain.
+  const newer = receipt;
   receipt = reverseDressing(receipt, read);
   const r = receipt.racingAdvance;
   assert.ok(r, 'Explicit racing reconciliation required');
@@ -43,10 +47,12 @@ export function verifyRacingAdvance(receipt, read) {
   assert.equal(hash(JSON.stringify(receipt.packageInputs)), r.packageFingerprint,
     'Racing current fingerprint');
   for (const [path, change] of Object.entries(r.changed ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed racing bytes: ' + path);
+    assert.equal(hash(read(path)), consolidationSupportingHash(path, vesperApronSupportingHash(path, dressingSupportingHash(path, change.after, newer), newer), newer),
+      'Reviewed racing bytes: ' + path);
   }
   for (const [path, change] of Object.entries(r.runtimeChanged ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed racing hook bytes: ' + path);
+    assert.equal(hash(read(path)), consolidationSupportingHookHash(path, vesperApronSupportingHookHash(path, dressingSupportingHookHash(path, change.after, newer), newer), newer),
+      'Reviewed racing hook bytes: ' + path);
   }
   return pre;
 }

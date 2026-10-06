@@ -4,6 +4,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {execFileSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
 import {generateCampaignCore,SOURCE_SHA256,MOVEMENT_DEPENDENCY_SHA256,verifyCampaignMovementDependency} from './generate-core.mjs';
 const source=readFileSync(new URL('../../game/core.mjs',import.meta.url),'utf8');
 const generated=readFileSync(new URL('./core.generated.mjs',import.meta.url),'utf8');
@@ -30,15 +31,34 @@ test('movement candidate preserves historical derivative identity and inventorie
     assert.equal(sha(git('show',`${candidate.derivative_commit}:${path}`)),after,path+' candidate');
     expected[path]=after;
   }
-  const changed=git('diff','--name-only',lock.source_commit,'--','game','server').toString().trim().split('\n').filter(p=>p&&!p.endsWith('.test.mjs')).sort();
+  const changed=git('diff','--name-only',lock.source_commit,candidate.derivative_commit,'--','game','server').toString().trim().split('\n').filter(p=>p&&!p.endsWith('.test.mjs')).sort();
   assert.deepEqual(changed,Object.keys(expected).sort());
   for(const [path,hash] of Object.entries(derivative.runtime_files)){
     assert.equal(sha(git('show',`${derivative.derivative_commit}:${path}`)),hash,path);
     if(path!=='game/core.mjs')assert.equal(sha(git('show',`61fca35c65488502b794900cde0a5247bfb123bf:${path}`)),hash,path);
   }
-  for(const [path,hash] of Object.entries(expected))assert.equal(sha(readFileSync(new URL(path,root))),hash,path+' current candidate');
   assert.equal(expected['game/core.mjs'],SOURCE_SHA256);
   assert.equal(expected['game/operator-verbs.mjs'],MOVEMENT_DEPENDENCY_SHA256);
+});
+
+test('active source descriptor resolves the reviewed overlay to current runtime bytes',async()=>{
+  const root=new URL('../../',import.meta.url);
+  const path=fileURLToPath(root);
+  const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
+  const {verifySource}=await import('../../tools/godot-export/semantic.mjs');
+  const {activeSource}=await import('../../tools/godot-dev/active_source.mjs');
+  const lock=JSON.parse(readFileSync(new URL('port/contracts/source-lock.json',root)));
+  const selection=activeSource(path);
+  assert.equal(selection.contract.derivative_commit,'9812edfaa3e90a3ca4204d1ec2168587d8d657fb');
+  assert.equal(selection.contract.parent_contract,'port/contracts/movement-candidate-derivative.json');
+  const resolved=verifySource(lock,selection.contract,path);
+  assert.equal(resolved.derivative_commit,selection.contract.derivative_commit);
+  // Every current tracked change is covered by the reviewed active source and
+  // every reviewed active byte matches the working tree.
+  const changed=execFileSync('git',['diff','--name-only',lock.source_commit,'--','game','server'],{cwd:path}).toString().trim().split('\n').filter(p=>p&&!p.endsWith('.test.mjs')).sort();
+  assert.ok(changed.length>0);
+  for(const p of changed)assert.ok(Object.hasOwn(resolved.runtime_files,p),p+' is not in the reviewed active source');
+  for(const [p,hash] of Object.entries(resolved.runtime_files))assert.equal(sha(readFileSync(new URL(p,root))),hash,p+' current bytes');
 });
 test('committed static adapter is exactly reproducible from the pinned source',()=>{
   verifyCampaignMovementDependency();

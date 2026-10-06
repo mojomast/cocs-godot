@@ -2,37 +2,37 @@ TAP version 13
 # Subtest: all four authored chapters stage operators and Patch on source-supported reachable route points
 ok 1 - all four authored chapters stage operators and Patch on source-supported reachable route points
   ---
-  duration_ms: 1036.579018
+  duration_ms: 1199.697935
   type: 'test'
   ...
 # Subtest: four distinct proximity beats per chapter, stable IDs and no per-frame caption replay
 ok 2 - four distinct proximity beats per chapter, stable IDs and no per-frame caption replay
   ---
-  duration_ms: 188.261996
+  duration_ms: 177.040646
   type: 'test'
   ...
 # Subtest: mandatory E wins, and remote/vertical/occluded pets are rejected
 ok 3 - mandatory E wins, and remote/vertical/occluded pets are rejected
   ---
-  duration_ms: 49.404535
+  duration_ms: 42.057607
   type: 'test'
   ...
 # Subtest: source terrain crest occludes a low pet ray
 ok 4 - source terrain crest occludes a low pet ray
   ---
-  duration_ms: 0.399297
+  duration_ms: 0.396873
   type: 'test'
   ...
 # Subtest: only the current phase beat can fire near an earlier visit from the same operator
 ok 5 - only the current phase beat can fire near an earlier visit from the same operator
   ---
-  duration_ms: 41.557098
+  duration_ms: 37.769716
   type: 'test'
   ...
 # Subtest: retry preserves chapter completion and pet serial; restart drops only current chapter
 ok 6 - retry preserves chapter completion and pet serial; restart drops only current chapter
   ---
-  duration_ms: 460.962959
+  duration_ms: 493.259338
   type: 'test'
   ...
 1..6
@@ -43,4 +43,4 @@ ok 6 - retry preserves chapter completion and pet serial; restart drops only cur
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2476.858793
+# duration_ms 2592.324911

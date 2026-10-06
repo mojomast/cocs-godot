@@ -35,6 +35,7 @@
 //    Everything else in the chain is bookkeeping.
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {reverseConsolidationAdvance, consolidationSupportingHash} from './consolidation_dependencies.mjs';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 
 export const APRON_UNIT = 'vesper-viaduct';
@@ -46,6 +47,12 @@ export const APRON_REVIEW = Object.freeze({
 });
 
 export function verifyVesperApronAdvance(receipt, read) {
+  // The consolidation layer is newer than the apron; strip it first so every
+  // pre-apron reconstruction (dressing, movement, history hashes) sees the
+  // exact apron-era receipt. The unreversed receipt resolves live-byte checks
+  // for the paths the newer layer moved.
+  const newer = receipt;
+  receipt = reverseConsolidationAdvance(receipt, read);
   const r = receipt.vesperApronAdvance;
   assert.ok(r, 'Explicit Vesper apron reconciliation required');
   assert.match(r.previousReceipt?.commit ?? '', /^[0-9a-f]{40}$/, 'Vesper apron predecessor commit');
@@ -140,13 +147,13 @@ export function verifyVesperApronAdvance(receipt, read) {
   assert.equal(hash(JSON.stringify(receipt.packageInputs)), r.packageFingerprint,
     'Vesper apron current fingerprint');
   for (const [path, change] of Object.entries(r.changed ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed apron bytes: ' + path);
+    assert.equal(hash(read(path)), consolidationSupportingHash(path, change.after, newer), 'Reviewed apron bytes: ' + path);
   }
   for (const [path, change] of Object.entries(r.sourceChanged ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed apron source bytes: ' + path);
+    assert.equal(hash(read(path)), consolidationSupportingHash(path, change.after, newer), 'Reviewed apron source bytes: ' + path);
   }
   for (const [path, change] of Object.entries(r.runtimeChanged ?? {})) {
-    assert.equal(hash(read(path)), change.after, 'Reviewed apron hook bytes: ' + path);
+    assert.equal(hash(read(path)), consolidationSupportingHash(path, change.after, newer), 'Reviewed apron hook bytes: ' + path);
   }
   return pre;
 }

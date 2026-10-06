@@ -1,5 +1,5 @@
-Owned local server ready at ws://127.0.0.1:42935; --session-smoke
+Owned local server ready at ws://127.0.0.1:36487; --session-smoke
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
 PORT_OPERATOR_MODEL res://source_operators/operator_visual.gd
-PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=12 snapshots=13 remote_poses=54 pickups=20 static_pickups_hidden=true combat_shots=2 combat_launches=0 local_launches=0 map=meridian-exchange mode=deathmatch
+PORT_SESSION_SMOKE_OK actors=3 camera=authoritative movement=true fired=true ack=11 snapshots=15 remote_poses=52 pickups=20 static_pickups_hidden=true combat_shots=2 combat_launches=0 local_launches=0 map=meridian-exchange mode=deathmatch

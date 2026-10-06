@@ -5,9 +5,9 @@ TAP version 13
 #     {
 #       "id": "lacuna-court",
 #       "geometryHash": "a87f8e7a95e56b30d896d70078431152f46160e2d2639c97493b14f68915cfa9",
-#       "constructionMs": 27.543003,
+#       "constructionMs": 28.415697000000023,
 #       "prototypeColdMs": 6059.348,
-#       "speedup": 220,
+#       "speedup": 213.2,
 #       "wallSegments": 40,
 #       "wallEntries": 20,
 #       "blocks": 18,
@@ -104,9 +104,9 @@ TAP version 13
 #     {
 #       "id": "vermilion-fold",
 #       "geometryHash": "6253164eed12dc961af30535d2aaf9dafea34558742bb9a8cb66446faeb6bf2a",
-#       "constructionMs": 10.561279000000013,
+#       "constructionMs": 9.520260000000007,
 #       "prototypeColdMs": 2950.349,
-#       "speedup": 279.4,
+#       "speedup": 309.9,
 #       "wallSegments": 0,
 #       "wallEntries": 0,
 #       "blocks": 14,
@@ -237,9 +237,9 @@ TAP version 13
 #     {
 #       "id": "nacre-engine",
 #       "geometryHash": "204e8eca728a8e75e7ec23dd99eb8e1b38d944f3e53c245b77612ee308a7d4c0",
-#       "constructionMs": 40.09264600000006,
+#       "constructionMs": 39.00417100000004,
 #       "prototypeColdMs": 14827.741,
-#       "speedup": 369.8,
+#       "speedup": 380.2,
 #       "wallSegments": 546,
 #       "wallEntries": 168,
 #       "blocks": 19,
@@ -323,7 +323,7 @@ TAP version 13
 # Subtest: port/native-identity-maps/graybox.test.mjs
 ok 1 - port/native-identity-maps/graybox.test.mjs
   ---
-  duration_ms: 905.822789
+  duration_ms: 933.373986
   type: 'test'
   ...
 1..1
@@ -334,4 +334,4 @@ ok 1 - port/native-identity-maps/graybox.test.mjs
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 909.629447
+# duration_ms 937.350897

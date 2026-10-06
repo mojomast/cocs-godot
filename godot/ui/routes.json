@@ -20,12 +20,14 @@
     {
       "id": "lab",
       "label": "Extras",
-      "description": "Previews, galleries and labs"
+      "description": "Previews, galleries and labs",
+      "developer": true
     },
     {
       "id": "cheats",
       "label": "Cheats",
-      "description": "Local debug panel routes"
+      "description": "Local debug panel routes",
+      "developer": true
     }
   ],
   "maps": {

@@ -2,13 +2,13 @@ TAP version 13
 # Subtest: source graphics routes are native-only, headless only on request, outside the map catalog
 ok 1 - source graphics routes are native-only, headless only on request, outside the map catalog
   ---
-  duration_ms: 6.847645
+  duration_ms: 6.976944
   type: 'test'
   ...
 # Subtest: package graphics routes are independent of the source routes and nine map identities
 ok 2 - package graphics routes are independent of the source routes and nine map identities
   ---
-  duration_ms: 4.543399
+  duration_ms: 4.206042
   type: 'test'
   ...
 1..2
@@ -19,4 +19,4 @@ ok 2 - package graphics routes are independent of the source routes and nine map
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 42.234451
+# duration_ms 39.832255

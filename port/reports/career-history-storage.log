@@ -2,13 +2,13 @@ TAP version 13
 # Subtest: source-owned recent history survives authority restart and retains source ordering/cap
 ok 1 - source-owned recent history survives authority restart and retains source ordering/cap
   ---
-  duration_ms: 19.178369
+  duration_ms: 17.709909
   type: 'test'
   ...
 # Subtest: corrupt local history blocks overwrite, releases its lease, and never affects external guests
 ok 2 - corrupt local history blocks overwrite, releases its lease, and never affects external guests
   ---
-  duration_ms: 1.49517
+  duration_ms: 1.709624
   type: 'test'
   ...
 1..2
@@ -19,4 +19,4 @@ ok 2 - corrupt local history blocks overwrite, releases its lease, and never aff
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 637.996348
+# duration_ms 688.001559

@@ -1,0 +1,63 @@
+TAP version 13
+# native triangle-centre fire→damage checks: 11952
+# weapon 1: actual one-tick travel 1.0000m
+# weapon 4: actual one-tick travel 2.3000m
+# weapon 5: actual one-tick travel 0.6000m
+# { committedReversalsPer10s: 6, plantedSeconds: 3 }
+# Subtest: native Blender solid body samples register actual primary fire from four sides at terrain height
+ok 1 - native Blender solid body samples register actual primary fire from four sides at terrain height
+  ---
+  duration_ms: 127.377646
+  type: 'test'
+  ...
+# Subtest: player speed hook changes actual swept travel, keeps NPC/source identity and no tunnelling
+ok 2 - player speed hook changes actual swept travel, keeps NPC/source identity and no tunnelling
+  ---
+  duration_ms: 269.853869
+  type: 'test'
+  ...
+# Subtest: cover blocks source fire and fast projectiles before body collision
+ok 3 - cover blocks source fire and fast projectiles before body collision
+  ---
+  duration_ms: 2.30691
+  type: 'test'
+  ...
+# Subtest: committed movement suppresses rapid reversals and provides planted windows
+ok 4 - committed movement suppresses rapid reversals and provides planted windows
+  ---
+  duration_ms: 0.556061
+  type: 'test'
+  ...
+# Subtest: Horde canonical scalar volumes already contain the six imported body silhouettes
+ok 5 - Horde canonical scalar volumes already contain the six imported body silhouettes
+  ---
+  duration_ms: 25.904776
+  type: 'test'
+  ...
+# Subtest: campaign ally filter uses team identity for primary hitscan and swept projectiles
+ok 6 - campaign ally filter uses team identity for primary hitscan and swept projectiles
+  ---
+  duration_ms: 3.820285
+  type: 'test'
+  ...
+# Subtest: raised shield surface catches shots outside the torso; lowered guard no longer blocks empty space
+ok 7 - raised shield surface catches shots outside the torso; lowered guard no longer blocks empty space
+  ---
+  duration_ms: 0.657321
+  type: 'test'
+  ...
+# Subtest: campaign guard reduction publishes a distinct confirmed shield contact
+ok 8 - campaign guard reduction publishes a distinct confirmed shield contact
+  ---
+  duration_ms: 129.692562
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1188.92603

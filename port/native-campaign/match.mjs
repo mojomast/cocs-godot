@@ -27,8 +27,44 @@ export function primeCampaignSourceNavigation(arena) {
 const distance = (a, b) => Math.hypot(a.x - b.x, a.z - b.z);
 const place = (actor, point) => Object.assign(actor, {x:point.x,y:point.y,z:point.z,
   vx:0,vy:0,vz:0,grounded:true,lastValid:{x:point.x,y:point.y,z:point.z}});
+
+// Checkpoint inventory carry (F11): a claimed one-time reward must survive a
+// death/Retry. The snapshot is versioned, bounded to the actor's own weapon
+// belt and validated fail-closed before it is applied; invalid carry falls back
+// to the ordinary spawn inventory instead of replaying or duplicating rewards.
+const CARRY_VERSION = 1;
+function playerCarrySnapshot(match) {
+  const player = match.actors[0];
+  if (!player) return null;
+  return {version:CARRY_VERSION, weapon:player.weapon,
+    ammo:Array.isArray(player.ammo)?[...player.ammo]:null,
+    armor:Number.isFinite(player.armor)?player.armor:null};
+}
+function sanitizePlayerCarry(carry, match) {
+  if (!carry || typeof carry!=='object' || carry.version!==CARRY_VERSION) return null;
+  const player = match.actors[0];
+  const count = Array.isArray(player?.ammo) ? player.ammo.length : 0;
+  if (!count) return null;
+  if (!Number.isInteger(carry.weapon) || carry.weapon < 0 || carry.weapon >= count) return null;
+  if (!Array.isArray(carry.ammo) || carry.ammo.length !== count) return null;
+  const ammo = [];
+  for (const [index, amount] of carry.ammo.entries()) {
+    if (amount === Infinity) { ammo.push(Infinity); continue; }
+    if (!Number.isFinite(amount) || amount < 0) return null;
+    const cap = match.weaponForIndex(player, index)?.cap;
+    ammo.push(Number.isFinite(cap) ? Math.min(amount, cap) : amount);
+  }
+  if (!Number.isFinite(carry.armor)) return null;
+  return {version:CARRY_VERSION, weapon:carry.weapon, ammo, armor:Math.min(100, Math.max(0, carry.armor))};
+}
+function applyPlayerCarry(match, carry) {
+  const player = match.actors[0];
+  player.weapon = carry.weapon;
+  player.ammo = [...carry.ammo];
+  player.armor = carry.armor;
+}
 export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal', random=Math.random,
-  mapData, checkpoint=0, elapsed=0, totalElapsed=0, kills=0, checkpointPoint, storyCarry, interludeCarry} = {}) {
+  mapData, checkpoint=0, elapsed=0, totalElapsed=0, kills=0, checkpointPoint, storyCarry, interludeCarry, playerCarry: carryInput=null} = {}) {
   const mission = missionForCampaign(mapId);
   if (!['easy','normal','hard'].includes(difficulty)) throw new TypeError('Unsupported difficulty');
   if (typeof random !== 'function') throw new TypeError('RNG must be a function');
@@ -190,7 +226,8 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
         marker:currentAnchor()},player,controls.interact===true,this.arena);
     }
     campaignCheckpoint() {return {mapId,difficulty,checkpoint:state.checkpoint,checkpointPoint:{...state.checkpointPoint},
-      elapsed:state.elapsed,totalElapsed:state.totalElapsed,kills:state.bankedKills,storyCarry:story.continuity(),interludeCarry:interludes.continuity()};}
+      elapsed:state.elapsed,totalElapsed:state.totalElapsed,kills:state.bankedKills,storyCarry:story.continuity(),interludeCarry:interludes.continuity(),
+      playerCarry:playerCarrySnapshot(this)};}
     campaignStoryContinuity() {return story.continuity();}
     completeCampaign() {if (state.phase==='level-complete' && data.campaign.nextMapId===null) finish(this,'campaign-complete');}
     snapshot() {
@@ -222,5 +259,8 @@ export function createCampaignMatch({mapId='rootfall-verge', difficulty='normal'
     }
   }
   primeCampaignSourceNavigation(data.arena);
-  return new CampaignMatch('chatgpt','openclaw',random,mapId,{mode:'campaign',difficulty,botCount:0,humanCount:1});
+  const match=new CampaignMatch('chatgpt','openclaw',random,mapId,{mode:'campaign',difficulty,botCount:0,humanCount:1});
+  const carry=sanitizePlayerCarry(carryInput,match);
+  if(carry)applyPlayerCarry(match,carry);
+  return match;
 }

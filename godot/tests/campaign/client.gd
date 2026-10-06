@@ -73,5 +73,17 @@ func _initialize() -> void:
 	assert(batch.decode_text(JSON.stringify({"type":"results","seq":4,"inputEpoch":2,"state":{"mapId":"rootfall-verge","campaign":{"mapId":"rootfall-verge","phase":"dead"}}})))
 	assert(batch.pending_snapshot.is_empty() and emitted.size() == 1 and emitted[0].type == "results", "terminal lifecycle bypasses batching and cannot replay stale poses")
 	batch.free()
+	# Negative decode-once cases: distinct campaign size message, then the base
+	# malformed-envelope message after the campaign size guard passes.
+	var guard := RecordingClient.new()
+	guard.allowlist = {"rootfall-verge":{"geometryHash":"one"}}
+	guard.requested_map = "rootfall-verge"
+	assert(not guard.decode_text("x".repeat(guard.MAX_FRAME_BYTES + 1)), "oversized campaign frame refused")
+	assert(guard.error == "Oversized campaign frame", "oversized campaign frame keeps its exact message")
+	assert(not guard.decode_text("{ not json"), "malformed JSON envelope refused")
+	assert(guard.error == "Malformed JSON envelope", "malformed JSON keeps the base message")
+	assert(not guard.decode_text(JSON.stringify([1, 2, 3])), "non-object JSON envelope refused")
+	assert(guard.error == "Malformed JSON envelope", "non-object envelope keeps the base message")
+	guard.free()
 	print("CAMPAIGN_CLIENT_OK")
 	quit()

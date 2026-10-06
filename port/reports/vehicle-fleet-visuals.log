@@ -1,3 +1,6 @@
 Godot Engine v4.5.2.stable.official.6ce3de25a - https://godotengine.org
 
-FLEET VISUALS checks=38 failures=0 synthetic=true
+FAIL relative turret puma
+FAIL relative turret titan
+FAIL relative turret scout
+FLEET VISUALS checks=38 failures=3 synthetic=true

@@ -73,6 +73,9 @@ for (const kind of ['dev','package']) {
         script=join(root,'run.mjs');
       } else {
         for(const name of ['launch.mjs','launch_options.mjs'])await copy('tools/godot-dev/'+name,'tools/godot-dev/'+name);
+        await copy('tools/godot-dev/active_source.mjs','tools/godot-dev/active_source.mjs');
+        await copy('port/contracts/active-source.json','port/contracts/active-source.json');
+        await copy('port/contracts/racing-candidate-derivative.json','port/contracts/racing-candidate-derivative.json');
         for(const name of ['endpoint.mjs','settings_path.mjs','career_path.mjs'])await copy('tools/godot-package/'+name,'tools/godot-package/'+name);
         await copy('port/contracts/map-selection.json','port/contracts/map-selection.json');
         await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'journey-fixture'}));

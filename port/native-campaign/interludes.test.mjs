@@ -61,6 +61,8 @@ for(const mapId of CAMPAIGN_MAP_IDS)test(`${mapId}: walk from checkpoint, play b
     const checkpoint=match.campaignCheckpoint(),retry=createCampaignMatch({...checkpoint,mapData:data,random:()=>.5});
     assert.equal(beatState(retry,def.id).completed,true,'death retry retains the claim');
     assert.equal(beatState(retry,def.id).choice,def.family==='choice'?'a':null);
+    assert.equal(retry.actors[0].armor,armor,'death retry retains the claimed armor benefit');
+    assert.deepEqual(retry.actors[0].ammo,ammo,'death retry retains the claimed ammunition benefit');
     // Return via the actual short spur, without a teleport or invisible gate.
     if(def.family==='link')walk(match,[...route('b')].reverse());
     else walk(match,[...route('a')].reverse());
