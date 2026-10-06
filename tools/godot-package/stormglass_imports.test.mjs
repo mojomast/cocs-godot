@@ -19,7 +19,7 @@ function forged(id,mutate){
 }
 test('seven exact asset closures pass strict inventory; only one public Stormglass pair is registered',()=>{
  const result=productionResources(options);assert.deepEqual(result.pending,[]);
- assert.equal(Object.keys(result.units).length,7);assert.equal(result.units['stormglass-causeway'].expected.packageInputs.length,671);
+ assert.equal(Object.keys(result.units).length,7);assert.equal(result.units['stormglass-causeway'].expected.packageInputs.length,672);
  for(const id of REQUIRED_UNITS)for(const p of [...Object.keys(MELEE_ADDED),'godot/replay/stage.gd','godot/audio/playback_cleanup.gd'])assert.ok(result.units[id].expected.packageInputs.includes(p),id+': '+p);
  assert.deepEqual(WORLDS['stormglass-causeway'].modes,['puma-race']);assert.deepEqual(CANDIDATES['stormglass-causeway'],['puma-race']);
  assert.equal(Object.keys(WORLDS).length,13);assert.equal(Object.values(WORLDS).reduce((n,w)=>n+w.modes.length,0),73);
@@ -40,8 +40,12 @@ test('all J bytes equal the received commit; original receipt accepted/pending/n
  for(const [p,c]of Object.entries(J_RUNTIME_ADVANCES)){assert.equal(r.nativeRuntimeHooks[p],c.before);assert.equal(r.runtimeHooks[p],racingSupportingHookHash(p,polishSupportingHash(p,stormglassRuntimePolicy(r.unit)[p].after,r),r));}
  const protectedPaths=['game/','server/','port/multiplayer-worlds/derived/','port/multiplayer-worlds/wall_candidates.mjs','godot/sports/','godot/first_person/','tools/godot-multiplayer/new-maps/stormglass-causeway/','port/expansion-four/stormglass/'];
  assert.equal(execFileSync('git',['diff','8921ed41','14d8a72d','--',...protectedPaths],{encoding:'utf8'}),'');
- const drifted=execFileSync('git',['diff','--name-only','4b5595f8','--',...protectedPaths],{encoding:'utf8'}).trim().split('\n').filter(Boolean).filter(p=>!/^(game|server)\/.*\.test\.mjs$/.test(p)).filter(p=>!p.startsWith('tools/godot-multiplayer/new-maps/stormglass-causeway/grade-plan/')).sort();
- assert.deepEqual(drifted,Object.keys(r.racingAdvance.changed).filter(p=>protectedPaths.some(prefix=>p.startsWith(prefix))).sort());
+ const drifted=execFileSync('git',['diff','--name-only','4b5595f8','--',...protectedPaths],{encoding:'utf8'}).trim().split('\n').filter(Boolean).filter(p=>!/^(game|server)\/.*\.test\.mjs$/.test(p)).filter(p=>!p.startsWith('tools/godot-multiplayer/new-maps/stormglass-causeway/grade-plan/')).filter(p=>!p.endsWith('.uid')).sort();
+ // The newest reviewed lane (consolidation: the audit implementation) owns the
+ // current protected-path drift; .uid identifiers are Godot-generated and are
+ // never package inputs.
+ const advanced=[...Object.keys(r.racingAdvance.changed),...Object.keys(r.consolidationAdvance.changed),...Object.keys(r.consolidationAdvance.added)].filter(p=>protectedPaths.some(prefix=>p.startsWith(prefix))).sort();
+ assert.deepEqual(drifted,advanced);
 });
 test('missing actual PNG or either sidecar type fails closed without reconstruction',()=>{
  const imports=stormglassImportPaths();assert.equal(imports.filter(p=>p.endsWith('.png')).length,11);assert.equal(imports.filter(p=>p.endsWith('.import')).length,12);
