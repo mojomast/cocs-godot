@@ -3,12 +3,19 @@
 import {readFileSync,mkdirSync,mkdtempSync,writeFileSync} from 'node:fs';
 import {rayWorld} from '../../../game/core.mjs';
 import {readBlackwater} from '../../native-horde/blackwater-schema.mjs';
+import {shotActorContact} from '../../../game/shot-contact.mjs';
 const attempt=process.argv[2];if(!attempt)throw Error('retained source attempt directory required');
 const rows=readFileSync(`${attempt}/inputs-events.jsonl`,'utf8').trim().split('\n').map(JSON.parse);
 const result=JSON.parse(readFileSync(`${attempt}/result.json`));
 const recipe=readBlackwater().arena,arenas=new Map();
 function arena(mask){if(!arenas.has(mask))arenas.set(mask,{...recipe,blocks:[...recipe.blocks,...recipe.hordeStagePlan.gates.filter((_,i)=>!(mask&(1<<i)))]});return arenas.get(mask);}
 const waves={},targets={},summoners={};let wave=0,phase='intermission',mask=0,previous=null,lastTarget=null,window=[];
+// A player shot counts as a hit shot on the authority's explicit contact, not on
+// the `hit` candidate: a shot blocked before that candidate reports
+// `contact:'blocked'` while still naming the candidate, so counting `hit` credits
+// shots that hit cover. Producers with no classification (older cores, flak
+// shrapnel) keep the legacy candidate test.
+const hitShot=e=>{const actor=shotActorContact(e);return actor==null?e.hit!==false&&e.hit!==undefined:actor;};
 const init=()=>({steps:0,movingFire:0,movingNoFire:0,stillFire:0,stillIdle:0,intermissionSteps:0,repairSteps:0,travelMetres:0,targetSwitches:0,shots:0,hitShots:0,geometryStoppedMisses:0,otherMisses:0,damage:0,kills:0,reloadPulses:0,reloadStarts:0,powerPulses:0,stuckWindows:[],summons:0,summonedActors:0,decisionSamples:0,occludedTargetSteps:0,outOfFireRangeSteps:0,emptyAmmoSteps:0});
 for(const row of rows){
  for(const e of row.events){if(e.type==='horde-wave'){wave=e.wave;phase='wave';waves[wave]??=init();waves[wave].start=e.time;}if(e.type==='horde-wave-cleared'){(waves[e.wave]??=init()).clear=e.time;phase='intermission';}if(e.type==='mission-won'||e.type==='mission-lost')phase='terminal';if(e.type==='horde-gate-open'||e.type==='horde-gate-closed')mask=e.gateMask;}
@@ -24,7 +31,7 @@ for(const row of rows){
  if(target!==null){const t=targets[target]??={steps:0,fireSteps:0,movingSteps:0,first:row.sourceTime,last:row.sourceTime};t.steps++;t.fireSteps+=Number(fire);t.movingSteps+=Number(move);t.last=row.sourceTime;}
  if(target!==lastTarget&&target!==null)w.targetSwitches++;lastTarget=target;
  for(const e of row.events){
-  if(e.type==='shot'&&e.actor===0){w.shots++;if(e.hit!==false&&e.hit!==undefined)w.hitShots++;else{
+  if(e.type==='shot'&&e.actor===0){w.shots++;if(hitShot(e))w.hitShots++;else{
    const dx=e.to.x-e.from.x,dy=e.to.y-e.from.y,dz=e.to.z-e.from.z,d=Math.hypot(dx,dy,dz);
    const stop=d>0?rayWorld(e.from,{x:dx/d,y:dy/d,z:dz/d},d+.03,arena(mask)):Infinity;
    if(stop<=d+.02)w.geometryStoppedMisses++;else w.otherMisses++;
@@ -41,7 +48,7 @@ for(const row of rows){
  }window=[];}
  previous=row;
 }
-const report={attempt,definitions:{dt:1/60,moving:'nonzero requested movement',fireWindow:'input.fire true, not an actual shot',travel:'sum of successive source player X/Z positions',stuck:'disjoint 60-step windows: >=45 moving inputs and net displacement <0.25m; can include oscillation',geometryStoppedMiss:'player shot hit=false/absent with source ray geometry at its recorded endpoint within .02m; does not prove pre-shot target occlusion',unavailable:'old trace has no per-step enemy/ammo snapshots: exact target-LOS rejection and empty-ammo dwell cannot be reconstructed',moveBlocked:'source move-blocked reason=firing is grapple admission, NOT wall collision'},waves,targets,summoners,
+const report={attempt,definitions:{dt:1/60,moving:'nonzero requested movement',fireWindow:'input.fire true, not an actual shot',travel:'sum of successive source player X/Z positions',stuck:'disjoint 60-step windows: >=45 moving inputs and net displacement <0.25m; can include oscillation',geometryStoppedMiss:'player shot the authority did not classify as an actor/vehicle/sentry contact (contact world or blocked, or hit=false/absent on producers with no classification) with source ray geometry at its recorded endpoint within .02m; does not prove pre-shot target occlusion',unavailable:'old trace has no per-step enemy/ammo snapshots: exact target-LOS rejection and empty-ammo dwell cannot be reconstructed',moveBlocked:'source move-blocked reason=firing is grapple admission, NOT wall collision'},waves,targets,summoners,
  upgrades:result.events.filter(e=>e.type==='controller-upgrade'),weaponSwitches:result.events.filter(e=>e.type==='weapon-switch'&&e.actor===0),moveBlockedReasons:{}};
 for(const e of result.events.filter(e=>e.type==='move-blocked'&&e.actor===0))report.moveBlockedReasons[e.reason]=(report.moveBlockedReasons[e.reason]??0)+1;
 for(const [id,s] of Object.entries(summoners)){s.targeting=targets[id]??null;s.firstDamage=result.events.find(e=>e.type==='damage'&&e.actor===Number(id)&&e.source===0)?.time;s.death=result.events.find(e=>e.type==='death'&&e.actor===Number(id));}
