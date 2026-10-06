@@ -34,6 +34,7 @@ between the audit and this implementation start). Engine: pinned Godot
 |---|---|---|
 | Dev supervisor → menu → self-quit | `node tools/godot-dev/launch.mjs --experience=menu --smoke` | exit 0; `MENU_READY {"routes":26,"categories":5,"visible":16,"developer":false}` |
 | Dev supervisor → menu with developer navigation | `COCS_DEV_MENU=1 node tools/godot-dev/launch.mjs --experience=menu --smoke` | exit 0; `MENU_READY {"visible":26,"developer":true}` |
+| Client protocol input flow (campaign/arena/horde) | `godot --headless --script res://tests/campaign/input_flow.gd` | **1970 checks / 0 failures** (baseline for the W1 migration; rerun on merge) |
 
 ## Explicitly unrun / not claimed
 
