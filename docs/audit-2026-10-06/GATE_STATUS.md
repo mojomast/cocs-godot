@@ -152,6 +152,31 @@ walk-off presentation), the objective string is stale under the experiment, and
 "smart play vs giving up" needs an owner playtest. The emitted
 `campaign-guard-withdrawal` event is additive; `playerCarry` is untouched.
 
+### Independent verification (Flash, read-only) — claims verified, no counterexample
+
+- Control path is **bit-for-bit identical on the wire**: a deterministic
+  1603-tick control trace hashes identically at `59279c0e` and `f6c910a2`;
+  every behavioral change is gated and `playerCarry`/`campaignCheckpoint` are
+  untouched.
+- Independent harness (input for actor 0 only, so real NPC AI runs): **84/84**
+  checks; author's probe table reproduced; 30-seed stress `bad=0`; drain is a
+  fixed 73-tick deadline; 0 post-completion damage with live AI; kill-credit
+  paths untouched (direct `health=0` bypasses `damage()`), banking exact.
+- Falsification all negative: 4× death/retry after banking 2 cannot grow kills
+  or carry; the policy census over all 20 encounters resolves only
+  `siltwake-crossing:1`; 8 invalid policy names throw; other four timed
+  encounters stay blocked under every policy request.
+- Blast radius: 31/0, 64/0, 13/0, eslint clean.
+
+Promotion-phase notes: (1) the committed "no damage after completion" test
+disables NPC AI (`idleTick` supplies input for every actor) — the behavior is
+verified but the test must be strengthened before promotion; (2) a latent
+suppression bug exists in the currently unreachable two-opted-in-encounter
+merge path (stagger timers pinned to the pre-extension deadline); (3) the
+HUD/story `enemiesRemaining` still counts withdrawing guards during the grace
+window (presentation-only; `live.mjs:36` surfaces it); (4) `dead:1e9` is a
+behavioral value future consumers must not read as a respawn timer.
+
 ## Explicitly unrun / not claimed
 
 - The full `tools/godot-dev/verify.py` aggregate (384 registered gates) was

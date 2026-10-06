@@ -49,8 +49,10 @@ evidence; unrun/manual gates are never reported as passing.
   opt-in `restore-and-withdraw` policy for `siltwake-crossing:1` lets the
   transfer objective complete while surviving guards withdraw (bounded despawn,
   no kill credit, no reward farming on retry); the control reproduces the audit
-  finding (`holdProgress` 1.00, never completes while guards live). Not promoted:
-  withdrawal presentation and an owner playtest are open items.
+  finding (`holdProgress` 1.00, never completes while guards live) and its
+  deterministic trace is bit-identical to the baseline. Independently verified
+  (84/84 harness with real AI, 30-seed stress, negative farming/leak attempts).
+  Not promoted: withdrawal presentation and an owner playtest are open items.
 
 ## Product / visuals
 
