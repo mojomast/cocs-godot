@@ -54,6 +54,23 @@ sanctioned additive advance layer:
   newer layer; every earlier lane still reconstructs its own history.
 - The layer is reversed and re-derived after each worker merge, never stacked.
 
+## Independent adversarial verification of the advance layer (Flash, read-only)
+
+| Probe | Result |
+|---|---|
+| Reverse each of the 7 layers → committed predecessor bytes | **7/7 byte-identical** |
+| `previousReceipt.sha256` identity + cross-receipt delta consistency | 7/7 PASS (same 11 changed + 1 added) |
+| Forged `after` / `before` / deleted `added` / removed layer (direct verifier) | all **rejected** |
+| Real byte mutation in a disposable tree | rejected by layer and by closure |
+| `productionResources` strict (`worldIds` = 13) | **no pending**, 7 units |
+| Package suite in a fresh worktree | **315 pass / 0 fail** |
+
+Two review notes: the layer verifier alone accepts a *self-consistent* deletion of an
+`added` entry (the production closure's exact packageInputs equality catches it),
+and `previousReceipt` is format-checked inside the verifier (the reversal byte
+identity and `verifyMovementPredecessor`'s hard-coded history hashes anchor it).
+`consolidation_dependencies.test.mjs` now covers both cases (3/3).
+
 ## Explicitly unrun / not claimed
 
 - The full `tools/godot-dev/verify.py` aggregate (384 registered gates) was not
