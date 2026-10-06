@@ -90,6 +90,17 @@ func run() -> void:
 	assert(not demo.application_focused and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED)
 	demo._notification(Node.NOTIFICATION_APPLICATION_FOCUS_IN)
 	assert(Input.mouse_mode != Input.MOUSE_MODE_CAPTURED, "focus regain never captures")
+	# F10 experiment: the retreating guards are named only while the additive
+	# `withdrawing` field is present. The control snapshot has no such field and
+	# must keep the exact shipped detail line.
+	demo.campaign.state = {"phase":"playing", "detail":"Follow the waypoint.", "withdrawing":4}
+	hud.refresh()
+	assert(hud.detail.text == "Follow the waypoint.  ·  Survivors falling back 4",
+		"withdrawing guards are named on the detail line: " + hud.detail.text)
+	demo.campaign.state = {"phase":"playing", "detail":"Follow the waypoint."}
+	hud.refresh()
+	assert(hud.detail.text == "Follow the waypoint.",
+		"absent withdrawing leaves the control detail line untouched: " + hud.detail.text)
 	hud.free()
 	# Detached session owns these eager children until composition attaches them.
 	for node: Node in [demo.camera, demo.label, demo.selector, demo.combat_label, demo.pickups, demo.presentation, demo.combat, demo.client, demo.ground_tells, demo.story_director, demo.robot_voices, demo.interlude_director]: node.free()

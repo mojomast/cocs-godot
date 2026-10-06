@@ -18,6 +18,15 @@ func _initialize() -> void:
 	assert(model.apply(state) and model.action() == "continue")
 	state.phase = "campaign-complete"
 	assert(model.apply(state) and model.action().is_empty())
+	# F10 experiment: `withdrawing` is additive. A snapshot carrying it is kept,
+	# and a control snapshot without it parses exactly as before (absent means the
+	# shipped require-all-guards rule, where nobody falls back).
+	state.phase = "playing"
+	state.marker = marker
+	state.withdrawing = 4
+	assert(model.apply(state) and model.state.get("withdrawing") == 4, "withdrawing is retained while present")
+	state.erase("withdrawing")
+	assert(model.apply(state) and not model.state.has("withdrawing"), "absent withdrawing parses unchanged")
 	state.mapId = "old-deferred-map"
 	assert(not model.apply(state))
 	assert(model.state.mapId == "rootfall-verge", "invalid state cannot replace current chapter")
