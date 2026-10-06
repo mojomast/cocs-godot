@@ -15,10 +15,17 @@ class_name WeaponPresentationProfile
 ##
 ## Shared and immutable: `for_weapon()` and `default_for_weapon()` hand out one
 ## sealed instance per weapon and every exported field refuses writes once
-## sealed, so no consumer can mutate the table another consumer is reading (a
-## refused write warns and is counted by `rejections()`). Runtime state (recoil
-## age, heat, reload progress, spring values, kick age) never lives here; it
-## stays on the per-instance rig, handling and inertia helpers.
+## sealed (a refused write warns and is counted by `rejections()`). The tables
+## themselves are enforced by the engine rather than by a guard a caller could
+## route around: each profile's merged copy is *deep-frozen* with Godot's
+## `Dictionary`/`Array` `make_read_only()` at construction, so an in-place write
+## at any nesting depth -- `pose["hip_offset"]`, `impulses["lateral"]["roll"]`,
+## or the sub-table `impulse("lateral")` returns -- is refused, not just a
+## property setter. The freeze runs once per profile after every authored value
+## is merged, so the per-frame accessors still hand out the frozen table by
+## reference and allocate nothing. Runtime state (recoil age, heat, reload
+## progress, spring values, kick age) never lives here; it stays on the
+## per-instance rig, handling and inertia helpers.
 ##
 ## `first_person/rig.gd` remains the sole final pose compositor. Every value here
 ## is a bound that compositor and its helpers read, not a transform any of them
@@ -319,9 +326,29 @@ static func _build(key: String, override: Dictionary) -> WeaponPresentationProfi
 	for index: int in range(Catalog.WEAPONS.size()):
 		if String(Catalog.WEAPONS[index].get("name", "")) == String(values["weapon_id"]): derived = index
 	values["source_index"] = int(override.get("source_index", derived))
+	# Freeze after every authored value is in place, so what the consumers read is
+	# the same table they cannot edit. `duplicate(true)` above is deliberately a
+	# writable copy; this is the step that seals it.
+	_freeze_deep(values)
 	profile._values = values
 	profile._sealed = true
 	return profile
+
+## Recursively mark `value` and every Dictionary/Array inside it read-only, so an
+## in-place write is refused by the engine at any nesting depth instead of only
+## at the property setter. Scalars, vectors and packed arrays are values rather
+## than containers and are already safe to hand out. Idempotent, and called once
+## per profile at build time -- never on the per-frame read path, which still
+## returns the frozen tables by reference and so allocates nothing.
+static func _freeze_deep(value: Variant) -> void:
+	if value is Dictionary:
+		var table: Dictionary = value
+		for field: Variant in table: _freeze_deep(table[field])
+		table.make_read_only()
+	elif value is Array:
+		var list: Array = value
+		for item: Variant in list: _freeze_deep(item)
+		list.make_read_only()
 
 ## --- Pose / ADS ------------------------------------------------------------
 
