@@ -36,6 +36,14 @@ def fail_preflight(message):
 
 binary = os.environ.get("GODOT_BIN")
 derivative_path = os.environ.get('COCS_SOURCE_DERIVATIVE')
+active_source = False
+if not derivative_path:
+    descriptor = json.loads(Path('port/contracts/active-source.json').read_text())
+    derivative_path = str(root / descriptor['derivative'])
+    digest = hashlib.sha256(Path(derivative_path).read_bytes()).hexdigest()
+    if digest != descriptor['derivative_sha256']:
+        fail_preflight(f"Active source derivative drift: {descriptor['derivative']}")
+    active_source = True
 # Career state is durable in the product. Each aggregate uses an isolated
 # authority/credential root so scripted matches cannot mutate a real career.
 (root / '.port-runtime').mkdir(exist_ok=True)
@@ -493,7 +501,7 @@ if derivative_path:
         derivative_bytes = Path(derivative_path).read_bytes()
         derivative = json.loads(derivative_bytes)
         report['source_derivative'] = {
-            'selection': 'explicit', 'path': derivative_path,
+            'selection': 'active' if active_source else 'explicit', 'path': derivative_path,
             'sha256': hashlib.sha256(derivative_bytes).hexdigest(),
             'source_commit': derivative['source_commit'],
             'derivative_commit': derivative['derivative_commit'],

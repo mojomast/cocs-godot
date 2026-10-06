@@ -156,14 +156,14 @@ Graphical automation additionally uses Xvfb; normal play uses your desktop.
 ```sh
 git clone https://github.com/mojomast/cocs-godot.git
 cd cocs-godot
-git checkout port/lattice-flagship-next
 npm ci
 
 # Use an absolute path to your Godot 4.5.2 executable.
 export GODOT_BIN=/absolute/path/to/Godot_v4.5.2-stable_linux.x86_64
 export GUEST_NODE_MODULES="$PWD/node_modules"
-# Explicitly select this branch's frozen source-runtime derivative.
-export COCS_SOURCE_DERIVATIVE="$PWD/port/contracts/lattice-catalog-derivative.json"
+# Dev, package, CI and verification resolve one reviewed active-source
+# descriptor (port/contracts/active-source.json, see ACTIVE_SOURCE.md). Set
+# COCS_SOURCE_DERIVATIVE explicitly only to verify a historical candidate.
 
 # Development helpers use this directory for isolated temporary projects.
 mkdir -p /tmp/opencode

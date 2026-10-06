@@ -147,9 +147,13 @@ def main():
     port_commit = git("rev-parse", "HEAD")
     if args.candidate and port_commit != args.candidate:
         raise RuntimeError("Frozen candidate changed before input discovery")
-    racing_path = ROOT / "port/contracts/racing-candidate-derivative.json"
-    derivative_path = racing_path if racing_path.is_file() else ROOT / "port/contracts/movement-candidate-derivative.json"
-    derivative = json.loads(derivative_path.read_text()) if args.source_derivative else None
+    active_source = json.loads((ROOT / "port/contracts/active-source.json").read_text())
+    derivative_path = ROOT / active_source["derivative"]
+    derivative = None
+    if args.source_derivative:
+        if hashlib.sha256(derivative_path.read_bytes()).hexdigest() != active_source["derivative_sha256"]:
+            raise RuntimeError("Active source derivative drift: " + active_source["derivative"])
+        derivative = json.loads(derivative_path.read_text())
     if lock["godot_version"] != EXACT or git("rev-parse", "--is-shallow-repository") != "false":
         raise RuntimeError("Exact Godot lock and full git history required")
     # Existing verifier checks ancestry plus every tracked locked source/dependency byte.
@@ -260,10 +264,10 @@ def main():
     input_paths.update(world_resource_files)
     dressing_resources = [p for p in world_resource_files if p.startswith("godot/multiplayer_worlds/dressing/profiles/")]
     if derivative:
+        input_paths.add("port/contracts/active-source.json")
+        input_paths.add(Path(active_source["derivative"]).as_posix())
         input_paths.add("port/contracts/movement-candidate-derivative.json")
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
-        if (ROOT / "port/contracts/racing-candidate-derivative.json").is_file():
-            input_paths.add("port/contracts/racing-candidate-derivative.json")
         input_paths.add("tools/godot-package/source_derivative.mjs")
         input_paths.add("tools/godot-package/racing_derivative.mjs")
     # The Career catalog and its generator arrive with a later lane; include them
