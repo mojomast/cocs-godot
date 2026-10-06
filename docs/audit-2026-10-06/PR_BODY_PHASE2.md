@@ -86,14 +86,25 @@ Headless/deterministic only; no visual, audio-quality or human claim is made.
 - Godot: audio feedback 416 checks; first-person lifecycle 63; first-person
   presentation 970; presentation replay 6 states; main-menu smoke; menu
   contracts 1153; player-fx impacts 54.
-- Adversarial cross-review (independent agent, own worktree): contract
-  before/after byte-truth, parent-chain immutability, three tamper probes
-  (contract flip, core rollback, descriptor sha), and reconciliation
-  reproduction. The first pass found and this phase fixed: an analyze-trace
-  import of the deleted classifier module, three stale absolute impact counts
-  caused by the new blocked-surface draw (now an explicit assertion), and the
-  advance transaction's non-idempotence at HEAD. Re-verification of the fixes
-  is recorded in the final review.
+- Independent adversarial cross-review (separate agent, own worktree):
+  contract before/after byte-truth and inventories 13/14/15, historical
+  contracts untouched, active-source sha, three tamper probes (contract flip →
+  export fails; core rollback → provenance fails; descriptor sha), the named
+  node suites (24/0), the package suite (318/318), and the F08 Godot gates
+  (416 / 970 / 1153 / 54) with no engine-error lines. The first pass found and
+  this phase fixed three defects: an analyze-trace import of the deleted
+  classifier module; three stale absolute impact counts caused by the new
+  blocked-surface draw (now asserted against captured counters — a falsifying
+  occlusion mutation makes the check fail, then the file was restored
+  byte-identically); and the advance transaction's non-idempotence at HEAD
+  (now a true no-op; the restore path at `c04dfefe` re-derives all seven
+  receipts plus the requirements byte-for-byte).
+- Two pre-existing F01 source-drift tests (`source-inventory`,
+  `source-selection`) remain red in the tree and are unaffected by this phase;
+  they are already triaged in `GATE_STATUS.md`. Residual, disclosed: active
+  `game/core.mjs` and the generated derivative disagree on `hit` for blocked
+  shots — benign for every migrated consumer, but a future `.hit`-only reader
+  would need the classifier.
 
 ## Not claimed / gated follow-ups
 
