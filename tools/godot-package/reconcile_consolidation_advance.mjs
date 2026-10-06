@@ -25,6 +25,7 @@ const IMPLEMENTATION = new Set([
   'godot/ui/main_menu.gd',
   'godot/world/audio_feedback.gd',
   'godot/player_fx/impacts.gd',
+  'godot/source_operators/moth_finish/manifest.json',
   'game/core.mjs',
   'game/feedback.mjs',
   'game/view.mjs',

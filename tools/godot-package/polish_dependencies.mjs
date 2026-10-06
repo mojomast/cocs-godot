@@ -71,7 +71,7 @@ export function verifyPolishAdvance(receipt,read){
  assert.deepEqual(r.runtimeChanged,policy,'Exact polish activation hook advance');
  for(const [p,c]of Object.entries(policy))assert.equal(receipt.runtimeHooks[p],racingSupportingHookHash(p,c.after,receipt),'Polish current runtime identity');
  for(const [p,c]of Object.entries(s.changed))assert.equal(receipt.packageInputs[p],consolidationSupportingHash(p,vesperApronSupportingHash(p,dressingSupportingHash(p,racingSupportingHash(p,movementSupportingHash(p,lSupportingHash(p,c.after),read),receipt),receipt),receipt),receipt),'Reviewed polish dependency identity: '+p);
- for(const [p,sha]of Object.entries({...s.added,...s.evidence,...s.operatorFinish.data}))assert.equal(receipt.packageInputs[p],sha,'Exact polish addition: '+p);
+ for(const [p,sha]of Object.entries({...s.added,...s.evidence,...s.operatorFinish.data}))assert.equal(receipt.packageInputs[p],consolidationSupportingHash(p,vesperApronSupportingHash(p,dressingSupportingHash(p,racingSupportingHash(p,movementSupportingHash(p,sha,read),receipt),receipt),receipt),receipt),'Exact polish addition: '+p);
 }
 export function verifyOperatorFinishImports(read){
  const s=polishInventory(read),entries=Object.entries(s.operatorFinish.imports);assert.equal(entries.length,116);
