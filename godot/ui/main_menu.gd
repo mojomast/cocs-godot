@@ -403,13 +403,17 @@ func populate() -> void:
 ## categories render only when developer navigation is enabled) and select its
 ## first route unless the current selection already lives here.
 func select_category(id: String) -> void:
+	if hidden_categories.has(id): return
 	current_category = id
 	for key: String in category_buttons:
 		category_buttons[key].set_pressed_no_signal(key == id)
 	var category: Dictionary = registry.category_by_id(id)
 	category_description.text = str(category.get("description", ""))
 	for route: Dictionary in registry.routes:
-		route_buttons[str(route.get("id", ""))].visible = str(route.get("category", "")) == id
+		# Hidden developer routes have no button; never index past the visible set.
+		var route_id := str(route.get("id", ""))
+		if not route_buttons.has(route_id): continue
+		route_buttons[route_id].visible = str(route.get("category", "")) == id
 	if not current_route.is_empty() and str(current_route.get("category", "")) == id:
 		refresh_status()
 		return
@@ -444,7 +448,7 @@ func quick_select_route(id: String) -> void:
 	if route.is_empty(): return
 	select_category(str(route.get("category", "")))
 	select_route(id)
-	route_buttons[id].grab_focus()
+	if route_buttons.has(id): route_buttons[id].grab_focus()
 
 func clear_route() -> void:
 	current_route = {}
