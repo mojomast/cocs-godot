@@ -212,6 +212,13 @@ func run() -> void:
 	check(playing(feedback, "shot/3") == 1, "weapon-carrying shot voices the per-weapon report")
 	feedback.apply_events([{"type":"damage","actor":1,"source":0,"amount":2}], 0)
 	check(playing(feedback, "hit/3") == 1, "confirmation follows the last local weapon")
+	# The source can emit damage before its shot in the same accepted batch; the
+	# confirmation must follow that batch's actual local weapon, not the cache.
+	feedback.clear_round()
+	feedback.apply_events([{"type":"shot","actor":1,"weapon":3},
+		{"type":"damage","actor":1,"source":0,"amount":2},{"type":"shot","actor":0,"weapon":8}], 0)
+	check(playing(feedback, "hit/8") == 1 and playing(feedback, "hit/0") == 0,
+		"damage-before-shot batch confirms with the causing weapon and ignores a remote shot")
 	feedback.clear_round()
 	feedback.apply_events([{"type":"damage","actor":0,"source":null,"amount":2}], 0)
 	feedback.apply_events([{"type":"pickup","actor":0}], 0)
