@@ -94,14 +94,18 @@ func run() -> void:
 	# holds without the semantic catalog: the blocked shot's camera candidate
 	# must not be tallied as an actor hit the way `hit` alone would.
 	var before_blocked := int(impacts.counters.actor_hits)
+	var before_blocked_shown := int(impacts.counters.shown)
 	impacts.consume([blocked], 0)
 	check(int(impacts.counters.actor_hits) == before_blocked,
 		"a blocked shot counts as a surface contact, not an actor hit")
+	check(int(impacts.counters.shown) == before_blocked_shown + 1,
+		"the blocked shot draws a surface impact")
 	var legacy: Dictionary = {"id": 902, "type": "shot", "actor": 3, "hit": false, "surface_hit": true, "normal": {"x": 0, "y": 1, "z": 0}, "from": {"x": 0, "y": 2, "z": -22}, "to": {"x": 29.654, "y": 0.6, "z": -30.069}}
 	impacts.consume([legacy], 0)
 	check(int(impacts.counters.legacy) == 1, "legacy surface_hit cue is left to the weapon-effects owner")
+	var before_malformed := int(impacts.counters.shown)
 	impacts.consume([{"id": 903, "type": "shot", "actor": 3, "hit": false, "from": {"x": 0}, "to": null}], 0)
-	check(int(impacts.counters.shown) == 1, "malformed geometry skipped")
+	check(int(impacts.counters.shown) == before_malformed, "malformed geometry skipped")
 
 	# Occlusion: a wall between the camera and the confirmed endpoint hides it.
 	var blocks := [
@@ -115,15 +119,16 @@ func run() -> void:
 	impacts.configure(camera, wall_query)
 	impacts.set_map(wall_map)
 	var behind_wall: Dictionary = {"id": 904, "type": "shot", "actor": 3, "hit": false, "from": {"x": 0, "y": 2.5, "z": -2}, "to": {"x": 0, "y": 2.5, "z": 5.5}}
+	var before_occluded := int(impacts.counters.shown)
 	impacts.consume([behind_wall], 0)
-	check(int(impacts.counters.occluded) == 1 and int(impacts.counters.shown) == 1, "occluded endpoint is skipped")
+	check(int(impacts.counters.occluded) == 1 and int(impacts.counters.shown) == before_occluded, "occluded endpoint is skipped")
 	# The same confirmed endpoint is visible from the wall's own side.
 	camera.position = Vector3(0, 2.5, 4)
 	camera.look_at(Vector3(0, 2.5, 10))
 	var visible_shot: Dictionary = behind_wall.duplicate(true)
 	visible_shot.id = 905
 	impacts.consume([visible_shot], 0)
-	check(int(impacts.counters.shown) == 2, "confirmed endpoint in view draws")
+	check(int(impacts.counters.shown) == before_occluded + 1, "confirmed endpoint in view draws")
 	# A viewer facing away still never draws a cue behind itself.
 	camera.position = Vector3(0, 2.5, 8)
 	camera.look_at(Vector3(0, 2.5, 20))

@@ -3,7 +3,16 @@
 import {readFileSync,mkdirSync,mkdtempSync,writeFileSync} from 'node:fs';
 import {rayWorld} from '../../../game/core.mjs';
 import {readBlackwater} from '../../native-horde/blackwater-schema.mjs';
-import {shotActorContact} from '../../../game/shot-contact.mjs';
+// Explicit shot contact classification (audit F08), duplicated from the game
+// core consumers: true for an actor/vehicle/sentry contact, false for
+// world/blocked, null when the producer made no claim.
+function shotActorContact(event){
+ if(!event)return null;
+ if(event.blocked===true)return false;
+ const contact=event.contact;
+ if(typeof contact!=='string'||!contact)return null;
+ return contact==='actor'||contact==='vehicle'||contact==='sentry';
+}
 const attempt=process.argv[2];if(!attempt)throw Error('retained source attempt directory required');
 const rows=readFileSync(`${attempt}/inputs-events.jsonl`,'utf8').trim().split('\n').map(JSON.parse);
 const result=JSON.parse(readFileSync(`${attempt}/result.json`));

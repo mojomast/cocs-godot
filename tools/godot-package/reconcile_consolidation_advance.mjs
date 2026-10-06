@@ -117,6 +117,15 @@ files.set(REQUIREMENTS, Buffer.from(JSON.stringify(requirements, null, 2) + '\n'
 const catalog = JSON.parse(read('port/contracts/map-selection.json'));
 const worldIds = [...new Set([...(Array.isArray(catalog.maps) ? catalog.maps.map(entry => typeof entry === 'string' ? entry : entry.id) : Object.keys(catalog.maps ?? {})),
   'parallax-observatory', 'vesper-viaduct', 'abyssal-pressureworks', 'stormglass-causeway'])];
+// Idempotence: at an already-advanced HEAD there is no delta to record, and
+// rebuilding would replace the live layer with an empty one. Verify the
+// committed receipts as they stand and leave the tree alone.
+if (audit.every(entry => entry.changed.length === 0 && entry.added.length === 0 && entry.runtimeChanged.length === 0)) {
+  const settled = productionResources({read, has:existsSync, worldIds, strict:false});
+  assert.deepEqual(settled.pending, [], 'Already-advanced receipts must verify');
+  console.log(JSON.stringify({base, pending:settled.pending, units:audit, idempotent:true}, null, 1));
+  process.exit(0);
+}
 const verified = productionResources({
   read: path => files.get(path) ?? read(path),
   has:existsSync,
