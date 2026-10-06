@@ -258,6 +258,10 @@ func refresh() -> void:
 	detail.text = str(state.get("detail", ""))
 	if state.get("enemiesRemaining", 0) > 0: detail.text += "  ·  Robots %d" % int(state.enemiesRemaining)
 	if float(state.get("holdProgress", 0)) > 0: detail.text += "  ·  Link %d%%" % roundi(float(state.holdProgress) * 100)
+	# F10 experiment: guards walking off are not `enemiesRemaining`, so the
+	# retreat would otherwise leave no on-screen trace. The count is additive and
+	# absent under the control rule, so this branch never changes the shipped line.
+	if int(state.get("withdrawing", 0)) > 0: detail.text += "  ·  Survivors falling back %d" % int(state.withdrawing)
 	var transmission: Dictionary = state.get("transmission", {})
 	var message := "%s: %s" % [transmission.get("speaker", "ECHO"), transmission.get("text", "")]
 	if subtitle.text != message: comms.scroll_vertical = 0
