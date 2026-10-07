@@ -19,7 +19,14 @@ func run() -> void:
 	check(session.vehicle_shots.bound_client == session.client and session.client.events.is_connected(session.vehicle_shots._on_events),
 		"binds before source events, even before a snapshot")
 	session.bind_vehicle_shots()
-	check(session.client.events.get_connections().size() == 1, "repeated binding does not add another event handler")
+	# client.events is shared: PortPresentation owns a melee listener on the same
+	# signal (presentation.gd bind_melee_events). Scope the idempotency check to
+	# this owner's handler so an unrelated presentation consumer cannot mask or
+	# fail it; session_shots.bind only re-enters when bound_client changes.
+	var vehicle_listeners := 0
+	for connection: Dictionary in session.client.events.get_connections():
+		if connection.callable.get_object() == session.vehicle_shots: vehicle_listeners += 1
+	check(vehicle_listeners == 1, "repeated binding does not add another vehicle-shot event handler")
 	var shot := {"type":"vehicle-shot","id":17,"vehicle":"p","actor":1,"barrel":0,
 		"from":{"x":1.0,"y":3.0,"z":4.0},"to":{"x":8.0,"y":3.0,"z":4.0}}
 	session.client.events.emit([shot])
