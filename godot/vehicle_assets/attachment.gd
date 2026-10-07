@@ -97,6 +97,9 @@ static func apply_source_pose(host: Node3D, state: Dictionary) -> void:
 	var source_turret := Transform3D(yaw_basis, host.position + yaw_basis * PIVOTS[kind])
 	# Keep the native turret pivot at the source-relative yaw. Only authored
 	# geometry needs the upright, world-space muzzle orbit under hull pitch/roll.
-	var visual_pose: Transform3D = host.turret.global_transform.affine_inverse() * source_turret
+	# Synthetic fleet controls also pose a vehicle before adding it to the tree.
+	# global_transform is unavailable there; compose the same local chain instead.
+	var turret_transform: Transform3D = host.turret.global_transform if host.turret.is_inside_tree() else host.transform * host.turret.transform
+	var visual_pose: Transform3D = turret_transform.affine_inverse() * source_turret
 	for child: Node in host.turret.get_children():
 		if child is MeshInstance3D and child.visible: child.transform = visual_pose
