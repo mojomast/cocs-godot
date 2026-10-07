@@ -531,13 +531,8 @@ if not version['passed']:
 # creates for pointer capture as leaked when a display run exits; a bare display
 # session and a session without capture produce no such line, so this is engine
 # teardown behaviour, not our content. Any other ERROR line still fails the gate.
-# Shared documented engine noise for the node/scene-tree family (see GATE_STATUS).
-# Pre-existing prints from untouched node/transform access outside the scene tree;
-# allowed only for gates that also print their success marker and exit 0.
-_scene_tree_noise = (
-    r'^ERROR: Cannot get path of node as it is not in a scene tree\.$',
-    r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$',
-)
+# Documented pre-existing scene-tree engine prints are inlined per gate so the
+# registry stays literal for tools/godot-dev/test_playable_gates.py (GATE_STATUS).
 gate_options = {
     'campaign-input-flow': {'timeout': 60},
     'campaign-client': {
@@ -547,13 +542,13 @@ gate_options = {
         # itself logs this single parse error for that documented input.
         'allowed_error_patterns': (r'^ERROR: Parse JSON failed\. Error at line 0: Expected key$',),
     },
-    'round-boundaries': {'success_marker': 'PORT_ROUND_BOUNDARIES_OK', 'allowed_error_patterns': _scene_tree_noise},
-    'local-lifecycle': {'success_marker': 'PORT_LOCAL_LIFECYCLE_OK', 'allowed_error_patterns': _scene_tree_noise},
-    'horde-model': {'success_marker': 'HORDE_TESTS', 'allowed_error_patterns': _scene_tree_noise},
-    'horde-death-presentation': {'success_marker': 'HORDE_DEATH_CONTRACTS', 'allowed_error_patterns': _scene_tree_noise},
-    'lattice-world': {'success_marker': 'WORLD_CONTRACT', 'allowed_error_patterns': _scene_tree_noise},
-    'lattice-world-usability': {'success_marker': 'USABILITY_CONTRACT', 'allowed_error_patterns': _scene_tree_noise},
-    'control-safety': {'success_marker': 'PORT_CONTROL_SAFETY_OK', 'allowed_error_patterns': _scene_tree_noise},
+    'round-boundaries': {'success_marker': 'PORT_ROUND_BOUNDARIES_OK', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
+    'local-lifecycle': {'success_marker': 'PORT_LOCAL_LIFECYCLE_OK', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
+    'horde-model': {'success_marker': 'HORDE_TESTS', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
+    'horde-death-presentation': {'success_marker': 'HORDE_DEATH_CONTRACTS', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
+    'lattice-world': {'success_marker': 'WORLD_CONTRACT', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
+    'lattice-world-usability': {'success_marker': 'USABILITY_CONTRACT', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
+    'control-safety': {'success_marker': 'PORT_CONTROL_SAFETY_OK', 'allowed_error_patterns': (r'^ERROR: Cannot get path of node as it is not in a scene tree\.$', r'^ERROR: Condition "!is_inside_tree\(\)" is true\. Returning: Transform3D\(\)$')},
     'first-person-slide': {'timeout': 60},
     'campaign-compact-ui': {'timeout': 300},
     'product-shell-journey': {'timeout': 300},

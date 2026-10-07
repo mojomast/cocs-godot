@@ -24,6 +24,16 @@ class VerifierReportTest(unittest.TestCase):
         contracts.mkdir(parents=True)
         self.lock = {"source_commit": "1" * 40, "godot_version": "fixture-engine-version"}
         (contracts / "source-lock.json").write_text(json.dumps(self.lock))
+        # F01: without COCS_SOURCE_DERIVATIVE the verifier resolves the active
+        # descriptor before any gate, so the fixture ships a minimal reviewed
+        # selection instead of relying on a missing file.
+        derivative = contracts / "fixture-derivative.json"
+        derivative.write_text(json.dumps({"source_commit": self.lock["source_commit"],
+                                          "derivative_commit": "2" * 40}))
+        (contracts / "active-source.json").write_text(json.dumps({
+            "schema_version": 1, "status": "fixture",
+            "derivative": "port/contracts/fixture-derivative.json",
+            "derivative_sha256": hashlib.sha256(derivative.read_bytes()).hexdigest()}))
         (self.root / ".gitignore").write_text("__pycache__/\n")
         self.env = {"PATH": os.environ["PATH"], "HOME": str(self.root)}
         for name in ("XDG_DATA_HOME", "XDG_CONFIG_HOME", "XDG_CACHE_HOME"):
@@ -68,7 +78,7 @@ class VerifierReportTest(unittest.TestCase):
         report = self.run_verifier()
         self.assertFalse(report["port_worktree_dirty"])
         self.assertEqual(report["gates"], [])
-        self.assertEqual(report["source_derivative"], {"selection": "none"})
+        self.assertEqual(report["source_derivative"]["selection"], "active")
         self.assertEqual(report["unrun_gate_names"], report["planned_gate_names"])
 
     def test_invalid_explicit_derivative_is_a_preflight_failure(self):
