@@ -95,4 +95,8 @@ static func apply_source_pose(host: Node3D, state: Dictionary) -> void:
 	# Preserve native turret mount coordinates in the authored attachment-local mesh.
 	var yaw_basis := Basis(Vector3.UP, float(state.yaw) + float(state.turretYaw))
 	var source_turret := Transform3D(yaw_basis, host.position + yaw_basis * PIVOTS[kind])
-	host.turret.transform = host.transform.affine_inverse() * source_turret
+	# Keep the native turret pivot at the source-relative yaw. Only authored
+	# geometry needs the upright, world-space muzzle orbit under hull pitch/roll.
+	var visual_pose: Transform3D = host.turret.global_transform.affine_inverse() * source_turret
+	for child: Node in host.turret.get_children():
+		if child is MeshInstance3D and child.visible: child.transform = visual_pose

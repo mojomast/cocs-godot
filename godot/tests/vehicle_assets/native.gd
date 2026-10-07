@@ -66,10 +66,19 @@ func run() -> void:
 			host.position = Vector3(13, 7, -9)
 			host.rotation_order = EULER_ORDER_XYZ
 			host.rotation = Vector3(-0.2, angle, 0.3)
+			host.turret.rotation.y = 0.7
 			Adapter.apply_source_pose(host, state)
+			check(is_equal_approx(host.turret.rotation.y, 0.7), kind + " source-relative turret yaw")
+			var turret_art: MeshInstance3D
+			for child: Node in host.turret.get_children():
+				if child is MeshInstance3D and child.visible and child.visibility_range_begin == 0.0:
+					turret_art = child
+					break
+			check(turret_art != null, kind + " authored turret art")
+			if turret_art == null: continue
 			for muzzle: Vector3 in MUZZLES[kind]:
 				var expected := host.position + Basis(Vector3.UP, angle + 0.7) * muzzle
-				var actual: Vector3 = host.turret.global_transform * (muzzle - Adapter.PIVOTS[kind])
+				var actual: Vector3 = turret_art.global_transform * (muzzle - Adapter.PIVOTS[kind])
 				check(actual.distance_to(expected) < 0.00001, kind + " source muzzle with body bend")
 		var weather := Weather.new()
 		var accent_bindings: Array = host.get_meta("vehicle_accents", [])
