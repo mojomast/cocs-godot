@@ -327,7 +327,7 @@ func layout() -> void:
 	var background := StyleBoxFlat.new()
 	background.bg_color = Color(0.02, 0.035, 0.05, 0.96 if settings.get("caption_background") == "solid" else 0.72)
 	if settings.get("caption_background") == "transparent": background.bg_color.a = 0
-	for edge: int in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: background.set_content_margin(edge, 6)
+	for edge: int in [SIDE_LEFT, SIDE_TOP, SIDE_RIGHT, SIDE_BOTTOM]: background.set_content_margin(edge, 4 if compact and edge in [SIDE_TOP, SIDE_BOTTOM] else 6)
 	caption.add_theme_stylebox_override("normal", background)
 	recap.add_theme_stylebox_override("normal", background)
 	ability.add_theme_stylebox_override("normal", background)
