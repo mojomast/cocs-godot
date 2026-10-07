@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
 import {writeFileSync} from 'node:fs';
 import {createGameServer} from './derived/game-server.mjs';
+import {authoredRace} from './race-circuits.mjs';
 const map=process.argv[2]??'sirocco-circuit',race=map==='sirocco-circuit';
 assert.ok(race||map==='copper-bowl');
 const mode=race?'puma-race':'puma-soccer',root='/home/mojo/.tmp-on-disk/cocs-multiplayer-evidence-20261001/worlds';
@@ -61,7 +62,16 @@ try{
  try{await until('source sports round finish',()=>match.over,245000);}finally{clearInterval(timer);}
  await until('both native results',()=>host.log.includes('WORLD_SPORTS_RESULTS ')&&guest.log.includes('WORLD_SPORTS_RESULTS '),12000);
  const snap=match.snapshot();assert.ok(inputs>30);assert.ok(snap.race);
- if(race){assert.equal(snap.race.standings[0]?.actorId,actorId,'wire driver did not win full lap');assert.ok(snap.race.standings[0].completedLaps>=1,'no actual full lap');assert.equal(match.race.gates.length,14);assert.equal(gateIndices.size,14);}
+ if(race){
+   assert.equal(snap.race.standings[0]?.actorId,actorId,'wire driver did not win full lap');
+   assert.ok(snap.race.standings[0].completedLaps>=1,'no actual full lap');
+   // Checkpoint count comes from the authored circuit, not a constant: the live
+   // race must carry that exact gate sequence, and the wire driver must have
+   // banked every one of them at least once. See race-circuits.mjs.
+   const circuit=authoredRace(map);
+   assert.deepEqual(match.race.gates,circuit.gates,'live race carries the authored gate sequence');
+   assert.equal(gateIndices.size,circuit.gates.length,'wire driver banked every authored gate');
+  }
  else {assert.ok(Object.values(match.race.scores).some(s=>s>=1),'no real goal');assert.equal(snap.race.standings[0]?.actorId,actorId,'wire driver did not score winning goal');}
  const evidence={map,mode,room:room.id,driverPeer:welcome.peerId,actorId,inputs,furthest,gates:[...gateIndices],records,winner:snap.winner,over:snap.over,race:snap.race};
  writeFileSync(`${root}/${map}-${mode}-live.json`,JSON.stringify(evidence,null,2)+'\n');
