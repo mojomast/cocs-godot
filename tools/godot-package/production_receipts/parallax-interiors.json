@@ -197,7 +197,7 @@
     "godot/first_person/art_adapter.gd": "a4fe3e2476721dd6aeb5a05dcd9a4324dbd68420ac9fa7836d19c2e025075d7b",
     "godot/first_person/finish.gd": "9e52812cf032b12761330555ecb2601ace27ebeadfb7a5971b3b99e035934b89",
     "godot/first_person/generated/catalog.gd": "abdc0a3ef4cce7a1d7c3bc14ae3e798110bd62edeec0e01ea5c60a7d4218e6c4",
-    "godot/first_person/generated/finishes.gd": "29f1fb1709a567f7eea56cc192ab93495c76c6b92214a372101c0d7499eca798",
+    "godot/first_person/generated/finishes.gd": "17151f95dfc45fa5d98c4d4f325f852425ba113831f340dd0a9e63dcc3a60ac4",
     "godot/first_person/handling.gd": "6aca4855f390ca735ae0ed7b456a49c745043a965c6ab71e33b080b2ea17d5c4",
     "godot/first_person/inertia.gd": "cc080264d7f2f78db24cf6c499ec89b1d261df1cb42e4a475fcc1f5cc01e6839",
     "godot/first_person/kick_motion.gd": "f58e81f2ccf2d6fc35790fd72cdfc2c1098e7b65a5430198388f97e75ff59714",
@@ -651,7 +651,7 @@
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "5a01b9417708b60e6646a5a249ee0f403209189d4895a204e49f6fd4874a8cdf",
-    "tools/godot-package/production_resources.mjs": "d93e80d36289dd6dbf172d69d149af055067a31958f22e1fbeb72e873956c6a9",
+    "tools/godot-package/production_resources.mjs": "b296e8b9b41fff37ae85a6df470f4a1b1b7761f4cf15d0de90c92106416c0772",
     "tools/godot-package/racing_dependencies.mjs": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
@@ -662,7 +662,7 @@
     "tools/godot-package/vesper_apron_dependencies.mjs": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b",
     "godot/first_person/generated/manifest.json": "58eaa182b33e7ee1590e9f6ce6c811efc432a9ea01a1c3b98eb9826112c68c7e",
     "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
-    "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
+    "tools/godot-package/consolidation_dependencies.mjs": "340c862a628629139226dc24305146314cdc14d36f69e89e44e8f8355074292a"
   },
   "masters": [
     {
@@ -2130,7 +2130,7 @@
   },
   "consolidationAdvance": {
     "previousReceipt": {
-      "commit": "43bd13e78935c0c5cee719bea06ebe93a3409ac0",
+      "commit": "e0dfd44889979ca7854eea556866f087de30812d",
       "path": "tools/godot-package/production_receipts/parallax-interiors.json",
       "sha256": "b93b2cff1933b3a4ddc12fbde4926a6f7819abaafcec795fc08b88cd48374c35"
     },
@@ -2146,6 +2146,10 @@
       "godot/campaign/client.gd": {
         "before": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
         "after": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6"
+      },
+      "godot/first_person/generated/finishes.gd": {
+        "before": "29f1fb1709a567f7eea56cc192ab93495c76c6b92214a372101c0d7499eca798",
+        "after": "17151f95dfc45fa5d98c4d4f325f852425ba113831f340dd0a9e63dcc3a60ac4"
       },
       "godot/first_person/handling.gd": {
         "before": "87bd1654ef5ed5a2ad24244236ae570a73914eb7772a55ecc0eee410436966ec",
@@ -2213,7 +2217,7 @@
       },
       "tools/godot-package/production_resources.mjs": {
         "before": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
-        "after": "d93e80d36289dd6dbf172d69d149af055067a31958f22e1fbeb72e873956c6a9"
+        "after": "b296e8b9b41fff37ae85a6df470f4a1b1b7761f4cf15d0de90c92106416c0772"
       },
       "tools/godot-package/racing_dependencies.mjs": {
         "before": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
@@ -2227,16 +2231,16 @@
     "added": {
       "godot/first_person/generated/manifest.json": "58eaa182b33e7ee1590e9f6ce6c811efc432a9ea01a1c3b98eb9826112c68c7e",
       "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
-      "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
+      "tools/godot-package/consolidation_dependencies.mjs": "340c862a628629139226dc24305146314cdc14d36f69e89e44e8f8355074292a"
     },
     "runtimeChanged": {},
     "sourceChanged": {},
     "previousPackageFingerprint": "f78f1f62dbea24649898eb34356114f7cf197c48c9bf07c01e95be31b92479bd",
-    "packageFingerprint": "7b6cdacd29d27ed492be849c7239e99a80b11d644f60fa39b82f5b03974c9bf0",
+    "packageFingerprint": "56909bb266f15afbef4b1433c286d4eb7bdec4358e6552b4b323f98dc0aa8b37",
     "previousSourceFingerprint": "9df425067dbe25f654fb4eea17b4f381917f167064d089b38cd67e1edc2b2ba9",
     "sourceFingerprint": "9df425067dbe25f654fb4eea17b4f381917f167064d089b38cd67e1edc2b2ba9",
     "review": {
-      "scope": "Audit 2026-10-06 implementation: decoded-frame base hook with the native-arena and campaign clients migrated to bounded deliver_frame validation (godot/net/client.gd, godot/native_arenas/client.gd, godot/campaign/client.gd), developer-navigation disclosure in godot/ui/main_menu.gd, and same-batch weapon attribution in godot/world/audio_feedback.gd. Protocol/presentation only; source gameplay authority, epochs, acknowledgements, event ordering and snapshot coalescing are preserved.",
+      "scope": "Audit 2026-10-06 implementation: decoded-frame base hook with the native-arena and campaign clients migrated to bounded deliver_frame validation (godot/net/client.gd, godot/native_arenas/client.gd, godot/campaign/client.gd), developer-navigation disclosure in godot/ui/main_menu.gd, and same-batch weapon attribution in godot/world/audio_feedback.gd, plus the re-exported first-person weapon export manifest byte (godot/first_person/generated/manifest.json) that the same advance names as an explicit closure root. Protocol/presentation only; source gameplay authority, epochs, acknowledgements, event ordering and snapshot coalescing are preserved.",
       "nativeChecks": "pending",
       "document": "docs/audit-2026-10-06/GATE_STATUS.md"
     }

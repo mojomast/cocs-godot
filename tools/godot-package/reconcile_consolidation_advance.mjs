@@ -27,6 +27,7 @@ const IMPLEMENTATION = new Set([
   'godot/player_fx/impacts.gd',
   'godot/source_operators/moth_finish/manifest.json',
   'godot/first_person/generated/manifest.json',
+  'godot/first_person/generated/finishes.gd',
   'game/core.mjs',
   'game/feedback.mjs',
   'game/view.mjs',
@@ -124,6 +125,10 @@ const worldIds = [...new Set([...(Array.isArray(catalog.maps) ? catalog.maps.map
 if (audit.every(entry => entry.changed.length === 0 && entry.added.length === 0 && entry.runtimeChanged.length === 0)) {
   const settled = productionResources({read, has:existsSync, worldIds, strict:false});
   assert.deepEqual(settled.pending, [], 'Already-advanced receipts must verify');
+  // The audit above was built from the hypothetical empty layer this run would have
+  // written, so its receiptSHA256 values are not the committed receipt bytes. Report
+  // what is actually committed instead of that discarded serialisation.
+  for (const entry of audit) entry.receiptSHA256 = hash(git(base, `tools/godot-package/production_receipts/${entry.unit}.json`));
   console.log(JSON.stringify({base, pending:settled.pending, units:audit, idempotent:true}, null, 1));
   process.exit(0);
 }
