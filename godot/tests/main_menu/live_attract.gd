@@ -48,10 +48,19 @@ func run() -> void:
 	root.add_child(menu)
 	current_scene = menu
 	var stage = menu.attract_stage
-	require(stage.clips.size() == 4 and stage.active, "verified four-clip replay loaded; menu starts immediately")
+	# Data-driven: every clip the authored replay ships must load, whatever the set.
+	var replay: Dictionary = {}
+	var replay_file := FileAccess.open("res://ui/attract/demo.json", FileAccess.READ)
+	if replay_file != null:
+		var parsed: Variant = JSON.parse_string(replay_file.get_as_text())
+		replay_file.close()
+		if parsed is Dictionary: replay = parsed
+	var authored_clips: Array = replay.get("clips", [])
+	require(authored_clips.size() > 0 and stage.clips.size() == authored_clips.size() and stage.active,
+		"loaded every authored replay clip; menu starts immediately")
 	require(menu.get_child(menu.attract_background.get_index() + 1).name == "Shell" and menu.start.visible and menu.settings_button.visible,
 		"3D viewport stays behind foreground actions")
-	for index: int in range(4):
+	for index: int in range(stage.clips.size()):
 		if index > 0: stage.advance_chapter()
 		await wait_chapter(index)
 		require(stage.terrain_triangles > 0 and stage.terrain_triangles <= stage.MAX_TRIANGLES,
@@ -70,13 +79,13 @@ func run() -> void:
 		await create_timer(0.65).timeout
 		var second: PackedByteArray = await capture("%02d-%s-b" % [index, stage.clips[index].id])
 		require(first != second, "chapter %d has live in-engine camera/model animation" % index)
-		if index == 2:
+		if stage.clips[index].kind == "pet":
 			var before: int = stage.story_director.last_serial.get("patch", 0)
 			stage.chapter_time = 4.8
 			await process_frame
 			require(int(stage.story_director.last_serial.get("patch", 0)) > before,
 				"recorded Patch pet reaction serial reaches production story director")
-		if index == 3:
+		if stage.clips[index].kind == "combat":
 			require(stage.actors.size() >= 2 and stage.flash != null,
 				"combat replay creates production actor and robot visuals plus bounded event effect")
 			var shot_index := -1
