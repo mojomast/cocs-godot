@@ -19,14 +19,16 @@
 //
 //   GODOT_BIN=/path/to/Godot node godot/tests/horde/upgrade_loopback.mjs
 //
-// A private Xvfb is started when no DISPLAY is present (the port needs a real
+// On Linux a private Xvfb is started when no DISPLAY is present (the port needs a real
 // window: the headless default viewport is 64x64). Exit code 0 only when every
 // check passes; a JSON result line is always printed.
 import assert from 'node:assert/strict';
 import {spawn} from 'node:child_process';
 import {mkdtempSync, mkdirSync, rmSync, existsSync, writeFileSync, copyFileSync} from 'node:fs';
 import {createInterface} from 'node:readline';
-import {resolve} from 'node:path';
+import {basename, resolve} from 'node:path';
+import {tmpdir} from 'node:os';
+import {hordeWindowArgs, killWindowsTree} from '../../../scripts/gpu-process.mjs';
 import {Match} from '../../../game/core.mjs';
 import {offerHordeUpgrade} from '../../../game/singleplayer.mjs';
 import {createAuthority} from '../../../port/native-horde/authority.mjs';
@@ -83,6 +85,7 @@ const stableConfig = config => JSON.stringify({mode: config?.mode, botCount: con
 // Private display + product scene child.
 // ---------------------------------------------------------------------------
 async function startDisplay(env) {
+  if (process.platform === 'win32') return {display: 'native', xvfb: null, private: false};
   if (process.env.DISPLAY) return {display: process.env.DISPLAY, xvfb: null, private: false};
   const xvfb = spawn('Xvfb', ['-displayfd', '3', '-screen', '0', '640x480x24', '-nolisten', 'tcp', '-nolisten', 'unix'], {
     env, stdio: ['ignore', 'ignore', 'pipe', 'pipe']});
@@ -108,11 +111,12 @@ const stop = child => new Promise(resolveExit => {
   child.kill('SIGTERM');
   setTimeout(() => child.kill('SIGKILL'), 4000).unref();
 });
+const stopGodot = (child, signal) => process.platform === 'win32' ? killWindowsTree(child) : child.kill(signal);
 
 // ---------------------------------------------------------------------------
 // One run.
 // ---------------------------------------------------------------------------
-const temp = mkdtempSync('/tmp/horde-upgrade-loopback-');
+const temp = mkdtempSync(resolve(tmpdir(), 'horde-upgrade-loopback-'));
 // llvmpipe's default worker pool competes with the real authority and engine
 // input poll on small CI workers. Bound this rendered fixture's CPU demand;
 // keep the product's input TTL and the observer's deadlines unchanged.
@@ -144,8 +148,7 @@ try {
     display = {display: null, xvfb: null, private: false, note: `headless fallback: ${error.message}`};
   }
   const argv = [
-    ...(display.display ? [] : ['--headless']),
-    ...(display.display ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x480'] : []),
+    ...hordeWindowArgs(process.platform, display.display),
     '--max-fps', '30', '--path', 'godot', '--script', 'res://tests/horde/upgrade_live.gd', '--',
     `--map=${MAP}`, `--waves=${WAVES}`, `--endpoint=ws://127.0.0.1:${port}`,
     ...(process.env.HORDE_UPGRADE_PROFILE ? ['--fixture-profile'] : []),
@@ -166,7 +169,7 @@ try {
       godot.push(line);
       if (FAIL_RE.test(line)) {
         fatal.push(line);
-        if (!timedOut) child.kill('SIGTERM');
+        if (!timedOut) stopGodot(child, 'SIGTERM');
       }
       if (line.startsWith('HORDE_UPGRADE_LIVE ')) {
         try { godotEvidence = JSON.parse(line.slice('HORDE_UPGRADE_LIVE '.length)); }
@@ -177,7 +180,7 @@ try {
       }
     });
   }
-  const deadline = setTimeout(() => { timedOut = true; child.kill('SIGKILL'); }, TIMEOUT_MS);
+  const deadline = setTimeout(() => { timedOut = true; stopGodot(child, 'SIGKILL'); }, TIMEOUT_MS);
   await finished;
   clearTimeout(deadline);
 } finally {
@@ -194,7 +197,7 @@ try {
       mkdirSync(shotDir, {recursive: true});
       for (const entry of godotShots) {
         if (entry.ok && existsSync(entry.path)) {
-          const target = resolve(shotDir, entry.path.split('/').pop());
+          const target = resolve(shotDir, basename(entry.path));
           copyFileSync(entry.path, target);
           copiedShots.push(target);
         }
@@ -204,7 +207,7 @@ try {
     }
   }
   rmSync(temp, {recursive: true, force: true});
-  try { child?.kill('SIGKILL'); } catch {}
+  try { if (child) stopGodot(child, 'SIGKILL'); } catch {}
 }
 
 // ---------------------------------------------------------------------------

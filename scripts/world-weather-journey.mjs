@@ -6,6 +6,7 @@ import {createGameServer} from '../port/multiplayer-worlds/derived/game-server.m
 import {createGameServer as createSourceServer} from '../server/game-server.mjs';
 import {WebSocket} from 'ws';
 import {campaignInputDiagnostic} from './campaign-input-diagnostic.mjs';
+import {weatherSpawnPlan, killWindowsTree} from './gpu-process.mjs';
 
 const [kind, map, directory] = process.argv.slice(2);
 if (!['campaign', 'mp', 'spectator', 'source'].includes(kind) || !map || !directory) throw Error('campaign|mp|spectator|source map absolute-output-dir');
@@ -43,13 +44,15 @@ if (kind === 'spectator') {
   });
 }
 const binary = process.env.GODOT_BIN || '/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
-const args = ['-a', binary, '--path', 'godot', '--audio-driver', 'Dummy', '--script', 'res://tests/world_weather/journey.gd', '--', `--endpoint=${endpoint}`, `--map=${map}`, `--mode=${kind === 'campaign' ? 'campaign' : kind === 'source' ? 'ctf' : 'deathmatch'}`, '--bots=0', '--mute', `--weather-journey=${kind}`, `--weather-output=${output}`];
+const args = ['--path', 'godot', '--audio-driver', 'Dummy', '--script', 'res://tests/world_weather/journey.gd', '--', `--endpoint=${endpoint}`, `--map=${map}`, `--mode=${kind === 'campaign' ? 'campaign' : kind === 'source' ? 'ctf' : 'deathmatch'}`, '--bots=0', '--mute', `--weather-journey=${kind}`, `--weather-output=${output}`];
 if (room) args.push(`--join-room=${room}`);
-const child = spawn('xvfb-run', args, {detached:true, env: {...process.env, LP_NUM_THREADS: '1', COCS_SETTINGS_PATH: output + '/settings.json'}, stdio: 'inherit'});
+const plan = weatherSpawnPlan(process.platform, binary, args);
+const child = spawn(plan.command, plan.args, {detached:true, env: {...process.env, LP_NUM_THREADS: '1', COCS_SETTINGS_PATH: output + '/settings.json'}, stdio: 'inherit'});
 // The owned Xvfb wrapper and native child share this private process group.
 // Reap both on deadline instead of leaving an engine behind after killing only
-// the wrapper. This harness runs on Linux; Windows acceptance uses its own runner.
+// the wrapper. On Windows taskkill reaps the native engine tree instead.
 const timeout = setTimeout(() => {
+  if (process.platform === 'win32') { killWindowsTree(child); return; }
   try { process.kill(-child.pid, 'SIGKILL'); }
   catch (error) { if (error.code !== 'ESRCH') throw error; }
 }, 115000);
