@@ -28,7 +28,13 @@ const IMPLEMENTATION = new Set([
   'godot/source_operators/moth_finish/manifest.json',
   'godot/first_person/generated/manifest.json',
   'godot/first_person/generated/finishes.gd',
+  // P1's turret vehicle attachment byte and P2's player-info byte are
+  // receipt-pinned package inputs of these closures too; the final re-derivation
+  // folds them into this single layer rather than stacking a newer one.
+  'godot/vehicle_assets/attachment.gd',
+  'godot/experience/player_info.gd',
   'game/core.mjs',
+  'port/multiplayer-worlds/derived/core.mjs',
   'game/feedback.mjs',
   'game/view.mjs',
   'port/native-campaign/core.generated.mjs',
@@ -41,6 +47,7 @@ const IMPLEMENTATION = new Set([
   'godot/first_person/session_binding.gd',
   'godot/first_person/profiles/weapon_presentation_profile.gd',
   'tools/godot-package/production_resources.mjs',
+  'tools/godot-package/stormglass_imports.mjs',
   'tools/godot-package/vesper_apron_dependencies.mjs',
   'tools/godot-package/consolidation_dependencies.mjs',
   'tools/godot-package/polish_dependencies.mjs',
