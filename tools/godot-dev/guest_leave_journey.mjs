@@ -8,11 +8,11 @@ import {setTimeout as sleep} from 'node:timers/promises';
 import {WebSocket} from 'ws';
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../godot-export/semantic.mjs';
-import {resolveActiveDerivative} from './active_source.mjs';
+import {recordedDerivative} from './recorded_derivative.mjs';
 
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
-verifySource(lock,derivative);
+const derivative=recordedDerivative();
+verifySource(lock,derivative?.contract??null);
 const binary=process.env.GODOT_BIN;
 assert.ok(binary && process.env.DISPLAY,'Set pinned GODOT_BIN and run with a private Xvfb display');
 assert.equal(execFileSync(binary,['--version'],{encoding:'utf8',timeout:10000}).trim(),lock.godot_version);
@@ -56,7 +56,7 @@ const frames=[];
 let guestPeer=null,guestSocket=null,guestClosed=false,guestJoins=0,connections=0;
 const evidence={scope:'scripted native guest Settings/Back/Leave in one source room; protocol host, not two native humans or a natural round outcome',
  port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
- source_commit:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),output,passed:false};
+ source_commit:lock.source_commit,...(derivative?.commit?{source_derivative_commit:derivative.commit}:{}),output,passed:false};
 try{
  await new Promise((ok,bad)=>{game.server.once('error',bad);game.server.listen(0,'127.0.0.1',ok);});
  const port=game.server.address().port, endpoint=`ws://127.0.0.1:${port}`;

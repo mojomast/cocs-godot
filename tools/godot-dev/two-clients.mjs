@@ -5,10 +5,10 @@ import {resolve} from 'node:path';
 import {createInterface} from 'node:readline';
 import assert from 'node:assert/strict';
 import {verifySource} from '../godot-export/semantic.mjs';
-import {resolveActiveDerivative} from './active_source.mjs';
+import {recordedDerivative} from './recorded_derivative.mjs';
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
-verifySource(lock,derivative);
+const derivative=recordedDerivative();
+verifySource(lock,derivative?.contract??null);
 const binary=process.env.GODOT_BIN;
 assert.ok(binary,'Set GODOT_BIN');
 assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),lock.godot_version);
@@ -45,7 +45,7 @@ try{
  launch();await done;
  assert.notEqual(results[0].actor_id,results[1].actor_id);
  for(const result of results){assert.equal(result.actors,4);assert.equal(result.both_moved,true);assert.ok(result.ack>15);assert.deepEqual([...result.humans].sort(),results.map(r=>r.actor_id).sort());}
- const report={source_commit:lock.source_commit,...(derivative?{source_derivative_commit:derivative.derivative_commit}:{}),godot_version:lock.godot_version,map_id:'meridian-exchange',native_clients:2,bots:2,clock:'normal server rate, loopback only',results};
+ const report={source_commit:lock.source_commit,...(derivative?.commit?{source_derivative_commit:derivative.commit}:{}),godot_version:lock.godot_version,map_id:'meridian-exchange',native_clients:2,bots:2,clock:'normal server rate, loopback only',results};
  writeFileSync('port/reports/two-native-clients.json',JSON.stringify(report,null,2)+'\n');
  console.log('PORT_TWO_NATIVE_CLIENTS_OK');
 }finally{
