@@ -31,7 +31,19 @@ test('every unit carries the consolidation layer and reverses to its exact commi
       id+': reversal must reproduce the committed predecessor receipt');
     deltas.push({changed:Object.keys(layer.changed).sort(),added:Object.keys(layer.added).sort()});
   }
-  for(const delta of deltas)assert.deepEqual(delta,deltas[0],'shared consolidation delta across all units');
+  // The newest layer is shared across the seven closures except where a unit's
+  // own production contract pins a supporting input no other closure owns: the
+  // robots Switchyard contract source map pins port/native-campaign/enemies.mjs,
+  // so that key rides only the robots receipt. Added inputs stay identical
+  // everywhere, and every unit-specific changed key must be one of these
+  // documented contract pins.
+  const sharedChanged=deltas[0].changed.filter(p=>deltas.every(d=>d.changed.includes(p)));
+  const perUnitChanged={robots:['port/native-campaign/enemies.mjs']};
+  for(const [i,delta]of deltas.entries()){
+    const id=REQUIRED_UNITS[i];
+    assert.deepEqual(delta.changed,[...sharedChanged,...(perUnitChanged[id]??[])].sort(),id+': consolidation changed set');
+    assert.deepEqual(delta.added,deltas[0].added,id+': shared consolidation additions');
+  }
   assert.ok(deltas[0].added.includes(ADDED),'the new verifier module is a recorded addition');
 });
 

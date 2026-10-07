@@ -28,6 +28,13 @@ const IMPLEMENTATION = new Set([
   'godot/source_operators/moth_finish/manifest.json',
   'godot/first_person/generated/manifest.json',
   'godot/first_person/generated/finishes.gd',
+  // F10's bounded-retreat presentation rewrote godot/campaign/hud.gd (a declared
+  // package input of all seven world closures via the campaign demo preload) and
+  // port/native-campaign/enemies.mjs (pinned only by the robots Switchyard
+  // production contract's source map). The final re-derivation folds both into
+  // this single newest layer rather than stacking a newer one.
+  'godot/campaign/hud.gd',
+  'port/native-campaign/enemies.mjs',
   // P1's turret vehicle attachment byte and P2's player-info byte are
   // receipt-pinned package inputs of these closures too; the final re-derivation
   // folds them into this single layer rather than stacking a newer one.
