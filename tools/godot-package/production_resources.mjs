@@ -153,7 +153,15 @@ export function productionResources({read,has,worldIds=[],strict=true}) {
     // External Parallax recipes are not read from its active worktree. Pending
     // absence is reported until parent imports reviewed committed revision bytes.
     try {spec=specification(unit,read);}catch(error){if(requirement.promotion)throw error;missing.push('specification: '+error.message);spec={inputs:unit.recipePaths,masters:[],exports:[],extra:[]};}
-    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,...polishPaths(read),'godot/replay/stage.gd',plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','game/moth-baked.mjs'],read,has);
+    // The first-person weapon export manifest joins the moth generated/derived
+    // manifests as an explicit root. It is a shipped generated export whose
+    // source bytes (game/weapon-ads.mjs and the weapon-model modules) are already
+    // declared package inputs, so the receipts must own the exported byte too:
+    // without it the export could be re-derived from unreviewed drift while every
+    // one of its sources stays pinned. godot/first_person/generated/catalog.gd and
+    // finishes.gd reach the closure transitively through rig.gd's preloads; the
+    // manifest is never preloaded, so it has to be named here.
+    const inputs=helperClosure([...spec.inputs,...spec.extra,...FEATURE_ROOTS,...polishPaths(read),'godot/replay/stage.gd',plan.common.finishScript,'tools/asset-production/receipt.mjs','tools/asset-production/reopen.py','godot/moth/generated/manifest.json','godot/moth/derived/manifest.json','godot/first_person/generated/manifest.json','game/moth-baked.mjs'],read,has);
     spec.packageInputs=inputs;
     for(const path of [...inputs,...spec.masters,...spec.exports]){safe(path);if(!has(path))missing.push(path);}
     const registered=!expectedMap||worldIds.includes(expectedMap);

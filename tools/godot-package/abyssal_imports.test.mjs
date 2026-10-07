@@ -11,7 +11,7 @@ test('I exact five images and six sidecars retain promotion; omitted Stormglass 
  const paths=abyssalImportPaths();assert.equal(paths.length,11);assert.equal(paths.filter(p=>p.endsWith('.png')).length,5);
  verifyAbyssalImports(read);
  const result=productionResources(options);assert.deepEqual(result.pending,['stormglass-causeway']);
- assert.equal(result.units['abyssal-pressureworks'].expected.packageInputs.length,662);
+ assert.equal(result.units['abyssal-pressureworks'].expected.packageInputs.length,663);
  for(const p of paths)assert.ok(Object.hasOwn(p.endsWith('.import')?result.provenance:result.resources,p));
  assert.throws(()=>productionResources({...options,strict:true}),/Required final production units remain pending/);
 });

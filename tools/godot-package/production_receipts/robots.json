@@ -941,7 +941,7 @@
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "5a01b9417708b60e6646a5a249ee0f403209189d4895a204e49f6fd4874a8cdf",
-    "tools/godot-package/production_resources.mjs": "f97585f472c6c257f08a8cfb49bead91b95c830845963def93441cef9001d8c5",
+    "tools/godot-package/production_resources.mjs": "d93e80d36289dd6dbf172d69d149af055067a31958f22e1fbeb72e873956c6a9",
     "tools/godot-package/racing_dependencies.mjs": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
@@ -958,6 +958,7 @@
     "tools/godot-robots/recipe.py": "446f471881fc91fbfb9ed0588239f2f00ad883f9597e5efbcbd7913f7986865f",
     "tools/godot-robots/verify_blender.py": "e16029eefc7ac280e0da9899b828e4014477c161f4f9cab63ba7da912283adc5",
     "tools/godot-package/vesper_apron_dependencies.mjs": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b",
+    "godot/first_person/generated/manifest.json": "58eaa182b33e7ee1590e9f6ce6c811efc432a9ea01a1c3b98eb9826112c68c7e",
     "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
     "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
   },
@@ -2356,7 +2357,7 @@
   },
   "consolidationAdvance": {
     "previousReceipt": {
-      "commit": "c04dfefeda0206f18478a7c069e5397ec2be2166",
+      "commit": "43bd13e78935c0c5cee719bea06ebe93a3409ac0",
       "path": "tools/godot-package/production_receipts/robots.json",
       "sha256": "6ea00a10ed0b8de56b15f07239f25a35a0abaf481e4bcbe25fd751db22a4d100"
     },
@@ -2439,7 +2440,7 @@
       },
       "tools/godot-package/production_resources.mjs": {
         "before": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
-        "after": "f97585f472c6c257f08a8cfb49bead91b95c830845963def93441cef9001d8c5"
+        "after": "d93e80d36289dd6dbf172d69d149af055067a31958f22e1fbeb72e873956c6a9"
       },
       "tools/godot-package/racing_dependencies.mjs": {
         "before": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
@@ -2451,13 +2452,14 @@
       }
     },
     "added": {
+      "godot/first_person/generated/manifest.json": "58eaa182b33e7ee1590e9f6ce6c811efc432a9ea01a1c3b98eb9826112c68c7e",
       "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
       "tools/godot-package/consolidation_dependencies.mjs": "70fcb67b996bb233477fc39e7f772a25e27619607bd71ff2c8989ca7cd1fdbf1"
     },
     "runtimeChanged": {},
     "sourceChanged": {},
     "previousPackageFingerprint": "34b212429535b381de96844b05620b9bfde82f83a0aab2a2b3ea8817baf3872a",
-    "packageFingerprint": "adf4e62d8acdcdb6c0e162f4852600f3a669cff63b45bb7f844d16e2554bc53e",
+    "packageFingerprint": "5b8ca6266cd02d0b694d58eef1b241be089e9d4d8d0521f0a2d1ffec38fffade",
     "previousSourceFingerprint": "3e6deae571e2aa3b7fe22725775b11ea37f04ef5f68acedf45df2fa8cea68190",
     "sourceFingerprint": "3e6deae571e2aa3b7fe22725775b11ea37f04ef5f68acedf45df2fa8cea68190",
     "review": {
