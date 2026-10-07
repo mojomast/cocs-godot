@@ -13,7 +13,7 @@ if not defined COCS_CAREER_ROOT (
   exit /b 2
 )
 for %%I in ("%COCS_CAREER_ROOT%") do set "COCS_CAREER_ROOT=%%~fI"
-for %%I in ("%GODOT_BIN%") do set "NODE_BIN=%%~dpInode.exe"
+set "NODE_BIN=%~dp0..\..\node.exe"
 if defined COCS_NODE_BIN set "NODE_BIN=%COCS_NODE_BIN%"
 if not exist "%NODE_BIN%" (
   echo Bundled node.exe not found at "%NODE_BIN%". Set COCS_NODE_BIN to its path.

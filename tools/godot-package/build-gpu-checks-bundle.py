@@ -3,6 +3,7 @@ import argparse
 import base64
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import shutil
@@ -100,6 +101,22 @@ def main():
         destination = bundle / name
         destination.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(root / name, destination)
+    generated = bundle / 'godot/content/generated'
+    if generated.exists():
+        raise RuntimeError(f'Unexpected tracked semantic output: {generated}')
+    # The Godot editor import does not build the source-owned content catalog.
+    # semantic.mjs resolves its source lock and derivative relative to the git
+    # checkout, but writes the resulting maps into the staged project.
+    env = os.environ.copy()
+    env.pop('COCS_SOURCE_DERIVATIVE', None)  # use the reviewed active-source descriptor
+    subprocess.run(['node', str(root / 'tools/godot-export/semantic.mjs'), str(generated)],
+                   cwd=root, env=env, check=True)
+    manifest_file = generated / 'manifest.json'
+    if not manifest_file.is_file() or not manifest_file.stat().st_size:
+        raise RuntimeError('Semantic export did not write a non-empty manifest')
+    manifest = json.loads(manifest_file.read_text())
+    if not manifest.get('maps') or any(not (generated / row['path']).is_file() for row in manifest['maps']):
+        raise RuntimeError('Semantic export did not write its declared maps')
     extract_one(editor, 'Godot_v4.5.2-stable_win64.exe', bundle / 'Godot.exe')
     extract_one(node, 'node-v22.22.0-win-x64/node.exe', bundle / 'node.exe')
     with tarfile.open(ws, 'r:gz') as archive:
@@ -126,6 +143,7 @@ def main():
             archive.writestr(info, path.read_bytes(), compress_type=zipfile.ZIP_DEFLATED, compresslevel=6)
             raw += path.stat().st_size
     print(f'Modules: {len(modules)}; tracked Godot: {sum(p.startswith("godot/") for p in files)} files')
+    print(f'Semantic content: {len(manifest["maps"])} maps, {sum(p.stat().st_size for p in generated.rglob("*") if p.is_file()):,} bytes')
     print(f'Raw: {raw:,} bytes; zip: {archive_path.stat().st_size:,} bytes; archive: {archive_path}')
 
 

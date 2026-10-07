@@ -2,8 +2,7 @@
 setlocal DisableDelayedExpansion
 set "ROOT=%~dp0"
 if not defined GODOT_BIN (
-  echo Set GODOT_BIN to "%ROOT%Godot.exe".
-  exit /b 2
+  set "GODOT_BIN=%ROOT%Godot.exe"
 )
 if not exist "%GODOT_BIN%" (
   echo Missing Godot editor: "%GODOT_BIN%"
@@ -27,6 +26,10 @@ if not exist "%ROOT%scripts\world-weather-journey.mjs" (
 )
 if not exist "%ROOT%godot\tests\horde\upgrade_loopback.mjs" (
   echo Missing Horde harness. Extract the complete zip again.
+  exit /b 2
+)
+if not exist "%ROOT%godot\content\generated\manifest.json" (
+  echo Missing generated content manifest. Extract the complete zip again.
   exit /b 2
 )
 if not defined COCS_CAREER_ROOT (
