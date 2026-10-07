@@ -2,6 +2,7 @@
 // Every process, source-validation stub and filesystem fixture is test-local.
 import assert from 'node:assert/strict';
 import {execFile} from 'node:child_process';
+import {createHash} from 'node:crypto';
 import {mkdtemp, mkdir, copyFile, writeFile, chmod, readdir, rm} from 'node:fs/promises';
 import {join, dirname} from 'node:path';
 import {tmpdir} from 'node:os';
@@ -81,12 +82,22 @@ if(process.argv.includes('--version')){
       await mkdir(join(root,'unrelated caller'));
       script = join(root,'run.mjs');
     } else {
-      for (const name of ['launch.mjs','launch_options.mjs']) await copy('tools/godot-dev/'+name,'tools/godot-dev/'+name);
+      for (const name of ['launch.mjs','launch_options.mjs','active_source.mjs']) await copy('tools/godot-dev/'+name,'tools/godot-dev/'+name);
       await copy('tools/godot-package/endpoint.mjs','tools/godot-package/endpoint.mjs');
       await copy('tools/godot-package/settings_path.mjs','tools/godot-package/settings_path.mjs');
       await copy('tools/godot-package/career_path.mjs','tools/godot-package/career_path.mjs');
       await copy('port/contracts/map-selection.json','port/contracts/map-selection.json');
       await put('port/contracts/source-lock.json',JSON.stringify({godot_version:'synthetic-pinned'}));
+      // launch.mjs resolves the reviewed active-source descriptor, so the stub
+      // needs its own synthetic descriptor plus a matching derivative contract:
+      // the fixture owns source selection too, not just the launched process.
+      const derivativeText = JSON.stringify({schema_version:1,status:'synthetic-fixture',source_commit:'synthetic',derivative_commit:'synthetic',runtime_files:[]})+'\n';
+      await put('port/contracts/synthetic-active-derivative.json',derivativeText);
+      await put('port/contracts/active-source.json',JSON.stringify({
+        schema_version:1,status:'synthetic-fixture',source_lock:'port/contracts/source-lock.json',
+        derivative:'port/contracts/synthetic-active-derivative.json',
+        derivative_sha256:createHash('sha256').update(derivativeText).digest('hex'),
+      })+'\n');
       await put('tools/godot-export/semantic.mjs',`export function verifySource(){console.log('STUB_SOURCE_VALIDATED');if(process.env.SCENARIO==='invalid-lock')throw Error('SYNTHETIC_SOURCE_REJECTED');}`);
       await put('server/game-server.mjs',forbidden);
       await put('port/native-horde/authority.mjs',forbidden);
