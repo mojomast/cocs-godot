@@ -112,7 +112,9 @@ try{
   const departedRoster=await until(()=>frames.slice(joinedRosterIndex+1).find(f=>f.type==='lobby'
     &&f.players?.find(p=>p.peerId===welcome.peerId)?.connected===true
     &&f.players?.find(p=>p.peerId===guestPeer)?.connected===false),10000,'source-observed disconnected guest',true);
- // Await the supervisor's child exit as well: a detached script quit is insufficient.
+  assert.equal((await until(()=>marker('GUEST_LEAVE_HOME'),10000,'native Home transition',true)).scene,'res://ui/main_menu.tscn');
+  assert.match(consoleText,/^MENU_READY /m,'Home menu must become ready after Leave');
+  // The scripted guest quits Home; await the supervisor's child exit as well.
  const exitDeadline=Date.now()+10000;
  while(exitCode===null&&Date.now()<exitDeadline)await sleep(50);
  assert.equal(exitCode,0,'external dev launcher must exit successfully');

@@ -38,8 +38,7 @@ def private_environment(directory, inherited):
         env[key]=str(place)
     career=directory/'career'; career.mkdir(parents=True,exist_ok=True,mode=0o700)
     env.update({'COCS_CAREER_ROOT':str(career),'COCS_SETTINGS_PATH':str(directory/'settings.json'),
-        'COCS_CAREER_CREDENTIALS_PATH':'','COCS_CAREER_SCOPE':'','COCS_CAREER_ENDPOINT':'',
-        'COCS_SOURCE_DERIVATIVE':str(ROOT/'port/contracts/lattice-catalog-derivative.json')})
+         'COCS_CAREER_CREDENTIALS_PATH':'','COCS_CAREER_SCOPE':'','COCS_CAREER_ENDPOINT':''})
     return env
 
 def stop(p):
@@ -79,8 +78,7 @@ def hashes(root, names):
 try:
     assert subprocess.check_output([BIN,'--version'],text=True).strip()=='4.5.2.stable.official.6ce3de25a'
     assert pathlib.Path(DEPS).is_dir(), 'Approved ignored node_modules unavailable'
-    derivative=ROOT/'port/contracts/lattice-catalog-derivative.json'
-    assert derivative.is_file(), 'Explicit approved semantic derivative missing'
+    assert (ROOT/'port/contracts/active-source.json').is_file(), 'Reviewed active-source descriptor missing'
     with tempfile.TemporaryDirectory(prefix='vehicle-native-',dir=OUT.parent) as tmp:
         temp=pathlib.Path(tmp)
         env=private_environment(temp/'tools',os.environ)

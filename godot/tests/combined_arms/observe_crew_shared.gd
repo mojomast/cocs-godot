@@ -328,6 +328,9 @@ func _process(delta: float) -> bool:
 					return false
 				mounted_origin = Vector2(float(v.x),float(v.z))
 				change("mounted")
+				# Seat-eye evidence is a first-person assertion; the persisted
+				# default vehicle view is third-person chase in a fresh profile.
+				if role != "host" and not demo.chase.first_person: tap(KEY_F4)
 				# Seat identity releases capture. Reacquire only in the role's
 				# active phase; idle host must not hold X11 pointer against crew.
 			elif entry_seq >= 0 and demo.net.last_ack >= entry_seq and elapsed-stage_since > 0.5:
