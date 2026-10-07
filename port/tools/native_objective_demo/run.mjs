@@ -1,6 +1,7 @@
 import {validate} from './validate.mjs';
 import {createGameServer} from '../../../server/game-server.mjs';
 import {verifySource} from '../../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../../tools/godot-dev/active_source.mjs';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdirSync,readFileSync,writeFileSync,mkdtempSync,rmSync,createWriteStream,existsSync} from 'node:fs';
 import {resolve} from 'node:path';
@@ -11,7 +12,7 @@ const pairs={'tidal-citadel':'ctf','sunscar-convoy':'payload'};
 const catalog=JSON.parse(readFileSync('port/contracts/map-selection.json'));
 if(!pairs[map] || !catalog.maps.find(x=>x.id===map)?.supported_modes.includes(pairs[map])) throw Error('Choose --map=tidal-citadel or --map=sunscar-convoy');
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;
 if(!binary || execFileSync(binary,['--version'],{encoding:'utf8',timeout:5000}).trim()!==lock.godot_version) throw Error('Pinned GODOT_BIN required');

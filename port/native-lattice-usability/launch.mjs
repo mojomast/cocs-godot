@@ -1,6 +1,7 @@
 // Ordinary public server, default rate. Passive recipient/input audit only.
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 import {spawn, execFileSync} from 'node:child_process';
 import {readFileSync, appendFileSync, writeFileSync} from 'node:fs';
 import {join, resolve} from 'node:path';
@@ -8,7 +9,7 @@ import {createHash} from 'node:crypto';
 
 const [project, out, map, mode, size] = process.argv.slice(2);
 const lock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const bin = process.env.GODOT_BIN;
 if (execFileSync(bin, ['--version'], {encoding:'utf8'}).trim() !== lock.godot_version) throw Error('Wrong Godot');

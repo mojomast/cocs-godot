@@ -1,5 +1,6 @@
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 import {opposingPeer} from './peer.mjs';
 import {validate} from './validate.mjs';
 import {spawn,execFileSync} from 'node:child_process';
@@ -11,7 +12,7 @@ const args=process.argv.slice(2), map=args.find(x=>x.startsWith('--map='))?.slic
 const pairs={'tidal-citadel':'ctf','sunscar-convoy':'payload'};
 if(!pairs[map])throw Error('Fixed --map required');
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;
 if(!binary || execFileSync(binary,['--version'],{encoding:'utf8',timeout:5000}).trim()!==lock.godot_version)throw Error('Pinned GODOT_BIN required');
