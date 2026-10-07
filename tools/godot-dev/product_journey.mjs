@@ -8,6 +8,7 @@ import {mkdtempSync, writeFileSync, chmodSync, readFileSync, mkdirSync, statSync
 import {resolve, join} from 'node:path';
 import {createConnection} from 'node:net';
 import {DEFAULT_ITINERARY, journeyOptions} from './journey_options.mjs';
+import {recordedDerivative} from './recorded_derivative.mjs';
 import {normalizeConfig} from '../../game/config.mjs';
 const args=process.argv.slice(2);
 assert.ok(args.every(arg=>arg==='--capture'||arg==='--player-flow'||arg.startsWith('--itinerary=')), 'Unknown journey option');
@@ -28,7 +29,7 @@ const real = process.env.GODOT_BIN;
 assert.ok(real, 'Set pinned GODOT_BIN');
 assert.ok(process.env.DISPLAY, 'Run with a private Xvfb display');
 const sourceLock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=recordedDerivative();
 const hash=path=>createHash('sha256').update(readFileSync(path)).digest('hex');
 mkdirSync('.port-runtime/product-journeys', {recursive:true});
 const output = mkdtempSync(resolve('.port-runtime/product-journeys/attempt-'));
@@ -88,7 +89,7 @@ const flowPassed=!playerFlow||(finalState.player_flow_complete===true&&finalStat
 const passed=code===0&&!text.includes('ERROR:')&&matches.length===expectedSessions&&decks.length===expectedDecks&&careerPassed&&equipmentPassed&&flowPassed&&ports.length===expectedSessions&&closed.every(Boolean)&&text.includes('PRODUCT_JOURNEY_COMPLETE ');
 const summary={scope:'source-driven scripted UI lifecycle; not natural rounds/human acceptance',passed,exit_code:code,
   port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:sourceLock.source_commit,
-  source_derivative_commit:derivative?.derivative_commit??null,
+  source_derivative_commit:derivative?.commit??null,
   input_sha256:Object.fromEntries(['godot/tests/product_journey/driver.gd','godot/ui/local_settings.gd','godot/ui/main_menu.gd','godot/career/service.gd','godot/career/catalog.json','godot/lattice/world_commands.gd',
     'tools/godot-dev/product_journey.mjs','tools/godot-dev/launch.mjs'].map(path=>[path,hash(path)])),
   itinerary,cycles,player_flow:playerFlow,source_sessions:matches,deck_checks:decks,career_checks:careers,

@@ -25,6 +25,7 @@ import {mkdirSync, mkdtempSync, writeFileSync, renameSync, existsSync, rmSync, r
 import {resolve, join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {createGameServer} from '../../server/game-server.mjs';
+import {recordedDerivative} from '../../tools/godot-dev/recorded_derivative.mjs';
 import {MatchHistory} from '../../server/history.mjs';
 
 const binary = process.env.GODOT_BIN;
@@ -90,11 +91,11 @@ const historyPath = join(careerRoot, 'history.json');
 const progressionPath = join(careerRoot, 'progression.json');
 
 const sourceLock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative = process.env.COCS_SOURCE_DERIVATIVE ? JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)) : null;
+const derivative = recordedDerivative();
 assert.equal(execFileSync(binary, ['--version'], {encoding: 'utf8'}).trim(), sourceLock.godot_version, 'pinned engine version');
 const summary = {port_commit: execFileSync('git', ['rev-parse', 'HEAD'], {encoding: 'utf8'}).trim(),
   source_commit: sourceLock.source_commit,
-  source_derivative_commit: derivative?.derivative_commit ?? null,
+  source_derivative_commit: derivative?.commit ?? null,
   scope: 'One native client hosting a scripted source match on an owned authority; not human acceptance',
   checks: [], status: 'RUNNING'};
 let game, observer, xvfb, expired = false;

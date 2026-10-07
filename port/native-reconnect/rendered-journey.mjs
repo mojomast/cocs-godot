@@ -6,6 +6,7 @@ import {mkdtempSync,writeFileSync,renameSync,existsSync,rmSync,readFileSync,mkdi
 import {resolve} from 'node:path';
 import WebSocket from 'ws';
 import {createGameServer} from '../../server/game-server.mjs';
+import {recordedDerivative} from '../../tools/godot-dev/recorded_derivative.mjs';
 
 const binary=process.env.GODOT_BIN??'/home/mojo/.hermes-instances/fresh/workspace/godot-toolchain/Godot_v4.5.2-stable_linux.x86_64';
 const temp=mkdtempSync('/tmp/opencode/native-reconnect-ui-');
@@ -13,7 +14,7 @@ const evidence=resolve(process.env.COCS_RECONNECT_EVIDENCE??`/tmp/opencode/nativ
 assert.ok(!existsSync(evidence),'Preserve existing evidence directory');
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
 const summary={port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),source_commit:lock.source_commit,
- derivative_commit:process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)).derivative_commit:null,
+ derivative_commit:recordedDerivative()?.commit??null,
  engine:execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),checks:[],status:'RUNNING',scope:'scripted native GUI and real source; not human acceptance'};
 assert.equal(summary.engine,lock.godot_version,'pinned engine');
 const env={...process.env,HOME:temp,LIBGL_ALWAYS_SOFTWARE:'1',COCS_CAREER_ROOT:resolve(temp,'career'),COCS_CAREER_CREDENTIALS_PATH:'',COCS_CAREER_SCOPE:'',COCS_CAREER_ENDPOINT:''};

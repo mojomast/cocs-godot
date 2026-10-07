@@ -21,6 +21,7 @@ import {mkdirSync, mkdtempSync, writeFileSync, renameSync, existsSync, rmSync, r
 import {resolve} from 'node:path';
 import {createHash} from 'node:crypto';
 import {createGameServer} from '../../server/game-server.mjs';
+import {recordedDerivative} from '../../tools/godot-dev/recorded_derivative.mjs';
 import WebSocket from 'ws';
 
 const binary = process.env.GODOT_BIN;
@@ -103,10 +104,10 @@ const env = {...process.env, HOME: temp, LIBGL_ALWAYS_SOFTWARE: '1', COCS_CAREER
 for (const key of ['XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_RUNTIME_DIR']) { env[key] = resolve(temp, key); mkdirSync(env[key], {recursive: true, mode: 0o700}); }
 
 const sourceLock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=recordedDerivative();
 assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),sourceLock.godot_version);
 const summary = {port_commit:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
-  source_commit:sourceLock.source_commit,source_derivative_commit:derivative?.derivative_commit??null,
+  source_commit:sourceLock.source_commit,source_derivative_commit:derivative?.commit??null,
   scope:'Two native clients with scripted UI actions on an owned source authority; not human acceptance',
   hostMap, hostMode, checks: [], status: 'RUNNING'};
 let game, host, guest, third, xvfb, expired = false;
