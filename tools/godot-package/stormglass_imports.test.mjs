@@ -20,8 +20,8 @@ function forged(id,mutate){
 }
 test('seven exact asset closures pass strict inventory; only one public Stormglass pair is registered',()=>{
  const result=productionResources(options);assert.deepEqual(result.pending,[]);
- assert.equal(Object.keys(result.units).length,7);assert.equal(result.units['stormglass-causeway'].expected.packageInputs.length,673);
- for(const id of REQUIRED_UNITS)for(const p of [...Object.keys(MELEE_ADDED),'godot/replay/stage.gd','godot/audio/playback_cleanup.gd','godot/first_person/generated/manifest.json'])assert.ok(result.units[id].expected.packageInputs.includes(p),id+': '+p);
+ assert.equal(Object.keys(result.units).length,7);assert.equal(result.units['stormglass-causeway'].expected.packageInputs.length,674);
+ for(const id of REQUIRED_UNITS)for(const p of [...Object.keys(MELEE_ADDED),'godot/replay/stage.gd','godot/audio/playback_cleanup.gd','godot/first_person/generated/manifest.json','port/multiplayer-worlds/derived/core.mjs'])assert.ok(result.units[id].expected.packageInputs.includes(p),id+': '+p);
  assert.deepEqual(WORLDS['stormglass-causeway'].modes,['puma-race']);assert.deepEqual(CANDIDATES['stormglass-causeway'],['puma-race']);
  assert.equal(Object.keys(WORLDS).length,13);assert.equal(Object.values(WORLDS).reduce((n,w)=>n+w.modes.length,0),73);
  assert.match(read('godot/multiplayer_worlds/catalog.gd').toString(),/"stormglass-causeway": \["puma-race"\]/);

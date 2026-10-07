@@ -706,7 +706,7 @@
     "godot/experience/free_camera_math.gd": "76cb3b43001235478d2acb41bc5543d30d69943559e58aa5fb5deb6a591a0490",
     "godot/experience/hud_regions.gd": "d392fe5e1dbf1efc9038f1be0fb0a7fc1daf53a319d1d2bd1edac90d2e00793f",
     "godot/experience/kill_feed.gd": "f04e16bce56fff5ae65b899e32635e2a1a9d19430c492437c58b63e49b616453",
-    "godot/experience/player_info.gd": "27414f1575860dc8ed4deda2b70a71966b5e1f7e700e307b90c2bd2ebdba92ab",
+    "godot/experience/player_info.gd": "d01ab5ae8ff7d0c90ca92164408d1bbb12734befe4cce23bc1f231afa1473ecd",
     "godot/experience/scroll_keys.gd": "c861aeb98b7e88ba104fe2424bf8ff7af3dda6bc9e46b26ebf8c16cf222eb16c",
     "godot/experience/spectator_camera.gd": "5e0d9739048d8438f8ab70a5d447d74cfa8a3a74a57f9baf403df3df87ea8c16",
     "godot/experience/spectator_events.gd": "1e7021cf03df6b38e2b7e2b5144f14c166c002b2109506bd2a05d2781d472231",
@@ -1082,7 +1082,7 @@
     "godot/ui/scoreboard.gd": "427ddbaf71058832dcd8307675c9d3f293306bbd01e09ff80171f98b1236e187",
     "godot/ui/settings_access.gd": "2bb46c9e6ee5dabbdef7a4cd864bf4afcae2a3c8dd7be93d0180a907da7920e0",
     "godot/ui/weapon_names.gd": "c1e1abcb4d0556596c9e3996637e4210da4c5d35e3b4b6de019251822c503fb3",
-    "godot/vehicle_assets/attachment.gd": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21",
+    "godot/vehicle_assets/attachment.gd": "f128211eb9ba36fe1e5c4fc2fe32f92f5f569512280e1e7e580044dfe0f4bc5e",
     "godot/vehicle_assets/generated/puma-lod0.glb.import": "e5a0b9da3d8dc54283d52929236d1c29a693004b67458bfcbe848bb942c357b0",
     "godot/vehicle_assets/generated/puma-lod0_MothLocalNormal_edge.png": "774565dc8e6b5accb93e669310ce058e88f87ec484b2d803bbf1cec9cef0950d",
     "godot/vehicle_assets/generated/puma-lod0_MothLocalNormal_edge.png.import": "5b11c7bff428ce2941efd98ff3e078c423063d7e8a2f7a279b42edf092756eae",
@@ -1307,12 +1307,12 @@
     "tools/godot-package/movement_f61_inventory.json": "532faf2b9fa92b674f06a4485615e5405a73666fd43893f31baedccee9f6712d",
     "tools/godot-package/polish_8921_inventory.json": "81f8d2531486fcb88da14dc98cd19565a543e87a4fc389329cbdbb2de6109015",
     "tools/godot-package/polish_dependencies.mjs": "5a01b9417708b60e6646a5a249ee0f403209189d4895a204e49f6fd4874a8cdf",
-    "tools/godot-package/production_resources.mjs": "b296e8b9b41fff37ae85a6df470f4a1b1b7761f4cf15d0de90c92106416c0772",
+    "tools/godot-package/production_resources.mjs": "30de33799fb8ae46b3851cf76390c4fba2ed6750b358b6de11bebb3ce916797c",
     "tools/godot-package/racing_dependencies.mjs": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2",
     "tools/godot-package/robot_imports.mjs": "a71766b1629c07290b551f4982cf43b537f45e47551b896729cf3420f1f35de8",
     "tools/godot-package/scenery_imports.mjs": "e12b16af359f37e5b147726db5b7a27f9dc2a6c13ed95d997bb0fab8f8e1f565",
     "tools/godot-package/source_derivative.mjs": "e6fba11786154b908ec44afe3cf0572dfb7ff61fab990b0efc73c4e28d38adbd",
-    "tools/godot-package/stormglass_imports.mjs": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
+    "tools/godot-package/stormglass_imports.mjs": "1af2da27730eed1bd1020153b7a6fbfa4786442a3c4501bf21d16789612ba6b9",
     "tools/godot-package/vehicle_imports.mjs": "7866baa9df337b8026041d8b40389080103fac4b8fdcad139204081016356fa1",
     "tools/godot-package/vesper_imports.mjs": "2c2bfc087f9db52fbf5ecd3353236bcc2574d996e6b45c96b5ac74e35eb7b9ba",
     "tools/godot-vehicle-assets/build.py": "eb5e317409f27201b09800819e949ccb4afeae0e7ae95e9150bb6d294c2a6489",
@@ -1339,13 +1339,14 @@
     "tools/godot-package/vesper_apron_dependencies.mjs": "7b2fdb973cedfbe92d8d527ad91d0854a0ca551939b2743b64bbb643c001889b",
     "godot/first_person/generated/manifest.json": "58eaa182b33e7ee1590e9f6ce6c811efc432a9ea01a1c3b98eb9826112c68c7e",
     "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
+    "port/multiplayer-worlds/derived/core.mjs": "1af20c5d105c3606ba02141d4acd0a3cc7e31dcf42904e13cc7f485ba83dc1f3",
     "tools/godot-package/consolidation_dependencies.mjs": "340c862a628629139226dc24305146314cdc14d36f69e89e44e8f8355074292a"
   },
   "runtimeHooks": {
     "godot/combined_arms/chassis.gd": "7529c5d505f18383edbcbfa406c21e1dfe33449bd56ec8853a5122973916b5e3",
     "godot/combined_arms/demo.gd": "80a773cc40f0497e0ed41f5d0da89e2476b2b0fdfc022a165e71941bf873e78f",
     "godot/combined_arms/fleet.gd": "66535c7fa95081ce23197fc2b1a9deb6b124589f04deafcabeeb0008f0dab146",
-    "godot/vehicle_assets/attachment.gd": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21",
+    "godot/vehicle_assets/attachment.gd": "f128211eb9ba36fe1e5c4fc2fe32f92f5f569512280e1e7e580044dfe0f4bc5e",
     "godot/vehicles/puma.gd": "dece0e0b743fcb6377bb58fcb7dcc963fca9c7d047baa87bc89469162b2934fe",
     "godot/vehicles/renderer.gd": "3d185e80ddf005278721966d0ccd9cc027aec2cf1a6a0f1c2ce6f6d5676cf975"
   },
@@ -2881,7 +2882,7 @@
   },
   "consolidationAdvance": {
     "previousReceipt": {
-      "commit": "e0dfd44889979ca7854eea556866f087de30812d",
+      "commit": "9929193ed8c07b842ad742b70bae3a6a42fa49a4",
       "path": "tools/godot-package/production_receipts/vehicles.json",
       "sha256": "44a7f057abb83b6deefb6cb9be1f3b9cb144fce6a1332d55b577f92090358040"
     },
@@ -2897,6 +2898,10 @@
       "godot/campaign/client.gd": {
         "before": "95d3ecb853cd539e6a98ef089b2e47c3471b2b85508d53ba84f0006a54891c11",
         "after": "023b09c85d834e53114631da09ef77d6c0673c8f3a2e11eea6d61076adfc53b6"
+      },
+      "godot/experience/player_info.gd": {
+        "before": "27414f1575860dc8ed4deda2b70a71966b5e1f7e700e307b90c2bd2ebdba92ab",
+        "after": "d01ab5ae8ff7d0c90ca92164408d1bbb12734befe4cce23bc1f231afa1473ecd"
       },
       "godot/first_person/generated/finishes.gd": {
         "before": "29f1fb1709a567f7eea56cc192ab93495c76c6b92214a372101c0d7499eca798",
@@ -2942,6 +2947,10 @@
         "before": "6779c48baccdeee929d82ed789ae2b88e3f08911f547327217f41dfdab43d240",
         "after": "273a4fd04bca0fc82c7385e1a116467f8f1493a74efcdd0bdad0cbfa6d4d4fea"
       },
+      "godot/vehicle_assets/attachment.gd": {
+        "before": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21",
+        "after": "f128211eb9ba36fe1e5c4fc2fe32f92f5f569512280e1e7e580044dfe0f4bc5e"
+      },
       "godot/world/audio_feedback.gd": {
         "before": "7b903df2e0685840c76df37be88ad22e3d31e8d106cee3c362949ecebdf44078",
         "after": "e52c9a16f0a2a1be3950f032c79b5a6f08e13d2eeaf1ccce746eb268d1a20375"
@@ -2968,11 +2977,15 @@
       },
       "tools/godot-package/production_resources.mjs": {
         "before": "48f0f7e34436b1f1c9ca43495cdbd87159575efa6f520a3e1ba07ce239db1a18",
-        "after": "b296e8b9b41fff37ae85a6df470f4a1b1b7761f4cf15d0de90c92106416c0772"
+        "after": "30de33799fb8ae46b3851cf76390c4fba2ed6750b358b6de11bebb3ce916797c"
       },
       "tools/godot-package/racing_dependencies.mjs": {
         "before": "65380df5f48255324ecf6bb9d12bf245d22c34a12bb2db30ec192661a9155890",
         "after": "26ab12bc58120585afb384043947c4b1639e399f39e56d897d3a5747df2ccce2"
+      },
+      "tools/godot-package/stormglass_imports.mjs": {
+        "before": "4658f9807297778d3f2de08ed68888eb68a60937dccf719e9e6ce177431fec02",
+        "after": "1af2da27730eed1bd1020153b7a6fbfa4786442a3c4501bf21d16789612ba6b9"
       },
       "tools/godot-package/vesper_apron_dependencies.mjs": {
         "before": "791fa66e529fa159fdaff37883566098abcc231b24786445e8898bf7cada714e",
@@ -2982,12 +2995,18 @@
     "added": {
       "godot/first_person/generated/manifest.json": "58eaa182b33e7ee1590e9f6ce6c811efc432a9ea01a1c3b98eb9826112c68c7e",
       "godot/first_person/profiles/weapon_presentation_profile.gd": "c753d98c71c86315ce066da28c354983707c9cc71f79894735be61003b73b0db",
+      "port/multiplayer-worlds/derived/core.mjs": "1af20c5d105c3606ba02141d4acd0a3cc7e31dcf42904e13cc7f485ba83dc1f3",
       "tools/godot-package/consolidation_dependencies.mjs": "340c862a628629139226dc24305146314cdc14d36f69e89e44e8f8355074292a"
     },
-    "runtimeChanged": {},
+    "runtimeChanged": {
+      "godot/vehicle_assets/attachment.gd": {
+        "before": "89a11d2c2987b5be14f8d6458079cd27dc16f461b1530ce66d6ac9e3b4e66f21",
+        "after": "f128211eb9ba36fe1e5c4fc2fe32f92f5f569512280e1e7e580044dfe0f4bc5e"
+      }
+    },
     "sourceChanged": {},
     "previousPackageFingerprint": "15987642a961abadf6e2cf14206020aa086ce75f016f6f6588970a219b1a353d",
-    "packageFingerprint": "183d8c48abb2409a275974f0f2adb13032797a79c67060195439cf3232397fa2",
+    "packageFingerprint": "3ef07b47fb072aef591406eba52be05b6f294b274088e43b4e5160244cd8fd2b",
     "previousSourceFingerprint": "43053f7a3d5c7791204433d89de08504134d23fbbc7184fe868a2f812b3b1c2c",
     "sourceFingerprint": "43053f7a3d5c7791204433d89de08504134d23fbbc7184fe868a2f812b3b1c2c",
     "review": {
