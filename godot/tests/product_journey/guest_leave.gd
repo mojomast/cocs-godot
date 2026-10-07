@@ -72,3 +72,11 @@ func exercise_settings() -> void:
 		return
 	print("GUEST_LEAVE_READY ", JSON.stringify({"room":room,"actor":actor,"peer":scene.client.peer_id,"source_snapshots":scene.client.snapshots.size(),"settings_path":settings.path,"pointer_released":true,"scripted_ui":true}))
 	settings.rows.leave.pressed.emit()
+	await scene_changed
+	if current_scene == null or current_scene.scene_file_path != "res://ui/main_menu.tscn":
+		fail("Leave did not return Home")
+		return
+	# This is an external direct-route launcher. The user can quit Home normally;
+	# the scripted journey must do so after observing the successful transition.
+	print("GUEST_LEAVE_HOME ", JSON.stringify({"scene":current_scene.scene_file_path}))
+	quit(0)
