@@ -9,17 +9,24 @@ func _init() -> void:
 func check(ok: bool, message: String) -> void:
 	if not ok: failures.append(message)
 
-const DETAIL_KEYS := ["albedo_color","albedo_texture","metallic","roughness",
-	"roughness_texture","roughness_texture_channel","normal_enabled","normal_texture",
-	"normal_scale","emission_enabled","emission","emission_energy_multiplier",
-	"transparency","cull_mode","uv1_scale","uv1_offset","render_priority",
-	"texture_filter","vertex_color_use_as_albedo","resource_name"]
+# The visible detail overlay is instance-owned (Moth finish over the SVG fallback),
+# so parity is value equality. Compare the complete stored render state -- every
+# PROPERTY_USAGE_STORAGE property, which covers blend_mode plus the shading, depth,
+# alpha, diffuse/specular, rim, clearcoat, anisotropy, AO, heightmap, subsurface,
+# backlight, refraction, detail, UV, billboard, fade, stencil and point fields --
+# instead of a hand-picked subset that silently dropped render state. Only
+# non-render resource bookkeeping is skipped; resource_name is kept to match the
+# render-trait comparison already used by moth_finish/lifecycle_test.gd.
+const NON_RENDER_KEYS := ["resource_local_to_scene", "script"]
 
 func detail_matches(a: Material, b: Material) -> bool:
 	var first := a as StandardMaterial3D
 	var second := b as StandardMaterial3D
 	if first == null or second == null: return a == b
-	for key: String in DETAIL_KEYS:
+	for property: Dictionary in first.get_property_list():
+		if not (int(property.usage) & PROPERTY_USAGE_STORAGE): continue
+		var key := str(property.name)
+		if key in NON_RENDER_KEYS: continue
 		if first.get(key) != second.get(key): return false
 	return true
 
