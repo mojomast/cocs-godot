@@ -231,9 +231,14 @@ func fleet_report() -> Array:
 			identities = identities and seen.size() == 3
 		var source_yaw := Basis(Vector3.UP,float(v.yaw)+float(v.turretYaw))
 		var mouth_ok := true
+		var turret_art: MeshInstance3D
+		for child: Node in node.turret.get_children():
+			if child is MeshInstance3D and child.visible and child.visibility_range_begin == 0.0:
+				turret_art = child
+				break
 		for mouth: Vector3 in MOUTHS[v.kind]:
 			var expected := Vector3(v.x,v.y,v.z)+source_yaw*mouth
-			mouth_ok = mouth_ok and (node.turret.global_transform*(mouth-Attachments.PIVOTS[v.kind])).distance_to(expected)<0.0001
+			mouth_ok = mouth_ok and turret_art != null and (turret_art.global_transform*(mouth-Attachments.PIVOTS[v.kind])).distance_to(expected)<0.0001
 		var team := -1
 		for a: Dictionary in state.get("actors",[]):
 			if a.id == v.driver: team = int(a.team)
