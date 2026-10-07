@@ -1,5 +1,6 @@
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 import {spawn,execFileSync} from 'node:child_process';
 import {mkdirSync,readFileSync,writeFileSync,mkdtempSync,rmSync,existsSync,readdirSync} from 'node:fs';
 import {resolve} from 'node:path';
@@ -8,7 +9,7 @@ import {gzipSync} from 'node:zlib';
 import {connect} from 'node:net';
 const sha=b=>createHash('sha256').update(b).digest('hex');
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;
 if(!binary||execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Pinned Godot required');

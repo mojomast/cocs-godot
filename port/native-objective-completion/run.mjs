@@ -1,5 +1,6 @@
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 import {opposingPeer} from './peer.mjs';
 import {passPeer} from './pass-peer.mjs';
 import {validate} from './validate.mjs';
@@ -12,7 +13,7 @@ import {gzipSync} from 'node:zlib';
 const args=process.argv.slice(2),passing=args.includes('--pass'),map=passing?'tidal-citadel':'sunscar-convoy';
 const revision=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;
 if(!binary||execFileSync(binary,['--version'],{encoding:'utf8',timeout:5000}).trim()!==lock.godot_version)throw Error('Pinned GODOT_BIN required');

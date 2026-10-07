@@ -1,10 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {strictData,normalizeMap,validateSelection,verifySource,build} from './semantic.mjs';
+import {activeSource} from '../godot-dev/active_source.mjs';
 import {DESTINATION_MAPS} from '../../game/destination-maps.mjs';
 import {mkdtempSync,readFileSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
+import {fileURLToPath} from 'node:url';
 test('strict serializer rejects silent JSON losses',()=>{
  const cycle={};cycle.self=cycle;
  for(const value of [undefined,()=>1,NaN,Infinity,new Float32Array([1]),new Map(),cycle,[,],{x:undefined},{x:1n}])assert.throws(()=>strictData(value));
@@ -25,11 +27,18 @@ test('two point walls survive despite no wall triangles',()=>{
 });
 test('two clean builds have identical manifests and asset hashes',()=>{
  const lock=JSON.parse(readFileSync(new URL('../../port/contracts/source-lock.json',import.meta.url)));
- const derivative=JSON.parse(readFileSync(new URL('../../port/contracts/lattice-catalog-derivative.json',import.meta.url)));
+ // F01: the current tree is the reviewed active source. The lattice contract is
+ // frozen evidence for an earlier candidate and no longer verifies this tree.
+ const active=activeSource(fileURLToPath(new URL('../../',import.meta.url))).contract;
  assert.throws(()=>verifySource(lock),/Locked source differs/, 'the original pinned export remains strict');
- verifySource(lock,derivative);
- assert.throws(()=>verifySource(lock,{...derivative,runtime_files:{...derivative.runtime_files,'game/cocs.mjs':'0'.repeat(64)}}),/byte mismatch/);
+ const resolved=verifySource(lock,active);
+ // The active descriptor is an overlay over the reviewed chain, so a tampered
+ // inventory is presented as a plain resolved derivative: the byte census must
+ // still refuse it.
+ const tampered={schema_version:1,source_commit:lock.source_commit,derivative_commit:active.derivative_commit,
+  runtime_files:{...resolved.runtime_files,'game/cocs.mjs':'0'.repeat(64)}};
+ assert.throws(()=>verifySource(lock,tampered),/byte mismatch/);
  const temp=mkdtempSync(join(tmpdir(),'cocs-export-'));
  const previous=process.env.COCS_SOURCE_DERIVATIVE;
- try{process.env.COCS_SOURCE_DERIVATIVE=new URL('../../port/contracts/lattice-catalog-derivative.json',import.meta.url).pathname;const a=build(join(temp,'a'));const b=build(join(temp,'b'));assert.deepEqual(a,b);assert.equal(a.source_derivative_commit,derivative.derivative_commit);assert.equal(a.maps.length,9);for(const entry of a.maps)assert.deepEqual(readFileSync(join(temp,'a',entry.path)),readFileSync(join(temp,'b',entry.path)));}finally{if(previous===undefined)delete process.env.COCS_SOURCE_DERIVATIVE;else process.env.COCS_SOURCE_DERIVATIVE=previous;rmSync(temp,{recursive:true});}
+ try{process.env.COCS_SOURCE_DERIVATIVE=new URL('../../port/contracts/contact-candidate-derivative.json',import.meta.url).pathname;const a=build(join(temp,'a'));const b=build(join(temp,'b'));assert.deepEqual(a,b);assert.equal(a.source_derivative_commit,active.derivative_commit);assert.equal(a.maps.length,9);for(const entry of a.maps)assert.deepEqual(readFileSync(join(temp,'a',entry.path)),readFileSync(join(temp,'b',entry.path)));}finally{if(previous===undefined)delete process.env.COCS_SOURCE_DERIVATIVE;else process.env.COCS_SOURCE_DERIVATIVE=previous;rmSync(temp,{recursive:true});}
 });

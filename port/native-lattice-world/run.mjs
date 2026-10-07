@@ -5,6 +5,7 @@ import {resolve, join} from 'node:path';
 import {createHash} from 'node:crypto';
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 
 const options = Object.fromEntries(process.argv.slice(2).map(arg => arg.replace(/^--/, '').split('=')));
 const map = options.map ?? 'asterion-relay', mode = options.mode ?? 'cocs';
@@ -13,7 +14,7 @@ const play = 'play' in options;
 const out = resolve(options.output ?? `port/native-lattice-world/evidence/${Date.now()}-${map}-${mode}`);
 mkdirSync(out, {recursive:true});
 const lock = JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const bin = process.env.GODOT_BIN;
 if (!bin || execFileSync(bin, ['--version'], {encoding:'utf8'}).trim() !== lock.godot_version) throw Error('Pinned GODOT_BIN required');

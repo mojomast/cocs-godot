@@ -7,6 +7,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import {gzipSync} from 'node:zlib';
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 import {DESTINATION_COMBAT_MAPS} from '../../game/destination-combat-maps.mjs';
 import {objectiveTemplate} from '../../game/mode-data.mjs';
 import {zoneRouter,bindRoute} from './route.mjs';
@@ -15,7 +16,7 @@ const map=process.argv.find(a=>a.startsWith('--map='))?.slice(6), mode={'meridia
 assert.ok(mode,'--map=meridian-exchange or verdant-reliquary required');
 const binary=process.env.GODOT_BIN, lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
 const base=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim();
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);assert.equal(execFileSync(binary,['--version'],{encoding:'utf8'}).trim(),lock.godot_version);
 const out=resolve('port/native-zone-modes/evidence',map+'-'+randomUUID());mkdirSync(out,{recursive:true});
 const temp=mkdtempSync('/tmp/opencode/zone-runtime-');

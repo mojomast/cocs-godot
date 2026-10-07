@@ -11,10 +11,14 @@ test('native push CI covers the integration branch', () => {
   assert.ok(branches.includes('port/lattice-flagship-next'));
 });
 
-test('native verify job exports the frozen derivative to semantic export and verification', () => {
+test('native verify job exports the reviewed active source to semantic export and verification', () => {
   const jobEnv = workflow.match(/^    env:\n((?:      [^\n]+\n)+)    steps:/m)?.[1];
   assert.ok(jobEnv, 'expected a job-level environment shared by export and verification steps');
-  assert.match(jobEnv, /^      COCS_SOURCE_DERIVATIVE: \$\{\{ github\.workspace \}\}\/port\/contracts\/lattice-catalog-derivative\.json$/m);
+  // F01: CI resolves the reviewed active-source descriptor instead of pinning a
+  // frozen historical contract that no longer describes the tree. Re-pinning
+  // COCS_SOURCE_DERIVATIVE here would silently re-scope the whole job.
+  assert.doesNotMatch(jobEnv, /^      COCS_SOURCE_DERIVATIVE:/m,
+    'CI must verify the reviewed active source, not a frozen derivative');
   assert.match(workflow, /^          node tools\/godot-export\/semantic\.mjs\b/m);
   assert.match(workflow, /^ {10,}python3 tools\/godot-dev\/verify\.py\b/m);
   assert.match(workflow, /default: full\b/);

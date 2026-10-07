@@ -8,9 +8,10 @@ import {setTimeout as sleep} from 'node:timers/promises';
 import {WebSocket} from 'ws';
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../godot-export/semantic.mjs';
+import {resolveActiveDerivative} from './active_source.mjs';
 
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;
 assert.ok(binary && process.env.DISPLAY,'Set pinned GODOT_BIN and run with a private Xvfb display');

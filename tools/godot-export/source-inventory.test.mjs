@@ -5,7 +5,9 @@ import {createHash} from 'node:crypto';
 import {mkdtempSync,mkdirSync,readFileSync,rmSync,writeFileSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {verifySource} from './semantic.mjs';
+import {activeSource} from '../godot-dev/active_source.mjs';
 
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 const names=['attachments','cocs-coop','cocs-economy','cocs','progression','core','singleplayer']
@@ -57,7 +59,7 @@ test('temporary Git checkout inventories the original lock and exactly ten combi
  }finally{rmSync(root,{recursive:true,force:true});}
 });
 
-test('selected combined derivative retains the seven LATTICE runtime hashes and adds only three Horde files',()=>{
+test('frozen LATTICE derivative retains the seven original runtime hashes and adds only three Horde files',()=>{
  const derivative=JSON.parse(readFileSync(new URL('../../port/contracts/lattice-catalog-derivative.json',import.meta.url)));
  const lock=JSON.parse(readFileSync(new URL('../../port/contracts/source-lock.json',import.meta.url)));
  const original=JSON.parse(execFileSync('git',['show','89dd5745:port/contracts/lattice-catalog-derivative.json'],{encoding:'utf8'}));
@@ -65,5 +67,13 @@ test('selected combined derivative retains the seven LATTICE runtime hashes and 
  assert.deepEqual(Object.keys(derivative.runtime_files).sort(),
   [...Object.keys(original.runtime_files),'game/core.mjs','game/horde-stages.mjs','game/singleplayer.mjs'].sort());
  for(const [path,hash] of Object.entries(original.runtime_files))assert.equal(derivative.runtime_files[path],hash,path);
- verifySource(lock,derivative);
+ // The lattice contract is frozen evidence for an earlier candidate (F01): its
+ // bytes are authoritative at its own derivative commit, not against the tree,
+ // which the reviewed active source has since moved past.
+ for(const [path,hash] of Object.entries(derivative.runtime_files))
+  assert.equal(sha(execFileSync('git',['show',`${derivative.derivative_commit}:${path}`])),hash,path+' at the frozen candidate commit');
+ assert.throws(()=>verifySource(lock,derivative),/Derivative source inventory differs from locked source/,
+  'the frozen candidate no longer describes the current tree and must not verify it');
+ // The current tree is covered by the reviewed active descriptor instead.
+ verifySource(lock,activeSource(fileURLToPath(new URL('../../',import.meta.url))).contract);
 });

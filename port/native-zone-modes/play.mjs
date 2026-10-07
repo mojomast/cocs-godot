@@ -1,6 +1,7 @@
 // Standalone owned convenience entry until the common launcher hook is integrated.
 import {createGameServer} from '../../server/game-server.mjs';
 import {verifySource} from '../../tools/godot-export/semantic.mjs';
+import {resolveActiveDerivative} from '../../tools/godot-dev/active_source.mjs';
 import {spawn,execFileSync} from 'node:child_process';
 import {readFileSync,mkdtempSync,mkdirSync,rmSync} from 'node:fs';
 import {resolve} from 'node:path';
@@ -10,7 +11,7 @@ const catalog=JSON.parse(readFileSync('port/contracts/map-selection.json'));
 if(!['koth','domination'].includes(values.mode)||!catalog.maps.find(m=>m.id===values.map)?.supported_modes.includes(values.mode))throw Error('Unsupported locked zone map/mode');
 for(const [key,min,max]of [['bots',0,8],['round-seconds',60,180]])if(!/^\d+$/.test(values[key])||+values[key]<min||+values[key]>max)throw Error(`Invalid ${key}`);
 const lock=JSON.parse(readFileSync('port/contracts/source-lock.json'));
-const derivative=process.env.COCS_SOURCE_DERIVATIVE?JSON.parse(readFileSync(process.env.COCS_SOURCE_DERIVATIVE)):null;
+const derivative=resolveActiveDerivative(process.env.COCS_SOURCE_DERIVATIVE).contract;
 verifySource(lock,derivative);
 const binary=process.env.GODOT_BIN;if(!binary||execFileSync(binary,['--version'],{encoding:'utf8'}).trim()!==lock.godot_version)throw Error('Pinned GODOT_BIN required');
 const temp=mkdtempSync('/tmp/opencode/zone-play-'),env={...process.env};
