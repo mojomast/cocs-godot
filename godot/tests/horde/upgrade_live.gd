@@ -55,6 +55,9 @@ var reset_count := 0
 var resets_at_press := 0
 var resets_at_delivery := 0
 var epoch_at_delivery := 0
+var resets_at_answer := 0
+var epoch_at_answer := 0
+var answer_observed := false
 var reset_armed := false
 var linger_frames := 0
 var finished := false
@@ -172,7 +175,8 @@ func snapshot_evidence() -> Dictionary:
 		"frameTiming":frame_timing(),
 		"offer_wave": offer_wave, "epoch": epoch_seen, "seq_before": seq_before, "resets": reset_count,
 		"resets_at_press": resets_at_press, "resets_at_delivery": resets_at_delivery,
-		"epoch_at_delivery": epoch_at_delivery,
+		"epoch_at_delivery": epoch_at_delivery, "resets_at_answer": resets_at_answer,
+		"epoch_at_answer": epoch_at_answer, "answer_observed": answer_observed,
 		"elapsed": snappedf(elapsed, 0.01)}
 	if is_instance_valid(session) and is_instance_valid(session.horde_client):
 		var client: Node = session.horde_client
@@ -337,6 +341,10 @@ func _process(delta: float) -> bool:
 			# (client) and the authoritative snapshot projection (model).
 			var confirmed: bool = int(session.horde_client.confirmed_count) >= 1 \
 				and str(session.horde_client.confirmed_choice) == chosen
+			if confirmed and not answer_observed:
+				answer_observed = true
+				epoch_at_answer = int(session.horde_client.input_epoch)
+				resets_at_answer = reset_count
 			var projected: bool = int(session.horde.applied_count) >= 1 \
 				and str(session.horde.selected_id) == chosen and not session.horde.offer_pending
 			if confirmed and projected:
@@ -391,8 +399,8 @@ func _after_press() -> void:
 	# A CPU renderer may stall between sampling the press frame and delivery;
 	# Horde's 250 ms input TTL then emits a stale-input reset *before* the
 	# upgrade intent. The socket observer verifies separately that no reset
-	# occurs after the intent. Pin the post-delivery epoch here so this observer
-	# still detects any boundary during confirmation.
+	# occurs between intent and answer. Pin the post-delivery epoch here and
+	# compare it when the answer first arrives; idle resets after it are expected.
 	epoch_at_delivery = int(session.horde_client.input_epoch)
 	resets_at_delivery = reset_count
 	check(session.controls.keys.is_empty(), "choice hotkey never entered held movement")
@@ -418,8 +426,7 @@ func _confirm() -> void:
 	check("APPLIED" in session.choice_status.text.to_upper() or "ACCEPTED" in session.choice_status.text.to_upper(), "the status line reports the authority result")
 	check("APPLIED" in session.horde_label.text.to_upper(), "the Horde strip reports the applied run upgrade")
 	# Ordinary input stream continuity: the choice must not corrupt the sample cursor.
-	check(reset_count == resets_at_delivery, "no input reset was emitted after delivery")
-	check(epoch_at_delivery == int(client.input_epoch), "the input epoch is unchanged after delivery")
+	check(answer_observed and epoch_at_answer == epoch_at_delivery, "no input reset between delivery and the authority answer")
 	check(int(session.client.input_seq) > seq_before, "ordinary input samples kept flowing across the choice")
 	check(int(client.received_input) > 0, "the authority acknowledged ordinary input samples for this round")
 	check(int(client.input_seq) >= int(seq_before), "the ordinary input cursor never went backwards")

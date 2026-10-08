@@ -1,5 +1,36 @@
 # Native upgrade fixture: software-renderer timing repair
 
+## October 7 final verification: idle flight, then linger
+
+The native observer captures the epoch and reset count on the first confirmed
+authority answer and compares the answer epoch with the delivery epoch. A
+reset inside that flight increments the epoch and fails the check; a later
+idle reset during the 15-frame linger is expected by the one-cancel-per-epoch
+product contract. The Node observer independently rejects a control-reset
+record between intent and answer and requires matching answer/intent epochs.
+An llvmpipe stall that crosses the 250ms lease **during** that flight remains
+a real failure, unlike startup or post-answer stalls.
+
+The Node post-application continuity check now requires at least one actual
+step, while retaining sequence monotonicity and received-forward checks.
+Five steps assumed the old always-streaming client: the three preceding
+idle-client runs each produced only three post-application steps despite a
+confirmed selection and fifteen linger frames.
+
+Three Linux reruns (`/tmp/opencode/horde-final-{1,2,3}.log`) passed all 23
+harness and 40 native checks each. Delivery/answer epochs were 17/17, 15/15,
+16/16; post-application steps were 2, 3, 3. Median frames were 50/48/50ms,
+and maximum frames were 2935/2947/2954ms (startup/offer stalls); 8/7/8
+profiled frames exceeded 100ms, but no flight crossed an epoch. Final reset
+counts exceeded answer reset counts by 2/3/3, as idle TTL renewal predicts.
+A scratch falsification (`/tmp/opencode/horde-final-falsify.mjs`) showed that
+a reset incrementing the captured answer epoch fails the native predicate,
+while a reset after the capture passes; zero post-application steps fail the
+actual Node assertion, while one forward step passes.
+
+The follow-ups below preserve the earlier diagnostic chronology; their
+statements about outstanding failures describe runs before this final change.
+
 ## October 7 follow-up: inactive-input lease
 
 The September readiness claim below predates the reviewed idle-input change.

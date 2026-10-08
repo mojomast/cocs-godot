@@ -292,7 +292,9 @@ check('no control reset between the intent and its answer', intentAt >= 0 && ans
   && controlResets.every(record => { const at = records.indexOf(record); return at <= intentAt || at >= answerAt; }),
   JSON.stringify({total: controlResets.length, reasons: controlResets.map(r => r.reason), intentRecord: intentAt, answerRecord: answerAt}));
 check('no transport error ended the round', transportErrors.length === 0, JSON.stringify(transportErrors.map(r => r.reason)));
-check('ordinary input sequence is monotonic and survived the selection', monotonic && stepsAfter.length >= 5
+// One cancel per idle epoch means linger normally produces only 1-3 post-apply
+// steps, not five; require a real step after application without racing quit.
+check('ordinary input sequence is monotonic and survived the selection', monotonic && stepsAfter.length >= 1
   && stepsAfter.at(-1).received >= stepsAfter[0].received,
   JSON.stringify({steps: steps.length, after: stepsAfter.length, last: stepsAfter.at(-1) ?? null}));
 check('source match holds exactly the applied upgrade', Boolean(fixture.match)
