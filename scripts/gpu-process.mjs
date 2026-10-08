@@ -10,7 +10,7 @@ export function hordeWindowArgs(platform, display) {
   const windowed = platform === 'win32' || Boolean(display);
   return [
     ...(windowed ? [] : ['--headless']),
-    ...(windowed ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x480'] : []),
+    ...(windowed ? ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--windowed', '--resolution', '640x480'] : []),
   ];
 }
 

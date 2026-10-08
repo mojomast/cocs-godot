@@ -23,9 +23,10 @@ const DELIVERY_RETRY_FRAMES := 30
 ## Frames to keep observing after the authority answered, so the ordinary input
 ## stream is proven to continue after the selection rather than racing the quit.
 const LINGER_FRAMES := 15
-## Readback/shader warm-up can exceed the unchanged authority input TTL. Wait
-## for ordinary acknowledged input to recover before emitting the fixture key.
-const READY_FRAMES := 12
+## Idle sends one cancel per epoch; the authority renews the epoch after 250 ms.
+## One clean frame after the reset and its first ACK leaves time for the key
+## press/release and socket answer within the same lease at a 30 fps cap.
+const READY_FRAMES := 1
 ## Both delivery paths dispatch through the engine. Never bypass input routing
 ## with a direct handler call, even as a diagnostic fallback.
 const DELIVERIES := ["parse_input_event", "viewport_push_input"]
@@ -116,7 +117,9 @@ func _initialize() -> void:
 	# the Horde choice layer would lay out off-screen), so pin the harness size.
 	# Match the launcher instead of silently doubling its software-rendered
 	# pixel budget. 480px leaves room for all three real offer buttons.
-	root.size = Vector2i(640, 480)
+	if root.size != Vector2i(640, 480):
+		root.mode = Window.MODE_WINDOWED
+		root.size = Vector2i(640, 480)
 	root.scaling_3d_scale = render_scale
 	RenderingServer.viewport_set_measure_render_time(root.get_viewport_rid(), true)
 	session = DemoScene.instantiate()
@@ -283,7 +286,7 @@ func _process(delta: float) -> bool:
 				ready_received = int(client.received_input)
 			else:
 				ready_frames += 1
-			if ready_frames >= READY_FRAMES and int(client.received_input) >= ready_received + 5:
+			if ready_frames >= READY_FRAMES and int(client.received_input) >= 1:
 				stage = "press"
 				stage_frames = 0
 		"press":

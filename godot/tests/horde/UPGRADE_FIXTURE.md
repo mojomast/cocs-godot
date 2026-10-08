@@ -1,5 +1,29 @@
 # Native upgrade fixture: software-renderer timing repair
 
+## October 7 follow-up: inactive-input lease
+
+The September readiness claim below predates the reviewed idle-input change.
+`godot/tests/campaign/input_flow.gd` now requires exactly one inactive cancel
+per epoch; the 250ms authority TTL then resets idle clients. Twelve clean frames
+at the 30fps cap require at least 400ms, and five additional ACKs cannot arrive
+from the idle client. The fixture now waits for one clean frame and the current
+epoch's first ACK (`received_input >= 1`) before emitting KEY_2. The harness
+isolates `COCS_SETTINGS_PATH` and requests `--windowed --resolution 640x480`;
+the fixture also corrects a noncanonical viewport size.
+
+Local llvmpipe baseline: `settle` at 24.02s, 51 stale-input resets, no intent,
+58ms median / 2953ms maximum frame. Three changed-gate runs reached `confirm`:
+two had matching intent/answer epochs and an applied snapshot; one had an intent
+but no answer following a render stall. None passed the existing post-delivery
+reset assertions: fifteen linger frames span several 250ms idle leases. These
+strict checks remain unchanged, so a complete passing acceptance result is
+**not established** by this change. Reverting only the gate reproduced `settle`
+with 56 resets and no intent; requiring 999 clean frames likewise held `settle`
+with 51 resets and no intent. Logs: `/tmp/opencode/horde-{before,after-1,after-2,after-3,revert-gate,unreachable}.log`.
+
+The following September measurements and successful runs describe the earlier
+product revision, not the current idle-input behavior.
+
 The fixture instantiates the real Horde scene and selects the accelerated source
 offer using engine `InputEventKey` dispatch. Its authority remains the real native
 Horde adapter/source Match. This proves upgrade selection, not natural three-wave

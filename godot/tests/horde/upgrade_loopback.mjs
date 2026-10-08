@@ -121,6 +121,7 @@ const temp = mkdtempSync(resolve(tmpdir(), 'horde-upgrade-loopback-'));
 // input poll on small CI workers. Bound this rendered fixture's CPU demand;
 // keep the product's input TTL and the observer's deadlines unchanged.
 const env = {...process.env, LP_NUM_THREADS: '1'};
+env.COCS_SETTINGS_PATH = resolve(temp, 'local_settings.json');
 for (const key of ['XDG_DATA_HOME', 'XDG_CONFIG_HOME', 'XDG_CACHE_HOME', 'XDG_RUNTIME_DIR']) {
   env[key] = resolve(temp, key);
   mkdirSync(env[key], {recursive: true});
