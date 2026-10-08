@@ -1,5 +1,39 @@
 # Native upgrade fixture: software-renderer timing repair
 
+## October 7 cross-review repair: fresh-epoch acknowledgment
+
+Flash's independent review passed 4/5 runs of the earlier gate. The fifth
+emitted an intent rejected as `stale-round`, with no answer (`appliedAt=-1`):
+`received_input >= 1` had accepted a cumulative ACK from a previous epoch.
+The gate now seeds `ready_received` to the sequence **before** the current
+epoch's cancel, verifies `inactive_cancel_epoch == ready_epoch`, and requires
+both `received_input >= ready_received + 1` and acknowledgment of the cancel's
+actual `input_seq`. On offer entry, an already-ACKed lease is deliberately
+skipped; on an epoch change the seed accounts for a cancel that was already
+sent and ACKed in the same poll. One clean frame after that fresh ACK opens
+the press. A frame over 100ms invalidates that opportunity and waits for the
+next epoch, rather than re-seeding from the ACK and pressing near expiry.
+
+Five final post-repair Linux runs (`/tmp/opencode/horde-ack-final-{1,2,3,4,5}.log`)
+passed 23/23 harness and 40/40 native checks each. Intent/answer epochs were
+17/17, 17/17, 16/16, 16/16, 16/16; each had three post-application steps,
+no in-flight reset, and no `stale-round` refusal. Each recorded eight frames
+over 100ms, with maximum frames 2940/2983/2955/2985/2949ms outside the
+flight. These five passes reduce but do not eliminate timing risk on other
+renderers. A standalone GDScript scratch copy of the readiness predicate
+(`/tmp/opencode/horde-ack-falsify.gd`) held the press for an old cumulative
+ACK, a missing current-epoch ACK, and a >100ms frame (including a slow epoch
+boundary with a same-poll ACK); a fresh ACK plus a clean
+frame opened it. Godot's import cache and the generated semantic catalog must
+exist before running the fixture in a fresh checkout:
+
+```bash
+node tools/godot-export/semantic.mjs godot/content/generated
+GODOT_BIN=/path/to/Godot_v4.5.2-stable_linux.x86_64
+"$GODOT_BIN" --headless --path godot --editor --import
+GODOT_BIN="$GODOT_BIN" node godot/tests/horde/upgrade_loopback.mjs
+```
+
 ## October 7 final verification: idle flight, then linger
 
 The native observer captures the epoch and reset count on the first confirmed
@@ -17,8 +51,10 @@ Five steps assumed the old always-streaming client: the three preceding
 idle-client runs each produced only three post-application steps despite a
 confirmed selection and fifteen linger frames.
 
-Three Linux reruns (`/tmp/opencode/horde-final-{1,2,3}.log`) passed all 23
-harness and 40 native checks each. Delivery/answer epochs were 17/17, 15/15,
+Before the independent review, three Linux reruns (`/tmp/opencode/horde-final-{1,2,3}.log`)
+passed all 23 harness and 40 native checks each; they did not establish gate
+reliability, as Flash subsequently reproduced the stale-round race.
+Delivery/answer epochs were 17/17, 15/15,
 16/16; post-application steps were 2, 3, 3. Median frames were 50/48/50ms,
 and maximum frames were 2935/2947/2954ms (startup/offer stalls); 8/7/8
 profiled frames exceeded 100ms, but no flight crossed an epoch. Final reset
@@ -38,7 +74,8 @@ The September readiness claim below predates the reviewed idle-input change.
 per epoch; the 250ms authority TTL then resets idle clients. Twelve clean frames
 at the 30fps cap require at least 400ms, and five additional ACKs cannot arrive
 from the idle client. The fixture now waits for one clean frame and the current
-epoch's first ACK (`received_input >= 1`) before emitting KEY_2. The harness
+epoch's first ACK (the original, later disproven `received_input >= 1` gate)
+before emitting KEY_2. The harness
 isolates `COCS_SETTINGS_PATH` and requests `--windowed --resolution 640x480`;
 the fixture also corrects a noncanonical viewport size.
 

@@ -284,20 +284,31 @@ func _process(delta: float) -> bool:
 			_prepare_press()
 		"settle":
 			var client: Node = session.horde_client
-			if frame_ms > 100 or ready_epoch != int(client.input_epoch):
+			if ready_epoch != int(client.input_epoch):
 				ready_frames = 0
 				ready_epoch = int(client.input_epoch)
-				ready_received = int(client.received_input)
+				# The boundary and its first ACK may arrive in one network poll.
+				# Seed to the sequence *before* this epoch's cancel, even then.
+				ready_received = int(client.input_seq) - (1 if int(client.inactive_cancel_epoch) == ready_epoch else 0)
+				if frame_ms > 100:
+					ready_received = int(client.input_seq)
+			elif frame_ms > 100:
+				ready_frames = 0
+				# A slow frame may consume the lease. Require the next epoch's
+				# cancel rather than reuse an old ACK near its TTL boundary.
+				ready_received = maxi(ready_received, int(client.input_seq))
 			else:
 				ready_frames += 1
-			if ready_frames >= READY_FRAMES and int(client.received_input) >= 1:
+			if ready_frames >= READY_FRAMES and int(client.inactive_cancel_epoch) == ready_epoch \
+				and int(client.received_input) >= ready_received + 1 \
+				and int(client.received_input) >= int(client.input_seq):
 				stage = "press"
 				stage_frames = 0
 		"press":
 			if frame_ms > 100 or ready_epoch != int(session.horde_client.input_epoch):
 				ready_frames = 0
-				ready_epoch = int(session.horde_client.input_epoch)
-				ready_received = int(session.horde_client.received_input)
+				if ready_epoch == int(session.horde_client.input_epoch):
+					ready_received = maxi(ready_received, int(session.horde_client.input_seq))
 				stage = "settle"
 				return false
 			# Sample the live round immediately before the press: the authority's
@@ -388,7 +399,9 @@ func _prepare_press() -> void:
 	await capture("offer")
 	if finished: return
 	ready_epoch = int(session.horde_client.input_epoch)
-	ready_received = int(session.horde_client.received_input)
+	# The offer can arrive at the tail of an already-ACKed lease. Its next
+	# cancel (this epoch if unsent, otherwise the following epoch) is the gate.
+	ready_received = int(session.horde_client.input_seq)
 	ready_frames = 0
 	stage = "settle"
 	stage_frames = 0

@@ -13,9 +13,10 @@ test('weather uses the native binary only on win32', () => {
 });
 
 test('Horde uses a native rendered window on win32 and preserves Linux display paths', () => {
-  const rendered = ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--resolution', '640x480'];
+  const rendered = ['--rendering-method', 'gl_compatibility', '--audio-driver', 'Dummy', '--windowed', '--resolution', '640x480'];
   assert.deepEqual(hordeWindowArgs('win32', null), rendered);
   assert.deepEqual(hordeWindowArgs('win32', 'native'), rendered);
   assert.deepEqual(hordeWindowArgs('linux', ':99'), rendered);
+  assert.ok(rendered.includes('--windowed'));
   assert.deepEqual(hordeWindowArgs('linux', null), ['--headless']);
 });
