@@ -280,12 +280,17 @@ check('no upgrade was refused or replayed', rejected.length === 0, JSON.stringif
 // input epoch boundary. Environment stalls that happen while the operator is
 // still choosing are reported in `resetContext`; the native observer re-samples
 // the epoch and re-checks the offer on the press frame by design.
+// The product input-flow tests specify one inactive cancel per epoch; its 250ms
+// TTL causes further idle resets even after a valid answer and during linger.
+// Only a reset inside the intent -> answer flight interrupts the selection.
 check('live intent and its answer share one input epoch', Boolean(intent) && Boolean(answer)
   && frame(intent).inputEpoch === frame(answer).inputEpoch
   && frame(intent).choice === appliedChoice && frame(answer).choice === appliedChoice,
   JSON.stringify({intent: intent ? frame(intent) : null, answer: answer ? frame(answer) : null}));
-check('no control reset after the intent was sent', controlResets.every(record => records.indexOf(record) < records.indexOf(intent)),
-  JSON.stringify({total: controlResets.length, reasons: controlResets.map(r => r.reason), intentRecord: intent ? records.indexOf(intent) : null}));
+const intentAt = records.indexOf(intent), answerAt = records.indexOf(answer);
+check('no control reset between the intent and its answer', intentAt >= 0 && answerAt > intentAt
+  && controlResets.every(record => { const at = records.indexOf(record); return at <= intentAt || at >= answerAt; }),
+  JSON.stringify({total: controlResets.length, reasons: controlResets.map(r => r.reason), intentRecord: intentAt, answerRecord: answerAt}));
 check('no transport error ended the round', transportErrors.length === 0, JSON.stringify(transportErrors.map(r => r.reason)));
 check('ordinary input sequence is monotonic and survived the selection', monotonic && stepsAfter.length >= 5
   && stepsAfter.at(-1).received >= stepsAfter[0].received,

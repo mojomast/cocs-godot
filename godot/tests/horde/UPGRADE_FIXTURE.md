@@ -21,6 +21,24 @@ strict checks remain unchanged, so a complete passing acceptance result is
 with 56 resets and no intent; requiring 999 clean frames likewise held `settle`
 with 51 resets and no intent. Logs: `/tmp/opencode/horde-{before,after-1,after-2,after-3,revert-gate,unreachable}.log`.
 
+The Node check now excludes resets **after the authoritative answer**, because
+the product input-flow test specifies one inactive cancel per epoch and the
+250ms TTL necessarily renews idle epochs during the 15-frame linger. It still
+rejects every control reset strictly between the live intent and its answer;
+the epoch-equality check independently rejects a changed selection epoch.
+The native observer's post-delivery checks remain as written.
+
+Three further Linux runs with the flight-window Node check (`/tmp/opencode/horde-flight-{1,2,3}.log`)
+each reached `confirm`, applied one upgrade, matched intent/answer epochs
+(16/16, 15/15, 17/17), and had no control reset between those records. All
+three still failed the unchanged native post-delivery no-reset/epoch checks,
+plus the unchanged Node requirement for five steps after application (three
+in each run). Median frames were 51/49/51ms; maxima were
+3013/3026/3002ms, with eight recorded frames over 100ms per run. The reset
+check's actual source expression was evaluated in a scratch VM: a reset
+inside the flight failed, a reset after the answer passed, and a missing
+answer failed (`/tmp/opencode/horde-flight-falsify.mjs`).
+
 The following September measurements and successful runs describe the earlier
 product revision, not the current idle-input behavior.
 
