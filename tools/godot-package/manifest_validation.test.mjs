@@ -12,7 +12,10 @@ import {execFileSync} from 'node:child_process';
 import {chmodSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, unlinkSync, writeFileSync} from 'node:fs';
 import {dirname, join, relative, resolve, sep} from 'node:path';
 import {tmpdir} from 'node:os';
-import {ValidationError, sha256, validateArtifact} from './manifest_validation.mjs';
+import {DERIVATIVE_CONTRACT, REPO_ROOT, ValidationError, derivativeContractPath, sha256, validateArtifact} from './manifest_validation.mjs';
+import {MOVEMENT_COMMIT, MOVEMENT_CONTRACT} from './source_derivative.mjs';
+import {RACING_COMMIT, RACING_CONTRACT} from './racing_derivative.mjs';
+import {CONTACT_COMMIT, CONTACT_CONTRACT} from './contact_derivative.mjs';
 
 // A faithful-enough stand-in for the real discover.mjs: it derives the closure
 // from the committed `.mjs` tree it is given, so an omitted module is not
@@ -482,6 +485,14 @@ test('optional fields a future lane might add are not required', () => withFixtu
 test('a valid derivative-bound package passes', () => withFixture({derivative: true}, fixture => {
   assert.equal(validateArtifact({packageDir: fixture.packageDir, repoRoot: fixture.repo}).derivative_commit, fixture.derivativeCommit);
 }));
+
+test('each reviewed derivative commit selects the contract that pins it', () => {
+  for (const [commit, contract] of [[CONTACT_COMMIT, CONTACT_CONTRACT], [RACING_COMMIT, RACING_CONTRACT], [MOVEMENT_COMMIT, MOVEMENT_CONTRACT]]) {
+    assert.equal(derivativeContractPath(commit), contract);
+    assert.equal(JSON.parse(readFileSync(resolve(REPO_ROOT, contract))).derivative_commit, commit);
+  }
+  assert.equal(derivativeContractPath('0'.repeat(40)), DERIVATIVE_CONTRACT);
+});
 
 test('a derivative that adds a reviewed source module passes', () => withFixture(
   {derivative: true, derivativeAdded: 'game/horde-stages.mjs'}, fixture => {

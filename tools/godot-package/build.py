@@ -270,6 +270,7 @@ def main():
         input_paths.add("port/contracts/lattice-catalog-derivative.json")
         input_paths.add("tools/godot-package/source_derivative.mjs")
         input_paths.add("tools/godot-package/racing_derivative.mjs")
+        input_paths.add("tools/godot-package/contact_derivative.mjs")
     # The Career catalog and its generator arrive with a later lane; include them
     # as build inputs only when present so the baseline build never fails first.
     career_catalog = "godot/career/catalog.json"

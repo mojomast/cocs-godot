@@ -29,7 +29,7 @@ import {channelProduction,verifyChannelManifest,previewReadme} from './build_cha
 import {fighterImports} from './fighter_imports.mjs';
 import {MOVEMENT_COMMIT,MOVEMENT_CONTRACT} from './source_derivative.mjs';
 import {RACING_COMMIT,RACING_CONTRACT} from './racing_derivative.mjs';
-import {resolveReviewedDerivative} from './contact_derivative.mjs';
+import {CONTACT_COMMIT,CONTACT_CONTRACT,resolveReviewedDerivative} from './contact_derivative.mjs';
 import {verifyAuthoringResources,rejectAuthoringRuntime} from './authoring_resources.mjs';
 import {gitStagedResources,rejectStagedInputs} from './staged_resources.mjs';
 
@@ -44,6 +44,15 @@ export const TARGET_KINDS = Object.freeze({
 });
 export const SOURCE_LOCK = 'port/contracts/source-lock.json';
 export const DERIVATIVE_CONTRACT = 'port/contracts/lattice-catalog-derivative.json';
+// Map a manifest's recorded derivative commit to the committed contract that
+// pins it. Lattice is the earliest reviewed derivative and the fail-closed
+// fallback; a commit that matches nothing still reaches lattice and is then
+// rejected by the contract's own derivative_commit check.
+export function derivativeContractPath(commit) {
+  return commit === CONTACT_COMMIT ? CONTACT_CONTRACT
+    : commit === RACING_COMMIT ? RACING_CONTRACT
+    : commit === MOVEMENT_COMMIT ? MOVEMENT_CONTRACT : DERIVATIVE_CONTRACT;
+}
 // Root launcher helpers copied beside the executable. `settings_path.mjs` is the
 // shared menu/route preference-path helper; it must ship with every package.
 export const LAUNCHER_HELPERS = Object.freeze(['run.mjs', 'options.mjs', 'settings_path.mjs', 'endpoint.mjs']);
@@ -473,8 +482,7 @@ export function verifySourceState(repo, sourceCommit, derivative, {portCommit, h
 // working tree), checking it against the manifest's recorded commit and hash.
 function loadDerivative(repo, identity) {
   if (identity.derivativeCommit === null) return null;
-  const path = identity.derivativeCommit === RACING_COMMIT ? RACING_CONTRACT
-    : identity.derivativeCommit === MOVEMENT_COMMIT ? MOVEMENT_CONTRACT : DERIVATIVE_CONTRACT;
+  const path = derivativeContractPath(identity.derivativeCommit);
   const bytes = gitObjectBytes(repo, identity.port_commit, path);
   require_(sha256(bytes) === identity.derivativeHash,
     'Derivative metadata mismatch: committed contract hash differs from manifest source_derivative_sha256');
